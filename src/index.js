@@ -2,7 +2,7 @@ const Hapi = require('hapi');
 
 (async () => {
   const server = Hapi.server({
-    host: 'localhost',
+    host: '0.0.0.0',
     port: Number(process.env.PORT || 8080),
     routes: {
       files: {
