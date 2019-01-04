@@ -5,17 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm run blog-build",
     "start": "node ./server/index.js",
     "server-watch": "nodemon ./server/index.js",
     "blog-build": "npx eleventy",
-    "blog-watch": "npx eleventy --serve --watch"
+    "blog-watch": "npx eleventy --serve --watch --port 9090"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.1",
-    "hapi": "^17.8.1"
+    "hapi": "^17.8.1",
+    "inert": "^5.1.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.6.0",
