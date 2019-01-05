@@ -17,7 +17,7 @@
     "blog-build": "npx eleventy",
     "postblog-build": "mv ./public/build/index.html ./public/build/blog",
     "blog-clean": "rm -rf ./public/build/blog",
-    "blog-watch": "npx eleventy --serve --watch --port 9090",
+    "blog-watch": "npx nodemon -e js,ejs,html,json,md,css --watch blog -x 'npm run blog-build'",
     "css-build": "npx gulp css",
     "css-watch": "npx gulp css-watch",
     "precss-watch": "npm run css-build"

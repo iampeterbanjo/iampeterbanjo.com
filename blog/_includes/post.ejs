@@ -1,9 +1,11 @@
 ---
 layout: default.ejs
 ---
-<section class="top">
-	<h1>{{title}}</h1>
-</section>
-<section>
-	{{ content | safe }}
+<section class="bg-black-0125 w-100">
+	<article class="pb4">
+		<header class="ph3 ph5-ns w-100 bg-transparent pv3 mb4 mb5-ns bb b--black-10 overflow-auto">{{title}}</header>
+		<section>
+			{{ content | safe }}
+		</section>
+	</article>
 </section>
