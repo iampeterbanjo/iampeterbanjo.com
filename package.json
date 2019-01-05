@@ -19,9 +19,14 @@
     "blog-clean": "rm -rf ./public/build/blog",
     "blog-watch": "npx eleventy --serve --watch --port 9090",
     "css-build": "npx gulp css",
-    "css-watch": "npx gulp css-watch"
+    "css-watch": "npx gulp css-watch",
+    "precss-watch": "npm run css-build"
   },
-  "keywords": ["personal", "portfolio", "hapi"],
+  "keywords": [
+    "personal",
+    "portfolio",
+    "hapi"
+  ],
   "author": {
     "email": "me@iampeterbanjo.com",
     "name": "Peter Banjo"
@@ -36,10 +41,13 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.1",
     "autoprefixer": "^9.4.4",
     "gulp": "^4.0.0",
+    "gulp-less": "^4.0.1",
     "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "precss": "^4.0.0",
-    "tachyons": "^4.11.1"
+    "tachyons-sass": "^4.9.5"
   }
 }
