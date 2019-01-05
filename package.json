@@ -1,8 +1,11 @@
 {
-  "name": "me.iampeterbanjo.com",
+  "name": "iampeterbanjo.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal portfolio",
   "main": "index.js",
+  "engines": {
+    "node": "^10"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-clean": "rm -rf ./public/build",
@@ -18,8 +21,11 @@
     "css-build": "npx gulp css",
     "css-watch": "npx gulp css-watch"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["personal", "portfolio", "hapi"],
+  "author": {
+    "email": "me@iampeterbanjo.com",
+    "name": "Peter Banjo"
+  },
   "license": "ISC",
   "dependencies": {
     "hapi": "^17.8.1",
