@@ -1,9 +1,9 @@
 const Hapi = require('hapi');
-const Path = require('path');
+const path = require('path');
 const Inert = require('inert');
-const cssPath = Path.join(__dirname, '../public/build/assets/styles/');
-const staticPath = Path.join(__dirname, '../public/build/static/');
-const blogPath = Path.join(__dirname, '../public/build/static/blog/');
+const cssPath = path.join(__dirname, '../public/build/assets/styles/');
+const staticPath = path.join(__dirname, '../public/build/static/');
+const blogPath = path.join(__dirname, '../public/build/static/blog/');
 
 (async () => {
   const server = Hapi.server({
