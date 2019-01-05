@@ -1,6 +1,9 @@
 const Hapi = require('hapi');
 const Path = require('path');
 const Inert = require('inert');
+const cssPath = Path.join(__dirname, '../public/build/assets/styles/');
+const staticPath = Path.join(__dirname, '../public/build/static/');
+const blogPath = Path.join(__dirname, '../public/build/static/blog/');
 
 (async () => {
   const server = Hapi.server({
@@ -16,19 +19,25 @@ const Inert = require('inert');
   await server.register(Inert);
 
   server.route({
-    path: '/',
-    method: 'GET',
-    handler: () => 'Hello world, I am Peter Banjo'
-  });
-
-  server.route({
-    path: '/public/{path*}',
+    path: '/{path*}',
     method: 'GET',
     handler: {
       directory: {
-        path: Path.join(__dirname, '../public'),
+        path: staticPath,
         listing: false,
         index: true
+      }
+    }
+  });
+
+  server.route({
+    path: '/css/{path*}',
+    method: 'GET',
+    handler: {
+      directory: {
+        path: cssPath,
+        listing: false,
+        index: false
       }
     }
   });
@@ -38,8 +47,8 @@ const Inert = require('inert');
     method: 'GET',
     handler: {
       directory: {
-        path: Path.join(__dirname, '../public/build/blog/'),
-        listing: false,
+        path: blogPath,
+        listing: false
       }
     }
   });
