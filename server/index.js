@@ -48,7 +48,8 @@ const blogPath = Path.join(__dirname, '../public/build/static/blog/');
     handler: {
       directory: {
         path: blogPath,
-        listing: false
+        listing: false,
+        index: true,
       }
     }
   });

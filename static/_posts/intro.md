@@ -1,4 +1,5 @@
 ---
+tags: post
 title: Hello Hairy World
 permalink: /blog/hello-world/
 ---
