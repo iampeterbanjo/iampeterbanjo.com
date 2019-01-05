@@ -1,9 +1,15 @@
 ---
 layout: default.ejs
 ---
-<section class="top">
-	<h1>{{title}}</h1>
-</section>
-<section>
-	{{ content | safe }}
+<section class="bg-black-0125 w-100">
+	<article class="bt b--black-10 bg-washed-blue black-70 ph3 ph5-ns pv4 pv5-ns">
+		<header>
+			<h1 class="title">
+				<%= title %>
+			</h1>
+		</header>
+		<section class="f5 measure lh-copy">
+			<%- content %>
+		</section>
+	</article>
 </section>

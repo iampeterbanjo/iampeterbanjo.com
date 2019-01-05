@@ -1,8 +1,11 @@
 {
-  "name": "me.iampeterbanjo.com",
+  "name": "iampeterbanjo.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal portfolio",
   "main": "index.js",
+  "engines": {
+    "node": "^10"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-clean": "rm -rf ./public/build",
@@ -14,12 +17,20 @@
     "blog-build": "npx eleventy",
     "postblog-build": "mv ./public/build/index.html ./public/build/blog",
     "blog-clean": "rm -rf ./public/build/blog",
-    "blog-watch": "npx eleventy --serve --watch --port 9090",
+    "blog-watch": "npx nodemon -e js,ejs,html,json,md,css --watch blog -x 'npm run blog-build'",
     "css-build": "npx gulp css",
-    "css-watch": "npx gulp css-watch"
+    "css-watch": "npx gulp css-watch",
+    "precss-watch": "npm run css-build"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "personal",
+    "portfolio",
+    "hapi"
+  ],
+  "author": {
+    "email": "me@iampeterbanjo.com",
+    "name": "Peter Banjo"
+  },
   "license": "ISC",
   "dependencies": {
     "hapi": "^17.8.1",
@@ -30,10 +41,13 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.1",
     "autoprefixer": "^9.4.4",
     "gulp": "^4.0.0",
+    "gulp-less": "^4.0.1",
     "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "precss": "^4.0.0",
-    "tachyons": "^4.11.1"
+    "tachyons-sass": "^4.9.5"
   }
 }

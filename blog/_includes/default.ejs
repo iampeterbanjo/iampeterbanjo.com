@@ -5,24 +5,24 @@ title:
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 	<title><% if(title){ %><%= title %> – <% } %>iampeterbanjo | blog</title>
 	<link rel="stylesheet" type="text/css" href="/public/build/assets/styles/main.css" />
 	<link rel="stylesheet" type="text/css" href="/public/build/assets/styles/tachyons.css" />
 </head>
-<body>
-	<div class="main">
-		<header>
-			<% if(page.url == '/'){ %><h1 class="title"><% } else { %><p class="title"><% } %>
-				<a href="/">Blog</a>
-			<% if(page.url == '/'){ %></h1><% } else { %></p><% } %>
-		</header>
-		<section class="content">
-			<%- content %>
-		</section>
-		<footer>
-			<p> Made with sleep </p>
-		</footer>
-	</div>
+<body class="w-100 sans-serif">
+	<header class="w-100 pa3 ph5-ns bg-white">
+		<% if(page.url == '/'){ %><h1 class="title"><% } else { %><p class="title"><% } %>
+			<a href="/blog">Blog</a>
+		<% if(page.url == '/'){ %></h1><% } else { %></p><% } %>
+	</header>
+	<main class="w-100 bt b--black-10 bg-white">
+		<%- content %>
+	</main>
+	<footer class="bg-white black-70 ph3 ph5-ns pv5 pv6-ns bt b--black-10">
+		<p> Made with sleep </p>
+	</footer>
 </body>
 </html>
