@@ -26,9 +26,9 @@ const Inert = require('inert');
     method: 'GET',
     handler: {
       directory: {
-        path: Path.join(__dirname, 'public'),
+        path: Path.join(__dirname, '../public'),
         listing: false,
-        index: false
+        index: true
       }
     }
   });
@@ -38,7 +38,7 @@ const Inert = require('inert');
     method: 'GET',
     handler: {
       directory: {
-        path: Path.join(__dirname, '../blog/build'),
+        path: Path.join(__dirname, '../public/build/blog/'),
         listing: false,
       }
     }

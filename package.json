@@ -8,19 +8,32 @@
     "prestart": "npm run blog-build",
     "start": "node ./server/index.js",
     "server-watch": "nodemon ./server/index.js",
+    "preblog-build": "npm run blog-clean",
     "blog-build": "npx eleventy",
-    "blog-watch": "npx eleventy --serve --watch --port 9090"
+    "postblog-build": "mv ./public/build/index.html ./public/build/blog",
+    "blog-clean": "rm -rf ./public/build/blog",
+    "blog-watch": "npx eleventy --serve --watch --port 9090",
+    "css-build": "npx gulp css",
+    "css-watch": "npx gulp css-watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.1",
+    "autoprefixer": "^9.4.4",
+    "cssmin": "^0.4.3",
     "hapi": "^17.8.1",
-    "inert": "^5.1.2"
+    "hashmark": "^5.0.0",
+    "inert": "^5.1.2",
+    "tachyons": "^4.11.1"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.6.0",
-    "nodemon": "^1.18.9"
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "nodemon": "^1.18.9",
+    "precss": "^4.0.0"
   }
 }

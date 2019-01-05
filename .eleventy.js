@@ -6,8 +6,8 @@ module.exports = function(eleventyConfig) {
   // You can return your Config object (optional).
   return {
     dir: {
-      input: "blog/src",
-      output: "blog/build"
+      input: "blog/",
+      output: "public/build/"
     },
     passthroughFileCopy: true,
   };
