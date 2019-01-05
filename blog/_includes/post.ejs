@@ -2,10 +2,14 @@
 layout: default.ejs
 ---
 <section class="bg-black-0125 w-100">
-	<article class="pb4">
-		<header class="ph3 ph5-ns w-100 bg-transparent pv3 mb4 mb5-ns bb b--black-10 overflow-auto">{{title}}</header>
-		<section>
-			{{ content | safe }}
+	<article class="bt b--black-10 bg-washed-blue black-70 ph3 ph5-ns pv4 pv5-ns">
+		<header>
+			<h1 class="title">
+				<%= title %>
+			</h1>
+		</header>
+		<section class="f5 measure lh-copy">
+			<%- content %>
 		</section>
 	</article>
 </section>
