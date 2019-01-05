@@ -24,5 +24,3 @@ gulp.task('css', buildCss);
 gulp.task('css-watch', () => {
   gulp.watch(`${stylesSrcPath}/*.css`, buildCss);
 });
-
-

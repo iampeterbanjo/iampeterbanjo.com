@@ -26,7 +26,7 @@ const Inert = require('inert');
     method: 'GET',
     handler: {
       directory: {
-        path: Path.join(__dirname, 'public'),
+        path: Path.join(__dirname, '../public'),
         listing: false,
         index: false
       }
