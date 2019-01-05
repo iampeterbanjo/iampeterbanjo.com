@@ -10,7 +10,8 @@
     "server-watch": "nodemon ./server/index.js",
     "preblog-build": "npm run blog-clean",
     "blog-build": "npx eleventy",
-    "blog-clean": "rm -rf ./blog/build",
+    "postblog-build": "mv ./public/build/index.html ./public/build/blog",
+    "blog-clean": "rm -rf ./public/build/blog",
     "blog-watch": "npx eleventy --serve --watch --port 9090",
     "css-build": "npx gulp css",
     "css-watch": "npx gulp css-watch"

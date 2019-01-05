@@ -5,7 +5,7 @@ const precss = require('precss');
 
 const tachyonsPath = require.resolve('tachyons');
 const stylesBuildPath = Path.join(__dirname, './public/build/assets/styles');
-const stylesSrcPath = Path.join(__dirname, './public/src/assets/styles');
+const stylesSrcPath = Path.join(__dirname, './assets/styles');
 const cssSrcPath = `${stylesSrcPath}/*.css`;
 
 const buildCss = () => {
