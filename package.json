@@ -15,7 +15,7 @@
     "server-watch": "nodemon ./server/index.js",
     "prestatic-build": "npm run static-lint && npm run static-clean",
     "static-build": "npx eleventy",
-    "static-lint": "node lintTemplates.js",
+    "static-lint": "npx eleventy --dryrun",
     "static-debug": "DEBUG=Eleventy* npx eleventy",
     "static-clean": "rm -rf ./public/build/static",
     "static-watch": "npx nodemon -e js,ejs,html,json,md,css,njk --watch static -x 'npm run static-build'",
