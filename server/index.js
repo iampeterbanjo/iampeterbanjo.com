@@ -16,44 +16,55 @@ const blogPath = path.join(__dirname, '../public/build/static/blog/');
     }
   });
 
-  await server.register(Inert);
+  const Statics = {
+    name: 'serve-static-files',
+    version: '0.0.1',
+    register: (server, { blogPath, cssPath, staticPath }) => {
+      server.route({
+        path: '/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: staticPath,
+            listing: false,
+            index: true
+          }
+        }
+      });
 
-  server.route({
-    path: '/{path*}',
-    method: 'GET',
-    handler: {
-      directory: {
-        path: staticPath,
-        listing: false,
-        index: true
-      }
+      server.route({
+        path: '/css/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: cssPath,
+            listing: false,
+            index: false
+          }
+        }
+      });
+
+      server.route({
+        path: '/blog/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: blogPath,
+            listing: false,
+            index: true
+          }
+        }
+      });
     }
-  });
+  };
 
-  server.route({
-    path: '/css/{path*}',
-    method: 'GET',
-    handler: {
-      directory: {
-        path: cssPath,
-        listing: false,
-        index: false
-      }
-    }
-  });
+  try {
+    await server.register(Inert);
+    await server.register({ plugin: Statics, options: { blogPath, cssPath, staticPath }});
+    await server.start();
 
-  server.route({
-    path: '/blog/{path*}',
-    method: 'GET',
-    handler: {
-      directory: {
-        path: blogPath,
-        listing: false,
-        index: true,
-      }
-    }
-  });
-
-  await server.start();
-  console.log(`Server running at: ${server.info.uri}`);
+    console.log(`Server running at: ${server.info.uri}`);
+  } catch (error) {
+    console.warn(error);
+  }
 })();
