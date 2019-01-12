@@ -1,0 +1,21 @@
+---
+layout: default.ejs
+permalink: /blog/
+title: hello
+---
+<ul>
+  <% collections.post.forEach((post) => { %>
+    <li class="<% if(page.url == post.url) { %> active <% } %>">
+      <a href="<%= post.url %>">
+        <span class="title">
+          <%= post.data.title %>
+        </span>
+        <% if (post.data.date) { %>
+          <span class="date">
+            <%= post.data.date %>
+          </span>
+        <% } %>
+      </a>
+    </li>
+  <% }); %>
+</ul>

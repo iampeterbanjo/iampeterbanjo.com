@@ -1,6 +1,9 @@
 const Hapi = require('hapi');
-const Path = require('path');
+const path = require('path');
 const Inert = require('inert');
+const cssPath = path.join(__dirname, '../public/build/assets/styles/');
+const staticPath = path.join(__dirname, '../public/build/static/');
+const blogPath = path.join(__dirname, '../public/build/static/blog/');
 
 (async () => {
   const server = Hapi.server({
@@ -13,37 +16,55 @@ const Inert = require('inert');
     }
   });
 
-  await server.register(Inert);
+  const Statics = {
+    name: 'serve-static-files',
+    version: '0.0.1',
+    register: (server, { blogPath, cssPath, staticPath }) => {
+      server.route({
+        path: '/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: staticPath,
+            listing: false,
+            index: true
+          }
+        }
+      });
 
-  server.route({
-    path: '/',
-    method: 'GET',
-    handler: () => 'Hello world, I am Peter Banjo'
-  });
+      server.route({
+        path: '/css/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: cssPath,
+            listing: false,
+            index: false
+          }
+        }
+      });
 
-  server.route({
-    path: '/public/{path*}',
-    method: 'GET',
-    handler: {
-      directory: {
-        path: Path.join(__dirname, '../public'),
-        listing: false,
-        index: true
-      }
+      server.route({
+        path: '/blog/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: blogPath,
+            listing: false,
+            index: true
+          }
+        }
+      });
     }
-  });
+  };
 
-  server.route({
-    path: '/blog/{path*}',
-    method: 'GET',
-    handler: {
-      directory: {
-        path: Path.join(__dirname, '../public/build/blog/'),
-        listing: false,
-      }
-    }
-  });
+  try {
+    await server.register(Inert);
+    await server.register({ plugin: Statics, options: { blogPath, cssPath, staticPath }});
+    await server.start();
 
-  await server.start();
-  console.log(`Server running at: ${server.info.uri}`);
+    console.log(`Server running at: ${server.info.uri}`);
+  } catch (error) {
+    console.warn(error);
+  }
 })();
