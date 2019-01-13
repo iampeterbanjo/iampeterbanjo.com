@@ -12,13 +12,13 @@ title:
 	<link rel="stylesheet" type="text/css" href="/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/css/tachyons.css" />
 </head>
-<body class="w-100 sans-serif">
+<body class="w-100 sans-serif b--light-blue bt bl br bw4">
 	<header class="w-100 pa3 ph5-ns bg-white">
 		<% if(page.url == '/'){ %><h1 class="title"><% } else { %><p class="title"><% } %>
 			<a href="/blog">Blog</a>
 		<% if(page.url == '/'){ %></h1><% } else { %></p><% } %>
 	</header>
-	<main class="w-100 bt b--black-10 bg-white">
+	<main class="w-100">
 		<%- content %>
 	</main>
 	<footer class="bg-white black-70 ph3 ph5-ns pv5 pv6-ns bt b--black-10">

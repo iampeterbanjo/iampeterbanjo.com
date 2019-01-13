@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm-run-all -l -p static-watch server-watch",
+    "dev": "npm-run-all -l -p static-watch server-watch css-watch",
     "build-clean": "rm -rf ./public/build",
     "build": "npm run static-build && npm run css-build",
     "postinstall": "npm run build",
@@ -45,6 +45,7 @@
     "ejs-lint": "^0.3.0",
     "fs-extra": "^7.0.1",
     "gulp": "^4.0.0",
+    "gulp-imagemin": "^5.0.3",
     "gulp-less": "^4.0.1",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",

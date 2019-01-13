@@ -2,6 +2,7 @@ const Hapi = require('hapi');
 const path = require('path');
 const Inert = require('inert');
 const cssPath = path.join(__dirname, '../public/build/assets/styles/');
+const imagePath = path.join(__dirname, '../public/build/assets/images/');
 const staticPath = path.join(__dirname, '../public/build/static/');
 const blogPath = path.join(__dirname, '../public/build/static/blog/');
 
@@ -38,6 +39,18 @@ const blogPath = path.join(__dirname, '../public/build/static/blog/');
         handler: {
           directory: {
             path: cssPath,
+            listing: false,
+            index: false
+          }
+        }
+      });
+
+      server.route({
+        path: '/images/{path*}',
+        method: 'GET',
+        handler: {
+          directory: {
+            path: imagePath,
             listing: false,
             index: false
           }
