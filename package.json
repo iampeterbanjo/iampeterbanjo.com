@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm-run-all -l -p static-watch server-watch css-watch",
+    "dev": "npm-run-all -l -p static-watch server-watch css-watch images-watch",
     "build-clean": "rm -rf ./public/build",
     "build": "npm run static-build && npm run css-build",
     "postinstall": "npm run build",
@@ -22,6 +22,7 @@
     "static-watch": "npx nodemon -e js,ejs,html,json,md,css,njk --watch static -x 'npm run static-build'",
     "css-build": "npx gulp css",
     "css-watch": "npx gulp css-watch",
+    "images-watch": "npx gulp images-watch",
     "precss-watch": "npm run css-build"
   },
   "keywords": [
