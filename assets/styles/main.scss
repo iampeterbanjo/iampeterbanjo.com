@@ -6,3 +6,11 @@ html {
   }
 }
 
+a {
+  color: $yellow;
+}
+
+a:visited {
+  color: $light-pink;
+}
+
