@@ -2,8 +2,9 @@
 
 html {
   @media #{$breakpoint-not-small} {
-    padding: 5rem 5rem 0 5rem;
+    padding: 5rem;
   }
+  min-height: 90vh;
 }
 
 a {
