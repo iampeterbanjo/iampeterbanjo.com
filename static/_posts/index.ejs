@@ -6,8 +6,8 @@ title: hello
 <section class="measure-wide center">
   <ul class="list pl0">
     <% collections.post.forEach((post) => { %>
-      <li class="pa3 pa4-ns <% if(page.url == post.url) { %> active <% } %>">
-        <a href="<%= post.url %>">
+      <li class="avenir pa3 pa4-ns <% if(page.url == post.url) { %> active <% } %>">
+        <a href="<%= post.url %>" class="link underline-hover">
           <span class="title db f3 mb1">
             <%= post.data.title %>
           </span>
