@@ -15,20 +15,22 @@ title:
 <body>
 	<header class="w-100">
 		<% if(page.url == '/'){ %>
-			<div class="vh-100 dt w-100 tc bg-dark-gray white cover">
+			<div class="vh-100 dt w-100 tc bg-blue white cover">
 				<div class="dtc v-mid">
-					<header class="white-70">
+					<header class="white">
 						<img class="w4 br-100 pa3" src="/images/iampeterbanjo-w400.jpg" />
 						<h2 class="f6 fw1 ttu tracked mb2 lh-title">Peter Banjo</h2>
 						<h3 class="f6 fw1 lh-title">Building on and for the web</h3>
 					</header>
-					<h1 class="f1 f-headline-l fw1 i white-60">Hello, you.</h1>
-					<blockquote class="ph0 mh0 measure f4 lh-copy center">
-						<p class="fw1 white-70">
-							ane anehu oaseu onetuhnoeuh nosehu aonesuha oesnhu.
-						</p>
-						<cite class="f6 ttu tracked fs-normal">Random Guy</cite>
-					</blockquote>
+					<h1 class="f1 f-headline-l fw1 i">
+						<span class="black">Hello,</span> <span class="white">you.</span>
+					</h1>
+					<nav class="avenir f4">
+						<a class="dim pa3" href="/blog">Blog</a>
+						<span class="pa3">Projects</span>
+						<span class="pa3">About</span>
+						<span class="pa3">Credits</span>
+					</nav>
 				</div>
 			</div>
 		<% } %>
@@ -36,8 +38,10 @@ title:
 	<main class="w-100">
 		<%- content %>
 	</main>
-	<footer class="ph3 ph5-ns pv5 pv6-ns bt b--black-10">
-		<p> Made with sleep </p>
+	<footer class="ph3 ph5-ns pv5 pv6-ns bg-black">
+		<div class="measure-wide center white">
+			<p> Made with sleep </p>
+		</div>
 	</footer>
 </body>
 </html>
