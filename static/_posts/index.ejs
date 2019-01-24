@@ -3,19 +3,24 @@ layout: default.ejs
 permalink: /blog/
 title: hello
 ---
-<ul>
-  <% collections.post.forEach((post) => { %>
-    <li class="<% if(page.url == post.url) { %> active <% } %>">
-      <a href="<%= post.url %>">
-        <span class="title">
-          <%= post.data.title %>
-        </span>
-        <% if (post.data.date) { %>
-          <span class="date">
-            <%= post.data.date %>
+<section class="measure-wide center">
+  <ul class="list pl0">
+    <% collections.post.forEach((post) => { %>
+      <li class="pa3 pa4-ns <% if(page.url == post.url) { %> active <% } %>">
+        <a href="<%= post.url %>">
+          <span class="title db f3 mb1">
+            <%= post.data.title %>
           </span>
-        <% } %>
-      </a>
-    </li>
-  <% }); %>
-</ul>
+          <span class="title f5 db lh-copy measure">
+            <%= post.data.subtitle %>
+          </span>
+          <% if (post.data.date) { %>
+            <span class="date">
+              <%= post.data.date %>
+            </span>
+          <% } %>
+        </a>
+      </li>
+    <% }); %>
+  </ul>
+</section>

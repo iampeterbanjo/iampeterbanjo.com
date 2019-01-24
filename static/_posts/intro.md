@@ -1,6 +1,7 @@
 ---
 tags: post
 title: Hello Hairy World
+subtitle: The beginning will be like the end
 permalink: /blog/hello-world/
 ---
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
