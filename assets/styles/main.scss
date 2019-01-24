@@ -1,9 +1,6 @@
 @import '../../node_modules/tachyons-sass/tachyons';
 
 html {
-  @media #{$breakpoint-not-small} {
-    padding: 5rem;
-  }
   min-height: 90vh;
 }
 

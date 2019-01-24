@@ -12,11 +12,26 @@ title:
 	<link rel="stylesheet" type="text/css" href="/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/css/tachyons.css" />
 </head>
-<body class="w-100 sans-serif b--light-blue bt bl br bb bw4">
-	<header class="w-100 pa3 ph5-ns">
-		<% if(page.url == '/'){ %><h1 class="title"><% } else { %><p class="title"><% } %>
-			<a href="/blog">Blog</a>
-		<% if(page.url == '/'){ %></h1><% } else { %></p><% } %>
+<body>
+	<header class="w-100">
+		<% if(page.url == '/'){ %>
+			<div class="vh-100 dt w-100 tc bg-dark-gray white cover">
+				<div class="dtc v-mid">
+					<header class="white-70">
+						<img class="w4 br-100 pa3" src="/images/iampeterbanjo-w400.jpg" />
+						<h2 class="f6 fw1 ttu tracked mb2 lh-title">Peter Banjo</h2>
+						<h3 class="f6 fw1 lh-title">Building on and for the web</h3>
+					</header>
+					<h1 class="f1 f-headline-l fw1 i white-60">Hello, you.</h1>
+					<blockquote class="ph0 mh0 measure f4 lh-copy center">
+						<p class="fw1 white-70">
+							ane anehu oaseu onetuhnoeuh nosehu aonesuha oesnhu.
+						</p>
+						<cite class="f6 ttu tracked fs-normal">Random Guy</cite>
+					</blockquote>
+				</div>
+			</div>
+		<% } %>
 	</header>
 	<main class="w-100">
 		<%- content %>
