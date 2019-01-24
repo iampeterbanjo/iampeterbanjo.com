@@ -1,1 +1,26 @@
+@import '../../node_modules/tachyons-sass/tachyons';
 
+html {
+  min-height: 90vh;
+}
+
+main {
+  min-height: 65vh;
+}
+
+a {
+  color: $white;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: $yellow;
+}
+
+nav, p {
+  font-family: $sans-serif;
+}
+
+p {
+  line-height: 1.5;
+}
