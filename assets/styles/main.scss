@@ -4,6 +4,10 @@ html {
   min-height: 90vh;
 }
 
+main {
+  min-height: 65vh;
+}
+
 a {
   color: $white;
   text-decoration: underline;
@@ -13,7 +17,10 @@ a:visited {
   color: $yellow;
 }
 
-p {
+nav, p {
   font-family: $sans-serif;
+}
+
+p {
   line-height: 1.5;
 }

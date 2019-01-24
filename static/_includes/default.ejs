@@ -25,12 +25,22 @@ title:
 					<h1 class="f-headline-l fw1 lh-solid i">
 						<span class="black">Hello,</span> <span class="white">you.</span>
 					</h1>
-					<%- include nav.ejs %>
+					<nav class="avenir f4">
+						<%- include nav.ejs %>
+					</nav>
 				</div>
 			</div>
 		<% } %>
+		<% if(page.url != '/'){ %>
+			<nav class="pa3 pa4-ns">
+					<a class="link dim white b f1 f-headline-ns tc db mb3 mb4-ns" href="/blog" title="Home">Blog</a>
+					<div class="tc pb3">
+						<%- include nav.ejs %>
+					</div>
+				</nav>
+		<% } %>
 	</header>
-	<main class="w-100">
+	<main class="w-100 v-mid">
 		<%- content %>
 	</main>
 	<footer class="ph3 ph5-ns pv5 pv6-ns bg-black">
