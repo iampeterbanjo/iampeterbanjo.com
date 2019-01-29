@@ -1,7 +1,8 @@
 ---
 layout: default.ejs
 permalink: /blog/
-title: hello
+title: Blog list
+description: Some of my thoughts and ideas
 ---
 <section class="measure-wide center">
   <ul class="list pl0">
@@ -12,10 +13,10 @@ title: hello
             <%= post.data.title %>
           </span>
           <span class="title f5 db lh-copy measure">
-            <%= post.data.subtitle %>
+            <%= post.data.description %>
           </span>
           <% if (post.data.date) { %>
-            <span class="date">
+            <span class="date f6">
               <%= post.data.date %>
             </span>
           <% } %>
