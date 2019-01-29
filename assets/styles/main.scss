@@ -1,4 +1,11 @@
 @import '../../node_modules/tachyons-sass/tachyons';
+@import './prism-atom-dark';
+
+mark {
+  background-color: transparent;
+  border-bottom: 1px $gold dotted;
+  color: $white;
+}
 
 html {
   min-height: 90vh;
