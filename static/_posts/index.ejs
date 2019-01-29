@@ -1,7 +1,7 @@
 ---
 layout: default.ejs
 permalink: /blog/
-title: hello
+title: Blog list
 ---
 <section class="measure-wide center">
   <ul class="list pl0">
@@ -12,7 +12,7 @@ title: hello
             <%= post.data.title %>
           </span>
           <span class="title f5 db lh-copy measure">
-            <%= post.data.subtitle %>
+            <%= post.data.description %>
           </span>
           <% if (post.data.date) { %>
             <span class="date">

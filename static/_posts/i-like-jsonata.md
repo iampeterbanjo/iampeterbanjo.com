@@ -1,7 +1,7 @@
 ---
 tags: post
 title: I like JSONata and so can you
-subtitle: It's the best thing to happen to JSON that no one has heard of
+description: Transforming JSON data is simple and painless with this new tool from IBM Open projects
 permalink: /blog/i-like-jsonata/
 ---
 JSON (JavaScript Object Notation) is a popular way to send and receive objects as strings. The syntax is terse and yet flexible enough to describe a lot of common objects - even deeply nested ones. That's nice, but what happens when you want to transform JSON from one shape to another? How about if you wanted to add comments to describe the transformation?

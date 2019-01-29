@@ -1,5 +1,6 @@
 ---
 title:
+description:
 ---
 <!DOCTYPE html>
 <html lang="en" class="bg-navy white">
@@ -8,8 +9,10 @@ title:
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<meta name="google-site-verification" content="OB-R_RuxLlky1y8Z_LAYn2075JPx9lH1PYVmkVN0g3Q" />
-
-	<title><% if(title){ %><%= title %> – <% } %>iampeterbanjo | blog</title>
+		<% if (description) { %>
+			<meta name="description" content="<%= description %>" />
+		<% } %>
+	<title><% if(title){ %><%= title %> – <% } %>iampeterbanjo</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="/css/tachyons.css" />
 </head>
