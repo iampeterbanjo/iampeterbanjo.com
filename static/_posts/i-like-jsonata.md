@@ -8,7 +8,7 @@ JSON (JavaScript Object Notation) is a popular way to send and receive objects a
 
 For example, I invite you to take a look at this JSON object describing the order history of a user.
 
-```
+``` json
 {
   "Account": {
     "Order": [
@@ -64,7 +64,7 @@ For example, I invite you to take a look at this JSON object describing the orde
 
 We could calculate the sum for every order by mapping over each item in the `Order` array. That would work but JSONata let's us do the same thing more simply.
 
-```
+``` js/1
 /* Sum all orders in account history */
 $sum(Account.Order[0].Product.Price)
 ```
