@@ -37,13 +37,13 @@
   },
   "license": "ISC",
   "dependencies": {
-    "hapi": "^17.8.1",
+    "hapi": "18.x.x",
     "inert": "^5.1.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^0.6.0",
+    "@11ty/eleventy": "0.7.x",
     "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.1",
-    "autoprefixer": "^9.4.4",
+    "autoprefixer": "^9.4.7",
     "ejs-lint": "^0.3.0",
     "fs-extra": "^7.0.1",
     "gulp": "^4.0.0",
