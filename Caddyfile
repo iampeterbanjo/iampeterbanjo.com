@@ -1,6 +1,6 @@
-0.0.0.0:{$PORT}
+iampeterbanjo:{$PORT}
 gzip
-proxy / http://0.0.0.0:{$API_PORT} {
+proxy / 0.0.0.0:{$API_PORT} {
   transparent
   except static
 }
