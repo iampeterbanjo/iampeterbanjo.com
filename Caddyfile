@@ -1,6 +1,7 @@
-iampeterbanjo:{$PORT}
-gzip
-proxy / 0.0.0.0:{$API_PORT} {
-  transparent
-  except static
+iampeterbanjo:{$PORT} {
+  gzip
+  proxy / 0.0.0.0:{$API_PORT} {
+    transparent
+    except static
+  }
 }
