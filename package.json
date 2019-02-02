@@ -15,7 +15,7 @@
     "caddy-start": "./caddy -conf Caddyfile",
     "caddy-dev": "./caddy -conf Caddyfile.dev",
     "server-start": "node ./server/index.js",
-    "start": "npm-run-all -p server-start caddy-start",
+    "start": "npm run server-start",
     "server-watch": "nodemon ./server/index.js",
     "prestatic-build": "npm run static-lint && npm run static-clean",
     "static-build": "npx eleventy",
