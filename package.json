@@ -14,7 +14,7 @@
     "postinstall": "npm run build",
     "server-start": "node ./server/index.js",
     "start": "npm run server-start",
-    "server-watch": "nodemon ./server/index.js",
+    "server-watch": "nodemon --inspect ./server/index.js",
     "prestatic-build": "npm run static-lint && npm run static-clean",
     "static-build": "npx eleventy",
     "static-lint": "npx eleventy --dryrun",
