@@ -1,6 +1,0 @@
-0.0.0.0:{$PORT}
-gzip
-proxy / http://0.0.0.0:{$API_PORT} {
-  transparent
-  except static
-}

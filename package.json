@@ -8,12 +8,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm-run-all -l -p static-watch server-watch css-watch images-watch caddy-dev",
+    "dev": "npm-run-all -l -p static-watch server-watch css-watch images-watch",
     "build-clean": "rm -rf ./public/build",
     "build": "npm run static-build && npm run css-build && npm run images-build",
     "postinstall": "npm run build",
-    "caddy-start": "./caddy -conf Caddyfile",
-    "caddy-dev": "./caddy -conf Caddyfile.dev",
     "server-start": "node ./server/index.js",
     "start": "npm run server-start",
     "server-watch": "nodemon ./server/index.js",
