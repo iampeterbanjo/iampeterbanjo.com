@@ -1,7 +1,0 @@
-iampeterbanjo.com:{$PORT} {
-  gzip
-  proxy / iampeterbanjo.com:{$API_PORT} {
-    transparent
-    except static
-  }
-}
