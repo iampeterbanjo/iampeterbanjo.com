@@ -1,6 +1,5 @@
-0.0.0.0:{$PORT}
-gzip
-proxy / http://0.0.0.0:{$API_PORT} {
-  transparent
-  except static
+localhost:{$PORT} {
+  bind {$ADDRESS}
+  proxy / 0.0.0.0:{$API_PORT}
+  tls self_signed
 }
