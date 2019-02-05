@@ -10,7 +10,7 @@ const blogPath = path.join(__dirname, '../public/build/static/blog/');
 (async () => {
   const server = Hapi.server({
     host: '0.0.0.0',
-    port: Number(process.env.API_PORT || 8080),
+    port: Number(process.env.PORT || 8080),
     routes: {
       files: {
         relativeTo: __dirname
