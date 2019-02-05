@@ -40,7 +40,6 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "18.x.x",
-    "hapi-require-https": "^3.0.0",
     "inert": "^5.1.2"
   },
   "devDependencies": {

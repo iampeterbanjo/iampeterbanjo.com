@@ -26,7 +26,6 @@ const blogPath = path.join(__dirname, '../public/build/static/blog/');
       plugin: Statics,
       options: { blogPath, cssPath, staticPath, imagePath }
     });
-    await server.register({ plugin: require('hapi-require-https')});
     await server.start();
 
     console.log(`Server running at: ${server.info.uri}`);
