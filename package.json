@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm-run-all -l -p static-watch server-watch css-watch images-watch caddy-dev browser-open",
-    "browser-open": "chromium-browser https://localhost:8080",
+    "dev": "npm-run-all -l -p static-watch server-watch css-watch images-watch caddy-dev",
+    "browser-open": "chromium-browser http://localhost:8080",
     "build-clean": "rm -rf ./public/build",
     "build": "npm run static-build && npm run css-build && npm run images-build",
     "postinstall": "npm run build",
