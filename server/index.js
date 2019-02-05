@@ -23,7 +23,6 @@ const blogPath = path.join(__dirname, '../public/build/static/blog/');
   try {
     await server.register(Inert);
     await server.register({ plugin: Statics, options: { blogPath, cssPath, staticPath, imagePath }});
-    await server.register(require('./https'));
     await server.start();
 
     console.log(`Server running at: ${server.info.uri}`);
