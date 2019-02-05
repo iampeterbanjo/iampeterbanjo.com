@@ -1,0 +1,9 @@
+0.0.0.0:{$PORT} {
+  tls off
+  bind {$ADDRESS}
+  proxy / 0.0.0.0:{$API_PORT}
+  redir 301 {
+    if {>X-Forwarded-Proto} is http
+    /  https://{host}{uri}
+  }
+}

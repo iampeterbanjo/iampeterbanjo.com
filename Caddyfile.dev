@@ -1,0 +1,5 @@
+localhost:{$PORT} {
+  tls off
+  bind {$ADDRESS}
+  proxy / 0.0.0.0:{$API_PORT}
+}
