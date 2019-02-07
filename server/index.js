@@ -27,6 +27,9 @@ const blogPath = path.join(__dirname, "../public/build/static/blog/");
       options: { blogPath, cssPath, staticPath, imagePath }
     });
     await server.register({
+      plugin: require("./cqc-api")
+    });
+    await server.register({
       plugin: require("./hapi-require-https")
     });
     await server.start();
