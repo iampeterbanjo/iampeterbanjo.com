@@ -18,16 +18,14 @@ const blogPath = path.join(__dirname, "../public/build/static/blog/");
     }
   });
 
-  const Statics = require("./statics");
-
   try {
     await server.register(Inert);
     await server.register({
-      plugin: Statics,
+      plugin: require("./statics"),
       options: { blogPath, cssPath, staticPath, imagePath }
     });
     await server.register({
-      plugin: require("./cqc-api")
+      plugin: require("./cqc")
     });
     await server.register({
       plugin: require("./hapi-require-https")
