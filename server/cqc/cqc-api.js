@@ -11,9 +11,12 @@ function cqcApi(server, options) {
     path: '/providers',
     method: 'GET',
     handler: async (request, reply) => {
-      const url = `https://api.cqc.org.uk/public/v1/providers`;
-      await got(url);
-      return 'Hello';
+      try {
+        const response = await got(`${process.env.CQC_API_URL}/providers`);
+        return response.body;
+      } catch (error) {
+        console.warn(error);
+      }
     }
   });
 }
