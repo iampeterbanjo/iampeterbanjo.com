@@ -8,7 +8,7 @@ const got = require('got');
 
 function cqcApi(server, options) {
   server.route({
-    path: '/providers',
+    path: '/cqc/providers',
     method: 'GET',
     handler: async (request, reply) => {
       try {
