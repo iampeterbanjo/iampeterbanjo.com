@@ -4,13 +4,16 @@ module.exports = {
   register: cqcApi
 };
 
+const got = require('got');
+
 function cqcApi(server, options) {
-  const { CQC_API_URL } = process.env;
   server.route({
-    path: '/cqc',
+    path: '/providers',
     method: 'GET',
-    handler: (request, reply) => {
-      return 'Hello, CQC';
+    handler: async (request, reply) => {
+      const url = `https://api.cqc.org.uk/public/v1/providers`;
+      await got(url);
+      return 'Hello';
     }
   });
-};
+}
