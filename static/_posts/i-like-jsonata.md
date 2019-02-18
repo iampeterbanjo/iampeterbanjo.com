@@ -18,17 +18,17 @@ For example, I invite you to take a look at this JSON object describing the orde
         "Product": [
           {
             "Product Name": "Bowler Hat",
-            "ProductID": 858383,
+            "ProductID": "858383",
             "SKU": "0406654608",
-            "Price": 34.45,
-            "Quantity": 2
+            "Price": "34.45",
+            "Quantity": "2"
           },
           {
             "Product Name": "Trilby hat",
-            "ProductID": 858236,
+            "ProductID": "858236",
             "SKU": "0406634348",
-            "Price": 21.67,
-            "Quantity": 1
+            "Price": "21.67",
+            "Quantity": "1"
           }
         ]
       },
@@ -37,24 +37,24 @@ For example, I invite you to take a look at this JSON object describing the orde
         "Product": [
           {
             "Product Name": "Bowler Hat",
-            "ProductID": 858383,
+            "ProductID": "858383",
             "SKU": "040657863",
             "Description": {
               "Colour": "Purple",
-              "Width": 300,
-              "Height": 200,
-              "Depth": 210,
-              "Weight": 0.75
+              "Width": "300",
+              "Height": "200",
+              "Depth": "210",
+              "Weight": "0.75"
             },
-            "Price": 34.45,
-            "Quantity": 4
+            "Price": "34.45",
+            "Quantity": "4"
           },
           {
-            "ProductID": 345664,
+            "ProductID": "345664",
             "SKU": "0406654603",
             "Product Name": "Cloak",
-            "Price": 107.99,
-            "Quantity": 1
+            "Price": "107.99",
+            "Quantity": "1"
           }
         ]
       }
