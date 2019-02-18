@@ -1,7 +1,6 @@
 const { blog, assets } = require('./plugins/gatsby-source-filesystem');
 const remark = require('./plugins/gatsby-transformer-remark');
 const manifest = require('./plugins/gatsby-plugin-manifest');
-const typography = require('./plugins/gatsby-plugin-typography');
 
 module.exports = {
   siteMetadata: {
@@ -28,7 +27,6 @@ module.exports = {
     `gatsby-plugin-feed`,
     manifest,
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    typography
+    `gatsby-plugin-react-helmet`
   ]
 };
