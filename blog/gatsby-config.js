@@ -4,22 +4,22 @@ const manifest = require('./plugins/gatsby-plugin-manifest');
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `Personal portfolio and blog`,
+    author: `Peter Banjo`,
+    description: `Building on and for the web.`,
+    siteUrl: `https://iampeterbanjo.com/`,
     social: {
-      twitter: `kylemathews`
+      twitter: `dayosuperstar`
     }
   },
   plugins: [
-    blog,
     assets,
+    blog,
+    manifest,
     remark,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-feed`,
-    manifest,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`
   ]

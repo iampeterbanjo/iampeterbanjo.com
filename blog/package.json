@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "iampeterbanjo-blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Personal blog by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "author": {
+    "email": "peterbanjo@gmail.com",
+    "name": "Peter Banjo"
   },
   "dependencies": {
     "css": "file:../css",
@@ -33,15 +33,17 @@
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.18"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "homepage": "https://iampeterbanjo.com/blog",
   "keywords": [
+    "portfolio",
+    "blog",
     "gatsby"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
   },
   "scripts": {
     "build": "gatsby build",
