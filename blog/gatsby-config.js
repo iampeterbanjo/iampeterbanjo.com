@@ -1,3 +1,5 @@
+const { blog, assets } = require('./plugins/gatsby-source-filesystem')
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
@@ -9,20 +11,8 @@ module.exports = {
     },
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/assets`,
-        name: `assets`,
-      },
-    },
+    blog,
+    assets,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
