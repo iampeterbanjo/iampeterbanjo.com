@@ -31,11 +31,7 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.18",
-    "typeface-merriweather": "0.0.54",
-    "typeface-montserrat": "0.0.54",
-    "typography": "^0.16.18",
-    "typography-theme-wordpress-2016": "^0.16.18"
+    "react-typography": "^0.16.18"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -53,7 +49,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "pwa": "lighthouse-ci http://0.0.0.0:8000",
-    "watch-pwa": "nodemon --watch src -x js,jsx,json --exec 'npm run pwa'",
+    "watch-pwa": "nodemon --watch src --watch gatsby-browser.js --watch gatsby-node.js --watch gatsby-config.js -x js,jsx,json --exec 'npm run pwa'",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   }
 }
