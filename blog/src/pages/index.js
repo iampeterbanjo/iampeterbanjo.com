@@ -20,7 +20,7 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `portfolio`, `javascript`, `react`]}
         />
 
-        <Bio />
+        <Bio {...props} />
       </Layout>
     );
   }
