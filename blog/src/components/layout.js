@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 class Layout extends React.Component {
   render() {
-    const { children, location, isRoot } = this.props;
+    const { children, isRoot } = this.props;
 
     return (
       <div>
