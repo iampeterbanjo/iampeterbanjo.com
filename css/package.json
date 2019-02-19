@@ -4,9 +4,9 @@
   "description": "CSS theme for iampeterbanjo.com",
   "main": "build/main.css",
   "scripts": {
-    "css-build": "node-sass --omit-source-map-url sass/main.scss build/main.css",
-    "css-watch": "npm run css-build -- --watch",
-    "start": "npm run css-watch",
+    "build": "node-sass --omit-source-map-url sass/main.scss build/main.css",
+    "watch": "npm run build -- --watch",
+    "start": "npm run watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
