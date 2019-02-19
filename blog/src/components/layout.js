@@ -3,13 +3,16 @@ import { Link } from 'gatsby';
 
 import 'css/build/main.css';
 import classNames from 'classnames';
+
 class Layout extends React.Component {
   render() {
+    const { children, location, isRoot } = this.props;
+
     return (
       <div>
         <section
           className={classNames('is-medium is-bold', {
-            [this.isRoot()]: 'hero'
+            [isRoot]: 'hero'
           })}
         >
           <header className="hero-body">
@@ -17,7 +20,7 @@ class Layout extends React.Component {
           </header>
         </section>
 
-        <main>{this.props.children}</main>
+        <main>{children}</main>
 
         <footer>
           © {new Date().getFullYear()}, Built with
@@ -28,18 +31,10 @@ class Layout extends React.Component {
     );
   }
 
-  isRoot = () => this.props.location.pathname === `${__PATH_PREFIX__}/`;
-
   getHeader = classes => {
-    const { title } = this.props;
+    const { title, isRoot } = this.props;
 
-    if (this.isRoot()) {
-      return (
-        <h1 className={classes}>
-          <Link to={`/`}>{title}</Link>
-        </h1>
-      );
-    }
+    if (isRoot) return null;
 
     return (
       <h3 className={classes}>
