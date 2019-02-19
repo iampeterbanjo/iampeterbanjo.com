@@ -15,8 +15,8 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
 
-        <section className="media-content has-text-centered">
-          <header>
+        <section className="hero has-text-centered">
+          <header className="hero-body">
             <h1 className="subtitle">{post.frontmatter.title}</h1>
             <div className="tags has-addons level-item">
               <span class="tag is-rounded">{post.frontmatter.date}</span>

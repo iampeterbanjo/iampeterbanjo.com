@@ -2,12 +2,16 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import 'css/build/main.css';
-
+import classNames from 'classnames';
 class Layout extends React.Component {
   render() {
     return (
       <div>
-        <section className="hero is-medium is-bold">
+        <section
+          className={classNames('is-medium is-bold', {
+            [this.isRoot()]: 'hero'
+          })}
+        >
           <header className="hero-body">
             {this.getHeader('container has-text-centered')}
           </header>
@@ -24,11 +28,12 @@ class Layout extends React.Component {
     );
   }
 
-  getHeader = classes => {
-    const { location, title } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
+  isRoot = () => this.props.location.pathname === `${__PATH_PREFIX__}/`;
 
-    if (location.pathname === rootPath) {
+  getHeader = classes => {
+    const { title } = this.props;
+
+    if (this.isRoot()) {
       return (
         <h1 className={classes}>
           <Link to={`/`}>{title}</Link>
