@@ -15,36 +15,43 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
 
-        <section className="hero has-text-centered">
-          <header className="hero-body">
-            <h1 className="subtitle">{post.frontmatter.title}</h1>
-            <div className="tags has-addons level-item">
-              <span class="tag is-rounded">{post.frontmatter.date}</span>
+        <article>
+          <header className="hero has-text-centered">
+            <div className="hero-body">
+              <h1 className="subtitle">{post.frontmatter.title}</h1>
+              <div className="tags has-addons level-item">
+                <span class="tag is-rounded">{post.frontmatter.date}</span>
+              </div>
             </div>
           </header>
-        </section>
 
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr />
+          <section
+            className="container is-fluid"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+          <hr />
 
-        <Bio />
+          <Bio />
 
-        <ul>
-          <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
+          <footer>
+            <ul>
+              <li>
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </footer>
+        </article>
       </Layout>
     );
   }
