@@ -5,27 +5,16 @@ import 'css/build/main.css';
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props;
-    const rootPath = `${__PATH_PREFIX__}/`;
-    let header;
-
-    if (location.pathname === rootPath) {
-      header = (
-        <h1>
-          <Link to={`/`}>{title}</Link>
-        </h1>
-      );
-    } else {
-      header = (
-        <h3>
-          <Link to={`/`}>{title}</Link>
-        </h3>
-      );
-    }
     return (
       <div>
-        <header>{header}</header>
-        <main>{children}</main>
+        <section className="hero is-medium is-bold">
+          <header className="hero-body">
+            {this.getHeader('container has-text-centered')}
+          </header>
+        </section>
+
+        <main>{this.props.children}</main>
+
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
@@ -34,6 +23,25 @@ class Layout extends React.Component {
       </div>
     );
   }
+
+  getHeader = classes => {
+    const { location, title } = this.props;
+    const rootPath = `${__PATH_PREFIX__}/`;
+
+    if (location.pathname === rootPath) {
+      return (
+        <h1 className={classes}>
+          <Link to={`/`}>{title}</Link>
+        </h1>
+      );
+    }
+
+    return (
+      <h3 className={classes}>
+        <Link to={`/`}>{title}</Link>
+      </h3>
+    );
+  };
 }
 
 export default Layout;

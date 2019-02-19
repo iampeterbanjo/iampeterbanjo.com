@@ -14,10 +14,19 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
-        <h1>{post.frontmatter.title}</h1>
-        <p>{post.frontmatter.date}</p>
+
+        <section className="media-content has-text-centered">
+          <header>
+            <h1 className="subtitle">{post.frontmatter.title}</h1>
+            <div className="tags has-addons level-item">
+              <span class="tag is-rounded">{post.frontmatter.date}</span>
+            </div>
+          </header>
+        </section>
+
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr />
+
         <Bio />
 
         <ul>
