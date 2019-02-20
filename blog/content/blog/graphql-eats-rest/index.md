@@ -12,7 +12,7 @@ There is no REST for APIs except to buried in documentation because NOW the glor
 2. [A type system][2]
 3. [More economical with data][4]
 
-I know if you're like me, you might already be [pursuing, busy and tired][1] of the constant pace our technology choices. I didn't set out to adopt GraphQL. All I wanted to do was create a new blog and then [Gatsby][5] showed up. Anyway, it's fun learning but what I really want is mastery so I might try reading the GraphQL spec.
+I know if you're like me, you might already be [pursuing, busy and tired][1] of the constant change in our technology choices. I didn't set out to adopt GraphQL. All I wanted to do was create a new blog and then [Gatsby][5] showed up using GraphQL as a data handling layer. Anyway, it's fun learning new things but what I really want is mastery.
 
 [1]: https://www.goodreads.com/work/quotes/245494-the-great-gatsby
 [2]: https://facebook.github.io/graphql/June2018/#sec-Type-System
