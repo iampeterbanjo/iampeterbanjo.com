@@ -1,9 +1,10 @@
 ---
-tags: post
+tags: fullstack
 title: GraphQL eats REST
 description: At first I was afraid, then I was petrified... now I'm curious
 date: 2019-02-19
 ---
+
 As a web developer it's a strange curse to be afflicted with. The curse that every year at least some new technology in the JavaScript ecosystem gets replaced by something new, sometimes better and this time it was not even a framework - it was a specification. And look how [the mighty have fallen][6].
 
 There is no REST for APIs except to buried in documentation because NOW the glorious age of GraphQL is upon us! Here are my top 3 reasons why GraphQL eats REST:

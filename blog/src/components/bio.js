@@ -21,7 +21,11 @@ const avatar = (data, props) => {
     return (
       <header className={`hero ${className}`}>
         <div className="hero-body">
-          <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
+          <Image
+            className="image is-128x128 avatar"
+            fixed={data.avatar.childImageSharp.fixed}
+            alt={author}
+          />
           <h2 className="title">{author}</h2>
           <h3 className="subtitle">Building on and for the web</h3>
         </div>

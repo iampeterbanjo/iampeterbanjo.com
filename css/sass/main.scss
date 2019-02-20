@@ -29,6 +29,10 @@ $input-shadow: none;
 
 @import '../node_modules/bulma/bulma.sass';
 
+.avatar img {
+  border-radius: 100%;
+}
+
 .h-100 {
   min-height: 100vh;
 }
