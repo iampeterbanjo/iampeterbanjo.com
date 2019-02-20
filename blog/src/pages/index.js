@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import Nav from '../components/nav';
 
 import { hasRoot } from '../utils';
 class BlogIndex extends React.Component {
@@ -21,8 +20,7 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `portfolio`, `javascript`, `react`]}
         />
 
-        <Bio {...props} />
-        <Nav />
+        <Bio className="has-text-centered" {...props} />
       </Layout>
     );
   }

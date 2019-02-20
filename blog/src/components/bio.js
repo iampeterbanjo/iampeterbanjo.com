@@ -7,19 +7,19 @@ function Bio(props) {
 
   return (
     <StaticQuery
-      query={isRoot ? bigAvatar : smallAvatar}
+      query={isRoot === true ? bigAvatar : smallAvatar}
       render={data => avatar(data, props)}
     />
   );
 }
 
 const avatar = (data, props) => {
-  const { isRoot } = props;
+  const { isRoot, className } = props;
   const { author, social } = data.site.siteMetadata;
 
   if (isRoot) {
     return (
-      <header className="hero">
+      <header className={`hero ${className}`}>
         <div className="hero-body">
           <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
           <h2 className="title">{author}</h2>

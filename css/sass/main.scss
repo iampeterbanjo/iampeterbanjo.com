@@ -28,3 +28,20 @@ $input-border-color: transparent;
 $input-shadow: none;
 
 @import '../node_modules/bulma/bulma.sass';
+
+.h-100 {
+  min-height: 100vh;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.is-flex-column {
+  display: flex;
+  flex-direction: column;
+}
