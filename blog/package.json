@@ -1,0 +1,55 @@
+{
+  "name": "iampeterbanjo-blog",
+  "private": true,
+  "description": "Personal blog by Gatsby and Markdown",
+  "version": "0.1.0",
+  "author": {
+    "email": "peterbanjo@gmail.com",
+    "name": "Peter Banjo"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "css": "file:../css",
+    "gatsby": "^2.1.4",
+    "gatsby-image": "^2.0.29",
+    "gatsby-plugin-feed": "^2.0.13",
+    "gatsby-plugin-manifest": "^2.0.17",
+    "gatsby-plugin-offline": "^2.0.23",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-prismjs-dracula": "^0.1.15",
+    "gatsby-remark-copy-linked-files": "^2.0.9",
+    "gatsby-remark-images": "^2.0.6",
+    "gatsby-remark-prismjs": "^3.2.4",
+    "gatsby-remark-responsive-iframe": "^2.0.9",
+    "gatsby-remark-smartypants": "^2.0.8",
+    "gatsby-source-filesystem": "^2.0.20",
+    "gatsby-transformer-remark": "^2.2.5",
+    "gatsby-transformer-sharp": "^2.1.13",
+    "lighthouse-ci": "^1.4.1",
+    "nodemon": "^1.18.10",
+    "npm-run-all": "^4.1.5",
+    "prismjs": "^1.15.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-helmet": "^5.2.0",
+    "react-typography": "^0.16.18"
+  },
+  "keywords": [
+    "portfolio",
+    "blog",
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "npm-run-all -l -p watch-blog watch-pwa",
+    "pwa": "lighthouse-ci http://0.0.0.0:8000",
+    "serve": "gatsby serve",
+    "start": "npm run develop",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "watch-blog": "gatsby develop",
+    "watch-pwa": "nodemon --watch src --watch gatsby-browser.js --watch gatsby-node.js --watch gatsby-config.js -x js,jsx,json --exec 'npm run pwa'"
+  }
+}
