@@ -10,22 +10,28 @@ const avatar = data => {
   const { author, social } = data.site.siteMetadata;
 
   return (
-    <article class="media">
-      <figure class="media-left">
-        <p class="image is-64x64">
-          <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
-        </p>
-      </figure>
-      <div class="media-content">
-        <div class="content">
-          <p>
-            Written by <strong>{author}</strong> who lives in the United
-            Kingdom.
-            {` `}
-            <a href={`https://twitter.com/${social.twitter}`}>
-              You should follow him on Twitter
-            </a>
-          </p>
+    <article className="container">
+      <div className="columns">
+        <div className="column is-half">
+          <div className="media">
+            <figure className="media-left">
+              <p className="image is-64x64 avatar">
+                <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
+              </p>
+            </figure>
+            <div className="media-content">
+              <div className="content">
+                <p>
+                  Written by <strong>{author}</strong> who lives in the United
+                  Kingdom.
+                  {` `}
+                  <a href={`https://twitter.com/${social.twitter}`}>
+                    You should follow him on Twitter
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </article>
