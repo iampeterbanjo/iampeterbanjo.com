@@ -49,3 +49,7 @@ $input-shadow: none;
   display: flex;
   flex-direction: column;
 }
+
+.v-space + .v-space {
+  margin-bottom: 1em;
+}

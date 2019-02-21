@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
+import ArticleItem from './article-item';
 
 function BioMini() {
   return <StaticQuery query={bioQuery} render={avatar} />;
@@ -10,7 +11,7 @@ const avatar = data => {
   const { author, social } = data.site.siteMetadata;
 
   return (
-    <article className="container">
+    <article className="container v-space">
       <div className="columns">
         <div className="column is-half">
           <div className="media">

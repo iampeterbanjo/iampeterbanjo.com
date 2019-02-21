@@ -23,12 +23,24 @@ class BlogIndex extends React.Component {
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
-            <article className="container" key={node.fields.slug}>
-              <h3>
-                <Link to={node.fields.slug}>{title}</Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+            <article className="container v-space">
+              <div className="columns">
+                <div className="column is-full">
+                  <div className="media">
+                    <figure className="media-left">
+                      <h3>
+                        <Link to={node.fields.slug}>{title}</Link>
+                      </h3>
+                      <small>{node.frontmatter.date}</small>
+                    </figure>
+                    <div className="media-content">
+                      <div className="content">
+                        <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </article>
           );
         })}
