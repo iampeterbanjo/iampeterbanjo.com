@@ -1,23 +1,25 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Bio from '../components/bio';
+import BioMini from '../components/bio-mini';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+import { hasRoot } from '../utils';
 class BlogIndex extends React.Component {
   render() {
-    const { data } = this.props;
+    const { data, location } = this.props;
     const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMarkdownRemark.edges;
+    const isRoot = hasRoot(location, __PATH_PREFIX__);
+    const props = { isRoot, location };
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout {...props} title={siteTitle}>
         <SEO
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
@@ -30,6 +32,8 @@ class BlogIndex extends React.Component {
             </article>
           );
         })}
+
+        <BioMini />
       </Layout>
     );
   }

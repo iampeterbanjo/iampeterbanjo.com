@@ -3,72 +3,30 @@ import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
 function Bio(props) {
-  const { isRoot } = props;
-
-  return (
-    <StaticQuery
-      query={isRoot === true ? bigAvatar : smallAvatar}
-      render={data => avatar(data, props)}
-    />
-  );
+  return <StaticQuery query={bioQuery} render={data => avatar(data, props)} />;
 }
 
 const avatar = (data, props) => {
-  const { isRoot, className } = props;
-  const { author, social } = data.site.siteMetadata;
-
-  if (isRoot) {
-    return (
-      <header className={`hero ${className}`}>
-        <div className="hero-body">
-          <Image
-            className="image is-128x128 avatar"
-            fixed={data.avatar.childImageSharp.fixed}
-            alt={author}
-          />
-          <h2 className="title">{author}</h2>
-          <h3 className="subtitle">Building on and for the web</h3>
-        </div>
-      </header>
-    );
-  }
+  const { className } = props;
+  const { author } = data.site.siteMetadata;
 
   return (
-    <div>
-      <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
-      <p>
-        Written by <strong>{author}</strong> who lives in the United Kingdom.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a>
-      </p>
-    </div>
+    <header className={`hero ${className}`}>
+      <div className="hero-body">
+        <Image
+          className="image is-128x128 avatar"
+          fixed={data.avatar.childImageSharp.fixed}
+          alt={author}
+        />
+        <h2 className="title">{author}</h2>
+        <h3 className="subtitle">Building on and for the web</h3>
+      </div>
+    </header>
   );
 };
 
-const smallAvatar = graphql`
-  query SmallAvatar {
-    avatar: file(absolutePath: { regex: "/iampeterbanjo-w400.jpg/" }) {
-      childImageSharp {
-        fixed(width: 50, height: 50) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        author
-        social {
-          twitter
-        }
-      }
-    }
-  }
-`;
-
-const bigAvatar = graphql`
-  query BigAvatar {
+const bioQuery = graphql`
+  query BioQuery {
     avatar: file(absolutePath: { regex: "/iampeterbanjo-w400.jpg/" }) {
       childImageSharp {
         fixed(width: 200, height: 200) {
