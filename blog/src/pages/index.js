@@ -20,7 +20,11 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `portfolio`, `javascript`, `react`]}
         />
 
-        <Bio className="has-text-centered" {...props} />
+        <div class="ph3 ph5-ns">
+          <div class="cf mw9 center tc-m">
+            <Bio />
+          </div>
+        </div>
       </Layout>
     );
   }
