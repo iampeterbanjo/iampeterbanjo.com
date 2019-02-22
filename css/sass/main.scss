@@ -26,6 +26,8 @@ $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+// https://colorswatches.info/twitter-blue
+$twitter-blue: #55acee;
 
 // @import '../node_modules/bulma/bulma.sass';
 @import '../node_modules/tachyons-sass/tachyons.scss';
@@ -41,4 +43,16 @@ $input-shadow: none;
 .j-center {
   @extend .flex;
   justify-content: center;
+}
+
+.svg-icon {
+  stroke: transparent;
+}
+
+.github {
+  fill: $black-70;
+}
+
+.twitter {
+  fill: $twitter-blue;
 }

@@ -9,7 +9,8 @@ module.exports = {
     description: `Building on and for the web.`,
     siteUrl: `https://iampeterbanjo.com/`,
     social: {
-      twitter: `dayosuperstar`
+      twitter: `dayosuperstar`,
+      github: `iampeterbanjo`
     }
   },
   plugins: [
