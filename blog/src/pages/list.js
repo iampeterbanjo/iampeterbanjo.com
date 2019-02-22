@@ -23,24 +23,25 @@ class BlogIndex extends React.Component {
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
-            <article className="container v-space">
-              <div className="columns">
-                <div className="column is-full">
-                  <div className="media">
-                    <figure className="media-left">
-                      <h3>
-                        <Link to={node.fields.slug}>{title}</Link>
-                      </h3>
-                      <small>{node.frontmatter.date}</small>
-                    </figure>
-                    <div className="media-content">
-                      <div className="content">
-                        <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-                      </div>
-                    </div>
-                  </div>
+            <article className="cf mw9 center tc-m">
+              <a className="flex items-start" href={`${node.fields.slug}`}>
+                <div className="">
+                  <h3 className="lh-title f3 mb2">
+                    <Link to={node.fields.slug}>{title}</Link>
+                  </h3>
+                  <small>{node.frontmatter.date}</small>
                 </div>
-              </div>
+
+                <div className="">
+                  <p className="fl ml4 f4 measure-wide lh-copy">
+                    <span
+                      className="db"
+                      dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                    />
+                  </p>
+                  <p />
+                </div>
+              </a>
             </article>
           );
         })}

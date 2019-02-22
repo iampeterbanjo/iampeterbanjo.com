@@ -32,17 +32,8 @@ $twitter-blue: #55acee;
 // @import '../node_modules/bulma/bulma.sass';
 @import '../node_modules/tachyons-sass/tachyons.scss';
 
-.avatar img {
-  border-radius: 100%;
-}
-
 .h-100 {
   min-height: 100vh;
-}
-
-.j-center {
-  @extend .flex;
-  justify-content: center;
 }
 
 .svg-icon {
