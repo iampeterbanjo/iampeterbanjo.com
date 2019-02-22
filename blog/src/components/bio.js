@@ -7,7 +7,6 @@ function Bio(props) {
 }
 
 const avatar = (data, props) => {
-  const { className } = props;
   const { author } = data.site.siteMetadata;
 
   return (

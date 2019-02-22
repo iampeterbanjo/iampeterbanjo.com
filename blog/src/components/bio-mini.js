@@ -1,7 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import ArticleItem from './article-item';
 
 function BioMini() {
   return <StaticQuery query={bioQuery} render={avatar} />;
