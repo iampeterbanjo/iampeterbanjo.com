@@ -1,9 +1,14 @@
 import React from 'react';
 
-export default function Nav() {
+import classNames from 'classnames';
+
+export default function Nav(props) {
   return (
     <nav
-      className="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns"
+      className={classNames(
+        'db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns',
+        props.className
+      )}
       role="navigation"
       aria-label="main navigation"
     >

@@ -21,13 +21,29 @@ const avatar = (data, props) => {
           to change.
         </p>
       </div>
-      <div class="fl-l w-50-l tl tc-ns pt3 pt4-m pt5-l tc">
-        <Image
-          className="image is-128x128 avatar"
-          fixed={data.avatar.childImageSharp.fixed}
-          alt={author}
-        />
-        <p class="f5 f4-ns fw4 b dib-m lh-copy">{author}</p>
+
+      <div class="fl-l w-50-l tl tc-ns pt3 pt4-m pt5-l">
+        <a
+          class="fr-l link dt w-75 bb b--black-10 pb2 mt2 dim blue tl"
+          href="#0"
+        >
+          <div class="dtc w3">
+            <Image
+              className="image is-128x128 avatar"
+              fixed={data.avatar.childImageSharp.fixed}
+              alt={author}
+            />
+          </div>
+          <div class="dtc v-top pl2">
+            <p class="f6 f5-ns fw6 lh-title black mv0">{author}</p>
+            <p class="f6 fw4 mt2 mb0 black-60">
+              Husband, cosmopolitan geek, musically inclined, pursuing ideals.
+              Learning to build beautiful things.
+            </p>
+          </div>
+        </a>
+        {/*
+        <p class="f5 f4-ns fw4 b dib-m lh-copy">{author}</p> */}
       </div>
     </Fragment>
   );

@@ -13,7 +13,7 @@ export default function Header(props) {
             Home
           </a>
         </div>
-        {props.children}
+        <div class="db dtc-ns v-mid tl w-50">{props.children}</div>
       </div>
     </header>
   );
