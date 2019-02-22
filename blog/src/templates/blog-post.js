@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
 
-import Bio from '../components/bio';
+import BioMini from '../components/bio-mini';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+
+import feather from 'feather-icons';
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -15,37 +17,51 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
 
-        <article>
-          <header className="hero has-text-centered">
-            <div className="hero-body">
-              <h1 className="subtitle">{post.frontmatter.title}</h1>
-              <div className="tags has-addons level-item">
-                <span class="tag is-rounded">{post.frontmatter.date}</span>
-              </div>
-            </div>
+        <article className="cf mw9 center tc-m">
+          <header className="measure-wide lh-title">
+            <h1 className="f2">{post.frontmatter.title}</h1>
+            <small>{post.frontmatter.date}</small>
           </header>
 
-          <section
-            className="container is-fluid"
+          <p
+            className="f3 lh-copy measure-wide mb5"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
           <hr />
 
-          <Bio />
+          <BioMini />
 
-          <footer>
-            <ul>
+          <footer className="mb3 mt5">
+            <ul className="flex justify-between list pl0">
               <li>
                 {previous && (
-                  <Link to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
+                  <Link
+                    className="flex link hover-blue items-center"
+                    to={previous.fields.slug}
+                    rel="prev"
+                  >
+                    <i
+                      dangerouslySetInnerHTML={{
+                        __html: feather.icons['arrow-left'].toSvg()
+                      }}
+                    />{' '}
+                    <span className="ml3 f4">{previous.frontmatter.title}</span>
                   </Link>
                 )}
               </li>
               <li>
                 {next && (
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title} →
+                  <Link
+                    className="flex link hover-blue items-center"
+                    to={next.fields.slug}
+                    rel="next"
+                  >
+                    <span className="mr3 f4">{next.frontmatter.title}</span>
+                    <i
+                      dangerouslySetInnerHTML={{
+                        __html: feather.icons['arrow-right'].toSvg()
+                      }}
+                    />
                   </Link>
                 )}
               </li>
