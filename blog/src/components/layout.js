@@ -3,6 +3,7 @@ import React from 'react';
 import 'css/build/main.css';
 import Nav from '../components/nav';
 import Header from './header';
+import Footer from './footer';
 
 class Layout extends React.Component {
   render() {
@@ -14,13 +15,9 @@ class Layout extends React.Component {
           <Nav />
         </Header>
 
-        <main>{children}</main>
+        <main className="ph3 ph3-ns pv3 pv5-ns">{children}</main>
 
-        <footer>
-          © {new Date().getFullYear()}, Made with
-          {` `}
-          sleep
-        </footer>
+        <Footer />
       </div>
     );
   }
