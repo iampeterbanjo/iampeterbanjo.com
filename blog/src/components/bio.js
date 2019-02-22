@@ -15,14 +15,19 @@ const avatar = (data, props) => {
         <h1 class="f4 fw6 f1-ns lh-title measure mt0">
           Building on and for the web.
         </h1>
-        <p class="f5 f4-ns fw4 b measure dib-m lh-copy">{author}</p>
+        <p class="f5 f4-ns fw4 b measure dib-m lh-copy">
+          As a full-stack JavaScript developer based in the UK, I prefer using
+          lean and agile approaches to build software that is testable and open
+          to change.
+        </p>
       </div>
-      <div class="fl-l w-50-l tl tc-ns pt3 pt4-m pt6-l">
+      <div class="fl-l w-50-l tl tc-ns pt3 pt4-m pt5-l tc">
         <Image
           className="image is-128x128 avatar"
           fixed={data.avatar.childImageSharp.fixed}
           alt={author}
         />
+        <p class="f5 f4-ns fw4 b dib-m lh-copy">{author}</p>
       </div>
     </Fragment>
   );
