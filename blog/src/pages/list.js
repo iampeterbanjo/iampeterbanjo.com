@@ -26,20 +26,17 @@ class BlogIndex extends React.Component {
             <article className="cf mw9 center tc-m flex items-start">
               <div className="measure">
                 <h3 className="lh-title f2 mb2">
-                  <Link className="link hover-blue" to={node.fields.slug}>
-                    {title}
-                  </Link>
+                  <Link to={node.fields.slug}>{title}</Link>
                 </h3>
                 <small>{node.frontmatter.date}</small>
               </div>
 
               <div className="">
                 <p className="fl ml4 f3 measure-wide lh-copy">
-                  <Link
-                    className="link hover-blue"
-                    to={node.fields.slug}
-                    dangerouslySetInnerHTML={{ __html: node.excerpt }}
-                  />
+                  <span dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+                  <Link className="ml2 f4" to={node.fields.slug}>
+                    Read more
+                  </Link>
                 </p>
                 <p />
               </div>

@@ -32,6 +32,21 @@ $twitter-blue: #55acee;
 // @import '../node_modules/bulma/bulma.sass';
 @import '../node_modules/tachyons-sass/tachyons.scss';
 
+a {
+  @extend .link;
+  @extend .dark-blue;
+}
+
+a:hover {
+  background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
+  background-size: 0.2em 2px;
+  background-position: 0 1em;
+}
+
+a:visited {
+  @extend .blue;
+}
+
 .avatar img {
   border-radius: 100%;
 }
