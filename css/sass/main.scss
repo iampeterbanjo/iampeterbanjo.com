@@ -38,24 +38,7 @@ $input-shadow: none;
   min-height: 100vh;
 }
 
-.jc {
+.j-center {
   @extend .flex;
   justify-content: center;
-}
-
-.space-evenly {
-  justify-content: space-evenly;
-}
-
-.space-between {
-  justify-content: space-between;
-}
-
-.is-flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.v-space + .v-space {
-  margin-bottom: 1em;
 }

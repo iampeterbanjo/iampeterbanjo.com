@@ -14,6 +14,12 @@ export default function Nav(props) {
     >
       <a
         className="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        className="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib"
         href="/list"
       >
         Blog
