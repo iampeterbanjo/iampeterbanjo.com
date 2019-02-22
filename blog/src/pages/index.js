@@ -20,7 +20,7 @@ class BlogIndex extends React.Component {
           keywords={[`blog`, `portfolio`, `javascript`, `react`]}
         />
 
-        <div class="cf mw9 center tc-m">
+        <div class="cf mw9 center tc-m jc">
           <Bio />
         </div>
       </Layout>

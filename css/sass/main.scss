@@ -38,6 +38,11 @@ $input-shadow: none;
   min-height: 100vh;
 }
 
+.jc {
+  @extend .flex;
+  justify-content: center;
+}
+
 .space-evenly {
   justify-content: space-evenly;
 }
