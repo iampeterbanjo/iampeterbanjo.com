@@ -4,6 +4,7 @@
   "description": "CSS theme for iampeterbanjo.com",
   "main": "build/main.css",
   "scripts": {
+    "prebuild": "npm install",
     "build": "node-sass --omit-source-map-url sass/main.scss build/main.css",
     "watch": "npm run build -- --watch",
     "start": "npm run watch",
@@ -16,7 +17,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "bulma": "^0.7.4",
     "node-sass": "^4.11.0"
   },
   "dependencies": {

@@ -1,31 +1,5 @@
 @charset "utf-8";
 
-// Set your brand colors
-$purple: #8a4d76;
-$pink: #fa7c91;
-$brown: #757763;
-$beige-light: #d0d1cd;
-$beige-lighter: #eff0eb;
-
-// Update Bulma's global variables
-$family-sans-serif: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
-  'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial,
-  sans-serif;
-
-$family-serif: georgia, times, serif;
-
-$grey-dark: $brown;
-$grey-light: $beige-light;
-$primary: $purple;
-$link: $pink;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
 // https://colorswatches.info/twitter-blue
 $twitter-blue: #55acee;
 
@@ -35,16 +9,39 @@ $twitter-blue: #55acee;
 a {
   @extend .link;
   @extend .dark-blue;
+
+  &:hover {
+    background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
+    background-size: 0.2em 2px;
+    background-position: 0 1em;
+  }
+
+  &:visited {
+    @extend .blue;
+  }
+
+  &[rel='next'],
+  &[rel='prev'] {
+    background-position: 0 1.5em;
+  }
 }
 
-a:hover {
-  background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
-  background-size: 0.2em 2px;
-  background-position: 0 1em;
-}
+blockquote {
+  @extend .f3;
+  @extend .pl4;
+  font-style: italic;
+  margin-left: 0;
+  position: relative;
 
-a:visited {
-  @extend .blue;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    width: 4px;
+  }
 }
 
 .avatar img {
