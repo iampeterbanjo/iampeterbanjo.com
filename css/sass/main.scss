@@ -9,8 +9,9 @@ $twitter-blue: #55acee;
 a {
   @extend .link;
   @extend .dark-blue;
+  @extend .hover-blue;
 
-  &:hover {
+  &:not(.btn) {
     background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
     background-size: 0.2em 2px;
     background-position: 0 1em;
