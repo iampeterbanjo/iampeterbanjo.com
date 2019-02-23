@@ -9,21 +9,39 @@ $twitter-blue: #55acee;
 a {
   @extend .link;
   @extend .dark-blue;
+
+  &:hover {
+    background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
+    background-size: 0.2em 2px;
+    background-position: 0 1em;
+  }
+
+  &:visited {
+    @extend .blue;
+  }
+
+  &[rel='next'],
+  &[rel='prev'] {
+    background-position: 0 1.5em;
+  }
 }
 
-a:hover {
-  background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
-  background-size: 0.2em 2px;
-  background-position: 0 1em;
-}
+blockquote {
+  @extend .f3;
+  @extend .pl4;
+  font-style: italic;
+  margin-left: 0;
+  position: relative;
 
-a:visited {
-  @extend .blue;
-}
-
-a[rel='next'],
-a[rel='prev'] {
-  background-position: 0 1.5em;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    width: 4px;
+  }
 }
 
 .avatar img {
