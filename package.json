@@ -13,11 +13,11 @@
   "homepage": "https://iampeterbanjo.com",
   "scripts": {
     "browser-open": "chromium-browser http://localhost:8080",
-    "build": "npm run blog-build && npm run css-build",
+    "build": "npm run css-build && npm run blog-build",
     "build-clean": "rm -rf ./public/build",
     "clean": "npm run clean-css && npm run clean-blog && npm run clean-server",
-    "clean-blog": "rm -rf ./blog/node_modules || exit 0",
-    "clean-css": "rm -rf ./css/node_modules || exit 0",
+    "clean-blog": "rm -rf ./blog/node_modules ./blog/public || exit 0",
+    "clean-css": "rm -rf ./css/node_modules ./css/build || exit 0",
     "clean-server": "rm -rf ./node_modules || exit 0",
     "css-build": "cd ./css && npm run build",
     "css-install": "cd ./css && npm install",
@@ -32,7 +32,7 @@
     "server-start": "node ./server/index.js",
     "server-watch": "nodemon --inspect ./server/index.js",
     "postsetup": "npm run build",
-    "setup": "npm run blog-install && npm run css-install",
+    "setup": "npm run css-install && npm run blog-install",
     "start": "npm run server-start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
