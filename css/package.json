@@ -4,6 +4,7 @@
   "description": "CSS theme for iampeterbanjo.com",
   "main": "build/main.css",
   "scripts": {
+    "prebuild": "npm install",
     "build": "node-sass --omit-source-map-url sass/main.scss build/main.css",
     "watch": "npm run build -- --watch",
     "start": "npm run watch",
