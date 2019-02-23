@@ -1,4 +1,0 @@
-{
-	"layout": "post.ejs",
-	"permalink": "/blog/{{ title | slug }}"
-}
