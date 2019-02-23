@@ -12,7 +12,6 @@
   },
   "homepage": "https://iampeterbanjo.com",
   "scripts": {
-    "browser-open": "chromium-browser http://localhost:8080",
     "build": "npm run css-build && npm run blog-build",
     "build-clean": "rm -rf ./public/build",
     "clean": "npm run clean-css && npm run clean-blog && npm run clean-server",
@@ -22,7 +21,6 @@
     "css-build": "cd ./css && npm run build",
     "css-install": "cd ./css && npm install",
     "css-watch": "cd ./css && npm run watch",
-    "blog": "cd ./blog && npm run blog",
     "blog-build": "cd ./blog && npm run build",
     "blog-dev": "cd ./blog && npm run dev",
     "blog-install": "cd ./blog && npm install",
@@ -30,8 +28,8 @@
     "preinstall": "npm run setup",
     "server-start": "node ./server/index.js",
     "server-watch": "nodemon --inspect ./server/index.js",
+    "postinstall": "npm run build",
     "setup": "npm run css-install && npm run blog-install",
-    "prestart": "npm run build",
     "start": "npm run server-start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
