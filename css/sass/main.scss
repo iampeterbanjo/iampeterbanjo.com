@@ -21,6 +21,11 @@ a:visited {
   @extend .blue;
 }
 
+a[rel='next'],
+a[rel='prev'] {
+  background-position: 0 1.5em;
+}
+
 .avatar img {
   border-radius: 100%;
 }
