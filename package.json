@@ -30,8 +30,8 @@
     "preinstall": "npm run setup",
     "server-start": "node ./server/index.js",
     "server-watch": "nodemon --inspect ./server/index.js",
-    "postsetup": "npm run build",
     "setup": "npm run css-install && npm run blog-install",
+    "prestart": "npm run build",
     "start": "npm run server-start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
