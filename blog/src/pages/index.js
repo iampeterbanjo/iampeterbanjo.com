@@ -17,13 +17,17 @@ class BlogIndex extends React.Component {
       <Layout {...props} title={siteTitle}>
         <SEO
           title="All posts"
-          keywords={[`blog`, `portfolio`, `javascript`, `react`]}
+          keywords={[
+            `blog`,
+            `portfolio`,
+            `javascript`,
+            `full-stack`,
+            `developer`
+          ]}
         />
 
-        <div class="ph3 ph5-ns">
-          <div class="cf mw9 center tc-m">
-            <Bio />
-          </div>
+        <div class="cf mw9 center tc-m justify-center">
+          <Bio />
         </div>
       </Layout>
     );

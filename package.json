@@ -14,7 +14,7 @@
   "scripts": {
     "browser-open": "chromium-browser http://localhost:8080",
     "build-clean": "rm -rf ./public/build",
-    "build": "npm run static-build && npm run css-build && npm run images-build",
+    "build": "npm run blog-build && npm run css-build && npm run images-build",
     "css": "yarn --cwd css",
     "css-build": "yarn css build",
     "css-watch": "yarn css watch",
@@ -29,11 +29,6 @@
     "server-start": "node ./server/index.js",
     "server-watch": "nodemon --inspect ./server/index.js",
     "start": "npm run server-start",
-    "static-build": "npx eleventy",
-    "static-clean": "rm -rf ./public/build/static",
-    "static-debug": "DEBUG=Eleventy* npx eleventy",
-    "static-lint": "npx eleventy --dryrun",
-    "static-watch": "npx nodemon -e js,ejs,html,json,md,css,njk --watch static -x 'npm run static-build'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

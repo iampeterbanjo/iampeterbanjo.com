@@ -26,9 +26,26 @@ $body-background-color: $beige-lighter;
 $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
+// https://colorswatches.info/twitter-blue
+$twitter-blue: #55acee;
 
 // @import '../node_modules/bulma/bulma.sass';
 @import '../node_modules/tachyons-sass/tachyons.scss';
+
+a {
+  @extend .link;
+  @extend .dark-blue;
+}
+
+a:hover {
+  background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
+  background-size: 0.2em 2px;
+  background-position: 0 1em;
+}
+
+a:visited {
+  @extend .blue;
+}
 
 .avatar img {
   border-radius: 100%;
@@ -38,19 +55,14 @@ $input-shadow: none;
   min-height: 100vh;
 }
 
-.space-evenly {
-  justify-content: space-evenly;
+.svg-icon {
+  stroke: transparent;
 }
 
-.space-between {
-  justify-content: space-between;
+.github {
+  fill: $black-70;
 }
 
-.is-flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.v-space + .v-space {
-  margin-bottom: 1em;
+.twitter {
+  fill: $twitter-blue;
 }
