@@ -28,7 +28,6 @@
     "blog-install": "cd ./blog && npm install",
     "dev": "npm-run-all -l -p blog-dev server-watch css-watch",
     "preinstall": "npm run setup",
-    "prestatic-build": "npm run static-lint && npm run static-clean",
     "server-start": "node ./server/index.js",
     "server-watch": "nodemon --inspect ./server/index.js",
     "postsetup": "npm run build",
