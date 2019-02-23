@@ -27,7 +27,6 @@ class BlogPostTemplate extends React.Component {
             className="f3 lh-copy measure-wide mb5"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
-          <hr />
 
           <BioMini />
 
