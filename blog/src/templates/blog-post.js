@@ -25,7 +25,7 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
 
-        <article className="cf mw9 center tc-m">
+        <article className="cf mw9 center">
           <header className="measure-wide lh-title">
             <h1 className="f2">{post.frontmatter.title}</h1>
             {postDate('Written', post.frontmatter.date)}
