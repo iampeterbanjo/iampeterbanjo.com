@@ -3,6 +3,7 @@ tags: tests
 title: OMG! I 💓 these tests 😍
 description: You can't live without it and you shouldn't try
 date: 2019-02-20
+updated: 2019-02-23
 ---
 
 I like writing tests but writing good tests is a skill - just like any other - that is best learnt by doing. So, here is a callout of the tests I have seen on the internet that inspired me to say
