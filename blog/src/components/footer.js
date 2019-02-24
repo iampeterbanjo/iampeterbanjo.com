@@ -11,7 +11,7 @@ const content = data => {
   const { author, social } = data.site.siteMetadata;
 
   return (
-    <footer className="bg-white black-70 ph3 ph3-ns pv3 pv5-ns bt b--black-10">
+    <footer className="bg-white black-70 ph3 ph5-ns pv3 pv5-ns bt b--black-10">
       <div className="mw9 center">
         <div>
           <Nav />
