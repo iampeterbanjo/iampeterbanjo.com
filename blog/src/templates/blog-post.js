@@ -12,6 +12,14 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const { previous, next } = this.props.pageContext;
+    const postDate = (type, date) => {
+      if (!date) return null;
+      return (
+        <small className="db lh-copy">
+          {type}: {date}
+        </small>
+      );
+    };
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -20,7 +28,8 @@ class BlogPostTemplate extends React.Component {
         <article className="cf mw9 center tc-m">
           <header className="measure-wide lh-title">
             <h1 className="f2">{post.frontmatter.title}</h1>
-            <small>{post.frontmatter.date}</small>
+            {postDate('Written', post.frontmatter.date)}
+            {postDate('Updated', post.frontmatter.updated)}
           </header>
 
           <p
@@ -89,6 +98,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        updated(formatString: "MMMM DD, YYYY")
       }
     }
   }
