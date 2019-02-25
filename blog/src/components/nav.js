@@ -6,7 +6,7 @@ export default function Nav(props) {
   return (
     <nav
       className={classNames(
-        'db flex justify-center w-100 tl tr-ns mt0-ns',
+        'db flex justify-center w-100 mt0-ns',
         props.className
       )}
       role="navigation"
