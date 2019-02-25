@@ -10,12 +10,12 @@ class Layout extends React.Component {
     const { children } = this.props;
 
     return (
-      <div className="w-100 sans-serif black-70 ">
+      <div className="w-100 sans-serif black-70">
         <Header>
           <Nav className="fr" />
         </Header>
 
-        <main className="ph3 ph3-ns pv3 pv5-ns">{children}</main>
+        <main className="ph3 ph5-ns pv3 pv5-ns">{children}</main>
 
         <Footer />
       </div>
