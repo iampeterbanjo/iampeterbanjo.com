@@ -11,25 +11,25 @@ const avatar = (data, props) => {
 
   return (
     <Fragment>
-      <div class="tl tc-ns pt3 pt4-m pt5-l">
-        <div class="dtc w3">
+      <div className="tl tc-ns pt3 pt4-m pt5-l">
+        <div className="dtc w3">
           <Image
             className="image is-128x128 avatar"
             fixed={data.avatar.childImageSharp.fixed}
             alt={author}
           />
         </div>
-        <div class="dtc v-top pl5 tl">
-          <h1 class="f4 fw6 f1-ns lh-title measure mt0">
+        <div className="dtc v-top pl5 tl">
+          <h1 className="f4 fw6 f1-ns lh-title measure mt0">
             Building on and for the web.
           </h1>
-          <p class="f5 f4-ns fw4 b measure dib-m lh-copy">
+          <p className="f5 f4-ns fw4 b measure dib-m lh-copy">
             As a full-stack JavaScript developer based in the UK, I prefer using
             lean and agile approaches to build software that is testable and
             open to change.
           </p>
-          <p class="f6 f5-ns fw6 lh-title mv0">{author}</p>
-          <p class="f6 fw4 lh-copy mt2 mb0">
+          <p className="f6 f5-ns fw6 lh-title mv0">{author}</p>
+          <p className="f6 fw4 lh-copy mt2 mb0">
             Husband, cosmopolitan geek, musically inclined, pursuing ideals.
             Learning to build beautiful things.
           </p>

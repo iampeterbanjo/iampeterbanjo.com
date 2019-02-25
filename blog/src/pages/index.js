@@ -26,7 +26,7 @@ class BlogIndex extends React.Component {
           ]}
         />
 
-        <div class="cf mw9 center tc-m justify-center">
+        <div className="cf mw9 center tc-m justify-center">
           <Bio />
         </div>
       </Layout>
