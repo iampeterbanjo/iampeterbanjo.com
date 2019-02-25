@@ -12,10 +12,10 @@ class Layout extends React.Component {
     return (
       <div className="w-100 sans-serif black-70">
         <Header>
-          <Nav className="fr" />
+          <Nav className="tr-ns" />
         </Header>
 
-        <main className="ph3 ph5-ns pv3 pv5-ns">{children}</main>
+        <main className="ma5-ns">{children}</main>
 
         <Footer />
       </div>
