@@ -11,15 +11,15 @@ const avatar = (data, props) => {
 
   return (
     <Fragment>
-      <div className="tl tc-ns pt3 pt4-m pt5-l">
-        <div className="dtc w3">
+      <div className="tl mt4-m flex-l justify-center">
+        <div className="w-100 w-25-l tc mt0-m mv5 flex-l items-center-l">
           <Image
             className="image is-128x128 avatar"
             fixed={data.avatar.childImageSharp.fixed}
             alt={author}
           />
         </div>
-        <div className="dtc v-top pl5 tl">
+        <div className="w-100 w-75-l pl5-l ph3">
           <h1 className="f4 fw6 f1-ns lh-title measure mt0">
             Building on and for the web.
           </h1>

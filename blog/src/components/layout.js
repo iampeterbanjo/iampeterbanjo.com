@@ -15,7 +15,7 @@ class Layout extends React.Component {
           <Nav className="fr" />
         </Header>
 
-        <main className="ph3 ph5-ns pv3 pv5-ns">{children}</main>
+        <main className="ma5-ns">{children}</main>
 
         <Footer />
       </div>
