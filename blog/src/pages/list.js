@@ -20,10 +20,13 @@ class BlogIndex extends React.Component {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
-        {posts.map(({ node }) => {
+        {posts.map(({ node }, index) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
-            <article className="cf mw9 center flex-l items-start">
+            <article
+              key={`list-${index}`}
+              className="cf mw9 center flex-l items-start"
+            >
               <div className="w-100 w-25-l">
                 <h3 className="lh-title f2 mb2">
                   <Link to={node.fields.slug}>{title}</Link>
