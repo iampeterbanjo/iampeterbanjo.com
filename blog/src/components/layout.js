@@ -10,7 +10,7 @@ class Layout extends React.Component {
     const { children } = this.props;
 
     return (
-      <div className="w-100 sans-serif near-black bg-lightest-blue">
+      <div className="w-100 sans-serif black bg-lightest-blue">
         <Header>
           <Nav className="tr-ns" />
         </Header>
