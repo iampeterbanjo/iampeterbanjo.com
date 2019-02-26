@@ -8,8 +8,7 @@ $twitter-blue: #55acee;
 
 a {
   @extend .link;
-  @extend .dark-blue;
-  @extend .hover-blue;
+  @extend .black;
 
   &:not(.btn) {
     background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
@@ -18,7 +17,7 @@ a {
   }
 
   &:visited {
-    @extend .blue;
+    background: none;
   }
 
   &[rel='next'],
