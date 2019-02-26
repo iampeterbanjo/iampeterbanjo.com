@@ -19,7 +19,7 @@ const avatar = (data, props) => {
             alt={author}
           />
         </div>
-        <div className="w-100 w-75-l pl5-l ph3 mb3 mb0-ns">
+        <div className="w-100 w-75-l pl5-l ph3 mb3 mb0-ns flex-l flex-column-l justify-center-l ">
           <h1 className="f4 fw6 f1-ns lh-title measure mt0">
             Building on and for the web.
           </h1>
