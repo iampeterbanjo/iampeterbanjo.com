@@ -10,11 +10,11 @@ const avatar = data => {
   const { author, social } = data.site.siteMetadata;
 
   return (
-    <article className="cf mw9 center flex items-start mt5">
+    <article className="cf mw9 center flex items-center mt5">
       <div className="">
-        <p className="image is-64x64 avatar">
+        <div className="image is-64x64 avatar">
           <Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
-        </p>
+        </div>
       </div>
 
       <div className="content">

@@ -11,14 +11,14 @@ const content = data => {
   const { author, social } = data.site.siteMetadata;
 
   return (
-    <footer className="bg-white black-70 ph3 ph5-ns pv3 pv5-ns bt b--black-10">
+    <footer className="bg-white ph3 ph5-ns pv3 pv5-ns bt b--black-10">
       <div className="mw9 center">
         <div>
           <Nav />
         </div>
         <div className="mt4 mb4">
           <a
-            className="btn ba br2 black-70 no-underline grow b inline-flex items-center mr3 pv2 ph3"
+            className="btn ba br2 no-underline grow b inline-flex items-center mr3 pv2 ph3"
             href={`https://github.com/${social.github}`}
             title={`${author} on GitHub`}
           >
@@ -32,7 +32,7 @@ const content = data => {
             <span>GitHub</span>
           </a>
           <a
-            className="btn ba br2 black-70 no-underline grow b inline-flex items-center mr3 pv2 ph3"
+            className="btn ba br2 no-underline grow b inline-flex items-center mr3 pv2 ph3"
             href={`https://github.com/${social.twitter}`}
             title={`${author} on Twitter`}
           >
