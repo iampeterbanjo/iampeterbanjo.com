@@ -26,12 +26,12 @@
     "blog-install": "cd ./blog && npm install",
     "dev": "npm-run-all -l -p blog-dev server-watch css-watch test-watch",
     "preinstall": "npm run setup",
-    "server-start": "node ./server/index.js",
-    "server-watch": "nodemon --inspect ./server/index.js",
+    "server-start": "node ./server/start.js",
+    "server-watch": "nodemon --watch server --inspect ./server/index.js",
     "postinstall": "npm run build",
     "setup": "npm run css-install && npm run blog-install",
     "start": "npm run server-start",
-    "test-watch": "nodemon -e js,css,json -x 'npm run test'",
+    "test-watch": "nodemon --watch server --watch blog/src -e js,json -x 'npm run test'",
     "test": "lab ./__tests__/"
   },
   "keywords": [

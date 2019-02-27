@@ -3,7 +3,7 @@ const { test, before } = (exports.lab = require('lab').script());
 
 let server;
 before(async () => {
-  return require('../server/server')((err, s) => {
+  return require('../server')((err, s) => {
     server = s;
   });
 });
