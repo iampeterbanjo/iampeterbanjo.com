@@ -7,8 +7,6 @@ const imagePath = path.join(__dirname, '../public/build/assets/images/');
 const staticPath = path.join(__dirname, '../blog/public/');
 const blogPath = path.join(__dirname, '../blog/public/');
 
-console.log(staticPath);
-
 module.exports = async callback => {
   const server = Hapi.server({
     host: '0.0.0.0',

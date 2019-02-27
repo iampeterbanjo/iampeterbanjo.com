@@ -1,6 +1,4 @@
-const Server = require('./server');
-
-Server(async (err, server) => {
+require('./server')(async (err, server) => {
   if (err) {
     throw err;
   }

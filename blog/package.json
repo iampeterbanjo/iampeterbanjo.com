@@ -45,7 +45,7 @@
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
-    "dev": "npm-run-all -l -p watch-blog watch-pwa",
+    "dev": "npm-run-all -l -p build watch-blog watch-pwa",
     "pwa": "lighthouse-ci http://0.0.0.0:8000",
     "serve": "gatsby serve",
     "start": "npm run develop",

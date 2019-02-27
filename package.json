@@ -24,15 +24,15 @@
     "blog-build": "cd ./blog && npm run build",
     "blog-dev": "cd ./blog && npm run dev",
     "blog-install": "cd ./blog && npm install",
-    "dev": "npm-run-all -l -p blog-dev server-watch css-watch",
+    "dev": "npm-run-all -l -p blog-dev server-watch css-watch test-watch",
     "preinstall": "npm run setup",
     "server-start": "node ./server/index.js",
-    "server-test": "lab ./server/__tests__/",
     "server-watch": "nodemon --inspect ./server/index.js",
     "postinstall": "npm run build",
     "setup": "npm run css-install && npm run blog-install",
     "start": "npm run server-start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-watch": "nodemon -e js,css,json -x 'npm run test'",
+    "test": "lab ./__tests__/"
   },
   "keywords": [
     "personal",
