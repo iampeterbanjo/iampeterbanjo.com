@@ -20,6 +20,9 @@ class BlogIndex extends React.Component {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         />
+
+        <h1 className="f1 lh-title">Posts</h1>
+
         {posts.map(({ node }, index) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
