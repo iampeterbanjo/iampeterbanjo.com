@@ -24,6 +24,7 @@
     "blog-build": "cd ./blog && npm run build",
     "blog-dev": "cd ./blog && npm run dev",
     "blog-install": "cd ./blog && npm install",
+    "deploy": "npm run test && git push",
     "dev": "npm-run-all -l -p blog-dev server-watch css-watch start test-watch",
     "preinstall": "npm run setup",
     "server-start": "node ./server/start.js",
