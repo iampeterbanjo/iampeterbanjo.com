@@ -11,10 +11,10 @@ function register(server, options) {
     const host = request.headers['x-forwarded-host'] || request.headers.host;
 
     if (!redirect) return h.continue;
-    const { path = '' } = request.url;
+    const { path = '/', search } = request.url;
 
     return h
-      .redirect(`https://${host}${path}`)
+      .redirect(`https://${host}${path}${search}`)
       .takeover()
       .code(301);
   });
