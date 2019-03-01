@@ -6,29 +6,20 @@ const cssPath = path.join(__dirname, '../public/build/assets/styles/');
 const imagePath = path.join(__dirname, '../public/build/assets/images/');
 const staticPath = path.join(__dirname, '../blog/public/');
 const blogPath = path.join(__dirname, '../blog/public/');
-const server = Hapi.server({
-  host: '0.0.0.0',
-  port: Number(process.env.PORT || 8080),
-  routes: {
-    files: {
-      relativeTo: __dirname
-    }
-  }
-});
 
 module.exports = async callback => {
+  const server = Hapi.server({
+    host: '0.0.0.0',
+    port: Number(process.env.PORT || 8080),
+    routes: {
+      files: {
+        relativeTo: __dirname
+      }
+    }
+  });
   try {
-    await server.register(Inert);
-    await server.register({
-      plugin: require('./statics'),
-      options: { blogPath, cssPath, staticPath, imagePath }
-    });
-    await server.register({
-      plugin: require('./cqc')
-    });
-    await server.register({
-      plugin: require('./https-here')
-    });
+    // good needs to be first
+    // https://github.com/hapijs/oppsy/issues/17#issuecomment-430633689
     await server.register({
       plugin: require('good'),
       options: {
@@ -46,6 +37,17 @@ module.exports = async callback => {
           ]
         }
       }
+    });
+    await server.register(Inert);
+    await server.register({
+      plugin: require('./statics'),
+      options: { blogPath, cssPath, staticPath, imagePath }
+    });
+    await server.register({
+      plugin: require('./cqc')
+    });
+    await server.register({
+      plugin: require('./https-here')
     });
 
     callback(null, server);

@@ -8,10 +8,14 @@ before(() => {
   });
 });
 
-test('/ returns 200 statusCode', async () => {
+test('http requests are redirected to https', async () => {
   const res = await server.inject({
     method: 'GET',
-    url: '/'
+    url: '/',
+    headers: {
+      host: 'host',
+      'x-forwarded-proto': 'http'
+    }
   });
-  expect(res.statusCode).to.equal(200);
+  expect(res.statusCode).to.equal(301);
 });
