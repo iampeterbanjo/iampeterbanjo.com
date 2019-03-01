@@ -27,7 +27,7 @@ module.exports = async callback => {
       plugin: require('./cqc')
     });
     await server.register({
-      plugin: require('./hapi-require-https')
+      plugin: require('./https-here')
     });
     await server.register({
       plugin: require('good'),
