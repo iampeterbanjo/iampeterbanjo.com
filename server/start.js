@@ -1,11 +1,11 @@
-const Server = require('./app');
+const Hapi = require('hapi');
+const app = require('.');
 
-Server(async (err, server) => {
-  if (err) {
-    throw err;
-  }
-
+(async () => {
   try {
+    let server = Hapi.server(app.options);
+    await require('./app')(server);
+
     await server.start();
 
     console.log(`Server running at: ${server.info.uri}`);
@@ -13,4 +13,4 @@ Server(async (err, server) => {
     console.warn(error);
     throw error;
   }
-});
+})();

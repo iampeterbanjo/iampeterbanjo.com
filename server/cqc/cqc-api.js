@@ -4,18 +4,16 @@ module.exports = {
   register: cqcApi
 };
 
-const got = require('got');
-
-function cqcApi(server, options) {
+function cqcApi(server, { client }) {
   server.route({
     path: '/cqc/providers',
     method: 'GET',
     handler: async (request, reply) => {
       try {
-        const response = await got(`${process.env.CQC_API_URL}/providers`);
+        const response = await client.get(`/providers`);
         return response.body;
       } catch (error) {
-        console.warn(error);
+        throw error;
       }
     }
   });
