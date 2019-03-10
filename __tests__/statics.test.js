@@ -6,7 +6,7 @@ const { rootPath } = require('../server');
 
 let server;
 beforeEach(async () => {
-  server = new Hapi.Server();
+  server = Hapi.server();
   await server.register(Inert);
 });
 

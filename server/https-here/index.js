@@ -1,1 +1,3 @@
-module.exports = require('./https-here');
+module.exports = {
+  plugin: require('./https-here')
+};

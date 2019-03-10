@@ -1,1 +1,3 @@
-module.exports = require('./cqc-api');
+module.exports = {
+  plugin: require('./cqc-api')
+};
