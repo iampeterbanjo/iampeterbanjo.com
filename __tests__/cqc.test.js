@@ -4,23 +4,23 @@ const { test, before } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
 const got = require('got');
 
-const response = { body: 'Done' };
-
 let server = new Hapi.Server();
-before(async () => {
+
+before(async ({ context }) => {
   const client = got.extend({ baseUrl: '/' });
-  sinon.stub(client, 'get').resolves(response);
+  context.response = { body: 'Done' };
+  sinon.stub(client, 'get').resolves(context.response);
+
   server.register({
     plugin: require('../server/cqc'),
     options: { client }
   });
 });
 
-test('cqc providers request returns expected', async () => {
+test('cqc providers request returns expected', async ({ context }) => {
   const { result } = await server.inject({
     method: 'GET',
     url: '/cqc/providers'
   });
-  console.log(result);
-  expect(result).to.equal(response.body);
+  expect(result).to.equal(context.response.body);
 });
