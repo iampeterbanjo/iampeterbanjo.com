@@ -56,7 +56,8 @@
 		"good-squeeze": "^5.1.0",
 		"got": "^9.6.0",
 		"hapi": "18.x.x",
-		"inert": "^5.1.2"
+		"inert": "^5.1.2",
+		"jsonata": "^1.6.4"
 	},
 	"devDependencies": {
 		"acorn": "^6.1.0",
