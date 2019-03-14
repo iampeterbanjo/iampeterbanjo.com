@@ -1,26 +1,26 @@
-import React from 'react';
+import React from 'react'
 
-import 'css/build/main.css';
-import Nav from '../components/nav';
-import Header from './header';
-import Footer from './footer';
+import 'css/build/main.css'
+import Nav from '../components/nav'
+import Header from './header'
+import Footer from './footer'
 
 class Layout extends React.Component {
-  render() {
-    const { children } = this.props;
+	render() {
+		const { children } = this.props
 
-    return (
-      <div className="w-100 sans-serif black bg-lightest-blue">
-        <Header>
-          <Nav className="tr-ns" />
-        </Header>
+		return (
+			<div className="w-100 sans-serif black bg-lightest-blue">
+				<Header>
+					<Nav className="tr-ns" />
+				</Header>
 
-        <main className="ma5-ns">{children}</main>
+				<main className="ma5-ns">{children}</main>
 
-        <Footer />
-      </div>
-    );
-  }
+				<Footer />
+			</div>
+		)
+	}
 }
 
-export default Layout;
+export default Layout

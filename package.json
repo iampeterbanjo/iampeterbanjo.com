@@ -1,72 +1,78 @@
 {
-  "name": "iampeterbanjo.com",
-  "version": "1.0.0",
-  "description": "Personal portfolio",
-  "main": "index.js",
-  "engines": {
-    "node": "^10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
-  },
-  "homepage": "https://iampeterbanjo.com",
-  "scripts": {
-    "build": "npm run css-build && npm run blog-build",
-    "build-clean": "rm -rf ./public/build",
-    "clean": "npm run clean-css && npm run clean-blog && npm run clean-server",
-    "clean-blog": "rm -rf ./blog/node_modules ./blog/public || exit 0",
-    "clean-css": "rm -rf ./css/node_modules ./css/build || exit 0",
-    "clean-server": "rm -rf ./node_modules || exit 0",
-    "css-build": "cd ./css && npm run build",
-    "css-install": "cd ./css && npm install",
-    "css-watch": "cd ./css && npm run watch",
-    "blog-build": "cd ./blog && npm run build",
-    "blog-dev": "cd ./blog && npm run dev",
-    "blog-install": "cd ./blog && npm install",
-    "deploy": "npm run test && git push && git push github",
-    "dev": "npm-run-all -p blog-dev server-watch css-watch start test-watch",
-    "preinstall": "npm run setup",
-    "server-start": "node ./server/start.js",
-    "server-watch": "nodemon --watch server --inspect ./server/index.js",
-    "postinstall": "npm run build",
-    "setup": "npm run css-install && npm run blog-install",
-    "start": "npm run server-start",
-    "dry-run": "npm run build && npm run start",
-    "test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json -x 'npm run test'",
-    "test": "lab -c ./__tests__/"
-  },
-  "keywords": [
-    "personal",
-    "portfolio",
-    "hapi"
-  ],
-  "author": {
-    "email": "me@iampeterbanjo.com",
-    "name": "Peter Banjo"
-  },
-  "license": "ISC",
-  "dependencies": {
-    "gatsby": "^2.1.4",
-    "good": "^8.1.2",
-    "good-console": "^7.1.0",
-    "good-squeeze": "^5.1.0",
-    "got": "^9.6.0",
-    "hapi": "18.x.x",
-    "inert": "^5.1.2"
-  },
-  "devDependencies": {
-    "acorn": "^6.1.0",
-    "autoprefixer": "^9.4.7",
-    "code": "^5.2.4",
-    "ejs-lint": "^0.3.0",
-    "fs-extra": "^7.0.1",
-    "lab": "^18.0.2",
-    "node-sass": "^4.11.0",
-    "nodemon": "^1.18.9",
-    "npm-run-all": "^4.1.5",
-    "precss": "^4.0.0",
-    "sinon": "^7.2.6",
-    "tachyons-sass": "^4.9.5"
-  }
+	"name": "iampeterbanjo.com",
+	"version": "1.0.0",
+	"description": "Personal portfolio",
+	"main": "index.js",
+	"engines": {
+		"node": "^10"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
+	},
+	"homepage": "https://iampeterbanjo.com",
+	"scripts": {
+		"build": "npm run css-build && npm run blog-build",
+		"build-clean": "rm -rf ./public/build",
+		"clean": "npm run clean-css && npm run clean-blog && npm run clean-server",
+		"clean-blog": "rm -rf ./blog/node_modules ./blog/public || exit 0",
+		"clean-css": "rm -rf ./css/node_modules ./css/build || exit 0",
+		"clean-server": "rm -rf ./node_modules || exit 0",
+		"css-build": "cd ./css && npm run build",
+		"css-install": "cd ./css && npm install",
+		"css-watch": "cd ./css && npm run watch",
+		"blog-build": "cd ./blog && npm run build",
+		"blog-dev": "cd ./blog && npm run dev",
+		"blog-test-watch": "cd ./blog && npm run test-watch",
+		"blog-install": "cd ./blog && npm install",
+		"deploy": "npm run test && git push && git push github",
+		"dev": "npm-run-all -p blog-dev server-watch css-watch",
+		"preinstall": "npm run setup",
+		"server-watch": "nodemon --watch server -x 'npm run start-debug'",
+		"lint-all": "prettier --config prettier.config.js --write '{server,blog,css,__{tests,mocks}__}/**/*.{js,jsx}'",
+		"postinstall": "npm run build",
+		"setup": "npm run css-install && npm run blog-install",
+		"start": "node ./server/start.js",
+		"start-debug": "node --inspect ./server/start.js",
+		"dry-run": "npm run build && npm run start",
+		"watch": "npm-run-all -p -l blog-test-watch test-watch",
+		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json -x 'npm run test'",
+		"test": "lab -c ./__tests__/"
+	},
+	"keywords": [
+		"personal",
+		"portfolio",
+		"hapi"
+	],
+	"author": {
+		"email": "me@iampeterbanjo.com",
+		"name": "Peter Banjo"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"gatsby": "^2.1.4",
+		"good": "^8.1.2",
+		"good-console": "^7.1.0",
+		"good-squeeze": "^5.1.0",
+		"got": "^9.6.0",
+		"hapi": "18.x.x",
+		"inert": "^5.1.2",
+		"jsonata": "^1.6.4",
+		"lyricist": "^2.2.2"
+	},
+	"devDependencies": {
+		"acorn": "^6.1.0",
+		"autoprefixer": "^9.4.7",
+		"code": "^5.2.4",
+		"ejs-lint": "^0.3.0",
+		"fs-extra": "^7.0.1",
+		"lab": "^18.0.2",
+		"node-sass": "^4.11.0",
+		"nodemon": "^1.18.9",
+		"npm-run-all": "^4.1.5",
+		"precss": "^4.0.0",
+		"prettier": "1.16.4",
+		"sinon": "^7.2.6",
+		"tachyons-sass": "^4.9.5"
+	}
 }

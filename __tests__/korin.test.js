@@ -8,19 +8,19 @@ let server = new Hapi.Server()
 
 before(async ({ context }) => {
 	const client = got.extend({ baseUrl: '/' })
-	context.response = { body: 'Done' }
+	context.response = { body: 'Korin' }
 	sinon.stub(client, 'get').resolves(context.response)
 
 	server.register({
-		plugin: require('../server/cqc'),
+		plugin: require('../server/korin'),
 		options: { client },
 	})
 })
 
-test('cqc providers request returns expected', async ({ context }) => {
+test('korin api request returns expected response', async ({ context }) => {
 	const { result } = await server.inject({
 		method: 'GET',
-		url: '/cqc/providers',
+		url: '/korin',
 	})
 	expect(result).to.equal(context.response.body)
 })
