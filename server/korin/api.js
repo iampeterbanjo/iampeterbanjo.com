@@ -4,7 +4,7 @@ const jsonata = require('jsonata');
 module.exports = {
 	name: 'korin-api',
 	version: '0.0.1',
-	register: (server, { client }) => {
+	register: (server, { client, lyricist }) => {
 		server.route({
 			path: '/korin',
 			method: 'GET',
@@ -14,20 +14,9 @@ module.exports = {
 					const data = (await client.get('/search', { query })).body;
 					const expression = jsonata('response.hits[0].result.id');
 					const songId = expression.evaluate(JSON.parse(data));
-					// get lyrics with lyricist
+					const { lyrics } = await lyricist.song(songId, { fetchLyrics: true });
 
-					console.log(songId);
-
-					// const song = await alltomp3.findLyrics('Humble', 'Kendric Lamar');
-					// const data = (await client.get(`/songs/3039923`)).body;
-					// const songLyricsRoot = JSON.parse(data).response.song.path;
-					// const song = (await client.get(`/annotations/11592495`)).body;
-					// const lyricsUrl = `https://genius.com/${songLyricsRoot}`;
-					// return lyricsUrl;
-					// const lyrics = await got(`https://genius.com/${songLyricsRoot}`);
-					// console.log(lyricts);
-					// console.log(songId);
-					return songId || '';
+					return lyrics || '';
 				} catch (error) {
 					console.warn(error);
 				}
