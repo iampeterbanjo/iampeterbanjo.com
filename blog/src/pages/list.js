@@ -1,18 +1,18 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
+import React from 'react';
+import { Link, graphql } from 'gatsby';
 
-import BioMini from '../components/bio-mini'
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import BioMini from '../components/bio-mini';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-import { hasRoot } from '../utils'
+import { hasRoot } from '../utils';
 class BlogIndex extends React.Component {
 	render() {
-		const { data, location } = this.props
-		const siteTitle = data.site.siteMetadata.title
-		const posts = data.allMarkdownRemark.edges
-		const isRoot = hasRoot(location, __PATH_PREFIX__)
-		const props = { isRoot, location }
+		const { data, location } = this.props;
+		const siteTitle = data.site.siteMetadata.title;
+		const posts = data.allMarkdownRemark.edges;
+		const isRoot = hasRoot(location, __PATH_PREFIX__);
+		const props = { isRoot, location };
 
 		return (
 			<Layout {...props} title={siteTitle}>
@@ -21,10 +21,10 @@ class BlogIndex extends React.Component {
 					keywords={[`blog`, `gatsby`, `javascript`, `react`]}
 				/>
 
-				<h1 className="f1 lh-title">Posts</h1>
+				<h1 className="f1 lh-title center cf mw9">Posts</h1>
 
 				{posts.map(({ node }, index) => {
-					const title = node.frontmatter.title || node.fields.slug
+					const title = node.frontmatter.title || node.fields.slug;
 					return (
 						<article
 							key={`list-${index}`}
@@ -47,16 +47,16 @@ class BlogIndex extends React.Component {
 								<p />
 							</div>
 						</article>
-					)
+					);
 				})}
 
 				<BioMini />
 			</Layout>
-		)
+		);
 	}
 }
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
 	query {
@@ -80,4 +80,4 @@ export const pageQuery = graphql`
 			}
 		}
 	}
-`
+`;
