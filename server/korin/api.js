@@ -9,7 +9,10 @@ module.exports = {
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
-					return await server.methods.getLyrics({ client, lyricist });
+					return await server.methods.getLyrics(
+						{ client, lyricist },
+						'Humble Kendric Lamar'
+					);
 				} catch (error) {
 					console.warn(error);
 				}
