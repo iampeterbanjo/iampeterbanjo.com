@@ -8,8 +8,9 @@ const {
 } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
 const got = require('got');
-const { getLyrics } = require('../server/korin/methods');
+const { getLyrics, lyricsIdPath } = require('../server/korin/methods');
 const Lyricist = require('lyricist');
+const jsonata = require('jsonata');
 
 let server = new Hapi.Server();
 
@@ -39,7 +40,7 @@ describe('methods', () => {
 
 	before(({ context }) => {
 		const id = 44444444;
-		const data = {
+		context.data = JSON.stringify({
 			response: {
 				hits: [
 					{
@@ -49,10 +50,10 @@ describe('methods', () => {
 					},
 				],
 			},
-		};
+		});
 
 		context.lyrics = 'Here comes the hot stepper';
-		sinon.stub(client, 'get').resolves({ body: JSON.stringify(data) });
+		sinon.stub(client, 'get').resolves({ body: context.data });
 		sinon.stub(lyricist, 'song').resolves({ lyrics: context.lyrics });
 	});
 
@@ -76,5 +77,17 @@ describe('methods', () => {
 
 		expect(first).to.be.equal('/search');
 		expect(second).to.be.equal({ query });
+	});
+
+	test('lyricist is called with songId and fetchLyrics', async ({
+		context,
+	}) => {
+		await getLyrics({ client, lyricist }, '');
+
+		const [first, second] = lyricist.song.args[0];
+		const songId = jsonata(lyricsIdPath).evaluate(JSON.parse(context.data));
+
+		expect(first).to.be.equal(songId);
+		expect(second).to.be.equal({ fetchLyrics: true });
 	});
 });
