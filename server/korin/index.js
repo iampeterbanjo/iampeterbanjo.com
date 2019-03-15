@@ -1,5 +1,7 @@
 const got = require('got');
 const Lyricist = require('lyricist');
+const { getLyrics } = require('./methods');
+
 const { LYRICS_API_ACCESS_TOKEN, LYRICS_API_URL } = process.env;
 const lyricist = new Lyricist(LYRICS_API_ACCESS_TOKEN);
 
@@ -12,5 +14,5 @@ const client = got.extend({
 
 module.exports = {
 	plugin: require('./api'),
-	options: { client, lyricist },
+	options: { client, lyricist, getLyrics },
 };

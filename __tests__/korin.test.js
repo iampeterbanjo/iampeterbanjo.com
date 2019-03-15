@@ -8,14 +8,13 @@ const lyricist = require('lyricist');
 let server = new Hapi.Server();
 
 before(async ({ context }) => {
+	context.lyrics = 'We wish you a merry christmas';
 	const client = got.extend({ baseUrl: '/' });
-	context.response = { body: 'Korin' };
-	sinon.stub(client, 'get').resolves(context.response);
-	sinon.stub(lyricist, 'song').resolves(context.response);
+	const getLyrics = sinon.stub().resolves(context.lyrics);
 
-	server.register({
-		plugin: require('../server/korin'),
-		options: { client },
+	await server.register({
+		plugin: require('../server/korin/api'),
+		options: { client, getLyrics },
 	});
 });
 
@@ -24,5 +23,5 @@ test('korin api request returns expected response', async ({ context }) => {
 		method: 'GET',
 		url: '/korin',
 	});
-	expect(result).to.equal(context.response.body);
+	expect(result).to.equal(context.lyrics);
 });
