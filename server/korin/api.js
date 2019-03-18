@@ -5,7 +5,7 @@ module.exports = {
 		server.method('getLyrics', getLyrics);
 
 		server.route({
-			path: '/korin',
+			path: '/korin/lyrics',
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
@@ -13,6 +13,18 @@ module.exports = {
 						{ geniusApi, lyricist },
 						'Humble Kendric Lamar'
 					);
+				} catch (error) {
+					console.warn(error);
+				}
+			},
+		});
+
+		server.route({
+			path: '/korin/artists',
+			method: 'GET',
+			handler: async (request, h) => {
+				try {
+					return ['Beyonce', 'Cardi B'];
 				} catch (error) {
 					console.warn(error);
 				}

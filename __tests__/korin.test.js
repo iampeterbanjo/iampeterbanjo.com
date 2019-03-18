@@ -12,9 +12,9 @@ const { getLyrics, lyricsIdPath } = require('../server/korin/methods');
 const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
 
-let server = new Hapi.Server();
+describe('korin/lyrics', () => {
+	let server = new Hapi.Server();
 
-describe('api', () => {
 	before(async ({ context }) => {
 		context.lyrics = 'We wish you a merry christmas';
 		const mockGetLyrics = sinon.stub().resolves(context.lyrics);
@@ -25,12 +25,34 @@ describe('api', () => {
 		});
 	});
 
-	test('korin api request returns expected response', async ({ context }) => {
+	test('api request returns expected response', async ({ context }) => {
 		const { result } = await server.inject({
 			method: 'GET',
-			url: '/korin',
+			url: '/korin/lyrics',
 		});
 		expect(result).to.equal(context.lyrics);
+	});
+});
+
+describe('korin/artists', () => {
+	let server = new Hapi.Server();
+
+	before(async ({ context }) => {
+		context.artists = ['Beyonce', 'Cardi B'];
+		const mockGetArtists = sinon.stub().resolves(context.artists);
+
+		await server.register({
+			plugin: require('../server/korin/api'),
+			options: { getArtists: mockGetArtists, getLyrics: () => {} },
+		});
+	});
+
+	test('api request returns expected response', async ({ context }) => {
+		const { result } = await server.inject({
+			method: 'GET',
+			url: '/korin/artists',
+		});
+		expect(result).to.equal(context.artists);
 	});
 });
 
