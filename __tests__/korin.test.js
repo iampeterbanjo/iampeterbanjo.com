@@ -8,7 +8,11 @@ const {
 } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
 const got = require('got');
-const { getLyrics, lyricsIdPath } = require('../server/korin/methods');
+const {
+	getLyrics,
+	getArtists,
+	lyricsIdPath,
+} = require('../server/korin/methods');
 const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
 
@@ -118,5 +122,22 @@ describe('getLyrics', () => {
 		expect(second).to.be.equal({ fetchLyrics: true });
 	});
 
-	describe('getArtists', () => {});
+	describe('getArtists', () => {
+		const lastfmApi = got.extend({ baseUrl: '/' });
+
+		before(({ context }) => {
+			context.artists = ['Beyonce', 'Cardi B'];
+			sinon.stub(lastfmApi, 'get').resolves({ body: context.artists });
+		});
+
+		after(() => {
+			sinon.restore();
+		});
+
+		test('getArtists returns expected artists', async ({ context }) => {
+			const result = await getArtists({ lastfmApi });
+
+			expect(result).to.equal(context.Artists);
+		});
+	});
 });
