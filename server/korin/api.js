@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'korin-api',
 	version: '0.0.1',
-	register: (server, { client, lyricist, getLyrics }) => {
+	register: (server, { geniusApi, lyricist, getLyrics }) => {
 		server.method('getLyrics', getLyrics);
 
 		server.route({
@@ -10,7 +10,7 @@ module.exports = {
 			handler: async (request, h) => {
 				try {
 					return await server.methods.getLyrics(
-						{ client, lyricist },
+						{ geniusApi, lyricist },
 						'Humble Kendric Lamar'
 					);
 				} catch (error) {

@@ -34,8 +34,8 @@ describe('api', () => {
 	});
 });
 
-describe('methods', () => {
-	const client = got.extend({ baseUrl: '/' });
+describe('getLyrics', () => {
+	const geniusApi = got.extend({ baseUrl: '/' });
 	const lyricist = new Lyricist(`FAKE-TOKEN`);
 
 	before(({ context }) => {
@@ -53,7 +53,7 @@ describe('methods', () => {
 		});
 
 		context.lyrics = 'Here comes the hot stepper';
-		sinon.stub(client, 'get').resolves({ body: context.data });
+		sinon.stub(geniusApi, 'get').resolves({ body: context.data });
 		sinon.stub(lyricist, 'song').resolves({ lyrics: context.lyrics });
 	});
 
@@ -62,27 +62,32 @@ describe('methods', () => {
 	});
 
 	test('getLyrics returns expected lyrics', async ({ context }) => {
-		const result = await getLyrics({ client, lyricist });
+		const result = await getLyrics({ geniusApi, lyricist });
 
 		expect(result).to.equal(context.lyrics);
 	});
 
-	test('client is called with search query', async () => {
-		const term = 'Jump Kriss kross';
-		const query = new URLSearchParams([['q', term]]);
+	[
+		'Jump Kriss kross',
+		'Humble Kendric Lamar',
+		'Big House Audio Andrenaline',
+	].forEach(term => {
+		test(`geniusApi is called with search ${term}`, async () => {
+			const query = new URLSearchParams([['q', term]]);
 
-		await getLyrics({ client, lyricist }, term);
+			await getLyrics({ geniusApi, lyricist }, term);
 
-		const [first, second] = client.get.args[0];
+			const [first, second] = geniusApi.get.args[0];
 
-		expect(first).to.be.equal('/search');
-		expect(second).to.be.equal({ query });
+			expect(first).to.be.equal('/search');
+			expect(second).to.be.equal({ query });
+		});
 	});
 
 	test('lyricist is called with songId and fetchLyrics', async ({
 		context,
 	}) => {
-		await getLyrics({ client, lyricist }, '');
+		await getLyrics({ geniusApi, lyricist }, '');
 
 		const [first, second] = lyricist.song.args[0];
 		const songId = jsonata(lyricsIdPath).evaluate(JSON.parse(context.data));
@@ -90,4 +95,6 @@ describe('methods', () => {
 		expect(first).to.be.equal(songId);
 		expect(second).to.be.equal({ fetchLyrics: true });
 	});
+
+	describe('getArtists', () => {});
 });

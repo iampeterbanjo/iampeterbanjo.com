@@ -2,17 +2,17 @@ const got = require('got');
 const Lyricist = require('lyricist');
 const { getLyrics } = require('./methods');
 
-const { LYRICS_API_ACCESS_TOKEN, LYRICS_API_URL } = process.env;
-const lyricist = new Lyricist(LYRICS_API_ACCESS_TOKEN);
+const { GENIUS_API_ACCESS_TOKEN, GENIUS_API_URL } = process.env;
+const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);
 
-const client = got.extend({
-	baseUrl: LYRICS_API_URL,
+const geniusApi = got.extend({
+	baseUrl: GENIUS_API_URL,
 	headers: {
-		authorization: `Bearer ${LYRICS_API_ACCESS_TOKEN}`,
+		authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
 	},
 });
 
 module.exports = {
 	plugin: require('./api'),
-	options: { client, lyricist, getLyrics },
+	options: { geniusApi, lyricist, getLyrics },
 };
