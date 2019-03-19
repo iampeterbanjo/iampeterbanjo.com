@@ -1,7 +1,11 @@
 module.exports = {
 	name: 'korin-api',
 	version: '0.0.1',
-	register: (server, { geniusApi, lyricist, getLyrics }) => {
+	register: (
+		server,
+		{ geniusApi, lyricist, getLyrics, lastfmApi, getArtists }
+	) => {
+		server.method('getArtists', getArtists);
 		server.method('getLyrics', getLyrics);
 
 		server.route({
@@ -24,7 +28,7 @@ module.exports = {
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
-					return ['Beyonce', 'Cardi B'];
+					return await server.methods.getArtists({ getArtists, lastfmApi });
 				} catch (error) {
 					console.warn(error);
 				}

@@ -1,6 +1,6 @@
 const got = require('got');
 const Lyricist = require('lyricist');
-const { getLyrics } = require('./methods');
+const { getLyrics, getArtists } = require('./methods');
 
 const {
 	GENIUS_API_ACCESS_TOKEN,
@@ -24,5 +24,5 @@ const lastfmApi = got.extend({
 
 module.exports = {
 	plugin: require('./api'),
-	options: { lastfmApi, geniusApi, lyricist, getLyrics },
+	options: { lastfmApi, geniusApi, lyricist, getLyrics, getArtists },
 };

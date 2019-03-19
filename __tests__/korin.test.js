@@ -25,7 +25,7 @@ describe('korin/lyrics', () => {
 
 		await server.register({
 			plugin: require('../server/korin/api'),
-			options: { getLyrics: mockGetLyrics },
+			options: { getLyrics: mockGetLyrics, getArtists: () => {} },
 		});
 	});
 
