@@ -6,7 +6,7 @@ const {
 	afterEach,
 	before,
 	beforeEach,
-	describe,
+	suite,
 } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
 const got = require('got');
@@ -19,7 +19,7 @@ const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
 const nock = require('nock');
 
-describe('korin/lyrics', () => {
+suite('korin/lyrics', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
@@ -41,7 +41,7 @@ describe('korin/lyrics', () => {
 	});
 });
 
-describe('korin/artists', () => {
+suite('korin/artists', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
@@ -63,7 +63,7 @@ describe('korin/artists', () => {
 	});
 });
 
-describe('getLyrics', () => {
+suite('getLyrics', () => {
 	const geniusApi = got.extend({ baseUrl: '/' });
 	const lyricist = new Lyricist(`FAKE-TOKEN`);
 
@@ -126,7 +126,7 @@ describe('getLyrics', () => {
 	});
 });
 
-describe('getArtists', () => {
+suite('getArtists', () => {
 	const apiKey = `FAKE_API_KEY`;
 	const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
 	const lastfmApi = got.extend({ baseUrl, apiKey });
