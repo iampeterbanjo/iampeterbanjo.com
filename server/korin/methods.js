@@ -3,8 +3,11 @@ const lyricsIdPath = 'response.hits[0].result.id';
 
 exports.lyricsIdPath = lyricsIdPath;
 
-exports.getArtists = async ({ lastfmApi }, term) => {
-	return lastfmApi.get('/whatever').body;
+exports.getArtists = async ({ lastfmApi }) => {
+	const url = `https://ws.audioscrobbler.com/2.0/?method=chart.getTopArtists&format=json&api_key=${
+		lastfmApi.defaults.options.apiKey
+	}`;
+	return lastfmApi.get(url).body;
 };
 
 exports.getLyrics = async ({ geniusApi, lyricist }, term) => {

@@ -121,23 +121,39 @@ describe('getLyrics', () => {
 		expect(first).to.be.equal(songId);
 		expect(second).to.be.equal({ fetchLyrics: true });
 	});
+});
 
-	describe('getArtists', () => {
-		const lastfmApi = got.extend({ baseUrl: '/' });
+describe('getArtists', () => {
+	const apiKey = `FAKE_API_KEY`;
+	const baseUrl = 'https://ws.audioscrobbler.com/2.0/';
+	const lastfmApi = got.extend({ baseUrl, apiKey });
 
-		before(({ context }) => {
-			context.artists = ['Beyonce', 'Cardi B'];
-			sinon.stub(lastfmApi, 'get').resolves({ body: context.artists });
-		});
+	before(({ context }) => {
+		context.artists = ['Beyonce', 'Cardi B'];
+		context.apiKey = apiKey;
+		context.baseUrl = baseUrl;
+		sinon.stub(lastfmApi, 'get').resolves({ body: context.artists });
+	});
 
-		after(() => {
-			sinon.restore();
-		});
+	after(() => {
+		sinon.restore();
+	});
 
-		test('getArtists returns expected artists', async ({ context }) => {
-			const result = await getArtists({ lastfmApi });
+	test('returns expected artists', async ({ context }) => {
+		const result = await getArtists({ lastfmApi });
 
-			expect(result).to.equal(context.Artists);
-		});
+		expect(result).to.equal(context.Artists);
+	});
+
+	test('calls lastfmApi as expected', async ({ context }) => {
+		await getArtists({ lastfmApi });
+
+		const [first] = lastfmApi.get.args[0];
+
+		expect(first).to.startWith(context.baseUrl);
+		expect(first).to.include(
+			'?method=chart.getTopArtists&format=json&api_key='
+		);
+		expect(first).to.endWith(context.apiKey);
 	});
 });
