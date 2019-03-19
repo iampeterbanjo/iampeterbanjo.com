@@ -3,8 +3,10 @@ const { expect } = require('code');
 const {
 	test,
 	after,
+	afterEach,
 	before,
-	describe,
+	beforeEach,
+	suite,
 } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
 const got = require('got');
@@ -15,8 +17,9 @@ const {
 } = require('../server/korin/methods');
 const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
+const nock = require('nock');
 
-describe('korin/lyrics', () => {
+suite('korin/lyrics', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
@@ -25,7 +28,7 @@ describe('korin/lyrics', () => {
 
 		await server.register({
 			plugin: require('../server/korin/api'),
-			options: { getLyrics: mockGetLyrics },
+			options: { getLyrics: mockGetLyrics, getArtists: () => {} },
 		});
 	});
 
@@ -38,7 +41,7 @@ describe('korin/lyrics', () => {
 	});
 });
 
-describe('korin/artists', () => {
+suite('korin/artists', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
@@ -60,7 +63,7 @@ describe('korin/artists', () => {
 	});
 });
 
-describe('getLyrics', () => {
+suite('getLyrics', () => {
 	const geniusApi = got.extend({ baseUrl: '/' });
 	const lyricist = new Lyricist(`FAKE-TOKEN`);
 
@@ -121,23 +124,56 @@ describe('getLyrics', () => {
 		expect(first).to.be.equal(songId);
 		expect(second).to.be.equal({ fetchLyrics: true });
 	});
+});
 
-	describe('getArtists', () => {
-		const lastfmApi = got.extend({ baseUrl: '/' });
+suite('getArtists', () => {
+	const apiKey = `FAKE_API_KEY`;
+	const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
+	const lastfmApi = got.extend({ baseUrl, apiKey });
 
-		before(({ context }) => {
-			context.artists = ['Beyonce', 'Cardi B'];
-			sinon.stub(lastfmApi, 'get').resolves({ body: context.artists });
+	beforeEach(async ({ context }) => {
+		context.apiKey = apiKey;
+		context.baseUrl = baseUrl;
+		context.data = JSON.stringify({
+			artists: {
+				artist: [
+					{
+						name: 'Ariana Grande',
+						playcount: '102718752',
+						listeners: '1087320',
+						mbid: 'f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387',
+						url: 'https://www.last.fm/music/Ariana+Grande',
+						streamable: '0',
+						image: [
+							{
+								'#text':
+									'https://lastfm-img2.akamaized.net/i/u/34s/bb9f40893eb33262dbae67c2d5298550.png',
+								size: 'small',
+							},
+						],
+					},
+				],
+			},
 		});
 
-		after(() => {
-			sinon.restore();
-		});
+		await nock(context.baseUrl)
+			.get('/')
+			.query({
+				method: 'chart.getTopArtists',
+				format: 'json',
+				api_key: lastfmApi.defaults.options.apiKey,
+			})
+			.reply(200, context.data);
+	});
 
-		test('getArtists returns expected artists', async ({ context }) => {
-			const result = await getArtists({ lastfmApi });
+	afterEach(() => {
+		sinon.restore();
+		nock.cleanAll();
+	});
 
-			expect(result).to.equal(context.Artists);
-		});
+	test('returns expected artists', async ({ context }) => {
+		const result = await getArtists({ lastfmApi });
+
+		expect(result).to.equal(context.data);
 	});
 });
