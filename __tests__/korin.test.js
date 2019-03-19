@@ -3,7 +3,9 @@ const { expect } = require('code');
 const {
 	test,
 	after,
+	afterEach,
 	before,
+	beforeEach,
 	describe,
 } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
@@ -15,6 +17,7 @@ const {
 } = require('../server/korin/methods');
 const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
+const nock = require('nock');
 
 describe('korin/lyrics', () => {
 	let server = new Hapi.Server();
@@ -125,35 +128,52 @@ describe('getLyrics', () => {
 
 describe('getArtists', () => {
 	const apiKey = `FAKE_API_KEY`;
-	const baseUrl = 'https://ws.audioscrobbler.com/2.0/';
+	const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
 	const lastfmApi = got.extend({ baseUrl, apiKey });
 
-	before(({ context }) => {
-		context.artists = ['Beyonce', 'Cardi B'];
+	beforeEach(async ({ context }) => {
 		context.apiKey = apiKey;
 		context.baseUrl = baseUrl;
-		sinon.stub(lastfmApi, 'get').resolves({ body: context.artists });
+		context.data = JSON.stringify({
+			artists: {
+				artist: [
+					{
+						name: 'Ariana Grande',
+						playcount: '102718752',
+						listeners: '1087320',
+						mbid: 'f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387',
+						url: 'https://www.last.fm/music/Ariana+Grande',
+						streamable: '0',
+						image: [
+							{
+								'#text':
+									'https://lastfm-img2.akamaized.net/i/u/34s/bb9f40893eb33262dbae67c2d5298550.png',
+								size: 'small',
+							},
+						],
+					},
+				],
+			},
+		});
+
+		await nock(context.baseUrl)
+			.get('/')
+			.query({
+				method: 'chart.getTopArtists',
+				format: 'json',
+				api_key: lastfmApi.defaults.options.apiKey,
+			})
+			.reply(200, context.data);
 	});
 
-	after(() => {
+	afterEach(() => {
 		sinon.restore();
+		nock.cleanAll();
 	});
 
 	test('returns expected artists', async ({ context }) => {
 		const result = await getArtists({ lastfmApi });
 
-		expect(result).to.equal(context.Artists);
-	});
-
-	test('calls lastfmApi as expected', async ({ context }) => {
-		await getArtists({ lastfmApi });
-
-		const [first] = lastfmApi.get.args[0];
-
-		expect(first).to.startWith(context.baseUrl);
-		expect(first).to.include(
-			'?method=chart.getTopArtists&format=json&api_key='
-		);
-		expect(first).to.endWith(context.apiKey);
+		expect(result).to.equal(context.data);
 	});
 });
