@@ -3,10 +3,25 @@ module.exports = {
 	version: '0.0.1',
 	register: (
 		server,
-		{ geniusApi, lyricist, getLyrics, lastfmApi, getArtists }
+		{
+			geniusApi,
+			lyricist,
+			getLyrics,
+			lastfmApi,
+			getArtists,
+			getPersonalityProfile,
+			personalityProfileApi,
+		}
 	) => {
-		server.method('getArtists', getArtists);
-		server.method('getLyrics', getLyrics);
+		if (getArtists) {
+			server.method('getArtists', getArtists);
+		}
+		if (getLyrics) {
+			server.method('getLyrics', getLyrics);
+		}
+		if (getPersonalityProfile) {
+			server.method('getPersonalityProfile', getPersonalityProfile);
+		}
 
 		server.route({
 			path: '/korin/lyrics',
@@ -29,6 +44,20 @@ module.exports = {
 			handler: async (request, h) => {
 				try {
 					return await server.methods.getArtists({ getArtists, lastfmApi });
+				} catch (error) {
+					console.warn(error);
+				}
+			},
+		});
+
+		server.route({
+			path: '/korin/personality-profile',
+			method: 'GET',
+			handler: async (request, h) => {
+				try {
+					return await server.methods.getPersonalityProfile({
+						personalityProfileApi,
+					});
 				} catch (error) {
 					console.warn(error);
 				}
