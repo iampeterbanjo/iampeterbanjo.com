@@ -58,7 +58,8 @@
 		"hapi": "18.x.x",
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
-		"lyricist": "^2.2.2"
+		"lyricist": "^2.2.2",
+		"watson-developer-cloud": "^3.18.3"
 	},
 	"devDependencies": {
 		"acorn": "^6.1.0",

@@ -63,6 +63,28 @@ suite('korin/artists', () => {
 	});
 });
 
+suite('korin/personality-profile', () => {
+	let server = new Hapi.Server();
+
+	before(async ({ context }) => {
+		context.data = require('./fixtures/personality-profile');
+		const mockGetPersonalityProfile = sinon.stub().resolves(context.data);
+
+		await server.register({
+			plugin: require('../server/korin/api'),
+			options: { getPersonalityProfile: mockGetPersonalityProfile },
+		});
+	});
+
+	test('api request returns expected response', async ({ context }) => {
+		const { result } = await server.inject({
+			method: 'GET',
+			url: '/korin/personality-profile',
+		});
+		expect(result).to.equal(context.data);
+	});
+});
+
 suite('getLyrics', () => {
 	const geniusApi = got.extend({ baseUrl: '/' });
 	const lyricist = new Lyricist(`FAKE-TOKEN`);

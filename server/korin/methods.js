@@ -22,3 +22,7 @@ exports.getLyrics = async ({ geniusApi, lyricist }, term) => {
 
 	return lyrics;
 };
+
+exports.getPersonalityProfile = async ({ personalityProfileApi, data }) => {
+	return await personalityProfileApi(data);
+};
