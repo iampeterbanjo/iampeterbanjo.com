@@ -17,7 +17,7 @@ exports.getLyrics = async ({ geniusApi, lyricist }, term) => {
 	const query = new URLSearchParams([['q', term]]);
 	const data = (await geniusApi.get('/search', { query })).body;
 	const expression = jsonata(lyricsIdPath);
-	const songId = expression.evaluate(JSON.parse(data));
+	const songId = expression.evaluate(data);
 	const { lyrics } = await lyricist.song(songId, { fetchLyrics: true });
 
 	return lyrics;

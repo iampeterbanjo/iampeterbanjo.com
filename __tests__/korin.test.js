@@ -18,6 +18,7 @@ const {
 const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
 const nock = require('nock');
+const readFile = require('util').promisify(require('fs').readFile);
 
 suite('korin/lyrics', () => {
 	let server = new Hapi.Server();
@@ -89,21 +90,10 @@ suite('getLyrics', () => {
 	const geniusApi = got.extend({ baseUrl: '/' });
 	const lyricist = new Lyricist(`FAKE-TOKEN`);
 
-	before(({ context }) => {
-		const id = 44444444;
-		context.data = JSON.stringify({
-			response: {
-				hits: [
-					{
-						result: {
-							id,
-						},
-					},
-				],
-			},
-		});
+	before(async ({ context }) => {
+		context.data = require('./fixtures/genius-search.json');
+		context.lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 
-		context.lyrics = 'Here comes the hot stepper';
 		sinon.stub(geniusApi, 'get').resolves({ body: context.data });
 		sinon.stub(lyricist, 'song').resolves({ lyrics: context.lyrics });
 	});
@@ -112,7 +102,7 @@ suite('getLyrics', () => {
 		sinon.restore();
 	});
 
-	test('getLyrics returns expected lyrics', async ({ context }) => {
+	test('returns expected lyrics', async ({ context }) => {
 		const result = await getLyrics({ geniusApi, lyricist });
 
 		expect(result).to.equal(context.lyrics);
@@ -141,7 +131,7 @@ suite('getLyrics', () => {
 		await getLyrics({ geniusApi, lyricist }, '');
 
 		const [first, second] = lyricist.song.args[0];
-		const songId = jsonata(lyricsIdPath).evaluate(JSON.parse(context.data));
+		const songId = jsonata(lyricsIdPath).evaluate(context.data);
 
 		expect(first).to.be.equal(songId);
 		expect(second).to.be.equal({ fetchLyrics: true });
@@ -150,7 +140,7 @@ suite('getLyrics', () => {
 
 suite('getArtists', () => {
 	const apiKey = `FAKE_API_KEY`;
-	const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
+	const baseUrl = process.env.LASTFM_API_URL;
 	const lastfmApi = got.extend({ baseUrl, apiKey });
 
 	beforeEach(async ({ context }) => {

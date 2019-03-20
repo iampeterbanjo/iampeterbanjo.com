@@ -19,11 +19,13 @@ const geniusApi = got.extend({
 	headers: {
 		authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
 	},
+	json: true,
 });
 
 const lastfmApi = got.extend({
 	baseUrl: LASTFM_API_URL,
 	apiKey: LASTFM_API_KEY,
+	json: true,
 });
 
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
