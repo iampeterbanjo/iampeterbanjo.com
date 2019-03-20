@@ -45,7 +45,7 @@ suite('korin/artists', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
-		context.artists = ['Beyonce', 'Cardi B'];
+		context.artists = require('./fixtures/artists.json');
 		const mockGetArtists = sinon.stub().resolves(context.artists);
 
 		await server.register({
@@ -67,7 +67,7 @@ suite('korin/personality-profile', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
-		context.data = require('./fixtures/personality-profile');
+		context.data = require('./fixtures/personality-profile.json');
 		const mockGetPersonalityProfile = sinon.stub().resolves(context.data);
 
 		await server.register({
