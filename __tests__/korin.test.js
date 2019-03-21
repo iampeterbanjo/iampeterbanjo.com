@@ -12,7 +12,7 @@ const sinon = require('sinon');
 const got = require('got');
 const {
 	getLyrics,
-	getArtists,
+	getTopTracks,
 	lyricsIdPath,
 } = require('../server/korin/methods');
 const Lyricist = require('lyricist');
@@ -68,12 +68,12 @@ suite('korin/songs', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
-		context.artists = require('./fixtures/artists.json');
+		context.artists = require('./fixtures/lastfm-topTracks.json');
 		const mockGetArtists = sinon.stub().resolves(context.artists);
 
 		await server.register({
 			plugin: require('../server/korin/api'),
-			options: { getArtists: mockGetArtists, getLyrics: () => {} },
+			options: { getTopTracks: mockGetArtists, getLyrics: () => {} },
 		});
 	});
 
@@ -138,7 +138,7 @@ suite('getLyrics', () => {
 	});
 });
 
-suite('getArtists', () => {
+suite('getTopTracks', () => {
 	const apiKey = `FAKE_API_KEY`;
 	const baseUrl = process.env.LASTFM_API_URL;
 	const lastfmApi = got.extend({ baseUrl, apiKey });
@@ -146,32 +146,12 @@ suite('getArtists', () => {
 	beforeEach(async ({ context }) => {
 		context.apiKey = apiKey;
 		context.baseUrl = baseUrl;
-		context.data = JSON.stringify({
-			artists: {
-				artist: [
-					{
-						name: 'Ariana Grande',
-						playcount: '102718752',
-						listeners: '1087320',
-						mbid: 'f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387',
-						url: 'https://www.last.fm/music/Ariana+Grande',
-						streamable: '0',
-						image: [
-							{
-								'#text':
-									'https://lastfm-img2.akamaized.net/i/u/34s/bb9f40893eb33262dbae67c2d5298550.png',
-								size: 'small',
-							},
-						],
-					},
-				],
-			},
-		});
+		context.data = JSON.stringify(require('./fixtures/lastfm-topTracks.json'));
 
 		await nock(context.baseUrl)
 			.get('/')
 			.query({
-				method: 'chart.getTopArtists',
+				method: 'chart.getTopTracks',
 				format: 'json',
 				api_key: lastfmApi.defaults.options.apiKey,
 			})
@@ -184,7 +164,7 @@ suite('getArtists', () => {
 	});
 
 	test('returns expected artists', async ({ context }) => {
-		const result = await getArtists({ lastfmApi });
+		const result = await getTopTracks({ lastfmApi });
 
 		expect(result).to.equal(context.data);
 	});

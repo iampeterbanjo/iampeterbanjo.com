@@ -8,13 +8,13 @@ module.exports = {
 			lyricist,
 			getLyrics,
 			lastfmApi,
-			getArtists,
+			getTopTracks,
 			getPersonalityProfile,
 			personalityProfileApi,
 		}
 	) => {
-		if (getArtists) {
-			server.method('getArtists', getArtists);
+		if (getTopTracks) {
+			server.method('getTopTracks', getTopTracks);
 		}
 		if (getLyrics) {
 			server.method('getLyrics', getLyrics);
@@ -28,7 +28,7 @@ module.exports = {
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
-					return await server.methods.getArtists({ getArtists, lastfmApi });
+					return await server.methods.getTopTracks({ getTopTracks, lastfmApi });
 				} catch (error) {
 					console.warn(error);
 				}
