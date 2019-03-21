@@ -20,29 +20,51 @@ const jsonata = require('jsonata');
 const nock = require('nock');
 const readFile = require('util').promisify(require('fs').readFile);
 
-suite('korin/lyrics', () => {
+suite('korin/profile/{artist}/{song}', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
-		context.lyrics = 'We wish you a merry christmas';
-		const mockGetLyrics = sinon.stub().resolves(context.lyrics);
+		context.lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
+		context.profile = require('./fixtures/personality-profile.json');
+
+		const getLyrics = sinon.stub().resolves(context.lyrics);
+		context.getPersonalityProfile = sinon.stub().resolves(context.profile);
+		context.personalityProfileApi = sinon.stub();
+
+		const { getPersonalityProfile, personalityProfileApi } = context;
 
 		await server.register({
 			plugin: require('../server/korin/api'),
-			options: { getLyrics: mockGetLyrics, getArtists: () => {} },
+			options: {
+				getLyrics,
+				getPersonalityProfile,
+				personalityProfileApi,
+			},
 		});
 	});
 
-	test('api request returns expected response', async ({ context }) => {
+	test('api returns profile', async ({ context }) => {
 		const { result } = await server.inject({
 			method: 'GET',
-			url: '/korin/lyrics',
+			url: '/korin/profile/Kendrik Lamar/Humble',
 		});
-		expect(result).to.equal(context.lyrics);
+
+		expect(result).to.equal(context.profile);
+	});
+
+	test('profile method is called with personality api', async ({ context }) => {
+		await server.inject({
+			method: 'GET',
+			url: '/korin/profile/Kendrik Lamar/Humble',
+		});
+
+		const { lyrics, personalityProfileApi, getPersonalityProfile } = context;
+		const [first] = getPersonalityProfile.args[0];
+		expect(first).to.equal({ personalityProfileApi, lyrics });
 	});
 });
 
-suite('korin/artists', () => {
+suite('korin/songs', () => {
 	let server = new Hapi.Server();
 
 	before(async ({ context }) => {
@@ -58,31 +80,9 @@ suite('korin/artists', () => {
 	test('api request returns expected response', async ({ context }) => {
 		const { result } = await server.inject({
 			method: 'GET',
-			url: '/korin/artists',
+			url: '/korin/songs',
 		});
 		expect(result).to.equal(context.artists);
-	});
-});
-
-suite('korin/personality-profile', () => {
-	let server = new Hapi.Server();
-
-	before(async ({ context }) => {
-		context.data = require('./fixtures/personality-profile.json');
-		const mockGetPersonalityProfile = sinon.stub().resolves(context.data);
-
-		await server.register({
-			plugin: require('../server/korin/api'),
-			options: { getPersonalityProfile: mockGetPersonalityProfile },
-		});
-	});
-
-	test('api request returns expected response', async ({ context }) => {
-		const { result } = await server.inject({
-			method: 'GET',
-			url: '/korin/personality-profile',
-		});
-		expect(result).to.equal(context.data);
 	});
 });
 
