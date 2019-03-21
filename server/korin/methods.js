@@ -3,9 +3,9 @@ const lyricsIdPath = 'response.hits[0].result.id';
 
 exports.lyricsIdPath = lyricsIdPath;
 
-exports.getArtists = async ({ lastfmApi }) => {
+exports.getTopTracks = async ({ lastfmApi }) => {
 	const query = new URLSearchParams([
-		['method', 'chart.getTopArtists'],
+		['method', 'chart.getTopTracks'],
 		['format', 'json'],
 		['api_key', lastfmApi.defaults.options.apiKey],
 	]);

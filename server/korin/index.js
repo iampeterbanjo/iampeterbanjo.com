@@ -1,7 +1,7 @@
 const got = require('got');
 const Lyricist = require('lyricist');
 const util = require('util');
-const { getLyrics, getArtists, getPersonalityProfile } = require('./methods');
+const { getLyrics, getTopTracks, getPersonalityProfile } = require('./methods');
 
 const {
 	GENIUS_API_ACCESS_TOKEN,
@@ -44,7 +44,7 @@ module.exports = {
 		geniusApi,
 		lyricist,
 		getLyrics,
-		getArtists,
+		getTopTracks,
 		getPersonalityProfile,
 		personalityProfileApi,
 	},

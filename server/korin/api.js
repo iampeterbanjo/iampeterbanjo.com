@@ -8,13 +8,13 @@ module.exports = {
 			lyricist,
 			getLyrics,
 			lastfmApi,
-			getArtists,
+			getTopTracks,
 			getPersonalityProfile,
 			personalityProfileApi,
 		}
 	) => {
-		if (getArtists) {
-			server.method('getArtists', getArtists);
+		if (getTopTracks) {
+			server.method('getTopTracks', getTopTracks);
 		}
 		if (getLyrics) {
 			server.method('getLyrics', getLyrics);
@@ -24,39 +24,30 @@ module.exports = {
 		}
 
 		server.route({
-			path: '/korin/lyrics',
+			path: '/korin/songs',
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
-					return await server.methods.getLyrics(
+					return await server.methods.getTopTracks({ getTopTracks, lastfmApi });
+				} catch (error) {
+					console.warn(error);
+				}
+			},
+		});
+
+		server.route({
+			path: '/korin/profile/{artist}/{song}',
+			method: 'GET',
+			handler: async (request, h) => {
+				try {
+					const { artist, song } = request.params;
+					const lyrics = await server.methods.getLyrics(
 						{ geniusApi, lyricist },
-						'Humble Kendric Lamar'
+						`${artist} ${song}`
 					);
-				} catch (error) {
-					console.warn(error);
-				}
-			},
-		});
-
-		server.route({
-			path: '/korin/artists',
-			method: 'GET',
-			handler: async (request, h) => {
-				try {
-					return await server.methods.getArtists({ getArtists, lastfmApi });
-				} catch (error) {
-					console.warn(error);
-				}
-			},
-		});
-
-		server.route({
-			path: '/korin/personality-profile',
-			method: 'GET',
-			handler: async (request, h) => {
-				try {
 					return await server.methods.getPersonalityProfile({
 						personalityProfileApi,
+						lyrics,
 					});
 				} catch (error) {
 					console.warn(error);
