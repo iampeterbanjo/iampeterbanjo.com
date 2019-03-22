@@ -1,3 +1,7 @@
+const ejs = require('ejs');
+const Vision = require('vision');
+
 module.exports = {
-	plugin: require('views'),
+	plugin: require('./plugin'),
+	options: { ejs, Vision },
 };

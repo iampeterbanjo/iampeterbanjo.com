@@ -50,6 +50,7 @@
 	},
 	"license": "ISC",
 	"dependencies": {
+		"ejs": "^2.6.1",
 		"gatsby": "^2.2.6",
 		"good": "^8.1.2",
 		"good-console": "^7.1.0",
@@ -59,6 +60,7 @@
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
+		"vision": "^5.4.4",
 		"watson-developer-cloud": "^3.18.3"
 	},
 	"devDependencies": {
