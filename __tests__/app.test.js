@@ -19,6 +19,11 @@ test('good was registered first', () => {
 	expect(server.register.firstCall.calledWith(good)).to.be.true();
 });
 
+test('views was registered second', () => {
+	const views = require('../server/views');
+	expect(server.register.secondCall.calledWith(views)).to.be.true();
+});
+
 test('cqc was registered', () => {
 	const cqc = require('../server/cqc');
 	expect(server.register.calledWith(cqc)).to.be.true();

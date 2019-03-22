@@ -50,7 +50,7 @@
 	},
 	"license": "ISC",
 	"dependencies": {
-		"gatsby": "^2.1.4",
+		"gatsby": "^2.2.6",
 		"good": "^8.1.2",
 		"good-console": "^7.1.0",
 		"good-squeeze": "^5.1.0",
