@@ -60,6 +60,7 @@
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
+		"pug": "^2.0.3",
 		"vision": "^5.4.4",
 		"watson-developer-cloud": "^3.18.3"
 	},
