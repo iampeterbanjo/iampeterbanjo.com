@@ -18,7 +18,7 @@ const {
 const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
 const nock = require('nock');
-const readFile = require('util').promisify(require('fs').readFile);
+const readFile = require('fs-extra').readFile;
 
 suite('korin/profile/{artist}/{song}', () => {
 	let server = new Hapi.Server();

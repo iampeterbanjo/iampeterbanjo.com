@@ -50,8 +50,8 @@
 	},
 	"license": "ISC",
 	"dependencies": {
+		"acorn": "^6.1.1",
 		"ejs": "^2.6.1",
-		"gatsby": "^2.2.6",
 		"good": "^8.1.2",
 		"good-console": "^7.1.0",
 		"good-squeeze": "^5.1.0",
@@ -65,19 +65,14 @@
 		"watson-developer-cloud": "^3.18.3"
 	},
 	"devDependencies": {
-		"acorn": "^6.1.0",
-		"autoprefixer": "^9.4.7",
 		"code": "^5.2.4",
 		"ejs-lint": "^0.3.0",
 		"fs-extra": "^7.0.1",
 		"lab": "^18.0.2",
 		"nock": "^10.0.6",
-		"node-sass": "^4.11.0",
 		"nodemon": "^1.18.9",
 		"npm-run-all": "^4.1.5",
-		"precss": "^4.0.0",
 		"prettier": "1.16.4",
-		"sinon": "^7.2.6",
-		"tachyons-sass": "^4.9.5"
+		"sinon": "^7.2.6"
 	}
 }
