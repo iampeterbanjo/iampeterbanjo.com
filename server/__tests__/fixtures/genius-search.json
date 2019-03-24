@@ -1,0 +1,304 @@
+{
+	"meta": { "status": 200 },
+	"response": {
+		"hits": [
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 19,
+					"api_path": "/songs/3039923",
+					"full_title": "HUMBLE. by Kendrick Lamar",
+					"header_image_thumbnail_url": "https://images.genius.com/039eed0758eb3aa30f050c77e7bbdc1e.300x300x1.jpg",
+					"header_image_url": "https://images.genius.com/039eed0758eb3aa30f050c77e7bbdc1e.1000x1000x1.jpg",
+					"id": 3039923,
+					"lyrics_owner_id": 104344,
+					"lyrics_state": "complete",
+					"path": "/Kendrick-lamar-humble-lyrics",
+					"pyongs_count": 1002,
+					"song_art_image_thumbnail_url": "https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg",
+					"stats": {
+						"hot": false,
+						"unreviewed_annotations": 0,
+						"concurrents": 4,
+						"pageviews": 9953866
+					},
+					"title": "HUMBLE.",
+					"title_with_featured": "HUMBLE.",
+					"url": "https://genius.com/Kendrick-lamar-humble-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/1421",
+						"header_image_url": "https://images.genius.com/7e47ca9b2b911cc5c65d00d5a57b28c3.1000x667x1.jpg",
+						"id": 1421,
+						"image_url": "https://images.genius.com/25d8a9c93ab97e9e6d5d1d9d36e64a53.1000x1000x1.jpg",
+						"is_meme_verified": true,
+						"is_verified": true,
+						"name": "Kendrick Lamar",
+						"url": "https://genius.com/artists/Kendrick-lamar",
+						"iq": 37506
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 21,
+					"api_path": "/songs/3189008",
+					"full_title": "HUMBLE (Kendrick Lamar RMX) by ATOL",
+					"header_image_thumbnail_url": "https://images.genius.com/1db8363cc71ab46f504d0e6146e05435.300x300x1.png",
+					"header_image_url": "https://images.genius.com/1db8363cc71ab46f504d0e6146e05435.901x901x1.png",
+					"id": 3189008,
+					"lyrics_owner_id": 5033200,
+					"lyrics_state": "complete",
+					"path": "/Atol-humble-kendrick-lamar-rmx-lyrics",
+					"pyongs_count": 2,
+					"song_art_image_thumbnail_url": "https://images.genius.com/1db8363cc71ab46f504d0e6146e05435.300x300x1.png",
+					"stats": { "hot": false, "unreviewed_annotations": 21 },
+					"title": "HUMBLE (Kendrick Lamar RMX)",
+					"title_with_featured": "HUMBLE (Kendrick Lamar RMX)",
+					"url": "https://genius.com/Atol-humble-kendrick-lamar-rmx-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/1191923",
+						"header_image_url": "https://images.genius.com/1db8363cc71ab46f504d0e6146e05435.901x901x1.png",
+						"id": 1191923,
+						"image_url": "https://images.genius.com/1db8363cc71ab46f504d0e6146e05435.901x901x1.png",
+						"is_meme_verified": false,
+						"is_verified": false,
+						"name": "ATOL",
+						"url": "https://genius.com/artists/Atol"
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 0,
+					"api_path": "/songs/3686760",
+					"full_title": "Humble (Kendrick Lamar Cover) by Ze Gran Zeft",
+					"header_image_thumbnail_url": "https://images.genius.com/a5028b1c027d891864a749655b5248e1.300x300x1.jpg",
+					"header_image_url": "https://images.genius.com/a5028b1c027d891864a749655b5248e1.1000x1000x1.jpg",
+					"id": 3686760,
+					"lyrics_owner_id": 6325151,
+					"lyrics_state": "complete",
+					"path": "/Ze-gran-zeft-humble-kendrick-lamar-cover-lyrics",
+					"pyongs_count": null,
+					"song_art_image_thumbnail_url": "https://images.genius.com/a5028b1c027d891864a749655b5248e1.300x300x1.jpg",
+					"stats": { "hot": false, "unreviewed_annotations": 0 },
+					"title": "Humble (Kendrick Lamar Cover)",
+					"title_with_featured": "Humble (Kendrick Lamar Cover)",
+					"url": "https://genius.com/Ze-gran-zeft-humble-kendrick-lamar-cover-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/1461461",
+						"header_image_url": "https://images.genius.com/5884a78b8959fb20cdf9188798d088c2.1000x751x1.jpg",
+						"id": 1461461,
+						"image_url": "https://images.genius.com/857bdb36fbec4b50e3009b58955218db.999x999x1.jpg",
+						"is_meme_verified": false,
+						"is_verified": false,
+						"name": "Ze Gran Zeft",
+						"url": "https://genius.com/artists/Ze-gran-zeft"
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 1,
+					"api_path": "/songs/3675182",
+					"full_title": "BOSS BABY IN MINECRAFT (HUMBLE KENDRICK LAMAR PARODY) (SCREW BOSS BABY) (SCREW DURV) (NOT CLICKBAIT) by Lil Visor",
+					"header_image_thumbnail_url": "https://assets.genius.com/images/default_cover_image.png?1553008586",
+					"header_image_url": "https://assets.genius.com/images/default_cover_image.png?1553008586",
+					"id": 3675182,
+					"lyrics_owner_id": 4810819,
+					"lyrics_state": "complete",
+					"path": "/Lil-visor-boss-baby-in-minecraft-humble-kendrick-lamar-parody-screw-boss-baby-screw-durv-not-clickbait-lyrics",
+					"pyongs_count": 1,
+					"song_art_image_thumbnail_url": "https://assets.genius.com/images/default_cover_image.png?1553008586",
+					"stats": { "hot": false, "unreviewed_annotations": 1 },
+					"title": "BOSS BABY IN MINECRAFT (HUMBLE KENDRICK LAMAR PARODY) (SCREW BOSS BABY) (SCREW DURV) (NOT CLICKBAIT)",
+					"title_with_featured": "BOSS BABY IN MINECRAFT (HUMBLE KENDRICK LAMAR PARODY) (SCREW BOSS BABY) (SCREW DURV) (NOT CLICKBAIT)",
+					"url": "https://genius.com/Lil-visor-boss-baby-in-minecraft-humble-kendrick-lamar-parody-screw-boss-baby-screw-durv-not-clickbait-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/1456882",
+						"header_image_url": "https://assets.genius.com/images/default_avatar_300.png?1553008586",
+						"id": 1456882,
+						"image_url": "https://assets.genius.com/images/default_avatar_300.png?1553008586",
+						"is_meme_verified": false,
+						"is_verified": false,
+						"name": "Lil Visor",
+						"url": "https://genius.com/artists/Lil-visor"
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 0,
+					"api_path": "/songs/3832093",
+					"full_title": "Remix by Lotto Streetz (Ft. 2DaMax (Maxwell Streetz))",
+					"header_image_thumbnail_url": "https://images.genius.com/41e2f98026ee013c2d7280428fbe5041.300x300x1.jpg",
+					"header_image_url": "https://images.genius.com/41e2f98026ee013c2d7280428fbe5041.1000x1000x1.jpg",
+					"id": 3832093,
+					"lyrics_owner_id": 4495837,
+					"lyrics_state": "complete",
+					"path": "/Lotto-streetz-remix-lyrics",
+					"pyongs_count": 1,
+					"song_art_image_thumbnail_url": "https://images.genius.com/41e2f98026ee013c2d7280428fbe5041.300x300x1.jpg",
+					"stats": { "hot": false, "unreviewed_annotations": 0 },
+					"title": "Remix",
+					"title_with_featured": "Remix (Ft. 2DaMax (Maxwell Streetz))",
+					"url": "https://genius.com/Lotto-streetz-remix-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/1511801",
+						"header_image_url": "https://images.genius.com/95fe5a908737dcbe2ad848dd4667ac18.610x451x1.png",
+						"id": 1511801,
+						"image_url": "https://images.genius.com/6c36dcc3be4a6840742386e855e560cc.1000x1000x1.png",
+						"is_meme_verified": false,
+						"is_verified": false,
+						"name": "Lotto Streetz",
+						"url": "https://genius.com/artists/Lotto-streetz"
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 0,
+					"api_path": "/songs/3073053",
+					"full_title": "Kendrick Lamar - Humble | Post Malone - Congratulations | Chris Brown - Privacy by Ar'mon And Trey",
+					"header_image_thumbnail_url": "https://images.genius.com/856f3910865776839e350c22e50eb0f7.300x300x1.jpg",
+					"header_image_url": "https://images.genius.com/856f3910865776839e350c22e50eb0f7.1000x1000x1.jpg",
+					"id": 3073053,
+					"lyrics_owner_id": 2442440,
+					"lyrics_state": "complete",
+					"path": "/Armon-and-trey-kendrick-lamar-humble-post-malone-congratulations-chris-brown-privacy-lyrics",
+					"pyongs_count": 1,
+					"song_art_image_thumbnail_url": "https://images.genius.com/856f3910865776839e350c22e50eb0f7.300x300x1.jpg",
+					"stats": { "hot": false, "unreviewed_annotations": 0 },
+					"title": "Kendrick Lamar - Humble | Post Malone - Congratulations | Chris Brown - Privacy",
+					"title_with_featured": "Kendrick Lamar - Humble | Post Malone - Congratulations | Chris Brown - Privacy",
+					"url": "https://genius.com/Armon-and-trey-kendrick-lamar-humble-post-malone-congratulations-chris-brown-privacy-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/1032270",
+						"header_image_url": "https://images.genius.com/856f3910865776839e350c22e50eb0f7.1000x1000x1.jpg",
+						"id": 1032270,
+						"image_url": "https://images.genius.com/856f3910865776839e350c22e50eb0f7.1000x1000x1.jpg",
+						"is_meme_verified": false,
+						"is_verified": true,
+						"name": "Ar'mon And Trey",
+						"url": "https://genius.com/artists/Armon-and-trey",
+						"iq": 719
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 247,
+					"api_path": "/songs/2968465",
+					"full_title": "2017 haywoodindahood Listening Log by Gerald Haywood",
+					"header_image_thumbnail_url": "https://images.genius.com/374658148bbf6fb273038a9afe87bada.300x300x1.jpg",
+					"header_image_url": "https://images.genius.com/374658148bbf6fb273038a9afe87bada.800x800x1.jpg",
+					"id": 2968465,
+					"lyrics_owner_id": 3541884,
+					"lyrics_state": "complete",
+					"path": "/Gerald-haywood-2017-haywoodindahood-listening-log-annotated",
+					"pyongs_count": 4,
+					"song_art_image_thumbnail_url": "https://images.genius.com/c7442dfc16522281e7aa05bcca8fb812.200x165x1.png",
+					"stats": { "hot": false, "unreviewed_annotations": 0 },
+					"title": "2017 haywoodindahood Listening Log",
+					"title_with_featured": "2017 haywoodindahood Listening Log",
+					"url": "https://genius.com/Gerald-haywood-2017-haywoodindahood-listening-log-annotated",
+					"primary_artist": {
+						"api_path": "/artists/1065349",
+						"header_image_url": "https://images.genius.com/2a9b0d29673372285d66f91ae071f264.750x937x1.jpg",
+						"id": 1065349,
+						"image_url": "https://images.genius.com/2a9b0d29673372285d66f91ae071f264.750x937x1.jpg",
+						"is_meme_verified": false,
+						"is_verified": false,
+						"name": "Gerald Haywood",
+						"url": "https://genius.com/artists/Gerald-haywood",
+						"iq": 87982
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 13,
+					"api_path": "/songs/3694353",
+					"full_title": "Comme un prince by Demi Portion (Ft. IAM)",
+					"header_image_thumbnail_url": "https://images.genius.com/371336983303ee228c28b8c900606158.300x300x1.jpg",
+					"header_image_url": "https://images.genius.com/371336983303ee228c28b8c900606158.340x340x1.jpg",
+					"id": 3694353,
+					"lyrics_owner_id": 2979515,
+					"lyrics_state": "complete",
+					"path": "/Demi-portion-comme-un-prince-lyrics",
+					"pyongs_count": 1,
+					"song_art_image_thumbnail_url": "https://images.genius.com/371336983303ee228c28b8c900606158.300x300x1.jpg",
+					"stats": { "hot": false, "unreviewed_annotations": 6 },
+					"title": "Comme un prince",
+					"title_with_featured": "Comme un prince (Ft. IAM)",
+					"url": "https://genius.com/Demi-portion-comme-un-prince-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/14366",
+						"header_image_url": "https://images.genius.com/3611c451c2c1148b33a3867e385dc77b.685x255x1.png",
+						"id": 14366,
+						"image_url": "https://images.genius.com/7d85443e987687a912f0ffefbad113b3.1000x1000x1.jpg",
+						"is_meme_verified": false,
+						"is_verified": true,
+						"name": "Demi Portion",
+						"url": "https://genius.com/artists/Demi-portion",
+						"iq": 114
+					}
+				}
+			},
+			{
+				"highlights": [],
+				"index": "song",
+				"type": "song",
+				"result": {
+					"annotation_count": 0,
+					"api_path": "/songs/3073314",
+					"full_title": "HUMBLE. (Trad. Française) by Rap Genius France",
+					"header_image_thumbnail_url": "https://images.genius.com/ee1e0d13bda3c013f2c4fcd02035742d.300x300x1.png",
+					"header_image_url": "https://images.genius.com/ee1e0d13bda3c013f2c4fcd02035742d.600x600x1.png",
+					"id": 3073314,
+					"lyrics_owner_id": 3360023,
+					"lyrics_state": "complete",
+					"path": "/Rap-genius-france-humble-trad-francaise-lyrics",
+					"pyongs_count": null,
+					"song_art_image_thumbnail_url": "https://images.genius.com/ee1e0d13bda3c013f2c4fcd02035742d.300x300x1.png",
+					"stats": { "hot": false, "unreviewed_annotations": 0 },
+					"title": "HUMBLE. (Trad. Française)",
+					"title_with_featured": "HUMBLE. (Trad. Française)",
+					"url": "https://genius.com/Rap-genius-france-humble-trad-francaise-lyrics",
+					"primary_artist": {
+						"api_path": "/artists/15936",
+						"header_image_url": "https://images.genius.com/ee1e0d13bda3c013f2c4fcd02035742d.600x600x1.png",
+						"id": 15936,
+						"image_url": "https://images.genius.com/ee1e0d13bda3c013f2c4fcd02035742d.600x600x1.png",
+						"is_meme_verified": false,
+						"is_verified": false,
+						"name": "Rap Genius France",
+						"url": "https://genius.com/artists/Rap-genius-france"
+					}
+				}
+			}
+		]
+	}
+}

@@ -28,6 +28,7 @@ module.exports = {
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
+					console.log(JSON.stringify(request.headers));
 					return await server.methods.getTopTracks({ getTopTracks, lastfmApi });
 				} catch (error) {
 					console.warn(error);
