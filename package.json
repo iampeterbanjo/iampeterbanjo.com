@@ -37,12 +37,15 @@
 		"start-debug": "node --inspect ./server/start.js",
 		"start": "node ./server/start.js",
 		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json -x 'npm run test'",
-		"test": "lab -c ./__tests__/"
+		"test": "cd ./server && npm run test"
 	},
 	"keywords": [
 		"personal",
 		"portfolio",
-		"hapi"
+		"hapi",
+		"gatsby",
+		"react",
+		"tachyons"
 	],
 	"author": {
 		"email": "me@iampeterbanjo.com",
