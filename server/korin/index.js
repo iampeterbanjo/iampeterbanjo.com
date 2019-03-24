@@ -1,6 +1,7 @@
 const got = require('got');
 const Lyricist = require('lyricist');
 const util = require('util');
+const accept = require('accept');
 const { getLyrics, getTopTracks, getPersonalityProfile } = require('./methods');
 
 const {
@@ -47,5 +48,6 @@ module.exports = {
 		getTopTracks,
 		getPersonalityProfile,
 		personalityProfileApi,
+		getMediaType: accept.mediaType,
 	},
 };

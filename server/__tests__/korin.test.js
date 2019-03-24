@@ -20,69 +20,79 @@ const jsonata = require('jsonata');
 const nock = require('nock');
 const readFile = require('fs-extra').readFile;
 
-suite('korin/profile/{artist}/{song}', () => {
-	let server = new Hapi.Server();
+const setup = async options => {
+	const server = new Hapi.Server();
 
-	before(async ({ context }) => {
-		context.lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
-		context.profile = require('./fixtures/personality-profile.json');
+	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
+	const topTracks = require('./fixtures/lastfm-topTracks.json');
+	const profile = require('./fixtures/personality-profile.json');
+	const getLyrics = sinon.stub().resolves(lyrics);
+	const getPersonalityProfile = sinon.stub().resolves(profile);
+	const personalityProfileApi = sinon.stub();
+	const getTopTracks = sinon.stub().resolves(topTracks);
+	const getMediaType = require('accept').mediaType;
 
-		const getLyrics = sinon.stub().resolves(context.lyrics);
-		context.getPersonalityProfile = sinon.stub().resolves(context.profile);
-		context.personalityProfileApi = sinon.stub();
+	const defaults = {
+		getLyrics,
+		getTopTracks,
+		getPersonalityProfile,
+		getMediaType,
+		personalityProfileApi,
+	};
 
-		const { getPersonalityProfile, personalityProfileApi } = context;
-
-		await server.register({
-			plugin: require('../../server/korin/api'),
-			options: {
-				getLyrics,
-				getPersonalityProfile,
-				personalityProfileApi,
-			},
-		});
+	await server.register({
+		plugin: require('../../server/korin/api'),
+		options: {
+			...defaults,
+			...options,
+		},
 	});
 
-	test('api returns profile', async ({ context }) => {
+	return {
+		server,
+		lyrics,
+		profile,
+		topTracks,
+		...defaults,
+	};
+};
+
+suite('korin/profile/{artist}/{song}', () => {
+	test('api returns profile', async () => {
+		const { server, profile } = await setup();
 		const { result } = await server.inject({
 			method: 'GET',
 			url: '/korin/profile/Kendrik Lamar/Humble',
 		});
 
-		expect(result).to.equal(context.profile);
+		expect(result).to.equal(profile);
 	});
 
 	test('profile method is called with personality api', async ({ context }) => {
+		const {
+			server,
+			lyrics,
+			personalityProfileApi,
+			getPersonalityProfile,
+		} = await setup();
 		await server.inject({
 			method: 'GET',
 			url: '/korin/profile/Kendrik Lamar/Humble',
 		});
 
-		const { lyrics, personalityProfileApi, getPersonalityProfile } = context;
 		const [first] = getPersonalityProfile.args[0];
 		expect(first).to.equal({ personalityProfileApi, lyrics });
 	});
 });
 
 suite('korin/songs', () => {
-	let server = new Hapi.Server();
-
-	before(async ({ context }) => {
-		context.artists = require('./fixtures/lastfm-topTracks.json');
-		const mockGetArtists = sinon.stub().resolves(context.artists);
-
-		await server.register({
-			plugin: require('../../server/korin/api'),
-			options: { getTopTracks: mockGetArtists, getLyrics: () => {} },
-		});
-	});
-
 	test('api request returns expected response', async ({ context }) => {
+		const { server, topTracks } = await setup();
 		const { result } = await server.inject({
 			method: 'GET',
 			url: '/korin/songs',
 		});
-		expect(result).to.equal(context.artists);
+		expect(result).to.equal(topTracks);
 	});
 });
 
@@ -167,5 +177,24 @@ suite('getTopTracks', () => {
 		const result = await getTopTracks({ lastfmApi });
 
 		expect(result).to.equal(context.data);
+	});
+});
+
+suite('content negotiation', () => {
+	const assertions = ['text/html', 'application/json'];
+	assertions.forEach(accept => {
+		test(`given 'text/html' in headers view responds with the correct content-type`, async () => {
+			const { server } = await setup();
+
+			const response = await server.inject({
+				method: 'GET',
+				url: '/korin/songs',
+				headers: {
+					accept,
+				},
+			});
+
+			expect(response.headers['content-type']).to.contain(accept);
+		});
 	});
 });
