@@ -1,24 +1,24 @@
 {
-  "name": "@iampeterbanjo/css",
-  "version": "1.0.0",
-  "description": "CSS theme for iampeterbanjo.com",
-  "main": "build/main.css",
-  "scripts": {
-    "build": "node-sass --omit-source-map-url ./sass/main.scss ./build/main.css",
-    "watch": "npm run build -- --watch",
-    "start": "npm run watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": {
-    "email": "peterbanjo@gmail.com",
-    "name": "Peter Banjo"
-  },
-  "license": "ISC",
-  "devDependencies": {
-    "node-sass": "^4.11.0"
-  },
-  "dependencies": {
-    "tachyons-sass": "^4.9.5"
-  }
+	"name": "@iampeterbanjo/css",
+	"version": "1.0.0",
+	"description": "CSS theme for iampeterbanjo.com",
+	"main": "build/main.css",
+	"scripts": {
+		"build": "node-sass --omit-source-map-url ./sass/main.scss ./build/main.css",
+		"dev": "npm run build -- --watch",
+		"start": "npm run watch",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": {
+		"email": "peterbanjo@gmail.com",
+		"name": "Peter Banjo"
+	},
+	"license": "ISC",
+	"devDependencies": {
+		"node-sass": "^4.11.0"
+	},
+	"dependencies": {
+		"tachyons-sass": "^4.9.5"
+	}
 }

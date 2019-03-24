@@ -1,0 +1,44 @@
+{
+	"name": "iampeterbanjo.com",
+	"version": "1.0.0",
+	"description": "Server for personal portfolio",
+	"main": "index.js",
+	"engines": {
+		"node": "^10"
+	},
+	"scripts": {
+		"clean": "rm -rf ./node_modules || exit 0",
+		"dev": "nodemon --watch . -x 'npm run start-debug'",
+		"start-debug": "node --inspect start.js",
+		"start": "node start.js"
+	},
+	"keywords": [
+		"personal",
+		"portfolio",
+		"hapi",
+		"server"
+	],
+	"author": {
+		"email": "me@iampeterbanjo.com",
+		"name": "Peter Banjo"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"acorn": "^6.1.1",
+		"ejs": "^2.6.1",
+		"good": "^8.1.2",
+		"good-console": "^7.1.0",
+		"good-squeeze": "^5.1.0",
+		"got": "^9.6.0",
+		"hapi": "18.x.x",
+		"inert": "^5.1.2",
+		"jsonata": "^1.6.4",
+		"lyricist": "^2.2.2",
+		"pug": "^2.0.3",
+		"vision": "^5.4.4",
+		"watson-developer-cloud": "^3.18.3"
+	},
+	"devDependencies": {
+		"nodemon": "^1.18.9"
+	}
+}
