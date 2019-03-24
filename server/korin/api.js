@@ -29,9 +29,17 @@ module.exports = {
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
-					console.log(typeof getMediaType);
-					// console.log(getMediaType(request.headers));
-					return await server.methods.getTopTracks({ getTopTracks, lastfmApi });
+					const acceptType = getMediaType(request.headers.accept);
+					const data = await server.methods.getTopTracks({
+						getTopTracks,
+						lastfmApi,
+					});
+					if (acceptType === 'text/html') {
+						const response = h.response('success');
+						response.type('text/html');
+						return response;
+					}
+					return data;
 				} catch (error) {
 					console.warn(error);
 				}
