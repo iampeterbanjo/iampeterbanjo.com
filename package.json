@@ -36,7 +36,7 @@
 		"setup": "npm run server-install && npm run css-install && npm run blog-install",
 		"start-debug": "node --inspect ./server/start.js",
 		"start": "node ./server/start.js",
-		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json -x 'npm run test'",
+		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json,html -x 'npm run test'",
 		"test": "cd ./server && npm run test"
 	},
 	"keywords": [

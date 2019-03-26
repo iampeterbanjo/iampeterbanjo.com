@@ -160,7 +160,7 @@ suite('getTopTracks', () => {
 	beforeEach(async ({ context }) => {
 		context.apiKey = apiKey;
 		context.baseUrl = baseUrl;
-		context.data = JSON.stringify(require('./fixtures/lastfm-topTracks.json'));
+		context.data = JSON.stringify(topTracks);
 
 		await nock(context.baseUrl)
 			.get('/')

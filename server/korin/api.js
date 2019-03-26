@@ -35,7 +35,7 @@ module.exports = {
 						lastfmApi,
 					});
 					if (acceptType === 'text/html') {
-						return h.view('index');
+						return server.render('index');
 					}
 					return data;
 				} catch (error) {
