@@ -27,7 +27,6 @@
 	"dependencies": {
 		"accept": "^3.1.3",
 		"acorn": "^6.1.1",
-		"ejs": "^2.6.1",
 		"good": "^8.1.2",
 		"good-console": "^7.1.0",
 		"good-squeeze": "^5.1.0",
@@ -37,7 +36,6 @@
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
 		"nunjucks": "^3.2.0",
-		"pug": "^2.0.3",
 		"vision": "^5.4.4",
 		"watson-developer-cloud": "^3.18.3"
 	},
