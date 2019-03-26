@@ -3,20 +3,22 @@ const { expect } = require('code');
 const { test, suite } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
 const readFile = require('fs-extra').readFile;
-const path = require('path');
+const getMediaType = require('accept').mediaType;
+
+const topTracks = require('./fixtures/lastfm-topTracks.json');
+const profile = require('./fixtures/personality-profile.json');
+
+const views = require('../../server/views');
+const korinApi = require('../../server/korin/api');
 
 const setup = async options => {
 	const server = new Hapi.Server();
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
-	const topTracks = require('./fixtures/lastfm-topTracks.json');
-	const profile = require('./fixtures/personality-profile.json');
 	const getLyrics = sinon.stub().resolves(lyrics);
 	const getPersonalityProfile = sinon.stub().resolves(profile);
 	const personalityProfileApi = sinon.stub();
 	const getTopTracks = sinon.stub().resolves(topTracks);
-	const getMediaType = require('accept').mediaType;
-	const templatesPath = path.join(__dirname, '../views/templates');
 	const defaults = {
 		getLyrics,
 		getTopTracks,
@@ -26,25 +28,14 @@ const setup = async options => {
 	};
 
 	await server.register({
-		plugin: require('../../server/korin/api'),
+		plugin: korinApi,
 		options: {
 			...defaults,
 			...options,
 		},
 	});
 
-	await server.register({
-		plugin: require('vision'),
-		options: {
-			engines: { ejs: require('ejs') },
-			path: templatesPath,
-		},
-	});
-
-	// await server.register({
-	// 	plugin: require('../../server/views'),
-	// 	options: { path: path.join(__dirname, '../views/templates') },
-	// });
+	await server.register(views);
 
 	return {
 		server,

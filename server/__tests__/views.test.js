@@ -19,11 +19,8 @@ suite('views', () => {
 	});
 
 	test('adds views function to server', async () => {
-		const path = `${__dirname}/templates`;
-		await server.register({
-			plugin: require('../../server/views'),
-			options: { path },
-		});
+		const views = require('../../server/views');
+		await server.register(views);
 
 		expect(typeof server.views).to.equal('function');
 	});

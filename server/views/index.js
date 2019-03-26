@@ -1,6 +1,12 @@
-const path = `${__dirname}/templates`;
+const path = require('path');
+const Vision = require('vision');
+const ejs = require('ejs');
+const templatesPath = path.join(__dirname, 'templates');
 
 module.exports = {
-	plugin: require('./plugin'),
-	options: { path },
+	plugin: Vision,
+	options: {
+		engines: { ejs },
+		path: templatesPath,
+	},
 };

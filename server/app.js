@@ -5,20 +5,12 @@ const statics = require('./statics');
 const korin = require('./korin');
 const good = require('./good');
 const views = require('./views');
-const Vision = require('vision');
 
 module.exports = async server => {
 	try {
 		// good needs to be first
 		// https://github.com/hapijs/oppsy/issues/17#issuecomment-430633689
 		await server.register(good);
-		await server.register({
-			plugin: Vision,
-			options: {
-				engines: { ejs: require('ejs') },
-				path: `./views/templates/`,
-			},
-		});
 		await server.register(views);
 		await server.register(Inert);
 		await server.register(statics);
