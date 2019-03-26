@@ -179,22 +179,3 @@ suite('getTopTracks', () => {
 		expect(result).to.equal(context.data);
 	});
 });
-
-suite('content negotiation', () => {
-	const assertions = ['text/html', 'application/json'];
-	assertions.forEach(accept => {
-		test(`given 'text/html' in headers view responds with the correct content-type`, async () => {
-			const { server } = await setup();
-
-			const response = await server.inject({
-				method: 'GET',
-				url: '/korin/songs',
-				headers: {
-					accept,
-				},
-			});
-
-			expect(response.headers['content-type']).to.contain(accept);
-		});
-	});
-});

@@ -5,11 +5,12 @@ module.exports = {
 	name: 'views',
 	version: '0.0.1',
 	register: async (server, { path }) => {
-		const config = {
-			engines: { ejs },
-			path,
-		};
-		await server.register(Vision);
-		server.views(config);
+		await server.register({
+			plugin: Vision,
+			options: {
+				engines: { ejs },
+				path,
+			},
+		});
 	},
 };
