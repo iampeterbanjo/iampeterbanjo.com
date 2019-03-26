@@ -1,4 +1,9 @@
 const Hapi = require('hapi');
+const sinon = require('sinon');
+const got = require('got');
+const Lyricist = require('lyricist');
+const jsonata = require('jsonata');
+const nock = require('nock');
 const { expect } = require('code');
 const {
 	test,
@@ -8,29 +13,28 @@ const {
 	beforeEach,
 	suite,
 } = (exports.lab = require('lab').script());
-const sinon = require('sinon');
-const got = require('got');
+const { readFile } = require('fs-extra');
+const { mediaType: getMediaType } = require('accept');
+
+const topTracks = require('./fixtures/lastfm-topTracks.json');
+const profile = require('./fixtures/personality-profile.json');
+const geniusSearch = require('./fixtures/genius-search.json');
+
 const {
 	getLyrics,
 	getTopTracks,
 	lyricsIdPath,
 } = require('../../server/korin/methods');
-const Lyricist = require('lyricist');
-const jsonata = require('jsonata');
-const nock = require('nock');
-const readFile = require('fs-extra').readFile;
+const korinApi = require('../../server/korin/api');
 
 const setup = async options => {
 	const server = new Hapi.Server();
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
-	const topTracks = require('./fixtures/lastfm-topTracks.json');
-	const profile = require('./fixtures/personality-profile.json');
 	const getLyrics = sinon.stub().resolves(lyrics);
 	const getPersonalityProfile = sinon.stub().resolves(profile);
 	const personalityProfileApi = sinon.stub();
 	const getTopTracks = sinon.stub().resolves(topTracks);
-	const getMediaType = require('accept').mediaType;
 
 	const defaults = {
 		getLyrics,
@@ -41,7 +45,7 @@ const setup = async options => {
 	};
 
 	await server.register({
-		plugin: require('../../server/korin/api'),
+		plugin: korinApi,
 		options: {
 			...defaults,
 			...options,
@@ -101,7 +105,7 @@ suite('getLyrics', () => {
 	const lyricist = new Lyricist(`FAKE-TOKEN`);
 
 	before(async ({ context }) => {
-		context.data = require('./fixtures/genius-search.json');
+		context.data = geniusSearch;
 		context.lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 
 		sinon.stub(geniusApi, 'get').resolves({ body: context.data });

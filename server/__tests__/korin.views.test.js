@@ -1,9 +1,9 @@
 const Hapi = require('hapi');
-const { expect } = require('code');
-const { test, suite } = (exports.lab = require('lab').script());
 const sinon = require('sinon');
-const readFile = require('fs-extra').readFile;
-const getMediaType = require('accept').mediaType;
+const { expect } = require('code');
+const { readFile } = require('fs-extra');
+const { mediaType: getMediaType } = require('accept');
+const { test, suite } = (exports.lab = require('lab').script());
 
 const topTracks = require('./fixtures/lastfm-topTracks.json');
 const profile = require('./fixtures/personality-profile.json');
@@ -66,7 +66,7 @@ suite('content negotiation', () => {
 });
 
 suite('render content', () => {
-	test.skip(`given text/html page should respond with header and footer`, async () => {
+	test(`given text/html page should respond with header and footer`, async () => {
 		const { server } = await setup();
 		const { payload } = await server.inject({
 			method: 'GET',
