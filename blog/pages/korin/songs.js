@@ -12,7 +12,7 @@ module.exports = ({ createPage, songPage }) => {
 		path: `/korin/songs`,
 		component: songPage,
 		context: {
-			test: 'yippey kay yeah',
+			test: 'yippey',
 			seo: {
 				title: 'Korin: top 40 lastfm songs',
 				description: 'Personality profile of top 40 songs',
