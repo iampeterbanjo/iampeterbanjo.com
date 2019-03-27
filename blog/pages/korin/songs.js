@@ -5,14 +5,14 @@ const client = got.extend({
 	json: true,
 });
 
-module.exports = ({ createPage, songPage }) => {
-	// const { body: songs } = await client.get(`/korin/songs`);
+module.exports = async ({ createPage, songPage }) => {
+	const { body: data = {} } = await client.get(`/korin/songs`);
 
 	createPage({
 		path: `/korin/songs`,
 		component: songPage,
 		context: {
-			test: 'yippey',
+			data,
 			seo: {
 				title: 'Korin: top 40 lastfm songs',
 				description: 'Personality profile of top 40 songs',
