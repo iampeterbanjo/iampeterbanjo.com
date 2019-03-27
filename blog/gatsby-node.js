@@ -1,12 +1,15 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const posts = require('./pages/posts');
+const songs = require('./pages/korin/songs');
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
-	const blogPost = path.resolve(`./src/templates/blog-post.js`);
+	const blogPage = path.resolve(`./src/templates/blog-post.js`);
+	const songPage = path.resolve(`./src/pages/korin/songs.js`);
 
-	posts({ createPage, blogPost, graphql });
+	await posts({ createPage, blogPage, graphql });
+	await songs({ createPage, songPage });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

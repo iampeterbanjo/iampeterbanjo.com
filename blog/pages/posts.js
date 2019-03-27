@@ -1,4 +1,4 @@
-module.exports = async ({ createPage, blogPost, graphql }) => {
+module.exports = async ({ createPage, blogPage, graphql }) => {
 	const result = await graphql(
 		`
 			{
@@ -34,7 +34,7 @@ module.exports = async ({ createPage, blogPost, graphql }) => {
 
 		createPage({
 			path: post.node.fields.slug,
-			component: blogPost,
+			component: blogPage,
 			context: {
 				slug: post.node.fields.slug,
 				previous,
