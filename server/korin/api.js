@@ -11,7 +11,6 @@ module.exports = {
 			getTopTracks,
 			getPersonalityProfile,
 			personalityProfileApi,
-			getMediaType,
 		}
 	) => {
 		if (getTopTracks) {
@@ -29,14 +28,11 @@ module.exports = {
 			method: 'GET',
 			handler: async (request, h) => {
 				try {
-					const acceptType = getMediaType(request.headers.accept);
 					const data = await server.methods.getTopTracks({
 						getTopTracks,
 						lastfmApi,
 					});
-					if (acceptType === 'text/html') {
-						return server.render('index');
-					}
+
 					return data;
 				} catch (error) {
 					console.warn(error);
