@@ -26,6 +26,8 @@
 	"license": "ISC",
 	"dependencies": {
 		"acorn": "^6.1.1",
+		"catbox": "^10.0.6",
+		"catbox-mongodb": "^4.2.1",
 		"good": "^8.1.2",
 		"good-console": "^7.1.0",
 		"good-squeeze": "^5.1.0",
