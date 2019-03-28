@@ -14,7 +14,6 @@ const {
 	suite,
 } = (exports.lab = require('lab').script());
 const { readFile } = require('fs-extra');
-const { mediaType: getMediaType } = require('accept');
 
 const topTracks = require('./fixtures/lastfm-topTracks.json');
 const profile = require('./fixtures/personality-profile.json');
@@ -40,7 +39,6 @@ const setup = async options => {
 		getLyrics,
 		getTopTracks,
 		getPersonalityProfile,
-		getMediaType,
 		personalityProfileApi,
 	};
 
