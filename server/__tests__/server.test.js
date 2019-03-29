@@ -3,6 +3,8 @@ const { expect } = require('code');
 const { test, suite, before } = (exports.lab = require('lab').script());
 const R = require('ramda');
 const { options } = require('../index');
+const { PORT, MONGODB_ADDON_URI } = process.env;
+
 const Server = () => Hapi.server(options);
 
 suite('cache', () => {
@@ -20,7 +22,7 @@ suite('cache', () => {
 	test(`mongodb-cache connection`, ({ context }) => {
 		const { uri } = R.path(['provider', 'options'], context.provisioned);
 
-		expect(uri).to.equal(process.env.MONGODB_URI);
+		expect(uri).to.equal(MONGODB_ADDON_URI);
 	});
 });
 
@@ -30,7 +32,7 @@ suite('info', () => {
 	});
 
 	test(`port value`, ({ context }) => {
-		expect(context.server.info.port).to.equal(Number(process.env.PORT));
+		expect(context.server.info.port).to.equal(Number(PORT));
 	});
 
 	test(`host value`, ({ context }) => {
