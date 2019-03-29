@@ -1,5 +1,5 @@
 const path = require('path');
-const { PORT, MONGODB_ADDON_URI } = process.env;
+const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 
 module.exports = {
 	rootPath: path.join(__dirname, '../blog/public/'),
@@ -18,7 +18,7 @@ module.exports = {
 					constructor: require('catbox-mongodb'),
 					options: {
 						uri: MONGODB_ADDON_URI,
-						partition: 'cache',
+						partition: MONGODB_ADDON_DB,
 					},
 				},
 			},
