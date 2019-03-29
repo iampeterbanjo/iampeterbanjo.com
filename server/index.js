@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
 	rootPath: path.join(__dirname, '../blog/public/'),
@@ -10,5 +10,17 @@ module.exports = {
 				relativeTo: __dirname,
 			},
 		},
+		cache: [
+			{
+				name: 'mongodb-cache',
+				provider: {
+					constructor: require('catbox-mongodb'),
+					options: {
+						uri: 'your-mongodb-uri',
+						partition: 'cache',
+					},
+				},
+			},
+		],
 	},
-}
+};
