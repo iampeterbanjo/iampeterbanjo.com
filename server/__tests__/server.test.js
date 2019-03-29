@@ -23,3 +23,17 @@ suite('cache', () => {
 		expect(uri).to.equal(process.env.MONGODB_URI);
 	});
 });
+
+suite('info', () => {
+	before(({ context }) => {
+		context.server = Server();
+	});
+
+	test(`port value`, ({ context }) => {
+		expect(context.server.info.port).to.equal(Number(process.env.PORT));
+	});
+
+	test(`host value`, ({ context }) => {
+		expect(context.server.info.host).to.equal(`0.0.0.0`);
+	});
+});
