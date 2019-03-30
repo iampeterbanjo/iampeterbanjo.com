@@ -10,7 +10,7 @@ beforeEach(async () => {
 	await server.register(Inert);
 });
 
-test('/ rootPath is served', async () => {
+test.skip('/ rootPath is served', async () => {
 	await server.register({
 		plugin: require('../../server/statics'),
 		options: { rootPath },
