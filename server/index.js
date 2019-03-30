@@ -21,8 +21,9 @@ const options = {
 		},
 	],
 };
+const rootPath = path.join(__dirname, '../blog/public/');
 
 module.exports = {
-	rootPath: path.join(__dirname, '../blog/public/'),
+	rootPath,
 	options,
 };
