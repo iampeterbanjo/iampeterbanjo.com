@@ -1,5 +1,5 @@
 {
-	"name": "iampeterbanjo.com",
+	"name": "@iampeterbanjo/server",
 	"version": "1.0.0",
 	"description": "Server for personal portfolio",
 	"main": "index.js",
@@ -28,6 +28,7 @@
 		"acorn": "^6.1.1",
 		"catbox": "^10.0.6",
 		"catbox-mongodb": "^4.2.1",
+		"glue": "^6.0.0",
 		"good": "^8.1.2",
 		"good-console": "^7.1.0",
 		"good-squeeze": "^5.1.0",

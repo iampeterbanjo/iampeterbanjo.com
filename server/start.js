@@ -1,11 +1,8 @@
-const Hapi = require('hapi');
-const app = require('.');
+const { api } = require('.');
 
 (async () => {
 	try {
-		let server = Hapi.server(app.options);
-
-		await require('./app')(server);
+		const server = await api();
 		await server.start();
 
 		console.log(`Server running at: ${server.info.uri}`);

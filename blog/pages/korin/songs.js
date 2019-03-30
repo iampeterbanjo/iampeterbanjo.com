@@ -1,12 +1,11 @@
-const got = require('got');
-const { PORT } = process.env;
-const client = got.extend({
-	baseUrl: `http://0.0.0.0:${PORT}`,
-	json: true,
-});
+const { api } = require('@iampeterbanjo/server');
 
 module.exports = async ({ createPage, songPage }) => {
-	const { body: data = {} } = await client.get(`/korin/songs`);
+	const server = await api();
+	const { result: data = {} } = await server.inject({
+		method: 'GET',
+		url: '/korin/songs',
+	});
 
 	createPage({
 		path: `/korin/songs`,
