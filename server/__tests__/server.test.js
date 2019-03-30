@@ -2,15 +2,16 @@ const Hapi = require('hapi');
 const { expect } = require('code');
 const { test, suite, before } = (exports.lab = require('lab').script());
 const R = require('ramda');
-const { options } = require('../index');
+const { api } = require('..');
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 
-const Server = () => Hapi.server(options);
+const Server = async () => await api();
 
 suite('cache', () => {
-	before(({ context }) => {
+	before(async ({ context }) => {
 		const path = ['settings', 'cache', 0];
-		context.provisioned = R.path(path, Server());
+		const server = await Server();
+		context.provisioned = R.path(path, server);
 	});
 
 	test('mongodb-cache is provisioned', async ({ context }) => {
@@ -31,8 +32,8 @@ suite('cache', () => {
 });
 
 suite('info', () => {
-	before(({ context }) => {
-		context.server = Server();
+	before(async ({ context }) => {
+		context.server = await Server();
 	});
 
 	test(`port value`, ({ context }) => {
