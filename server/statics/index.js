@@ -1,6 +1,6 @@
-const { rootPath } = require('..')
+const { rootPath } = require('..');
 
 module.exports = {
-	plugin: require('./statics'),
+	plugin: require('./plugin'),
 	options: { rootPath },
-}
+};
