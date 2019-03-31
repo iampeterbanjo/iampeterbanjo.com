@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-import 'css/build/main.css'
-import Nav from '../components/nav'
-import Header from './header'
-import Footer from './footer'
+import 'css/build/main.css';
+
+import Header from './header';
+import Footer from './footer';
+
+import Nav from '../components/nav';
 
 class Layout extends React.Component {
 	render() {
-		const { children } = this.props
+		const { children } = this.props;
 
 		return (
 			<div className="w-100 sans-serif black bg-lightest-blue">
@@ -19,8 +21,8 @@ class Layout extends React.Component {
 
 				<Footer />
 			</div>
-		)
+		);
 	}
 }
 
-export default Layout
+export default Layout;

@@ -1,5 +1,5 @@
 {
-	"name": "@iampeterbanjo/server",
+	"name": "server",
 	"version": "1.0.0",
 	"description": "Server for personal portfolio",
 	"main": "index.js",
