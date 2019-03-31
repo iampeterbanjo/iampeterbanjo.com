@@ -1,5 +1,5 @@
 {
-	"name": "iampeterbanjo.com",
+	"name": "site",
 	"version": "1.0.0",
 	"description": "Personal portfolio",
 	"main": "index.js",
@@ -49,6 +49,12 @@
 		"name": "Peter Banjo"
 	},
 	"license": "ISC",
+	"private": true,
+	"workspaces": [
+		"css",
+		"blog",
+		"server"
+	],
 	"dependencies": {
 		"acorn": "^6.1.1",
 		"ejs": "^2.6.1",

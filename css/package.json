@@ -1,5 +1,5 @@
 {
-	"name": "@iampeterbanjo/css",
+	"name": "css",
 	"version": "1.0.0",
 	"description": "CSS theme for iampeterbanjo.com",
 	"main": "build/main.css",

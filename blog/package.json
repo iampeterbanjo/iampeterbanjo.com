@@ -1,5 +1,5 @@
 {
-	"name": "iampeterbanjo-blog",
+	"name": "blog",
 	"private": true,
 	"description": "Personal blog by Gatsby and Markdown",
 	"version": "0.1.0",
@@ -8,9 +8,9 @@
 		"name": "Peter Banjo"
 	},
 	"dependencies": {
-		"@iampeterbanjo/server": "file:../server",
+		"css": "1.0.0",
+		"server": "1.0.0",
 		"classnames": "^2.2.6",
-		"css": "file:../css",
 		"feather-icons": "^4.17.0",
 		"gatsby": "^2.3.3",
 		"gatsby-image": "^2.0.29",

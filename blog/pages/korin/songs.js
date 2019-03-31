@@ -1,4 +1,4 @@
-const { api } = require('@iampeterbanjo/server');
+const { api } = require('server');
 
 module.exports = async ({ createPage, songPage }) => {
 	const server = await api();
