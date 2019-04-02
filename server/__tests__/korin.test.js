@@ -189,6 +189,5 @@ suite('getTopTracks', () => {
 suite('cache policy', () => {
 	test(`cache staleness is expected`, async () => {
 		const { server } = await setup();
-		console.log(server.settings.cache);
 	});
 });
