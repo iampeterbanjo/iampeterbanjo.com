@@ -1,6 +1,8 @@
 const got = require('got');
 const Lyricist = require('lyricist');
 const util = require('util');
+
+const { urls } = require('..');
 const { getLyrics, getTopTracks, getPersonalityProfile } = require('./methods');
 
 const {
@@ -40,6 +42,7 @@ const personalityProfileApi = util.promisify(personalityInsights.profile);
 module.exports = {
 	plugin: require('./api'),
 	options: {
+		urls,
 		lastfmApi,
 		geniusApi,
 		lyricist,

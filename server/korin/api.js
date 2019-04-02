@@ -6,6 +6,7 @@ module.exports = {
 	register: (
 		server,
 		{
+			urls,
 			geniusApi,
 			lyricist,
 			getLyrics,
@@ -71,9 +72,10 @@ module.exports = {
 			},
 		});
 
+		const { path, method } = urls['korin.get.profile']();
 		server.route({
-			path: '/korin/profile/{artist}/{song}',
-			method: 'GET',
+			path,
+			method,
 			handler: async (request, h) => {
 				try {
 					const { artist, song } = request.params;

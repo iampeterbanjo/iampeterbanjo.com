@@ -17,6 +17,7 @@ const { readFile } = require('fs-extra');
 const Glue = require('glue');
 
 const { manifest } = require('../config');
+const { urls } = require('..');
 
 const topTracks = require('./fixtures/lastfm-topTracks.json');
 const profile = require('./fixtures/personality-profile.json');
@@ -40,6 +41,7 @@ const setup = async options => {
 	const getTopTracks = sinon.stub().resolves(topTracks);
 
 	const defaults = {
+		urls,
 		getLyrics,
 		getTopTracks,
 		getPersonalityProfile,
@@ -66,9 +68,13 @@ const setup = async options => {
 suite('korin/profile/{artist}/{song}', () => {
 	test('api returns profile', async () => {
 		const { server, profile } = await setup();
+		const { url, method } = urls['korin.get.profile'](
+			'Kendrik Lamar',
+			'Humble'
+		);
 		const { result } = await server.inject({
-			method: 'GET',
-			url: '/korin/profile/Kendrik Lamar/Humble',
+			method,
+			url,
 		});
 
 		expect(result).to.equal(profile);
@@ -81,9 +87,13 @@ suite('korin/profile/{artist}/{song}', () => {
 			personalityProfileApi,
 			getPersonalityProfile,
 		} = await setup();
+		const { url, method } = urls['korin.get.profile'](
+			'Kendrik Lamar',
+			'Humble'
+		);
 		await server.inject({
-			method: 'GET',
-			url: '/korin/profile/Kendrik Lamar/Humble',
+			method,
+			url,
 		});
 
 		const [first] = getPersonalityProfile.args[0];
