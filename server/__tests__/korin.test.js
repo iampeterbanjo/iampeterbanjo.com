@@ -14,6 +14,9 @@ const {
 	suite,
 } = (exports.lab = require('lab').script());
 const { readFile } = require('fs-extra');
+const Glue = require('glue');
+
+const { manifest } = require('../config');
 
 const topTracks = require('./fixtures/lastfm-topTracks.json');
 const profile = require('./fixtures/personality-profile.json');
@@ -27,7 +30,8 @@ const {
 const korinApi = require('../../server/korin/api');
 
 const setup = async options => {
-	const server = new Hapi.Server();
+	const { register, ...rest } = manifest;
+	const server = await Glue.compose(rest);
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 	const getLyrics = sinon.stub().resolves(lyrics);
@@ -179,5 +183,12 @@ suite('getTopTracks', () => {
 		const result = await getTopTracks({ lastfmApi });
 
 		expect(result).to.equal(context.data);
+	});
+});
+
+suite('cache policy', () => {
+	test(`cache staleness is expected`, async () => {
+		const { server } = await setup();
+		console.log(server.settings.cache);
 	});
 });

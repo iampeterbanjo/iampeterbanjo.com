@@ -1,3 +1,5 @@
+const Crypto = require('crypto');
+
 module.exports = {
 	name: 'korin-api',
 	version: '0.0.1',
@@ -13,14 +15,43 @@ module.exports = {
 			personalityProfileApi,
 		}
 	) => {
+		// resolve all requests in 100ms
+		// and expire in an hour
+		const cache = {
+			expiresIn: 60 * 60 * 1000,
+			staleIn: 10 * 1000,
+			staleTimeout: 100,
+			generateTimeout: 10 * 1000,
+			cache: 'mongodb-cache',
+		};
+
 		if (getTopTracks) {
-			server.method('getTopTracks', getTopTracks);
+			server.method('getTopTracks', getTopTracks, {
+				cache,
+				generateKey: () => 'getTopTracks',
+			});
 		}
+
 		if (getLyrics) {
-			server.method('getLyrics', getLyrics);
+			server.method('getLyrics', getLyrics, {
+				cache,
+				generateKey: ({ geniusApi, lyricist }, searchString) => {
+					return Crypto.createHash('sha1')
+						.update(searchString)
+						.digest('hex');
+				},
+			});
 		}
+
 		if (getPersonalityProfile) {
-			server.method('getPersonalityProfile', getPersonalityProfile);
+			server.method('getPersonalityProfile', getPersonalityProfile, {
+				cache,
+				generateKey: ({ personalityProfileApi, lyrics }) => {
+					return Crypto.createHash('sha1')
+						.update(lyrics)
+						.digest('hex');
+				},
+			});
 		}
 
 		server.route({
@@ -50,6 +81,7 @@ module.exports = {
 						{ geniusApi, lyricist },
 						`${artist} ${song}`
 					);
+
 					return await server.methods.getPersonalityProfile({
 						personalityProfileApi,
 						lyrics,
