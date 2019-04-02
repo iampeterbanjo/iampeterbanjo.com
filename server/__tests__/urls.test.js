@@ -3,18 +3,21 @@ const { test, suite } = (exports.lab = require('lab').script());
 const { urls } = require('..');
 
 suite('korin api', () => {
-	[
-		{
-			path: 'korin.get.songs',
-			result: {
-				method: 'GET',
-				url: '/api/korin/songs',
-			},
-		},
-	].forEach(({ path, result }) => {
-		test(`when ${path} expected ${JSON.stringify(result)}`, () => {
-			const hope = urls[path]();
-			expect(hope).to.equal(result);
+	test(`when requesting tracks`, () => {
+		const hope = urls['korin.get.songs']();
+		expect(hope).to.equal({
+			method: 'GET',
+			url: '/api/korin/songs',
+		});
+	});
+
+	test(`when requesting artist profile`, () => {
+		const artist = 'Sofia Reyes';
+		const track = 'R.I.P';
+		const hope = urls['korin.get.profile'](artist, track);
+		expect(hope).to.equal({
+			method: 'GET',
+			url: `/api/korin/profile/${artist}/${track}`,
 		});
 	});
 });
