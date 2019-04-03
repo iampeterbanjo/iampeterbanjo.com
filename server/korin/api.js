@@ -6,7 +6,7 @@ module.exports = {
 	register: (
 		server,
 		{
-			urls,
+			routes,
 			geniusApi,
 			lyricist,
 			getLyrics,
@@ -55,7 +55,7 @@ module.exports = {
 			});
 		}
 
-		const getTracksRoute = urls['korin.get.songs']();
+		const getTracksRoute = routes['korin.get.songs']();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
@@ -73,7 +73,7 @@ module.exports = {
 			},
 		});
 
-		const getProfileRoute = urls['korin.get.profile']();
+		const getProfileRoute = routes['korin.get.profile']();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,

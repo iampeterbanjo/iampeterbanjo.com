@@ -1,10 +1,11 @@
 const { expect } = require('code');
 const { test, suite } = (exports.lab = require('lab').script());
-const { urls } = require('..');
+const { routes } = require('..');
 
 suite('korin api', () => {
 	test(`when requesting tracks`, () => {
-		const hope = urls['korin.get.songs']();
+		const hope = routes['korin.get.songs']();
+
 		expect(hope).to.equal({
 			method: 'GET',
 			path: '/api/korin/songs',
@@ -15,7 +16,8 @@ suite('korin api', () => {
 	test(`when requesting artist profile`, () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
-		const hope = urls['korin.get.profile']({ artist, track });
+		const hope = routes['korin.get.profile']({ artist, track });
+
 		expect(hope).to.equal({
 			method: 'GET',
 			path: `/api/korin/profile/{artist}/{track}`,

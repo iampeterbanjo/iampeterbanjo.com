@@ -1,7 +1,7 @@
 const api = require('./api');
-const urls = require('./urls');
+const routes = require('./routes');
 
 module.exports = {
 	api,
-	urls,
+	routes,
 };

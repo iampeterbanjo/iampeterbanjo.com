@@ -1,4 +1,4 @@
-const urls = {
+const routes = {
 	'korin.get.songs': () => ({
 		method: 'GET',
 		path: '/api/korin/songs',
@@ -14,4 +14,4 @@ const urls = {
 	},
 };
 
-module.exports = urls;
+module.exports = routes;
