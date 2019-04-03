@@ -8,9 +8,8 @@
 		"name": "Peter Banjo"
 	},
 	"dependencies": {
-		"css": "1.0.0",
-		"server": "1.0.0",
 		"classnames": "^2.2.6",
+		"css": "1.0.0",
 		"feather-icons": "^4.17.0",
 		"gatsby": "^2.3.3",
 		"gatsby-image": "^2.0.29",
@@ -36,7 +35,9 @@
 		"react": "^16.8.2",
 		"react-dom": "^16.8.2",
 		"react-helmet": "^5.2.0",
-		"react-typography": "^0.16.18"
+		"react-typography": "^0.16.18",
+		"rimraf": "^2.6.3",
+		"server": "1.0.0"
 	},
 	"keywords": [
 		"portfolio",
@@ -46,7 +47,8 @@
 	"license": "MIT",
 	"main": "n/a",
 	"scripts": {
-		"build": "gatsby build",
+		"build": "yarn clean-build && gatsby build",
+		"clean-build": "rimraf ./public",
 		"dev": "npm-run-all -p api-watch src-watch",
 		"api-watch": "nodemon --ignore public -x js,jsx,json -x 'npm run build && npm run start'",
 		"pwa": "lighthouse-ci http://0.0.0.0:8000",

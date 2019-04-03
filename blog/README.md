@@ -18,6 +18,7 @@ This uses Gatsby to [programmatically create static pages][4] from JSON APIs.
 
 ## Notes
 
+- During develompent make sure to use localhost and NOT 0.0.0.0 to enable service workers.
 - Workbox caches pages using [service workers][3] so during development multiple page refreshes may be required.
 
 [1]: http://localhost:8000
