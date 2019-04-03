@@ -55,9 +55,10 @@ module.exports = {
 			});
 		}
 
+		const getTracksRoute = urls['korin.get.songs']();
 		server.route({
-			path: '/korin/songs',
-			method: 'GET',
+			path: getTracksRoute.path,
+			method: getTracksRoute.method,
 			handler: async (request, h) => {
 				try {
 					const data = await server.methods.getTopTracks({
@@ -72,10 +73,10 @@ module.exports = {
 			},
 		});
 
-		const { path, method } = urls['korin.get.profile']();
+		const getProfileRoute = urls['korin.get.profile']();
 		server.route({
-			path,
-			method,
+			path: getProfileRoute.path,
+			method: getProfileRoute.method,
 			handler: async (request, h) => {
 				try {
 					const { artist, song } = request.params;

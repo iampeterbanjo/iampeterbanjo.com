@@ -104,10 +104,9 @@ suite('korin/profile/{artist}/{song}', () => {
 suite('korin/songs', () => {
 	test('api request returns expected response', async ({ context }) => {
 		const { server, topTracks } = await setup();
-		const { result } = await server.inject({
-			method: 'GET',
-			url: '/korin/songs',
-		});
+		const { method, url } = urls['korin.get.songs']();
+		const { result } = await server.inject({ method, url });
+
 		expect(result).to.equal(topTracks);
 	});
 });
@@ -193,11 +192,5 @@ suite('getTopTracks', () => {
 		const result = await getTopTracks({ lastfmApi });
 
 		expect(result).to.equal(context.data);
-	});
-});
-
-suite('cache policy', () => {
-	test(`cache staleness is expected`, async () => {
-		const { server } = await setup();
 	});
 });
