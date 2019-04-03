@@ -104,7 +104,7 @@ suite('korin/profile/{artist}/{song}', () => {
 suite('korin/songs', () => {
 	test('api request returns expected response', async ({ context }) => {
 		const { server, topTracks } = await setup();
-		const { method, url } = routes['korin.get.songs']();
+		const { method, url } = routes['korin.get.tracks']();
 		const { result } = await server.inject({ method, url });
 
 		expect(result).to.equal(topTracks);

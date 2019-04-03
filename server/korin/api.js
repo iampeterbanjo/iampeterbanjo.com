@@ -55,7 +55,7 @@ module.exports = {
 			});
 		}
 
-		const getTracksRoute = routes['korin.get.songs']();
+		const getTracksRoute = routes['korin.get.tracks']();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,

@@ -4,12 +4,12 @@ const { routes } = require('..');
 
 suite('korin api', () => {
 	test(`when requesting tracks`, () => {
-		const hope = routes['korin.get.songs']();
+		const hope = routes['korin.get.tracks']();
 
 		expect(hope).to.equal({
 			method: 'GET',
-			path: '/api/korin/songs',
-			url: '/api/korin/songs',
+			path: '/api/korin/tracks',
+			url: '/api/korin/tracks',
 		});
 	});
 

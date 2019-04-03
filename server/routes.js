@@ -1,8 +1,8 @@
 const routes = {
-	'korin.get.songs': () => ({
+	'korin.get.tracks': () => ({
 		method: 'GET',
-		path: '/api/korin/songs',
-		url: '/api/korin/songs',
+		path: '/api/korin/tracks',
+		url: '/api/korin/tracks',
 	}),
 	'korin.get.profile': (options = {}) => {
 		const { artist, track } = options;
