@@ -1,13 +1,13 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Image from 'gatsby-image';
 
 function BioMini() {
-	return <StaticQuery query={bioQuery} render={avatar} />
+	return <StaticQuery query={bioQuery} render={avatar} />;
 }
 
 const avatar = data => {
-	const { author, social } = data.site.siteMetadata
+	const { author, social } = data.site.siteMetadata;
 
 	return (
 		<article className="cf mw9 center flex items-center mt5">
@@ -29,8 +29,8 @@ const avatar = data => {
 				</p>
 			</div>
 		</article>
-	)
-}
+	);
+};
 
 const bioQuery = graphql`
 	query BioMiniQuery {
@@ -46,10 +46,11 @@ const bioQuery = graphql`
 				author
 				social {
 					twitter
+					github
 				}
 			}
 		}
 	}
-`
+`;
 
-export default BioMini
+export default BioMini;

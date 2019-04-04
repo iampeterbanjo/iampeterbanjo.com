@@ -1,14 +1,14 @@
-import React from 'react'
-import Nav from './nav'
-import feather from 'feather-icons'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import Nav from './nav';
+import feather from 'feather-icons';
+import { StaticQuery, graphql } from 'gatsby';
 
 export default function Footer() {
-	return <StaticQuery query={footerQuery} render={content} />
+	return <StaticQuery query={footerQuery} render={content} />;
 }
 
 const content = data => {
-	const { author, social } = data.site.siteMetadata
+	const { author, social } = data.site.siteMetadata;
 
 	return (
 		<footer className="bg-white ph3 ph5-ns pv3 pv5-ns bt b--black-10">
@@ -57,8 +57,8 @@ const content = data => {
 				</p>
 			</div>
 		</footer>
-	)
-}
+	);
+};
 
 const footerQuery = graphql`
 	query FooterQuery {
@@ -67,8 +67,9 @@ const footerQuery = graphql`
 				author
 				social {
 					twitter
+					github
 				}
 			}
 		}
 	}
-`
+`;
