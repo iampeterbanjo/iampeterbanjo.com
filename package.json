@@ -53,33 +53,5 @@
 		"css",
 		"blog",
 		"server"
-	],
-	"dependencies": {
-		"acorn": "^6.1.1",
-		"cypress": "^3.2.0",
-		"ejs": "^2.6.1",
-		"good": "^8.1.2",
-		"good-console": "^7.1.0",
-		"good-squeeze": "^5.1.0",
-		"got": "^9.6.0",
-		"hapi": "18.x.x",
-		"inert": "^5.1.2",
-		"jsonata": "^1.6.4",
-		"lyricist": "^2.2.2",
-		"pug": "^2.0.3",
-		"rimraf": "^2.6.3",
-		"vision": "^5.4.4",
-		"watson-developer-cloud": "^3.18.3"
-	},
-	"devDependencies": {
-		"code": "^5.2.4",
-		"ejs-lint": "^0.3.0",
-		"fs-extra": "^7.0.1",
-		"lab": "^18.0.2",
-		"nock": "^10.0.6",
-		"nodemon": "^1.18.9",
-		"npm-run-all": "^4.1.5",
-		"prettier": "1.16.4",
-		"sinon": "^7.2.6"
-	}
+	]
 }
