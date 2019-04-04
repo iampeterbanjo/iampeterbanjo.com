@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import classNames from 'classnames'
+import classNames from 'classnames';
+import slugs from '../../pages/slugs';
 
 export default function Nav(props) {
 	return (
@@ -12,15 +13,17 @@ export default function Nav(props) {
 			role="navigation"
 			aria-label="main navigation"
 		>
-			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href="/">
+			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs['home']}>
 				Home
 			</a>
-			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href="/list">
+			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs['blog.posts']}>
 				Blog
 			</a>
-			<span className="f6 fw6 mr2 mr3-m mr4-l dib">Projects</span>
+			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs['korin.tracks']}>
+				Projects
+			</a>
 			<span className="f6 fw6 mr2 mr3-m mr4-l dib">About</span>
 			<span className="f6 fw6 mr2 mr3-m mr4-l dib">Credits</span>
 		</nav>
-	)
+	);
 }

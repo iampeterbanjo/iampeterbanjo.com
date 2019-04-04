@@ -14,6 +14,10 @@ const {
 	suite,
 } = (exports.lab = require('lab').script());
 const { readFile } = require('fs-extra');
+const Glue = require('glue');
+
+const { manifest } = require('../config');
+const { routes } = require('..');
 
 const topTracks = require('./fixtures/lastfm-topTracks.json');
 const profile = require('./fixtures/personality-profile.json');
@@ -27,7 +31,8 @@ const {
 const korinApi = require('../../server/korin/api');
 
 const setup = async options => {
-	const server = new Hapi.Server();
+	const { register, ...rest } = manifest;
+	const server = await Glue.compose(rest);
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 	const getLyrics = sinon.stub().resolves(lyrics);
@@ -36,6 +41,7 @@ const setup = async options => {
 	const getTopTracks = sinon.stub().resolves(topTracks);
 
 	const defaults = {
+		routes,
 		getLyrics,
 		getTopTracks,
 		getPersonalityProfile,
@@ -62,9 +68,13 @@ const setup = async options => {
 suite('korin/profile/{artist}/{song}', () => {
 	test('api returns profile', async () => {
 		const { server, profile } = await setup();
+		const { url, method } = routes['korin.get.profile'](
+			'Kendrik Lamar',
+			'Humble'
+		);
 		const { result } = await server.inject({
-			method: 'GET',
-			url: '/korin/profile/Kendrik Lamar/Humble',
+			method,
+			url,
 		});
 
 		expect(result).to.equal(profile);
@@ -77,9 +87,13 @@ suite('korin/profile/{artist}/{song}', () => {
 			personalityProfileApi,
 			getPersonalityProfile,
 		} = await setup();
+		const { url, method } = routes['korin.get.profile'](
+			'Kendrik Lamar',
+			'Humble'
+		);
 		await server.inject({
-			method: 'GET',
-			url: '/korin/profile/Kendrik Lamar/Humble',
+			method,
+			url,
 		});
 
 		const [first] = getPersonalityProfile.args[0];
@@ -90,10 +104,9 @@ suite('korin/profile/{artist}/{song}', () => {
 suite('korin/songs', () => {
 	test('api request returns expected response', async ({ context }) => {
 		const { server, topTracks } = await setup();
-		const { result } = await server.inject({
-			method: 'GET',
-			url: '/korin/songs',
-		});
+		const { method, url } = routes['korin.get.tracks']();
+		const { result } = await server.inject({ method, url });
+
 		expect(result).to.equal(topTracks);
 	});
 });
