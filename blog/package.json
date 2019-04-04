@@ -27,9 +27,6 @@
 		"gatsby-source-filesystem": "^2.0.28",
 		"gatsby-transformer-remark": "^2.2.5",
 		"gatsby-transformer-sharp": "^2.1.13",
-		"lighthouse-ci": "^1.4.1",
-		"nodemon": "^1.18.10",
-		"npm-run-all": "^4.1.5",
 		"prismjs": "^1.15.0",
 		"ramda": "^0.26.1",
 		"react": "^16.8.2",
@@ -38,6 +35,11 @@
 		"react-typography": "^0.16.18",
 		"rimraf": "^2.6.3",
 		"server": "1.0.0"
+	},
+	"devDependencies": {
+		"lighthouse-ci": "^1.4.1",
+		"nodemon": "^1.18.10",
+		"npm-run-all": "^4.1.5"
 	},
 	"keywords": [
 		"portfolio",

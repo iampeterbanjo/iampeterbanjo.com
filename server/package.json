@@ -37,7 +37,6 @@
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
-		"nunjucks": "^3.2.0",
 		"ramda": "^0.26.1",
 		"vision": "^5.4.4",
 		"watson-developer-cloud": "^3.18.3"
