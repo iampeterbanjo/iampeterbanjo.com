@@ -36,7 +36,7 @@
 		"start-debug": "node --inspect ./server/start.js",
 		"start": "node ./server/start.js",
 		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json,html -x 'npm run test'",
-		"test": "yarn server test"
+		"test": "yarn server test && yarn e2e test"
 	},
 	"keywords": [
 		"personal",
