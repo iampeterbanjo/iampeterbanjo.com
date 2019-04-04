@@ -17,19 +17,22 @@
 		"build": "yarn css build && yarn blog build",
 		"clean-blog": "rimraf ./blog/node_modules ./blog/public",
 		"clean-css": "rimraf ./css/node_modules ./css/build",
-		"clean-server": "rimraf ./server/node_modules",
-		"clean": "npm run clean-css && npm run clean-blog && npm run clean-server",
 		"css-dev": "yarn css dev",
+		"clean-e2e": "rimraf ./e2e/node_modules",
+		"clean-root": "rimraf ./node_modules",
+		"clean-server": "rimraf ./server/node_modules",
+		"clean": "npm-run-all clean-css clean-blog clean-e2e clean-server clean-root",
 		"css": "yarn --cwd ./css",
 		"deploy": "npm run test && git push && git push github",
 		"dev": "npm-run-all -p blog-dev server-dev css-dev",
 		"dry-run": "npm run build && npm run start",
+		"e2e": "yarn --cwd e2e",
 		"lint-all": "prettier --config prettier.config.js --write '{server,blog,css,__{tests,mocks}__}/**/*.{js,jsx}'",
 		"postinstall": "npm run build",
 		"preinstall": "npm run setup",
 		"server-dev": "yarn server dev",
 		"server": "yarn --cwd ./server",
-		"setup": "yarn server install && yarn css install && yarn blog install",
+		"setup": "yarn server install && yarn css install && yarn blog install && yarn e2e install",
 		"start-debug": "node --inspect ./server/start.js",
 		"start": "node ./server/start.js",
 		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json,html -x 'npm run test'",
@@ -52,6 +55,7 @@
 	"workspaces": [
 		"css",
 		"blog",
-		"server"
+		"server",
+		"e2e"
 	]
 }

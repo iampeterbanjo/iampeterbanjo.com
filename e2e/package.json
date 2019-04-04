@@ -1,0 +1,22 @@
+{
+	"name": "e2e",
+	"version": "1.0.0",
+	"description": "End-to-end testing for iampeterbanjo.com",
+	"scripts": {
+		"dev": "yarn cypress open",
+		"test": "yarn cypress run"
+	},
+	"keywords": [
+		"e2e",
+		"testing",
+		"cypress"
+	],
+	"author": {
+		"email": "peterbanjo@gmail.com",
+		"name": "Peter Banjo"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"cypress": "^3.2.0"
+	}
+}

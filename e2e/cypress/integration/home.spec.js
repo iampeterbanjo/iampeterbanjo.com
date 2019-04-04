@@ -1,6 +1,6 @@
 describe('Home page', () => {
 	beforeEach(() => {
-		cy.visit('/');
+		cy.visit('http://localhost:8080/');
 	});
 
 	it('has correct heading', () => {
