@@ -8,20 +8,26 @@ Made with
 
 ## Development
 
-- `npm run dev`
+- `yarn dev`
   - runs Gatbsy server in developer mode
   - watches and builds css files (imported into Gatsby)
   - watches tests
   - watches [lighthouse-ci][6]
 
-- `npm run deploy`
-  - runs tests
-  - pushes to [Clever cloud][1]
-  - pushes to [Github][2]
+- `yarn e2e dev`
+  - runs end-to-end tests in watch mode
 
-- `npm run dry-run` (to check deployment)
+- `yarn dry-run` (to check deployment)
   - builds blog, css
   - starts server
+
+## Deployment
+
+- `yarn deploy`
+  - runs tests
+  - runs e2e tests (needs development server to be running e.g. `yarn dev`)
+  - pushes to [Clever cloud][1]
+  - pushes to [Github][2]
 
 [Visit][7] or [follow][8]
 
