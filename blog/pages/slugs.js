@@ -1,5 +1,5 @@
 module.exports = {
 	home: '/',
-	'blog.posts': '/list',
+	'blog.posts': '/blog',
 	'korin.tracks': '/korin/tracks',
 };

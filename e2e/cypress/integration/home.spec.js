@@ -1,6 +1,8 @@
+const BASE_URL = 'http://localhost:8080';
+
 describe('Home page', () => {
 	beforeEach(() => {
-		cy.visit('http://localhost:8080/');
+		cy.visit(`${BASE_URL}/`);
 	});
 
 	it('has correct heading', () => {
