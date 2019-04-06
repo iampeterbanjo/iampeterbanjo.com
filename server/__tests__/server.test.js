@@ -1,4 +1,3 @@
-const Hapi = require('hapi');
 const { expect } = require('code');
 const { test, suite, before } = (exports.lab = require('lab').script());
 const R = require('ramda');
@@ -17,10 +16,10 @@ suite('cache', () => {
 	test('mongodb-cache is provisioned', async ({ context }) => {
 		const { name } = context.provisioned;
 
-		expect(name).to.equal(`mongodb-cache`);
+		expect(name).to.equal('mongodb-cache');
 	});
 
-	test(`mongodb-cache connection`, ({ context }) => {
+	test('mongodb-cache connection', ({ context }) => {
 		const { uri, partition } = R.path(
 			['provider', 'options'],
 			context.provisioned
@@ -36,11 +35,11 @@ suite('info', () => {
 		context.server = await Server();
 	});
 
-	test(`port value`, ({ context }) => {
+	test('port value', ({ context }) => {
 		expect(context.server.info.port).to.equal(Number(PORT));
 	});
 
-	test(`host value`, ({ context }) => {
-		expect(context.server.info.host).to.equal(`0.0.0.0`);
+	test('host value', ({ context }) => {
+		expect(context.server.info.host).to.equal('0.0.0.0');
 	});
 });

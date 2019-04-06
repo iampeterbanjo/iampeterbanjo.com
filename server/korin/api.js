@@ -36,6 +36,7 @@ module.exports = {
 		if (getLyrics) {
 			server.method('getLyrics', getLyrics, {
 				cache,
+				// eslint-disable-next-line no-unused-vars
 				generateKey: ({ geniusApi, lyricist }, searchString) => {
 					return Crypto.createHash('sha1')
 						.update(searchString)
@@ -47,6 +48,7 @@ module.exports = {
 		if (getPersonalityProfile) {
 			server.method('getPersonalityProfile', getPersonalityProfile, {
 				cache,
+				// eslint-disable-next-line no-unused-vars
 				generateKey: ({ personalityProfileApi, lyrics }) => {
 					return Crypto.createHash('sha1')
 						.update(lyrics)
@@ -59,7 +61,7 @@ module.exports = {
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
-			handler: async (request, h) => {
+			handler: async () => {
 				try {
 					const data = await server.methods.getTopTracks({
 						getTopTracks,
@@ -68,6 +70,7 @@ module.exports = {
 
 					return data;
 				} catch (error) {
+					// eslint-disable-next-line no-console
 					console.warn(error);
 				}
 			},
@@ -77,7 +80,7 @@ module.exports = {
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,
-			handler: async (request, h) => {
+			handler: async request => {
 				try {
 					const { artist, song } = request.params;
 					const lyrics = await server.methods.getLyrics(
@@ -90,6 +93,7 @@ module.exports = {
 						lyrics,
 					});
 				} catch (error) {
+					// eslint-disable-next-line no-console
 					console.warn(error);
 				}
 			},

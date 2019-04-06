@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Header(props) {
 	return (
@@ -7,10 +7,11 @@ export default function Header(props) {
 				<div className="dn dib-ns flex justify-center tl w-50-ns w-25">
 					<a href="/" className="f5 f4-ns fw6 mt0 mb1 code" title="Home">
 						iam
-					</a>
+					
+</a>
 				</div>
 				<div className="dib tl w-50-ns w-100">{props.children}</div>
 			</div>
 		</header>
-	)
+	);
 }

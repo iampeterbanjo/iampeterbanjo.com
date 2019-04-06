@@ -5,7 +5,7 @@ import 'css/build/main.css';
 import Header from './header';
 import Footer from './footer';
 
-import Nav from '../components/nav';
+import Nav from './nav';
 
 class Layout extends React.Component {
 	render() {

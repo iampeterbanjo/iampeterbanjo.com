@@ -8,7 +8,7 @@ const routes = {
 		const { artist, track } = options;
 		return {
 			method: 'GET',
-			path: `/api/korin/profile/{artist}/{track}`,
+			path: '/api/korin/profile/{artist}/{track}',
 			url: `/api/korin/profile/${artist}/${track}`,
 		};
 	},

@@ -1,4 +1,3 @@
-const Hapi = require('hapi');
 const sinon = require('sinon');
 const got = require('got');
 const Lyricist = require('lyricist');
@@ -31,6 +30,7 @@ const {
 const korinApi = require('../../server/korin/api');
 
 const setup = async options => {
+	// eslint-disable-next-line no-unused-vars
 	const { register, ...rest } = manifest;
 	const server = await Glue.compose(rest);
 
@@ -80,7 +80,7 @@ suite('korin/profile/{artist}/{song}', () => {
 		expect(result).to.equal(profile);
 	});
 
-	test('profile method is called with personality api', async ({ context }) => {
+	test('profile method is called with personality api', async () => {
 		const {
 			server,
 			lyrics,
@@ -102,7 +102,7 @@ suite('korin/profile/{artist}/{song}', () => {
 });
 
 suite('korin/songs', () => {
-	test('api request returns expected response', async ({ context }) => {
+	test('api request returns expected response', async () => {
 		const { server, topTracks } = await setup();
 		const { method, url } = routes['korin.get.tracks']();
 		const { result } = await server.inject({ method, url });
@@ -113,7 +113,7 @@ suite('korin/songs', () => {
 
 suite('getLyrics', () => {
 	const geniusApi = got.extend({ baseUrl: '/' });
-	const lyricist = new Lyricist(`FAKE-TOKEN`);
+	const lyricist = new Lyricist('FAKE-TOKEN');
 
 	before(async ({ context }) => {
 		context.data = geniusSearch;
@@ -164,7 +164,7 @@ suite('getLyrics', () => {
 });
 
 suite('getTopTracks', () => {
-	const apiKey = `FAKE_API_KEY`;
+	const apiKey = 'FAKE_API_KEY';
 	const baseUrl = process.env.LASTFM_API_URL;
 	const lastfmApi = got.extend({ baseUrl, apiKey });
 

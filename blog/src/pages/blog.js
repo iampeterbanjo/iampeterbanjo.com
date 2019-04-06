@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import { hasRoot } from '../utils';
+
 class BlogIndex extends React.Component {
 	render() {
 		const { data, location } = this.props;
@@ -18,7 +19,7 @@ class BlogIndex extends React.Component {
 			<Layout {...props} title={siteTitle}>
 				<SEO
 					title="All posts"
-					keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+					keywords={['blog', 'gatsby', 'javascript', 'react']}
 				/>
 
 				<h1 className="f1 lh-title center cf mw9">Blog</h1>
@@ -42,7 +43,8 @@ class BlogIndex extends React.Component {
 									<span dangerouslySetInnerHTML={{ __html: node.excerpt }} />
 									<Link className="ml2 f4" to={node.fields.slug}>
 										Read more
-									</Link>
+									
+</Link>
 								</p>
 								<p />
 							</div>

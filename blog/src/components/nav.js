@@ -13,15 +13,19 @@ export default function Nav(props) {
 			role="navigation"
 			aria-label="main navigation"
 		>
-			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs['home']}>
+			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs.home}>
 				Home
+
 			</a>
 			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs['blog.posts']}>
 				Blog
-			</a>
+
+			
+</a>
 			<a className="f6 fw6 mr2 mr3-m mr4-l dib" href={slugs['korin.tracks']}>
 				Projects
-			</a>
+			
+</a>
 			<span className="f6 fw6 mr2 mr3-m mr4-l dib">About</span>
 			<span className="f6 fw6 mr2 mr3-m mr4-l dib">Credits</span>
 		</nav>

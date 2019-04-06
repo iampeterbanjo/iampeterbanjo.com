@@ -1,21 +1,21 @@
 module.exports = {
-	resolve: `gatsby-transformer-remark`,
+	resolve: 'gatsby-transformer-remark',
 	options: {
 		plugins: [
 			{
-				resolve: `gatsby-remark-images`,
+				resolve: 'gatsby-remark-images',
 				options: {
 					maxWidth: 590,
 				},
 			},
 			{
-				resolve: `gatsby-remark-responsive-iframe`,
+				resolve: 'gatsby-remark-responsive-iframe',
 				options: {
-					wrapperStyle: `margin-bottom: 1.0725rem`,
+					wrapperStyle: 'margin-bottom: 1.0725rem',
 				},
 			},
 			{
-				resolve: `gatsby-remark-prismjs`,
+				resolve: 'gatsby-remark-prismjs',
 				options: {
 					// Class prefix for <pre> tags containing syntax highlighting;
 					// defaults to 'language-' (eg <pre class="language-js">).
@@ -50,8 +50,8 @@ module.exports = {
 					noInlineHighlight: false,
 				},
 			},
-			`gatsby-remark-copy-linked-files`,
-			`gatsby-remark-smartypants`,
+			'gatsby-remark-copy-linked-files',
+			'gatsby-remark-smartypants',
 		],
 	},
-}
+};

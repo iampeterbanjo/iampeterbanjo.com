@@ -1,7 +1,7 @@
 import React from 'react';
-import Nav from './nav';
 import feather from 'feather-icons';
 import { StaticQuery, graphql } from 'gatsby';
+import Nav from './nav';
 
 export default function Footer() {
 	return <StaticQuery query={footerQuery} render={content} />;
@@ -51,9 +51,9 @@ const content = data => {
 					</a>
 				</div>
 				<p className="f6 measure copy lh-copy">
-					© {new Date().getFullYear()}, Made with
-					{` `}
-					sleep
+					© 
+{' '}
+{new Date().getFullYear()}, Made with sleep
 				</p>
 			</div>
 		</footer>

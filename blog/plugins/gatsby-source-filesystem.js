@@ -1,18 +1,18 @@
-const contentPath = `${__dirname}/../content`
+const contentPath = `${__dirname}/../content`;
 const blog = {
-	resolve: `gatsby-source-filesystem`,
+	resolve: 'gatsby-source-filesystem',
 	options: {
 		path: `${contentPath}/blog`,
-		name: `blog`,
+		name: 'blog',
 	},
-}
+};
 
 const assets = {
-	resolve: `gatsby-source-filesystem`,
+	resolve: 'gatsby-source-filesystem',
 	options: {
 		path: `${contentPath}/assets`,
-		name: `assets`,
+		name: 'assets',
 	},
-}
+};
 
-module.exports = { blog, assets }
+module.exports = { blog, assets };

@@ -5,7 +5,7 @@ module.exports = {
 		server.route({
 			path: '/cqc/providers',
 			method: 'GET',
-			handler: async (request, reply) => (await client.get(`/providers`)).body,
-		})
+			handler: async () => (await client.get('/providers')).body,
+		});
 	},
-}
+};

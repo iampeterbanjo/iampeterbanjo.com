@@ -19,13 +19,16 @@ const avatar = data => {
 
 			<div className="content">
 				<p className="ml4 f5 measure-wide lh-copy mb1">
-					Written by <strong>{author}</strong> who lives in the United Kingdom.
-					{` `}
+					Written by 
+{' '}
+<strong>{author}</strong> who lives in the United Kingdom.
+{' '}
 				</p>
 				<p className="ml4 f5 measure-wide lh-copy mt1">
 					You should follow him on{' '}
 					<a href={`https://twitter.com/${social.github}`}>GitHub</a> or on
-					<a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+					
+<a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
 				</p>
 			</div>
 		</article>
