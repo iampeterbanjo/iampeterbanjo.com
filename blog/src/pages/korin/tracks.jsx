@@ -5,6 +5,14 @@ import BioMini from '../../components/bio-mini';
 import Layout from '../../components/layout';
 import SEO from '../../components/seo';
 
+const truncateText = text => {
+	const maxLength = 30;
+	if (text.length < maxLength) {
+		return text;
+	}
+	return `${text.slice(0, maxLength)}...`;
+};
+
 const renderTracks = tracks => {
 	if (tracks.length === 0) {
 		return <h2>No tracks found</h2>;
@@ -35,14 +43,6 @@ const renderTracks = tracks => {
 			})}
 		</ul>
 	);
-};
-
-const truncateText = text => {
-	const maxLength = 30;
-	if (text.length < maxLength) {
-		return text;
-	}
-	return `${text.slice(0, maxLength)}...`;
 };
 
 export default props => {

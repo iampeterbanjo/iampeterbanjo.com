@@ -2,11 +2,7 @@ import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
-function Bio(props) {
-	return <StaticQuery query={bioQuery} render={data => avatar(data, props)} />;
-}
-
-const avatar = (data, props) => {
+const avatar = data => {
 	const { author } = data.site.siteMetadata;
 
 	return (
@@ -21,21 +17,17 @@ const avatar = (data, props) => {
 				</div>
 				<div className="w-100 w-75-l pl5-l ph3 mb3 mb0-ns flex-l flex-column-l justify-center-l ">
 					<h1 className="f4 fw6 f1-ns lh-title measure mt0">
-						Building on and for the web.
-
+						{`Building on and for the web.`}
 					</h1>
 					<p className="f5 f4-ns fw4 b measure dib-m lh-copy">
-						As a full-stack JavaScript developer based in the UK, I prefer using
+						{`As a full-stack JavaScript developer based in the UK, I prefer using
 						lean and agile approaches to build software that is testable and
-						open to change.
-
-					
-</p>
+						open to change.`}
+					</p>
 					<p className="f6 f5-ns fw6 lh-title mv0">{author}</p>
 					<p className="f6 fw4 lh-copy mt2 mb0">
-						Husband, cosmopolitan geek, musically inclined, pursuing ideals.
-						Learning to build beautiful things.
-
+						{`Husband, cosmopolitan geek, musically inclined, pursuing ideals.
+						Learning to build beautiful things.`}
 					</p>
 				</div>
 			</div>
@@ -62,5 +54,9 @@ const bioQuery = graphql`
 		}
 	}
 `;
+
+function Bio(props) {
+	return <StaticQuery query={bioQuery} render={data => avatar(data, props)} />;
+}
 
 export default Bio;

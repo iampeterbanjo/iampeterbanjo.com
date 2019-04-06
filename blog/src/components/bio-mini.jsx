@@ -2,10 +2,6 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
-function BioMini() {
-	return <StaticQuery query={bioQuery} render={avatar} />;
-}
-
 const avatar = data => {
 	const { author, social } = data.site.siteMetadata;
 
@@ -19,16 +15,15 @@ const avatar = data => {
 
 			<div className="content">
 				<p className="ml4 f5 measure-wide lh-copy mb1">
-					Written by 
-{' '}
-<strong>{author}</strong> who lives in the United Kingdom.
-{' '}
+					{`Written by `}
+					<strong>{author}</strong>
+					{` who lives in the United Kingdom.`}
 				</p>
 				<p className="ml4 f5 measure-wide lh-copy mt1">
-					You should follow him on{' '}
-					<a href={`https://twitter.com/${social.github}`}>GitHub</a> or on
-					
-<a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+					{`You should follow him on `}
+					<a href={`https://twitter.com/${social.github}`}>GitHub</a>
+					{`or on`}
+					<a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
 				</p>
 			</div>
 		</article>
@@ -55,5 +50,9 @@ const bioQuery = graphql`
 		}
 	}
 `;
+
+function BioMini() {
+	return <StaticQuery query={bioQuery} render={avatar} />;
+}
 
 export default BioMini;
