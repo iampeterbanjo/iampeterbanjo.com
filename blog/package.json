@@ -53,7 +53,7 @@
 		"build": "yarn clean-build && gatsby build",
 		"clean-build": "rimraf ./public",
 		"dev": "yarn api-watch",
-		"api-watch": "nodemon --ignore public -x js,jsx,json -x 'npm run build && npm run start'",
+		"api-watch": "nodemon --ignore public -e js,jsx,json -x 'npm run build && npm run start'",
 		"pwa": "lighthouse-ci http://0.0.0.0:8000",
 		"start": "gatsby serve",
 		"test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",

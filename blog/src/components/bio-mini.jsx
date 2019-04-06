@@ -6,7 +6,7 @@ const avatar = data => {
 	const { author, social } = data.site.siteMetadata;
 
 	return (
-		<article className="cf mw9 center flex items-center mt5">
+		<article id="bio-mini" className="cf mw9 center flex items-center mt5">
 			<div className="">
 				<div className="image is-64x64 avatar">
 					<Image fixed={data.avatar.childImageSharp.fixed} alt={author} />
@@ -21,9 +21,19 @@ const avatar = data => {
 				</p>
 				<p className="ml4 f5 measure-wide lh-copy mt1">
 					{`You should follow him on `}
-					<a href={`https://twitter.com/${social.github}`}>GitHub</a>
-					{`or on`}
-					<a href={`https://twitter.com/${social.twitter}`}>Twitter</a>
+					<a
+						className="social-github"
+						href={`https://github.com/${social.github}`}
+					>
+						{`GitHub`}
+					</a>
+					{` or on `}
+					<a
+						className="social-twitter"
+						href={`https://twitter.com/${social.twitter}`}
+					>
+						{`Twitter`}
+					</a>
 				</p>
 			</div>
 		</article>
