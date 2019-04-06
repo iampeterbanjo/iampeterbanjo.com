@@ -5,8 +5,8 @@ const korin = require('./pages/korin/index');
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
-	const blogPage = path.resolve('./src/templates/blog-post.js');
-	const korinTracksPage = path.resolve('./src/pages/korin/tracks.js');
+	const blogPage = path.resolve('./src/templates/blog-post.jsx');
+	const korinTracksPage = path.resolve('./src/pages/korin/tracks.jsx');
 
 	await posts({ createPage, blogPage, graphql });
 	await korin({ createPage, korinTracksPage });
