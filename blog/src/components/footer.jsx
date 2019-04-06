@@ -32,7 +32,7 @@ const content = data => {
 					</a>
 					<a
 						className="btn ba br2 no-underline grow b inline-flex items-center mr3 pv2 ph3"
-						href={`https://github.com/${social.twitter}`}
+						href={`https://twitter.com/${social.twitter}`}
 						title={`${author} on Twitter`}
 					>
 						<div
