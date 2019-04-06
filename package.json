@@ -40,7 +40,7 @@
 		"dev": "npm-run-all -p blog-dev server-dev css-dev",
 		"dry-run": "yarn build && yarn start",
 		"e2e": "yarn --cwd e2e",
-		"lint": "yarn eslint blog e2e server --fix",
+		"lint": "yarn eslint --fix-dry-run blog e2e server",
 		"postinstall": "yarn build",
 		"preinstall": "yarn setup",
 		"server-dev": "yarn server dev",
@@ -49,7 +49,7 @@
 		"start-debug": "node --inspect ./server/start.js",
 		"start": "node ./server/start.js",
 		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json,html -x 'yarn test'",
-		"test": "yarn server test && yarn e2e test"
+		"test": "yarn lint && yarn server test && yarn e2e test"
 	},
 	"keywords": [
 		"personal",
