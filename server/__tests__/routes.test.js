@@ -16,12 +16,12 @@ suite('korin api', () => {
 	test('when requesting artist profile', () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
-		const hope = routes['korin.get.profile']({ artist, track });
+		const hope = routes['korin.get.profiles']({ artist, track });
 
 		expect(hope).to.equal({
 			method: 'GET',
-			path: '/api/korin/profile/{artist}/{track}',
-			url: `/api/korin/profile/${artist}/${track}`,
+			path: '/api/korin/profiles/{artist}/{track}',
+			url: `/api/korin/profiles/${artist}/${track}`,
 		});
 	});
 });

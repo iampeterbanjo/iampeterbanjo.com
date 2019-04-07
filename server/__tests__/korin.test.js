@@ -4,23 +4,20 @@ const Lyricist = require('lyricist');
 const jsonata = require('jsonata');
 const nock = require('nock');
 const { expect } = require('code');
-const {
-	test,
-	after,
-	afterEach,
-	before,
-	beforeEach,
-	suite,
-} = (exports.lab = require('lab').script());
+const Lab = require('lab').script();
+
+const { test, after, afterEach, before, beforeEach, suite } = Lab;
 const { readFile } = require('fs-extra');
 const Glue = require('glue');
 
 const { manifest } = require('../config');
 const { routes } = require('..');
 
-const topTracks = require('./fixtures/lastfm-topTracks.json');
+const topTracksData = require('./fixtures/lastfm-topTracks.json');
 const profile = require('./fixtures/personality-profile.json');
 const geniusSearch = require('./fixtures/genius-search.json');
+
+exports.lab = Lab;
 
 const {
 	getLyrics,
@@ -38,7 +35,7 @@ const setup = async options => {
 	const getLyrics = sinon.stub().resolves(lyrics);
 	const getPersonalityProfile = sinon.stub().resolves(profile);
 	const personalityProfileApi = sinon.stub();
-	const getTopTracks = sinon.stub().resolves(topTracks);
+	const getTopTracks = sinon.stub().resolves(topTracksData);
 
 	const defaults = {
 		routes,
@@ -60,7 +57,7 @@ const setup = async options => {
 		server,
 		lyrics,
 		profile,
-		topTracks,
+		topTracks: topTracksData,
 		...defaults,
 	};
 };
@@ -68,7 +65,7 @@ const setup = async options => {
 suite('korin/profile/{artist}/{song}', () => {
 	test('api returns profile', async () => {
 		const { server, profile } = await setup();
-		const { url, method } = routes['korin.get.profile'](
+		const { url, method } = routes['korin.get.profiles'](
 			'Kendrik Lamar',
 			'Humble'
 		);
@@ -87,7 +84,7 @@ suite('korin/profile/{artist}/{song}', () => {
 			personalityProfileApi,
 			getPersonalityProfile,
 		} = await setup();
-		const { url, method } = routes['korin.get.profile'](
+		const { url, method } = routes['korin.get.profiles'](
 			'Kendrik Lamar',
 			'Humble'
 		);
@@ -171,7 +168,7 @@ suite('getTopTracks', () => {
 	beforeEach(async ({ context }) => {
 		context.apiKey = apiKey;
 		context.baseUrl = baseUrl;
-		context.data = JSON.stringify(topTracks);
+		context.data = JSON.stringify(topTracksData);
 
 		await nock(context.baseUrl)
 			.get('/')

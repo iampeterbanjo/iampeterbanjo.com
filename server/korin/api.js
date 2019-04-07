@@ -13,7 +13,6 @@ module.exports = {
 			lastfmApi,
 			getTopTracks,
 			getPersonalityProfile,
-			personalityProfileApi,
 		}
 	) => {
 		// resolve all requests in 100ms
@@ -37,7 +36,9 @@ module.exports = {
 			server.method('getLyrics', getLyrics, {
 				cache,
 				// eslint-disable-next-line no-unused-vars
-				generateKey: ({ geniusApi, lyricist }, searchString) => {
+				generateKey: ({ geniusApi: g, lyricist: l }, searchString) => {
+					if (!searchString) return searchString;
+
 					return Crypto.createHash('sha1')
 						.update(searchString)
 						.digest('hex');
@@ -49,7 +50,9 @@ module.exports = {
 			server.method('getPersonalityProfile', getPersonalityProfile, {
 				cache,
 				// eslint-disable-next-line no-unused-vars
-				generateKey: ({ personalityProfileApi, lyrics }) => {
+				generateKey: ({ lyrics }) => {
+					if (!lyrics) return 'personality-profile';
+
 					return Crypto.createHash('sha1')
 						.update(lyrics)
 						.digest('hex');
@@ -71,30 +74,34 @@ module.exports = {
 					return data;
 				} catch (error) {
 					// eslint-disable-next-line no-console
-					console.warn(error);
+					return console.warn(error);
 				}
 			},
 		});
 
-		const getProfileRoute = routes['korin.get.profile']();
+		const getProfileRoute = routes['korin.get.profiles']();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,
 			handler: async request => {
 				try {
-					const { artist, song } = request.params;
+					const { artist, track } = request.params;
+					const artistDecoded = decodeURI(artist);
+					const trackDecoded = decodeURI(track);
+
 					const lyrics = await server.methods.getLyrics(
 						{ geniusApi, lyricist },
-						`${artist} ${song}`
+						`${artistDecoded} ${trackDecoded}`
 					);
 
-					return await server.methods.getPersonalityProfile({
-						personalityProfileApi,
+					const profile = await server.methods.getPersonalityProfile({
 						lyrics,
 					});
+
+					return profile;
 				} catch (error) {
 					// eslint-disable-next-line no-console
-					console.warn(error);
+					return console.warn(error);
 				}
 			},
 		});

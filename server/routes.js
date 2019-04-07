@@ -4,12 +4,12 @@ const routes = {
 		path: '/api/korin/tracks',
 		url: '/api/korin/tracks',
 	}),
-	'korin.get.profile': (options = {}) => {
+	'korin.get.profiles': (options = {}) => {
 		const { artist, track } = options;
 		return {
 			method: 'GET',
-			path: '/api/korin/profile/{artist}/{track}',
-			url: `/api/korin/profile/${artist}/${track}`,
+			path: '/api/korin/profiles/{artist}/{track}',
+			url: `/api/korin/profiles/${artist}/${track}`,
 		};
 	},
 };
