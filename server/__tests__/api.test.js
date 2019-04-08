@@ -1,6 +1,11 @@
 const { expect } = require('code');
-const { test } = (exports.lab = require('lab').script());
 const R = require('ramda');
+const Lab = require('lab');
+
+const lab = Lab.script();
+const { test } = lab;
+
+exports.lab = lab;
 
 const { routes } = require('..');
 const api = require('../api');

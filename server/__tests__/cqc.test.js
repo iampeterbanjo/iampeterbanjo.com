@@ -1,10 +1,18 @@
+/* eslint-disable no-param-reassign */
 const Hapi = require('hapi');
 const { expect } = require('code');
-const { test, before } = (exports.lab = require('lab').script());
+const Lab = require('lab');
+
+const lab = Lab.script();
+const { test, before } = lab;
+
+exports.lab = lab;
+
 const sinon = require('sinon');
 const got = require('got');
+const plugin = require('../../server/cqc');
 
-let server = new Hapi.Server();
+const server = new Hapi.Server();
 
 before(async ({ context }) => {
 	const client = got.extend({ baseUrl: '/' });
@@ -12,7 +20,7 @@ before(async ({ context }) => {
 	sinon.stub(client, 'get').resolves(context.response);
 
 	server.register({
-		plugin: require('../../server/cqc'),
+		plugin,
 		options: { client },
 	});
 });

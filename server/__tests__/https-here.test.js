@@ -1,14 +1,21 @@
 const Hapi = require('hapi');
 const { expect } = require('code');
-const { test } = (exports.lab = require('lab').script());
+const Lab = require('lab');
+
+const lab = Lab.script();
+const { test } = lab;
+
+exports.lab = lab;
+
+const plugin = require('../../server/https-here');
 
 const Server = options => {
 	const server = new Hapi.Server();
-	server.register({ plugin: require('../../server/https-here'), options });
+	server.register({ plugin, options });
 	server.route({
 		method: 'GET',
 		path: '/',
-		handler: function(request, h) {
+		handler(request, h) {
 			return h.response('Hello!');
 		},
 	});

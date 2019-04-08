@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const sinon = require('sinon');
 const got = require('got');
 const Lyricist = require('lyricist');
@@ -14,14 +15,14 @@ const { manifest } = require('../config');
 const { routes } = require('..');
 
 const topTracksData = require('./fixtures/lastfm-topTracks.json');
-const profile = require('./fixtures/personality-profile.json');
-const geniusSearch = require('./fixtures/genius-search.json');
+const profileData = require('./fixtures/personality-profile.json');
+const geniusSearchData = require('./fixtures/genius-search.json');
 
 exports.lab = Lab;
 
 const {
-	getLyrics,
-	getTopTracks,
+	getLyrics: getLyricsMethod,
+	getTopTracks: getTopTracksMethod,
 	lyricsIdPath,
 } = require('../../server/korin/methods');
 const korinApi = require('../../server/korin/api');
@@ -33,7 +34,7 @@ const setup = async options => {
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 	const getLyrics = sinon.stub().resolves(lyrics);
-	const getPersonalityProfile = sinon.stub().resolves(profile);
+	const getPersonalityProfile = sinon.stub().resolves(profileData);
 	const personalityProfileApi = sinon.stub();
 	const getTopTracks = sinon.stub().resolves(topTracksData);
 
@@ -56,7 +57,7 @@ const setup = async options => {
 	return {
 		server,
 		lyrics,
-		profile,
+		profile: profileData,
 		topTracks: topTracksData,
 		...defaults,
 	};
@@ -76,26 +77,6 @@ suite('korin/profile/{artist}/{song}', () => {
 
 		expect(result).to.equal(profile);
 	});
-
-	test('profile method is called with personality api', async () => {
-		const {
-			server,
-			lyrics,
-			personalityProfileApi,
-			getPersonalityProfile,
-		} = await setup();
-		const { url, method } = routes['korin.get.profiles'](
-			'Kendrik Lamar',
-			'Humble'
-		);
-		await server.inject({
-			method,
-			url,
-		});
-
-		const [first] = getPersonalityProfile.args[0];
-		expect(first).to.equal({ personalityProfileApi, lyrics });
-	});
 });
 
 suite('korin/songs', () => {
@@ -113,7 +94,7 @@ suite('getLyrics', () => {
 	const lyricist = new Lyricist('FAKE-TOKEN');
 
 	before(async ({ context }) => {
-		context.data = geniusSearch;
+		context.data = geniusSearchData;
 		context.lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 
 		sinon.stub(geniusApi, 'get').resolves({ body: context.data });
@@ -125,7 +106,7 @@ suite('getLyrics', () => {
 	});
 
 	test('returns expected lyrics', async ({ context }) => {
-		const result = await getLyrics({ geniusApi, lyricist });
+		const result = await getLyricsMethod({ geniusApi, lyricist });
 
 		expect(result).to.equal(context.lyrics);
 	});
@@ -138,7 +119,7 @@ suite('getLyrics', () => {
 		test(`geniusApi is called with search ${term}`, async () => {
 			const query = new URLSearchParams([['q', term]]);
 
-			await getLyrics({ geniusApi, lyricist }, term);
+			await getLyricsMethod({ geniusApi, lyricist }, term);
 
 			const [first, second] = geniusApi.get.args[0];
 
@@ -150,7 +131,7 @@ suite('getLyrics', () => {
 	test('lyricist is called with songId and fetchLyrics', async ({
 		context,
 	}) => {
-		await getLyrics({ geniusApi, lyricist }, '');
+		await getLyricsMethod({ geniusApi, lyricist }, '');
 
 		const [first, second] = lyricist.song.args[0];
 		const songId = jsonata(lyricsIdPath).evaluate(context.data);
@@ -186,7 +167,7 @@ suite('getTopTracks', () => {
 	});
 
 	test('returns expected artists', async ({ context }) => {
-		const result = await getTopTracks({ lastfmApi });
+		const result = await getTopTracksMethod({ lastfmApi });
 
 		expect(result).to.equal(context.data);
 	});

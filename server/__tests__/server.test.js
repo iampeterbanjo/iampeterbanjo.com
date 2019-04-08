@@ -1,10 +1,18 @@
+/* eslint-disable no-param-reassign */
 const { expect } = require('code');
-const { test, suite, before } = (exports.lab = require('lab').script());
+const Lab = require('lab');
+
 const R = require('ramda');
 const { api } = require('..');
+
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 
-const Server = async () => await api();
+const lab = Lab.script();
+const { test, suite, before } = lab;
+
+exports.lab = lab;
+
+const Server = async () => api();
 
 suite('cache', () => {
 	before(async ({ context }) => {

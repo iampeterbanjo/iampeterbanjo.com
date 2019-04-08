@@ -1,6 +1,11 @@
 const { expect } = require('code');
-const { test, suite } = (exports.lab = require('lab').script());
 const { routes } = require('..');
+const Lab = require('lab');
+
+const lab = Lab.script();
+const { test, suite } = lab;
+
+exports.lab = lab;
 
 suite('korin api', () => {
 	test('when requesting tracks', () => {

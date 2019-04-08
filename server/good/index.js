@@ -1,5 +1,7 @@
+const plugin = require('good');
+
 module.exports = {
-	plugin: require('good'),
+	plugin,
 	options: {
 		reporters: {
 			myConsoleReporter: [

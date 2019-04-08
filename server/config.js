@@ -1,5 +1,7 @@
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 
+const catboxMongodb = require('catbox-mongodb');
+
 const manifest = {
 	server: {
 		host: '0.0.0.0',
@@ -13,7 +15,7 @@ const manifest = {
 			{
 				name: 'mongodb-cache',
 				provider: {
-					constructor: require('catbox-mongodb'),
+					constructor: catboxMongodb,
 					options: {
 						uri: MONGODB_ADDON_URI,
 						partition: MONGODB_ADDON_DB,

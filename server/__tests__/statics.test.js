@@ -1,8 +1,15 @@
 const Hapi = require('hapi');
 const { expect } = require('code');
-const { test, beforeEach } = (exports.lab = require('lab').script());
+const Lab = require('lab');
+
 const Inert = require('inert');
 const path = require('path');
+const plugin = require('../statics/plugin');
+
+const lab = Lab.script();
+const { test, beforeEach } = lab;
+
+exports.lab = lab;
 
 const rootPath = path.join(__dirname, './fixtures');
 
@@ -14,7 +21,7 @@ beforeEach(async () => {
 
 test('/ rootPath is served', async () => {
 	await server.register({
-		plugin: require('../statics/plugin'),
+		plugin,
 		options: { rootPath },
 	});
 	const res = await server.inject({
