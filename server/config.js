@@ -25,7 +25,16 @@ const manifest = {
 		],
 	},
 	register: {
-		plugins: ['good', 'inert', './statics', './korin', './cqc', './https-here'],
+		plugins: [
+			'good',
+			'inert',
+			'vision',
+			'./views',
+			'./statics',
+			'./korin',
+			'./cqc',
+			'./https-here',
+		],
 		options: {
 			once: true,
 		},

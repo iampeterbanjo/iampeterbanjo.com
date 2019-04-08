@@ -12,7 +12,7 @@ const api = require('../api');
 
 test('api returns tracks', async () => {
 	const server = await api();
-	const { method, url } = routes['korin.get.tracks']();
+	const { method, url } = routes['api.korin.get.tracks']();
 	const { result } = await server.inject({ method, url });
 	const tracks = R.path(['tracks', 'track'], result);
 

@@ -9,7 +9,7 @@ exports.lab = lab;
 
 suite('korin api', () => {
 	test('when requesting tracks', () => {
-		const hope = routes['korin.get.tracks']();
+		const hope = routes['api.korin.get.tracks']();
 
 		expect(hope).to.equal({
 			method: 'GET',
@@ -21,7 +21,7 @@ suite('korin api', () => {
 	test('when requesting artist profile', () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
-		const hope = routes['korin.get.profiles']({ artist, track });
+		const hope = routes['api.korin.get.profiles']({ artist, track });
 
 		expect(hope).to.equal({
 			method: 'GET',

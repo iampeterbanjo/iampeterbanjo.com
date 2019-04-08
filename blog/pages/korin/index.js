@@ -5,7 +5,7 @@ const slugs = require('../slugs');
 
 module.exports = async ({ createPage, korinTracksPage, korinProfilesPage }) => {
 	const server = await api();
-	const tracksRoute = routes['korin.get.tracks']();
+	const tracksRoute = routes['api.korin.get.tracks']();
 	const { result: data = {} } = await server.inject({
 		method: tracksRoute.method,
 		url: tracksRoute.url,
@@ -35,7 +35,7 @@ module.exports = async ({ createPage, korinTracksPage, korinProfilesPage }) => {
 			const artistEncoded = encodeURI(artist);
 			const trackEncoded = encodeURI(track);
 
-			const profileRoutes = routes['korin.get.profiles']({
+			const profileRoutes = routes['api.korin.get.profiles']({
 				artist: artistEncoded,
 				track: trackEncoded,
 			});
