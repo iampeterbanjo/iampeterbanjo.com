@@ -20,8 +20,8 @@ But the combination of all these together feels like riding a bicycle down hill 
 
 ## Problems
 
-- What happened to my static pages? Although it looks like your generated "static" site has regular URLs it is [TOTALLY dependent][2] on client-side JavaScript. I'm from the school of Progressive Web Enhancement and Progressive web apps don't have to fall apart without JavaScript. The good news is that Google seems to be able to read my site fine. But there should be an "eject to HTML" button somewhere.
-- Cryptic webpack build errors. Lord deliver me from the evil of Webpack build errors. What does this error output mean?
+- What happened to my static pages? With Gatsby, although it looks like your generated "static" site has regular URLs it is [TOTALLY dependent][2] on client-side JavaScript. I'm from the school of [Progressive Enhancement][6] and [Progressive web apps][7] don't have to fall apart without JavaScript. The good news is that Google seems to be able to read my site fine. But there should be an "eject to HTML" button somewhere.
+- Cryptic webpack build errors. Lord deliver me from the evil of Webpack build errors! What does this error output mean?? 🤯
 
 ```JavaScript
 ⢀ Building static HTML for pages/korin/profiles/Khalid/My-Bad
@@ -64,3 +64,5 @@ So what's a developer to do? Keep it simple - Gatbsy was fun to test drive but I
 [3]: ./Screenshot_2019-04-08-service-workers-no-tracks-found.png
 [4]: ./Screenshot_2019-04-08-service-workers-top-40-tracks-found.png
 [5]: https://twitter.com/dan_abramov/status/954146978564395008
+[6]: https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/
+[7]: https://web.dev/installable/discover-installable
