@@ -1,7 +1,7 @@
 const jsonata = require('jsonata');
+const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
 const lyricsIdPath = 'response.hits[0].result.id';
-const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
 const {
 	WATSON_PI_API_KEY,
@@ -59,6 +59,8 @@ exports.getPersonalityProfile = async ({ lyrics }) => {
 	};
 
 	const profile = await getProfile(options);
+
+	if (!profile) return 'No profile could be generated';
 
 	return profile;
 };

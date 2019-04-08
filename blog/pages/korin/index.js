@@ -1,10 +1,9 @@
 const R = require('ramda');
 const { api, routes } = require('server');
+const slugify = require('slugify');
 const slugs = require('../slugs');
 
-const kebabCase = input => R.replace(/\s/g, '-', input);
-
-module.exports = async ({ createPage, korinTracksPage }) => {
+module.exports = async ({ createPage, korinTracksPage, korinProfilesPage }) => {
 	const server = await api();
 	const tracksRoute = routes['korin.get.tracks']();
 	const { result: data = {} } = await server.inject({
@@ -33,21 +32,33 @@ module.exports = async ({ createPage, korinTracksPage }) => {
 			return { artist, track: name };
 		})
 		.map(async ({ artist, track }) => {
-			// console.log(encodeURI(artist), encodeURI(track));
 			const artistEncoded = encodeURI(artist);
 			const trackEncoded = encodeURI(track);
-
-			// const artistPath = kebabCase(artist);
-			// const trackPath = kebabCase(name);
-			// const pagePath = slugs['korin.profiles']({ artist, track });
 
 			const profileRoutes = routes['korin.get.profiles']({
 				artist: artistEncoded,
 				track: trackEncoded,
 			});
-			const { result: profileData = {} } = await server.inject({
+			const { result: profile = {} } = await server.inject({
 				method: profileRoutes.method,
 				url: profileRoutes.url,
+			});
+			const slugOptions = {
+				artist: slugify(artist),
+				track: slugify(track),
+			};
+			const profilePath = slugs['korin.profiles'](slugOptions);
+
+			createPage({
+				path: profilePath,
+				component: korinProfilesPage,
+				context: {
+					profile,
+					seo: {
+						title: `Korin: profile ${track} by ${artist} `,
+						description: `Personality profile of tracks by IBM Watson personality profile API`,
+					},
+				},
 			});
 		});
 };
