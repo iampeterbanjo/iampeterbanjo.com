@@ -11,6 +11,9 @@ const manifest = {
 				relativeTo: __dirname,
 			},
 		},
+		debug: {
+			request: ['*'],
+		},
 		cache: [
 			{
 				name: 'mongodb-cache',
@@ -26,7 +29,7 @@ const manifest = {
 	},
 	register: {
 		plugins: [
-			'good',
+			'./good',
 			'inert',
 			'vision',
 			'./views',

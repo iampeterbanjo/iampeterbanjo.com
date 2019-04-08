@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"clean": "rm -rf ./node_modules || exit 0",
-		"dev": "nodemon --watch . -x 'npm run start-debug'",
+		"dev": "nodemon --watch . -e js,html -x 'npm run start-debug'",
 		"start-debug": "node --inspect start.js",
 		"start": "node start.js",
 		"test": "lab -c ./__tests__/"
@@ -26,6 +26,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"acorn": "^6.1.1",
+		"css": "1.0.0",
 		"catbox": "^10.0.6",
 		"catbox-mongodb": "^4.2.1",
 		"glue": "^6.0.0",
