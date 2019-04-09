@@ -11,6 +11,7 @@ const { test, beforeEach } = lab;
 
 exports.lab = lab;
 
+const cssPath = '../css';
 const rootPath = path.join(__dirname, './fixtures');
 
 let server;
@@ -22,7 +23,7 @@ beforeEach(async () => {
 test('/ rootPath is served', async () => {
 	await server.register({
 		plugin,
-		options: { rootPath },
+		options: { rootPath, cssPath },
 	});
 	const res = await server.inject({
 		method: 'GET',

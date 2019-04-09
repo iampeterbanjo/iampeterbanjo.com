@@ -12,5 +12,5 @@ test('good is first', () => {
 	const { manifest } = config;
 
 	const [first] = manifest.register.plugins;
-	expect(first).to.equal('good');
+	expect(first).to.equal('./good');
 });
