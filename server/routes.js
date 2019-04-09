@@ -8,7 +8,7 @@
 const slugify = require('slugify');
 const got = require('got');
 
-const client = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
+const request = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
 
 const routes = {
 	'get.apis.korin.tracks': () => {
@@ -19,24 +19,26 @@ const routes = {
 			method,
 			path: url,
 			url,
-			client: () => client(url, { method }),
+			client: () => request(url, { method }),
 		};
 	},
 
 	'get.apis.korin.profiles': (options = {}) => {
 		const { artist, track } = options;
-		return {
-			method: 'GET',
-			path: '/apis/korin/{artist}/{track}',
-			url: `/apis/korin/${artist}/${track}`,
-		};
+		const method = 'GET';
+		const url = `/apis/korin/${artist}/${track}`;
+		const path = '/apis/korin/{artist}/{track}';
+
+		return { method, path, url, client: () => request(url, { method }) };
 	},
 
 	'get.korin.tracks': () => {
+		const url = '/korin/tracks';
+
 		return {
 			method: 'GET',
-			path: '/korin/tracks',
-			url: '/korin/tracks',
+			path: url,
+			url,
 		};
 	},
 
