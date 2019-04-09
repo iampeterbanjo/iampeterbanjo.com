@@ -23,7 +23,7 @@ const routes = {
 		};
 	},
 
-	'get.apps.korin.tracks': () => {
+	'get.korin.tracks': () => {
 		return {
 			method: 'GET',
 			path: '/korin/tracks',
@@ -31,7 +31,7 @@ const routes = {
 		};
 	},
 
-	'get.apps.korin.profiles': (options = {}) => {
+	'get.korin.profiles': (options = {}) => {
 		const { artist = '', track = '' } = options;
 		const artistParam = slugify(artist).toLowerCase();
 		const trackParam = slugify(track).toLowerCase();

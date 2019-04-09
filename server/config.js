@@ -11,6 +11,9 @@ const manifest = {
 				relativeTo: __dirname,
 			},
 		},
+		router: {
+			stripTrailingSlash: true,
+		},
 		debug: {
 			request: ['*'],
 		},

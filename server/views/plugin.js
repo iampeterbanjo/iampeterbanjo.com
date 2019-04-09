@@ -23,16 +23,33 @@ const registerViews = {
 	path: Path.join(__dirname, './templates'),
 };
 
-const after = async server => {
-	server.views(registerViews);
-
-	const { method, path } = routes['get.apps.korin.profiles']();
+const getKorinProfiles = server => {
+	const { method, path } = routes['get.korin.profiles']();
 	server.route({
 		method,
 		path,
 		handler: (request, h) =>
-			h.view('index', { title: 'test', message: 'Hello' }),
+			h.view('korin/profiles', {
+				artist: 'Ariana Grande',
+				track: 'God is a woman',
+			}),
 	});
+};
+
+const getKorinTracks = server => {
+	const { method, path } = routes['get.korin.tracks']();
+	server.route({
+		method,
+		path,
+		handler: (request, h) => h.view('korin/tracks', { tracks: ['test'] }),
+	});
+};
+
+const after = async server => {
+	server.views(registerViews);
+
+	getKorinTracks(server);
+	getKorinProfiles(server);
 };
 
 module.exports = {

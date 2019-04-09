@@ -10,7 +10,7 @@ module.exports = {
 			handler: {
 				directory: {
 					path: cssPath,
-					redirectToSlash: true,
+					redirectToSlash: false,
 					listing: false,
 					index: false,
 				},
@@ -23,7 +23,7 @@ module.exports = {
 			handler: {
 				directory: {
 					path: rootPath,
-					redirectToSlash: true,
+					redirectToSlash: false,
 					listing: false,
 					index: true,
 				},

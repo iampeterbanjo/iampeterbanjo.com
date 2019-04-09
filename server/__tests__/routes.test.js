@@ -33,7 +33,7 @@ suite('korin api', () => {
 
 suite('korin views', () => {
 	test('when viewing tracks', () => {
-		const hope = routes['get.apps.korin.tracks']();
+		const hope = routes['get.korin.tracks']();
 
 		expect(hope).to.equal({
 			method: 'GET',
@@ -43,7 +43,7 @@ suite('korin views', () => {
 	});
 
 	test('when viewing profiles', () => {
-		const hope = routes['get.apps.korin.profiles']({
+		const hope = routes['get.korin.profiles']({
 			artist: 'Ariana Grande',
 			track: 'God is a woman',
 		});
@@ -56,7 +56,7 @@ suite('korin views', () => {
 	});
 
 	test('when artist and track are missing', () => {
-		const hope = routes['get.apps.korin.profiles']();
+		const hope = routes['get.korin.profiles']();
 
 		expect(hope).to.equal({
 			method: 'GET',

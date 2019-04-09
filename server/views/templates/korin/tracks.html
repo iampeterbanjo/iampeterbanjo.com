@@ -1,0 +1,10 @@
+{% extends 'layout.html' %} {% block content %}
+<div>
+	<h1>Top 50 tracks</h1>
+	<ul>
+		{% for item in tracks %}
+		<li>{{ item }}</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
