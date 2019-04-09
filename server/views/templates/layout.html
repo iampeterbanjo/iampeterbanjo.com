@@ -4,13 +4,19 @@
 	<head>
 		<link rel="stylesheet" href="/css/main.css" />
 	</head>
-	<body>
+	<body class="w-100 sans-serif black bg-lightest-blue">
 		{% include 'includes/head.html' %}
-		<div>
+
+		<main class="ma5-ns">
 			<p>Layout header</p>
-			{% block content %} Default content -- should not show up! {% endblock %}
+
+			{% block content %}
+				Default content -- should not show up!
+			{% endblock %}
+
 			<p>Layout footer</p>
-		</div>
+		</main>
+
 		{% include 'includes/foot.html' %}
 	</body>
 </html>

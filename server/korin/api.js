@@ -1,5 +1,5 @@
 const Crypto = require('crypto');
-const R = require('ramda');
+const jsonata = require('jsonata');
 
 module.exports = {
 	name: 'korin-api',
@@ -71,7 +71,13 @@ module.exports = {
 						getTopTracks,
 						lastfmApi,
 					});
-					const tracks = R.path(['tracks', 'track'], data);
+					const expression = jsonata(`tracks.track.{
+						"title": name,
+							"image": image[3]."#text",
+							"artist": artist.name,
+							"url": artist.url
+					}`);
+					const tracks = expression.evaluate(data);
 
 					return tracks;
 				} catch (error) {
