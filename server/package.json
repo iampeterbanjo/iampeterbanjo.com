@@ -25,6 +25,7 @@
 	},
 	"license": "ISC",
 	"dependencies": {
+		"@hapi/wreck": "^15.0.0",
 		"acorn": "^6.1.1",
 		"catbox": "^10.0.6",
 		"catbox-mongodb": "^4.2.1",

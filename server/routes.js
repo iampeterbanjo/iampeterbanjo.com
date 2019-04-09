@@ -6,13 +6,22 @@
  * 3. Try to keep it short e.g. max 3 slashes deep
  */
 const slugify = require('slugify');
+const got = require('got');
+
+const client = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
 
 const routes = {
-	'get.apis.korin.tracks': () => ({
-		method: 'GET',
-		path: '/apis/korin/tracks',
-		url: '/apis/korin/tracks',
-	}),
+	'get.apis.korin.tracks': () => {
+		const method = 'GET';
+		const url = '/apis/korin/tracks';
+
+		return {
+			method,
+			path: url,
+			url,
+			client: () => client(url, { method }),
+		};
+	},
 
 	'get.apis.korin.profiles': (options = {}) => {
 		const { artist, track } = options;

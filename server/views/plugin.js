@@ -28,11 +28,19 @@ const getKorinProfiles = server => {
 	server.route({
 		method,
 		path,
-		handler: (request, h) =>
-			h.view('korin/profiles', {
-				artist: 'Ariana Grande',
-				track: 'God is a woman',
-			}),
+		handler: async (request, h) => {
+			const { artist, track } = request.params;
+			const profilesRoute = routes['get.apis.korin.profiles']({
+				artist,
+				track,
+			});
+			const { result: profiles } = await server.inject({
+				method: profilesRoute.method,
+				url: profilesRoute.url,
+			});
+
+			return h.view('korin/profiles', { profiles, artist, track });
+		},
 	});
 };
 
@@ -42,13 +50,10 @@ const getKorinTracks = server => {
 		method,
 		path,
 		handler: async (request, h) => {
-			const tracksRoute = routes['get.apis.korin.tracks']();
-			const { result: tracks = [] } = await server.inject({
-				method: tracksRoute.method,
-				url: tracksRoute.url,
-			});
+			const { client } = routes['get.apis.korin.tracks']();
+			const { body } = await client();
 
-			return h.view('korin/tracks', { tracks });
+			return h.view('korin/tracks', { tracks: body });
 		},
 	});
 };

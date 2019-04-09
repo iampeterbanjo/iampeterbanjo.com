@@ -708,6 +708,28 @@
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
+"@hapi/boom@7.x.x":
+  version "7.4.2"
+  resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-7.4.2.tgz#c16957cd09796f6c1bfb4031bdc39d66d6d750c3"
+  dependencies:
+    "@hapi/hoek" "6.x.x"
+
+"@hapi/bourne@1.x.x":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@hapi/bourne/-/bourne-1.2.0.tgz#d92a226047f202f5483f1f47b5b3752be00d06ae"
+
+"@hapi/hoek@6.x.x":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-6.2.1.tgz#d3a66329159af879bfdf0b0cff2229c43c5a3451"
+
+"@hapi/wreck@^15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/wreck/-/wreck-15.0.0.tgz#e276870ed399a746bfc5ace0748730137e3279ec"
+  dependencies:
+    "@hapi/boom" "7.x.x"
+    "@hapi/bourne" "1.x.x"
+    "@hapi/hoek" "6.x.x"
+
 "@mikaelkristiansson/domready@^1.0.9":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mikaelkristiansson/domready/-/domready-1.0.9.tgz#b2b85d8ac7bb2797e577050b61aeaf1b26fbd906"
