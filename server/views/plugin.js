@@ -26,7 +26,7 @@ const registerViews = {
 const after = async server => {
 	server.views(registerViews);
 
-	const { method, path } = routes['app.korin.get.profiles']();
+	const { method, path } = routes['get.apps.korin.profiles']();
 	server.route({
 		method,
 		path,

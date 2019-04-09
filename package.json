@@ -44,11 +44,12 @@
 		"postinstall": "yarn build",
 		"preinstall": "yarn setup",
 		"server-dev": "yarn server dev",
+		"server-test": "yarn server test",
 		"server": "yarn --cwd ./server",
 		"setup": "yarn server install && yarn css install && yarn blog install && yarn e2e install",
 		"start-debug": "node --inspect ./server/start.js",
 		"start": "node ./server/start.js",
-		"test-watch": "nodemon --watch server --watch blog/src --watch __tests__ -e js,json,html -x 'yarn test'",
+		"test-watch": "nodemon --watch server --watch __tests__ -e js,json,html,md -x 'yarn lint && yarn server-test'",
 		"test": "yarn lint && yarn server test && yarn e2e test"
 	},
 	"keywords": [

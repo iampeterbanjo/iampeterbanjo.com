@@ -66,7 +66,7 @@ const setup = async options => {
 suite('korin/profile/{artist}/{song}', () => {
 	test('api returns profile', async () => {
 		const { server, profile } = await setup();
-		const { url, method } = routes['api.korin.get.profiles'](
+		const { url, method } = routes['get.apis.korin.profiles'](
 			'Kendrik Lamar',
 			'Humble'
 		);
@@ -82,7 +82,7 @@ suite('korin/profile/{artist}/{song}', () => {
 suite('korin/songs', () => {
 	test('api request returns expected response', async () => {
 		const { server, topTracks } = await setup();
-		const { method, url } = routes['api.korin.get.tracks']();
+		const { method, url } = routes['get.apis.korin.tracks']();
 		const { result } = await server.inject({ method, url });
 
 		expect(result).to.equal(topTracks);

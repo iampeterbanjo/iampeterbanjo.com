@@ -60,7 +60,7 @@ module.exports = {
 			});
 		}
 
-		const getTracksRoute = routes['api.korin.get.tracks']();
+		const getTracksRoute = routes['get.apis.korin.tracks']();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
@@ -79,7 +79,7 @@ module.exports = {
 			},
 		});
 
-		const getProfileRoute = routes['api.korin.get.profiles']();
+		const getProfileRoute = routes['get.apis.korin.profiles']();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,

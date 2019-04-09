@@ -1,25 +1,45 @@
+/**
+ * Pragmatic REST API design
+ * 1. Use nouns at the root
+ * 2. Pluralise nouns
+ * 2. Use correct verbs
+ * 3. Try to keep it short e.g. max 3 slashes deep
+ */
+const slugify = require('slugify');
+
 const routes = {
-	'api.korin.get.tracks': () => ({
+	'get.apis.korin.tracks': () => ({
 		method: 'GET',
-		path: '/api/korin/tracks',
-		url: '/api/korin/tracks',
+		path: '/apis/korin/tracks',
+		url: '/apis/korin/tracks',
 	}),
 
-	'api.korin.get.profiles': (options = {}) => {
+	'get.apis.korin.profiles': (options = {}) => {
 		const { artist, track } = options;
 		return {
 			method: 'GET',
-			path: '/api/korin/profiles/{artist}/{track}',
-			url: `/api/korin/profiles/${artist}/${track}`,
+			path: '/apis/korin/{artist}/{track}',
+			url: `/apis/korin/${artist}/${track}`,
 		};
 	},
 
-	'app.korin.get.profiles': (options = {}) => {
-		const { artist, track } = options;
+	'get.apps.korin.tracks': () => {
 		return {
 			method: 'GET',
-			path: '/app/korin/profiles/{artist}/{track}',
-			url: `/app/korin/profiles/${artist}/${track}`,
+			path: '/korin/tracks',
+			url: '/korin/tracks',
+		};
+	},
+
+	'get.apps.korin.profiles': (options = {}) => {
+		const { artist = '', track = '' } = options;
+		const artistParam = slugify(artist).toLowerCase();
+		const trackParam = slugify(track).toLowerCase();
+
+		return {
+			method: 'GET',
+			path: '/korin/{artist}/{track}',
+			url: `/korin/${artistParam}/${trackParam}`,
 		};
 	},
 };
