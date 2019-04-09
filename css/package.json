@@ -2,7 +2,7 @@
 	"name": "css",
 	"version": "1.0.0",
 	"description": "CSS theme for iampeterbanjo.com",
-	"main": "build/main.css",
+	"main": "main.css",
 	"scripts": {
 		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
 		"dev": "npm run build -- --watch",

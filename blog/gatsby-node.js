@@ -1,20 +1,12 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const posts = require('./pages/posts');
-const korin = require('./pages/korin/index');
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { createPage } = actions;
 	const blogPage = path.resolve('./src/templates/blog-post.jsx');
-	const korinTracksPage = path.resolve('./src/pages/korin/tracks.jsx');
-	const korinProfilesPage = path.resolve('./src/pages/korin/profiles.jsx');
 
 	await posts({ createPage, blogPage, graphql });
-	await korin({
-		createPage,
-		korinTracksPage,
-		korinProfilesPage,
-	});
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
