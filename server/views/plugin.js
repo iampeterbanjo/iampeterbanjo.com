@@ -41,7 +41,15 @@ const getKorinTracks = server => {
 	server.route({
 		method,
 		path,
-		handler: (request, h) => h.view('korin/tracks', { tracks: ['test'] }),
+		handler: async (request, h) => {
+			const tracksRoute = routes['get.apis.korin.tracks']();
+			const { result: tracks = [] } = await server.inject({
+				method: tracksRoute.method,
+				url: tracksRoute.url,
+			});
+
+			return h.view('korin/tracks', { tracks });
+		},
 	});
 };
 

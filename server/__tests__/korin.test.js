@@ -85,7 +85,7 @@ suite('korin/songs', () => {
 		const { method, url } = routes['get.apis.korin.tracks']();
 		const { result } = await server.inject({ method, url });
 
-		expect(result).to.equal(topTracks);
+		expect(result).to.equal(topTracks.tracks.track);
 	});
 });
 

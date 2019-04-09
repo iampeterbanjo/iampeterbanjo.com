@@ -1,5 +1,4 @@
 const { expect } = require('code');
-const R = require('ramda');
 const Lab = require('lab');
 
 const lab = Lab.script();
@@ -14,7 +13,6 @@ test('api returns tracks', async () => {
 	const server = await api();
 	const { method, url } = routes['get.apis.korin.tracks']();
 	const { result } = await server.inject({ method, url });
-	const tracks = R.path(['tracks', 'track'], result);
 
-	expect(tracks.length).to.be.greaterThan(0);
+	expect(result.length).to.be.greaterThan(0);
 });

@@ -1,4 +1,5 @@
 const Crypto = require('crypto');
+const R = require('ramda');
 
 module.exports = {
 	name: 'korin-api',
@@ -70,8 +71,9 @@ module.exports = {
 						getTopTracks,
 						lastfmApi,
 					});
+					const tracks = R.path(['tracks', 'track'], data);
 
-					return data;
+					return tracks;
 				} catch (error) {
 					// eslint-disable-next-line no-console
 					return console.warn(error);
