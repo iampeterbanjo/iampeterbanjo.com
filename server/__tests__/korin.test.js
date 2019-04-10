@@ -81,11 +81,11 @@ suite('korin/profile/{artist}/{song}', () => {
 
 suite('korin/songs', () => {
 	test('api request returns expected response', async () => {
-		const { server, topTracks } = await setup();
+		const { server } = await setup();
 		const { method, url } = routes['get.apis.korin.tracks']();
 		const { result } = await server.inject({ method, url });
 
-		expect(result).to.equal(topTracks.tracks.track);
+		expect(result[0]).to.include(['artist', 'title', 'url', 'image']);
 	});
 });
 

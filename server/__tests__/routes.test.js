@@ -11,7 +11,7 @@ suite('korin api', () => {
 	test('when requesting tracks', () => {
 		const hope = routes['get.apis.korin.tracks']();
 
-		expect(hope).to.equal({
+		expect(hope).to.include({
 			method: 'GET',
 			path: '/apis/korin/tracks',
 			url: '/apis/korin/tracks',
@@ -23,7 +23,7 @@ suite('korin api', () => {
 		const track = 'R.I.P';
 		const hope = routes['get.apis.korin.profiles']({ artist, track });
 
-		expect(hope).to.equal({
+		expect(hope).to.include({
 			method: 'GET',
 			path: '/apis/korin/{artist}/{track}',
 			url: `/apis/korin/${artist}/${track}`,
@@ -35,7 +35,7 @@ suite('korin views', () => {
 	test('when viewing tracks', () => {
 		const hope = routes['get.korin.tracks']();
 
-		expect(hope).to.equal({
+		expect(hope).to.include({
 			method: 'GET',
 			path: '/korin/tracks',
 			url: '/korin/tracks',
@@ -48,7 +48,7 @@ suite('korin views', () => {
 			track: 'God is a woman',
 		});
 
-		expect(hope).to.equal({
+		expect(hope).to.include({
 			method: 'GET',
 			path: '/korin/{artist}/{track}',
 			url: '/korin/ariana-grande/god-is-a-woman',
@@ -58,7 +58,7 @@ suite('korin views', () => {
 	test('when artist and track are missing', () => {
 		const hope = routes['get.korin.profiles']();
 
-		expect(hope).to.equal({
+		expect(hope).to.include({
 			method: 'GET',
 			path: '/korin/{artist}/{track}',
 			url: '/korin//',
