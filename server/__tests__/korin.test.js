@@ -85,7 +85,13 @@ suite('korin/songs', () => {
 		const { method, url } = routes['get.apis.korin.tracks']();
 		const { result } = await server.inject({ method, url });
 
-		expect(result[0]).to.include(['artist', 'title', 'url', 'image']);
+		expect(result[0]).to.include([
+			'artist',
+			'title',
+			'url',
+			'image',
+			'profileUrl',
+		]);
 	});
 });
 

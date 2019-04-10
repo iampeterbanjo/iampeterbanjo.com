@@ -1,4 +1,5 @@
 const Crypto = require('crypto');
+// const R = require('ramda');
 const jsonata = require('jsonata');
 
 module.exports = {
@@ -75,8 +76,12 @@ module.exports = {
 						"title": name,
 							"image": image[3]."#text",
 							"artist": artist.name,
-							"url": artist.url
+							"url": artist.url,
+							"profileUrl": $test(artist.name, name)
 					}`);
+					expression.registerFunction('test', (artist, track) => {
+						return routes['get.korin.profiles']({ artist, track }).url;
+					});
 					const tracks = expression.evaluate(data);
 
 					return tracks;
