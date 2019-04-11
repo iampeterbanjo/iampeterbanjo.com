@@ -1,6 +1,32 @@
-{% extends 'layout.html' %} {% block content %}
-<div>
-	<h1>Profile of {{ track }} by {{ artist }}</h1>
-	<p>{{ message }}</p>
-</div>
+{% extends 'layout.html' %}
+
+{% block content %}
+	<div>
+		<h1>Profile of {{ track }} by {{ artist }}</h1>
+
+		<div>
+			<p id="profile-summary" />
+		</div>
+	</div>
+{% endblock %}
+
+{%block scripts %}
+	<script src="/js/dictionary.standalone.js" defer="true"></script>
+	<script src="/js/personality-text-summary.standalone.js" defer="true"></script>
+	<script type="text/javascript">
+		const showProfileSummary = (profiles) => {
+			console.log(profiles)
+			const textSummary = new TextSummary('en');
+			const summary = textSummary.getSummary(profiles);
+			const content = document.getElementById('#profile-summary');
+
+			content.textContent = summary;
+		}
+		const onReady = () => {
+			console.log(`💻 Ready`);
+			const profiles = {{ profiles | safe }};
+			showProfileSummary(profiles)
+		}
+		document.addEventListener('DOMContentLoaded', onReady);
+	</script>
 {% endblock %}

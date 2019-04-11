@@ -76,9 +76,9 @@ module.exports = {
 							"image": image[3]."#text",
 							"artist": artist.name,
 							"url": artist.url,
-							"profileUrl": $test(artist.name, name)
+							"profileUrl": $getProfileUrl(artist.name, name)
 					}`);
-					expression.registerFunction('test', (artist, track) => {
+					expression.registerFunction('getProfileUrl', (artist, track) => {
 						return routes['get.korin.profiles']({ artist, track }).url;
 					});
 					const tracks = expression.evaluate(data);

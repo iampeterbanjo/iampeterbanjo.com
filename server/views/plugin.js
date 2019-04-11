@@ -30,16 +30,17 @@ const getKorinProfiles = server => {
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const profilesRoute = routes['get.apis.korin.profiles']({
+			const { client } = routes['get.apis.korin.profiles']({
 				artist,
 				track,
 			});
-			const { result: profiles } = await server.inject({
-				method: profilesRoute.method,
-				url: profilesRoute.url,
-			});
+			const { body } = await client();
 
-			return h.view('korin/profiles', { profiles, artist, track });
+			return h.view('korin/profiles', {
+				profiles: JSON.stringify(body),
+				artist,
+				track,
+			});
 		},
 	});
 };

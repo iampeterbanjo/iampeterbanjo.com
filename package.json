@@ -67,10 +67,11 @@
 	"license": "ISC",
 	"private": true,
 	"workspaces": [
-		"css",
 		"blog",
-		"server",
-		"e2e"
+		"css",
+		"e2e",
+		"js",
+		"server"
 	],
 	"devDependencies": {
 		"eslint": "^5.3.0",
