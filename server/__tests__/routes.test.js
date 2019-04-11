@@ -1,13 +1,14 @@
 const { expect } = require('code');
-const { routes } = require('..');
 const Lab = require('lab');
+const { slugger } = require('../utils');
+const { routes } = require('..');
 
 const lab = Lab.script();
 const { test, suite } = lab;
 
 exports.lab = lab;
 
-suite('korin api', () => {
+suite('routes: korin api', () => {
 	test('when requesting tracks', () => {
 		const hope = routes['get.apis.korin.tracks']();
 
@@ -31,7 +32,7 @@ suite('korin api', () => {
 	});
 });
 
-suite('korin views', () => {
+suite('routes: korin views', () => {
 	test('when viewing tracks', () => {
 		const hope = routes['get.korin.tracks']();
 
@@ -43,25 +44,27 @@ suite('korin views', () => {
 	});
 
 	test('when viewing profiles', () => {
-		const hope = routes['get.korin.profiles']({
-			artist: 'Ariana Grande',
-			track: 'God is a woman',
+		const artist = 'Ariana Grande';
+		const track = 'God is a woman';
+		const { method, path, url } = routes['get.korin.profiles']({
+			artist,
+			track,
 		});
 
-		expect(hope).to.include({
-			method: 'GET',
-			path: '/korin/{artist}/{track}',
-			url: '/korin/ariana-grande/god-is-a-woman',
-		});
+		expect(method).to.equal('GET');
+		expect(path).to.equal('/korin/profiles/{artist}/{track}');
+		expect(url).to.include('/korin/profiles/');
+		expect(url).to.include(slugger.parse(artist));
+		expect(url).to.include(slugger.parse(track));
 	});
 
 	test('when artist and track are missing', () => {
-		const hope = routes['get.korin.profiles']();
+		const result = routes['get.korin.profiles']();
 
-		expect(hope).to.include({
+		expect(result).to.include({
 			method: 'GET',
-			path: '/korin/{artist}/{track}',
-			url: '/korin//',
+			path: '/korin/profiles/{artist}/{track}',
+			url: '/korin/profiles//',
 		});
 	});
 });

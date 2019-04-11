@@ -1,5 +1,4 @@
 const Crypto = require('crypto');
-// const R = require('ramda');
 const jsonata = require('jsonata');
 
 module.exports = {

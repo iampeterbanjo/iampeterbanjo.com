@@ -5,8 +5,8 @@
  * 2. Use correct verbs
  * 3. Try to keep it short e.g. max 3 slashes deep
  */
-const slugify = require('slugify');
 const got = require('got');
+const { slugger } = require('./utils');
 
 const request = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
 
@@ -44,13 +44,13 @@ const routes = {
 
 	'get.korin.profiles': (options = {}) => {
 		const { artist = '', track = '' } = options;
-		const artistParam = slugify(artist).toLowerCase();
-		const trackParam = slugify(track).toLowerCase();
+		const artistParam = slugger.parse(artist);
+		const trackParam = slugger.parse(track);
 
 		return {
 			method: 'GET',
-			path: '/korin/{artist}/{track}',
-			url: `/korin/${artistParam}/${trackParam}`,
+			path: '/korin/profiles/{artist}/{track}',
+			url: `/korin/profiles/${artistParam}/${trackParam}`,
 		};
 	},
 };
