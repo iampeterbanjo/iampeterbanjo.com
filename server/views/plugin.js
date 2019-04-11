@@ -35,9 +35,11 @@ const getKorinProfiles = server => {
 				track,
 			});
 			const { body } = await client();
+			const { profile, summary } = body;
 
 			return h.view('korin/profiles', {
-				profile: JSON.stringify(body),
+				profile: JSON.stringify(profile),
+				summary: JSON.stringify(summary),
 				artist,
 				track,
 			});

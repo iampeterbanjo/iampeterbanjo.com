@@ -63,7 +63,7 @@ const setup = async options => {
 	};
 };
 
-suite('korin/profile/{artist}/{song}', () => {
+suite('korin: korin/profile/{artist}/{song}', () => {
 	test('api returns profile', async () => {
 		const { server, profile } = await setup();
 		const { url, method } = routes['get.apis.korin.profiles'](
@@ -75,7 +75,7 @@ suite('korin/profile/{artist}/{song}', () => {
 			url,
 		});
 
-		expect(result).to.equal(profile);
+		expect(result.profile).to.equal(profile);
 	});
 });
 
