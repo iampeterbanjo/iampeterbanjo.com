@@ -14,18 +14,29 @@
 	<script src="/js/dictionary.standalone.js" defer="true"></script>
 	<script src="/js/personality-text-summary.standalone.js" defer="true"></script>
 	<script type="text/javascript">
-		const showProfileSummary = (profiles) => {
-			console.log(profiles)
-			const textSummary = new TextSummary('en');
-			const summary = textSummary.getSummary(profiles);
+		const showProfileSummary = (summary) => {
 			const content = document.getElementById('#profile-summary');
 
 			content.textContent = summary;
 		}
+		const getSummary = (profile) => {
+			/*
+			Uncaught TypeError: locale.split is not a function
+			at Object.self.getLocaleOptions (personality-text-summary.standalone.js:543)
+			at Object.self.getDictionary (personality-text-summary.standalone.js:560)
+			at new module.exports (personality-text-summary.standalone.js:32)
+			at getSummary (bad guy:52)
+			at HTMLDocument.onReady (bad guy:59)
+			*/
+			const textSummary = new TextSummary({ version: 'v3', locale: 'en' });
+			return textSummary.getSummary(profile);
+		}
 		const onReady = () => {
 			console.log(`💻 Ready`);
-			const profiles = {{ profiles | safe }};
-			showProfileSummary(profiles)
+			const profile = {{ profile | safe }};
+			console.log(profile);
+			const summary = getSummary(profile);
+			console.log(summary);
 		}
 		document.addEventListener('DOMContentLoaded', onReady);
 	</script>
