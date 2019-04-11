@@ -12,7 +12,7 @@ module.exports = {
 			lyricist,
 			getLyrics,
 			lastfmApi,
-			getSummary,
+			textSummary,
 			getTopTracks,
 			getPersonalityProfile,
 		}
@@ -80,7 +80,8 @@ module.exports = {
 							"profileUrl": $getProfileUrl(artist.name, name)
 					}`);
 					expression.registerFunction('getProfileUrl', (artist, track) => {
-						return routes['get.korin.profiles']({ artist, track }).url;
+						const { url } = routes['get.korin.profiles']({ artist, track });
+						return url;
 					});
 					const tracks = expression.evaluate(data);
 
@@ -110,7 +111,8 @@ module.exports = {
 					const profile = await server.methods.getPersonalityProfile({
 						lyrics,
 					});
-					const summary = getSummary(profile);
+
+					const summary = textSummary.getSummary(profile);
 
 					return { profile, summary };
 				} catch (error) {

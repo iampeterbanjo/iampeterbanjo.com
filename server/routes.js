@@ -25,8 +25,11 @@ const routes = {
 
 	'get.apis.korin.profiles': (options = {}) => {
 		const { artist, track } = options;
+		const artistParam = slugger.parse(artist);
+		const trackParam = slugger.parse(track);
+
 		const method = 'GET';
-		const url = `/apis/korin/${artist}/${track}`;
+		const url = `/apis/korin/${artistParam}/${trackParam}`;
 		const path = '/apis/korin/{artist}/{track}';
 
 		return { method, path, url, client: () => request(url, { method }) };

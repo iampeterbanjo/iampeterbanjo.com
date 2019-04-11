@@ -34,15 +34,15 @@ const setup = async options => {
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
 	const summary = await readFile(`${__dirname}/fixtures/summary.txt`);
-	const getSummary = () => summary;
 	const getLyrics = sinon.stub().resolves(lyrics);
 	const getPersonalityProfile = sinon.stub().resolves(profileData);
 	const personalityProfileApi = sinon.stub();
 	const getTopTracks = sinon.stub().resolves(topTracksData);
+	const textSummary = { getSummary: () => summary };
 
 	const defaults = {
 		routes,
-		getSummary,
+		textSummary,
 		getLyrics,
 		getTopTracks,
 		getPersonalityProfile,

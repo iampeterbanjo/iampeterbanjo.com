@@ -23,11 +23,13 @@ suite('routes: korin api', () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
 		const hope = routes['get.apis.korin.profiles']({ artist, track });
+		const artistParam = slugger.parse(artist);
+		const trackParam = slugger.parse(track);
 
 		expect(hope).to.include({
 			method: 'GET',
 			path: '/apis/korin/{artist}/{track}',
-			url: `/apis/korin/${artist}/${track}`,
+			url: `/apis/korin/${artistParam}/${trackParam}`,
 		});
 	});
 });
