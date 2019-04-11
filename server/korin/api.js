@@ -1,6 +1,5 @@
 const Crypto = require('crypto');
 const jsonata = require('jsonata');
-const PersonalityTextSummary = require('personality-text-summary');
 
 module.exports = {
 	name: 'korin-api',
@@ -13,6 +12,7 @@ module.exports = {
 			lyricist,
 			getLyrics,
 			lastfmApi,
+			getSummary,
 			getTopTracks,
 			getPersonalityProfile,
 		}
@@ -110,11 +110,7 @@ module.exports = {
 					const profile = await server.methods.getPersonalityProfile({
 						lyrics,
 					});
-					const textSummary = new PersonalityTextSummary({
-						locale: 'en',
-						version: 'v3',
-					});
-					const summary = textSummary.getSummary(profile);
+					const summary = getSummary(profile);
 
 					return { profile, summary };
 				} catch (error) {

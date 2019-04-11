@@ -33,6 +33,8 @@ const setup = async options => {
 	const server = await Glue.compose(rest);
 
 	const lyrics = await readFile(`${__dirname}/fixtures/lyrics.txt`);
+	const summary = await readFile(`${__dirname}/fixtures/summary.txt`);
+	const getSummary = () => summary;
 	const getLyrics = sinon.stub().resolves(lyrics);
 	const getPersonalityProfile = sinon.stub().resolves(profileData);
 	const personalityProfileApi = sinon.stub();
@@ -40,6 +42,7 @@ const setup = async options => {
 
 	const defaults = {
 		routes,
+		getSummary,
 		getLyrics,
 		getTopTracks,
 		getPersonalityProfile,
@@ -57,6 +60,7 @@ const setup = async options => {
 	return {
 		server,
 		lyrics,
+		summary,
 		profile: profileData,
 		topTracks: topTracksData,
 		...defaults,
@@ -65,7 +69,7 @@ const setup = async options => {
 
 suite('korin: korin/profile/{artist}/{song}', () => {
 	test('api returns profile', async () => {
-		const { server, profile } = await setup();
+		const { server, profile, summary } = await setup();
 		const { url, method } = routes['get.apis.korin.profiles'](
 			'Kendrik Lamar',
 			'Humble'
@@ -76,10 +80,11 @@ suite('korin: korin/profile/{artist}/{song}', () => {
 		});
 
 		expect(result.profile).to.equal(profile);
+		expect(result.summary).to.equal(summary);
 	});
 });
 
-suite('korin/songs', () => {
+suite('korin: korin/songs', () => {
 	test('api request returns expected response', async () => {
 		const { server } = await setup();
 		const { method, url } = routes['get.apis.korin.tracks']();
@@ -95,7 +100,7 @@ suite('korin/songs', () => {
 	});
 });
 
-suite('getLyrics', () => {
+suite('korin: getLyrics', () => {
 	const geniusApi = got.extend({ baseUrl: '/' });
 	const lyricist = new Lyricist('FAKE-TOKEN');
 
@@ -147,7 +152,7 @@ suite('getLyrics', () => {
 	});
 });
 
-suite('getTopTracks', () => {
+suite('korin: getTopTracks', () => {
 	const apiKey = 'FAKE_API_KEY';
 	const baseUrl = process.env.LASTFM_API_URL;
 	const lastfmApi = got.extend({ baseUrl, apiKey });

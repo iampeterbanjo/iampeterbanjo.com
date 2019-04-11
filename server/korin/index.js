@@ -3,7 +3,12 @@ const Lyricist = require('lyricist');
 
 const api = require('./api');
 const { getLyrics, getTopTracks, getPersonalityProfile } = require('./methods');
+const PersonalityTextSummary = require('personality-text-summary');
 
+const { getSummary } = new PersonalityTextSummary({
+	locale: 'en',
+	version: 'v3',
+});
 const { routes } = require('..');
 
 const {
@@ -36,6 +41,7 @@ module.exports = {
 		geniusApi,
 		lyricist,
 		getLyrics,
+		getSummary,
 		getTopTracks,
 		getPersonalityProfile,
 	},
