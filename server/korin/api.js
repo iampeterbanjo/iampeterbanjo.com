@@ -113,7 +113,6 @@ module.exports = {
 					});
 
 					const summary = textSummary.getSummary(profile);
-
 					return { profile, summary };
 				} catch (error) {
 					// eslint-disable-next-line no-console

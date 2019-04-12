@@ -1,13 +1,39 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block content %}
+<div>
+	<h1 class="measure mt0 mv5-l mv4">
+		<span class="db f4 fw6 f1-ns lh-title">{{ track }}</span>
+		<span class="db">{{ artist }}</span>
+	</h1>
 
-{% block content %}
+	<h2 class="lh-title mv3">Watson personality profile</h2>
+
 	<div>
-		<h1>Profile of {{ track }} by {{ artist }}</h1>
+		<p class="f5 f4-ns fw4 b measure dib-m lh-copy" id="profile-summary">
+			{{ summary | striptags(true) | escape | nl2br }}
+		</p>
 
-		<div>
-			<p id="profile-summary">
-				{{ summary }}
-			</p>
-		</div>
+		<p class="flex justify-between">
+			<a class="flex items-center" rel="prev" href="/korin/tracks">
+				<i>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="feather feather-arrow-left"
+					>
+						<line x1="19" y1="12" x2="5" y2="12"></line>
+						<polyline points="12 19 5 12 12 5"></polyline>
+					</svg>
+				</i>
+				<span class="ml3 f4">Back to tracks</span>
+			</a>
+		</p>
 	</div>
+</div>
 {% endblock %}
