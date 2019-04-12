@@ -1,10 +1,16 @@
 const { expect } = require('code');
-const { test } = (exports.lab = require('lab').script());
+const Lab = require('lab');
+
+const lab = Lab.script();
+const { test } = lab;
+
+exports.lab = lab;
+
 const config = require('../config');
 
 test('good is first', () => {
 	const { manifest } = config;
 
 	const [first] = manifest.register.plugins;
-	expect(first).to.equal('good');
+	expect(first).to.equal('./good');
 });

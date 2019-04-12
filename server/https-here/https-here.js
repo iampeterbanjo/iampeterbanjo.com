@@ -1,9 +1,7 @@
 // based on https://github.com/bendrucker/hapi-require-https
 
-module.exports = { register, name: 'https-here' };
-
 function register(server, options) {
-	server.ext('onRequest', function(request, h) {
+	server.ext('onRequest', (request, h) => {
 		const redirect =
 			options.proxy !== false
 				? request.headers['x-forwarded-proto'] === 'http'
@@ -19,3 +17,5 @@ function register(server, options) {
 			.code(301);
 	});
 }
+
+module.exports = { register, name: 'https-here' };

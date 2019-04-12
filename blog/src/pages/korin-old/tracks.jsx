@@ -14,12 +14,12 @@ const truncateText = text => {
 };
 
 const renderTracks = tracks => {
-	if (tracks.length === 0) {
+	if (R.isEmpty(tracks)) {
 		return <h2>No tracks found</h2>;
 	}
 
 	return (
-		<ul className="cf pa0 list">
+		<ul className="cf pa0 list tracks">
 			{tracks.map(track => {
 				const image = R.pathOr('', ['image', 3, '#text'], track);
 				const artist = R.path(['artist', 'name'], track);
@@ -47,15 +47,14 @@ const renderTracks = tracks => {
 
 export default props => {
 	const { pageContext } = props;
-	const { title, description, data = {} } = pageContext;
-	const tracks = R.pathOr([], ['tracks', 'track'], data);
+	const { title, description, tracks = [] } = pageContext;
 
 	return (
 		<Layout>
 			<SEO title={title} description={description} />
 
 			<article className="cf mw9 center">
-				<h1 className="f2">Top 40 tracks from LastFM</h1>
+				<h1 className="f2">Top 50 tracks from LastFM</h1>
 
 				{renderTracks(tracks)}
 			</article>

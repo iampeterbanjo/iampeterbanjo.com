@@ -10,6 +10,6 @@ module.exports = async () => {
 		return server;
 	} catch (error) {
 		// eslint-disable-next-line no-console
-		console.warn(error);
+		return console.warn(error);
 	}
 };

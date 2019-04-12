@@ -1,3 +1,5 @@
+const plugin = require('./https-here');
+
 module.exports = {
-	plugin: require('./https-here'),
+	plugin,
 };
