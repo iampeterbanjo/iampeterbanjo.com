@@ -1,6 +1,18 @@
-{% extends 'layout.html' %} {% block content %}
+{% import "helpers.html" as helpers %}
+
+<!--  -->
+{% extends 'layout.html' %}
+
+<!--  -->
+{% block content %}
 <div>
-	<h1>Top 50 tracks</h1>
+	{{ helpers.heading('Top 50 tracks', 'LastFm') }}
+
+	{{
+		helpers.p(
+			'Select a track to generate a personality profile based on its lyrics'
+		)
+	}}
 
 	<ul class="cf pa0 list tracks">
 		{% for track in tracks %}
