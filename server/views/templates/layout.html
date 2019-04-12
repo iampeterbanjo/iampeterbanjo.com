@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 
 <html lang="en">
-		<head>
-				<link rel="stylesheet" href="/css/main.css"/>
-		</head>
-		<body class="w-100 sans-serif black bg-lightest-blue">
-				{% include 'includes/head.html' %}
+	<head>
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
+	<body class="w-100 sans-serif black bg-lightest-blue">
+		{% include 'includes/head.html' %}
 
-				<main class="ma5-ns">
-						{% block content %}
-				Default content -- should not show up!
-			{% endblock %}
+		<main class="ma5-ns">
+			{% block content %} {% endblock %}
+		</main>
 
-						<p>Layout footer</p>
-				</main>
-
-				{% include 'includes/foot.html' %}
-
-				{% block scripts %}
-						<script>//JavaScripting things</script>
+		{% include 'includes/foot.html' %} {% block scripts %}
+		<script>
+			//JavaScripting things
+		</script>
 		{% endblock %}
 	</body>
 </html>
