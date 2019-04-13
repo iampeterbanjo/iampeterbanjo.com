@@ -3,8 +3,7 @@
 // https://colorswatches.info/twitter-blue
 $twitter-blue: #55acee;
 
-// @import '../node_modules/bulma/bulma.sass';
-@import '../node_modules/tachyons-sass/tachyons.scss';
+@import '../../../node_modules/tachyons-sass/tachyons.scss';
 
 a {
 	@extend .link;

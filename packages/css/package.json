@@ -5,9 +5,8 @@
 	"main": "main.css",
 	"scripts": {
 		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
-		"dev": "npm run build -- --watch",
-		"start": "npm run watch",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"dev": "yarn build -- --watch",
+		"test": "echo 'css - no tests'"
 	},
 	"keywords": [],
 	"author": {
