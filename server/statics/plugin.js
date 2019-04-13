@@ -1,8 +1,21 @@
 module.exports = {
 	name: 'serve-static-files',
-	version: '0.0.1',
-	register: (server, { rootPath, cssPath, jsPath }) => {
+	version: '1.0.0',
+	register: (server, { rootPath, cssPath, jsPath, imagePath }) => {
 		server.dependency('inert');
+
+		server.route({
+			path: '/images/{path*}',
+			method: 'GET',
+			handler: {
+				directory: {
+					path: imagePath,
+					redirectToSlash: false,
+					listing: false,
+					index: false,
+				},
+			},
+		});
 
 		server.route({
 			path: '/css/{path*}',
