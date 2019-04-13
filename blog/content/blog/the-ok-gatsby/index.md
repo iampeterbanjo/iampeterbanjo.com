@@ -1,11 +1,10 @@
 ---
-tags: opinion
+tags: frameworks
 title: The OK Gatsby
 description: Too much of too many good things
 date: 2019-04-08
+updated: 2019-04-13
 ---
-
-# The Goal
 
 I have been using Gatsby to build my personal portfolio site and after a few months, I don't think I would recommend it. I've had a few blogs and apps that I didn't maintain over the years and so having something easy to work with over time is a must have for this side project. [GatsbyJS][1] uses the latest (as of writting) front-end tools to build static sites
 
@@ -45,7 +44,13 @@ See our docs page on debugging HTML builds for help https://gatsby.dev/debug-htm
 // truncated for brevity
 ```
 
-- Service worker weirdness. This feature is meant to cache your site so that it works great with less than ideal internet connections. In practice it means that I have to keep refreshing my site to see what's on it. In development my end-to-end tests sometimes fail on the first pass. Below is a screenshot of the same page on first load and then after refresh.
+In this case the error is at the url buried in the terminal.
+
+> Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+
+Usually with [create-react-app][8] you get error details nicely laid out in the terminal. So this Webpack format is not a step in the right direction.
+
+- Service worker weirdness. This feature is meant to cache your site so that it works great with less than ideal internet connections - even offline. In practice it means that I have to keep refreshing my site to see what's on it. In development, my end-to-end tests sometimes fail on the first pass. Or second and third pass until I delete browser data or the Cypress binary... and re-install. Below is a screenshot of the same page on first load and then after refresh.
 
 ![on first load][3]
 
@@ -61,8 +66,9 @@ So what's a developer to do? Keep it simple - Gatbsy was fun to test drive but I
 
 [1]: https://gatsbyjs.org
 [2]: https://github.com/gatsbyjs/gatsby/issues/962
-[3]: ./Screenshot_2019-04-08-service-workers-no-tracks-found.png
-[4]: ./Screenshot_2019-04-08-service-workers-top-40-tracks-found.png
+[3]: /images/Screenshot_2019-04-08-service-workers-no-tracks-found.png
+[4]: /images/Screenshot_2019-04-08-service-workers-top-40-tracks-found.png
 [5]: https://twitter.com/dan_abramov/status/954146978564395008
 [6]: https://www.smashingmagazine.com/2009/04/progressive-enhancement-what-it-is-and-how-to-use-it/
 [7]: https://web.dev/installable/discover-installable
+[8]: https://github.com/facebook/create-react-app#npm-start-or-yarn-start
