@@ -13,6 +13,6 @@ describe('Korin tracks', () => {
 	});
 
 	it('should have track link', () => {
-		cy.get('.tracks li a').should('have.attr', 'href', '/korin/tracks');
+		cy.get('.tracks li a').should('have.attr', 'href');
 	});
 });
