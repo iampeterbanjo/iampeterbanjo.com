@@ -1,11 +1,10 @@
 ---
-tags: opinion
+tags: frameworks
 title: The OK Gatsby
 description: Too much of too many good things
 date: 2019-04-08
+updated: 2019-04-13
 ---
-
-## The Goal
 
 I have been using Gatsby to build my personal portfolio site and after a few months, I don't think I would recommend it. I've had a few blogs and apps that I didn't maintain over the years and so having something easy to work with over time is a must have for this side project. [GatsbyJS][1] uses the latest (as of writting) front-end tools to build static sites
 
