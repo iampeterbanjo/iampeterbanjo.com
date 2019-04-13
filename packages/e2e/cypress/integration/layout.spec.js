@@ -1,5 +1,8 @@
 const BASE_URL = 'http://localhost:8080';
 const slugs = require('../../../blog/pages/slugs');
+const { clearServiceWorkers } = require('./helpers');
+
+beforeEach(clearServiceWorkers);
 
 describe('layout', () => {
 	beforeEach(() => {
