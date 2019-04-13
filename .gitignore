@@ -1,5 +1,6 @@
 node_modules/
 build/
 .envrc
-e2e/cypress/videos/
-/**/*.(failed).png
+# ./packages/**/cypress/videos/
+./packages/**/cypress/**/*.failed.*.png
+
