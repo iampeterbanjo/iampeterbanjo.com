@@ -13,6 +13,7 @@ exports.lab = lab;
 
 const cssPath = '../css';
 const jsPath = '../js';
+const imagePath = '../images';
 const rootPath = path.join(__dirname, './fixtures');
 
 let server;
@@ -25,7 +26,7 @@ suite('statics', () => {
 	test('/ rootPath is served', async () => {
 		await server.register({
 			plugin,
-			options: { rootPath, cssPath, jsPath },
+			options: { rootPath, cssPath, jsPath, imagePath },
 		});
 		const res = await server.inject({
 			method: 'GET',
