@@ -3,6 +3,6 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"scripts": {
-		"test": "echo 'images s no tests'"
+		"test": "echo 'images has no tests'"
 	}
 }

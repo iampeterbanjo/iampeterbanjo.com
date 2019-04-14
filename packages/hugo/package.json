@@ -1,0 +1,10 @@
+{
+	"name": "hugo",
+	"version": "1.0.0",
+	"license": "MIT",
+	"scripts": {
+		"hugo": "./hugo",
+		"stats": "yarn hugo --config ./config.toml",
+		"test": "echo 'hugo has no tests'"
+	}
+}
