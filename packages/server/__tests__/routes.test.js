@@ -10,7 +10,7 @@ exports.lab = lab;
 
 suite('routes: korin api', () => {
 	test('when requesting tracks', () => {
-		const hope = routes['get.apis.korin.tracks']();
+		const hope = routes.get_apis_korin_tracks();
 
 		expect(hope).to.include({
 			method: 'GET',
@@ -22,7 +22,7 @@ suite('routes: korin api', () => {
 	test('when requesting artist profile', () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
-		const hope = routes['get.apis.korin.profiles']({ artist, track });
+		const hope = routes.get_apis_korin_profiles({ artist, track });
 		const artistParam = slugger.parse(artist);
 		const trackParam = slugger.parse(track);
 
@@ -36,7 +36,7 @@ suite('routes: korin api', () => {
 
 suite('routes: korin views', () => {
 	test('when viewing tracks', () => {
-		const hope = routes['get.korin.tracks']();
+		const hope = routes.get_korin_tracks();
 
 		expect(hope).to.include({
 			method: 'GET',
@@ -48,7 +48,7 @@ suite('routes: korin views', () => {
 	test('when viewing profiles', () => {
 		const artist = 'Ariana Grande';
 		const track = 'God is a woman';
-		const { method, path, url } = routes['get.korin.profiles']({
+		const { method, path, url } = routes.get_korin_profiles({
 			artist,
 			track,
 		});
@@ -61,7 +61,7 @@ suite('routes: korin views', () => {
 	});
 
 	test('when artist and track are missing', () => {
-		const result = routes['get.korin.profiles']();
+		const result = routes.get_korin_profiles();
 
 		expect(result).to.include({
 			method: 'GET',

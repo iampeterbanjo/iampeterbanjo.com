@@ -51,22 +51,20 @@ const getKorinProfiles = options => {
 	};
 };
 
-const routes = {
-	'get.apis.korin.tracks': () => {
+module.exports = {
+	get_apis_korin_tracks: () => {
 		return getApisKorinTracks();
 	},
 
-	'get.apis.korin.profiles': (options = {}) => {
+	get_apis_korin_profiles: (options = {}) => {
 		return getApisKorinProfiles(options);
 	},
 
-	'get.korin.tracks': () => {
+	get_korin_tracks: () => {
 		return getKorinTracks();
 	},
 
-	'get.korin.profiles': (options = {}) => {
+	get_korin_profiles: (options = {}) => {
 		return getKorinProfiles(options);
 	},
 };
-
-module.exports = routes;

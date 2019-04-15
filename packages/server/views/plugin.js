@@ -24,13 +24,13 @@ const registerViews = {
 };
 
 const getKorinProfiles = server => {
-	const { method, path } = routes['get.korin.profiles']();
+	const { method, path } = routes.get_korin_profiles();
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const { client } = routes['get.apis.korin.profiles']({
+			const { client } = routes.get_apis_korin_profiles({
 				artist,
 				track,
 			});
@@ -48,12 +48,12 @@ const getKorinProfiles = server => {
 };
 
 const getKorinTracks = server => {
-	const { method, path } = routes['get.korin.tracks']();
+	const { method, path } = routes.get_korin_tracks();
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
-			const { client } = routes['get.apis.korin.tracks']();
+			const { client } = routes.get_apis_korin_tracks();
 			const { body } = await client();
 
 			return h.view('korin/tracks', { tracks: body });

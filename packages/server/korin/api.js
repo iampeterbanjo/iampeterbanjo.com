@@ -62,7 +62,7 @@ module.exports = {
 			});
 		}
 
-		const getTracksRoute = routes['get.apis.korin.tracks']();
+		const getTracksRoute = routes.get_apis_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
@@ -80,7 +80,7 @@ module.exports = {
 							"profileUrl": $getProfileUrl(artist.name, name)
 					}`);
 					expression.registerFunction('getProfileUrl', (artist, track) => {
-						const { url } = routes['get.korin.profiles']({ artist, track });
+						const { url } = routes.get_korin_profiles({ artist, track });
 						return url;
 					});
 					const tracks = expression.evaluate(data);
@@ -93,7 +93,7 @@ module.exports = {
 			},
 		});
 
-		const getProfileRoute = routes['get.apis.korin.profiles']();
+		const getProfileRoute = routes.get_apis_korin_profiles();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,
