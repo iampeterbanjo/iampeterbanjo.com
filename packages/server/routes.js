@@ -10,51 +10,62 @@ const { slugger } = require('./utils');
 
 const request = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
 
+const getApisKorinTracks = () => {
+	const method = 'GET';
+	const url = '/apis/korin/tracks';
+	return {
+		method,
+		path: url,
+		url,
+		client: () => request(url, { method }),
+	};
+};
+
+const getApisKorinProfiles = options => {
+	const { artist, track } = options;
+	const artistParam = slugger.parse(artist);
+	const trackParam = slugger.parse(track);
+	const method = 'GET';
+	const url = `/apis/korin/${artistParam}/${trackParam}`;
+	const path = '/apis/korin/{artist}/{track}';
+	return { method, path, url, client: () => request(url, { method }) };
+};
+
+const getKorinTracks = () => {
+	const url = '/korin/tracks';
+	return {
+		method: 'GET',
+		path: url,
+		url,
+	};
+};
+
+const getKorinProfiles = options => {
+	const { artist = '', track = '' } = options;
+	const artistParam = slugger.parse(artist);
+	const trackParam = slugger.parse(track);
+	return {
+		method: 'GET',
+		path: '/korin/profiles/{artist}/{track}',
+		url: `/korin/profiles/${artistParam}/${trackParam}`,
+	};
+};
+
 const routes = {
 	'get.apis.korin.tracks': () => {
-		const method = 'GET';
-		const url = '/apis/korin/tracks';
-
-		return {
-			method,
-			path: url,
-			url,
-			client: () => request(url, { method }),
-		};
+		return getApisKorinTracks();
 	},
 
 	'get.apis.korin.profiles': (options = {}) => {
-		const { artist, track } = options;
-		const artistParam = slugger.parse(artist);
-		const trackParam = slugger.parse(track);
-
-		const method = 'GET';
-		const url = `/apis/korin/${artistParam}/${trackParam}`;
-		const path = '/apis/korin/{artist}/{track}';
-
-		return { method, path, url, client: () => request(url, { method }) };
+		return getApisKorinProfiles(options);
 	},
 
 	'get.korin.tracks': () => {
-		const url = '/korin/tracks';
-
-		return {
-			method: 'GET',
-			path: url,
-			url,
-		};
+		return getKorinTracks();
 	},
 
 	'get.korin.profiles': (options = {}) => {
-		const { artist = '', track = '' } = options;
-		const artistParam = slugger.parse(artist);
-		const trackParam = slugger.parse(track);
-
-		return {
-			method: 'GET',
-			path: '/korin/profiles/{artist}/{track}',
-			url: `/korin/profiles/${artistParam}/${trackParam}`,
-		};
+		return getKorinProfiles(options);
 	},
 };
 
