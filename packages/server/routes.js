@@ -6,9 +6,10 @@
  * 3. Try to keep it short e.g. max 3 slashes deep
  */
 const got = require('got');
-const { slugger } = require('./utils');
+const { slugger, vars } = require('./utils');
 
-const request = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
+const { baseUrl } = vars;
+const request = got.extend({ baseUrl, json: true });
 
 const getApisKorinTracks = () => {
 	const method = 'GET';

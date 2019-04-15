@@ -4,8 +4,11 @@ const { expect } = require('code');
 const nock = require('nock');
 const sinon = require('sinon');
 
+const { vars } = require('../utils');
 const routes = require('../blog/routes');
 const plugin = require('../blog/plugin');
+
+const { baseUrl } = vars;
 
 const lab = Lab.script();
 const { suite, test } = lab;
@@ -34,7 +37,7 @@ suite('blog', () => {
 		const globby = sinon.stub().resolves(testData);
 		const { path, client } = routes.get_blog_list({ globby, path: '/' });
 
-		await nock('http://0.0.0.0:8080')
+		await nock(baseUrl)
 			.get(path)
 			.reply(200, testData);
 

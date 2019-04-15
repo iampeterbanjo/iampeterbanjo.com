@@ -1,5 +1,6 @@
 const got = require('got');
+const { baseUrl } = require('./vars');
 
-const clientel = got.extend({ baseUrl: 'http://0.0.0.0:8080', json: true });
+const clientel = got.extend({ baseUrl, json: true });
 
 module.exports = clientel;
