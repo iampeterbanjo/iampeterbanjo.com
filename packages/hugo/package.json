@@ -3,7 +3,9 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"scripts": {
-		"hugo": "./hugo",
+		"dev": "yarn hugo server -D",
+		"hugo": "./hugo --config ./config.toml",
+		"new": "yarn hugo new",
 		"stats": "yarn hugo --config ./config.toml",
 		"test": "echo 'hugo has no tests'"
 	}
