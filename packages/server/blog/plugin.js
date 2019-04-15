@@ -1,3 +1,8 @@
+const globby = require('globby');
+const Path = require('path');
+
+const path = Path.join(__dirname, '../../blog/posts');
+
 module.exports = {
 	name: 'blog',
 	version: '1.0.0',
@@ -5,7 +10,11 @@ module.exports = {
 		server.route({
 			path: '/blog/{path*}',
 			method: 'GET',
-			handler: () => 'Hello blog',
+			handler: async () => {
+				const blogFiles = await globby(`${path}/*.md`);
+
+				return blogFiles;
+			},
 		});
 	},
 };

@@ -11,10 +11,17 @@ exports.lab = lab;
 const server = Hapi.server();
 
 suite('blog', () => {
-	test('the default path', async () => {
+	test('blog list', async () => {
 		await server.register(plugin);
 
-		const { result } = await server.inject({ method: 'GET', url: '/blog' });
-		expect(result).to.equal('Hello blog');
+		const { result } = await server.inject({
+			method: 'GET',
+			url: '/blog/list',
+		});
+
+		expect(result.length).to.be.above(0);
+		result.forEach(file => {
+			expect(file).to.endWith('.md');
+		});
 	});
 });
