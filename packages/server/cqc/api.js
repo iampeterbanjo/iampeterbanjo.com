@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'cqc-api',
-	version: '0.2.0',
+	version: '1.0.0',
 	register: (server, { client }) => {
 		server.route({
 			path: '/cqc/providers',

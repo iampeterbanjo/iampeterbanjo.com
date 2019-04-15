@@ -51,7 +51,7 @@
 		"setup": "yarn workspaces run install",
 		"start-debug": "node --inspect ./packages/server/start.js",
 		"start": "node ./packages/server/start.js",
-		"test-watch": "nodemon --watch server --watch __tests__ -e js,json,html,md -x 'yarn lint && yarn server-test'",
+		"test-watch": "nodemon --watch ./packages/server --watch ./packages/__tests__ -e js,json,html,md -x 'yarn lint && yarn server-test'",
 		"test": "yarn lint && yarn server test && yarn e2e test"
 	},
 	"keywords": [
