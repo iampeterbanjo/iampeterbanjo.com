@@ -1,6 +1,10 @@
 const Hapi = require('hapi');
 const Lab = require('lab');
 const { expect } = require('code');
+const nock = require('nock');
+const sinon = require('sinon');
+
+const routes = require('../blog/routes');
 const plugin = require('../blog/plugin');
 
 const lab = Lab.script();
@@ -23,5 +27,22 @@ suite('blog', () => {
 		result.forEach(file => {
 			expect(file).to.endWith('.md');
 		});
+	});
+
+	test('blog list client', async () => {
+		const testData = ['blog_post.md'];
+		const globby = sinon.stub().resolves(testData);
+		const { path, client } = routes.get_blog_list({ globby, path: '/' });
+
+		await nock('http://0.0.0.0:8080')
+			.get(path)
+			.reply(200, testData);
+
+		const { body } = await client();
+
+		expect(body).to.equal(testData);
+
+		sinon.restore();
+		nock.cleanAll();
 	});
 });
