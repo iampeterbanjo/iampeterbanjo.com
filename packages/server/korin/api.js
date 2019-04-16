@@ -1,5 +1,6 @@
 const Crypto = require('crypto');
 const jsonata = require('jsonata');
+const { time } = require('../utils');
 
 module.exports = {
 	name: 'korin-api',
@@ -20,10 +21,10 @@ module.exports = {
 		// resolve all requests in 100ms
 		// and expire in an hour
 		const cache = {
-			expiresIn: 60 * 60 * 1000,
-			staleIn: 10 * 1000,
-			staleTimeout: 100,
-			generateTimeout: 10 * 1000,
+			expiresIn: time.oneDay,
+			staleIn: time.tenSeconds,
+			staleTimeout: time.oneHundredMilliseconds,
+			generateTimeout: time.oneMinute,
 			cache: 'mongodb-cache',
 		};
 
