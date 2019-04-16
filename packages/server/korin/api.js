@@ -1,5 +1,6 @@
 const Crypto = require('crypto');
 const jsonata = require('jsonata');
+const { time } = require('../utils');
 
 module.exports = {
 	name: 'korin-api',
@@ -20,10 +21,10 @@ module.exports = {
 		// resolve all requests in 100ms
 		// and expire in an hour
 		const cache = {
-			expiresIn: 60 * 60 * 1000,
-			staleIn: 10 * 1000,
-			staleTimeout: 100,
-			generateTimeout: 10 * 1000,
+			expiresIn: time.oneDay,
+			staleIn: time.tenSeconds,
+			staleTimeout: time.oneHundredMilliseconds,
+			generateTimeout: time.oneMinute,
 			cache: 'mongodb-cache',
 		};
 
@@ -62,7 +63,7 @@ module.exports = {
 			});
 		}
 
-		const getTracksRoute = routes['get.apis.korin.tracks']();
+		const getTracksRoute = routes.get_apis_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
@@ -80,7 +81,7 @@ module.exports = {
 							"profileUrl": $getProfileUrl(artist.name, name)
 					}`);
 					expression.registerFunction('getProfileUrl', (artist, track) => {
-						const { url } = routes['get.korin.profiles']({ artist, track });
+						const { url } = routes.get_korin_profiles({ artist, track });
 						return url;
 					});
 					const tracks = expression.evaluate(data);
@@ -93,7 +94,7 @@ module.exports = {
 			},
 		});
 
-		const getProfileRoute = routes['get.apis.korin.profiles']();
+		const getProfileRoute = routes.get_apis_korin_profiles();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,

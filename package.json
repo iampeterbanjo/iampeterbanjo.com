@@ -15,7 +15,7 @@
 			"eslint"
 		],
 		"*.{js,jsx,json,md}": [
-			"prettier --list-different"
+			"yarn lint-fix && lint-errors"
 		]
 	},
 	"husky": {
@@ -40,6 +40,8 @@
 		"dev": "npm-run-all -p blog-dev server-dev css-dev",
 		"dry-run": "yarn build && yarn start",
 		"e2e": "yarn workspace e2e",
+		"lint-errors": "prettier --config prettier.config.js --list-different",
+		"lint-fix": "yarn prettier --config prettier.config.js --write ./packages/**/*.{md}",
 		"lint": "yarn eslint --fix-dry-run ./packages/blog ./packages/e2e ./packages/server",
 		"postinstall": "yarn build",
 		"preinstall": "yarn setup",
@@ -49,7 +51,7 @@
 		"setup": "yarn workspaces run install",
 		"start-debug": "node --inspect ./packages/server/start.js",
 		"start": "node ./packages/server/start.js",
-		"test-watch": "nodemon --watch server --watch __tests__ -e js,json,html,md -x 'yarn lint && yarn server-test'",
+		"test-watch": "nodemon --watch ./packages/server --watch ./packages/__tests__ -e js,json,html,md -x 'yarn lint && yarn server-test'",
 		"test": "yarn lint && yarn server test && yarn e2e test"
 	},
 	"keywords": [
