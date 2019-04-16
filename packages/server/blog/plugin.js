@@ -1,5 +1,6 @@
 const globby = require('globby');
 const Path = require('path');
+const { readFile } = require('fs-extra');
 const { message } = require('../utils');
 
 const dir = Path.join(__dirname, '../../blog/posts');
@@ -28,13 +29,15 @@ module.exports = {
 			method: blogDetails.method,
 			handler: async (request, h) => {
 				const { post } = request.params;
-				const blogFile = await globby(`${dir}/${post}.md`);
+				const [blogFile] = await globby(`${dir}/${post}.md`);
 
-				if (!blogFile.length) {
+				if (!blogFile) {
 					return h.response(message.ERROR_POST_NOT_FOUND).code(404);
 				}
 
-				return blogFile;
+				const contents = await readFile(blogFile);
+
+				return contents;
 			},
 		});
 	},
