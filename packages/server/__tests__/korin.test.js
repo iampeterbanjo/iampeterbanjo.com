@@ -24,7 +24,7 @@ const {
 	getLyrics: getLyricsMethod,
 	getTopTracks: getTopTracksMethod,
 	lyricsIdPath,
-} = require('../../server/korin/methods');
+} = require('../../server/korin/helpers');
 const korinApi = require('../../server/korin/api');
 
 const setup = async options => {

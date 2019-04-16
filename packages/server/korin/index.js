@@ -2,7 +2,7 @@ const got = require('got');
 const Lyricist = require('lyricist');
 
 const api = require('./api');
-const { getLyrics, getTopTracks, getPersonalityProfile } = require('./methods');
+const { getLyrics, getTopTracks, getPersonalityProfile } = require('./helpers');
 const PersonalityTextSummary = require('personality-text-summary');
 
 const textSummary = new PersonalityTextSummary({
