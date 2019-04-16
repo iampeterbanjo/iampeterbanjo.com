@@ -4,3 +4,4 @@ build/
 # ./packages/**/cypress/videos/
 ./packages/**/cypress/**/*.failed.*.png
 
+./packages/e2e/cypress/videos/
