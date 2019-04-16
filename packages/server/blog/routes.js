@@ -1,14 +1,16 @@
 /* eslint-disable camelcase */
 const { clientel } = require('../utils');
 
-const get_blog_list = ({ globby, path }) => {
-	const url = '/blog/list';
+const get_blog_posts = ({ globby, dir }) => {
+	const url = '/blog/posts';
 	const method = 'GET';
+
 	return {
+		url,
 		path: url,
 		method,
 		handler: async () => {
-			const blogFiles = await globby(`${path}/*.md`);
+			const blogFiles = await globby(`${dir}/*.md`);
 
 			return blogFiles;
 		},
@@ -16,6 +18,24 @@ const get_blog_list = ({ globby, path }) => {
 	};
 };
 
+const get_blog_details = ({ globby, dir, post = '' }) => {
+	const path = '/blog/posts/{post}';
+	const url = `/blog/posts/${post}`;
+	const method = 'GET';
+
+	return {
+		url,
+		path,
+		method,
+		handler: async request => {
+			const blogFile = await globby(`${dir}/${request.params.post}`);
+
+			return blogFile;
+		},
+	};
+};
+
 module.exports = {
-	get_blog_list,
+	get_blog_posts,
+	get_blog_details,
 };
