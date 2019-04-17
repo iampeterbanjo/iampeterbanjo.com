@@ -10,7 +10,7 @@ const {
 	WATSON_PI_API_VERSION,
 } = vars;
 
-const getTopTracks = async ({ lastfmApi }) => {
+async function getTopTracks({ lastfmApi }) {
 	const query = new URLSearchParams([
 		['method', 'chart.getTopTracks'],
 		['format', 'json'],
@@ -18,7 +18,7 @@ const getTopTracks = async ({ lastfmApi }) => {
 	]);
 
 	return (await lastfmApi.get('/', { query })).body;
-};
+}
 
 const getLyrics = async ({ geniusApi, lyricist, search }) => {
 	const query = new URLSearchParams([['q', search]]);
