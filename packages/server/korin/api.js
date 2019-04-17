@@ -1,75 +1,19 @@
-const Crypto = require('crypto');
 const jsonata = require('jsonata');
-const { time } = require('../utils');
 
 module.exports = {
 	name: 'korin-api',
-	version: '0.0.1',
+	version: '1.0.0',
 	register: (
 		server,
-		{
-			routes,
-			geniusApi,
-			lyricist,
-			getLyrics,
-			lastfmApi,
-			textSummary,
-			getTopTracks,
-			getPersonalityProfile,
-		}
+		{ routes, geniusApi, lyricist, lastfmApi, textSummary, getTopTracks }
 	) => {
-		// resolve all requests in 100ms
-		// and expire in an hour
-		const cache = {
-			expiresIn: time.oneDay,
-			staleIn: time.tenSeconds,
-			staleTimeout: time.oneHundredMilliseconds,
-			generateTimeout: time.oneMinute,
-			cache: 'mongodb-cache',
-		};
-
-		if (getTopTracks) {
-			server.method('getTopTracks', getTopTracks, {
-				cache,
-				generateKey: () => 'getTopTracks',
-			});
-		}
-
-		if (getLyrics) {
-			server.method('getLyrics', getLyrics, {
-				cache,
-				// eslint-disable-next-line no-unused-vars
-				generateKey: ({ geniusApi: g, lyricist: l }, searchString) => {
-					if (!searchString) return searchString;
-
-					return Crypto.createHash('sha1')
-						.update(searchString)
-						.digest('hex');
-				},
-			});
-		}
-
-		if (getPersonalityProfile) {
-			server.method('getPersonalityProfile', getPersonalityProfile, {
-				cache,
-				// eslint-disable-next-line no-unused-vars
-				generateKey: ({ lyrics }) => {
-					if (!lyrics) return 'personality-profile';
-
-					return Crypto.createHash('sha1')
-						.update(lyrics)
-						.digest('hex');
-				},
-			});
-		}
-
 		const getTracksRoute = routes.get_apis_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
 			handler: async () => {
 				try {
-					const data = await server.methods.getTopTracks({
+					const data = await server.methods.korin.getTopTracks({
 						getTopTracks,
 						lastfmApi,
 					});
@@ -104,12 +48,13 @@ module.exports = {
 					const artistDecoded = decodeURI(artist);
 					const trackDecoded = decodeURI(track);
 
-					const lyrics = await server.methods.getLyrics(
-						{ geniusApi, lyricist },
-						`${artistDecoded} ${trackDecoded}`
-					);
+					const lyrics = await server.methods.korin.getLyrics({
+						geniusApi,
+						lyricist,
+						search: `${artistDecoded} ${trackDecoded}`,
+					});
 
-					const profile = await server.methods.getPersonalityProfile({
+					const profile = await server.methods.korin.getPersonalityProfile({
 						lyrics,
 					});
 

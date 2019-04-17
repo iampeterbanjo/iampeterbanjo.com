@@ -20,8 +20,8 @@ const getTopTracks = async ({ lastfmApi }) => {
 	return (await lastfmApi.get('/', { query })).body;
 };
 
-const getLyrics = async ({ geniusApi, lyricist }, term) => {
-	const query = new URLSearchParams([['q', term]]);
+const getLyrics = async ({ geniusApi, lyricist, search }) => {
+	const query = new URLSearchParams([['q', search]]);
 	const data = (await geniusApi.get('/search', { query })).body;
 	const expression = jsonata(lyricsIdPath);
 	const songId = expression.evaluate(data);
@@ -32,13 +32,13 @@ const getLyrics = async ({ geniusApi, lyricist }, term) => {
 	return lyrics;
 };
 
-const personalityInsights = new PersonalityInsightsV3({
-	version: WATSON_PI_API_VERSION,
-	iam_apikey: WATSON_PI_API_KEY,
-	url: WATSON_PI_API_URL,
-});
-
 const getProfile = options => {
+	const personalityInsights = new PersonalityInsightsV3({
+		version: WATSON_PI_API_VERSION,
+		iam_apikey: WATSON_PI_API_KEY,
+		url: WATSON_PI_API_URL,
+	});
+
 	return new Promise((resolve, reject) => {
 		personalityInsights.profile(options, (error, response) => {
 			if (error) {

@@ -10,43 +10,41 @@ const cache = {
 	cache: 'mongodb-cache',
 };
 
-module.exports = {
-	methods: [
-		{
-			name: 'korin.getTopTracks',
-			method: getTopTracks,
-			options: {
-				cache,
-				generateKey: () => 'getTopTracks',
-			},
+module.exports = [
+	{
+		name: 'korin.getTopTracks',
+		method: getTopTracks,
+		options: {
+			cache,
+			generateKey: () => 'getTopTracks',
 		},
-		{
-			name: 'korin.getLyrics',
-			method: getLyrics,
-			options: {
-				cache,
-				generateKey: ({ searchString }) => {
-					if (!searchString) return searchString;
+	},
+	{
+		name: 'korin.getLyrics',
+		method: getLyrics,
+		options: {
+			cache,
+			generateKey: ({ search }) => {
+				if (!search) return search;
 
-					return Crypto.createHash('sha1')
-						.update(searchString)
-						.digest('hex');
-				},
+				return Crypto.createHash('sha1')
+					.update(search)
+					.digest('hex');
 			},
 		},
-		{
-			name: 'korin.getPersonalityProfile',
-			method: getPersonalityProfile,
-			options: {
-				cache,
-				generateKey: ({ lyrics }) => {
-					if (!lyrics) return 'personality-profile';
+	},
+	{
+		name: 'korin.getPersonalityProfile',
+		method: getPersonalityProfile,
+		options: {
+			cache,
+			generateKey: ({ lyrics }) => {
+				if (!lyrics) return 'personality-profile';
 
-					return Crypto.createHash('sha1')
-						.update(lyrics)
-						.digest('hex');
-				},
+				return Crypto.createHash('sha1')
+					.update(lyrics)
+					.digest('hex');
 			},
 		},
-	],
-};
+	},
+];
