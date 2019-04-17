@@ -1,22 +1,16 @@
 const jsonata = require('jsonata');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
-const lyricsIdPath = 'response.hits[0].result.id';
+const { vars } = require('../utils');
 
 const {
+	lyricsIdPath,
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,
-} = process.env;
-const personalityInsights = new PersonalityInsightsV3({
-	version: WATSON_PI_API_VERSION,
-	iam_apikey: WATSON_PI_API_KEY,
-	url: WATSON_PI_API_URL,
-});
+} = vars;
 
-exports.lyricsIdPath = lyricsIdPath;
-
-exports.getTopTracks = async ({ lastfmApi }) => {
+const getTopTracks = async ({ lastfmApi }) => {
 	const query = new URLSearchParams([
 		['method', 'chart.getTopTracks'],
 		['format', 'json'],
@@ -26,7 +20,7 @@ exports.getTopTracks = async ({ lastfmApi }) => {
 	return (await lastfmApi.get('/', { query })).body;
 };
 
-exports.getLyrics = async ({ geniusApi, lyricist }, term) => {
+const getLyrics = async ({ geniusApi, lyricist }, term) => {
 	const query = new URLSearchParams([['q', term]]);
 	const data = (await geniusApi.get('/search', { query })).body;
 	const expression = jsonata(lyricsIdPath);
@@ -37,6 +31,12 @@ exports.getLyrics = async ({ geniusApi, lyricist }, term) => {
 
 	return lyrics;
 };
+
+const personalityInsights = new PersonalityInsightsV3({
+	version: WATSON_PI_API_VERSION,
+	iam_apikey: WATSON_PI_API_KEY,
+	url: WATSON_PI_API_URL,
+});
 
 const getProfile = options => {
 	return new Promise((resolve, reject) => {
@@ -49,7 +49,7 @@ const getProfile = options => {
 	});
 };
 
-exports.getPersonalityProfile = async ({ lyrics }) => {
+const getPersonalityProfile = async ({ lyrics }) => {
 	if (!lyrics) return 'No lyrics found for profile';
 
 	const options = {
@@ -63,4 +63,10 @@ exports.getPersonalityProfile = async ({ lyrics }) => {
 	if (!profile) return 'No profile could be generated';
 
 	return profile;
+};
+
+module.exports = {
+	getTopTracks,
+	getLyrics,
+	getPersonalityProfile,
 };
