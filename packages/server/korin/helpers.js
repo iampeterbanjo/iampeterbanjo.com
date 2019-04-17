@@ -1,3 +1,4 @@
+const got = require('got');
 const jsonata = require('jsonata');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 
@@ -5,20 +6,27 @@ const { vars } = require('../utils');
 
 const {
 	lyricsIdPath,
+	LASTFM_API_KEY,
+	LASTFM_API_URL,
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,
 } = vars;
 
-async function getTopTracks({ lastfmApi }) {
+const lastfmApi = got.extend({
+	baseUrl: LASTFM_API_URL,
+	json: true,
+});
+
+const getTopTracks = async () => {
 	const query = new URLSearchParams([
 		['method', 'chart.getTopTracks'],
 		['format', 'json'],
-		['api_key', lastfmApi.defaults.options.apiKey],
+		['api_key', LASTFM_API_KEY],
 	]);
 
 	return (await lastfmApi.get('/', { query })).body;
-}
+};
 
 const getLyrics = async ({ geniusApi, lyricist, search }) => {
 	const query = new URLSearchParams([['q', search]]);
