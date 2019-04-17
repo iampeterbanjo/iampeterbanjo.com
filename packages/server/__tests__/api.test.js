@@ -3,18 +3,21 @@ const { expect } = require('code');
 const Lab = require('lab');
 
 const lab = Lab.script();
-const { test, suite } = lab;
+const { before, test, suite } = lab;
 
 exports.lab = lab;
 
 const { routes } = require('..');
 const api = require('../api');
 
-const Server = () => api();
-
 suite('korin', () => {
+	let server;
+
+	before(async () => {
+		server = await api();
+	});
+
 	test('api returns tracks', async () => {
-		const server = await Server();
 		const { method, url } = routes.get_apis_korin_tracks();
 		const { result } = await server.inject({ method, url });
 
@@ -22,8 +25,7 @@ suite('korin', () => {
 	});
 
 	['getTopTracks', 'getLyrics', 'getPersonalityProfile'].forEach(name => {
-		test(`method ${name} is registered`, async () => {
-			const server = await Server();
+		test(`method ${name} is registered`, () => {
 			const result = server.methods.korin[name];
 
 			expect(result).to.be.a.function();
