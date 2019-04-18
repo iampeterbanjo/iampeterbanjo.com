@@ -2,12 +2,18 @@ const lab = require('lab').script();
 const { expect } = require('code');
 const nock = require('nock');
 
-const { getTopTracks } = require('../../korin/helpers');
+const { getTopTracks, getSongData } = require('../../korin/helpers');
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
+const songData = require('../fixtures/genius-search.json');
 const { vars } = require('../../utils');
 
 const { suite, test, afterEach, beforeEach } = lab;
-const { LASTFM_API_URL, LASTFM_API_KEY } = vars;
+const {
+	GENIUS_API_ACCESS_TOKEN,
+	GENIUS_API_URL,
+	LASTFM_API_URL,
+	LASTFM_API_KEY,
+} = vars;
 
 exports.lab = lab;
 
@@ -31,5 +37,30 @@ suite('getTopTracks', () => {
 		const result = await getTopTracks();
 
 		expect(result).to.equal(topTracksData);
+	});
+});
+
+suite('getSongData', () => {
+	const q = 'Kendrick Lamar HUMBLE';
+
+	beforeEach(async () => {
+		await nock(GENIUS_API_URL, {
+			headers: {
+				authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
+			},
+		})
+			.get('/search')
+			.query({ q })
+			.reply(200, songData);
+	});
+
+	afterEach(() => {
+		nock.cleanAll();
+	});
+
+	test('genius API request', async () => {
+		const result = await getSongData(q);
+
+		expect(result).to.equal(songData);
 	});
 });
