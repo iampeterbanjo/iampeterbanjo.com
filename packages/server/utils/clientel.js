@@ -1,5 +1,4 @@
 /**
- * @constant
  * @type {object}
  * @property {function} extend
  * @property {function} get

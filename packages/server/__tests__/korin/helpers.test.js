@@ -1,11 +1,20 @@
 const lab = require('lab').script();
 const { expect } = require('code');
 const nock = require('nock');
+const { readFile } = require('fs-extra');
+const Path = require('path');
 
-const { getTopTracks, getSongData } = require('../../korin/helpers');
+const { vars, message } = require('../../utils');
+
+const {
+	getTopTracks,
+	getSongData,
+	getPersonalityProfile,
+} = require('../../korin/helpers');
+
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 const songData = require('../fixtures/genius-search.json');
-const { vars } = require('../../utils');
+const profileData = require('../fixtures/personality-profile.json');
 
 const { suite, test, afterEach, beforeEach } = lab;
 const {
@@ -13,6 +22,7 @@ const {
 	GENIUS_API_URL,
 	LASTFM_API_URL,
 	LASTFM_API_KEY,
+	WATSON_PI_API_URL,
 } = vars;
 
 exports.lab = lab;
@@ -33,7 +43,7 @@ suite('getTopTracks', () => {
 		nock.cleanAll();
 	});
 
-	test('lastfm API request', async () => {
+	test('lastfm API request for top tracks', async () => {
 		const result = await getTopTracks();
 
 		expect(result).to.equal(topTracksData);
@@ -58,9 +68,40 @@ suite('getSongData', () => {
 		nock.cleanAll();
 	});
 
-	test('genius API request', async () => {
+	test('genius API request for song data', async () => {
 		const result = await getSongData(q);
 
 		expect(result).to.equal(songData);
+	});
+});
+
+suite('getPersonalityProfile', async () => {
+	const path = Path.join(__dirname, '../fixtures/lyrics.txt');
+	const lyrics = await readFile(path);
+
+	beforeEach(async () => {
+		await nock(WATSON_PI_API_URL)
+			.post('/v3/profile')
+			.query({
+				version: '2017-10-13',
+				consumption_preferences: true,
+			})
+			.reply(200, profileData);
+	});
+
+	afterEach(() => {
+		nock.cleanAll();
+	});
+
+	test('watson API request for personality profile', async () => {
+		const result = await getPersonalityProfile(lyrics);
+
+		expect(result).to.equal(profileData);
+	});
+
+	test('when called with no lyrics', async () => {
+		const result = await getPersonalityProfile();
+
+		expect(result).to.equal(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
 	});
 });

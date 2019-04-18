@@ -1,6 +1,7 @@
 const jsonata = require('jsonata');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 const {
+	message,
 	clientel: { genius, lastfm, lyricist },
 } = require('../utils');
 
@@ -64,8 +65,8 @@ const getProfile = options => {
 	});
 };
 
-const getPersonalityProfile = async ({ lyrics }) => {
-	if (!lyrics) return 'No lyrics found for profile';
+const getPersonalityProfile = async lyrics => {
+	if (!lyrics) return message.ERROR_LYRICS_REQUIRED_FOR_PROFILE;
 
 	const options = {
 		content: lyrics,
@@ -74,9 +75,6 @@ const getPersonalityProfile = async ({ lyrics }) => {
 	};
 
 	const profile = await getProfile(options);
-
-	if (!profile) return 'No profile could be generated';
-
 	return profile;
 };
 
