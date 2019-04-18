@@ -1,16 +1,14 @@
-const got = require('got');
 const jsonata = require('jsonata');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
-const Lyricist = require('lyricist');
+const {
+	clientel: { genius, lastfm, lyricist },
+} = require('../utils');
 
 const { vars } = require('../utils');
 
 const {
 	lyricsIdPath,
-	GENIUS_API_ACCESS_TOKEN,
-	GENIUS_API_URL,
 	LASTFM_API_KEY,
-	LASTFM_API_URL,
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,
@@ -18,34 +16,21 @@ const {
 
 const getSongData = async search => {
 	const query = new URLSearchParams([['q', search]]);
-	const geniusApi = got.extend({
-		baseUrl: GENIUS_API_URL,
-		headers: {
-			authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
-		},
-		json: true,
-	});
 
-	return (await geniusApi.get('/search', { query })).body;
+	return (await genius.get('/search', { query })).body;
 };
 
 const getTopTracks = async () => {
-	const lastfmApi = got.extend({
-		baseUrl: LASTFM_API_URL,
-		json: true,
-	});
-
 	const query = new URLSearchParams([
 		['method', 'chart.getTopTracks'],
 		['format', 'json'],
 		['api_key', LASTFM_API_KEY],
 	]);
 
-	return (await lastfmApi.get('/', { query })).body;
+	return (await lastfm.get('/', { query })).body;
 };
 
 const getLyrics = async data => {
-	const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);
 	const expression = jsonata(lyricsIdPath);
 	const songId = expression.evaluate(data);
 
@@ -55,6 +40,13 @@ const getLyrics = async data => {
 	return lyrics;
 };
 
+/**
+ * Watson profile request options.
+ * @typedef {Object<string, any>} options
+ * @property {string} content Content to process.
+ * @property {'text/plain' | 'application/json'} content_type data content type
+ * @property {boolean} consumption_preferences Add consumption analysis
+ */
 const getProfile = options => {
 	const personalityInsights = new PersonalityInsightsV3({
 		version: WATSON_PI_API_VERSION,

@@ -9,7 +9,7 @@ const get_blog_posts = () => {
 		url,
 		path: url,
 		method,
-		client: () => clientel(url, { method }),
+		client: () => clientel.korin(url, { method }),
 	};
 };
 
