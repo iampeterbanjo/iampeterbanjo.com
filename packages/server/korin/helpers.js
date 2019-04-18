@@ -31,11 +31,14 @@ const getTopTracks = async () => {
 	return (await lastfm.get('/', { query })).body;
 };
 
-const getLyrics = async data => {
+const getSongId = data => {
 	const expression = jsonata(lyricsIdPath);
 	const songId = expression.evaluate(data);
 
-	if (!songId) return null;
+	return songId;
+};
+
+const getLyrics = async songId => {
 	const { lyrics } = await lyricist.song(songId, { fetchLyrics: true });
 
 	return lyrics;
@@ -79,6 +82,7 @@ const getPersonalityProfile = async lyrics => {
 };
 
 module.exports = {
+	getSongId,
 	getSongData,
 	getTopTracks,
 	getLyrics,

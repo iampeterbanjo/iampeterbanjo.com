@@ -10,11 +10,14 @@ const {
 	getTopTracks,
 	getSongData,
 	getPersonalityProfile,
+	getSongId,
 } = require('../../korin/helpers');
 
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 const songData = require('../fixtures/genius-search.json');
 const profileData = require('../fixtures/personality-profile.json');
+
+const path = Path.join(__dirname, '../fixtures/lyrics.txt');
 
 const { suite, test, afterEach, beforeEach } = lab;
 const {
@@ -75,8 +78,21 @@ suite('getSongData', () => {
 	});
 });
 
+suite('getSongId', async () => {
+	test('get expected songId', async () => {
+		const result = await getSongId(songData);
+
+		expect(result).to.equal(3039923);
+	});
+
+	test('get undefined songId', async () => {
+		const result = await getSongId({});
+
+		expect(result).to.equal(undefined);
+	});
+});
+
 suite('getPersonalityProfile', async () => {
-	const path = Path.join(__dirname, '../fixtures/lyrics.txt');
 	const lyrics = await readFile(path);
 
 	beforeEach(async () => {
