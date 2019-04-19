@@ -1,9 +1,10 @@
 const jsonata = require('jsonata');
+const routes = require('./routes');
 
 module.exports = {
 	name: 'korin-api',
 	version: '1.0.0',
-	register: (server, { routes }) => {
+	register: server => {
 		const getTracksRoute = routes.get_apis_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,

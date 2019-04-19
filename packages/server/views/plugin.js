@@ -1,6 +1,6 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const routes = require('../routes');
+const routes = require('../korin/routes');
 
 const registerViews = {
 	engines: {

@@ -1,15 +1,4 @@
-/**
- * Pragmatic REST API design
- * 1. Use nouns at the root
- * 2. Pluralise nouns
- * 2. Use correct verbs
- * 3. Try to keep it short e.g. max 3 slashes deep
- */
-const got = require('got');
-const { slugger, vars } = require('./utils');
-
-const { baseUrl } = vars;
-const request = got.extend({ baseUrl, json: true });
+const { slugger, clientel } = require('../utils');
 
 const getApisKorinTracks = () => {
 	const method = 'GET';
@@ -18,7 +7,7 @@ const getApisKorinTracks = () => {
 		method,
 		path: url,
 		url,
-		client: () => request(url, { method }),
+		client: () => clientel.korin(url, { method }),
 	};
 };
 
@@ -29,7 +18,7 @@ const getApisKorinProfiles = options => {
 	const method = 'GET';
 	const url = `/apis/korin/${artistParam}/${trackParam}`;
 	const path = '/apis/korin/{artist}/{track}';
-	return { method, path, url, client: () => request(url, { method }) };
+	return { method, path, url, client: () => clientel.korin(url, { method }) };
 };
 
 const getKorinTracks = () => {

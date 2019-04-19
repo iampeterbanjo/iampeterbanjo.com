@@ -1,7 +1,7 @@
 const { expect } = require('code');
 const Lab = require('lab');
-const { slugger } = require('../utils');
-const { routes } = require('..');
+const { slugger } = require('../../utils');
+const routes = require('../../korin/routes');
 
 const lab = Lab.script();
 const { test, suite } = lab;
@@ -12,6 +12,7 @@ suite('routes: korin api', () => {
 	test('when requesting tracks', () => {
 		const hope = routes.get_apis_korin_tracks();
 
+		// @ts-ignore
 		expect(hope).to.include({
 			method: 'GET',
 			path: '/apis/korin/tracks',
@@ -26,6 +27,7 @@ suite('routes: korin api', () => {
 		const artistParam = slugger.parse(artist);
 		const trackParam = slugger.parse(track);
 
+		// @ts-ignore
 		expect(hope).to.include({
 			method: 'GET',
 			path: '/apis/korin/{artist}/{track}',
