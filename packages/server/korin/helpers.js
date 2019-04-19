@@ -1,5 +1,7 @@
 const jsonata = require('jsonata');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
+const PersonalityTextSummary = require('personality-text-summary');
+
 const {
 	message,
 	clientel: { genius, lastfm, lyricist },
@@ -38,6 +40,20 @@ const getSongId = data => {
 	return songId;
 };
 
+/**
+ * Get Genius songId based on artist and track
+ * @param {string} search space-separated Artist and track
+ */
+const getSongIdFromSearch = search => {
+	const songData = getSongData(search);
+	const songId = getSongId(songData);
+	return songId;
+};
+
+/**
+ * Get lyrics for song
+ * @param {string} songId Genius songId
+ */
 const getLyrics = async songId => {
 	const { lyrics } = await lyricist.song(songId, { fetchLyrics: true });
 
@@ -68,6 +84,20 @@ const getProfile = options => {
 	});
 };
 
+/**
+ * Plain text summary of personality profile
+ * @param {string} profile Watson personality profile
+ */
+const getTextSummary = profile => {
+	const textSummary = new PersonalityTextSummary({
+		locale: 'en',
+		version: 'v3',
+	});
+
+	const summary = textSummary.getSummary(profile);
+	return summary;
+};
+
 const getPersonalityProfile = async lyrics => {
 	if (!lyrics) return message.ERROR_LYRICS_REQUIRED_FOR_PROFILE;
 
@@ -78,12 +108,16 @@ const getPersonalityProfile = async lyrics => {
 	};
 
 	const profile = await getProfile(options);
-	return profile;
+	const summary = getTextSummary(profile);
+
+	return { profile, summary };
 };
 
 module.exports = {
 	getSongId,
 	getSongData,
+	getSongIdFromSearch,
+	getTextSummary,
 	getTopTracks,
 	getLyrics,
 	getPersonalityProfile,

@@ -4,7 +4,7 @@ const {
 	getLyrics,
 	getTopTracks,
 	getPersonalityProfile,
-	getSongData,
+	getSongIdFromSearch,
 } = require('./helpers');
 
 const cache = {
@@ -17,8 +17,8 @@ const cache = {
 
 module.exports = [
 	{
-		name: 'korin.getSongData',
-		method: getSongData,
+		name: 'korin.getSongIdFromSearch',
+		method: getSongIdFromSearch,
 		options: {
 			cache,
 			generateKey: search => {
@@ -35,7 +35,7 @@ module.exports = [
 		method: getTopTracks,
 		options: {
 			cache,
-			generateKey: () => 'getTopTracks',
+			generateKey: () => `getTopTracks-${Date.now()}`,
 		},
 	},
 	{
@@ -43,7 +43,7 @@ module.exports = [
 		method: getLyrics,
 		options: {
 			cache,
-			generateKey: ({ search }) => {
+			generateKey: search => {
 				if (!search) return search;
 
 				return Crypto.createHash('sha1')
@@ -57,7 +57,7 @@ module.exports = [
 		method: getPersonalityProfile,
 		options: {
 			cache,
-			generateKey: ({ lyrics }) => {
+			generateKey: lyrics => {
 				if (!lyrics) return 'personality-profile';
 
 				return Crypto.createHash('sha1')

@@ -3,20 +3,14 @@ const jsonata = require('jsonata');
 module.exports = {
 	name: 'korin-api',
 	version: '1.0.0',
-	register: (
-		server,
-		{ routes, geniusApi, lyricist, lastfmApi, textSummary, getTopTracks }
-	) => {
+	register: (server, { routes }) => {
 		const getTracksRoute = routes.get_apis_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
 			handler: async () => {
 				try {
-					const data = await server.methods.korin.getTopTracks({
-						getTopTracks,
-						lastfmApi,
-					});
+					const data = await server.methods.korin.getTopTracks();
 					const expression = jsonata(`tracks.track.{
 						"title": name,
 							"image": image[3]."#text",
@@ -47,18 +41,15 @@ module.exports = {
 					const { artist, track } = request.params;
 					const artistDecoded = decodeURI(artist);
 					const trackDecoded = decodeURI(track);
+					const search = `${artistDecoded} ${trackDecoded}`;
 
-					const lyrics = await server.methods.korin.getLyrics({
-						geniusApi,
-						lyricist,
-						search: `${artistDecoded} ${trackDecoded}`,
-					});
+					const songId = await server.methods.korin.getSongIdFromSearch(search);
+					const lyrics = await server.methods.korin.getLyrics(songId);
+					const {
+						profile,
+						summary,
+					} = await server.methods.korin.getPersonalityProfile(lyrics);
 
-					const profile = await server.methods.korin.getPersonalityProfile({
-						lyrics,
-					});
-
-					const summary = textSummary.getSummary(profile);
 					return { profile, summary };
 				} catch (error) {
 					// eslint-disable-next-line no-console
