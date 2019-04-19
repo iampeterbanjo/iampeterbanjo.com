@@ -1,21 +1,26 @@
-const { time } = require('../utils');
+const Crypto = require('crypto');
+const { getBlogFiles, getBlogContents } = require('./helpers');
+const { time, getCache } = require('../utils');
 
-const methods = [
+module.exports = [
 	{
 		name: 'blog.getBlogFiles',
-		method: () => {
-			//
-		},
+		method: getBlogFiles,
 		options: {
-			cache: {
-				expiresIn: time.oneDay,
-				staleIn: time.tenSeconds,
-				staleTimeout: time.oneHundredMilliseconds,
-				generateTimeout: time.oneMinute,
-				cache: 'mongodb-cache',
+			cache: getCache({ expiresIn: time.oneWeek }),
+			generateKey: () => `getBlogFiles-${Date.now()}`,
+		},
+	},
+	{
+		name: 'blog.getBlogContents',
+		method: getBlogContents,
+		options: {
+			cache: getCache({ expiresIn: time.oneWeek }),
+			generateKey: filename => {
+				return Crypto.createHash('sha1')
+					.update(filename)
+					.digest('hex');
 			},
 		},
 	},
 ];
-
-module.exports = methods;

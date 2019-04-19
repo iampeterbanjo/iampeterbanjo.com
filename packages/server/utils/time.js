@@ -9,4 +9,5 @@ module.exports = {
 	oneDay: 86400000,
 	oneYear: 31556900000,
 	oneMonth: 2629746000,
+	oneWeek: 604800000,
 };

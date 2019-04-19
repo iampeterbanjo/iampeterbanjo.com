@@ -1,5 +1,5 @@
-const api = require('./api');
+const plugin = require('./plugin');
 
 module.exports = {
-	plugin: api,
+	plugin,
 };

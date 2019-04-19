@@ -33,6 +33,7 @@ suite('getCache', () => {
 		test(`cache is correct with ${options} options `, () => {
 			const cache = getCache(options);
 
+			// @ts-ignore
 			expect(cache).to.include(options);
 		});
 	});

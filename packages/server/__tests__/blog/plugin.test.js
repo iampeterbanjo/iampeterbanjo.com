@@ -4,9 +4,9 @@ const { expect } = require('code');
 const nock = require('nock');
 const sinon = require('sinon');
 
-const { vars, message } = require('../utils');
-const routes = require('../blog/routes');
-const plugin = require('../blog/plugin');
+const { vars, message } = require('../../utils');
+const routes = require('../../blog/routes');
+const plugin = require('../../blog/plugin');
 
 const { baseUrl } = vars;
 
@@ -15,7 +15,7 @@ const { suite, test, before, afterEach } = lab;
 
 exports.lab = lab;
 
-const server = Hapi.server();
+const server = new Hapi.Server();
 
 suite('blog', () => {
 	before(async () => {
@@ -29,6 +29,8 @@ suite('blog', () => {
 
 	test('posts route gets markdown files', async () => {
 		const { method, url } = routes.get_blog_posts();
+		/** @type {{ result: array }} */
+		// @ts-ignore
 		const { result } = await server.inject({
 			method,
 			url,
@@ -63,6 +65,7 @@ suite('blog', () => {
 			url,
 		});
 
+		// @ts-ignore
 		expect(result).to.contain({
 			statusCode: 404,
 			result: message.ERROR_POST_NOT_FOUND,
