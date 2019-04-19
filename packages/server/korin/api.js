@@ -41,14 +41,14 @@ module.exports = {
 					const { artist, track } = request.params;
 					const artistDecoded = decodeURI(artist);
 					const trackDecoded = decodeURI(track);
-					const search = `${artistDecoded} ${trackDecoded}`;
 
-					const songId = await server.methods.korin.getSongIdFromSearch(search);
-					const lyrics = await server.methods.korin.getLyrics(songId);
 					const {
 						profile,
 						summary,
-					} = await server.methods.korin.getPersonalityProfile(lyrics);
+					} = await server.methods.korin.getProfileByArtistAndTrack({
+						artist: artistDecoded,
+						track: trackDecoded,
+					});
 
 					return { profile, summary };
 				} catch (error) {

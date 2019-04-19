@@ -33,6 +33,10 @@ const getTopTracks = async () => {
 	return (await lastfm.get('/', { query })).body;
 };
 
+/**
+ * Get songId from Genius search data
+ * @param {object} data Genius search data
+ */
 const getSongId = data => {
 	const expression = jsonata(lyricsIdPath);
 	const songId = expression.evaluate(data);
@@ -98,8 +102,21 @@ const getTextSummary = profile => {
 	return summary;
 };
 
+/**
+ * Get personality profile and summary based on lyrics
+ * @param {string} lyrics Track lyrics
+ * @typedef {object} Insights
+ * @property {object} Insights.profile
+ * @property {string} Insights.summary
+ * @return {Promise<Insights>} Profile and summary
+ */
 const getPersonalityProfile = async lyrics => {
-	if (!lyrics) return message.ERROR_LYRICS_REQUIRED_FOR_PROFILE;
+	if (!lyrics) {
+		return {
+			profile: message.ERROR_LYRICS_REQUIRED_FOR_PROFILE,
+			summary: '',
+		};
+	}
 
 	const options = {
 		content: lyrics,
@@ -113,6 +130,23 @@ const getPersonalityProfile = async lyrics => {
 	return { profile, summary };
 };
 
+/**
+ * Get insights from artist track
+ * @param {object} options
+ * @property {string} options.artist artist name
+ * @property {string} options.track track name
+ * @return {Promise<Insights>} Profile and summary
+ */
+const getProfileByArtistAndTrack = async ({ artist, track }) => {
+	const search = `${artist} ${track}`;
+	const songData = await getSongData(search);
+	const songId = await getSongId(songData);
+	const lyrics = await getLyrics(songId);
+	const insights = await getPersonalityProfile(lyrics);
+
+	return insights;
+};
+
 module.exports = {
 	getSongId,
 	getSongData,
@@ -121,4 +155,5 @@ module.exports = {
 	getTopTracks,
 	getLyrics,
 	getPersonalityProfile,
+	getProfileByArtistAndTrack,
 };

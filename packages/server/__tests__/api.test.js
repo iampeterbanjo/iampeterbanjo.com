@@ -24,13 +24,11 @@ suite('korin', () => {
 		expect(result.length).to.be.greaterThan(0);
 	});
 
-	['getTopTracks', 'getLyrics', 'getPersonalityProfile', 'getSongData'].forEach(
-		name => {
-			test(`method ${name} is registered`, () => {
-				const result = server.methods.korin[name];
+	['getTopTracks', 'getProfileByArtistAndTrack'].forEach(name => {
+		test(`method ${name} is registered`, () => {
+			const result = server.methods.korin[name];
 
-				expect(result).to.be.a.function();
-			});
-		}
-	);
+			expect(result).to.be.a.function();
+		});
+	});
 });

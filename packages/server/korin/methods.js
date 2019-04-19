@@ -1,11 +1,6 @@
 const Crypto = require('crypto');
 const { time } = require('../utils');
-const {
-	getLyrics,
-	getTopTracks,
-	getPersonalityProfile,
-	getSongIdFromSearch,
-} = require('./helpers');
+const { getTopTracks, getProfileByArtistAndTrack } = require('./helpers');
 
 const cache = {
 	expiresIn: time.oneDay,
@@ -17,12 +12,12 @@ const cache = {
 
 module.exports = [
 	{
-		name: 'korin.getSongIdFromSearch',
-		method: getSongIdFromSearch,
+		name: 'korin.getProfileByArtistAndTrack',
+		method: getProfileByArtistAndTrack,
 		options: {
 			cache,
-			generateKey: search => {
-				if (!search) return search;
+			generateKey: ({ artist, track }) => {
+				const search = `${artist} ${track}`;
 
 				return Crypto.createHash('sha1')
 					.update(search)
@@ -36,34 +31,6 @@ module.exports = [
 		options: {
 			cache,
 			generateKey: () => `getTopTracks-${Date.now()}`,
-		},
-	},
-	{
-		name: 'korin.getLyrics',
-		method: getLyrics,
-		options: {
-			cache,
-			generateKey: search => {
-				if (!search) return search;
-
-				return Crypto.createHash('sha1')
-					.update(search)
-					.digest('hex');
-			},
-		},
-	},
-	{
-		name: 'korin.getPersonalityProfile',
-		method: getPersonalityProfile,
-		options: {
-			cache,
-			generateKey: lyrics => {
-				if (!lyrics) return 'personality-profile';
-
-				return Crypto.createHash('sha1')
-					.update(lyrics)
-					.digest('hex');
-			},
 		},
 	},
 ];

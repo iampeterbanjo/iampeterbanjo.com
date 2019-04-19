@@ -110,14 +110,14 @@ suite('getPersonalityProfile', async () => {
 	});
 
 	test('watson API request for personality profile', async () => {
-		const result = await getPersonalityProfile(lyrics);
+		const { profile } = await getPersonalityProfile(lyrics);
 
-		expect(result).to.equal(profileData);
+		expect(profile).to.equal(profileData);
 	});
 
 	test('when called with no lyrics', async () => {
-		const result = await getPersonalityProfile();
+		const { profile } = await getPersonalityProfile('');
 
-		expect(result).to.equal(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
+		expect(profile).to.equal(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
 	});
 });
