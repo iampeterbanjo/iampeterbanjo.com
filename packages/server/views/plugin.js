@@ -1,6 +1,7 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const routes = require('../korin/routes');
+const blogRoutes = require('../blog/routes');
+const korinRoutes = require('../korin/routes');
 
 const registerViews = {
 	engines: {
@@ -24,13 +25,13 @@ const registerViews = {
 };
 
 const getKorinProfiles = server => {
-	const { method, path } = routes.get_korin_profiles();
+	const { method, path } = korinRoutes.get_korin_profiles();
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const { client } = routes.get_apis_korin_profiles({
+			const { client } = korinRoutes.get_apis_korin_profiles({
 				artist,
 				track,
 			});
@@ -48,15 +49,25 @@ const getKorinProfiles = server => {
 };
 
 const getKorinTracks = server => {
-	const { method, path } = routes.get_korin_tracks();
+	const { method, path, client } = korinRoutes.get_korin_tracks();
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
-			const { client } = routes.get_apis_korin_tracks();
 			const { body } = await client();
 
 			return h.view('korin/tracks', { tracks: body });
+		},
+	});
+};
+
+const getBlogList = server => {
+	const { method, path } = blogRoutes.get_blog_posts();
+	server.route({
+		method,
+		path,
+		handler: async () => {
+			//
 		},
 	});
 };
@@ -66,6 +77,7 @@ const after = async server => {
 
 	getKorinTracks(server);
 	getKorinProfiles(server);
+	getBlogList(server);
 };
 
 module.exports = {

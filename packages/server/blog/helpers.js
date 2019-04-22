@@ -12,6 +12,9 @@ const getBlogFiles = async () => {
 
 const getBlogContents = async filename => {
 	const [blogFile] = await globby(`${dir}/${filename}.md`);
+
+	if (!blogFile) return '';
+
 	const contents = await readFile(blogFile);
 
 	return contents;
