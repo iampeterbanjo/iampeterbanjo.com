@@ -6,7 +6,9 @@ const routes = require('./routes');
 module.exports = {
 	name: 'blog',
 	version: '1.0.0',
-	register: server => {
+	register: (server, { methods }) => {
+		server.method(methods);
+
 		const blogPosts = routes.get_blog_posts();
 		server.route({
 			path: blogPosts.path,

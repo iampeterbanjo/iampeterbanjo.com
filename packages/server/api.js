@@ -1,7 +1,5 @@
 const Glue = require('glue');
 const { manifest, options } = require('./config');
-const korin = require('./korin/methods');
-const blog = require('./blog/methods');
 
 module.exports = async () => {
 	try {
@@ -9,9 +7,6 @@ module.exports = async () => {
 			manifest,
 			options
 		);
-
-		server.method(blog);
-		server.method(korin);
 
 		return server;
 	} catch (error) {

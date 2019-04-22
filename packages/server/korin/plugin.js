@@ -4,7 +4,9 @@ const routes = require('./routes');
 module.exports = {
 	name: 'korin-api',
 	version: '1.0.0',
-	register: server => {
+	register: (server, { methods }) => {
+		server.method(methods);
+
 		const getTracksRoute = routes.get_apis_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
