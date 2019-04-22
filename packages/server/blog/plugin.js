@@ -1,4 +1,3 @@
-const { readFile } = require('fs-extra');
 const { message } = require('../utils');
 
 const routes = require('./routes');
@@ -25,16 +24,19 @@ module.exports = {
 			path: blogDetails.path,
 			method: blogDetails.method,
 			handler: async (request, h) => {
-				const { post } = request.params;
-				const content = await server.methods.blog.getBlogContents(post);
+				try {
+					const { post } = request.params;
+					const contents = await server.methods.blog.getBlogContents(post);
 
-				if (!content) {
-					return h.response(message.ERROR_POST_NOT_FOUND).code(404);
+					if (!contents) {
+						return h.response(message.ERROR_POST_NOT_FOUND).code(404);
+					}
+
+					return contents;
+				} catch ({ error }) {
+					// eslint-disable-next-line no-console
+					return console.warn(message);
 				}
-
-				const contents = await readFile(content);
-
-				return contents;
 			},
 		});
 	},
