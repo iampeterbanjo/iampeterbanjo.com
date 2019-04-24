@@ -2,6 +2,7 @@ const Nunjucks = require('nunjucks');
 const Path = require('path');
 const blogRoutes = require('../blog/routes');
 const korinRoutes = require('../korin/routes');
+const viewRoutes = require('./routes');
 
 const registerViews = {
 	engines: {
@@ -31,7 +32,7 @@ const getKorinProfiles = server => {
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const { client } = korinRoutes.get_apis_korin_profiles({
+			const { client } = korinRoutes.v1.get_korin_profiles({
 				artist,
 				track,
 			});

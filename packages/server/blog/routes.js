@@ -2,7 +2,7 @@
 const { clientel } = require('../utils');
 
 const get_blog_posts = () => {
-	const url = '/blog/posts';
+	const url = '/v1/blog/posts';
 	const method = 'GET';
 
 	return {
@@ -13,10 +13,13 @@ const get_blog_posts = () => {
 	};
 };
 
-const get_blog_details = (options = {}) => {
-	const { filename } = options;
-	const path = '/blog/posts/{post}';
-	const url = `/blog/posts/${filename}`;
+/**
+ * Get blog details
+ * @param {string} filename post markdown filename
+ */
+const get_blog_details = filename => {
+	const path = '/v1/blog/posts/{post}';
+	const url = `/v1/blog/posts/${filename}`;
 	const method = 'GET';
 
 	return {

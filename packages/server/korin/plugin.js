@@ -7,7 +7,7 @@ module.exports = {
 	register: (server, { methods }) => {
 		server.method(methods);
 
-		const getTracksRoute = routes.get_apis_korin_tracks();
+		const getTracksRoute = routes.v1.get_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
@@ -35,7 +35,7 @@ module.exports = {
 			},
 		});
 
-		const getProfileRoute = routes.get_apis_korin_profiles();
+		const getProfileRoute = routes.v1.get_korin_profiles();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,

@@ -1,8 +1,9 @@
+/* eslint-disable camelcase */
 const { slugger, clientel } = require('../utils');
 
-const getApisKorinTracks = () => {
+const get_korin_tracks = () => {
 	const method = 'GET';
-	const url = '/apis/korin/tracks';
+	const url = '/v1/korin/tracks';
 	return {
 		method,
 		path: url,
@@ -11,50 +12,19 @@ const getApisKorinTracks = () => {
 	};
 };
 
-const getApisKorinProfiles = options => {
+const get_korin_profiles = (options = {}) => {
 	const { artist, track } = options;
 	const artistParam = slugger.parse(artist);
 	const trackParam = slugger.parse(track);
 	const method = 'GET';
-	const url = `/apis/korin/${artistParam}/${trackParam}`;
-	const path = '/apis/korin/{artist}/{track}';
+	const url = `/v1/korin/${artistParam}/${trackParam}`;
+	const path = '/v1/korin/{artist}/{track}';
 	return { method, path, url, client: () => clientel.korin(url, { method }) };
 };
 
-const getKorinTracks = () => {
-	const url = '/korin/tracks';
-	return {
-		method: 'GET',
-		path: url,
-		url,
-	};
-};
-
-const getKorinProfiles = options => {
-	const { artist = '', track = '' } = options;
-	const artistParam = slugger.parse(artist);
-	const trackParam = slugger.parse(track);
-	return {
-		method: 'GET',
-		path: '/korin/profiles/{artist}/{track}',
-		url: `/korin/profiles/${artistParam}/${trackParam}`,
-	};
-};
-
 module.exports = {
-	get_apis_korin_tracks: () => {
-		return getApisKorinTracks();
-	},
-
-	get_apis_korin_profiles: (options = {}) => {
-		return getApisKorinProfiles(options);
-	},
-
-	get_korin_tracks: () => {
-		return getKorinTracks();
-	},
-
-	get_korin_profiles: (options = {}) => {
-		return getKorinProfiles(options);
+	v1: {
+		get_korin_tracks,
+		get_korin_profiles,
 	},
 };
