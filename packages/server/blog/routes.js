@@ -15,9 +15,9 @@ const get_blog_posts = () => {
 
 /**
  * Get blog details
- * @param {string} filename post markdown filename
+ * @param {string} [filename] post markdown filename
  */
-const get_blog_details = filename => {
+const get_blog_details = (filename = '') => {
 	const path = '/v1/blog/posts/{post}';
 	const url = `/v1/blog/posts/${filename}`;
 	const method = 'GET';
@@ -30,6 +30,8 @@ const get_blog_details = filename => {
 };
 
 module.exports = {
-	get_blog_posts,
-	get_blog_details,
+	v1: {
+		get_blog_posts,
+		get_blog_details,
+	},
 };

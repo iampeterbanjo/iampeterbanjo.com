@@ -25,7 +25,7 @@ suite('getBlogFiles', () => {
 			options: { methods: stubMethods },
 		});
 
-		const { method, url } = routes.get_blog_posts();
+		const { method, url } = routes.v1.get_blog_posts();
 		const { result } = await server.inject({
 			method,
 			url,
@@ -54,9 +54,7 @@ suite('getBlogContents', () => {
 		});
 
 		const filename = 'the-GVDuMVROxCVNpgWy-file';
-		const { method, url } = routes.get_blog_details({
-			filename,
-		});
+		const { method, url } = routes.v1.get_blog_details(filename);
 		const result = await server.inject({
 			method,
 			url,
@@ -80,9 +78,7 @@ suite('getBlogContents', () => {
 			plugin,
 			options: { methods: stubMethods },
 		});
-		const { method, url } = routes.get_blog_details({
-			filename,
-		});
+		const { method, url } = routes.v1.get_blog_details(filename);
 		const { result } = await server.inject({
 			method,
 			url,
