@@ -49,11 +49,12 @@ const getKorinProfiles = server => {
 };
 
 const getKorinTracks = server => {
-	const { method, path, client } = routes.get_korin_tracks();
+	const { method, path } = routes.get_korin_tracks();
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
+			const { client } = korinRoutes.v1.get_korin_tracks();
 			const { body } = await client();
 
 			return h.view('korin/tracks', { tracks: body });
