@@ -1,6 +1,5 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const blogRoutes = require('../blog/routes');
 const korinRoutes = require('../korin/routes');
 const routes = require('./routes');
 
