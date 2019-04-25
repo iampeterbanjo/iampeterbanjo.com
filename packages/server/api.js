@@ -7,6 +7,7 @@ module.exports = async () => {
 			manifest,
 			options
 		);
+
 		return server;
 	} catch (error) {
 		// eslint-disable-next-line no-console

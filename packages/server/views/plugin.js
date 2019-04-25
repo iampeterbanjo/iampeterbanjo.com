@@ -1,6 +1,7 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const routes = require('../routes');
+const korinRoutes = require('../korin/routes');
+const routes = require('./routes');
 
 const registerViews = {
 	engines: {
@@ -30,7 +31,7 @@ const getKorinProfiles = server => {
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const { client } = routes.get_apis_korin_profiles({
+			const { client } = korinRoutes.v1.get_korin_profiles({
 				artist,
 				track,
 			});
@@ -48,12 +49,11 @@ const getKorinProfiles = server => {
 };
 
 const getKorinTracks = server => {
-	const { method, path } = routes.get_korin_tracks();
+	const { method, path, client } = routes.get_korin_tracks();
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
-			const { client } = routes.get_apis_korin_tracks();
 			const { body } = await client();
 
 			return h.view('korin/tracks', { tracks: body });
@@ -61,17 +61,29 @@ const getKorinTracks = server => {
 	});
 };
 
-const after = async server => {
-	server.views(registerViews);
+const getBlogList = server => {
+	const { method, path } = routes.get_blog_posts();
 
-	getKorinTracks(server);
-	getKorinProfiles(server);
+	server.route({
+		method,
+		path,
+		handler: async (request, h) => {
+			return h.view('blog/list');
+		},
+	});
 };
 
 module.exports = {
 	name: 'views',
 	version: '1.0.0',
-	register: async server => {
-		server.dependency('vision', after);
+	dependencies: {
+		vision: '5.x.x',
+	},
+	register: server => {
+		server.views(registerViews);
+
+		getKorinTracks(server);
+		getKorinProfiles(server);
+		getBlogList(server);
 	},
 };

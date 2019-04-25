@@ -1,40 +1,37 @@
-const { expect } = require('code');
 const Lab = require('lab');
-const { slugger } = require('../utils');
-const { routes } = require('..');
+const { expect } = require('code');
+const { slugger } = require('../../utils');
+const routes = require('../../views/routes');
 
 const lab = Lab.script();
-const { test, suite } = lab;
+const { suite, test } = lab;
 
 exports.lab = lab;
 
-suite('routes: korin api', () => {
-	test('when requesting tracks', () => {
-		const hope = routes.get_apis_korin_tracks();
+suite('blog view', () => {
+	test('when viewing blog posts', () => {
+		const result = routes.get_blog_posts();
 
-		expect(hope).to.include({
+		expect(result).to.include({
 			method: 'GET',
-			path: '/apis/korin/tracks',
-			url: '/apis/korin/tracks',
+			path: '/blog/posts',
+			url: '/blog/posts',
 		});
 	});
 
-	test('when requesting artist profile', () => {
-		const artist = 'Sofia Reyes';
-		const track = 'R.I.P';
-		const hope = routes.get_apis_korin_profiles({ artist, track });
-		const artistParam = slugger.parse(artist);
-		const trackParam = slugger.parse(track);
+	test('when viewing blog details', () => {
+		const post = 'the-problem-with-problems';
+		const result = routes.get_blog_details(post);
 
-		expect(hope).to.include({
+		expect(result).to.include({
 			method: 'GET',
-			path: '/apis/korin/{artist}/{track}',
-			url: `/apis/korin/${artistParam}/${trackParam}`,
+			path: '/blog/posts/{post}',
+			url: `/blog/posts/${post}`,
 		});
 	});
 });
 
-suite('routes: korin views', () => {
+suite('korin views', () => {
 	test('when viewing tracks', () => {
 		const hope = routes.get_korin_tracks();
 

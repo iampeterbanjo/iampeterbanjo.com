@@ -8,4 +8,6 @@ module.exports = {
 	oneHour: 3600000,
 	oneDay: 86400000,
 	oneYear: 31556900000,
+	oneMonth: 2629746000,
+	oneWeek: 604800000,
 };

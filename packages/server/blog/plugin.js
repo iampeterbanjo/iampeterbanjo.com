@@ -1,43 +1,42 @@
-const globby = require('globby');
-const Path = require('path');
-const { readFile } = require('fs-extra');
 const { message } = require('../utils');
 
-const dir = Path.join(__dirname, '../../blog/posts');
 const routes = require('./routes');
 
 module.exports = {
 	name: 'blog',
 	version: '1.0.0',
-	register: server => {
-		const blogPosts = routes.get_blog_posts();
+	register: (server, { methods }) => {
+		server.method(methods);
 
+		const blogPosts = routes.v1.get_blog_posts();
 		server.route({
 			path: blogPosts.path,
 			method: blogPosts.method,
 			handler: async () => {
-				const blogFiles = await globby(`${dir}/*.md`);
+				const blogFiles = await server.methods.blog.getBlogFiles();
 
 				return blogFiles;
 			},
 		});
 
-		const blogDetails = routes.get_blog_details();
-
+		const blogDetails = routes.v1.get_blog_details();
 		server.route({
 			path: blogDetails.path,
 			method: blogDetails.method,
 			handler: async (request, h) => {
-				const { post } = request.params;
-				const [blogFile] = await globby(`${dir}/${post}.md`);
+				try {
+					const { post } = request.params;
+					const contents = await server.methods.blog.getBlogContents(post);
 
-				if (!blogFile) {
-					return h.response(message.ERROR_POST_NOT_FOUND).code(404);
+					if (!contents) {
+						return h.response(message.ERROR_POST_NOT_FOUND).code(404);
+					}
+
+					return contents;
+				} catch ({ error }) {
+					// eslint-disable-next-line no-console
+					return console.warn(message);
 				}
-
-				const contents = await readFile(blogFile);
-
-				return contents;
 			},
 		});
 	},

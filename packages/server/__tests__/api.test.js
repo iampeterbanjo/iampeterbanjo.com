@@ -1,18 +1,36 @@
+/* eslint-disable no-param-reassign */
 const { expect } = require('code');
 const Lab = require('lab');
 
 const lab = Lab.script();
-const { test } = lab;
+const { before, test, suite } = lab;
 
 exports.lab = lab;
 
-const { routes } = require('..');
 const api = require('../api');
 
-test('api returns tracks', async () => {
-	const server = await api();
-	const { method, url } = routes.get_apis_korin_tracks();
-	const { result } = await server.inject({ method, url });
+let server;
 
-	expect(result.length).to.be.greaterThan(0);
+before(async () => {
+	server = await api();
+});
+
+suite('korin', () => {
+	['getTopTracks', 'getProfileByArtistAndTrack'].forEach(name => {
+		test(`method ${name} is registered`, () => {
+			const result = server.methods.korin[name];
+
+			expect(result).to.be.a.function();
+		});
+	});
+});
+
+suite('blog', () => {
+	['getBlogContents', 'getBlogFiles'].forEach(name => {
+		test(`method ${name} is registered`, () => {
+			const result = server.methods.blog[name];
+
+			expect(result).to.be.a.function();
+		});
+	});
 });
