@@ -22,7 +22,7 @@ module.exports = {
 							"profileUrl": $getProfileUrl(artist.name, name)
 					}`);
 					expression.registerFunction('getProfileUrl', (artist, track) => {
-						const { url } = routes.get_korin_profiles({ artist, track });
+						const { url } = routes.v1.get_korin_profiles({ artist, track });
 						return url;
 					});
 					const tracks = expression.evaluate(data);
