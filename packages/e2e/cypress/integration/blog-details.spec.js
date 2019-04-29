@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 const BASE_URL = 'http://localhost:8080';
 const { clearServiceWorkers } = require('./helpers');
 
