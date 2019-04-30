@@ -17,7 +17,8 @@
 	},
 	"license": "ISC",
 	"dependencies": {
-		"cypress": "^3.2.0"
+		"cypress": "^3.2.0",
+		"server": "1.0.0"
 	},
 	"devDependencies": {}
 }
