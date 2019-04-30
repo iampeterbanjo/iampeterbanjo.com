@@ -10,14 +10,14 @@
 	<article class="cf mw9 center flex-l items-start">
 		<div class="w-100 w-25-l post-title">
 			<h3 class="lh-title f2 mb2">
-				<a href="{{ post }}">[title]</a>
+				<a href="{{ post.url }}">{{ post.title }}</a>
 			</h3>
 			<small>[date]</small>
 		</div>
 		<div class="w-100 w-75-l post-excerpt">
 			<p class="ml4-l f3 measure-wide lh-copy">
 				<span>[description]</span>
-				<a class="ml2 f4" href="{{ post }}">Read more</a>
+				<a class="ml2 f4" href="{{ post.url }}">Read more</a>
 			</p>
 		</div>
 	</article>

@@ -1,6 +1,7 @@
 ---
 tags: machine-learning
 title: Qwik labs makes learning Machine learning easy
+description: Getting started with machine learning on Google Cloud Platform
 date: 2019-02-25
 ---
 

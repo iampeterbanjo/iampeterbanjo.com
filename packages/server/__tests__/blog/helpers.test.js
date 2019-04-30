@@ -9,7 +9,7 @@ const {
 } = require('../../blog/helpers');
 
 const lab = Lab.script();
-const { suite, test, beforeEach } = lab;
+const { suite, test, before } = lab;
 
 exports.lab = lab;
 
@@ -40,12 +40,22 @@ suite('getUrlPath', () => {
 });
 
 suite('getBlogFiles', () => {
-	beforeEach(async ({ context }) => {
-		context.result = await getBlogFiles();
+	before(async ({ context }) => {
+		context.results = await getBlogFiles();
 	});
 
-	test('that it returns list of relative paths', async ({ context }) => {
-		expect(context.result.length).to.be.above(0);
+	test('that it returns list of relative paths', ({ context }) => {
+		expect(context.results.length).to.be.above(0);
+	});
+
+	test('blog frontmatter is in result', ({ context }) => {
+		context.results.forEach(result => {
+			const { description, title, url } = result;
+
+			expect(url).to.exist();
+			expect(title, `given ${url}`).to.exist();
+			expect(description, `given ${title}`).to.exist();
+		});
 	});
 });
 
