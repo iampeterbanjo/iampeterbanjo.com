@@ -1,5 +1,6 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
+const blogRoutes = require('../blog/routes');
 const korinRoutes = require('../korin/routes');
 const routes = require('./routes');
 
@@ -69,7 +70,10 @@ const getBlogList = server => {
 		method,
 		path,
 		handler: async (request, h) => {
-			return h.view('blog/list');
+			const { client } = blogRoutes.v1.get_blog_posts();
+			const { body: posts } = await client();
+
+			return h.view('blog/list', { posts });
 		},
 	});
 };

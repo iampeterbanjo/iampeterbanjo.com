@@ -38,6 +38,7 @@
 		"good-console": "^7.1.0",
 		"good-squeeze": "^5.1.0",
 		"got": "^9.6.0",
+		"gray-matter": "^4.0.2",
 		"hapi": "18.x.x",
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",

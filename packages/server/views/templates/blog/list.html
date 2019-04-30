@@ -4,31 +4,28 @@
 <!--  -->
 {% block content %}
 <div>
-	<ul class="cf pa0 list tracks">
-		{% for track in tracks %}
-		<li class="fl w-50 w-25-m w-20-l">
-			<a
-				class="db mw5 black link dim"
-				title="{{ track.title }}"
-				href="{{ track.profileUrl }}"
-			>
-				<img
-					class="db ba b--black-10"
-					alt="{{ track.title }}"
-					src="{{ track.image }}"
-				/>
+	<h1>Blog</h1>
 
-				<dl class="mt2 f6 lh-copy">
-					<dt class="clip">Title</dt>
-					<dd class="ml0 fw9 truncate">
-						{{ track.title }}
-					</dd>
-					<dt class="clip">Artist</dt>
-					<dd class="ml0 gray truncate">{{ track.artist }}</dd>
-				</dl>
-			</a>
-		</li>
-		{% endfor %}
-	</ul>
+	{% for post in posts %}
+	<article class="cf mw9 center flex-l items-start">
+		<div class="w-100 w-25-l post-title">
+			<h3 class="lh-title f2 mb2">
+				<a href="{{ post.url }}">{{ post.title }}</a>
+			</h3>
+			<small>{{ post.date }}</small>
+		</div>
+		<div class="w-100 w-75-l post-excerpt">
+			<p class="ml4-l f3 measure-wide lh-copy">
+				<span>{{ post.description }}</span>
+				<a class="ml2 f4" href="{{ post.url }}">Read more</a>
+			</p>
+		</div>
+	</article>
+	{% endfor %}
 </div>
+
+<!--  -->
+{% include 'includes/bio.html' %}
+
+<!--  -->
 {% endblock %}
