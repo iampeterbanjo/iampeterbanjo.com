@@ -1,5 +1,4 @@
 const BASE_URL = 'http://localhost:8080';
-// const slugs = require('../../../blog/pages/slugs');
 const { clearServiceWorkers } = require('./helpers');
 
 beforeEach(clearServiceWorkers);
@@ -14,7 +13,7 @@ describe('Blog', () => {
 	});
 
 	it('should have links to blog posts', () => {
-		cy.get('a[href^="/blog/posts"]').then($postLinks => {
+		cy.get('[href^="/blog/posts"]').then($postLinks => {
 			expect($postLinks.length).to.be.greaterThan(0);
 		});
 	});
@@ -24,10 +23,21 @@ describe('Blog', () => {
 	});
 
 	it('should have "Read more" links', () => {
-		cy.get('.post-excerpt a[href]').then($readMoreLinks => {
+		cy.get('.post-excerpt [href^="/blog/posts"]').then($readMoreLinks => {
 			expect($readMoreLinks.length).to.be.greaterThan(0);
+
 			$readMoreLinks.each((index, $link) => {
 				expect($link.textContent).to.eq('Read more');
+			});
+		});
+	});
+
+	it('should have a title link', () => {
+		cy.get('.post-title [href^="/blog/posts"]').then($titleLinks => {
+			expect($titleLinks.length).to.be.greaterThan(0);
+
+			$titleLinks.each((index, $link) => {
+				expect($link.textContent).not.to.eq('[title]');
 			});
 		});
 	});

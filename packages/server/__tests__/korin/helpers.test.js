@@ -19,7 +19,7 @@ const profileData = require('../fixtures/personality-profile.json');
 
 const path = Path.join(__dirname, '../fixtures/lyrics.txt');
 
-const { suite, test, afterEach, beforeEach } = lab;
+const { suite, test, before, after } = lab;
 const {
 	GENIUS_API_ACCESS_TOKEN,
 	GENIUS_API_URL,
@@ -31,7 +31,7 @@ const {
 exports.lab = lab;
 
 suite('getTopTracks', () => {
-	beforeEach(async () => {
+	before(async () => {
 		await nock(LASTFM_API_URL)
 			.get('/')
 			.query({
@@ -42,7 +42,7 @@ suite('getTopTracks', () => {
 			.reply(200, topTracksData);
 	});
 
-	afterEach(() => {
+	after(() => {
 		nock.cleanAll();
 	});
 
@@ -56,7 +56,7 @@ suite('getTopTracks', () => {
 suite('getSongData', () => {
 	const q = 'Kendrick Lamar HUMBLE';
 
-	beforeEach(async () => {
+	before(async () => {
 		await nock(GENIUS_API_URL, {
 			headers: {
 				authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
@@ -67,7 +67,7 @@ suite('getSongData', () => {
 			.reply(200, songData);
 	});
 
-	afterEach(() => {
+	after(() => {
 		nock.cleanAll();
 	});
 
@@ -95,7 +95,7 @@ suite('getSongId', async () => {
 suite('getPersonalityProfile', async () => {
 	const lyrics = await readFile(path);
 
-	beforeEach(async () => {
+	before(async () => {
 		await nock(WATSON_PI_API_URL)
 			.post('/v3/profile')
 			.query({
@@ -105,7 +105,7 @@ suite('getPersonalityProfile', async () => {
 			.reply(200, profileData);
 	});
 
-	afterEach(() => {
+	after(() => {
 		nock.cleanAll();
 	});
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const Lab = require('lab');
 const { expect } = require('code');
 
@@ -8,7 +9,7 @@ const {
 } = require('../../blog/helpers');
 
 const lab = Lab.script();
-const { suite, test } = lab;
+const { suite, test, beforeEach } = lab;
 
 exports.lab = lab;
 
@@ -39,15 +40,12 @@ suite('getUrlPath', () => {
 });
 
 suite('getBlogFiles', () => {
-	test('that it returns list of relative paths', async () => {
-		const result = await getBlogFiles();
+	beforeEach(async ({ context }) => {
+		context.result = await getBlogFiles();
+	});
 
-		expect(result.length).to.be.above(0);
-		result.forEach(file => {
-			expect(file).not.to.endWith('.md');
-			expect(file).not.contain('packages/');
-			expect(file).contain('blog/posts/');
-		});
+	test('that it returns list of relative paths', async ({ context }) => {
+		expect(context.result.length).to.be.above(0);
 	});
 });
 
