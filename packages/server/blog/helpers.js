@@ -1,6 +1,5 @@
 const Path = require('path');
 const globby = require('globby');
-const { readFile } = require('fs-extra');
 const matter = require('gray-matter');
 
 const dir = Path.join(__dirname, '../../blog/posts');
@@ -32,14 +31,22 @@ const getBlogFiles = async () => {
 	return urlPaths;
 };
 
+/**
+ * Get blog and frontmatter
+ * @typedef Content
+ * @property {string} title
+ *
+ * @param {string} filename blog file
+ * @return Content
+ */
 const getBlogContents = async filename => {
 	const [blogFile] = await globby(`${dir}/${filename}.md`);
 
 	if (!blogFile) return '';
 
-	const contents = await readFile(blogFile);
+	const { content, data = {} } = matter.read(blogFile);
 
-	return contents;
+	return { ...data, content };
 };
 
 module.exports = {
