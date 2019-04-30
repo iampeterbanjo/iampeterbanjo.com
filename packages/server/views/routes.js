@@ -33,7 +33,7 @@ const get_blog_posts = () => {
 
 /**
  * Get route for blog details
- * @param {string} post Post markdown filename
+ * @param {string} [post] Post markdown filename
  */
 const get_blog_details = post => {
 	return {

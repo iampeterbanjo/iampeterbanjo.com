@@ -1,0 +1,79 @@
+<!--  -->
+{% extends 'layout.html' %}
+
+<!--  -->
+{% block content %}
+<div>
+	<article class="cf mw9 center">
+		<header class="measure-wide lh-title">
+			<h1 class="f2">{{ title }}</h1>
+			<small class="db lh-copy">{{ date }}</small>
+		</header>
+
+		<div class="f3 lh-copy measure-wide mb5">
+			{{ content }}
+		</div>
+
+		<footer class="mb3 mt5">
+			<ul class="flex justify-between list pl0 post-related">
+				<!-- prev -->
+				{% if prev.link %}
+				<li class="post-prev">
+					<a class="flex items-center" rel="prev" href="{{ prev.link }}">
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewbox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="feather feather-arrow-left"
+							>
+								<line x1="19" y1="12" x2="5" y2="12"></line>
+								<polyline points="12 19 5 12 12 5"></polyline>
+							</svg>
+						</i>
+						<span class="ml3 f4">{{ prev.title }}</span>
+					</a>
+				</li>
+				{% endif %}
+
+				<!-- next -->
+				{% if next.link %}
+				<li class="post-next">
+					<a class="flex items-center" rel="next" href="{{ next.link }}">
+						<span class="mr3 f4">{{ next.title }}</span>
+						<i>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="24"
+								height="24"
+								viewbox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="feather feather-arrow-right"
+							>
+								<line x1="5" y1="12" x2="19" y2="12"></line>
+								<polyline points="12 5 19 12 12 19"></polyline>
+							</svg>
+						</i>
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+		</footer>
+	</article>
+</div>
+
+<!--  -->
+{% include 'includes/bio.html' %}
+
+<!--  -->
+{% endblock %}

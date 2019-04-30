@@ -3,7 +3,7 @@ const { clearServiceWorkers } = require('./helpers');
 
 beforeEach(clearServiceWorkers);
 
-describe('Blog', () => {
+describe('Blog posts', () => {
 	beforeEach(() => {
 		cy.visit(`${BASE_URL}/blog/posts`);
 	});
