@@ -50,11 +50,12 @@ suite('getBlogFiles', () => {
 
 	test('blog frontmatter is in result', ({ context }) => {
 		context.results.forEach(result => {
-			const { description, title, url } = result;
+			const { description, title, url, date } = result;
 
 			expect(url).to.exist();
 			expect(title, `given ${url}`).to.exist();
 			expect(description, `given ${title}`).to.exist();
+			expect(date, `given ${title}`).to.exist();
 		});
 	});
 });
