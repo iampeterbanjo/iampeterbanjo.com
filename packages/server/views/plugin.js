@@ -86,9 +86,9 @@ const getBlogDetails = server => {
 		handler: async (request, h) => {
 			const { post } = request.params;
 			const { client } = blogRoutes.v1.get_blog_details(post);
-			const { body: data } = await client();
+			const { body = {} } = await client();
 
-			return h.view('blog/list', { data });
+			return h.view('blog/details', { ...body });
 		},
 	});
 };

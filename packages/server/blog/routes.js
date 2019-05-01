@@ -9,7 +9,7 @@ const get_blog_posts = () => {
 		url,
 		path: url,
 		method,
-		client: () => clientel.korin(url, { method }),
+		client: () => clientel.api(url, { method }),
 	};
 };
 
@@ -26,6 +26,7 @@ const get_blog_details = (filename = '') => {
 		url,
 		path,
 		method,
+		client: () => clientel.api(url, { method }),
 	};
 };
 

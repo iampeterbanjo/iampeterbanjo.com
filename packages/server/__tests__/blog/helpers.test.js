@@ -65,7 +65,7 @@ suite('getBlogContents', () => {
 		test(`when empty ${post}, content is also empty`, async () => {
 			const result = await getBlogContents(post);
 
-			expect(result, `given ${post}`).to.equal('');
+			expect(result, `given ${post}`).to.not.exist();
 		});
 	});
 

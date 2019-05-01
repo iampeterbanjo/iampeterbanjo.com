@@ -35,18 +35,21 @@ const getBlogFiles = async () => {
  * Get blog and frontmatter
  * @typedef Content
  * @property {string} title
+ * @property {string} content
+ * @property {Date} date
  *
  * @param {string} filename blog file
- * @return Content
+ * @return {Promise<Content | null>}
  */
 const getBlogContents = async filename => {
 	const [blogFile] = await globby(`${dir}/${filename}.md`);
 
-	if (!blogFile) return '';
+	if (!blogFile) return null;
 
 	const { content, data = {} } = matter.read(blogFile);
+	const { title, date } = data;
 
-	return { ...data, content };
+	return { title, date, content };
 };
 
 module.exports = {
