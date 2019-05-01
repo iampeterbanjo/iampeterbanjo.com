@@ -77,4 +77,11 @@ suite('getBlogContents', () => {
 			expect(content, `given ${title}`).to.exist();
 		});
 	});
+
+	test('markdown content is parsed', async () => {
+		const { content } = await getBlogContents('i-like-jsonata');
+		const isHTML = content.indexOf('</p>') > -1;
+
+		expect(isHTML).to.be.true();
+	});
 });
