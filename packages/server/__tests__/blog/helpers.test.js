@@ -65,15 +65,23 @@ suite('getBlogContents', () => {
 		test(`when empty ${post}, content is also empty`, async () => {
 			const result = await getBlogContents(post);
 
-			expect(result).to.equal('');
+			expect(result, `given ${post}`).to.not.exist();
 		});
 	});
 
 	['graphql-eats-rest', 'i-like-jsonata'].forEach(post => {
 		test(`when ${post} is NOT empty, the content is found`, async () => {
-			const result = await getBlogContents(post);
+			const { title, content, date } = await getBlogContents(post);
 
-			expect(result).to.be.a.buffer();
+			expect(date, `given ${title}`).to.exist();
+			expect(content, `given ${title}`).to.exist();
 		});
+	});
+
+	test('markdown content is parsed', async () => {
+		const { content } = await getBlogContents('i-like-jsonata');
+		const isHTML = content.indexOf('</p>') > -1;
+
+		expect(isHTML).to.be.true();
 	});
 });

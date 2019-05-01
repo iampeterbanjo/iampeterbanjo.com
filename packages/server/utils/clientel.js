@@ -13,7 +13,7 @@ const {
 	LASTFM_API_URL,
 } = require('./vars');
 
-const korin = got.extend({ baseUrl, json: true });
+const api = got.extend({ baseUrl, json: true });
 
 const genius = got.extend({
 	baseUrl: GENIUS_API_URL,
@@ -31,7 +31,7 @@ const lastfm = got.extend({
 const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);
 
 module.exports = {
-	korin,
+	api,
 	genius,
 	lastfm,
 	lyricist,

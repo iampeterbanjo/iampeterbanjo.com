@@ -78,6 +78,22 @@ const getBlogList = server => {
 	});
 };
 
+const getBlogDetails = server => {
+	const { method, path } = routes.get_blog_details();
+
+	server.route({
+		method,
+		path,
+		handler: async (request, h) => {
+			const { post } = request.params;
+			const { client } = blogRoutes.v1.get_blog_details(post);
+			const { body = {} } = await client();
+
+			return h.view('blog/details', { ...body });
+		},
+	});
+};
+
 module.exports = {
 	name: 'views',
 	version: '1.0.0',
@@ -90,5 +106,6 @@ module.exports = {
 		getKorinTracks(server);
 		getKorinProfiles(server);
 		getBlogList(server);
+		getBlogDetails(server);
 	},
 };

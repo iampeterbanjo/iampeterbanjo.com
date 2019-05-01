@@ -5,9 +5,9 @@ const { clearServiceWorkers } = require('./helpers');
 
 beforeEach(clearServiceWorkers);
 
-describe('Blog', () => {
+describe('Blog content', () => {
 	beforeEach(() => {
-		cy.visit(`${BASE_URL}/i-like-jsonata/`);
+		cy.visit(`${BASE_URL}/blog/posts/i-like-jsonata/`);
 	});
 
 	it('should have a title', () => {

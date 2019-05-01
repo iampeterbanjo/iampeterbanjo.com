@@ -70,4 +70,4 @@ We could calculate the sum for every order by mapping over each item in the `Ord
 $sum(Account.Order[0].Product.Price);
 ```
 
-This example is taken from the [JSONata exerciser](http://try.jsonata.org/) where you can try it out. What I love the most is the declarative way the transformations are described, errors are handled gracefully and it's even possible to write [functions](http://docs.jsonata.org/programming) - FUNCTIONS!.
+This example is taken from the [JSONata exerciser](http://try.jsonata.org/) where you can try it out. What I love the most is the declarative way the transformations are described, errors are handled gracefully and it's even possible to write [functions](http://docs.jsonata.org/programming).

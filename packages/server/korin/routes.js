@@ -8,7 +8,7 @@ const get_korin_tracks = () => {
 		method,
 		path: url,
 		url,
-		client: () => clientel.korin(url, { method }),
+		client: () => clientel.api(url, { method }),
 	};
 };
 
@@ -19,7 +19,7 @@ const get_korin_profiles = (options = {}) => {
 	const method = 'GET';
 	const url = `/v1/korin/${artistParam}/${trackParam}`;
 	const path = '/v1/korin/{artist}/{track}';
-	return { method, path, url, client: () => clientel.korin(url, { method }) };
+	return { method, path, url, client: () => clientel.api(url, { method }) };
 };
 
 module.exports = {
