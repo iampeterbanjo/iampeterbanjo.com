@@ -2,6 +2,7 @@ const Path = require('path');
 const globby = require('globby');
 const matter = require('gray-matter');
 const marked = require('marked');
+const fecha = require('fecha');
 
 const dir = Path.join(__dirname, '../../blog/posts');
 
@@ -49,8 +50,9 @@ const getBlogContents = async filename => {
 
 	const { content, data = {} } = matter.read(blogFile);
 	const { title, date } = data;
+	const validDate = fecha.format(new Date(date), 'mediumDate');
 
-	return { title, date, content: marked(content) };
+	return { title, date: validDate, content: marked(content) };
 };
 
 module.exports = {
