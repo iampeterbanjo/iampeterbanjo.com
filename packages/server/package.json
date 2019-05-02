@@ -11,7 +11,7 @@
 		"dev": "nodemon --watch . -e js,html -x 'npm run start-debug'",
 		"start-debug": "node --inspect start.js",
 		"start": "node start.js",
-		"test": "lab -c ./__tests__/"
+		"test": "lab --verbose --timeout 4000 -c ./__tests__/"
 	},
 	"keywords": [
 		"personal",
@@ -40,6 +40,7 @@
 		"got": "^9.6.0",
 		"gray-matter": "^4.0.2",
 		"hapi": "18.x.x",
+		"hapi-dev-errors": "^3.2.4",
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",

@@ -13,9 +13,14 @@ module.exports = {
 			path: blogPosts.path,
 			method: blogPosts.method,
 			handler: async () => {
-				const blogFiles = await server.methods.blog.getBlogFiles();
+				try {
+					const blogFiles = await server.methods.blog.getBlogFiles();
 
-				return blogFiles;
+					return blogFiles;
+				} catch (error) {
+					// eslint-disable-next-line no-console
+					return console.warn(error);
+				}
 			},
 		});
 
@@ -33,9 +38,9 @@ module.exports = {
 					}
 
 					return contents;
-				} catch ({ error }) {
+				} catch (error) {
 					// eslint-disable-next-line no-console
-					return console.warn(message);
+					return console.warn(error);
 				}
 			},
 		});

@@ -12,8 +12,12 @@ const { suite, test, beforeEach } = lab;
 
 exports.lab = lab;
 
-suite('getBlogFiles', () => {
-	const server = Hapi.Server();
+suite.skip('getBlogFiles', () => {
+	let server;
+
+	beforeEach(() => {
+		server = Hapi.Server();
+	});
 
 	test('get posts route gets markdown files', async () => {
 		const files = ['that.md', 'this.md'];
