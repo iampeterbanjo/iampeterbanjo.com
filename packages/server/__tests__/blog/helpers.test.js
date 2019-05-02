@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 const Lab = require('lab');
 const { expect } = require('code');
+const fecha = require('fecha');
 
 const {
 	getUrlPath,
@@ -72,9 +73,12 @@ suite('getBlogContents', () => {
 	['graphql-eats-rest', 'i-like-jsonata'].forEach(post => {
 		test(`when ${post} is NOT empty, the content is found`, async () => {
 			const { title, content, date } = await getBlogContents(post);
+			const details = `given ${title}`;
+			const validDate = fecha.format(new Date(date), 'mediumDate');
 
-			expect(date, `given ${title}`).to.exist();
-			expect(content, `given ${title}`).to.exist();
+			expect(date, details).to.exist();
+			expect(date, details).to.equal(validDate);
+			expect(content, details).to.exist();
 		});
 	});
 

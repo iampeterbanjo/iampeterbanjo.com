@@ -33,6 +33,7 @@ const manifest = {
 	register: {
 		plugins: [
 			'./good',
+			'./hapi-dev-errors',
 			'inert',
 			'vision',
 			'./views',

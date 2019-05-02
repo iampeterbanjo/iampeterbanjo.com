@@ -21,7 +21,7 @@ suite('view blog', async () => {
 		]);
 	});
 
-	test('requesting blog posts gives expected results', async () => {
+	test.skip('requesting blog posts gives expected results', async () => {
 		const { method, url } = routes.get_blog_posts();
 
 		const result = await server.inject({
