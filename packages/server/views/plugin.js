@@ -1,6 +1,5 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const blogHelpers = require('../blog/helpers');
 const korinHelpers = require('../korin/helpers');
 const routes = require('./routes');
 
@@ -63,21 +62,21 @@ const getKorinTracks = server => {
 	});
 };
 
-const getBlogPosts = server => {
+const viewBlogList = server => {
 	const { method, path } = routes.get_blog_posts();
 
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
-			const posts = blogHelpers.getBlogFiles();
+			const posts = await server.methods.view.blogList();
 
 			return h.view('blog/list', { posts });
 		},
 	});
 };
 
-const getBlogDetails = server => {
+const viewBlogContent = server => {
 	const { method, path } = routes.get_blog_details();
 
 	server.route({
@@ -85,7 +84,7 @@ const getBlogDetails = server => {
 		path,
 		handler: async (request, h) => {
 			const { post } = request.params;
-			const details = await server.methods.view.blogPost(post);
+			const details = await server.methods.view.blogContent(post);
 
 			return h.view('blog/details', { ...details });
 		},
@@ -104,7 +103,7 @@ module.exports = {
 
 		getKorinTracks(server);
 		getKorinProfiles(server);
-		getBlogPosts(server);
-		getBlogDetails(server);
+		viewBlogList(server);
+		viewBlogContent(server);
 	},
 };

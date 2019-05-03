@@ -7,6 +7,9 @@ const blogHelpers = require('../blog/helpers');
  */
 const viewBlogPost = post => blogHelpers.getBlogContents(post);
 
+const viewBlogList = () => blogHelpers.getBlogFiles();
+
 module.exports = {
 	viewBlogPost,
+	viewBlogList,
 };
