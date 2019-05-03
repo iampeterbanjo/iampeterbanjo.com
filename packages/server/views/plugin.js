@@ -1,8 +1,7 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const blogRoutes = require('../blog/routes');
 const blogHelpers = require('../blog/helpers');
-const korinRoutes = require('../korin/routes');
+const korinHelpers = require('../korin/helpers');
 const routes = require('./routes');
 
 const registerViews = {
@@ -33,12 +32,13 @@ const getKorinProfiles = server => {
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const { client } = korinRoutes.v1.get_korin_profiles({
+			const {
+				profile,
+				summary,
+			} = await korinHelpers.getProfileByArtistAndTrack({
 				artist,
 				track,
 			});
-			const { body } = await client();
-			const { profile, summary } = body;
 
 			return h.view('korin/profiles', {
 				profile: JSON.stringify(profile),
@@ -56,10 +56,9 @@ const getKorinTracks = server => {
 		method,
 		path,
 		handler: async (request, h) => {
-			const { client } = korinRoutes.v1.get_korin_tracks();
-			const { body } = await client();
+			const tracks = korinHelpers.getTopTracks();
 
-			return h.view('korin/tracks', { tracks: body });
+			return h.view('korin/tracks', { tracks });
 		},
 	});
 };
