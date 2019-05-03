@@ -2,6 +2,7 @@ const Hapi = require('hapi');
 const Lab = require('lab');
 const { expect } = require('code');
 const Vision = require('vision');
+
 const plugin = require('../../views/plugin');
 const routes = require('../../views/routes');
 
@@ -21,16 +22,14 @@ suite('view blog', async () => {
 		]);
 	});
 
-	test.skip('requesting blog posts gives expected results', async () => {
+	test('requesting blog posts gives expected results', async () => {
 		const { method, url } = routes.get_blog_posts();
-
 		const result = await server.inject({
 			method,
 			url,
 		});
 
-		expect(result).to.include({
-			statusCode: 200,
-		});
+		// eslint-disable-next-line no-underscore-dangle
+		expect(result.statusCode).to.equal(200);
 	});
 });
