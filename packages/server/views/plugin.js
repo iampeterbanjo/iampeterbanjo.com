@@ -85,7 +85,7 @@ const getBlogDetails = server => {
 		path,
 		handler: async (request, h) => {
 			const { post } = request.params;
-			const details = blogHelpers.getBlogContents(post);
+			const details = await server.methods.view.blogPost(post);
 
 			return h.view('blog/details', { ...details });
 		},
@@ -98,8 +98,9 @@ module.exports = {
 	dependencies: {
 		vision: '5.x.x',
 	},
-	register: server => {
+	register: (server, { methods }) => {
 		server.views(registerViews);
+		server.method(methods);
 
 		getKorinTracks(server);
 		getKorinProfiles(server);
