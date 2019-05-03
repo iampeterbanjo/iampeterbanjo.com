@@ -12,7 +12,7 @@ const { suite, test, beforeEach } = lab;
 
 exports.lab = lab;
 
-suite.skip('getBlogFiles', () => {
+suite('getBlogFiles', () => {
 	let server;
 
 	beforeEach(() => {

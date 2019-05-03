@@ -1,6 +1,7 @@
-const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
-
 const catboxMongodb = require('catbox-mongodb');
+const { vars } = require('./utils');
+
+const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
 const manifest = {
 	server: {

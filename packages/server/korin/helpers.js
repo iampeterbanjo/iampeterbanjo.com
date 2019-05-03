@@ -142,9 +142,9 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 	const songData = await getSongData(search);
 	const songId = await getSongId(songData);
 	const lyrics = await getLyrics(songId);
-	const insights = await getPersonalityProfile(lyrics);
+	const { profile, summary } = await getPersonalityProfile(lyrics);
 
-	return insights;
+	return { profile, summary };
 };
 
 module.exports = {

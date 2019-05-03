@@ -1,7 +1,6 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const blogRoutes = require('../blog/routes');
-const korinRoutes = require('../korin/routes');
+const korinHelpers = require('../korin/helpers');
 const routes = require('./routes');
 
 const registerViews = {
@@ -32,12 +31,13 @@ const getKorinProfiles = server => {
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const { client } = korinRoutes.v1.get_korin_profiles({
+			const {
+				profile,
+				summary,
+			} = await korinHelpers.getProfileByArtistAndTrack({
 				artist,
 				track,
 			});
-			const { body } = await client();
-			const { profile, summary } = body;
 
 			return h.view('korin/profiles', {
 				profile: JSON.stringify(profile),
@@ -55,30 +55,28 @@ const getKorinTracks = server => {
 		method,
 		path,
 		handler: async (request, h) => {
-			const { client } = korinRoutes.v1.get_korin_tracks();
-			const { body } = await client();
+			const tracks = korinHelpers.getTopTracks();
 
-			return h.view('korin/tracks', { tracks: body });
+			return h.view('korin/tracks', { tracks });
 		},
 	});
 };
 
-const getBlogList = server => {
+const viewBlogList = server => {
 	const { method, path } = routes.get_blog_posts();
 
 	server.route({
 		method,
 		path,
 		handler: async (request, h) => {
-			const { client } = blogRoutes.v1.get_blog_posts();
-			const { body: posts } = await client();
+			const posts = await server.methods.view.blogList();
 
 			return h.view('blog/list', { posts });
 		},
 	});
 };
 
-const getBlogDetails = server => {
+const viewBlogContent = server => {
 	const { method, path } = routes.get_blog_details();
 
 	server.route({
@@ -86,10 +84,9 @@ const getBlogDetails = server => {
 		path,
 		handler: async (request, h) => {
 			const { post } = request.params;
-			const { client } = blogRoutes.v1.get_blog_details(post);
-			const { body = {} } = await client();
+			const details = await server.methods.view.blogContent(post);
 
-			return h.view('blog/details', { ...body });
+			return h.view('blog/details', { ...details });
 		},
 	});
 };
@@ -100,12 +97,13 @@ module.exports = {
 	dependencies: {
 		vision: '5.x.x',
 	},
-	register: server => {
+	register: (server, { methods }) => {
 		server.views(registerViews);
+		server.method(methods);
 
 		getKorinTracks(server);
 		getKorinProfiles(server);
-		getBlogList(server);
-		getBlogDetails(server);
+		viewBlogList(server);
+		viewBlogContent(server);
 	},
 };
