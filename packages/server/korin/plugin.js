@@ -1,5 +1,8 @@
 const jsonata = require('jsonata');
 const routes = require('./routes');
+const { vars } = require('../utils');
+
+const { topTracksPath } = vars;
 
 module.exports = {
 	name: 'korin-api',
@@ -14,13 +17,7 @@ module.exports = {
 			handler: async () => {
 				try {
 					const data = await server.methods.korin.getTopTracks();
-					const expression = jsonata(`tracks.track.{
-						"title": name,
-							"image": image[3]."#text",
-							"artist": artist.name,
-							"url": artist.url,
-							"profileUrl": $getProfileUrl(artist.name, name)
-					}`);
+					const expression = jsonata(topTracksPath);
 					expression.registerFunction('getProfileUrl', (artist, track) => {
 						const { url } = routes.v1.get_korin_profiles({ artist, track });
 						return url;

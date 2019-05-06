@@ -55,7 +55,7 @@ const getKorinTracks = server => {
 		method,
 		path,
 		handler: async (request, h) => {
-			const tracks = korinHelpers.getTopTracks();
+			const tracks = await korinHelpers.getTopTracks();
 
 			return h.view('korin/tracks', { tracks });
 		},

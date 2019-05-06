@@ -28,13 +28,12 @@ suite('korin tracks API', async () => {
 	test('requesting korin tracks gives expected results', async () => {
 		const { method, url } = routes.v1.get_korin_tracks();
 
-		const result = await server.inject({
+		const response = await server.inject({
 			method,
 			url,
 		});
 
-		expect(result).to.include({
-			statusCode: 200,
-		});
+		expect(response.statusCode).to.equal(200);
+		expect(response.result.length).to.equal(50);
 	});
 });
