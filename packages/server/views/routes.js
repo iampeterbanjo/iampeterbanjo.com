@@ -1,4 +1,11 @@
 /* eslint-disable camelcase */
+/**
+ * @typedef Route
+ * @property { GET | POST | PUT | DELETE } method REST verbs
+ * @property {string} path server path
+ * @property {string} url request url
+ */
+
 const { slugger } = require('../utils');
 
 const get_korin_tracks = () => {
@@ -43,9 +50,22 @@ const get_blog_details = post => {
 	};
 };
 
+/**
+ * Get home page routes
+ * @return Route
+ */
+const get_home = () => {
+	return {
+		method: 'GET',
+		path: '/',
+		url: '/',
+	};
+};
+
 module.exports = {
 	get_korin_tracks,
 	get_korin_profiles,
 	get_blog_posts,
 	get_blog_details,
+	get_home,
 };

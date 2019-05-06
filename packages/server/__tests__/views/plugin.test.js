@@ -48,7 +48,7 @@ suite('view blog', async () => {
 		]);
 	});
 
-	test('requesting blog posts gives expected results', async () => {
+	test('requesting blog posts gives 200 status', async () => {
 		const { method, url } = routes.get_blog_posts();
 		const result = await server.inject({
 			method,
@@ -59,7 +59,7 @@ suite('view blog', async () => {
 		expect(result.statusCode).to.equal(200);
 	});
 
-	test('requesting blog posts gives expected results', async () => {
+	test('requesting blog posts gives 200 status', async () => {
 		const { method, url } = routes.get_blog_details();
 		const result = await server.inject({
 			method,
@@ -67,6 +67,16 @@ suite('view blog', async () => {
 		});
 
 		// eslint-disable-next-line no-underscore-dangle
+		expect(result.statusCode).to.equal(200);
+	});
+
+	test('requesting homoe page gives 200 status', async () => {
+		const { method, url } = routes.get_home();
+		const result = await server.inject({
+			method,
+			url,
+		});
+
 		expect(result.statusCode).to.equal(200);
 	});
 });

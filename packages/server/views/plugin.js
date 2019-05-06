@@ -91,6 +91,18 @@ const viewBlogContent = server => {
 	});
 };
 
+const viewHomePage = server => {
+	const { method, path } = routes.get_home();
+
+	server.route({
+		method,
+		path,
+		handler: (request, h) => {
+			return h.view('misc/home');
+		},
+	});
+};
+
 module.exports = {
 	name: 'views',
 	version: '1.0.0',
@@ -105,5 +117,6 @@ module.exports = {
 		getKorinProfiles(server);
 		viewBlogList(server);
 		viewBlogContent(server);
+		viewHomePage(server);
 	},
 };

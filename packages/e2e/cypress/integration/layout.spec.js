@@ -51,7 +51,7 @@ describe('layout', () => {
 
 	describe('header', () => {
 		it('has a link to home page', () => {
-			cy.get('a[title="Home"]').then($link => {
+			cy.get('a[title="home"]').then($link => {
 				const href = $link.attr('href');
 
 				expect(href).to.equal(slugs.home);
