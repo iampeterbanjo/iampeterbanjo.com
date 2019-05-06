@@ -7,6 +7,7 @@ const Path = require('path');
 const { vars, message } = require('../../utils');
 
 const {
+	getChartTopTracks,
 	getTopTracks,
 	getSongData,
 	getPersonalityProfile,
@@ -19,7 +20,7 @@ const profileData = require('../fixtures/personality-profile.json');
 
 const path = Path.join(__dirname, '../fixtures/lyrics.txt');
 
-const { suite, test, before, after } = lab;
+const { suite, test, before, after, beforeEach, afterEach } = lab;
 const {
 	GENIUS_API_ACCESS_TOKEN,
 	GENIUS_API_URL,
@@ -30,8 +31,8 @@ const {
 
 exports.lab = lab;
 
-suite('getTopTracks', () => {
-	before(async () => {
+suite('getChartTopTracks', () => {
+	beforeEach(async () => {
 		await nock(LASTFM_API_URL)
 			.get('/')
 			.query({
@@ -42,14 +43,27 @@ suite('getTopTracks', () => {
 			.reply(200, topTracksData);
 	});
 
-	after(() => {
+	afterEach(() => {
 		nock.cleanAll();
 	});
 
 	test('lastfm API request for top tracks', async () => {
-		const result = await getTopTracks();
+		const result = await getChartTopTracks();
 
 		expect(result).to.equal(topTracksData);
+	});
+
+	test('top tracks are transformed correctly', async () => {
+		const tracks = await getTopTracks();
+		const [track] = tracks;
+		const { title, image, artist, url, profileUrl } = track;
+
+		expect(tracks.length).to.equal(50);
+		expect(title, 'given title').to.exist();
+		expect(image, 'given image').to.exist();
+		expect(artist, 'given artist').to.exist();
+		expect(url, 'given url').to.exist();
+		expect(profileUrl, 'given profileUrl').to.exist();
 	});
 });
 

@@ -11,7 +11,6 @@ const lab = Lab.script();
 const { suite, test, before } = lab;
 
 exports.lab = lab;
-const server = Hapi.Server();
 const posts = [
 	{
 		title: 'this',
@@ -36,19 +35,28 @@ const methods = [
 		method: sinon.stub().resolves(posts),
 	},
 ];
+const Server = async () => {
+	const server = Hapi.Server();
+
+	await server.register([
+		Vision,
+		{
+			plugin,
+			options: { methods },
+		},
+	]);
+
+	return server;
+};
 
 suite('view blog', async () => {
+	let server;
+
 	before(async () => {
-		await server.register([
-			Vision,
-			{
-				plugin,
-				options: { methods },
-			},
-		]);
+		server = await Server();
 	});
 
-	test('requesting blog posts gives expected results', async () => {
+	test('requesting blog posts gives 200 status', async () => {
 		const { method, url } = routes.get_blog_posts();
 		const result = await server.inject({
 			method,
@@ -59,7 +67,7 @@ suite('view blog', async () => {
 		expect(result.statusCode).to.equal(200);
 	});
 
-	test('requesting blog posts gives expected results', async () => {
+	test('requesting blog posts gives 200 status', async () => {
 		const { method, url } = routes.get_blog_details();
 		const result = await server.inject({
 			method,
@@ -68,5 +76,33 @@ suite('view blog', async () => {
 
 		// eslint-disable-next-line no-underscore-dangle
 		expect(result.statusCode).to.equal(200);
+	});
+
+	test('requesting home page gives 200 status', async () => {
+		const { method, url } = routes.get_home();
+		const result = await server.inject({
+			method,
+			url,
+		});
+
+		expect(result.statusCode).to.equal(200);
+	});
+});
+
+suite('view korin', () => {
+	let server;
+
+	before(async () => {
+		server = await Server();
+	});
+
+	test('requesting tracks gives 200', async () => {
+		const { method, url } = routes.get_korin_tracks();
+		const response = await server.inject({
+			method,
+			url,
+		});
+
+		expect(response.statusCode).to.equal(200);
 	});
 });

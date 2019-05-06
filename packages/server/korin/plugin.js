@@ -1,4 +1,3 @@
-const jsonata = require('jsonata');
 const routes = require('./routes');
 
 module.exports = {
@@ -13,19 +12,7 @@ module.exports = {
 			method: getTracksRoute.method,
 			handler: async () => {
 				try {
-					const data = await server.methods.korin.getTopTracks();
-					const expression = jsonata(`tracks.track.{
-						"title": name,
-							"image": image[3]."#text",
-							"artist": artist.name,
-							"url": artist.url,
-							"profileUrl": $getProfileUrl(artist.name, name)
-					}`);
-					expression.registerFunction('getProfileUrl', (artist, track) => {
-						const { url } = routes.v1.get_korin_profiles({ artist, track });
-						return url;
-					});
-					const tracks = expression.evaluate(data);
+					const tracks = await server.methods.korin.getTopTracks();
 
 					return tracks;
 				} catch (error) {
