@@ -34,6 +34,5 @@ suite('korin tracks API', async () => {
 		});
 
 		expect(response.statusCode).to.equal(200);
-		expect(response.result.length).to.equal(50);
 	});
 });
