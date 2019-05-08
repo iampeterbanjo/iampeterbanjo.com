@@ -15,8 +15,8 @@ before(async () => {
 	server = await api();
 });
 
-suite('korin', () => {
-	['getTopTracks', 'getProfileByArtistAndTrack'].forEach(name => {
+suite('korin API', () => {
+	['getProfileByArtistAndTrack'].forEach(name => {
 		test(`method ${name} is registered`, () => {
 			const result = server.methods.korin[name];
 
@@ -25,7 +25,7 @@ suite('korin', () => {
 	});
 });
 
-suite('blog', () => {
+suite('blog API', () => {
 	['getBlogContents', 'getBlogFiles'].forEach(name => {
 		test(`method ${name} is registered`, () => {
 			const result = server.methods.blog[name];

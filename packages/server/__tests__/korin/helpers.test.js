@@ -8,7 +8,6 @@ const { vars, message } = require('../../utils');
 
 const {
 	getChartTopTracks,
-	getTopTracks,
 	getSongData,
 	getPersonalityProfile,
 	getSongId,
@@ -51,19 +50,6 @@ suite('getChartTopTracks', () => {
 		const result = await getChartTopTracks();
 
 		expect(result).to.equal(topTracksData);
-	});
-
-	test('top tracks are transformed correctly', async () => {
-		const tracks = await getTopTracks();
-		const [track] = tracks;
-		const { title, image, artist, url, profileUrl } = track;
-
-		expect(tracks.length).to.equal(50);
-		expect(title, 'given title').to.exist();
-		expect(image, 'given image').to.exist();
-		expect(artist, 'given artist').to.exist();
-		expect(url, 'given url').to.exist();
-		expect(profileUrl, 'given profileUrl').to.exist();
 	});
 });
 
