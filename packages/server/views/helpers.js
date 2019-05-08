@@ -2,6 +2,7 @@ const jsonata = require('jsonata');
 
 const routes = require('./routes');
 const blogHelpers = require('../blog/helpers');
+const korniHelpers = require('../korin/helpers');
 const { vars } = require('../utils');
 
 const { topTracksPath } = vars;
@@ -26,7 +27,7 @@ const viewBlogList = () => blogHelpers.getBlogFiles();
  *
  * @return {Array<Tracks>} topTracks Top 50 tracks from LastFM API
  */
-const viewTopTracks = topTracks => {
+const parseTopTracks = topTracks => {
 	const expression = jsonata(topTracksPath);
 
 	expression.registerFunction('getProfileUrl', (artist, track) => {
@@ -38,8 +39,14 @@ const viewTopTracks = topTracks => {
 	return tracks;
 };
 
+const viewTopTracks = async () => {
+	const topTracks = await korniHelpers.getChartTopTracks();
+	return parseTopTracks(topTracks);
+};
+
 module.exports = {
 	viewBlogPost,
 	viewBlogList,
 	viewTopTracks,
+	parseTopTracks,
 };

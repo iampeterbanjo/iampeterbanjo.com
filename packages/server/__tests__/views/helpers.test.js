@@ -4,14 +4,14 @@ const { expect } = require('code');
 const lab = Lab.script();
 const { test, suite } = lab;
 
-const { viewTopTracks } = require('../../views/helpers');
+const { parseTopTracks } = require('../../views/helpers');
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
 exports.lab = lab;
 
 suite('View helpers:', () => {
-	test('top tracks are transformed correctly', () => {
-		const [track] = viewTopTracks(topTracksData);
+	test('top tracks are parsed correctly', () => {
+		const [track] = parseTopTracks(topTracksData);
 		const { title, image, artist, url, profileUrl } = track;
 
 		expect(title, 'given title').to.exist();
