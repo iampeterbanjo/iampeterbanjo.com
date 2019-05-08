@@ -34,3 +34,13 @@ suite('blog API', () => {
 		});
 	});
 });
+
+suite('view API', () => {
+	['topTracks'].forEach(name => {
+		test(`method ${name} is registered`, () => {
+			const result = server.methods.view[name];
+
+			expect(result).to.be.a.function();
+		});
+	});
+});
