@@ -31,10 +31,7 @@ const getKorinProfiles = server => {
 		path,
 		handler: async (request, h) => {
 			const { artist, track } = request.params;
-			const {
-				profile,
-				summary,
-			} = await korinHelpers.getProfileByArtistAndTrack({
+			const { profile, summary } = await server.methods.view.trackProfile({
 				artist,
 				track,
 			});
