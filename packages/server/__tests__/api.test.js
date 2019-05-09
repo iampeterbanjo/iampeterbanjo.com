@@ -15,8 +15,8 @@ before(async () => {
 	server = await api();
 });
 
-suite('korin', () => {
-	['getTopTracks', 'getProfileByArtistAndTrack'].forEach(name => {
+suite('korin API', () => {
+	['getProfileByArtistAndTrack'].forEach(name => {
 		test(`method ${name} is registered`, () => {
 			const result = server.methods.korin[name];
 
@@ -25,10 +25,20 @@ suite('korin', () => {
 	});
 });
 
-suite('blog', () => {
+suite('blog API', () => {
 	['getBlogContents', 'getBlogFiles'].forEach(name => {
 		test(`method ${name} is registered`, () => {
 			const result = server.methods.blog[name];
+
+			expect(result).to.be.a.function();
+		});
+	});
+});
+
+suite('view API', () => {
+	['topTracks', 'trackProfile'].forEach(name => {
+		test(`method ${name} is registered`, () => {
+			const result = server.methods.view[name];
 
 			expect(result).to.be.a.function();
 		});

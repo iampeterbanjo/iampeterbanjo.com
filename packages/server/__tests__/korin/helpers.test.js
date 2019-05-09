@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const lab = require('lab').script();
 const { expect } = require('code');
 const nock = require('nock');
@@ -8,7 +9,6 @@ const { vars, message } = require('../../utils');
 
 const {
 	getChartTopTracks,
-	getTopTracks,
 	getSongData,
 	getPersonalityProfile,
 	getSongId,
@@ -52,19 +52,6 @@ suite('getChartTopTracks', () => {
 
 		expect(result).to.equal(topTracksData);
 	});
-
-	test('top tracks are transformed correctly', async () => {
-		const tracks = await getTopTracks();
-		const [track] = tracks;
-		const { title, image, artist, url, profileUrl } = track;
-
-		expect(tracks.length).to.equal(50);
-		expect(title, 'given title').to.exist();
-		expect(image, 'given image').to.exist();
-		expect(artist, 'given artist').to.exist();
-		expect(url, 'given url').to.exist();
-		expect(profileUrl, 'given profileUrl').to.exist();
-	});
 });
 
 suite('getSongData', () => {
@@ -106,10 +93,10 @@ suite('getSongId', async () => {
 	});
 });
 
-suite('getPersonalityProfile', async () => {
-	const lyrics = await readFile(path);
+suite('getPersonalityProfile', () => {
+	before(async ({ context }) => {
+		context.lyrics = await readFile(path);
 
-	before(async () => {
 		await nock(WATSON_PI_API_URL)
 			.post('/v3/profile')
 			.query({
@@ -123,8 +110,8 @@ suite('getPersonalityProfile', async () => {
 		nock.cleanAll();
 	});
 
-	test('watson API request for personality profile', async () => {
-		const { profile } = await getPersonalityProfile(lyrics);
+	test('watson API request for personality profile', async ({ context }) => {
+		const { profile } = await getPersonalityProfile(context.lyrics);
 
 		expect(profile).to.equal(profileData);
 	});

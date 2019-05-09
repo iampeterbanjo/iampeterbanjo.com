@@ -1,6 +1,6 @@
 const Crypto = require('crypto');
 const { time, getCache } = require('../utils');
-const { getTopTracks, getProfileByArtistAndTrack } = require('./helpers');
+const { getProfileByArtistAndTrack } = require('./helpers');
 
 module.exports = [
 	{
@@ -15,14 +15,6 @@ module.exports = [
 					.update(search)
 					.digest('hex');
 			},
-		},
-	},
-	{
-		name: 'korin.getTopTracks',
-		method: getTopTracks,
-		options: {
-			cache: getCache(),
-			generateKey: () => `getTopTracks-${Date.now()}`,
 		},
 	},
 ];

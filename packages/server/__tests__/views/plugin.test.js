@@ -88,21 +88,3 @@ suite('view blog', async () => {
 		expect(result.statusCode).to.equal(200);
 	});
 });
-
-suite('view korin', () => {
-	let server;
-
-	before(async () => {
-		server = await Server();
-	});
-
-	test('requesting tracks gives 200', async () => {
-		const { method, url } = routes.get_korin_tracks();
-		const response = await server.inject({
-			method,
-			url,
-		});
-
-		expect(response.statusCode).to.equal(200);
-	});
-});

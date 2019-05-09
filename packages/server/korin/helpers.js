@@ -1,7 +1,6 @@
 const jsonata = require('jsonata');
 const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
 const PersonalityTextSummary = require('personality-text-summary');
-const routes = require('./routes');
 
 const {
 	message,
@@ -11,7 +10,6 @@ const {
 const { vars } = require('../utils');
 
 const {
-	topTracksPath,
 	lyricsIdPath,
 	LASTFM_API_KEY,
 	WATSON_PI_API_KEY,
@@ -19,6 +17,10 @@ const {
 	WATSON_PI_API_VERSION,
 } = vars;
 
+/**
+ * Search Genius for info about an artist's track
+ * @param {string} search Artist name and track title
+ */
 const getSongData = async search => {
 	const query = new URLSearchParams([['q', search]]);
 
@@ -33,19 +35,6 @@ const getChartTopTracks = async () => {
 	]);
 
 	return (await lastfm.get('/', { query })).body;
-};
-
-const getTopTracks = async () => {
-	const data = await getChartTopTracks();
-	const expression = jsonata(topTracksPath);
-
-	expression.registerFunction('getProfileUrl', (artist, track) => {
-		const { url } = routes.v1.get_korin_profiles({ artist, track });
-		return url;
-	});
-	const tracks = expression.evaluate(data);
-
-	return tracks;
 };
 
 /**
@@ -167,7 +156,6 @@ module.exports = {
 	getSongData,
 	getSongIdFromSearch,
 	getTextSummary,
-	getTopTracks,
 	getChartTopTracks,
 	getLyrics,
 	getPersonalityProfile,
