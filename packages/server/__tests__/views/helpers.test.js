@@ -5,6 +5,7 @@ const lab = Lab.script();
 const { test, suite } = lab;
 
 const { parseTopTracks } = require('../../views/helpers');
+
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
 exports.lab = lab;

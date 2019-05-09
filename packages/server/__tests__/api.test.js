@@ -36,7 +36,7 @@ suite('blog API', () => {
 });
 
 suite('view API', () => {
-	['topTracks'].forEach(name => {
+	['topTracks', 'trackProfile'].forEach(name => {
 		test(`method ${name} is registered`, () => {
 			const result = server.methods.view[name];
 

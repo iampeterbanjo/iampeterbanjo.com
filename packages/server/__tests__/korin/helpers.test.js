@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const lab = require('lab').script();
 const { expect } = require('code');
 const nock = require('nock');
@@ -92,10 +93,10 @@ suite('getSongId', async () => {
 	});
 });
 
-suite('getPersonalityProfile', async () => {
-	const lyrics = await readFile(path);
+suite('getPersonalityProfile', () => {
+	before(async ({ context }) => {
+		context.lyrics = await readFile(path);
 
-	before(async () => {
 		await nock(WATSON_PI_API_URL)
 			.post('/v3/profile')
 			.query({
@@ -109,8 +110,8 @@ suite('getPersonalityProfile', async () => {
 		nock.cleanAll();
 	});
 
-	test('watson API request for personality profile', async () => {
-		const { profile } = await getPersonalityProfile(lyrics);
+	test('watson API request for personality profile', async ({ context }) => {
+		const { profile } = await getPersonalityProfile(context.lyrics);
 
 		expect(profile).to.equal(profileData);
 	});

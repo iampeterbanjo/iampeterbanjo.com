@@ -2,7 +2,7 @@ const jsonata = require('jsonata');
 
 const routes = require('./routes');
 const blogHelpers = require('../blog/helpers');
-const korniHelpers = require('../korin/helpers');
+const korinHelpers = require('../korin/helpers');
 const { vars } = require('../utils');
 
 const { topTracksPath } = vars;
@@ -40,13 +40,36 @@ const parseTopTracks = topTracks => {
 };
 
 const viewTopTracks = async () => {
-	const topTracks = await korniHelpers.getChartTopTracks();
+	const topTracks = await korinHelpers.getChartTopTracks();
 	return parseTopTracks(topTracks);
+};
+
+/**
+ * Get track profile
+ * @typedef ViewTrack
+ * @property {string} artist name
+ * @property {string} track title
+ *
+ * @param {ViewTrack} info
+ */
+const viewTrackProfile = async ({ artist, track }) => {
+	const { profile, summary } = await korinHelpers.getProfileByArtistAndTrack({
+		artist,
+		track,
+	});
+
+	return {
+		profile: JSON.stringify(profile),
+		summary,
+		artist,
+		track,
+	};
 };
 
 module.exports = {
 	viewBlogPost,
 	viewBlogList,
 	viewTopTracks,
+	viewTrackProfile,
 	parseTopTracks,
 };
