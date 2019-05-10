@@ -32,6 +32,6 @@ In the context of a fullstack NodeJS project and facing the concern of making be
 
 - Use HapiJS
 
-[1]:https://expressjs.com/
-[2]:https://hapijs.com
-[3]:https://hueniverse.com/why-you-should-consider-hapi-6163689bd7c2
+[1]: https://expressjs.com/
+[2]: https://hapijs.com
+[3]: https://hueniverse.com/why-you-should-consider-hapi-6163689bd7c2
