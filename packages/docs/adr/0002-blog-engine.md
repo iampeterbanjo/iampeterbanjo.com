@@ -64,12 +64,12 @@ In the context of using several static site generators each of them had with the
 - I can make all decisions for creating, parsing and serving content
 - Can be error prone
 
-[1]:https://daringfireball.net/projects/markdown/
-[2]:https://www.staticgen.com/
-[3]:https://hapijs.com
-[4]:https://11ty.io
-[5]:https://gatsbyjs.org
-[6]:https://gohugo.io
-[7]:https://github.com/11ty/eleventy/issues/415
-[8]:https://jamstack.org/
-[9]:https://github.com/gatsbyjs/gatsby/issues/962
+[1]: https://daringfireball.net/projects/markdown/
+[2]: https://www.staticgen.com/
+[3]: https://hapijs.com
+[4]: https://11ty.io
+[5]: https://gatsbyjs.org
+[6]: https://gohugo.io
+[7]: https://github.com/11ty/eleventy/issues/415
+[8]: https://jamstack.org/
+[9]: https://github.com/gatsbyjs/gatsby/issues/962

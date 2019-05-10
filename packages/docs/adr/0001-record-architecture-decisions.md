@@ -6,6 +6,8 @@ Date: 2019-05-10
 
 2019-05-10 proposed
 
+2019-05-10 done
+
 ## Context
 
 We need to record the architectural decisions made on this project.
@@ -16,7 +18,7 @@ In the context of making several architecture and design decisions for this site
 
 ## Consequences
 
-* Maintain an ADR using [phodal adr package][2]
+- Maintain an ADR using [phodal adr package][2]
 
-[1]:http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
-[2]:https://github.com/phodal/adr
+[1]: http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
+[2]: https://github.com/phodal/adr
