@@ -39,6 +39,7 @@
 		"deploy": "yarn lint && yarn test && git push && git push github",
 		"dev": "npm-run-all -p blog-dev server-dev css-dev",
 		"dry-run": "yarn build && yarn start",
+		"docs": "yarn workspaces docs",
 		"e2e": "yarn workspace e2e",
 		"lint-errors": "prettier --config prettier.config.js --list-different",
 		"lint-fix": "yarn prettier --config prettier.config.js --write ./packages/**/*.{md}",
