@@ -1,4 +1,4 @@
-# 3. record-architecture-decisions
+# 1. record-architecture-decisions
 
 Date: 2019-05-10
 
