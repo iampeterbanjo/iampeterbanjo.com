@@ -2,11 +2,8 @@
 const lab = require('lab').script();
 const { expect } = require('code');
 const nock = require('nock');
-const { readFile } = require('fs-extra');
-const Path = require('path');
 
 const { vars, message } = require('../../utils');
-
 const {
 	getChartTopTracks,
 	getSongData,
@@ -16,9 +13,6 @@ const {
 
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 const songData = require('../fixtures/genius-search.json');
-const profileData = require('../fixtures/personality-profile.json');
-
-const path = Path.join(__dirname, '../fixtures/lyrics.txt');
 
 const { suite, test, before, after, beforeEach, afterEach } = lab;
 const {
@@ -26,7 +20,6 @@ const {
 	GENIUS_API_URL,
 	LASTFM_API_URL,
 	LASTFM_API_KEY,
-	WATSON_PI_API_URL,
 } = vars;
 
 exports.lab = lab;
@@ -94,28 +87,6 @@ suite('getSongId', async () => {
 });
 
 suite('getPersonalityProfile', () => {
-	before(async ({ context }) => {
-		context.lyrics = await readFile(path);
-
-		await nock(WATSON_PI_API_URL)
-			.post('/v3/profile')
-			.query({
-				version: '2017-10-13',
-				consumption_preferences: true,
-			})
-			.reply(200, profileData);
-	});
-
-	after(() => {
-		nock.cleanAll();
-	});
-
-	test('watson API request for personality profile', async ({ context }) => {
-		const { profile } = await getPersonalityProfile(context.lyrics);
-
-		expect(profile).to.equal(profileData);
-	});
-
 	test('when called with no lyrics', async () => {
 		const { profile } = await getPersonalityProfile('');
 

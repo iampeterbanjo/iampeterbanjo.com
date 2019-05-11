@@ -1,15 +1,15 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const korinHelpers = require('../korin/helpers');
 const routes = require('./routes');
+const context = require('./context');
 
 const registerViews = {
 	engines: {
 		html: {
 			compile: (src, options) => {
 				const template = Nunjucks.compile(src, options.environment);
-				return context => {
-					return template.render(context);
+				return data => {
+					return template.render(data);
 				};
 			},
 			prepare: (options, next) => {
@@ -21,6 +21,7 @@ const registerViews = {
 			},
 		},
 	},
+	context,
 	path: Path.join(__dirname, './templates'),
 };
 
