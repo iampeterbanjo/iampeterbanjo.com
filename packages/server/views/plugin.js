@@ -1,6 +1,5 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
-const korinHelpers = require('../korin/helpers');
 const routes = require('./routes');
 
 const registerViews = {
