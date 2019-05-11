@@ -29,6 +29,7 @@
 		"acorn": "^6.1.1",
 		"catbox": "^10.0.6",
 		"catbox-mongodb": "^4.2.1",
+		"cheerio": "^1.0.0-rc.3",
 		"css": "1.0.0",
 		"fecha": "^3.0.3",
 		"fs-extra": "^7.0.1",

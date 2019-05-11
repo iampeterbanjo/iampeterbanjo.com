@@ -3,6 +3,7 @@ const Lab = require('lab');
 const { expect } = require('code');
 const Vision = require('vision');
 const sinon = require('sinon');
+const cheerio = require('cheerio');
 
 const plugin = require('../../views/plugin');
 const routes = require('../../views/routes');
@@ -58,33 +59,46 @@ suite('view blog', async () => {
 
 	test('requesting blog posts gives 200 status', async () => {
 		const { method, url } = routes.get_blog_posts();
-		const result = await server.inject({
+		const response = await server.inject({
 			method,
 			url,
 		});
 
 		// eslint-disable-next-line no-underscore-dangle
-		expect(result.statusCode).to.equal(200);
+		expect(response.statusCode).to.equal(200);
 	});
 
 	test('requesting blog posts gives 200 status', async () => {
 		const { method, url } = routes.get_blog_details();
-		const result = await server.inject({
+		const response = await server.inject({
 			method,
 			url,
 		});
 
 		// eslint-disable-next-line no-underscore-dangle
-		expect(result.statusCode).to.equal(200);
+		expect(response.statusCode).to.equal(200);
 	});
 
 	test('requesting home page gives 200 status', async () => {
 		const { method, url } = routes.get_home();
-		const result = await server.inject({
+		const response = await server.inject({
 			method,
 			url,
 		});
 
-		expect(result.statusCode).to.equal(200);
+		expect(response.statusCode).to.equal(200);
+	});
+
+	test('SEO', async () => {
+		const { method, url } = routes.get_home();
+		const { result } = await server.inject({
+			method,
+			url,
+		});
+
+		const $doc = cheerio(result);
+		const title = $doc.find('title').text();
+
+		expect(title).not.to.equal('');
 	});
 });
