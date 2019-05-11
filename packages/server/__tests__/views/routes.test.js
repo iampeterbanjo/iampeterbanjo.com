@@ -37,8 +37,8 @@ suite('korin views', () => {
 
 		expect(hope).to.include({
 			method: 'GET',
-			path: '/korin/tracks',
-			url: '/korin/tracks',
+			path: '/projects/korin/tracks',
+			url: '/projects/korin/tracks',
 		});
 	});
 
@@ -51,8 +51,8 @@ suite('korin views', () => {
 		});
 
 		expect(method).to.equal('GET');
-		expect(path).to.equal('/korin/profiles/{artist}/{track}');
-		expect(url).to.include('/korin/profiles/');
+		expect(path).to.equal('/projects/korin/profiles/{artist}/{track}');
+		expect(url).to.include('/projects/korin/profiles/');
 		expect(url).to.include(slugger.parse(artist));
 		expect(url).to.include(slugger.parse(track));
 	});
@@ -62,8 +62,8 @@ suite('korin views', () => {
 
 		expect(result).to.include({
 			method: 'GET',
-			path: '/korin/profiles/{artist}/{track}',
-			url: '/korin/profiles//',
+			path: '/projects/korin/profiles/{artist}/{track}',
+			url: '/projects/korin/profiles//',
 		});
 	});
 });

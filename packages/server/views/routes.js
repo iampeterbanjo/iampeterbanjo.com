@@ -1,15 +1,22 @@
 /* eslint-disable camelcase */
 /**
+ * @typedef { 'GET' | 'POST' | 'PUT' | 'DELETE' } Verbs
  * @typedef Route
- * @property { GET | POST | PUT | DELETE } method REST verbs
+ * @property {Verbs} method REST verbs
  * @property {string} path server path
  * @property {string} url request url
  */
 
 const { slugger } = require('../utils');
 
+const baseUrl = '/projects/korin';
+
+/**
+ * Get Korin tracks route
+ * @return {Route}
+ */
 const get_korin_tracks = () => {
-	const url = '/korin/tracks';
+	const url = `${baseUrl}/tracks`;
 	return {
 		method: 'GET',
 		path: url,
@@ -17,17 +24,28 @@ const get_korin_tracks = () => {
 	};
 };
 
-const get_korin_profiles = (options = {}) => {
-	const { artist = '', track = '' } = options;
+/**
+ * Get profile for track
+ * @param {object} [options] Artist and track
+ * @param {string} options.artist Artist
+ * @param {string} options.track Track
+ * @return {Route}
+ */
+const get_korin_profiles = options => {
+	const { artist, track } = options || { artist: '', track: '' };
 	const artistParam = slugger.parse(artist);
 	const trackParam = slugger.parse(track);
 	return {
 		method: 'GET',
-		path: '/korin/profiles/{artist}/{track}',
-		url: `/korin/profiles/${artistParam}/${trackParam}`,
+		path: `${baseUrl}/profiles/{artist}/{track}`,
+		url: `${baseUrl}/profiles/${artistParam}/${trackParam}`,
 	};
 };
 
+/**
+ * Get blog posts route
+ * @return {Route}
+ */
 const get_blog_posts = () => {
 	const url = '/blog/posts';
 
@@ -41,6 +59,7 @@ const get_blog_posts = () => {
 /**
  * Get route for blog details
  * @param {string} [post] Post markdown filename
+ * @return {Route}
  */
 const get_blog_details = post => {
 	return {
