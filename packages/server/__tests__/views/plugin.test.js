@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const Hapi = require('hapi');
 const Lab = require('lab');
 const { expect } = require('code');
@@ -7,6 +8,7 @@ const cheerio = require('cheerio');
 
 const plugin = require('../../views/plugin');
 const routes = require('../../views/routes');
+const data = require('../../views/context');
 
 const lab = Lab.script();
 const { suite, test, before } = lab;
@@ -88,17 +90,57 @@ suite('view blog', async () => {
 
 		expect(response.statusCode).to.equal(200);
 	});
+});
 
-	test('SEO', async () => {
+suite('SEO', () => {
+	before(async ({ context }) => {
+		const server = await Server();
 		const { method, url } = routes.get_home();
 		const { result } = await server.inject({
 			method,
 			url,
 		});
 
-		const $doc = cheerio(result);
-		const title = $doc.find('title').text();
+		context.$ = cheerio.load(result);
+		context.result = result;
+	});
 
-		expect(title).not.to.equal('');
+	test('HTML5 doctype', ({ context }) => {
+		expect(context.result).to.startWith('<!DOCTYPE html>');
+	});
+
+	test('title tag', ({ context }) => {
+		const result = context.$('title').text();
+		expect(result).to.equal(data.title);
+	});
+
+	test('meta charset', ({ context }) => {
+		const result = context.$('meta[charset="utf-8"]');
+		expect(result).to.exist();
+	});
+
+	test('meta viewport', ({ context }) => {
+		const result = context.$('meta[name="viewport"]').attr('content');
+		expect(result).to.exist();
+	});
+
+	test('meta description', ({ context }) => {
+		const result = context.$('meta[name="description"]').attr('content');
+		expect(result).to.equal(data.description);
+	});
+
+	test('html language', ({ context }) => {
+		const result = context.$('html').attr('lang');
+		expect(result).to.equal('en');
+	});
+
+	test('css in head element', ({ context }) => {
+		const result = context.$('head').has('[rel="stylesheet"]');
+		expect(result.length).to.greaterThan(0);
+	});
+
+	test('favicon link', ({ context }) => {
+		const result = context.$('[rel="icon"]').attr('href');
+		expect(result).to.exist();
 	});
 });

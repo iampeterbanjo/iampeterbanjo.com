@@ -60,7 +60,7 @@ const getSongIdFromSearch = search => {
 
 /**
  * Get lyrics for song
- * @param {string} songId Genius songId
+ * @param {number} songId Genius songId
  */
 const getLyrics = async songId => {
 	const { lyrics } = await lyricist.song(songId, { fetchLyrics: true });
