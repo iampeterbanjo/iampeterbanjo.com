@@ -6,23 +6,29 @@ beforeEach(clearServiceWorkers);
 describe('Blog posts', () => {
 	beforeEach(() => {
 		cy.visit(`${BASE_URL}/blog/posts`);
+		cy.injectAxe();
 	});
 
-	it('should have a title', () => {
+	it('has no detectable a11y violations on load', () => {
+		// Test the page at initial load
+		cy.checkA11y();
+	});
+
+	it('has a title', () => {
 		cy.get('h1').should('contain', 'Blog');
 	});
 
-	it('should have links to blog posts', () => {
+	it('has links to blog posts', () => {
 		cy.get('[href^="/blog/posts"]').then($postLinks => {
 			expect($postLinks.length).to.be.greaterThan(0);
 		});
 	});
 
-	it('should have a mini-bio', () => {
+	it('has a mini-bio', () => {
 		cy.get('article:last-child').should('contain', 'Written by Peter Banjo');
 	});
 
-	it('should have "Read more" links', () => {
+	it('has "Read more" links', () => {
 		cy.get('.post-excerpt [href^="/blog/posts"]').then($readMoreLinks => {
 			expect($readMoreLinks.length).to.be.greaterThan(0);
 
@@ -32,7 +38,7 @@ describe('Blog posts', () => {
 		});
 	});
 
-	it('should have a title link', () => {
+	it('has a title link', () => {
 		cy.get('.post-title [href^="/blog/posts"]').then($titleLinks => {
 			expect($titleLinks.length).to.be.greaterThan(0);
 

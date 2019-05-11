@@ -6,6 +6,12 @@ beforeEach(clearServiceWorkers);
 describe('layout', () => {
 	beforeEach(() => {
 		cy.visit(`${BASE_URL}/`);
+		cy.injectAxe();
+	});
+
+	it('has no detectable a11y violations on load', () => {
+		// Test the page at initial load
+		cy.checkA11y();
 	});
 
 	describe('content', () => {
