@@ -43,17 +43,17 @@ module.exports = {
 			},
 		});
 
-		server.route({
-			path: '/{path*}',
-			method: 'GET',
-			handler: {
-				directory: {
-					path: rootPath,
-					redirectToSlash: false,
-					listing: false,
-					index: true,
-				},
-			},
-		});
+		// server.route({
+		// 	path: '/{path*}',
+		// 	method: 'GET',
+		// 	handler: {
+		// 		directory: {
+		// 			path: rootPath,
+		// 			redirectToSlash: false,
+		// 			listing: false,
+		// 			index: true,
+		// 		},
+		// 	},
+		// });
 	},
 };
