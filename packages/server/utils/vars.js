@@ -14,6 +14,10 @@ const {
 module.exports = {
 	baseUrl: 'http://0.0.0.0:8080',
 	lyricsIdPath: 'response.hits[0].result.id',
+	songInfoPath: `response.hits[0].result.{
+		"id": id,
+		"thumbnail": song_art_image_thumbnail_url
+	}`,
 	topTracksPath: `tracks.track.{
 		"title": name,
 			"image": image[3]."#text",

@@ -3,6 +3,7 @@ const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insigh
 const PersonalityTextSummary = require('personality-text-summary');
 
 const {
+	jsonParser,
 	message,
 	clientel: { genius, lastfm, lyricist },
 } = require('../utils');
@@ -11,6 +12,7 @@ const { vars } = require('../utils');
 
 const {
 	lyricsIdPath,
+	songInfoPath,
 	LASTFM_API_KEY,
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
@@ -20,6 +22,7 @@ const {
 /**
  * Search Genius for info about an artist's track
  * @param {string} search Artist name and track title
+ * @return {Promise<GeniusData>}
  */
 const getSongData = async search => {
 	const query = new URLSearchParams([['q', search]]);
@@ -38,8 +41,14 @@ const getChartTopTracks = async () => {
 };
 
 /**
+ * @typedef GeniusData
+ * @property {object} meta
+ * @property {number} meta.status
+ * @property {object} response
+ * @property {Array<object>} hits
+ *
  * Get songId from Genius search data
- * @param {object} data Genius search data
+ * @param {GeniusData} data Genius search data
  */
 const getSongId = data => {
 	const expression = jsonata(lyricsIdPath);
@@ -49,11 +58,22 @@ const getSongId = data => {
 };
 
 /**
+ * Get song info
+ * @typedef Info
+ * @property {number} id
+ * @property {string} thumbnail
+ *
+ * @param {GeniusData} data Genius search data
+ * @return {Info} info
+ */
+const getSongInfo = data => jsonParser.evaluate(data, songInfoPath);
+
+/**
  * Get Genius songId based on artist and track
  * @param {string} search space-separated Artist and track
  */
-const getSongIdFromSearch = search => {
-	const songData = getSongData(search);
+const getSongIdFromSearch = async search => {
+	const songData = await getSongData(search);
 	const songId = getSongId(songData);
 	return songId;
 };
@@ -153,6 +173,7 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 
 module.exports = {
 	getSongId,
+	getSongInfo,
 	getSongData,
 	getSongIdFromSearch,
 	getTextSummary,
