@@ -9,18 +9,14 @@ const {
 	getSongData,
 	getPersonalityProfile,
 	getSongId,
+	getSongInfo,
 } = require('../../korin/helpers');
 
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 const songData = require('../fixtures/genius-search.json');
 
 const { suite, test, before, after, beforeEach, afterEach } = lab;
-const {
-	GENIUS_API_ACCESS_TOKEN,
-	GENIUS_API_URL,
-	LASTFM_API_URL,
-	LASTFM_API_KEY,
-} = vars;
+const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
 
 exports.lab = lab;
 
@@ -51,11 +47,7 @@ suite('getSongData', () => {
 	const q = 'Kendrick Lamar HUMBLE';
 
 	before(async () => {
-		await nock(GENIUS_API_URL, {
-			headers: {
-				authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
-			},
-		})
+		await nock(GENIUS_API_URL)
 			.get('/search')
 			.query({ q })
 			.reply(200, songData);
@@ -77,6 +69,28 @@ suite('getSongId', async () => {
 		const result = await getSongId(songData);
 
 		expect(result).to.equal(3039923);
+	});
+
+	test('get undefined songId', async () => {
+		const result = await getSongId({});
+
+		expect(result).to.equal(undefined);
+	});
+});
+
+suite('getSongInfo', async () => {
+	test('get expected id', async () => {
+		const { id } = await getSongInfo(songData);
+
+		expect(id).to.equal(3039923);
+	});
+
+	test('get expected thumbnail', async () => {
+		const { thumbnail } = await getSongInfo(songData);
+
+		expect(thumbnail).to.equal(
+			'https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg'
+		);
 	});
 
 	test('get undefined songId', async () => {
