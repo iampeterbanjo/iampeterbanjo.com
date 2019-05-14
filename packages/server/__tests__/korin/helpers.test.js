@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
-const lab = require('lab').script();
-const { expect } = require('code');
+const lab = require('@hapi/lab').script();
+const { expect } = require('@hapi/code');
 const nock = require('nock');
 
 const { vars, message } = require('../../utils');

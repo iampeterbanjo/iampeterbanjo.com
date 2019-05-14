@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-const Hapi = require('hapi');
-const Lab = require('lab');
-const { expect } = require('code');
-const Vision = require('vision');
+const Hapi = require('@hapi/hapi');
+const Lab = require('@hapi/lab');
+const { expect } = require('@hapi/code');
+const Vision = require('@hapi/vision');
 const sinon = require('sinon');
 const cheerio = require('cheerio');
 
