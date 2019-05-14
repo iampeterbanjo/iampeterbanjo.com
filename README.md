@@ -8,12 +8,14 @@ Made with
 ## Development
 
 - `yarn dev`
+
   - watches and runs server
   - watches and builds css files
   - watches and runs data
   - watches tests
 
 - `yarn e2e dev`
+
   - runs end-to-end tests in watch mode
 
 - `yarn dry-run` (to check deployment)
