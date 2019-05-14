@@ -43,6 +43,11 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
+"@hapi/address@2.x.x":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"
+  integrity sha512-mV6T0IYqb0xL1UALPFplXYQmR0twnXG0M6jUswpquqT2sD12BOiCiLy3EvMp/Fy7s3DZElC4/aPjEjo2jeZpvw==
+
 "@hapi/boom@7.x.x":
   version "7.4.2"
   resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-7.4.2.tgz#c16957cd09796f6c1bfb4031bdc39d66d6d750c3"
@@ -50,15 +55,111 @@
   dependencies:
     "@hapi/hoek" "6.x.x"
 
+"@hapi/bossy@4.x.x":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@hapi/bossy/-/bossy-4.1.1.tgz#9b7607db2f2fc7eea6f6b5da55b8d1aa47573758"
+  integrity sha512-SLmqA4f6b+u9Cqp3+0c1gC58WZqUkkHymgoI68osfreyBCgMwErHnHKWDF+YMnLm4RB9ZRIpSosw+DGDNKlZ8A==
+  dependencies:
+    "@hapi/boom" "7.x.x"
+    "@hapi/hoek" "6.x.x"
+    "@hapi/joi" "15.x.x"
+
 "@hapi/bourne@1.x.x":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@hapi/bourne/-/bourne-1.3.2.tgz#0a7095adea067243ce3283e1b56b8a8f453b242a"
   integrity sha512-1dVNHT76Uu5N3eJNTYcvxee+jzX4Z9lfciqRRHCU27ihbUcYi+iSc2iml5Ke1LXe1SyJCLA0+14Jh4tXJgOppA==
 
+"@hapi/code@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@hapi/code/-/code-5.3.1.tgz#fc4c2f45f33d1c29f12a7609732f8bfa63a43545"
+  integrity sha512-gPOtttouEx0BGusbm3cNKJ7x0y6mdXt6D08xXxaDvv9TaY1/oqn+dd3L4vkwIfrQGiHRFU6x00d26MrtknWjAQ==
+  dependencies:
+    "@hapi/hoek" "6.x.x"
+
+"@hapi/eslint-config-hapi@12.x.x":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/eslint-config-hapi/-/eslint-config-hapi-12.1.0.tgz#9ea92abe857ae1580d901e19b4254bdd40fd5d70"
+  integrity sha512-1s/kAcMEn/h2hEQgXr8d8DE9Ajgu/QUz1HFuMWDJnzR7nJG4RR5p3Ees03STuTq9lbLTZ99MI43F40scXtBxPg==
+
+"@hapi/eslint-plugin-hapi@4.x.x":
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/@hapi/eslint-plugin-hapi/-/eslint-plugin-hapi-4.3.3.tgz#fad05ccc98b35a59a6603554e877c36f83df10ee"
+  integrity sha512-LrUA7XgCw12/GQ1UjC94rtFW5hW+VMq17j1OIsMXaCEaUgNoqkzwLqxY8A/vx5mMTK660LoD+fQZz4lh6PfX6A==
+  dependencies:
+    "@hapi/rule-capitalize-modules" "1.x.x"
+    "@hapi/rule-for-loop" "1.x.x"
+    "@hapi/rule-no-arrowception" "1.x.x"
+    "@hapi/rule-no-var" "1.x.x"
+    "@hapi/rule-scope-start" "2.x.x"
+
 "@hapi/hoek@6.x.x":
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-6.2.1.tgz#d3a66329159af879bfdf0b0cff2229c43c5a3451"
   integrity sha512-+ryw4GU9pjr1uT6lBuErHJg3NYqzwJTvZ75nKuJijEzpd00Uqi6oiawTGDDf5Hl0zWmI7qHfOtaqB0kpQZJQzA==
+
+"@hapi/joi@15.x.x":
+  version "15.0.3"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.0.3.tgz#e94568fd859e5e945126d5675e7dd218484638a7"
+  integrity sha512-z6CesJ2YBwgVCi+ci8SI8zixoj8bGFn/vZb9MBPbSyoxsS2PnWYjHcyTM17VLK6tx64YVK38SDIh10hJypB+ig==
+  dependencies:
+    "@hapi/address" "2.x.x"
+    "@hapi/hoek" "6.x.x"
+    "@hapi/topo" "3.x.x"
+
+"@hapi/lab@^18.1.2":
+  version "18.1.2"
+  resolved "https://registry.yarnpkg.com/@hapi/lab/-/lab-18.1.2.tgz#9a74db60a310df90a3d8c242d7024b382d612451"
+  integrity sha512-jjJfK+mLPg0mUw7JrYaqZtOslRxS3GmX9FFA5UJit7PDrc+4xE4HEk62LujrDLmX5IGU9xQeXnbFmFfFAKrA9g==
+  dependencies:
+    "@hapi/bossy" "4.x.x"
+    "@hapi/eslint-config-hapi" "12.x.x"
+    "@hapi/eslint-plugin-hapi" "4.x.x"
+    "@hapi/hoek" "6.x.x"
+    diff "4.x.x"
+    eslint "5.x.x"
+    espree "5.x.x"
+    find-rc "4.x.x"
+    handlebars "4.x.x"
+    json-stable-stringify "1.x.x"
+    json-stringify-safe "5.x.x"
+    mkdirp "0.5.x"
+    seedrandom "2.x.x"
+    source-map "0.7.x"
+    source-map-support "0.5.x"
+    supports-color "6.x.x"
+    will-call "1.x.x"
+
+"@hapi/rule-capitalize-modules@1.x.x":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@hapi/rule-capitalize-modules/-/rule-capitalize-modules-1.2.0.tgz#53f56e46d0caf77e372183a703f7b618b8972cb3"
+  integrity sha512-qOn+1LI3OVJCtMHZc1lvF4sQ9d1SOC7ksgTj0dXHp1+Ay7AmKD1EDk63BptZDYN/sVq7ds0i4SLdr9BIeRKncQ==
+
+"@hapi/rule-for-loop@1.x.x":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@hapi/rule-for-loop/-/rule-for-loop-1.2.0.tgz#596a1cb6d92cfdb30546129fec26d3db6925e872"
+  integrity sha512-lV7l9DwWH+eTDJjUK7dRsY1yTiGPBh/dhl5MEPBaSNfDP8EwUlf1WXe+SBO9IRcoQdgGy9t4jDx/eSRaTRlVNQ==
+
+"@hapi/rule-no-arrowception@1.x.x":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@hapi/rule-no-arrowception/-/rule-no-arrowception-1.1.1.tgz#d5d02aef5a69a8a41e55dea605edad390d24461d"
+  integrity sha512-PMRSFTXpJeyuQx2wTqGv9FPcN6wlv/aue1FZhX/71WKdA49JURQAFp2JJ0hMTC/MWL18qshMETQ4mWJKO5KHqw==
+
+"@hapi/rule-no-var@1.x.x":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@hapi/rule-no-var/-/rule-no-var-1.1.3.tgz#826476ec8651e506d1d75eb392568b2b486d8022"
+  integrity sha512-tDhf8q5d5+7UqnYfCPX6NHi4mWtWbTrqHt7lDN1GWAGtdXyr49BJZoC5YiauVF/53VHz0P6GAiwTQ1SDm/wNiA==
+
+"@hapi/rule-scope-start@2.x.x":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@hapi/rule-scope-start/-/rule-scope-start-2.2.0.tgz#5dc868e42a00d16ad9b81aae1ac0ee682c63b20b"
+  integrity sha512-n0adld0osaYNXlus/64dCN0GlkMvmwuJfkpM0OtrA2U7x2Iu1XoHV6Lmne3C+9gM8X/xLUviYLoTCOC7IW8RYg==
+
+"@hapi/topo@3.x.x":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.0.tgz#5c47cd9637c2953db185aa957a27bcb2a8b7a6f8"
+  integrity sha512-gZDI/eXOIk8kP2PkUKjWu9RW8GGVd2Hkgjxyr/S7Z+JF+0mr7bAlbw+DkTRxnD580o8Kqxlnba9wvqp5aOHBww==
+  dependencies:
+    "@hapi/hoek" "6.x.x"
 
 "@hapi/wreck@^15.0.0":
   version "15.0.1"
@@ -4204,7 +4305,7 @@ node-sass@^4.11.0:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
-nodemon@^1.18.9:
+nodemon@^1.18.9, nodemon@^1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.19.0.tgz#358e005549a1e9e1148cb2b9b8b28957dc4e4527"
   integrity sha512-NHKpb/Je0Urmwi3QPDHlYuFY9m1vaVfTsRZG5X73rY46xPj0JpNe8WhUGQdkDXQDOxrBNIU3JrcflE9Y44EcuA==
@@ -5258,7 +5359,7 @@ rewire@^2.5.1:
   resolved "https://registry.yarnpkg.com/rewire/-/rewire-2.5.2.tgz#6427de7b7feefa7d36401507eb64a5385bc58dc7"
   integrity sha1-ZCfee3/u+n02QBUH62SlOFvFjcc=
 
-rimraf@2, rimraf@2.6.3, rimraf@^2.2.8, rimraf@^2.6.1:
+rimraf@2, rimraf@2.6.3, rimraf@^2.2.8, rimraf@^2.6.1, rimraf@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
