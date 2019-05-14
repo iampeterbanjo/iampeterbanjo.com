@@ -47,12 +47,14 @@
 		"preinstall": "yarn setup",
 		"server-dev": "yarn server dev",
 		"server-test": "yarn server test",
+		"server-test-watch": "yarn server test-watch",
+		"data-test-watch": "yarn data test-watch",
 		"server": "yarn workspace server",
 		"setup": "yarn workspaces run install",
 		"start-debug": "node --inspect ./packages/server/start.js",
 		"start": "node ./packages/server/start.js",
-		"test-watch": "nodemon --watch ./packages/server --watch ./packages/__tests__ --watch ./packages/server -e js,json,html,md -x 'yarn lint && yarn server-test'",
-		"test": "yarn lint && yarn server test && yarn e2e test"
+		"test-watch": "npm-run-all -p server-test-watch data-test-watch",
+		"test": "yarn lint && yarn server test && yarn data test && yarn e2e test"
 	},
 	"keywords": [
 		"personal",
