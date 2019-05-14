@@ -11,7 +11,8 @@
 		"dev": "nodemon --watch . -e js,html -x 'npm run start-debug'",
 		"start-debug": "node --inspect start.js",
 		"start": "node start.js",
-		"test": "lab --verbose --timeout 4000 -c ./__tests__/"
+		"test": "lab ./__tests__/",
+		"test-watch": "nodemon -e js,json,html,md -x 'yarn test'"
 	},
 	"keywords": [
 		"personal",
@@ -25,6 +26,10 @@
 	},
 	"license": "ISC",
 	"dependencies": {
+		"@hapi/code": "^5.3.1",
+		"@hapi/hapi": "^18.3.1",
+		"@hapi/lab": "^18.1.2",
+		"@hapi/vision": "^5.5.2",
 		"@hapi/wreck": "^15.0.0",
 		"acorn": "^6.1.1",
 		"catbox": "^10.0.6",
@@ -41,7 +46,6 @@
 		"good-squeeze": "^5.1.0",
 		"got": "^9.6.0",
 		"gray-matter": "^4.0.2",
-		"hapi": "18.x.x",
 		"hapi-dev-errors": "^3.2.4",
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
@@ -55,9 +59,7 @@
 		"watson-developer-cloud": "^3.18.3"
 	},
 	"devDependencies": {
-		"code": "^5.2.4",
 		"ejs-lint": "^0.3.0",
-		"lab": "^18.0.2",
 		"nock": "^10.0.6",
 		"nodemon": "^1.18.9",
 		"npm-run-all": "^4.1.5",

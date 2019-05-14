@@ -2,23 +2,25 @@
 
 Made with
 
+- [NodeJS][4]
 - [Hapi][3]
-- [Gatsby][4]
-- [React][5]
 
 ## Development
 
 - `yarn dev`
-  - runs Gatbsy server in developer mode
-  - watches and builds css files (imported into Gatsby)
+
+  - watches and runs server
+  - watches and builds css files
+  - watches and runs data
   - watches tests
-  - watches [lighthouse-ci][6]
 
 - `yarn e2e dev`
+
   - runs end-to-end tests in watch mode
 
 - `yarn dry-run` (to check deployment)
-  - builds blog, css
+  - builds css
+  - starts data
   - starts server
 
 ## Deployment
@@ -34,8 +36,6 @@ Made with
 [1]: https://www.clever-cloud.com/en/
 [2]: https://github.com/iampeterbanjo/iampeterbanjo.com
 [3]: https://hapijs.com
-[4]: https://www.gatsbyjs.org/
-[5]: https://reactjs.org
-[6]: https://www.npmjs.com/package/lighthouse-ci
+[4]: https://node.green/
 [7]: https://iampeterbanjo.com
 [8]: https://twitter.com/dayosuperstar

@@ -1,6 +1,6 @@
-const Hapi = require('hapi');
-const { expect } = require('code');
-const Lab = require('lab');
+const Hapi = require('@hapi/hapi');
+const { expect } = require('@hapi/code');
+const Lab = require('@hapi/lab');
 
 const lab = Lab.script();
 const { test, suite } = lab;

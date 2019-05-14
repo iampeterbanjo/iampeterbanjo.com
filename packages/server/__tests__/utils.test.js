@@ -1,5 +1,5 @@
-const lab = require('lab').script();
-const { expect } = require('code');
+const lab = require('@hapi/lab').script();
+const { expect } = require('@hapi/code');
 const { time, getCache } = require('../utils');
 
 const { suite, test } = lab;

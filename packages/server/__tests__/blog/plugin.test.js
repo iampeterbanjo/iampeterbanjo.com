@@ -1,6 +1,6 @@
-const Hapi = require('hapi');
-const Lab = require('lab');
-const { expect } = require('code');
+const Hapi = require('@hapi/hapi');
+const Lab = require('@hapi/lab');
+const { expect } = require('@hapi/code');
 const sinon = require('sinon');
 
 const { message } = require('../../utils');
