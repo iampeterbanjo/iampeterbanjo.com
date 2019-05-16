@@ -7,7 +7,7 @@ const plugin = require('../../models/plugin');
 const lab = Lab.script();
 exports.lab = lab;
 
-const { test, suite, beforeEach } = lab;
+const { test, suite, before } = lab;
 
 const Server = async () => {
 	const server = Hapi.Server();
@@ -23,12 +23,16 @@ suite('Given models plugin', () => {
 	suite('And registered plugin', () => {
 		let server;
 
-		beforeEach(async () => {
+		before(async () => {
 			server = await Server();
 		});
 
-		test('server.app.db has link', () => {
-			expect(server.app.db.link).to.exist();
+		test('server.app.db.korin has link', () => {
+			expect(server.app.db.korin.link).to.exist();
+		});
+
+		test('server.app.db.korin has TopTrack model', () => {
+			expect(server.app.db.korin.TopTrack.modelName).to.equal('TopTrack');
 		});
 	});
 });
