@@ -52,6 +52,7 @@
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
 		"marked": "^0.6.2",
+		"mongoose": "^5.5.8",
 		"nunjucks": "^3.2.0",
 		"personality-text-summary": "^2.2.0",
 		"ramda": "^0.26.1",
