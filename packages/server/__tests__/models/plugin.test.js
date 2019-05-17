@@ -8,6 +8,7 @@ const databaseCleaner = new DatabaseCleaner('mongodb');
 
 const plugin = require('../../models/plugin');
 const fakeProfile = require('../fixtures/profile');
+const fakeTopTrack = require('../fixtures/topTrack');
 
 const lab = Lab.script();
 exports.lab = lab;
@@ -46,11 +47,7 @@ suite('Given models plugin', () => {
 
 		suite('And TopTrack model', () => {
 			before(({ context }) => {
-				context.topTrack = new server.app.db.korin.TopTrack({
-					title: '7 rings',
-					artist: 'Ariana Grande',
-					lastFmUrl: 'https://www.last.fm/music/Ariana+Grande',
-				});
+				context.topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
 			});
 
 			test('it can be saved', async ({ context }) => {
@@ -61,10 +58,10 @@ suite('Given models plugin', () => {
 
 			test('it can be found', async () => {
 				const track = await server.app.db.korin.TopTrack.findOne({
-					title: '7 rings',
+					title: fakeTopTrack.title,
 				});
 
-				expect(track.artist).to.equal('Ariana Grande');
+				expect(track.artist).to.equal(fakeTopTrack.artist);
 				expect(track._id).to.exist();
 			});
 		});
