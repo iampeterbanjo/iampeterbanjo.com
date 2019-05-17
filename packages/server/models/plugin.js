@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const util = require('util');
 const helpers = require('./helpers');
 const TopTrack = require('./TopTrack');
+const Profile = require('./Profile');
 
 mongoose.connect[util.promisify.custom] = (error, db) => {
 	return new Promise((resolve, reject) => {
@@ -23,6 +24,7 @@ module.exports = {
 				korin: {
 					link: connection.db,
 					TopTrack,
+					Profile,
 				},
 			};
 		} catch (error) {

@@ -1617,6 +1617,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+database-cleaner@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/database-cleaner/-/database-cleaner-1.3.0.tgz#306c0015bd2eb968d08a6be6a24fe52dd91fd656"
+  integrity sha512-WZaUioWrKPkeBzWWKSuPalO48dIfsnuY+IEkYghUr2czRwFdw8LXdehE5+VH2GrQdSnmPnvYDZ1QGwNCMs8pPA==
+
 date-fns@^1.27.2:
   version "1.30.1"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
@@ -2302,6 +2307,11 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+
+faker@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/faker/-/faker-4.1.0.tgz#1e45bbbecc6774b3c195fad2835109c6d748cc3f"
+  integrity sha1-HkW7vsxndLPBlfrSg1EJxtdIzD8=
 
 fast-deep-equal@^1.0.0:
   version "1.1.0"
