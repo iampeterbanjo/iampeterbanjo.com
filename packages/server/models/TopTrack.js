@@ -10,7 +10,7 @@ const TopTrackSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	url: {
+	lastFmUrl: {
 		type: String,
 		required: true,
 	},
