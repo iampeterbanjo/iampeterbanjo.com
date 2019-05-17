@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 
 const TopTrackSchema = new mongoose.Schema({
-	title: String,
+	title: {
+		type: String,
+		required: true,
+	},
 	image: String,
-	artist: String,
-	url: String,
+	artist: {
+		type: String,
+		required: true,
+	},
+	url: {
+		type: String,
+		required: true,
+	},
 	profileUrl: String,
 });
 
