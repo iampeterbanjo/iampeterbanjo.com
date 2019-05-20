@@ -7,6 +7,7 @@ const DatabaseCleaner = require('database-cleaner');
 const databaseCleaner = new DatabaseCleaner('mongodb');
 
 const plugin = require('../../models/plugin');
+const { slugger } = require('../../utils');
 const fakeProfile = require('../fixtures/profile');
 const fakeTopTrack = require('../fixtures/topTrack');
 
@@ -46,14 +47,21 @@ suite('Given models plugin', () => {
 		});
 
 		suite('And TopTrack model', () => {
-			before(({ context }) => {
-				context.topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
+			let topTrack;
+			before(() => {
+				topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
 			});
 
-			test('it can be saved', async ({ context }) => {
-				const result = await context.topTrack.save();
+			test('it can be saved', async () => {
+				expect(topTrack.profileUrl).not.to.exist();
+
+				const result = await topTrack.save();
+				const expected = slugger.slugify(
+					`${topTrack.artist} ${topTrack.title}`
+				);
 
 				expect(result._id).to.exist();
+				expect(result.profileUrl).to.equal(expected);
 			});
 
 			test('it can be found', async () => {
@@ -64,6 +72,14 @@ suite('Given models plugin', () => {
 				expect(track.artist).to.equal(fakeTopTrack.artist);
 				expect(track._id).to.exist();
 			});
+
+			// test('setProfileUrl is correct', async ({ context }) => {
+
+			// 	expect(topTrack.profileUrl).not.to.exist();
+
+			// 	const result = await topTrack.save();
+
+			// });
 		});
 
 		suite('And Profile model', () => {
