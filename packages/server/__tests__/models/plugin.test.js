@@ -8,8 +8,10 @@ const databaseCleaner = new DatabaseCleaner('mongodb');
 
 const plugin = require('../../models/plugin');
 const { slugger } = require('../../utils');
-const fakeProfile = require('../fixtures/profile');
-const fakeTopTrack = require('../fixtures/topTrack');
+const factory = require('../factory');
+
+const [fakeProfile] = factory.profile(1);
+const [fakeTopTrack] = factory.topTrack(1);
 
 const lab = Lab.script();
 exports.lab = lab;
@@ -72,14 +74,6 @@ suite('Given models plugin', () => {
 				expect(track.artist).to.equal(fakeTopTrack.artist);
 				expect(track._id).to.exist();
 			});
-
-			// test('setProfileUrl is correct', async ({ context }) => {
-
-			// 	expect(topTrack.profileUrl).not.to.exist();
-
-			// 	const result = await topTrack.save();
-
-			// });
 		});
 
 		suite('And Profile model', () => {
