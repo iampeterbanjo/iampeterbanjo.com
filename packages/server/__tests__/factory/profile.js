@@ -7,7 +7,8 @@ const artist = faker.name.findName();
 module.exports = {
 	artist,
 	title,
-	image: faker.random.boolean() ? faker.random.image() : '',
+	summary: faker.lorem.sentences(),
+	image: faker.random.image(),
 	profileUrl: slugger.slugify(`${artist} ${title}`),
 	lastFmUrl: faker.internet.url(),
 };
