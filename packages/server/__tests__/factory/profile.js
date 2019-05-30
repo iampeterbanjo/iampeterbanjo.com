@@ -8,7 +8,7 @@ module.exports = {
 	artist,
 	title,
 	summary: faker.lorem.sentences(),
-	image: faker.random.boolean() ? faker.random.image() : '',
+	image: faker.random.image(),
 	profileUrl: slugger.slugify(`${artist} ${title}`),
 	lastFmUrl: faker.internet.url(),
 };

@@ -210,7 +210,7 @@
     "@hapi/cryptiles" "4.x.x"
     "@hapi/hoek" "6.x.x"
 
-"@hapi/joi@15.x.x":
+"@hapi/joi@15.x.x", "@hapi/joi@^15.0.3":
   version "15.0.3"
   resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.0.3.tgz#e94568fd859e5e945126d5675e7dd218484638a7"
   integrity sha512-z6CesJ2YBwgVCi+ci8SI8zixoj8bGFn/vZb9MBPbSyoxsS2PnWYjHcyTM17VLK6tx64YVK38SDIh10hJypB+ig==
