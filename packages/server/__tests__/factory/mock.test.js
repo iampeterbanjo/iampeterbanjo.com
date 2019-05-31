@@ -12,7 +12,7 @@ const { test, suite } = lab;
 exports.lab = lab;
 
 suite('Given factory', () => {
-	suite('And mock, server and plugin', () => {
+	suite('And mock.method', () => {
 		['korin.getTopTracks'].forEach(name => {
 			suite(`When param is ${name}`, () => {
 				test(`server has method ${name} as function`, async () => {
