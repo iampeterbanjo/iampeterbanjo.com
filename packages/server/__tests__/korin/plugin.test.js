@@ -1,12 +1,11 @@
 const Hapi = require('@hapi/hapi');
 const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
-const sinon = require('sinon');
 
 const plugin = require('../../korin/plugin');
 const routes = require('../../korin/routes');
 
-const topTracksData = require('../fixtures/lastfm-topTracks.json');
+const factory = require('../factory');
 
 const lab = Lab.script();
 const { suite, test, before } = lab;
@@ -16,13 +15,11 @@ const server = Hapi.Server();
 
 suite('korin tracks API', async () => {
 	before(async () => {
-		const methods = [
-			{
-				name: 'korin.getTopTracks',
-				method: sinon.stub().resolves(topTracksData),
-			},
-		];
-		await server.register({ plugin, options: { methods } });
+		await factory.mock.method({
+			server,
+			name: 'korin.getTopTracks',
+			plugin,
+		});
 	});
 
 	test('requesting korin tracks gives expected results', async () => {

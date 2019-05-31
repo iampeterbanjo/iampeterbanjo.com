@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const util = require('util');
 const helpers = require('./helpers');
 const TopTrack = require('./TopTrack');
+const TopTracksRaw = require('./TopTracksRaw');
 const Profile = require('./Profile');
 
 mongoose.connect[util.promisify.custom] = (error, db) => {
@@ -25,6 +26,10 @@ module.exports = {
 					link: connection.db,
 					TopTrack,
 					Profile,
+				},
+				pipeline: {
+					link: connection.db,
+					TopTracksRaw,
 				},
 			};
 		} catch (error) {

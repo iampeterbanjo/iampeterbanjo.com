@@ -40,60 +40,76 @@ suite('Given models plugin', () => {
 			databaseCleaner.clean(server.app.db.korin.link);
 		});
 
-		test('server.app.db.korin has link', () => {
-			expect(server.app.db.korin.link).to.exist();
-		});
-
-		test('server.app.db.korin has TopTrack model', () => {
-			expect(server.app.db.korin.TopTrack.modelName).to.equal('TopTrack');
-		});
-
-		suite('And TopTrack model', () => {
-			let topTrack;
-			before(() => {
-				topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
+		suite('And korin app', () => {
+			test('server.app.db.korin has link', () => {
+				expect(server.app.db.korin.link).to.exist();
 			});
 
-			test('it can be saved', async () => {
-				expect(topTrack.profileUrl).not.to.exist();
-
-				const result = await topTrack.save();
-				const expected = slugger.slugify(
-					`${topTrack.artist} ${topTrack.title}`
-				);
-
-				expect(result._id).to.exist();
-				expect(result.profileUrl).to.equal(expected);
+			['TopTrack', 'Profile'].forEach(model => {
+				test(`server.app.db.korin has ${model}`, () => {
+					expect(server.app.db.korin[model].modelName).to.equal(model);
+				});
 			});
 
-			test('it can be found', async () => {
-				const track = await server.app.db.korin.TopTrack.findOne({
-					title: fakeTopTrack.title,
+			suite('And TopTrack model', () => {
+				let topTrack;
+				before(() => {
+					topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
 				});
 
-				expect(track.artist).to.equal(fakeTopTrack.artist);
-				expect(track._id).to.exist();
+				test('it can be saved', async () => {
+					expect(topTrack.profileUrl).not.to.exist();
+
+					const result = await topTrack.save();
+					const expected = slugger.slugify(
+						`${topTrack.artist} ${topTrack.title}`
+					);
+
+					expect(result._id).to.exist();
+					expect(result.profileUrl).to.equal(expected);
+				});
+
+				test('it can be found', async () => {
+					const track = await server.app.db.korin.TopTrack.findOne({
+						title: fakeTopTrack.title,
+					});
+
+					expect(track.artist).to.equal(fakeTopTrack.artist);
+					expect(track._id).to.exist();
+				});
+			});
+
+			suite('And Profile model', () => {
+				before(({ context }) => {
+					context.profile = new server.app.db.korin.Profile(fakeProfile);
+				});
+
+				test('it can be saved', async ({ context }) => {
+					const result = await context.profile.save();
+
+					expect(result._id).to.exist();
+				});
+
+				test('it can be found', async () => {
+					const track = await server.app.db.korin.Profile.findOne({
+						title: fakeProfile.title,
+					});
+
+					expect(track.artist).to.equal(fakeProfile.artist);
+					expect(track._id).to.exist();
+				});
 			});
 		});
 
-		suite('And Profile model', () => {
-			before(({ context }) => {
-				context.profile = new server.app.db.korin.Profile(fakeProfile);
+		suite('And pipeline app', () => {
+			test('server.app.db.pipeline has link', () => {
+				expect(server.app.db.pipeline.link).to.exist();
 			});
 
-			test('it can be saved', async ({ context }) => {
-				const result = await context.profile.save();
-
-				expect(result._id).to.exist();
-			});
-
-			test('it can be found', async () => {
-				const track = await server.app.db.korin.Profile.findOne({
-					title: fakeProfile.title,
+			['TopTracksRaw'].forEach(model => {
+				test(`server.app.db.pipeline has ${model}`, () => {
+					expect(server.app.db.pipeline[model].modelName).to.equal(model);
 				});
-
-				expect(track.artist).to.equal(fakeProfile.artist);
-				expect(track._id).to.exist();
 			});
 		});
 	});
