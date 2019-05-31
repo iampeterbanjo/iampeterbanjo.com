@@ -1,5 +1,6 @@
 const topTrack = require('./topTrack');
 const profile = require('./profile');
+const mock = require('./mock');
 
 /**
  * Get array of objects
@@ -22,6 +23,7 @@ const generate = (count, item) => {
 const factory = {
 	topTrack: count => generate(count, topTrack),
 	profile: count => generate(count, profile),
+	mock,
 };
 
 module.exports = factory;
