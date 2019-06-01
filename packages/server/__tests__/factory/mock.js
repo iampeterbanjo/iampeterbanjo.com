@@ -1,11 +1,11 @@
 const sinon = require('sinon');
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
-const korinGetTopTracks = async ({ server, plugin }) => {
+const korinGetTopTracks = async ({ server, plugin, fn }) => {
 	const methods = [
 		{
 			name: 'korin.getTopTracks',
-			method: sinon.stub().resolves(topTracksData),
+			method: fn,
 		},
 	];
 	await server.register({
@@ -14,10 +14,10 @@ const korinGetTopTracks = async ({ server, plugin }) => {
 	});
 };
 
-const method = async ({ server, plugin, name }) => {
+const method = async ({ server, plugin, name, fn }) => {
 	switch (name) {
 		case 'korin.getTopTracks':
-			return korinGetTopTracks({ server, plugin });
+			return korinGetTopTracks({ server, plugin, fn });
 		default:
 			return null;
 	}

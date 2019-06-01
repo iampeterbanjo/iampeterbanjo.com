@@ -1,12 +1,14 @@
 const Hapi = require('@hapi/hapi');
 const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
+const sinon = require('sinon');
 
+const factory = require('../factory');
 const plugin = require('../../pipeline/plugin');
 const methods = require('../../pipeline/methods');
 const korinPlugin = require('../../korin/plugin');
 const modelsPlugin = require('../../models/plugin');
-const factory = require('../factory');
+const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
 const lab = Lab.script();
 const { test, suite } = lab;
@@ -29,17 +31,18 @@ const Server = async () => {
 		server,
 		name: 'korin.getTopTracks',
 		plugin: korinPlugin,
+		fn: sinon.stub().resolves(topTracksData),
 	});
 
 	return server;
 };
 
 suite('Given pipeline plugin', () => {
-	suite('And extractRawTopTracks, models, korin plugins', () => {
+	suite('And saveRawTopTracks, models, korin plugins', () => {
 		test('raw top tracks are saved to db', async () => {
 			const server = await Server();
 
-			await server.methods.pipeline.extractRawTopTracks(server);
+			await server.methods.pipeline.saveRawTopTracks(server);
 
 			const result = await server.app.db.pipeline.TopTracksRaw.find({});
 			expect(result.length).to.equal(50);

@@ -15,7 +15,7 @@ const checkTopTrack = topTrack => {
 	return Joi.validate(topTrack, schema, { presence: 'required' });
 };
 
-const extractRawTopTracks = async server => {
+const saveRawTopTracks = async server => {
 	const rawTopTracks = await server.methods.korin.getTopTracks();
 	const tracks = rawTopTracks.tracks.track;
 
@@ -24,5 +24,5 @@ const extractRawTopTracks = async server => {
 
 module.exports = {
 	checkTopTrack,
-	extractRawTopTracks,
+	saveRawTopTracks,
 };

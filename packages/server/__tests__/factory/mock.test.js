@@ -2,6 +2,7 @@
 const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
 const Hapi = require('@hapi/hapi');
+const sinon = require('sinon');
 
 const factory = require('.');
 const korinPlugin = require('../../korin/plugin');
@@ -21,6 +22,7 @@ suite('Given factory', () => {
 						server,
 						name,
 						plugin: korinPlugin,
+						fn: sinon.stub().resolves('test'),
 					});
 					const [app, method] = name.split('.');
 
@@ -35,6 +37,7 @@ suite('Given factory', () => {
 				server,
 				name: 'unknown',
 				plugin: korinPlugin,
+				fn: sinon.stub().resolves('test'),
 			});
 
 			expect(result).to.equal(null);
@@ -61,6 +64,7 @@ suite('Given factory', () => {
 				server,
 				name: 'korin.getTopTracks',
 				plugin: korinPlugin,
+				fn: sinon.stub().resolves('test'),
 			});
 
 			expect(server.methods.korin.getTopTracks).to.exist();

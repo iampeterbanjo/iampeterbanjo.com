@@ -1,8 +1,8 @@
-const { extractRawTopTracks } = require('./helpers');
+const { saveRawTopTracks } = require('./helpers');
 
 module.exports = [
 	{
-		name: 'pipeline.extractRawTopTracks',
-		method: extractRawTopTracks,
+		name: 'pipeline.saveRawTopTracks',
+		method: saveRawTopTracks,
 	},
 ];
