@@ -37,7 +37,7 @@ suite('Given models plugin', () => {
 		});
 
 		after(async () => {
-			databaseCleaner.clean(server.app.db.korin.link);
+			await databaseCleaner.clean(server.app.db.korin.link);
 		});
 
 		suite('And korin app', () => {
