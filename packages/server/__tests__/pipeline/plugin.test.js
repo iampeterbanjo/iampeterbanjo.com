@@ -3,6 +3,7 @@ const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
 const sinon = require('sinon');
 const DatabaseCleaner = require('database-cleaner');
+const R = require('ramda');
 
 const factory = require('../factory');
 const plugin = require('../../pipeline/plugin');
@@ -91,6 +92,36 @@ suite('Given pipeline plugin', () => {
 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
 
 				expect(result.length).to.equal(0);
+			});
+		});
+
+		suite('And different API response', () => {
+			let server;
+
+			before(async () => {
+				server = await Server();
+
+				const different = {
+					tracks: {},
+				};
+				different.tracks.track = topTracksData.tracks.track.map(t => {
+					return R.pick(['name', 'artist'], t);
+				});
+
+				await factory.mock.method({
+					server,
+					name: 'korin.getTopTracks',
+					plugin: korinPlugin,
+					fn: sinon.stub().resolves(different),
+				});
+			});
+
+			test('a ValidationError is thrown', async () => {
+				const error = await expect(
+					server.methods.pipeline.saveRawTopTracks(server)
+				).to.reject();
+
+				expect(error.name).to.equal('ValidationError');
 			});
 		});
 	});
