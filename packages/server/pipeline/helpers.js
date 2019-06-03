@@ -16,6 +16,27 @@ const checkTopTrack = topTrack => {
 	return Joi.validate(topTrack, schema, { presence: 'required' });
 };
 
+/**
+ * Check TopTrackRaw schema
+ * @param {object} topTrackRaw
+ */
+const checkRawTopTrack = topTrackRaw => {
+	const schema = Joi.object({
+		name: Joi.string(),
+		duration: Joi.string(),
+		playcount: Joi.string(),
+		listeners: Joi.string(),
+		url: Joi.string().uri(),
+		artist: Joi.object(),
+		image: Joi.array(),
+	});
+
+	return Joi.validate(topTrackRaw, schema, {
+		allowUnknown: true,
+		presence: 'required',
+	});
+};
+
 const saveRawTopTracks = async server => {
 	const rawTopTracks = await server.methods.korin.getTopTracks();
 
@@ -23,10 +44,16 @@ const saveRawTopTracks = async server => {
 
 	if (!tracks) throw new Error('No tracks found');
 
+	tracks.forEach(track => {
+		const { error } = checkRawTopTrack(track);
+		if (error) throw error;
+	});
+
 	await server.app.db.pipeline.TopTracksRaw.insertMany(tracks);
 };
 
 module.exports = {
 	checkTopTrack,
+	checkRawTopTrack,
 	saveRawTopTracks,
 };
