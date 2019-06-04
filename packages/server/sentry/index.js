@@ -8,6 +8,7 @@ module.exports = {
 		client: {
 			dsn: vars.SENTRY_DSN,
 			release: `server@${vars.PACKAGE_VERSION}`,
+			environment: vars.ENVIRONMENT,
 		},
 	},
 };
