@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const {
 	GENIUS_API_ACCESS_TOKEN,
 	GENIUS_API_URL,
@@ -9,6 +10,10 @@ const {
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,
+	NODE_ENV,
+	BASE_URL,
+	SENTRY_DSN,
+	npm_package_version,
 } = process.env;
 
 module.exports = {
@@ -35,4 +40,8 @@ module.exports = {
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,
+	ENVIRONMENT: NODE_ENV || 'development',
+	BASE_URL,
+	SENTRY_DSN,
+	PACKAGE_VERSION: npm_package_version,
 };
