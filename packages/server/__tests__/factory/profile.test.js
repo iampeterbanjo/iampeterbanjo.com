@@ -1,9 +1,6 @@
 /* eslint-disable no-param-reassign */
 const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
-const Hapi = require('@hapi/hapi');
-
-const korinPlugin = require('../../korin/plugin');
 
 const lab = Lab.script();
 const { test, suite, before } = lab;

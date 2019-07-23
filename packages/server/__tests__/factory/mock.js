@@ -1,6 +1,3 @@
-const sinon = require('sinon');
-const topTracksData = require('../fixtures/lastfm-topTracks.json');
-
 const korinGetTopTracks = async ({ server, plugin, fn }) => {
 	const methods = [
 		{
