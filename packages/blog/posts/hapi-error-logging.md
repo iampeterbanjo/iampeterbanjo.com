@@ -7,7 +7,7 @@ date: 2019-07-23
 
 It was so annoying - there I was trying to test my hapi server but it was broken and I had no idea why. Because I was using `server.inject` the errors where not being shown in the console. How do I log the error messages from a stub server?
 
-``` JavaScript
+```JavaScript
 suite('getBlogFiles', () => {
     let server;
 
@@ -48,10 +48,11 @@ suite('getBlogFiles', () => {
 });
 ```
 
-So I got on the [Hapi hour slack channel][1] to ask this question and a in a few minutes Eran told me
+So I got on the [Hapi hour slack channel][1] to ask this question and a in a few minutes [Eran][2] told me
 
-> @iampeterbanjo it's coming soon, but for now just throw  server.events.on('request', console.log) to see what's up.
+> @iampeterbanjo it's coming soon, but for now just throw server.events.on('request', console.log) to see what's up.
 
 Brilliant! It feels great to be using a framework from such a friendly and helpful community.
 
-[1]:https://hapihour.slack.com
+[1]: https://hapihour.slack.com
+[2]: https://medium.com/@eranhammer
