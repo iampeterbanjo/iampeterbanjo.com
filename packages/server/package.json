@@ -49,7 +49,7 @@
 		"got": "^9.6.0",
 		"gray-matter": "^4.0.2",
 		"hapi-dev-errors": "^3.2.4",
-		"hapi-sentry": "^1.1.0",
+		"hapi-raven": "^7.0.1",
 		"inert": "^5.1.2",
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
