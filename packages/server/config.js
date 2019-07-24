@@ -34,7 +34,6 @@ const manifest = {
 	register: {
 		plugins: [
 			'./good',
-			'./sentry',
 			'./hapi-dev-errors',
 			'inert',
 			'@hapi/vision',
