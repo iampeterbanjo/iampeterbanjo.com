@@ -34,6 +34,7 @@ const manifest = {
 	register: {
 		plugins: [
 			'./good',
+			'./rollbar',
 			'./hapi-dev-errors',
 			'inert',
 			'@hapi/vision',
