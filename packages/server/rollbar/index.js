@@ -1,9 +1,10 @@
 const plugin = require('./plugin');
+const { vars } = require('../utils');
 
 module.exports = {
 	plugin,
 	options: {
-		accessToken: 'POST_SERVER_ITEM_ACCESS_TOKEN',
+		accessToken: vars.ROLLBAR_ACCESS_TOKEN,
 		captureUncaught: true,
 		captureUnhandledRejections: true,
 	},

@@ -13,6 +13,7 @@ const {
 	NODE_ENV,
 	BASE_URL,
 	SENTRY_DSN,
+	ROLLBAR_ACCESS_TOKEN,
 	npm_package_version,
 } = process.env;
 
@@ -43,5 +44,6 @@ module.exports = {
 	ENVIRONMENT: NODE_ENV || 'development',
 	BASE_URL,
 	SENTRY_DSN,
+	ROLLBAR_ACCESS_TOKEN,
 	PACKAGE_VERSION: npm_package_version,
 };
