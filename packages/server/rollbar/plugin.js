@@ -1,4 +1,6 @@
 const Rollbar = require('rollbar');
+const { preResponse } = require('./helpers');
+const { vars } = require('../utils');
 
 module.exports = {
 	name: 'rollbar',
@@ -6,33 +8,11 @@ module.exports = {
 	register: (server, options) => {
 		const rollbar = new Rollbar(options);
 
-		const preResponse = (request, h) => {
-			const { response } = request;
-
-			if (!response.isBoom) {
-				return h.continue;
-			}
-
-			const cb = rollbarErr => {
-				if (rollbarErr) {
-					rollbar.log(`Error reporting to rollbar, ignoring: ${rollbarErr}`);
-				}
-			};
-
-			const error = response;
-
-			if (error instanceof Error) {
-				rollbar.error(error, request, cb);
-			} else {
-				rollbar.error(`Error: ${error}`, request, cb);
-			}
-
-			return h.continue;
-		};
-
-		server.ext('onPreResponse', preResponse);
+		server.ext('onPreResponse', (request, h) =>
+			preResponse({ request, h, rollbar })
+		);
 		server.expose('rollbar', rollbar);
-		rollbar.log('Rollbar: next');
+		rollbar.log(`Rollbar: ${vars.ENVIRONMENT}`);
 
 		return Promise.resolve();
 	},
