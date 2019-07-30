@@ -103,25 +103,26 @@ suite('rollbar helpers', () => {
 	});
 
 	suite('Given preResponse and rollbar', () => {
-		const rollbar = MockRollbar();
-
 		suite('And `response.request.isBoom` is false', () => {
-			test('h.continue is called', () => {
+			test('rollbar.error is NOT called', () => {
+				const rollbar = MockRollbar();
 				const { request, h } = MockParams();
 
 				preResponse({ request, h, rollbar });
 
-				expect(h.continue.called).to.be.true();
+				expect(rollbar.error.called).not.to.be.true();
 			});
 		});
 
 		suite('And `response.request.isBoom` is true', () => {
-			test('h.contiune is returned', () => {
+			test('rollbar.error is called', () => {
+				const rollbar = MockRollbar();
 				const { request, h } = MockParams();
 				request.response.isBoom = true;
-				const result = preResponse({ request, h, rollbar });
 
-				expect(result).to.exist();
+				preResponse({ request, h, rollbar });
+
+				expect(rollbar.error.called).to.be.true();
 			});
 		});
 	});
