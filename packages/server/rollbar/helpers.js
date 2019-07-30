@@ -14,7 +14,7 @@ const errorLogger = ({ error, rollbar, request, callback }) => {
 const preResponse = ({ request, h, rollbar }) => {
 	const { response } = request;
 	if (!response.isBoom) {
-		return h.continue();
+		return h.continue;
 	}
 
 	errorLogger({ error: response, rollbar, request, callback: errorLogger });
