@@ -1,0 +1,9 @@
+{
+  "name": "hapi-rollbar",
+  "version": "1.0.0",
+  "description": "Hapi plugin for rollbar",
+  "main": "index.js",
+  "repository": "https://github.com/iampeterbanjo/hapi-rollbar",
+  "author": "os@iampeterbanjo.com",
+  "license": "MIT"
+}
