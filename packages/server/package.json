@@ -60,6 +60,8 @@
 		"rollbar": "^2.8.1",
 		"slugify": "^1.3.4",
 		"vision": "^5.4.4",
+		"vue": "^2.6.10",
+		"vue-server-renderer": "^2.6.10",
 		"watson-developer-cloud": "^3.18.3"
 	},
 	"devDependencies": {

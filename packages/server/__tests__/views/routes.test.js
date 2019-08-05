@@ -8,6 +8,18 @@ const { suite, test } = lab;
 
 exports.lab = lab;
 
+suite('Given Berserker routes', () => {
+	suite('And GET /', () => {
+		const result = routes.get_berserker();
+
+		expect(result).to.include({
+			method: 'GET',
+			path: '/projects/berserker',
+			url: '/projects/berserker',
+		});
+	});
+});
+
 suite('blog view', () => {
 	test('when viewing blog posts', () => {
 		const result = routes.get_blog_posts();
