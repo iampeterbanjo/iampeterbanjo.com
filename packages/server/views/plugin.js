@@ -25,6 +25,17 @@ const registerViews = {
 	path: Path.join(__dirname, './templates'),
 };
 
+const getBerserker = server => {
+	const { method, path } = routes.get_berserker();
+	server.route({
+		method,
+		path,
+		handler: (request, h) => {
+			return h.view('berserker/list', {});
+		},
+	});
+};
+
 const getKorinProfiles = server => {
 	const { method, path } = routes.get_korin_profiles();
 	server.route({
@@ -116,5 +127,6 @@ module.exports = {
 		viewBlogList(server);
 		viewBlogContent(server);
 		viewHomePage(server);
+		getBerserker(server);
 	},
 };

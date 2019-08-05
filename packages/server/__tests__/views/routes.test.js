@@ -9,13 +9,15 @@ const { suite, test } = lab;
 exports.lab = lab;
 
 suite('Given Berserker routes', () => {
-	suite('And GET /', () => {
+	suite('And get_berserker', () => {
 		const result = routes.get_berserker();
 
-		expect(result).to.include({
-			method: 'GET',
-			path: '/berserker',
-			url: '/berserker',
+		test('route properties', () => {
+			expect(result).to.include({
+				method: 'GET',
+				path: '/berserker',
+				url: '/berserker',
+			});
 		});
 	});
 });

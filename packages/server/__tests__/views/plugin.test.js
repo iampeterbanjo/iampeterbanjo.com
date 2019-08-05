@@ -52,6 +52,27 @@ const Server = async () => {
 	return server;
 };
 
+suite('Given Berserker route', () => {
+	suite('And server', () => {
+		let server;
+
+		before(async () => {
+			server = await Server();
+		});
+
+		test('status is 200', async () => {
+			const { method, url } = routes.get_berserker();
+			const response = await server.inject({
+				method,
+				url,
+			});
+
+			// eslint-disable-next-line no-underscore-dangle
+			expect(response.statusCode).to.equal(200);
+		});
+	});
+});
+
 suite('view blog', async () => {
 	let server;
 
