@@ -1,7 +1,9 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
+const renderer = require('vue-server-renderer').createRenderer();
 const routes = require('./routes');
 const context = require('./context');
+const createApp = require('./ssr/app');
 
 const registerViews = {
 	engines: {
@@ -30,8 +32,11 @@ const getBerserker = server => {
 	server.route({
 		method,
 		path,
-		handler: (request, h) => {
-			return h.view('berserker/list', {});
+		handler: async (request, h) => {
+			const app = createApp({ message: 'Fatality' });
+			const html = await renderer.renderToString(app);
+
+			return h.view('berserker/list', { html });
 		},
 	});
 };

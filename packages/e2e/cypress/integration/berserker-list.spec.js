@@ -17,4 +17,8 @@ describe('Berserker', () => {
 	it('has a title', () => {
 		cy.get('h1').should('contain', 'Berserker');
 	});
+
+	it('has server data', () => {
+		cy.get('#message').should('contain', 'Fatality');
+	});
 });
