@@ -9,14 +9,27 @@
 
 const { slugger } = require('../utils');
 
-const baseUrl = '/projects/korin';
+const korinBaseUrl = '/projects/korin';
+
+/**
+ * Get Berserker route
+ * @return {Route}
+ */
+const get_berserker = () => {
+	const url = '/berserker';
+	return {
+		method: 'GET',
+		path: url,
+		url,
+	};
+};
 
 /**
  * Get Korin tracks route
  * @return {Route}
  */
 const get_korin_tracks = () => {
-	const url = `${baseUrl}/tracks`;
+	const url = `${korinBaseUrl}/tracks`;
 	return {
 		method: 'GET',
 		path: url,
@@ -37,8 +50,8 @@ const get_korin_profiles = options => {
 	const trackParam = slugger.parse(track);
 	return {
 		method: 'GET',
-		path: `${baseUrl}/profiles/{artist}/{track}`,
-		url: `${baseUrl}/profiles/${artistParam}/${trackParam}`,
+		path: `${korinBaseUrl}/profiles/{artist}/{track}`,
+		url: `${korinBaseUrl}/profiles/${artistParam}/${trackParam}`,
 	};
 };
 
@@ -82,6 +95,7 @@ const get_home = () => {
 };
 
 module.exports = {
+	get_berserker,
 	get_korin_tracks,
 	get_korin_profiles,
 	get_blog_posts,

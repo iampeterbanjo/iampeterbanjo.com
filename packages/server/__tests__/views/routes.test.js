@@ -14,8 +14,8 @@ suite('Given Berserker routes', () => {
 
 		expect(result).to.include({
 			method: 'GET',
-			path: '/projects/berserker',
-			url: '/projects/berserker',
+			path: '/berserker',
+			url: '/berserker',
 		});
 	});
 });
