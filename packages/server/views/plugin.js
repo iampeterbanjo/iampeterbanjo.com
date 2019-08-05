@@ -1,7 +1,9 @@
 const Nunjucks = require('nunjucks');
 const Path = require('path');
+const renderer = require('vue-server-renderer').createRenderer();
 const routes = require('./routes');
 const context = require('./context');
+const createApp = require('./ssr/app');
 
 const registerViews = {
 	engines: {
@@ -23,6 +25,20 @@ const registerViews = {
 	},
 	context,
 	path: Path.join(__dirname, './templates'),
+};
+
+const getBerserker = server => {
+	const { method, path } = routes.get_berserker();
+	server.route({
+		method,
+		path,
+		handler: async (request, h) => {
+			const app = createApp({ message: 'Fatality' });
+			const html = await renderer.renderToString(app);
+
+			return h.view('berserker/list', { html });
+		},
+	});
 };
 
 const getKorinProfiles = server => {
@@ -116,5 +132,6 @@ module.exports = {
 		viewBlogList(server);
 		viewBlogContent(server);
 		viewHomePage(server);
+		getBerserker(server);
 	},
 };
