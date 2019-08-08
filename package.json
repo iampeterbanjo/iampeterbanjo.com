@@ -37,6 +37,7 @@
 		"dev": "npm-run-all -p server-dev css-dev",
 		"dry-run": "yarn build && yarn start",
 		"docs": "yarn workspace docs",
+		"data": "yarn workspace data",
 		"e2e": "yarn workspace e2e",
 		"lint-errors": "prettier --config prettier.config.js --list-different",
 		"lint-fix": "yarn prettier --config prettier.config.js --write ./packages/**/*.{md}",
@@ -51,7 +52,7 @@
 		"start-debug": "node --inspect ./packages/server/start.js",
 		"start": "node ./packages/server/start.js",
 		"test-watch": "npm-run-all -p server-test-watch",
-		"test": "yarn lint && yarn server test && yarn e2e test"
+		"test": "yarn lint && yarn server test && yarn data test && yarn e2e test"
 	},
 	"keywords": [
 		"personal",
