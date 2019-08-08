@@ -3,3 +3,5 @@ build/
 .envrc
 ./packages/**/cypress/videos/
 ./packages/**/cypress/**/*.failed.*.png
+
+packages/data/raw/mortal-kombat-x/.~lock.cassie-cage.tsv#
