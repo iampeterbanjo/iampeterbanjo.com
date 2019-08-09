@@ -27,7 +27,7 @@ const {
 const getSongData = async search => {
 	const query = new URLSearchParams([['q', search]]);
 
-	return (await genius.get('/search', { query })).body;
+	return (await genius.get(`search?${query}`)).payload;
 };
 
 const getChartTopTracks = async () => {
@@ -37,7 +37,7 @@ const getChartTopTracks = async () => {
 		['api_key', LASTFM_API_KEY],
 	]);
 
-	return (await lastfm.get('/', { query })).body;
+	return (await lastfm.get(`?${query}`)).payload;
 };
 
 /**

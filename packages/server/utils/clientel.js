@@ -3,8 +3,9 @@
  * @property {function} extend
  * @property {function} get
  */
-const got = require('got');
 const Lyricist = require('lyricist');
+const Wreck = require('@hapi/wreck');
+const time = require('./time');
 
 const {
 	baseUrl,
@@ -13,18 +14,18 @@ const {
 	LASTFM_API_URL,
 } = require('./vars');
 
-const api = got.extend({ baseUrl, json: true });
+const wreck = Wreck.defaults({ timeout: time.oneMinute });
+const api = wreck.defaults({ baseUrl });
 
-const genius = got.extend({
-	baseUrl: GENIUS_API_URL,
+const genius = wreck.defaults({
+	baseUrl: `${GENIUS_API_URL}/`,
 	headers: {
 		authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
 	},
-	json: true,
 });
 
-const lastfm = got.extend({
-	baseUrl: LASTFM_API_URL,
+const lastfm = wreck.defaults({
+	baseUrl: `${LASTFM_API_URL}/`,
 	json: true,
 });
 
