@@ -9,14 +9,14 @@ const { test, before, suite } = lab;
 exports.lab = lab;
 
 const sinon = require('sinon');
-const got = require('got');
+const Wreck = require('@hapi/wreck');
 const plugin = require('../../server/cqc');
 
 const server = Hapi.Server();
 
 suite('cqc:', () => {
 	before(async ({ context }) => {
-		const client = got.extend({ baseUrl: '/' });
+		const client = Wreck.defaults({ baseUrl: '/' });
 		context.response = { body: 'Done' };
 		sinon.stub(client, 'get').resolves(context.response);
 
