@@ -43,7 +43,7 @@ suite('getChartTopTracks', () => {
 	});
 });
 
-suite.skip('getSongData', () => {
+suite('getSongData', () => {
 	const q = 'Kendrick Lamar HUMBLE';
 
 	before(async () => {

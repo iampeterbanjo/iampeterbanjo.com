@@ -22,6 +22,7 @@ const genius = wreck.defaults({
 	headers: {
 		authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
 	},
+	json: true,
 });
 
 const lastfm = wreck.defaults({
