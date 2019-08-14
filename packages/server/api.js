@@ -1,4 +1,4 @@
-const Glue = require('glue');
+const Glue = require('@hapi/glue');
 const { manifest, options } = require('./config');
 
 module.exports = async () => {
