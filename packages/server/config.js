@@ -36,7 +36,7 @@ const manifest = {
 			'./good',
 			'./rollbar',
 			'./hapi-dev-errors',
-			'inert',
+			'@hapi/inert',
 			'@hapi/vision',
 			'./views',
 			'./statics',

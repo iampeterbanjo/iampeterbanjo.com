@@ -1,4 +1,4 @@
-const plugin = require('good');
+const plugin = require('@hapi/good');
 
 module.exports = {
 	plugin,
@@ -6,12 +6,12 @@ module.exports = {
 		reporters: {
 			myConsoleReporter: [
 				{
-					module: 'good-squeeze',
+					module: '@hapi/good-squeeze',
 					name: 'Squeeze',
 					args: [{ log: '*', response: '*', error: '*' }],
 				},
 				{
-					module: 'good-console',
+					module: '@hapi/good-console',
 				},
 				'stdout',
 			],

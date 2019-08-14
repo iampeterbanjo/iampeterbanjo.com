@@ -2,7 +2,7 @@ const Hapi = require('@hapi/hapi');
 const { expect } = require('@hapi/code');
 const Lab = require('@hapi/lab');
 
-const Inert = require('inert');
+const Inert = require('@hapi/inert');
 const path = require('path');
 const plugin = require('../statics/plugin');
 
