@@ -25,7 +25,7 @@
 	},
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
-		"build": "yarn css build",
+		"build": "cd ./packages/css; pnpm run build",
 		"clean-css": "rimraf ./packages/css/node_modules ./packages/css/build",
 		"css-dev": "yarn css dev",
 		"clean-e2e": "rimraf ./packages/e2e/node_modules",
@@ -40,17 +40,10 @@
 		"data": "yarn workspace data",
 		"e2e": "yarn workspace e2e",
 		"lint-errors": "prettier --config prettier.config.js --list-different",
-		"lint-fix": "yarn prettier --config prettier.config.js --write ./packages/**/*.{md}",
-		"lint": "pnpx eslint --fix-dry-run ./packages/e2e ./packages/server",
-		"server-dev": "yarn server dev",
-		"server-test": "yarn server test",
-		"server-test-watch": "yarn server test-watch",
-		"server": "yarn workspace server",
-		"setup": "yarn workspaces run install",
-		"start-debug": "node --inspect ./packages/server/start.js",
+		"lint-fix": "prettier --config prettier.config.js --write ./packages/**/*.{md}",
+		"lint": "eslint --fix-dry-run ./packages/e2e ./packages/server",
 		"start": "node ./packages/server/start.js",
-		"test-watch": "npm-run-all -p server-test-watch",
-		"test": "yarn lint && yarn server test && yarn data test && yarn e2e test"
+		"test": "lint && pnpm recursive run test"
 	},
 	"keywords": [
 		"personal",
