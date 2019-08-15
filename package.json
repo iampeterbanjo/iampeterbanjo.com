@@ -26,24 +26,14 @@
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
 		"build": "cd ./packages/css; pnpm run build",
-		"clean-css": "rimraf ./packages/css/node_modules ./packages/css/build",
-		"css-dev": "yarn css dev",
-		"clean-e2e": "rimraf ./packages/e2e/node_modules",
-		"clean-root": "rimraf ./packages/node_modules",
-		"clean-server": "rimraf ./packages/server/node_modules",
-		"clean": "pnpm recursive exec -- rm -rf node_modules; rm -rf node_modules",
-		"css": "yarn workspace css",
-		"deploy": "yarn lint && yarn test && git push && git push github",
-		"dev": "npm-run-all -p server-dev css-dev",
-		"dry-run": "yarn build && yarn start",
-		"docs": "yarn workspace docs",
-		"data": "yarn workspace data",
-		"e2e": "yarn workspace e2e",
+		"clean": "pnpm run clean-css && pnpm recursive exec -- rimraf node_modules; rimraf node_modules",
+		"deploy": "pnpm run lint && pnpm run test && git push && git push github",
+		"dry-run": "pnpm run build && pnpm run start",
 		"lint-errors": "prettier --config prettier.config.js --list-different",
 		"lint-fix": "prettier --config prettier.config.js --write ./packages/**/*.{md}",
-		"lint": "eslint --fix-dry-run ./packages/e2e ./packages/server",
+		"lint": "pnpm recursive run lint",
 		"start": "node ./packages/server/start.js",
-		"test": "lint && pnpm recursive run test"
+		"test": "pnpm recursive run test"
 	},
 	"keywords": [
 		"personal",
@@ -59,9 +49,6 @@
 	},
 	"license": "ISC",
 	"private": true,
-	"workspaces": [
-		"packages/*"
-	],
 	"devDependencies": {
 		"eslint": "^5.16.0",
 		"eslint-config-airbnb": "^17.1.0",
