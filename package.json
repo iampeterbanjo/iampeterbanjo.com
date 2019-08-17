@@ -23,6 +23,7 @@
 		"deploy": "pnpm run lint && pnpm run test && git push && git push github",
 		"dev": "cd ./packages/server; pnpm run dev",
 		"dry-run": "pnpm run build && pnpm run start",
+		"lint": "pretty-quick",
 		"start": "node ./packages/server/start.js",
 		"test-data": "cd ./packages/data; pnpm run test",
 		"test-e2e": "cd ./packages/e2e; pnpm run test",
