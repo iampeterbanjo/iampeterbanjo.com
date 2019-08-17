@@ -10,14 +10,6 @@
 		"type": "git",
 		"url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
 	},
-	"lint-staged": {
-		"*.{js,jsx}": [
-			"eslint"
-		],
-		"*.{js,jsx,json,md}": [
-			"pnpm run lint-fix && lint-errors"
-		]
-	},
 	"husky": {
 		"hooks": {
 			"pre-commit": "pretty-quick --staged"
@@ -31,9 +23,6 @@
 		"deploy": "pnpm run lint && pnpm run test && git push && git push github",
 		"dev": "cd ./packages/server; pnpm run dev",
 		"dry-run": "pnpm run build && pnpm run start",
-		"lint-errors": "prettier --config prettier.config.js --list-different",
-		"lint-fix": "prettier --config prettier.config.js --write ./packages/**/*.{md}",
-		"lint": "pnpm recursive run lint",
 		"start": "node ./packages/server/start.js",
 		"test-data": "cd ./packages/data; pnpm run test",
 		"test-e2e": "cd ./packages/e2e; pnpm run test",
@@ -49,7 +38,7 @@
 		"tachyons"
 	],
 	"author": {
-		"email": "me@iampeterbanjo.com",
+		"email": "github@iampeterbanjo.com",
 		"name": "Peter Banjo"
 	},
 	"license": "ISC",
@@ -64,7 +53,6 @@
 		"eslint-plugin-prettier": "^3.0.1",
 		"eslint-plugin-react": "^7.11.0",
 		"husky": "^1.3.1",
-		"lint-staged": "^8.1.5",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^1.16.4",
 		"pretty-quick": "^1.11.1"
