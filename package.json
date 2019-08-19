@@ -63,7 +63,5 @@
 		"prettier": "^1.16.4",
 		"pretty-quick": "^1.11.1"
 	},
-	"dependencies": {
-		"yalc": "^1.0.0-pre.33"
-	}
+	"dependencies": {}
 }
