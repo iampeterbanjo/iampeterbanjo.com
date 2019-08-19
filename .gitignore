@@ -1,5 +1,6 @@
 node_modules/
 build/
+.env
 .envrc
 ./packages/**/cypress/videos/
 ./packages/**/cypress/**/*.failed.*.png
