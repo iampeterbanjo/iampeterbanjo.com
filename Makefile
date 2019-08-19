@@ -2,7 +2,7 @@ BUILD=docker build -t iampeterbanjo/hapi .
 REBUILD=docker build --no-cache -t iampeterbanjo/hapi .
 EXEC=docker exec -it app /bin/bash
 REMOVE=docker rm app
-RUN=docker run -d -it -p 8080:8080 --name app iampeterbanjo/hapi
+RUN=docker run --env-file .env -d -it -p 8080:8080 --network=host --name app iampeterbanjo/hapi
 START=docker start app
 STOP=docker stop app
 LOGS=docker logs app

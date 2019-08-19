@@ -8,7 +8,6 @@ WORKDIR /usr/src/app
 # and install dependencies
 RUN apt-get update \
 	&& apt-get install -y curl \
-	&& apt-get install -y direnv \
 	&& apt-get -y autoclean
 
 USER node
@@ -16,11 +15,11 @@ USER node
 COPY package*.json ./
 COPY .envrc ./
 
-RUN direnv allow
 # Bundle app source
 COPY --chown=node:node . .
 
 RUN npm install
 
 EXPOSE 8080
-# CMD [ "pnpm", "start" ]
+EXPOSE 27017
+CMD [ "npm", "start" ]
