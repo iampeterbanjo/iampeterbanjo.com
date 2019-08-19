@@ -17,7 +17,7 @@
 	},
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
-		"build": "cd ./packages/css; npm run build && npx yalc publish --private",
+		"build": "cd ./packages/css; npm run build && npm link",
 		"clean-css": "cd ./packages/css; rm -rf main.css node_modules",
 		"clean-server": "cd ./packages/server; rm -rf node_modules",
 		"clean": "npm-run-all clean-*; rm -rf node_modules",
@@ -27,7 +27,7 @@
 		"postinstall": "npm-run-all install-* build setup",
 		"install-css": "cd ./packages/css; npm install",
 		"install-server": "cd ./packages/server; npm install",
-		"setup": "cd ./packages/server; yalc add css",
+		"setup": "cd ./packages/server; npm link css",
 		"lint": "pretty-quick",
 		"start": "node ./packages/server/start.js",
 		"test-data": "cd ./packages/data; npm run test",
