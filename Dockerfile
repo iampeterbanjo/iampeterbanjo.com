@@ -1,4 +1,4 @@
-FROM node:10.16.3
+FROM node:10.14.2
 
 # Create app directory
 RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
@@ -11,7 +11,7 @@ RUN apt-get update \
 	&& apt-get install -y direnv \
 	&& apt-get -y autoclean
 
-RUN curl -L https://unpkg.com/@pnpm/self-installer | node
+RUN npm i -g yalc
 
 USER node
 COPY package.json ./
@@ -20,10 +20,10 @@ COPY pnpm-*.yaml ./
 COPY .envrc ./
 
 RUN direnv allow
-RUN pnpm install
+RUN pnpm m install
 
 # Bundle app source
 COPY --chown=node:node . .
 
 EXPOSE 8080
-CMD [ "pnpm", "start" ]
+# CMD [ "pnpm", "start" ]

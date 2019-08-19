@@ -1,0 +1,20 @@
+{
+	"name": "css",
+	"version": "1.0.0-2d81e551",
+	"description": "CSS theme for iampeterbanjo.com",
+	"main": "main.css",
+	"scripts": {
+		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
+		"dev": "yarn build -- --watch",
+		"test": "echo 'css - no tests'"
+	},
+	"keywords": [],
+	"author": {
+		"email": "npm@iampeterbanjo.com",
+		"name": "Peter Banjo"
+	},
+	"license": "ISC",
+	"dependencies": {
+		"tachyons-sass": "^4.9.5"
+	}
+}

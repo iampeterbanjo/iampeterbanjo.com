@@ -4,7 +4,7 @@
 	"description": "Personal portfolio",
 	"main": "index.js",
 	"engines": {
-		"node": "10.16.3"
+		"node": "10.14.2"
 	},
 	"repository": {
 		"type": "git",
@@ -17,18 +17,20 @@
 	},
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
-		"build": "cd ./packages/css; pnpm run build",
+		"build": "cd ./packages/css; npm run build && npx yalc publish --private",
 		"clean-css": "rm -f ./css/main.css",
-		"clean": "pnpm run clean-css && pnpm recursive exec -- rm -rf node_modules; rm -rf node_modules",
-		"deploy": "pnpm run lint && pnpm run test && git push && git push github",
-		"dev": "cd ./packages/server; pnpm run dev",
-		"dry-run": "pnpm run build && pnpm run start",
+		"clean": "npm run clean-css && npm recursive exec -- rm -rf node_modules; rm -rf node_modules",
+		"deploy": "npm run lint && npm run test && git push && git push github",
+		"dev": "cd ./packages/server; npm run dev",
+		"dry-run": "npm run build && npm run start",
+		"postinstall": "npm run build && npm run setup",
+		"setup": "cd ./packages/server; yalc add css",
 		"lint": "pretty-quick",
 		"start": "node ./packages/server/start.js",
-		"test-data": "cd ./packages/data; pnpm run test",
-		"test-e2e": "cd ./packages/e2e; pnpm run test",
-		"test-server": "cd ./packages/server; pnpm run test",
-		"test": "pnpx npm-run-all test-*"
+		"test-data": "cd ./packages/data; npm run test",
+		"test-e2e": "cd ./packages/e2e; npm run test",
+		"test-server": "cd ./packages/server; npm run test",
+		"test": "npx npm-run-all test-*"
 	},
 	"keywords": [
 		"personal",
@@ -57,5 +59,8 @@
 		"npm-run-all": "^4.1.5",
 		"prettier": "^1.16.4",
 		"pretty-quick": "^1.11.1"
+	},
+	"dependencies": {
+		"yalc": "^1.0.0-pre.33"
 	}
 }

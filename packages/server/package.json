@@ -43,7 +43,7 @@
 		"bluebird": "^3.5.4",
 		"catbox-mongodb": "^4.2.1",
 		"cheerio": "^1.0.0-rc.3",
-		"css": "1.0.0",
+		"css": "file:.yalc/css",
 		"fecha": "^3.0.3",
 		"fs-extra": "^7.0.1",
 		"glob": "^7.1.3",

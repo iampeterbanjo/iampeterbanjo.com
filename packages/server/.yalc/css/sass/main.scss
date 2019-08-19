@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+// https://colorswatches.info/twitter-blue
+$twitter-blue: #55acee;
+
+@import './node_modules/tachyons-sass/tachyons.scss';
+
+a {
+	@extend .link;
+	@extend .black;
+
+	&:not(.btn) {
+		background: linear-gradient(90deg, $black-70 66%, transparent 0) repeat-x;
+		background-size: 0.2em 2px;
+		background-position: 0 1em;
+	}
+
+	&:visited {
+		background: none;
+	}
+
+	&[rel='next'],
+	&[rel='prev'] {
+		background-position: 0 1.5em;
+	}
+}
+
+blockquote {
+	@extend .f3;
+	@extend .pl4;
+	font-style: italic;
+	margin-left: 0;
+	position: relative;
+
+	&::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		background-color: black;
+		width: 4px;
+	}
+}
+
+.h-100 {
+	min-height: 100vh;
+}
+
+.svg-icon {
+	stroke: transparent;
+}
+
+.github {
+	fill: $black-70;
+}
+
+.twitter {
+	fill: $twitter-blue;
+}
