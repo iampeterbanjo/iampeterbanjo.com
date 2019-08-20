@@ -8,12 +8,13 @@
 	},
 	"scripts": {
 		"clean": "rm -rf ./node_modules || exit 0",
-		"dev": "nodemon --watch . -e js,html -x 'npm run start-debug'",
+		"dev": "npm link css; npm run watch",
 		"start-debug": "node --inspect start.js",
 		"start": "node start.js",
 		"test": "lab ./__tests__/",
 		"test-watch": "nodemon -e js,json,html,md -x 'yarn test'",
-		"lint": "eslint \"**/*.js\""
+		"lint": "eslint \"**/*.js\"",
+		"watch": "nodemon --watch . -e js,html -x 'npm run start-debug'"
 	},
 	"keywords": [
 		"personal",
@@ -43,7 +44,7 @@
 		"bluebird": "^3.5.4",
 		"catbox-mongodb": "^4.2.1",
 		"cheerio": "^1.0.0-rc.3",
-		"css": "1.0.0",
+		"css": "file:../css",
 		"fecha": "^3.0.3",
 		"fs-extra": "^7.0.1",
 		"glob": "^7.1.3",
