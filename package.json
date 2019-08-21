@@ -25,7 +25,7 @@
 		"clean-server": "cd ./packages/server; rm -rf node_modules",
 		"clean": "npm-run-all clean-*; rm -rf node_modules",
 		"deploy": "npm run lint && npm run test && git push && git push github",
-		"dev": "npm-run-all install-*",
+		"dev": "npm-run-all install-*; npm run start-dev",
 		"dry-run": "npm run build && npm run start",
 		"postinstall": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else npm run dev; fi",
 		"install-css": "cd ./packages/css; npm install",

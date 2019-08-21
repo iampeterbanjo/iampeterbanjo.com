@@ -3,6 +3,8 @@ const { vars } = require('./utils');
 
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
+console.log(MONGODB_ADDON_URI);
+
 const manifest = {
 	server: {
 		host: '0.0.0.0',
