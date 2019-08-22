@@ -40,6 +40,7 @@ const manifest = {
 			'./hapi-vision',
 			'./views',
 			'./statics',
+			'./pipeline',
 			'./korin',
 			'./blog',
 			'./cqc',

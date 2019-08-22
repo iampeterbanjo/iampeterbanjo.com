@@ -7,6 +7,7 @@ const R = require('ramda');
 
 const factory = require('../factory');
 const plugin = require('../../pipeline/plugin');
+const routes = require('../../pipeline/routes');
 const methods = require('../../pipeline/methods');
 const korinPlugin = require('../../korin/plugin');
 const modelsPlugin = require('../../models/plugin');
@@ -36,6 +37,24 @@ const Server = async () => {
 
 suite('Given pipeline plugin', () => {
 	suite('And saveRawTopTracks, models, korin plugins', () => {
+		suite('API response', () => {
+			let server;
+
+			before(async () => {
+				server = await Server();
+			});
+
+			test('status code 200', async () => {
+				const { method, url } = routes.v1.extract_top_tracks();
+				const response = await server.inject({
+					method,
+					url,
+				});
+
+				expect(response.statusCode).to.equal(200);
+			});
+		});
+
 		suite('And valid API response', () => {
 			let server;
 
