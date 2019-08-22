@@ -45,7 +45,7 @@ suite('Given pipeline plugin', () => {
 
 				await factory.mock.method({
 					server,
-					name: 'korin.getTopTracks',
+					name: 'korin.getChartTopTracks',
 					plugin: korinPlugin,
 					fn: sinon.stub().resolves(topTracksData),
 				});
@@ -81,7 +81,7 @@ suite('Given pipeline plugin', () => {
 
 				await factory.mock.method({
 					server,
-					name: 'korin.getTopTracks',
+					name: 'korin.getChartTopTracks',
 					plugin: korinPlugin,
 					fn: sinon.stub().resolves('BAD'),
 				});
@@ -121,7 +121,7 @@ suite('Given pipeline plugin', () => {
 
 				await factory.mock.method({
 					server,
-					name: 'korin.getTopTracks',
+					name: 'korin.getChartTopTracks',
 					plugin: korinPlugin,
 					fn: sinon.stub().resolves(different),
 				});
