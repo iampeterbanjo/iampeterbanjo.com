@@ -38,7 +38,7 @@ const checkRawTopTrack = topTrackRaw => {
 };
 
 const saveRawTopTracks = async server => {
-	const rawTopTracks = await server.methods.korin.getTopTracks();
+	const rawTopTracks = await server.methods.korin.getChartTopTracks();
 
 	const tracks = ramda.pathOr(null, ['tracks', 'track'], rawTopTracks);
 

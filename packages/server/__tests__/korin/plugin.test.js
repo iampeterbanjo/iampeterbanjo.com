@@ -19,7 +19,7 @@ suite('korin tracks API', async () => {
 	before(async () => {
 		await factory.mock.method({
 			server,
-			name: 'korin.getTopTracks',
+			name: 'korin.getChartTopTracks',
 			plugin,
 			fn: sinon.stub().resolves(topTracksData),
 		});

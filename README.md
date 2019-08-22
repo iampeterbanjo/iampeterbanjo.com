@@ -7,29 +7,33 @@ Made with
 
 ## Development
 
-- `yarn dev`
+- `npm run dev`
 
-  - watches and runs server
+  - install dependencies
   - watches and builds css files
-  - watches and runs data
-  - watches tests
+  - watches and runs server
 
-- `yarn e2e dev`
+- `npm run watch-server-test`
 
-  - runs end-to-end tests in watch mode
+  - watches server tests
 
-- `yarn dry-run` (to check deployment)
+- `npm run dry-run` (to check deployment)
   - builds css
   - starts data
   - starts server
 
 ## Deployment
 
-- `yarn deploy`
+- `npm run deploy`
   - runs tests
   - runs e2e tests (needs development server to be running e.g. `yarn dev`)
   - pushes to [Clever cloud][1]
   - pushes to [Github][2]
+
+## Docker
+
+- `make build && make run` to start build and run docker image
+- `make help` for more options
 
 [Visit][7] or [follow][8]
 

@@ -1,7 +1,7 @@
 const korinGetTopTracks = async ({ server, plugin, fn }) => {
 	const methods = [
 		{
-			name: 'korin.getTopTracks',
+			name: 'korin.getChartTopTracks',
 			method: fn,
 		},
 	];
@@ -13,7 +13,7 @@ const korinGetTopTracks = async ({ server, plugin, fn }) => {
 
 const method = async ({ server, plugin, name, fn }) => {
 	switch (name) {
-		case 'korin.getTopTracks':
+		case 'korin.getChartTopTracks':
 			return korinGetTopTracks({ server, plugin, fn });
 		default:
 			return null;

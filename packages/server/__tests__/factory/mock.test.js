@@ -14,7 +14,7 @@ exports.lab = lab;
 
 suite('Given factory', () => {
 	suite('And mock.method', () => {
-		['korin.getTopTracks'].forEach(name => {
+		['korin.getChartTopTracks'].forEach(name => {
 			suite(`When param is ${name}`, () => {
 				test(`server has method ${name} as function`, async () => {
 					const server = Hapi.Server();
@@ -62,12 +62,12 @@ suite('Given factory', () => {
 
 			await factory.mock.method({
 				server,
-				name: 'korin.getTopTracks',
+				name: 'korin.getChartTopTracks',
 				plugin: korinPlugin,
 				fn: sinon.stub().resolves('test'),
 			});
 
-			expect(server.methods.korin.getTopTracks).to.exist();
+			expect(server.methods.korin.getChartTopTracks).to.exist();
 			expect(server.methods.test.method).to.exist();
 		});
 	});

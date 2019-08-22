@@ -41,6 +41,7 @@ const manifest = {
 			'./views',
 			'./statics',
 			'./korin',
+			'./pipeline',
 			'./blog',
 			'./cqc',
 			'./https-here',

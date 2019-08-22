@@ -7,6 +7,7 @@ const R = require('ramda');
 
 const factory = require('../factory');
 const plugin = require('../../pipeline/plugin');
+const routes = require('../../pipeline/routes');
 const methods = require('../../pipeline/methods');
 const korinPlugin = require('../../korin/plugin');
 const modelsPlugin = require('../../models/plugin');
@@ -44,7 +45,7 @@ suite('Given pipeline plugin', () => {
 
 				await factory.mock.method({
 					server,
-					name: 'korin.getTopTracks',
+					name: 'korin.getChartTopTracks',
 					plugin: korinPlugin,
 					fn: sinon.stub().resolves(topTracksData),
 				});
@@ -60,6 +61,16 @@ suite('Given pipeline plugin', () => {
 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
 				expect(result.length).to.equal(50);
 			});
+
+			test('status code 200', async () => {
+				const { method, url } = routes.v1.extract_top_tracks();
+				const response = await server.inject({
+					method,
+					url,
+				});
+
+				expect(response.statusCode).to.equal(200);
+			});
 		});
 
 		suite('And BAD API response', () => {
@@ -70,7 +81,7 @@ suite('Given pipeline plugin', () => {
 
 				await factory.mock.method({
 					server,
-					name: 'korin.getTopTracks',
+					name: 'korin.getChartTopTracks',
 					plugin: korinPlugin,
 					fn: sinon.stub().resolves('BAD'),
 				});
@@ -110,7 +121,7 @@ suite('Given pipeline plugin', () => {
 
 				await factory.mock.method({
 					server,
-					name: 'korin.getTopTracks',
+					name: 'korin.getChartTopTracks',
 					plugin: korinPlugin,
 					fn: sinon.stub().resolves(different),
 				});

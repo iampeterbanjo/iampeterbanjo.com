@@ -12,7 +12,7 @@ module.exports = {
 			method: getTracksRoute.method,
 			handler: async () => {
 				try {
-					const tracks = await server.methods.korin.getTopTracks();
+					const tracks = await server.methods.korin.getChartTopTracks();
 
 					return tracks;
 				} catch (error) {

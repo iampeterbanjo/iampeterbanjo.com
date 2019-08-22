@@ -16,7 +16,7 @@ before(async () => {
 });
 
 suite('korin API', () => {
-	['getProfileByArtistAndTrack'].forEach(name => {
+	['getProfileByArtistAndTrack', 'getChartTopTracks'].forEach(name => {
 		test(`method ${name} is registered`, () => {
 			const result = server.methods.korin[name];
 
