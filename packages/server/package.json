@@ -42,6 +42,7 @@
 		"@hapi/wreck": "^15.0.1",
 		"acorn": "^6.1.1",
 		"bluebird": "^3.5.4",
+		"boom": "^7.3.0",
 		"catbox-mongodb": "^4.2.1",
 		"cheerio": "^1.0.0-rc.3",
 		"css": "file:../css",

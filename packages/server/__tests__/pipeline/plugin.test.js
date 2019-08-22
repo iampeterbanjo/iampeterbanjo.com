@@ -37,24 +37,6 @@ const Server = async () => {
 
 suite('Given pipeline plugin', () => {
 	suite('And saveRawTopTracks, models, korin plugins', () => {
-		suite('API response', () => {
-			let server;
-
-			before(async () => {
-				server = await Server();
-			});
-
-			test('status code 200', async () => {
-				const { method, url } = routes.v1.extract_top_tracks();
-				const response = await server.inject({
-					method,
-					url,
-				});
-
-				expect(response.statusCode).to.equal(200);
-			});
-		});
-
 		suite('And valid API response', () => {
 			let server;
 
@@ -78,6 +60,16 @@ suite('Given pipeline plugin', () => {
 
 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
 				expect(result.length).to.equal(50);
+			});
+
+			test('status code 200', async () => {
+				const { method, url } = routes.v1.extract_top_tracks();
+				const response = await server.inject({
+					method,
+					url,
+				});
+
+				expect(response.statusCode).to.equal(200);
 			});
 		});
 
