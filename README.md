@@ -102,6 +102,15 @@ Each additional tool like a compiler, library, framework etc. adds a maintenance
 
 I've tried both and I prefer tabs because I can change my indentation without changing the file history. Except in Markdown files because the linter is not customisable and it's not code.
 
+### 7. Pay down debts
+
+I want to keep this site running over a a few years (2+) and technical debt is what makes it harder to make changes over time. They should be paid down and in order to do this -
+
+- Keep concepts and abstractions simple
+- Have test coverage above 90%
+- Refactor frequently
+- Ship often to keep code in working state
+
 [Visit][site] or [follow][twitter]
 
 [clever-cloud]: https://www.clever-cloud.com/en/
