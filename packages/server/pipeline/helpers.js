@@ -37,6 +37,17 @@ const checkRawTopTrack = topTrackRaw => {
 	});
 };
 
+/**
+ * Check track profile. Combines data for chart track info
+ * and profile summary
+ * @param {object} trackProfile
+ */
+const checkTrackProfile = trackProfile => {
+	const schema = {};
+
+	return Joi.validate(trackProfile, schema);
+};
+
 const saveRawTopTracks = async server => {
 	const rawTopTracks = await server.methods.korin.getChartTopTracks();
 
@@ -56,4 +67,5 @@ module.exports = {
 	checkTopTrack,
 	checkRawTopTrack,
 	saveRawTopTracks,
+	checkTrackProfile,
 };

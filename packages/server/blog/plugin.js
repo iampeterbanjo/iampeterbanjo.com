@@ -1,3 +1,4 @@
+const Boom = require('boom');
 const { message } = require('../utils');
 
 const routes = require('./routes');
@@ -18,8 +19,7 @@ module.exports = {
 
 					return blogFiles;
 				} catch (error) {
-					// eslint-disable-next-line no-console
-					return console.warn(error);
+					return Boom.boomify(error);
 				}
 			},
 		});
@@ -39,8 +39,7 @@ module.exports = {
 
 					return contents;
 				} catch (error) {
-					// eslint-disable-next-line no-console
-					return console.warn(error);
+					return Boom.boomify(error);
 				}
 			},
 		});

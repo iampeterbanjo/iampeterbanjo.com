@@ -36,6 +36,31 @@ const Server = async () => {
 };
 
 suite('Given pipeline plugin', () => {
+	suite('And saved TopTracksRaw, transformTopTracks', () => {
+		let server;
+
+		before(async () => {
+			server = await Server();
+
+			await factory.mock.method({
+				server,
+				name: 'korin.getChartTopTracks',
+				plugin: korinPlugin,
+				fn: sinon.stub().resolves(topTracksData),
+			});
+
+			await server.methods.pipeline.saveRawTopTracks(server);
+		});
+
+		after(async () => {
+			await databaseCleaner.clean(server.app.db.pipeline.link);
+		});
+
+		test.skip('When TopTracksRaw are transformed to TrackProfile its valid', () => {
+			// TODO
+		});
+	});
+
 	suite('And saveRawTopTracks, models, korin plugins', () => {
 		suite('And valid API response', () => {
 			let server;
@@ -55,14 +80,14 @@ suite('Given pipeline plugin', () => {
 				await databaseCleaner.clean(server.app.db.pipeline.link);
 			});
 
-			test('raw top tracks are saved to db', async () => {
+			test('When raw top tracks are saved to db length is 50', async () => {
 				await server.methods.pipeline.saveRawTopTracks(server);
 
 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
 				expect(result.length).to.equal(50);
 			});
 
-			test('status code 200', async () => {
+			test('When requesting API status code 200', async () => {
 				const { method, url } = routes.v1.extract_top_tracks();
 				const response = await server.inject({
 					method,
@@ -87,7 +112,7 @@ suite('Given pipeline plugin', () => {
 				});
 			});
 
-			test('an Error is thrown', async () => {
+			test('When there is no data an Error is thrown', async () => {
 				const { message } = await expect(
 					server.methods.pipeline.saveRawTopTracks(server)
 				).to.reject();
@@ -95,7 +120,7 @@ suite('Given pipeline plugin', () => {
 				expect(message).to.equal('No tracks found');
 			});
 
-			test('data is not saved', async () => {
+			test('When there is an error no data is not saved', async () => {
 				await expect(
 					server.methods.pipeline.saveRawTopTracks(server)
 				).to.reject();
@@ -127,7 +152,7 @@ suite('Given pipeline plugin', () => {
 				});
 			});
 
-			test('a ValidationError is thrown', async () => {
+			test('When the data is not valid a ValidationError is thrown', async () => {
 				const error = await expect(
 					server.methods.pipeline.saveRawTopTracks(server)
 				).to.reject();

@@ -1,3 +1,4 @@
+const Boom = require('boom');
 const routes = require('./routes');
 
 module.exports = {
@@ -16,8 +17,7 @@ module.exports = {
 
 					return tracks;
 				} catch (error) {
-					// eslint-disable-next-line no-console
-					return console.warn(error);
+					return Boom.boomify(error);
 				}
 			},
 		});
@@ -42,8 +42,7 @@ module.exports = {
 
 					return { profile, summary };
 				} catch (error) {
-					// eslint-disable-next-line no-console
-					return console.warn(error);
+					return Boom.boomify(error);
 				}
 			},
 		});
