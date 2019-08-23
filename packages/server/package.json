@@ -13,7 +13,7 @@
 		"start": "node start.js",
 		"test": "lab ./__tests__/",
 		"lint": "eslint \"**/*.js\"",
-		"watch": "nodemon --watch . -e js,html -x 'npm run start-debug'",
+		"watch": "nodemon --delay 500 --watch . -e js,html -x 'npm run start-debug'",
 		"watch-test": "nodemon -e js,json,html,md -x 'yarn test'"
 	},
 	"keywords": [
