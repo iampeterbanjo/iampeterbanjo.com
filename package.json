@@ -17,6 +17,9 @@
 	},
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
+		"adr-list": "cd ./packages/docs; npm run list",
+		"adr-new": "cd ./packages/docs; npm run new",
+		"adr-update": "cd ./packages/docs; npm run update",
 		"build": "cd ./packages/css; npm run build && npm link",
 		"clean-css": "cd ./packages/css; rm -rf main.css node_modules",
 		"clean-data": "cd ./packages/data; rm -rf node_modules",
