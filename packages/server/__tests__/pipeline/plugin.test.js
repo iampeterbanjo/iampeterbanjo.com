@@ -36,6 +36,31 @@ const Server = async () => {
 };
 
 suite('Given pipeline plugin', () => {
+	suite('And saved TopTracksRaw, transformTopTracks', () => {
+		let server;
+
+		before(async () => {
+			server = await Server();
+
+			await factory.mock.method({
+				server,
+				name: 'korin.getChartTopTracks',
+				plugin: korinPlugin,
+				fn: sinon.stub().resolves(topTracksData),
+			});
+
+			await server.methods.pipeline.saveRawTopTracks(server);
+		});
+
+		after(async () => {
+			await databaseCleaner.clean(server.app.db.pipeline.link);
+		});
+
+		test.skip('When TopTracksRaw are transformed to TrackProfile its valid', () => {
+			// TODO
+		});
+	});
+
 	suite('And saveRawTopTracks, models, korin plugins', () => {
 		suite('And valid API response', () => {
 			let server;
