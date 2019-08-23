@@ -5,5 +5,10 @@
 	"license": "MIT",
 	"devDependencies": {
 		"adr": "^1.1.2"
+	},
+	"scripts": {
+		"new": "adr new",
+		"list": "adr list",
+		"update": "adr update"
 	}
 }
