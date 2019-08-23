@@ -111,6 +111,10 @@ I want to keep this site running over a a few years (2+) and technical debt is w
 - Refactor frequently
 - Ship often to keep code in working state
 
+### 8. Architecture Decision Records
+
+Documenting significant architecture decisions will help in reflection and learning from previous iterations. [See][adr]
+
 [Visit][site] or [follow][twitter]
 
 [clever-cloud]: https://www.clever-cloud.com/en/
@@ -123,3 +127,4 @@ I want to keep this site running over a a few years (2+) and technical debt is w
 [require-modules]: https://github.com/goldbergyoni/nodebestpractices#-39-require-modules-by-folders-opposed-to-the-files-directly
 [bdd]: https://github.com/goldbergyoni/nodebestpractices#-42-include-3-parts-in-each-test-name
 [vue]: https://vuejs.org
+[adr]: https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records
