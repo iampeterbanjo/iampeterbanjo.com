@@ -6,7 +6,7 @@ Documentation of significant architecture design for reflection and learning.
 
 - `npm run list`
   - list decision records
-- `npm run new`
+- `npm run new <decision>`
   - create new decision record
 - `npm run update`
   - update filename by title
