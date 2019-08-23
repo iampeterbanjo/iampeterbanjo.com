@@ -47,7 +47,7 @@ Each package has a test and test watch script e.g.
 
 ### 1. Structure folders by components
 
-Organising the project by components, and by extension features, makes the folder hierarchy helpful in searching, reading and editing code. [See][breakintcomponents]
+Organising the project by components, and by extension features, makes the folder hierarchy helpful in searching, reading and editing code. [Learn more][breakintcomponents]
 
 ### 2. Folders are plugins
 
@@ -56,7 +56,7 @@ Each folder contains one or more features that will be registered as a HapiJS pl
 - methods: for sharing features across plugin boundaries
 - helpers: where the features are implemented
 - plugin: HapiJS plugin definition e.g. name, version etc.
-- index.js: exported function that can be registered on the server. [See][require-modules]
+- index.js: exported function that can be registered on the server. [Learn more][require-modules]
 
 This makes testing easier since a feature can be easily composed, spied or mocked.
 
@@ -82,7 +82,7 @@ expect(result).to.equal(files);
 
 ### 4. Behaviour Driven Design for test descriptions
 
-Test results should make it clear what features are working or broken. Using a BDD makes this easier by providing the context for the test results. [See][bdd]. For example,
+Test results should make it clear what features are working or broken. Using a BDD makes this easier by providing the context for the test results. [Learn more][bdd]. For example,
 
 ```JavaScript
 suite('Given model `connex` helper', () => {
@@ -113,7 +113,9 @@ I want to keep this site running over a a few years (2+) and technical debt is w
 
 ### 8. Architecture Decision Records
 
-Documenting significant architecture decisions will help in reflection and learning from previous iterations. [See][adr]
+Documenting significant architecture decisions will help in reflection and learning from previous iterations. [Learn more][adr]
+
+#### [ADR Table of Contents][adr-toc]
 
 [Visit][site] or [follow][twitter]
 
@@ -128,3 +130,4 @@ Documenting significant architecture decisions will help in reflection and learn
 [bdd]: https://github.com/goldbergyoni/nodebestpractices#-42-include-3-parts-in-each-test-name
 [vue]: https://vuejs.org
 [adr]: https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records
+[adr-toc]: ./packages/docs/adr/README.md
