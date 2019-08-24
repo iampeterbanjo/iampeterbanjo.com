@@ -22,7 +22,7 @@ const preResponse = ({ request, h, rollbar }) => {
 	return h.continue;
 };
 
-module.exports = {
+export default  {
 	preResponse,
 	rollbarErrorHandler,
 	errorLogger,

@@ -4,7 +4,7 @@ const { slugger } = require('../../utils');
 const title = faker.random.words();
 const artist = faker.name.findName();
 
-module.exports = {
+export default  {
 	artist,
 	title,
 	summary: faker.lorem.sentences(),

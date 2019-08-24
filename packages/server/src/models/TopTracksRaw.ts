@@ -24,4 +24,4 @@ const TopTracksRawSchema = new mongoose.Schema({
 	],
 });
 
-module.exports = mongoose.model('TopTracksRaw', TopTracksRawSchema);
+export default  mongoose.model('TopTracksRaw', TopTracksRawSchema);

@@ -10,6 +10,6 @@ const evaluate = (data, path) => {
 	return expression.evaluate(data);
 };
 
-module.exports = {
+export default  {
 	evaluate,
 };

@@ -20,6 +20,6 @@ const method = async ({ server, plugin, name, fn }) => {
 	}
 };
 
-module.exports = {
+export default  {
 	method,
 };

@@ -2,7 +2,7 @@ const Crypto = require('crypto');
 const { time, getCache } = require('../utils');
 const { getProfileByArtistAndTrack, getChartTopTracks } = require('./helpers');
 
-module.exports = [
+export default  [
 	{
 		name: 'korin.getProfileByArtistAndTrack',
 		method: getProfileByArtistAndTrack,

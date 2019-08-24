@@ -22,7 +22,7 @@ const get_korin_profiles = (options = {}) => {
 	return { method, path, url, client: () => clientel.api(url, { method }) };
 };
 
-module.exports = {
+export default  {
 	v1: {
 		get_korin_tracks,
 		get_korin_profiles,

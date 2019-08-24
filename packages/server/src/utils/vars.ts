@@ -17,7 +17,7 @@ const {
 	npm_package_version,
 } = process.env;
 
-module.exports = {
+export default  {
 	baseUrl: 'http://0.0.0.0:8080',
 	lyricsIdPath: 'response.hits[0].result.id',
 	songInfoPath: `response.hits[0].result.{

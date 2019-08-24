@@ -1,6 +1,6 @@
 const plugin = require('@hapi/good');
 
-module.exports = {
+export default  {
 	plugin,
 	options: {
 		reporters: {

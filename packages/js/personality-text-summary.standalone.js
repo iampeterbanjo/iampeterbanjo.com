@@ -26,7 +26,7 @@
   /**
    * Provides a Text Summary for profiles.
    */
-  module.exports = function (lang) {
+  export default  function (lang) {
 
     var self = {},
         dictionary = i18n.getDictionary(lang),
@@ -432,7 +432,7 @@
     return output;
   }
 
-  module.exports = format;
+  export default  format;
 
   },{}],3:[function(_dereq_,module,exports){
   /**
@@ -572,7 +572,7 @@
     return self;
   }();
 
-  module.exports = {
+  export default  {
     i18nProvider: i18nProvider,
     getDictionary: i18nProvider.getDictionary,
     translatorFactory: translatorFactory
@@ -595,7 +595,7 @@
    * limitations under the License.
    */
 
-  module.exports = {
+  export default  {
       "facets": {
           "Friendliness": {
               "Big5": "Extraversion",
@@ -2232,7 +2232,7 @@
    * limitations under the License.
    */
 
-  module.exports = {
+  export default  {
       "facets": {
           "Artistic-interests": {
               "HighTerm": "Una persona que aprecia el arte",
@@ -3868,7 +3868,7 @@
    * limitations under the License.
    */
 
-  module.exports = {
+  export default  {
       "facets": {
           "Friendliness": {
               "Big5": "Extraversion",

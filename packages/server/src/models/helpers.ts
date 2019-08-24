@@ -17,6 +17,6 @@ connex.options = {
 	promiseLibrary: Bluebird,
 };
 
-module.exports = {
+export default  {
 	connex,
 };

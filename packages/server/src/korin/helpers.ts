@@ -171,7 +171,7 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 	return { profile, summary };
 };
 
-module.exports = {
+export default  {
 	getSongId,
 	getSongInfo,
 	getSongData,

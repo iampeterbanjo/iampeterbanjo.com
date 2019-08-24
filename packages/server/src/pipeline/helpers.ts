@@ -63,7 +63,7 @@ const saveRawTopTracks = async server => {
 	await server.app.db.pipeline.TopTracksRaw.insertMany(tracks);
 };
 
-module.exports = {
+export default  {
 	checkTopTrack,
 	checkRawTopTrack,
 	saveRawTopTracks,

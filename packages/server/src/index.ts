@@ -1,5 +1,5 @@
 const api = require('./api');
 
-module.exports = {
+export default  {
 	api,
 };

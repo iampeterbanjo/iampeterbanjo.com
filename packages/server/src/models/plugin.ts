@@ -12,7 +12,7 @@ mongoose.connect[util.promisify.custom] = (error, db) => {
 	});
 };
 
-module.exports = {
+export default  {
 	name: 'models',
 	version: '1.0.0',
 	register: async server => {

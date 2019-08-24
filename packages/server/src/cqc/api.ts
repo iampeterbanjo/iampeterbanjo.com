@@ -1,4 +1,4 @@
-module.exports = {
+export default  {
 	name: 'cqc-api',
 	version: '1.0.0',
 	register: (server, { client }) => {

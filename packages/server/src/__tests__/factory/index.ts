@@ -26,4 +26,4 @@ const factory = {
 	mock,
 };
 
-module.exports = factory;
+export default  factory;

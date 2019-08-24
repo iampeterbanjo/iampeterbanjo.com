@@ -29,11 +29,11 @@ It is possible to share configurations from a base config with Typescript. e.g.
 
 ```json
 {
-	"extends": "../../tsconfig.base.json",
-	"compilerOptions": {
-		"outDir": "./build"
-	},
-	"include": ["src", "__tests__"]
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./build"
+  },
+  "include": ["src", "__tests__"]
 }
 ```
 
@@ -41,9 +41,9 @@ For prettier I can publish my [custom configuration][published-prettier-config] 
 
 ```json
 {
-	"name": "my-cool-library",
-	"version": "9000.0.1",
-	"prettier": "@company/prettier-config"
+  "name": "my-cool-library",
+  "version": "9000.0.1",
+  "prettier": "@company/prettier-config"
 }
 ```
 

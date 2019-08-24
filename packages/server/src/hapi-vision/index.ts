@@ -1,5 +1,5 @@
 const plugin = require('@hapi/vision');
 
-module.exports = {
+export default  {
 	plugin,
 };

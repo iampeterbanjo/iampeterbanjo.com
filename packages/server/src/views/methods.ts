@@ -7,7 +7,7 @@ const {
 } = require('./helpers');
 const { time, getCache } = require('../utils');
 
-module.exports = [
+export default  [
 	{
 		name: 'view.blogContent',
 		method: viewBlogPost,

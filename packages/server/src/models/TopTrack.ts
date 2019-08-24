@@ -23,4 +23,4 @@ TopTrackSchema.pre('save', function save(next) {
 	next();
 });
 
-module.exports = mongoose.model('TopTrack', TopTrackSchema);
+export default  mongoose.model('TopTrack', TopTrackSchema);

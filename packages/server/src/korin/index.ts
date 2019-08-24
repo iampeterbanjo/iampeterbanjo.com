@@ -1,7 +1,7 @@
 const plugin = require('./plugin');
 const methods = require('./methods');
 
-module.exports = {
+export default  {
 	plugin,
 	options: { methods },
 };

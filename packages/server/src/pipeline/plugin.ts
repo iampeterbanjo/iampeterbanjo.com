@@ -1,7 +1,7 @@
 const Boom = require('boom');
 const routes = require('./routes');
 
-module.exports = {
+export default  {
 	name: 'pipeline',
 	version: '1.0.0',
 	dependencies: {

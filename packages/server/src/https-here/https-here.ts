@@ -18,4 +18,4 @@ function register(server, options) {
 	});
 }
 
-module.exports = { register, name: 'https-here' };
+export default  { register, name: 'https-here' };

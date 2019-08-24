@@ -117,7 +117,7 @@ const viewHomePage = server => {
 	});
 };
 
-module.exports = {
+export default  {
 	name: 'views',
 	version: '1.0.0',
 	dependencies: {

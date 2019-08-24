@@ -1,7 +1,7 @@
 const plugin = require('./plugin');
 const { vars } = require('../utils');
 
-module.exports = {
+export default  {
 	plugin,
 	options: {
 		accessToken: vars.ROLLBAR_ACCESS_TOKEN,

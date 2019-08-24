@@ -32,7 +32,7 @@ const lastfm = wreck.defaults({
 
 const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);
 
-module.exports = {
+export default  {
 	api,
 	genius,
 	lastfm,

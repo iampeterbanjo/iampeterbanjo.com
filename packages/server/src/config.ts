@@ -56,7 +56,7 @@ const options = {
 	relativeTo: __dirname,
 };
 
-module.exports = {
+export default  {
 	manifest,
 	options,
 };

@@ -1,6 +1,6 @@
 const { saveRawTopTracks } = require('./helpers');
 
-module.exports = [
+export default  [
 	{
 		name: 'pipeline.saveRawTopTracks',
 		method: saveRawTopTracks,

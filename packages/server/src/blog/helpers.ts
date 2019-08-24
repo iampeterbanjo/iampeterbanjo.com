@@ -1,8 +1,8 @@
-const Path = require('path');
-const globby = require('globby');
-const matter = require('gray-matter');
-const marked = require('marked');
-const fecha = require('fecha');
+import Path from 'path';
+import globby from 'globby';
+import matter from 'gray-matter';
+import marked from 'marked';
+import fecha from 'fecha';
 
 const dir = Path.join(__dirname, '../../blog/posts');
 
@@ -55,7 +55,7 @@ const getBlogContents = async filename => {
 	return { title, date: validDate, content: marked(content) };
 };
 
-module.exports = {
+export default  {
 	getBlogFiles,
 	getBlogContents,
 	getUrlPath,

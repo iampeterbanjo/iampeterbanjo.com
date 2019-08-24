@@ -6,7 +6,7 @@ const time = require('./time');
 const getCache = require('./cache');
 const jsonParser = require('./jsonParser');
 
-module.exports = {
+export default  {
 	time,
 	slugger,
 	clientel,

@@ -66,7 +66,7 @@ const viewTrackProfile = async ({ artist, track }) => {
 	};
 };
 
-module.exports = {
+export default  {
 	viewBlogPost,
 	viewBlogList,
 	viewTopTracks,

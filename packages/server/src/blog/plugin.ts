@@ -3,7 +3,7 @@ const { message } = require('../utils');
 
 const routes = require('./routes');
 
-module.exports = {
+export default {
 	name: 'blog',
 	version: '1.0.0',
 	register: (server, { methods }) => {

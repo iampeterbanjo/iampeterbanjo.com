@@ -94,7 +94,7 @@ const get_home = () => {
 	};
 };
 
-module.exports = {
+export default  {
 	get_berserker,
 	get_korin_tracks,
 	get_korin_profiles,

@@ -30,7 +30,7 @@ const get_blog_details = (filename = '') => {
 	};
 };
 
-module.exports = {
+export default  {
 	v1: {
 		get_blog_posts,
 		get_blog_details,

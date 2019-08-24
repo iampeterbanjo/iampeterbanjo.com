@@ -1,6 +1,6 @@
 const plugin = require('./plugin');
 
-module.exports = {
+export default  {
 	plugin,
 	options: {
 		accessToken: process.env.ROLLBAR_ACCESS_TOKEN,

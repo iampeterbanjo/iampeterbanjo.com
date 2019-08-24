@@ -2,7 +2,7 @@ const Crypto = require('crypto');
 const { getBlogFiles, getBlogContents } = require('./helpers');
 const { time, getCache } = require('../utils');
 
-module.exports = [
+export default [
 	{
 		name: 'blog.getBlogFiles',
 		method: getBlogFiles,

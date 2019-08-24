@@ -25,4 +25,4 @@ const getCache = options => {
 	return Object.assign({}, cache, options);
 };
 
-module.exports = getCache;
+export default  getCache;

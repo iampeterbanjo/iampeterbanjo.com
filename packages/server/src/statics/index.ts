@@ -6,7 +6,7 @@ const cssPath = '../css';
 const jsPath = '../js';
 const imagePath = '../images';
 
-module.exports = {
+export default  {
 	plugin,
 	options: { rootPath, cssPath, jsPath, imagePath },
 };

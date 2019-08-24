@@ -1,6 +1,6 @@
 const Vue = require('vue');
 
-module.exports = function createApp(context) {
+export default  function createApp(context) {
 	// @ts-ignore
 	return new Vue({
 		data: {

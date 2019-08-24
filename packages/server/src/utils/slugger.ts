@@ -1,6 +1,6 @@
 const slugify = require('slugify').default;
 
-module.exports = {
+export default  {
 	parse: text => encodeURI(text),
 	unparse: text => decodeURI(text),
 	slugify,

@@ -3,7 +3,7 @@ const { preResponse } = require('./helpers');
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
-module.exports = {
+export default  {
 	name: 'rollbar',
 	version: '1.0.0',
 	register: (server, options) => {

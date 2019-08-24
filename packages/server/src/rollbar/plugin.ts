@@ -2,7 +2,7 @@ const Rollbar = require('rollbar');
 const { preResponse } = require('./helpers');
 const { vars } = require('../utils');
 
-module.exports = {
+export default  {
 	name: 'rollbar',
 	version: '1.0.0',
 	register: (server, options) => {

@@ -1,6 +1,6 @@
 const plugin = require('hapi-dev-errors');
 
-module.exports = {
+export default  {
 	plugin,
 	options: {
 		showErrors: process.env.NODE_ENV !== 'production',

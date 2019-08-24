@@ -3,7 +3,7 @@ const faker = require('faker');
 const title = faker.random.words();
 const artist = faker.name.findName();
 
-module.exports = {
+export default  {
 	artist,
 	title,
 	image: faker.random.image(),
