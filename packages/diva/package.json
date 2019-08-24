@@ -1,7 +1,7 @@
 {
-	"name": "@iampeterbanjo/prettier",
+	"name": "@iampeterbanjo/diva",
 	"version": "1.0.0",
-	"description": "Personal prettier configuration",
+	"description": "Personal formatting configurations",
 	"main": "index.json",
 	"keywords": [
 		"prettier",
