@@ -4,14 +4,11 @@
 {% import "helpers.html" as helpers %}
 
 <!--  -->
-{% block content %}
-{{ helpers.heading(track, artist) }}
+{% block content %} {{ helpers.heading(track, artist) }}
 
 <h2 class="lh-title mv3">Profile</h2>
 
-{{
-		helpers.p(summary | striptags(true) | escape | nl2br)
-}}
+{{ helpers.p(summary | striptags(true) | escape | nl2br) }}
 
 <p class="flex justify-between">
 	<a class="flex items-center" rel="prev" href="/korin/tracks">

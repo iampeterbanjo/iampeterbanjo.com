@@ -6,13 +6,8 @@
 <!--  -->
 {% block content %}
 <div>
-	{{ helpers.heading('Top 50 tracks', 'LastFm') }}
-
-	{{
-		helpers.p(
-			'Select a track to generate a personality profile based on its lyrics'
-		)
-	}}
+	{{ helpers.heading('Top 50 tracks', 'LastFm') }} {{ helpers.p( 'Select a track
+	to generate a personality profile based on its lyrics' ) }}
 
 	<ul class="cf pa0 list tracks">
 		{% for track in tracks %}

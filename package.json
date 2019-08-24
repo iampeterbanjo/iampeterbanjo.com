@@ -34,6 +34,7 @@
 		"install-docs": "cd ./packages/docs; npm install",
 		"install-e2e": "cd ./packages/e2e; npm install",
 		"install-server": "cd ./packages/server; npm install",
+		"server": "cd ./packages/server; npm",
 		"lint": "pretty-quick",
 		"prod": "npm run install-server",
 		"start-dev": "cd ./packages/server; npm run dev",
