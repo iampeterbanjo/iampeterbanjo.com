@@ -28,6 +28,11 @@
 		"name": "Peter Banjo"
 	},
 	"license": "ISC",
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	},
 	"dependencies": {
 		"@hapi/catbox": "^10.2.1",
 		"@hapi/code": "^5.3.1",
