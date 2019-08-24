@@ -5,5 +5,13 @@
 	"endOfLine": "lf",
 	"semi": true,
 	"useTabs": true,
-	"tabWidth": 2
+	"tabWidth": 2,
+	"overrides": [
+		{
+			"files": "*.md",
+			"options": {
+				"useTabs": false
+			}
+		}
+	]
 }
