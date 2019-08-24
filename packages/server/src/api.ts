@@ -1,7 +1,7 @@
-const Glue = require('@hapi/glue');
-const { manifest, options } = require('./config');
+import Glue from '@hapi/glue';
+import { manifest, options } from './config';
 
-module.exports = async () => {
+export default async function main() {
 	try {
 		const server = await Glue.compose(
 			manifest,
@@ -10,7 +10,6 @@ module.exports = async () => {
 
 		return server;
 	} catch (error) {
-		// eslint-disable-next-line no-console
 		return console.warn(error);
 	}
-};
+}
