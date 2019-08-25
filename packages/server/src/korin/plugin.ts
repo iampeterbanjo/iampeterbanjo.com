@@ -1,7 +1,7 @@
-const Boom = require('boom');
-const routes = require('./routes');
+import Boom from 'boom';
+import routes from './routes';
 
-export default  {
+export default {
 	name: 'korin-api',
 	version: '1.0.0',
 	register: (server, { methods }) => {

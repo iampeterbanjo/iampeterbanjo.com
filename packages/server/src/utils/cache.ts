@@ -1,4 +1,4 @@
-const time = require('./time');
+import time from './time';
 
 /**
  * @typedef {object} Cache
@@ -25,4 +25,4 @@ const getCache = options => {
 	return Object.assign({}, cache, options);
 };
 
-export default  getCache;
+export default getCache;

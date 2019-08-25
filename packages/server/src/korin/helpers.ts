@@ -1,14 +1,14 @@
-const jsonata = require('jsonata');
-const PersonalityInsightsV3 = require('watson-developer-cloud/personality-insights/v3');
-const PersonalityTextSummary = require('personality-text-summary');
+import jsonata from 'jsonata';
+import { URLSearchParams } from 'core-js';
+import PersonalityInsightsV3 from 'watson-developer-cloud/personality-insights/v3';
+import PersonalityTextSummary from 'personality-text-summary';
 
 const {
+	vars,
 	jsonParser,
 	message,
 	clientel: { genius, lastfm, lyricist },
 } = require('../utils');
-
-const { vars } = require('../utils');
 
 const {
 	lyricsIdPath,
@@ -171,7 +171,7 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 	return { profile, summary };
 };
 
-export default  {
+export default {
 	getSongId,
 	getSongInfo,
 	getSongData,

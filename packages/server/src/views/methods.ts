@@ -1,13 +1,10 @@
-const Crypto = require('crypto');
-const {
-	viewBlogPost,
-	viewBlogList,
-	viewTopTracks,
-	viewTrackProfile,
-} = require('./helpers');
-const { time, getCache } = require('../utils');
+import Crypto from 'crypto';
+import helpers from './helpers';
+import utils from '../utils';
 
-export default  [
+const { time, getCache } = utils;
+const { viewBlogPost, viewBlogList, viewTopTracks, viewTrackProfile } = helpers;
+export default [
 	{
 		name: 'view.blogContent',
 		method: viewBlogPost,

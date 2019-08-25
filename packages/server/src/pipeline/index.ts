@@ -1,7 +1,7 @@
-const plugin = require('./plugin');
-const methods = require('./methods');
+import plugin from './plugin';
+import methods from './methods';
 
-export default  {
+export default {
 	plugin,
 	options: { methods },
 };

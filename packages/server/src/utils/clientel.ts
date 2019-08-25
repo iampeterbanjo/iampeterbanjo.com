@@ -3,9 +3,9 @@
  * @property {function} extend
  * @property {function} get
  */
-const Lyricist = require('lyricist');
-const Wreck = require('@hapi/wreck');
-const time = require('./time');
+import Lyricist from 'lyricist';
+import Wreck from '@hapi/wreck';
+import time from './time';
 
 const {
 	baseUrl,
@@ -32,7 +32,7 @@ const lastfm = wreck.defaults({
 
 const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);
 
-export default  {
+export default {
 	api,
 	genius,
 	lastfm,

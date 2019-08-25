@@ -1,5 +1,5 @@
-const plugin = require('@hapi/inert');
+import plugin from '@hapi/inert';
 
-export default  {
+export default {
 	plugin,
 };

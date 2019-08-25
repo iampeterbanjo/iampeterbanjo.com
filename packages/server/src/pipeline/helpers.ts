@@ -1,5 +1,5 @@
-const Joi = require('@hapi/joi');
-const ramda = require('ramda');
+import Joi from '@hapi/joi';
+import ramda from 'ramda';
 
 /**
  * Check TopTrack schema
@@ -63,7 +63,7 @@ const saveRawTopTracks = async server => {
 	await server.app.db.pipeline.TopTracksRaw.insertMany(tracks);
 };
 
-export default  {
+export default {
 	checkTopTrack,
 	checkRawTopTrack,
 	saveRawTopTracks,

@@ -1,15 +1,18 @@
-const Rollbar = require('rollbar');
-const { preResponse } = require('./helpers');
-const { vars } = require('../utils');
+import Rollbar from 'rollbar';
+import helpers from './helpers';
+import utils from '../utils';
 
-export default  {
+const { vars } = utils;
+const { preResponse } = helpers;
+
+export default {
 	name: 'rollbar',
 	version: '1.0.0',
 	register: (server, options) => {
 		const rollbar = new Rollbar(options);
 
 		server.ext('onPreResponse', (request, h) =>
-			preResponse({ request, h, rollbar })
+			preResponse({ request, h, rollbar }),
 		);
 		server.expose('rollbar', rollbar);
 		rollbar.log(`Rollbar: ${vars.ENVIRONMENT}`);

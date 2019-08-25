@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const extract_top_tracks = () => ({
 	method: 'GET',
 	path: '/v1/pipeline/extract/topTracks',
@@ -11,4 +10,4 @@ const routes = {
 	},
 };
 
-export default  routes;
+export default routes;

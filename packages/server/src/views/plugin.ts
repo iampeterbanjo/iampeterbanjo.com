@@ -1,9 +1,11 @@
-const Nunjucks = require('nunjucks');
-const Path = require('path');
-const renderer = require('vue-server-renderer').createRenderer();
-const routes = require('./routes');
-const context = require('./context');
-const createApp = require('./ssr/app');
+import Nunjucks from 'nunjucks';
+import Path from 'path';
+import routes from './routes';
+import context from './context';
+import createApp from './ssr/app';
+import vueRenderer from 'vue-server-renderer';
+
+const renderer = vueRenderer.createRenderer();
 
 const registerViews = {
 	engines: {
@@ -117,7 +119,7 @@ const viewHomePage = server => {
 	});
 };
 
-export default  {
+export default {
 	name: 'views',
 	version: '1.0.0',
 	dependencies: {

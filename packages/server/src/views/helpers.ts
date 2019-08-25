@@ -1,10 +1,11 @@
-const jsonata = require('jsonata');
+import jsonata from 'jsonata';
 
-const routes = require('./routes');
-const blogHelpers = require('../blog/helpers');
-const korinHelpers = require('../korin/helpers');
-const { vars } = require('../utils');
+import routes from './routes';
+import blogHelpers from '../blog/helpers';
+import korinHelpers from '../korin/helpers';
+import utils from '../utils';
 
+const { vars } = utils;
 const { topTracksPath } = vars;
 
 /**
@@ -66,7 +67,7 @@ const viewTrackProfile = async ({ artist, track }) => {
 	};
 };
 
-export default  {
+export default {
 	viewBlogPost,
 	viewBlogList,
 	viewTopTracks,

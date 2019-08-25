@@ -1,6 +1,6 @@
-const plugin = require('@hapi/good');
+import plugin from '@hapi/good';
 
-export default  {
+export default {
 	plugin,
 	options: {
 		reporters: {

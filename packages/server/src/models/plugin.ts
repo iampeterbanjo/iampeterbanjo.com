@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
-const util = require('util');
-const helpers = require('./helpers');
-const TopTrack = require('./TopTrack');
-const TopTracksRaw = require('./TopTracksRaw');
-const Profile = require('./Profile');
+import mongoose from 'mongoose';
+import util from 'util';
+import helpers from './helpers';
+import TopTrack from './TopTrack';
+import TopTracksRaw from './TopTracksRaw';
+import Profile from './Profile';
 
 mongoose.connect[util.promisify.custom] = (error, db) => {
 	return new Promise((resolve, reject) => {
@@ -12,7 +12,7 @@ mongoose.connect[util.promisify.custom] = (error, db) => {
 	});
 };
 
-export default  {
+export default {
 	name: 'models',
 	version: '1.0.0',
 	register: async server => {

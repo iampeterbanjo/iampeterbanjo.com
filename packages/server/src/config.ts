@@ -1,6 +1,7 @@
-const catboxMongodb = require('catbox-mongodb');
-const { vars } = require('./utils');
+import catboxMongodb from 'catbox-mongodb';
+import utils from './utils';
 
+const { vars } = utils;
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
 const manifest = {
@@ -56,7 +57,7 @@ const options = {
 	relativeTo: __dirname,
 };
 
-export default  {
+export default {
 	manifest,
 	options,
 };

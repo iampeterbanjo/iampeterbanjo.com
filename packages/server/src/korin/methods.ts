@@ -1,8 +1,10 @@
-const Crypto = require('crypto');
-const { time, getCache } = require('../utils');
-const { getProfileByArtistAndTrack, getChartTopTracks } = require('./helpers');
+import Crypto from 'crypto';
+import utils from '../utils';
+import helpers from './helpers';
 
-export default  [
+const { getProfileByArtistAndTrack, getChartTopTracks } = helpers;
+const { time, getCache } = utils;
+export default [
 	{
 		name: 'korin.getProfileByArtistAndTrack',
 		method: getProfileByArtistAndTrack,

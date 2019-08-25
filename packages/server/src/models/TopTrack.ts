@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const { slugger } = require('../utils');
+import mongoose from 'mongoose';
+import utils from '../utils';
 
+const { slugger } = utils;
 const TopTrackSchema = new mongoose.Schema({
 	title: {
 		type: String,
@@ -19,8 +20,9 @@ const TopTrackSchema = new mongoose.Schema({
 });
 
 TopTrackSchema.pre('save', function save(next) {
+	// @ts-ignore
 	this.profileUrl = slugger.slugify(`${this.artist} ${this.title}`);
 	next();
 });
 
-export default  mongoose.model('TopTrack', TopTrackSchema);
+export default mongoose.model('TopTrack', TopTrackSchema);

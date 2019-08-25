@@ -1,9 +1,9 @@
-const Wreck = require('@hapi/wreck');
-const plugin = require('./api');
+import Wreck from '@hapi/wreck';
+import plugin from './api';
 
 const client = Wreck.defaults({ baseUrl: process.env.CQC_API_URL });
 
-export default  {
+export default {
 	plugin,
 	options: { client },
 };

@@ -37,14 +37,12 @@ const get_korin_tracks = () => {
 	};
 };
 
-/**
- * Get profile for track
- * @param {object} [options] Artist and track
- * @param {string} options.artist Artist
- * @param {string} options.track Track
- * @return {Route}
- */
-const get_korin_profiles = options => {
+type KorinProfilesParams = {
+	artist: string;
+	track: string;
+};
+
+const get_korin_profiles = (options?: KorinProfilesParams) => {
 	const { artist, track } = options || { artist: '', track: '' };
 	const artistParam = slugger.parse(artist);
 	const trackParam = slugger.parse(track);
@@ -69,12 +67,7 @@ const get_blog_posts = () => {
 	};
 };
 
-/**
- * Get route for blog details
- * @param {string} [post] Post markdown filename
- * @return {Route}
- */
-const get_blog_details = post => {
+const get_blog_details = (post?: string) => {
 	return {
 		method: 'GET',
 		path: '/blog/posts/{post}',
@@ -94,7 +87,7 @@ const get_home = () => {
 	};
 };
 
-export default  {
+export default {
 	get_berserker,
 	get_korin_tracks,
 	get_korin_profiles,

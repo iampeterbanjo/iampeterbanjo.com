@@ -1,8 +1,8 @@
-const { api } = require('.');
+import start from '.';
 
 (async () => {
 	try {
-		const server = await api();
+		const server = await start.api();
 		await server.start();
 
 		// eslint-disable-next-line no-console

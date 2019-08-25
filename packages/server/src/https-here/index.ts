@@ -1,5 +1,5 @@
-const plugin = require('./https-here');
+import plugin from './https-here';
 
-export default  {
+export default {
 	plugin,
 };

@@ -1,5 +1,5 @@
-const plugin = require('@hapi/vision');
+import plugin from '@hapi/vision';
 
-export default  {
+export default {
 	plugin,
 };

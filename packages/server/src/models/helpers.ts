@@ -1,7 +1,8 @@
-const Bluebird = require('bluebird');
-const { vars } = require('../utils');
+import Bluebird from 'bluebird';
+import utils from '../utils';
 
-const { MONGODB_ADDON_DB, MONGODB_ADDON_URI } = vars;
+const { vars } = utils;
+const { MONGODB_ADDON_DB = '', MONGODB_ADDON_URI = '' } = vars;
 
 type Connex = {
 	dbName: (isTest?: boolean) => string;

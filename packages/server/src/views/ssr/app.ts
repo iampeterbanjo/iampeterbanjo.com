@@ -1,6 +1,6 @@
-const Vue = require('vue');
+import Vue from 'vue';
 
-export default  function createApp(context) {
+export default function createApp(context) {
 	// @ts-ignore
 	return new Vue({
 		data: {
@@ -8,4 +8,4 @@ export default  function createApp(context) {
 		},
 		template: '<div id="message">{{ message }}</div>',
 	});
-};
+}

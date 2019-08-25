@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import utils from '../utils';
 
 const { clientel } = utils;

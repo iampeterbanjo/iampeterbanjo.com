@@ -1,6 +1,6 @@
-/* eslint-disable camelcase */
-const { slugger, clientel } = require('../utils');
+import utils from '../utils';
 
+const { slugger, clientel } = utils;
 const get_korin_tracks = () => {
 	const method = 'GET';
 	const url = '/v1/korin/tracks';
@@ -12,7 +12,9 @@ const get_korin_tracks = () => {
 	};
 };
 
-const get_korin_profiles = (options = {}) => {
+const get_korin_profiles = (
+	options = {} as { artist: string; track: string },
+) => {
 	const { artist, track } = options;
 	const artistParam = slugger.parse(artist);
 	const trackParam = slugger.parse(track);
@@ -22,7 +24,7 @@ const get_korin_profiles = (options = {}) => {
 	return { method, path, url, client: () => clientel.api(url, { method }) };
 };
 
-export default  {
+export default {
 	v1: {
 		get_korin_tracks,
 		get_korin_profiles,

@@ -1,11 +1,12 @@
 import Glue from '@hapi/glue';
-import { manifest, options } from './config';
+import config from './config';
 
+const { manifest, options } = config;
 export default async function main() {
 	try {
 		const server = await Glue.compose(
 			manifest,
-			options
+			options,
 		);
 
 		return server;

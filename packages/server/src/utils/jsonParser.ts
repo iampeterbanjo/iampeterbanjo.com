@@ -1,4 +1,4 @@
-const jsonata = require('jsonata');
+import jsonata from 'jsonata';
 
 /**
  * Evaluate JSON with jsonAta expression
@@ -10,6 +10,6 @@ const evaluate = (data, path) => {
 	return expression.evaluate(data);
 };
 
-export default  {
+export default {
 	evaluate,
 };

@@ -1,5 +1,5 @@
-const api = require('./api');
+import api from './api';
 
-export default  {
+export default {
 	api,
 };
