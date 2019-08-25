@@ -1,22 +1,19 @@
-/* eslint-disable no-param-reassign */
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const Hapi = require('@hapi/hapi');
-const DatabaseCleaner = require('database-cleaner');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import Hapi from '@hapi/hapi';
+import DatabaseCleaner from 'database-cleaner';
+
+import plugin from '../../models/plugin';
+import utils from '../../utils';
+import factory from '../factory';
+
+export const lab = Lab.script();
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
-
-const plugin = require('../../models/plugin');
-const { slugger } = require('../../utils');
-const factory = require('../factory');
-
+const { test, suite, after, before } = lab;
+const { slugger } = utils;
 const [fakeProfile] = factory.profile(1);
 const [fakeTopTrack] = factory.topTrack(1);
-
-const lab = Lab.script();
-exports.lab = lab;
-
-const { test, suite, after, before } = lab;
 
 const Server = async () => {
 	const server = Hapi.Server();
@@ -62,7 +59,7 @@ suite('Given models plugin', () => {
 
 					const result = await topTrack.save();
 					const expected = slugger.slugify(
-						`${topTrack.artist} ${topTrack.title}`
+						`${topTrack.artist} ${topTrack.title}`,
 					);
 
 					expect(result._id).to.exist();

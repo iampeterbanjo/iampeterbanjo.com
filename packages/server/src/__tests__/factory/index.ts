@@ -1,20 +1,19 @@
-const topTrack = require('./topTrack');
-const profile = require('./profile');
-const mock = require('./mock');
+import topTrack from './topTrack';
+import profile from './profile';
+import mock from './mock';
 
-/**
- * Get array of objects
- * @param {number} count length
- * @param {object} item
- * @return {Array<object>}
- */
-const generate = (count, item) => {
-	const result = [];
+interface TopTrack {
+	title: string;
+	artist: string;
+}
+
+const generate = (count: number, item: Object) => {
+	const result: TopTrack[] = [];
 	let limit = count;
 
 	while (limit) {
 		limit -= 1;
-		result.push(Object.assign({}, item));
+		result.push(Object.assign({} as TopTrack, item));
 	}
 
 	return result;
@@ -26,4 +25,4 @@ const factory = {
 	mock,
 };
 
-export default  factory;
+export default factory;

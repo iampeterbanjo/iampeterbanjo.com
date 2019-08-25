@@ -6,10 +6,10 @@ const Inert = require('@hapi/inert');
 const path = require('path');
 const plugin = require('../statics/plugin');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, beforeEach, suite } = lab;
 
-exports.lab = lab;
+
 
 const cssPath = '../css';
 const jsPath = '../js';

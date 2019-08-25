@@ -1,16 +1,13 @@
-/* eslint-disable no-param-reassign */
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const Hapi = require('@hapi/hapi');
-const sinon = require('sinon');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import Hapi from '@hapi/hapi';
+import sinon from 'sinon';
 
-const factory = require('.');
-const korinPlugin = require('../../korin/plugin');
+import factory from '.';
+import korinPlugin from '../../korin/plugin';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
-
-exports.lab = lab;
 
 suite('Given factory', () => {
 	suite('And mock.method', () => {

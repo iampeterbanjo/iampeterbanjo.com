@@ -4,10 +4,10 @@ const Lab = require('@hapi/lab');
 
 const plugin = require('../plugin');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
 
-exports.lab = lab;
+
 
 const Server = async () => {
 	const server = Hapi.Server();

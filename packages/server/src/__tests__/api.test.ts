@@ -1,13 +1,9 @@
-/* eslint-disable no-param-reassign */
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
+import api from '../api';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { before, test, suite } = lab;
-
-exports.lab = lab;
-
-const api = require('../api');
 
 let server;
 

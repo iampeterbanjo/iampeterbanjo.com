@@ -1,16 +1,17 @@
-const Hapi = require('@hapi/hapi');
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const sinon = require('sinon');
+import Hapi from '@hapi/hapi';
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import sinon from 'sinon';
 
-const { message } = require('../../utils');
-const routes = require('../../blog/routes');
-const plugin = require('../../blog/plugin');
+import utils from '../../utils';
+import routes from '../../blog/routes';
+import plugin from '../../blog/plugin';
 
-const lab = Lab.script();
+const { message } = utils;
+export const lab = Lab.script();
 const { suite, test, beforeEach } = lab;
 
-exports.lab = lab;
+
 
 suite('getBlogFiles', () => {
 	let server;

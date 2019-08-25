@@ -3,10 +3,10 @@ const { expect } = require('@hapi/code');
 const { slugger } = require('../../utils');
 const routes = require('../../views/routes');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { suite, test } = lab;
 
-exports.lab = lab;
+
 
 suite('Given Berserker routes', () => {
 	suite('And get_berserker', () => {

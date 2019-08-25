@@ -1,15 +1,14 @@
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const R = require('ramda');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import R from 'ramda';
+import helpers from '../../pipeline/helpers';
+import factory from '../factory';
 
-const factory = require('../factory');
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
-const { checkTopTrack, checkRawTopTrack } = require('../../pipeline/helpers');
 
-const lab = Lab.script();
+const { checkTopTrack, checkRawTopTrack } = helpers;
+export const lab = Lab.script();
 const { test, suite } = lab;
-
-exports.lab = lab;
 
 suite('Given pipeline helpers', () => {
 	suite('And checkTopTrack', () => {
@@ -25,7 +24,7 @@ suite('Given pipeline helpers', () => {
 					const [topTrack] = factory.topTrack(1);
 
 					const { details } = await expect(
-						checkTopTrack(R.omit([prop], topTrack))
+						checkTopTrack(R.omit([prop], topTrack)),
 					).to.reject();
 					const [error] = details;
 
@@ -79,7 +78,7 @@ suite('Given pipeline helpers', () => {
 					const [topTrackRaw] = R.path(['tracks', 'track'], topTracksData);
 
 					const { details } = await expect(
-						checkRawTopTrack(R.omit([prop], topTrackRaw))
+						checkRawTopTrack(R.omit([prop], topTrackRaw)),
 					).to.reject();
 					const [error] = details;
 

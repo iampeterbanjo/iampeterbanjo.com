@@ -1,18 +1,11 @@
-/* eslint-disable no-param-reassign */
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const fecha = require('fecha');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import fecha from 'fecha';
 
-const {
-	getUrlPath,
-	getBlogFiles,
-	getBlogContents,
-} = require('../../blog/helpers');
+import { getUrlPath, getBlogFiles, getBlogContents } from '../../blog/helpers';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { suite, test, before } = lab;
-
-exports.lab = lab;
 
 suite('getUrlPath', () => {
 	const filePath =
@@ -29,7 +22,7 @@ suite('getUrlPath', () => {
 
 		expect(urlPath).not.contain('packages/');
 		expect(urlPath).not.contain(
-			'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com'
+			'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com',
 		);
 	});
 
@@ -72,7 +65,9 @@ suite('getBlogContents', () => {
 
 	['graphql-eats-rest', 'i-like-jsonata'].forEach(post => {
 		test(`when ${post} is NOT empty, the content is found`, async () => {
-			const { title, content, date } = await getBlogContents(post);
+			const result = await getBlogContents(post);
+			if (!result) return;
+			const { title, content, date } = result;
 			const details = `given ${title}`;
 			const validDate = fecha.format(new Date(date), 'mediumDate');
 
@@ -83,7 +78,9 @@ suite('getBlogContents', () => {
 	});
 
 	test('markdown content is parsed', async () => {
-		const { content } = await getBlogContents('i-like-jsonata');
+		const result = await getBlogContents('i-like-jsonata');
+		if (!result) return;
+		const { content } = result;
 		const isHTML = content.indexOf('</p>') > -1;
 
 		expect(isHTML).to.be.true();

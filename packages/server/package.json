@@ -7,12 +7,13 @@
 		"node": "10.14.2"
 	},
 	"scripts": {
+		"build-watch": "tsc -p tsconfig.build.json --watch",
 		"build": "tsc -p tsconfig.build.json",
 		"clean": "rm -rf ./node_modules || exit 0",
 		"dev": "npm link css; npm run watch",
 		"start-debug": "node --inspect start.js",
 		"start": "node start.js",
-		"test": "lab ./__tests__/",
+		"test": "lab ./build/__tests__/",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500 --watch . -e js,html -x 'npm run start-debug'",
 		"watch-test": "nodemon -e js,json,html,md -x 'yarn test'"

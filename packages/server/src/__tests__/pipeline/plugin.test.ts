@@ -1,23 +1,21 @@
-const Hapi = require('@hapi/hapi');
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const sinon = require('sinon');
-const DatabaseCleaner = require('database-cleaner');
-const R = require('ramda');
+import Hapi from '@hapi/hapi';
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import sinon from 'sinon';
+import DatabaseCleaner from 'database-cleaner';
+import R from 'ramda';
 
-const factory = require('../factory');
-const plugin = require('../../pipeline/plugin');
-const routes = require('../../pipeline/routes');
-const methods = require('../../pipeline/methods');
-const korinPlugin = require('../../korin/plugin');
-const modelsPlugin = require('../../models/plugin');
+import factory from '../factory';
+import plugin from '../../pipeline/plugin';
+import routes from '../../pipeline/routes';
+import methods from '../../pipeline/methods';
+import korinPlugin from '../../korin/plugin';
+import modelsPlugin from '../../models/plugin';
+
+export const lab = Lab.script();
+
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
-
-const lab = Lab.script();
 const { test, suite, before, after } = lab;
-
-exports.lab = lab;
-
 const databaseCleaner = new DatabaseCleaner('mongodb');
 
 const Server = async () => {
@@ -114,7 +112,7 @@ suite('Given pipeline plugin', () => {
 
 			test('When there is no data an Error is thrown', async () => {
 				const { message } = await expect(
-					server.methods.pipeline.saveRawTopTracks(server)
+					server.methods.pipeline.saveRawTopTracks(server),
 				).to.reject();
 
 				expect(message).to.equal('No tracks found');
@@ -122,7 +120,7 @@ suite('Given pipeline plugin', () => {
 
 			test('When there is an error no data is not saved', async () => {
 				await expect(
-					server.methods.pipeline.saveRawTopTracks(server)
+					server.methods.pipeline.saveRawTopTracks(server),
 				).to.reject();
 
 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
@@ -138,7 +136,9 @@ suite('Given pipeline plugin', () => {
 				server = await Server();
 
 				const different = {
-					tracks: {},
+					tracks: {
+						track: [],
+					},
 				};
 				different.tracks.track = topTracksData.tracks.track.map(t => {
 					return R.pick(['name', 'artist'], t);
@@ -154,7 +154,7 @@ suite('Given pipeline plugin', () => {
 
 			test('When the data is not valid a ValidationError is thrown', async () => {
 				const error = await expect(
-					server.methods.pipeline.saveRawTopTracks(server)
+					server.methods.pipeline.saveRawTopTracks(server),
 				).to.reject();
 
 				expect(error.name).to.equal('ValidationError');

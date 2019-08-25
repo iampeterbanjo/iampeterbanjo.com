@@ -4,10 +4,10 @@ const sinon = require('sinon');
 
 const { preResponse, rollbarErrorHandler, errorLogger } = require('../helpers');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
 
-exports.lab = lab;
+
 
 const MockParams = () => {
 	return {

@@ -3,12 +3,17 @@ const { vars } = require('../utils');
 
 const { MONGODB_ADDON_DB, MONGODB_ADDON_URI } = vars;
 
-const connex = {};
-/**
- * Get database name
- * @param {boolean} [isTest]
- * @return {string} database name
- */
+type Connex = {
+	dbName: (isTest?: boolean) => string;
+	uri: string;
+	options: {
+		useNewUrlParser: boolean;
+		dbName: string;
+		promiseLibrary: any;
+	};
+};
+const connex: Connex = {} as Connex;
+
 connex.dbName = isTest => (isTest ? 'test' : MONGODB_ADDON_DB);
 connex.uri = MONGODB_ADDON_URI;
 connex.options = {
@@ -17,6 +22,6 @@ connex.options = {
 	promiseLibrary: Bluebird,
 };
 
-export default  {
+export default {
 	connex,
 };

@@ -8,12 +8,21 @@ const {
 	errorLogger,
 } = require('../../rollbar/helpers');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
 
-exports.lab = lab;
+interface MockParamsType {
+	request: {
+		response: {
+			isBoom: boolean | null;
+		};
+	};
+	h: {
+		continue: any;
+	};
+}
 
-const MockParams = () => {
+const MockParams = (): MockParamsType => {
 	return {
 		request: {
 			response: {
@@ -96,7 +105,7 @@ suite('rollbar helpers', () => {
 				const [result] = rollbar.log.args[0];
 
 				expect(result).to.contain(
-					`Error reporting to rollbar, ignoring: ${error}`
+					`Error reporting to rollbar, ignoring: ${error}`,
 				);
 			});
 		});

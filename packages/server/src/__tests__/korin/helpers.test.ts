@@ -1,9 +1,10 @@
-/* eslint-disable no-param-reassign */
-const lab = require('@hapi/lab').script();
-const { expect } = require('@hapi/code');
-const nock = require('nock');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import nock from 'nock';
+import utils from '../../utils';
 
-const { vars, message } = require('../../utils');
+const { vars, message } = utils;
+export const lab = Lab.script();
 const {
 	getChartTopTracks,
 	getSongData,
@@ -17,8 +18,6 @@ const songData = require('../fixtures/genius-search.json');
 
 const { suite, test, before, after, beforeEach, afterEach } = lab;
 const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
-
-exports.lab = lab;
 
 suite('getChartTopTracks', () => {
 	beforeEach(async () => {
@@ -89,7 +88,7 @@ suite('getSongInfo', async () => {
 		const { thumbnail } = await getSongInfo(songData);
 
 		expect(thumbnail).to.equal(
-			'https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg'
+			'https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg',
 		);
 	});
 

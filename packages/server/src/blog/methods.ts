@@ -1,6 +1,9 @@
-const Crypto = require('crypto');
-const { getBlogFiles, getBlogContents } = require('./helpers');
-const { time, getCache } = require('../utils');
+import Crypto from 'crypto';
+import helpers from './helpers';
+import utils from '../utils';
+
+const { getBlogFiles, getBlogContents } = helpers;
+const { time, getCache } = utils;
 
 export default [
 	{

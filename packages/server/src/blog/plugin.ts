@@ -1,7 +1,8 @@
-const Boom = require('boom');
-const { message } = require('../utils');
+import Boom from 'boom';
+import utils from '../utils';
+import routes from './routes';
 
-const routes = require('./routes');
+const { message } = utils;
 
 export default {
 	name: 'blog',

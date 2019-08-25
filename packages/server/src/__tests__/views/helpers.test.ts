@@ -1,14 +1,14 @@
 const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
 
 const { parseTopTracks } = require('../../views/helpers');
 
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
-exports.lab = lab;
+
 
 suite('View helpers:', () => {
 	test('top tracks are parsed correctly', () => {

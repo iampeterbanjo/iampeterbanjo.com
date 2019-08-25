@@ -1,13 +1,10 @@
-/* eslint-disable no-param-reassign */
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite, before } = lab;
 
-const factory = require('.');
-
-exports.lab = lab;
+import factory from '.';
 
 suite('Given factory', () => {
 	suite('And profile', () => {

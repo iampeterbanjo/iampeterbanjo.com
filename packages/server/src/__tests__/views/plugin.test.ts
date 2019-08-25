@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 const Hapi = require('@hapi/hapi');
 const Lab = require('@hapi/lab');
 const { expect } = require('@hapi/code');
@@ -10,10 +9,9 @@ const plugin = require('../../views/plugin');
 const routes = require('../../views/routes');
 const data = require('../../views/context');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { suite, test, before } = lab;
 
-exports.lab = lab;
 const posts = [
 	{
 		title: 'this',

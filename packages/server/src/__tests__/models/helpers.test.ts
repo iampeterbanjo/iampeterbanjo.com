@@ -1,14 +1,14 @@
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const Bluebird = require('bluebird');
-const { vars } = require('../../utils');
-const { connex } = require('../../models/helpers');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import Bluebird from 'bluebird';
+import utils from '../../utils';
+import helpers from '../../models/helpers';
 
-const lab = Lab.script();
-exports.lab = lab;
+export const lab = Lab.script();
 
+const { vars } = utils;
+const { connex } = helpers;
 const { test, suite } = lab;
-
 const { MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
 suite('Given model `connex` helper', () => {

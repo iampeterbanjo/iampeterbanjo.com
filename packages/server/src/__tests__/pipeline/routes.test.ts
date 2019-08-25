@@ -1,11 +1,9 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
-const routes = require('../../pipeline/routes');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
+import routes from '../../pipeline/routes';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
-
-exports.lab = lab;
 
 suite('Given pipeline routes', () => {
 	test('/topTracks/extract', () => {

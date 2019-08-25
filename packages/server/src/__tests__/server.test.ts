@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 const { expect } = require('@hapi/code');
 const Lab = require('@hapi/lab');
 
@@ -7,10 +6,8 @@ const { api } = require('..');
 
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite, before } = lab;
-
-exports.lab = lab;
 
 const Server = async () => api();
 
@@ -30,7 +27,7 @@ suite('cache', () => {
 	test('mongodb-cache connection', ({ context }) => {
 		const { uri, partition } = R.path(
 			['provider', 'options'],
-			context.provisioned
+			context.provisioned,
 		);
 
 		expect(uri).to.equal(MONGODB_ADDON_URI);

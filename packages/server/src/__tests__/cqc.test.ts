@@ -1,16 +1,12 @@
-/* eslint-disable no-param-reassign */
-const Hapi = require('@hapi/hapi');
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import Hapi from '@hapi/hapi';
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
+import sinon from 'sinon';
+import Wreck from '@hapi/wreck';
+import plugin from '../cqc';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, before, suite } = lab;
-
-exports.lab = lab;
-
-const sinon = require('sinon');
-const Wreck = require('@hapi/wreck');
-const plugin = require('../../server/cqc');
 
 const server = Hapi.Server();
 

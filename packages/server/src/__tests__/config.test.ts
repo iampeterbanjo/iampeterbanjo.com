@@ -1,12 +1,10 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
 
-exports.lab = lab;
-
-const config = require('../config');
+import config from '../config';
 
 suite('config:', () => {
 	test('good is first', () => {

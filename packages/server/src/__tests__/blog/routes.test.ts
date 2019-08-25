@@ -1,11 +1,9 @@
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const routes = require('../../blog/routes');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import routes from '../../blog/routes';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
-
-exports.lab = lab;
 
 suite('blog api', () => {
 	test('blog posts route has expected method, path, url', () => {

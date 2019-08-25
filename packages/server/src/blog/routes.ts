@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-const { clientel } = require('../utils');
+import utils from '../utils';
 
+const { clientel } = utils;
 const get_blog_posts = () => {
 	const url = '/v1/blog/posts';
 	const method = 'GET';
@@ -30,7 +31,7 @@ const get_blog_details = (filename = '') => {
 	};
 };
 
-export default  {
+export default {
 	v1: {
 		get_blog_posts,
 		get_blog_details,

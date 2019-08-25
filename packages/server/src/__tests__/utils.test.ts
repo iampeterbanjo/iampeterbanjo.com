@@ -4,7 +4,7 @@ const { time, getCache } = require('../utils');
 
 const { suite, test } = lab;
 
-exports.lab = lab;
+
 
 suite('getCache', () => {
 	test('default cache is expected', () => {

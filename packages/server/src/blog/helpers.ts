@@ -6,11 +6,7 @@ import fecha from 'fecha';
 
 const dir = Path.join(__dirname, '../../blog/posts');
 
-/**
- * Get url path to post given file path
- * @param {string} filePath file path
- */
-const getUrlPath = filePath => {
+const getUrlPath = (filePath: string) => {
 	const urlPath = [filePath]
 		.map(f => f.replace('.md', ''))
 		.map(f => {
@@ -33,17 +29,12 @@ const getBlogFiles = async () => {
 	return urlPaths;
 };
 
-/**
- * Get blog and frontmatter
- * @typedef Content
- * @property {string} title
- * @property {string} content
- * @property {Date} date
- *
- * @param {string} filename blog file
- * @return {Promise<Content | null>}
- */
-const getBlogContents = async filename => {
+type Content = {
+	title: string;
+	content: string;
+	date: string;
+};
+const getBlogContents = async (filename: string): Promise<Content | null> => {
 	const [blogFile] = await globby(`${dir}/${filename}.md`);
 
 	if (!blogFile) return null;
@@ -55,8 +46,4 @@ const getBlogContents = async filename => {
 	return { title, date: validDate, content: marked(content) };
 };
 
-export default  {
-	getBlogFiles,
-	getBlogContents,
-	getUrlPath,
-};
+export default { getBlogFiles, getBlogContents, getUrlPath };

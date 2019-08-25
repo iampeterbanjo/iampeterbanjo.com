@@ -1,10 +1,11 @@
-const faker = require('faker');
-const { slugger } = require('../../utils');
+import faker from 'faker';
+import utils from '../../utils';
 
+const { slugger } = utils;
 const title = faker.random.words();
 const artist = faker.name.findName();
 
-export default  {
+export default {
 	artist,
 	title,
 	summary: faker.lorem.sentences(),

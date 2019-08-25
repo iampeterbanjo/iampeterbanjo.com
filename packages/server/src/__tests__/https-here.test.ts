@@ -2,10 +2,10 @@ const Hapi = require('@hapi/hapi');
 const { expect } = require('@hapi/code');
 const Lab = require('@hapi/lab');
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
 
-exports.lab = lab;
+
 
 const plugin = require('../../server/https-here');
 

@@ -1,18 +1,16 @@
-const Hapi = require('@hapi/hapi');
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
-const sinon = require('sinon');
+import Hapi from '@hapi/hapi';
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import sinon from 'sinon';
 
-const factory = require('../factory');
-const plugin = require('../../korin/plugin');
-const routes = require('../../korin/routes');
+import factory from '../factory';
+import plugin from '../../korin/plugin';
+import routes from '../../korin/routes';
+
+export const lab = Lab.script();
 
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
-
-const lab = Lab.script();
 const { suite, test, before } = lab;
-
-exports.lab = lab;
 const server = Hapi.Server();
 
 suite('korin tracks API', async () => {

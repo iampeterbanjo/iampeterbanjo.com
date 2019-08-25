@@ -1,12 +1,11 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
-const { slugger } = require('../../utils');
-const routes = require('../../korin/routes');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
+import utils from '../../utils';
+import routes from '../../korin/routes';
 
-const lab = Lab.script();
+export const lab = Lab.script();
 const { test, suite } = lab;
-
-exports.lab = lab;
+const { slugger } = utils;
 
 suite('routes: korin api', () => {
 	test('when requesting tracks', () => {
