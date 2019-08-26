@@ -40,7 +40,7 @@
 		"lint": "npx eslint \"**/*.{ts,js}\" --fix",
 		"prod": "npm run install-server",
 		"start-dev": "cd ./packages/server; npm run dev",
-		"start": "node ./packages/server/start.js",
+		"start": "node ./packages/server/build/start.js",
 		"test-data": "cd ./packages/data; npm run test",
 		"test-e2e": "cd ./packages/e2e; npm run test",
 		"test-server": "cd ./packages/server; npm run test",

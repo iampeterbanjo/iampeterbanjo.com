@@ -12,7 +12,7 @@
 		"clean": "rm -rf ./node_modules || exit 0",
 		"dev": "npm link css; npm run watch",
 		"start-debug": "node --inspect start.js",
-		"start": "node start.js",
+		"start": "node ./build/start.js",
 		"test": "lab ./build/__tests__/",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500 --watch . -e js,html -x 'npm run start-debug'",
