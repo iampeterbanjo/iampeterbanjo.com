@@ -65,7 +65,6 @@ suite('Given Berserker route', () => {
 				url,
 			});
 
-			// eslint-disable-next-line no-underscore-dangle
 			expect(response.statusCode).to.equal(200);
 		});
 	});
@@ -85,7 +84,6 @@ suite('view blog', async () => {
 			url,
 		});
 
-		// eslint-disable-next-line no-underscore-dangle
 		expect(response.statusCode).to.equal(200);
 	});
 
@@ -96,7 +94,6 @@ suite('view blog', async () => {
 			url,
 		});
 
-		// eslint-disable-next-line no-underscore-dangle
 		expect(response.statusCode).to.equal(200);
 	});
 

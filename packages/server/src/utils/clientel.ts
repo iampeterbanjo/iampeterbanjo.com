@@ -1,18 +1,14 @@
-/**
- * @type {object}
- * @property {function} extend
- * @property {function} get
- */
 import Lyricist from 'lyricist';
 import Wreck from '@hapi/wreck';
 import time from './time';
+import vars from './vars';
 
 const {
 	baseUrl,
 	GENIUS_API_ACCESS_TOKEN,
 	GENIUS_API_URL,
 	LASTFM_API_URL,
-} = require('./vars');
+} = vars;
 
 const wreck = Wreck.defaults({ timeout: time.oneMinute });
 const api = wreck.defaults({ baseUrl });

@@ -2,14 +2,14 @@ import jsonata from 'jsonata';
 import { URLSearchParams } from 'core-js';
 import PersonalityInsightsV3 from 'watson-developer-cloud/personality-insights/v3';
 import PersonalityTextSummary from 'personality-text-summary';
+import utils from '../utils';
 
 const {
 	vars,
 	jsonParser,
 	message,
 	clientel: { genius, lastfm, lyricist },
-} = require('../utils');
-
+} = utils;
 const {
 	lyricsIdPath,
 	songInfoPath,

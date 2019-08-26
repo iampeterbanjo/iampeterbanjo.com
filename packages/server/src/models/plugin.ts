@@ -20,7 +20,6 @@ export default {
 		try {
 			// @ts-ignore for Bluebird
 			const { connection } = await mongoose.connect(uri, options);
-			// eslint-disable-next-line no-param-reassign
 			server.app.db = {
 				korin: {
 					link: connection.db,
@@ -33,7 +32,6 @@ export default {
 				},
 			};
 		} catch (error) {
-			// eslint-disable-next-line no-console
 			console.warn(error);
 		}
 	},

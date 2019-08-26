@@ -3,9 +3,7 @@ import Path from 'path';
 import routes from './routes';
 import context from './context';
 import createApp from './ssr/app';
-import vueRenderer from 'vue-server-renderer';
-
-const renderer = vueRenderer.createRenderer();
+import { createRenderer } from 'vue-server-renderer';
 
 const registerViews = {
 	engines: {
@@ -17,7 +15,6 @@ const registerViews = {
 				};
 			},
 			prepare: (options, next) => {
-				// eslint-disable-next-line no-param-reassign
 				options.compileOptions.environment = Nunjucks.configure(options.path, {
 					watch: false,
 				});
@@ -36,7 +33,7 @@ const getBerserker = server => {
 		path,
 		handler: async (request, h) => {
 			const app = createApp({ message: 'Fatality' });
-			const html = await renderer.renderToString(app);
+			const html = await createRenderer().renderToString(app);
 
 			return h.view('berserker/list', { html });
 		},
