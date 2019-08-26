@@ -1,10 +1,11 @@
 import Lab from '@hapi/lab';
 import { expect } from '@hapi/code';
 import fecha from 'fecha';
-
-import { getUrlPath, getBlogFiles, getBlogContents } from '../../blog/helpers';
+import helpers from '../../blog/helpers';
 
 export const lab = Lab.script();
+
+const { getUrlPath, getBlogFiles, getBlogContents } = helpers;
 const { suite, test, before } = lab;
 
 suite('getUrlPath', () => {

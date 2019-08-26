@@ -5,11 +5,9 @@ const Lab = require('@hapi/lab');
 export const lab = Lab.script();
 const { test, suite } = lab;
 
-
-
 const plugin = require('../../server/https-here');
 
-const Server = options => {
+const Server = (options?: Object) => {
 	const server = Hapi.Server();
 	server.register({ plugin, options });
 	server.route({
@@ -57,7 +55,7 @@ suite('https-here:', () => {
 		});
 		expect(res.statusCode).to.equal(301);
 		expect(res.headers.location).to.equal(
-			'https://host/?test=test&test2=test2'
+			'https://host/?test=test&test2=test2',
 		);
 	});
 
