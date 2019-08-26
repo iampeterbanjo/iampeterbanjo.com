@@ -1,10 +1,10 @@
-const plugin = require('./plugin');
+import plugin from './plugin';
 
-export default  {
-	plugin,
-	options: {
-		accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
-		captureUncaught: true,
-		captureUnhandledRejections: true,
-	},
+module.exports = {
+  plugin,
+  options: {
+    accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+    captureUncaught: true,
+    captureUnhandledRejections: true
+  }
 };

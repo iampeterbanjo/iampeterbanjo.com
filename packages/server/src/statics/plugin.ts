@@ -1,4 +1,4 @@
-export default  {
+module.exports = {
 	name: 'serve-static-files',
 	version: '1.0.0',
 	register: (server, { rootPath, cssPath, jsPath, imagePath }) => {

@@ -1,4 +1,4 @@
-export default  {
+module.exports = {
 	clearServiceWorkers: () => {
 		if (window.navigator && navigator.serviceWorker) {
 			navigator.serviceWorker.getRegistrations().then(registrations => {

@@ -572,7 +572,7 @@
     return self;
   }();
 
-  export default  {
+  module.exports = {
     i18nProvider: i18nProvider,
     getDictionary: i18nProvider.getDictionary,
     translatorFactory: translatorFactory
@@ -595,7 +595,7 @@
    * limitations under the License.
    */
 
-  export default  {
+  module.exports = {
       "facets": {
           "Friendliness": {
               "Big5": "Extraversion",
@@ -2232,7 +2232,7 @@
    * limitations under the License.
    */
 
-  export default  {
+  module.exports = {
       "facets": {
           "Artistic-interests": {
               "HighTerm": "Una persona que aprecia el arte",
@@ -3868,7 +3868,7 @@
    * limitations under the License.
    */
 
-  export default  {
+  module.exports = {
       "facets": {
           "Friendliness": {
               "Big5": "Extraversion",

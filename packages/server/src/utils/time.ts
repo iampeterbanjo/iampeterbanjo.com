@@ -1,6 +1,6 @@
 // all time in milliseconds
 
-export default  {
+module.exports = {
 	tenSeconds: 10000,
 	oneHundredMilliseconds: 100,
 	oneMinute: 60000,
