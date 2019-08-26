@@ -1,13 +1,9 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
-const sinon = require('sinon');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
+import sinon from 'sinon';
 
-const {
-	preResponse,
-	rollbarErrorHandler,
-	errorLogger,
-} = require('../../rollbar/helpers');
-
+import * as helpers from '../../rollbar/helpers';
+const { preResponse, rollbarErrorHandler, errorLogger } = helpers;
 export const lab = Lab.script();
 const { test, suite } = lab;
 

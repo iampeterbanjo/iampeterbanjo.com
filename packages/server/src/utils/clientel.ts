@@ -1,7 +1,7 @@
 import Lyricist from 'lyricist';
 import Wreck from '@hapi/wreck';
-import time from './time';
-import vars from './vars';
+import * as time from './time';
+import * as vars from './vars';
 
 const {
 	baseUrl,
@@ -10,10 +10,10 @@ const {
 	LASTFM_API_URL,
 } = vars;
 
-const wreck = Wreck.defaults({ timeout: time.oneMinute });
-const api = wreck.defaults({ baseUrl });
+export const wreck = Wreck.defaults({ timeout: time.oneMinute });
+export const api = wreck.defaults({ baseUrl });
 
-const genius = wreck.defaults({
+export const genius = wreck.defaults({
 	baseUrl: `${GENIUS_API_URL}/`,
 	headers: {
 		authorization: `Bearer ${GENIUS_API_ACCESS_TOKEN}`,
@@ -21,16 +21,9 @@ const genius = wreck.defaults({
 	json: true,
 });
 
-const lastfm = wreck.defaults({
+export const lastfm = wreck.defaults({
 	baseUrl: `${LASTFM_API_URL}/`,
 	json: true,
 });
 
-const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);
-
-export default {
-	api,
-	genius,
-	lastfm,
-	lyricist,
-};
+export const lyricist = new Lyricist(GENIUS_API_ACCESS_TOKEN);

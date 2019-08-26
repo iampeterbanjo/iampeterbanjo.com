@@ -1,4 +1,4 @@
-import plugin from './plugin';
+import * as plugin from './plugin';
 import utils from '../utils';
 
 const { vars } = utils;

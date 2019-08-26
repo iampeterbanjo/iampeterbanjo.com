@@ -1,5 +1,5 @@
 import path from 'path';
-import plugin from './plugin';
+import * as plugin from './plugin';
 
 const rootPath = path.join(__dirname, '../../blog/public/');
 const cssPath = '../css';

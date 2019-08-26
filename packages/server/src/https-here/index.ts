@@ -1,4 +1,4 @@
-import plugin from './https-here';
+import * as plugin from './https-here';
 
 export default {
 	plugin,

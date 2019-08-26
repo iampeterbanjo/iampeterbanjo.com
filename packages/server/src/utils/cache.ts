@@ -1,14 +1,13 @@
-import time from './time';
+import * as time from './time';
 
-/**
- * @typedef {object} Cache
- * @property {number} cache.expiresIn since time saved
- * @property {number} cache.staleIn Must be less than expiresIn
- * @property {number} cache.generateTimeout wait before returning a timeout error
- * @property {string} cache name
- *
- */
-const cache = {
+type Cache = {
+	expiresIn?: number;
+	staleIn?: number;
+	generateTimeout?: any;
+	staleTimeout?: number;
+	cache?: string;
+};
+const cache: Cache = {
 	expiresIn: time.oneDay,
 	staleIn: time.tenSeconds,
 	staleTimeout: time.oneHundredMilliseconds,
@@ -16,12 +15,7 @@ const cache = {
 	cache: 'mongodb-cache',
 };
 
-/**
- * Get cache
- * @param {Partial<Cache>} [options]
- * @return Cache
- */
-const getCache = options => {
+const getCache = (options?: Partial<Cache>) => {
 	return Object.assign({}, cache, options);
 };
 

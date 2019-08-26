@@ -1,7 +1,5 @@
-import slugify from 'slugify';
+import s from 'slugify';
 
-export default {
-	parse: text => encodeURI(text),
-	unparse: text => decodeURI(text),
-	slugify,
-};
+export const parse = text => encodeURI(text);
+export const unparse = text => decodeURI(text);
+export const slugify = s;

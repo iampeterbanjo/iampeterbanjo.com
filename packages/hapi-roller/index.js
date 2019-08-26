@@ -1,4 +1,4 @@
-import plugin from './plugin';
+const plugin = require('./plugin');
 
 module.exports = {
   plugin,

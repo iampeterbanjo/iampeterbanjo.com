@@ -1,6 +1,6 @@
 import topTrack from './topTrack';
 import profile from './profile';
-import mock from './mock';
+import * as mock from './mock';
 
 interface TopTrack {
 	title: string;

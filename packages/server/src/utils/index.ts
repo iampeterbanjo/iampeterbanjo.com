@@ -1,9 +1,9 @@
-import clientel from './clientel';
-import slugger from './slugger';
-import vars from './vars';
-import message from './message';
-import time from './time';
+import * as clientel from './clientel';
+import * as slugger from './slugger';
+import * as vars from './vars';
+import * as message from './message';
+import * as time from './time';
 import getCache from './cache';
-import jsonParser from './jsonParser';
+import * as jsonParser from './jsonParser';
 
 export default { time, slugger, clientel, vars, message, getCache, jsonParser };

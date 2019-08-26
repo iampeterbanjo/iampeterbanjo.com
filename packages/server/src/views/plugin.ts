@@ -1,7 +1,7 @@
 import Nunjucks from 'nunjucks';
 import Path from 'path';
 import routes from './routes';
-import context from './context';
+import * as context from './context';
 import createApp from './ssr/app';
 import { createRenderer } from 'vue-server-renderer';
 
