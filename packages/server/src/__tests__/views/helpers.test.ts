@@ -1,17 +1,15 @@
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
+import helpers from '../../views/helpers';
 
 export const lab = Lab.script();
 const { test, suite } = lab;
 
-const { parseTopTracks } = require('../../views/helpers');
-
+const { parseTopTracks } = helpers;
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
-
-
-suite('View helpers:', () => {
-	test('top tracks are parsed correctly', () => {
+suite('Given View helpers:', () => {
+	test('When data is valid top tracks are parsed correctly', () => {
 		const [track] = parseTopTracks(topTracksData);
 		const { title, image, artist, url, profileUrl } = track;
 

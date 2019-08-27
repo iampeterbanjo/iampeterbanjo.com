@@ -1,11 +1,11 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
-const { slugger } = require('../utils');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
+import utils from '../utils';
 
 export const lab = Lab.script();
+
+const { slugger } = utils;
 const { test, suite } = lab;
-
-
 
 suite('parsing and reversing', () => {
 	[

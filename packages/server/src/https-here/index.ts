@@ -1,5 +1,5 @@
 import * as plugin from './https-here';
 
-export default {
+module.exports = {
 	plugin,
 };

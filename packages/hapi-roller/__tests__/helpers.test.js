@@ -1,13 +1,11 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
 const sinon = require('sinon');
 
 const { preResponse, rollbarErrorHandler, errorLogger } = require('../helpers');
 
 export const lab = Lab.script();
 const { test, suite } = lab;
-
-
 
 const MockParams = () => {
 	return {
@@ -92,7 +90,7 @@ suite('rollbar helpers', () => {
 				const [result] = rollbar.log.args[0];
 
 				expect(result).to.contain(
-					`Error reporting to rollbar, ignoring: ${error}`
+					`Error reporting to rollbar, ignoring: ${error}`,
 				);
 			});
 		});

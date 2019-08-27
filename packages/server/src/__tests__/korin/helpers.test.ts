@@ -2,16 +2,17 @@ import Lab from '@hapi/lab';
 import { expect } from '@hapi/code';
 import nock from 'nock';
 import utils from '../../utils';
+import helpers from '../../korin/helpers';
 
-const { vars, message } = utils;
 export const lab = Lab.script();
+const { vars, message } = utils;
 const {
 	getChartTopTracks,
 	getSongData,
 	getPersonalityProfile,
 	getSongId,
 	getSongInfo,
-} = require('../../korin/helpers');
+} = helpers;
 
 const topTracksData = require('../fixtures/lastfm-topTracks.json');
 const songData = require('../fixtures/genius-search.json');

@@ -1,7 +1,7 @@
 import plugin from './plugin';
 import methods from './methods';
 
-module.exports = {
+export default {
 	plugin,
 	options: { methods },
 };

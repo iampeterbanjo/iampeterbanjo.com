@@ -1,13 +1,11 @@
-const Hapi = require('@hapi/hapi');
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import Hapi from '@hapi/hapi';
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
 
 const plugin = require('../plugin');
 
 export const lab = Lab.script();
 const { test, suite } = lab;
-
-
 
 const Server = async () => {
 	const server = Hapi.Server();

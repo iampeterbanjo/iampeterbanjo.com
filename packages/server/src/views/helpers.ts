@@ -1,19 +1,15 @@
 import jsonata from 'jsonata';
 
 import routes from './routes';
-import blogHelpers from '../blog/helpers';
+import * as blogHelpers from '../blog/helpers';
 import korinHelpers from '../korin/helpers';
 import utils from '../utils';
 
 const { vars } = utils;
 const { topTracksPath } = vars;
 
-/**
- * View blog post
- * @param {string} post filename
- * @return {object} data
- */
-const viewBlogPost = post => blogHelpers.getBlogContents(post);
+const viewBlogPost = (post: string): Object =>
+	blogHelpers.getBlogContents(post);
 
 const viewBlogList = () => blogHelpers.getBlogFiles();
 

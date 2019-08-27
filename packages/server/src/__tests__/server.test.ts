@@ -1,8 +1,8 @@
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
 
-const R = require('ramda');
-const { api } = require('..');
+import * as R from 'ramda';
+import { api } from '..';
 
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 

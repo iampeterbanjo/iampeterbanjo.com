@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 /**
  * @typedef { 'GET' | 'POST' | 'PUT' | 'DELETE' } Verbs
  * @typedef Route
@@ -7,8 +6,9 @@
  * @property {string} url request url
  */
 
-const { slugger } = require('../utils');
+import utils from '../utils';
 
+const { slugger } = utils;
 const korinBaseUrl = '/projects/korin';
 
 /**

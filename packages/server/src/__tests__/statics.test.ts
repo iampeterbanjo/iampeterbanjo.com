@@ -1,6 +1,6 @@
-const Hapi = require('@hapi/hapi');
-const { expect } = require('@hapi/code');
-const Lab = require('@hapi/lab');
+import Hapi from '@hapi/hapi';
+import { expect } from '@hapi/code';
+import Lab from '@hapi/lab';
 
 const Inert = require('@hapi/inert');
 const path = require('path');
@@ -8,8 +8,6 @@ const plugin = require('../statics/plugin');
 
 export const lab = Lab.script();
 const { test, beforeEach, suite } = lab;
-
-
 
 const cssPath = '../css';
 const jsPath = '../js';

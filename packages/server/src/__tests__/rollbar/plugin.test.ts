@@ -2,7 +2,7 @@ import Hapi from '@hapi/hapi';
 import { expect } from '@hapi/code';
 import Lab from '@hapi/lab';
 
-import * as plugin from '../../rollbar/plugin';
+import plugin from '../../rollbar/plugin';
 
 export const lab = Lab.script();
 const { test, suite } = lab;

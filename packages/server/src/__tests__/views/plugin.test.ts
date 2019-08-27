@@ -1,6 +1,6 @@
-const Hapi = require('@hapi/hapi');
-const Lab = require('@hapi/lab');
-const { expect } = require('@hapi/code');
+import Hapi from '@hapi/hapi';
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
 const Vision = require('@hapi/vision');
 const sinon = require('sinon');
 const cheerio = require('cheerio');

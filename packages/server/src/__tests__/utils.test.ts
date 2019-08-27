@@ -1,10 +1,11 @@
-const lab = require('@hapi/lab').script();
-const { expect } = require('@hapi/code');
-const { time, getCache } = require('../utils');
+import Lab from '@hapi/lab';
+import { expect } from '@hapi/code';
 
+import utils from '../utils';
+
+export const lab = Lab.script();
 const { suite, test } = lab;
-
-
+const { time, getCache } = utils;
 
 suite('getCache', () => {
 	test('default cache is expected', () => {

@@ -1,6 +1,6 @@
 import plugin from '@hapi/good';
 
-module.exports = {
+export default {
 	plugin,
 	options: {
 		reporters: {
