@@ -1,7 +1,7 @@
 import Hapi from '@hapi/hapi';
 import { expect } from '@hapi/code';
 import Lab from '@hapi/lab';
-import * as plugin from '../https-here';
+import plugin from '../https-here';
 
 export const lab = Lab.script();
 

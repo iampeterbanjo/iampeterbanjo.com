@@ -2,9 +2,9 @@ import Hapi from '@hapi/hapi';
 import { expect } from '@hapi/code';
 import Lab from '@hapi/lab';
 
-const Inert = require('@hapi/inert');
-const path = require('path');
-const plugin = require('../statics/plugin');
+import Inert from '@hapi/inert';
+import path from 'path';
+import plugin from '../statics/plugin';
 
 export const lab = Lab.script();
 const { test, beforeEach, suite } = lab;

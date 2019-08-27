@@ -10,16 +10,13 @@ import devErrors from './hapi-dev-errors';
 import inert from './hapi-inert';
 import vision from './hapi-vision';
 import views from './views';
-// import statics from './statics';
-// import pipeline from './pipeline';
-// import cqc from './cqc';
-// import httpsHere from './https-here';
+import statics from './statics';
+import pipeline from './pipeline';
+import cqc from './cqc';
+import httpsHere from './https-here';
 
 const { vars } = utils;
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
-// import Glue from '@hapi/glue';
-// import { manifest } from './config';
-// const { manifest, options } = config;
 
 export default async function main() {
 	try {
@@ -59,17 +56,12 @@ export default async function main() {
 			server.register(inert),
 			server.register(vision),
 			server.register(views),
-			// server.register(statics),
+			server.register(statics),
 			server.register(korin),
-			// server.register(pipeline),
-			// server.register(cqc),
-			// server.register(httpsHere),
+			server.register(pipeline),
+			server.register(cqc),
+			server.register(httpsHere),
 		]);
-
-		// const server = await Glue.compose(
-		// 	manifest,
-		// 	options,
-		// );
 
 		return server;
 	} catch (error) {
