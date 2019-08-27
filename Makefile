@@ -1,11 +1,11 @@
 BUILD=docker build -t iampeterbanjo/hapi .
 REBUILD=docker build --no-cache -t iampeterbanjo/hapi .
-EXEC=docker exec -it pnpm-app /bin/bash
-REMOVE=docker rm pnpm-app
-RUN=docker run -d -it -p 8080:8080 --name pnpm-app iampeterbanjo/hapi
-START=docker start pnpm-app
-STOP=docker stop pnpm-app
-LOGS=docker logs pnpm-app
+EXEC=docker exec -it iampeterbanjo-app /bin/bash
+REMOVE=docker rm iampeterbanjo-app
+RUN=docker run --network=host --env-file .env -d -it -p 8080:8080 --name iampeterbanjo-app iampeterbanjo/hapi
+START=docker start iampeterbanjo-app
+STOP=docker stop iampeterbanjo-app
+LOGS=docker logs iampeterbanjo-app
 
 .PHONY: build
 build: ## build docker image
