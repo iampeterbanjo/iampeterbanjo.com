@@ -6,3 +6,4 @@ build/
 ./packages/**/cypress/**/*.failed.*.png
 
 packages/data/raw/mortal-kombat-x/.~lock.cassie-cage.tsv#
+packages/e2e/cypress/screenshots/

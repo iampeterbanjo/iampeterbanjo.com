@@ -26,7 +26,7 @@
   /**
    * Provides a Text Summary for profiles.
    */
-  module.exports = function (lang) {
+  export default  function (lang) {
 
     var self = {},
         dictionary = i18n.getDictionary(lang),
@@ -432,7 +432,7 @@
     return output;
   }
 
-  module.exports = format;
+  export default  format;
 
   },{}],3:[function(_dereq_,module,exports){
   /**

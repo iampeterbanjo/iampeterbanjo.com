@@ -97,7 +97,7 @@ Dictionary = (function () {
   return Dictionary;
 })();
 
-module.exports = Dictionary;
+export default  Dictionary;
 
 },{}]},{},[1])
 (1)

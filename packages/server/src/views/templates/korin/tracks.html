@@ -1,0 +1,39 @@
+{% import "helpers.html" as helpers %}
+
+<!--  -->
+{% extends 'layout.html' %}
+
+<!--  -->
+{% block content %}
+<div>
+	{{ helpers.heading('Top 50 tracks', 'LastFm') }} {{ helpers.p( 'Select a track
+	to generate a personality profile based on its lyrics' ) }}
+
+	<ul class="cf pa0 list tracks">
+		{% for track in tracks %}
+		<li class="fl w-50 w-25-m w-20-l">
+			<a
+				class="db mw5 black link dim"
+				title="{{ track.title }}"
+				href="{{ track.profileUrl }}"
+			>
+				<img
+					class="db ba b--black-10"
+					alt="{{ track.title }}"
+					src="{{ track.image }}"
+				/>
+
+				<dl class="mt2 f6 lh-copy">
+					<dt class="clip">Title</dt>
+					<dd class="ml0 fw9 truncate">
+						{{ track.title }}
+					</dd>
+					<dt class="clip">Artist</dt>
+					<dd class="ml0 gray truncate">{{ track.artist }}</dd>
+				</dl>
+			</a>
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
