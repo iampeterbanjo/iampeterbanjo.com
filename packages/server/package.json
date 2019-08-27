@@ -7,7 +7,7 @@
 		"node": "10.14.2"
 	},
 	"scripts": {
-		"build": "npm-run-all copy-* build-ts",
+		"build": "run-s build-ts copy-*",
 		"build-ts": "tsc -p tsconfig.json",
 		"clean": "rm -rf ./node_modules || exit 0",
 		"copy-templates": "ncp ./src/views/templates ./build/views/templates",

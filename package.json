@@ -40,7 +40,7 @@
 		"server": "cd ./packages/server; npm",
 		"format": "pretty-quick",
 		"lint": "npx pretty-quick --check",
-		"prod": "npm-run-all install-server install-css build-css build-server",
+		"prod": "run-s install-server install-css build-css build-server",
 		"start-dev": "cd ./packages/server; npm run dev",
 		"start": "node ./packages/server/build/start.js",
 		"test-data": "cd ./packages/data; npm run test",
