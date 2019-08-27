@@ -1,8 +1,8 @@
-import start from '.';
+import { api } from '.';
 
 (async () => {
 	try {
-		const server = await start.api();
+		const server = await api();
 		await server.start();
 
 		console.log(`Server running at: ${server.info.uri}`);

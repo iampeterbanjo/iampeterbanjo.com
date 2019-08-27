@@ -1,13 +1,13 @@
 import Hapi from '@hapi/hapi';
 import Lab from '@hapi/lab';
 import { expect } from '@hapi/code';
-const Vision = require('@hapi/vision');
-const sinon = require('sinon');
-const cheerio = require('cheerio');
+import Vision from '@hapi/vision';
+import sinon from 'sinon';
+import cheerio from 'cheerio';
 
-const plugin = require('../../views/plugin');
-const routes = require('../../views/routes');
-const data = require('../../views/context');
+import plugin from '../../views/plugin';
+import routes from '../../views/routes';
+import * as data from '../../views/context';
 
 export const lab = Lab.script();
 const { suite, test, before } = lab;

@@ -1,5 +1,4 @@
 import jsonata from 'jsonata';
-import { URLSearchParams } from 'core-js';
 import PersonalityInsightsV3 from 'watson-developer-cloud/personality-insights/v3';
 import PersonalityTextSummary from 'personality-text-summary';
 import utils from '../utils';
@@ -13,7 +12,7 @@ const {
 const {
 	lyricsIdPath,
 	songInfoPath,
-	LASTFM_API_KEY,
+	LASTFM_API_KEY = '',
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,

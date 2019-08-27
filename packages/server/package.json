@@ -7,8 +7,10 @@
 		"node": "10.14.2"
 	},
 	"scripts": {
-		"build": "npm run copy-fixtures && tsc -p tsconfig.json",
+		"build": "npm-run-all copy-* build-ts",
+		"build-ts": "tsc -p tsconfig.json",
 		"clean": "rm -rf ./node_modules || exit 0",
+		"copy-templates": "ncp ./src/views/templates ./build/views/templates",
 		"copy-fixtures": "ncp ./src/__tests__/fixtures ./build/__tests__/fixtures",
 		"dev": "npm link css; npm run watch",
 		"start-debug": "node --inspect start.js",
@@ -16,8 +18,9 @@
 		"test": "lab ./build/__tests__/",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
-		"watch-build": "npm run copy-fixtures && tsc -p tsconfig.json --watch",
-		"watch-test": "nodemon --delay 500ms --watch build -e js,json,html,md -x 'yarn test'"
+		"watch-ts": "npm run build-ts -- --watch",
+		"watch-build": "npm-run-all copy-* watch-ts",
+		"watch-test": "nodemon --delay 500ms --watch build -e js,json,html,md -x 'npm test'"
 	},
 	"keywords": [
 		"personal",
@@ -54,7 +57,6 @@
 		"boom": "^7.3.0",
 		"catbox-mongodb": "^4.2.1",
 		"cheerio": "^1.0.0-rc.3",
-		"core-js": "^3.2.1",
 		"css": "file:../css",
 		"fecha": "^3.0.3",
 		"fs-extra": "^7.0.1",
@@ -64,7 +66,7 @@
 		"hapi-dev-errors": "^3.2.4",
 		"jsonata": "^1.6.4",
 		"lyricist": "^2.2.2",
-		"marked": "^0.6.2",
+		"marked": "^0.7.0",
 		"mongoose": "^5.5.8",
 		"nunjucks": "^3.2.0",
 		"personality-text-summary": "^2.2.0",
