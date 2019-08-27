@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"build": "run-s build-prod",
-		"build-dev": "tsc -p tsconfig.json copy-*",
+		"build-dev": "tsc -p tsconfig.json; run-p copy-*",
 		"build-prod": "tsc -p tsconfig.build.json",
 		"clean": "rm -rf ./node_modules || exit 0",
 		"copy-templates": "ncp ./src/views/templates ./build/views/templates",
