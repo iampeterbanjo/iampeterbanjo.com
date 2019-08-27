@@ -39,7 +39,7 @@
 		"install-server": "cd ./packages/server; npm install",
 		"server": "cd ./packages/server; npm",
 		"format": "pretty-quick",
-		"lint": "npx eslint \"**/*.{ts,js}\" --fix",
+		"lint": "npx pretty-quick --check",
 		"prod": "npm-run-all install-server install-css build-css build-server",
 		"start-dev": "cd ./packages/server; npm run dev",
 		"start": "node ./packages/server/build/start.js",
