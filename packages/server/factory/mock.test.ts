@@ -1,46 +1,43 @@
-import Lab from '@hapi/lab';
-import { expect } from '@hapi/code';
 import Hapi from '@hapi/hapi';
-import sinon from 'sinon';
 
-import factory from '.';
-import korinPlugin from '../../korin/plugin';
+import factory, { makeBdd } from '.';
+import korinPlugin from '../src/korin/plugin';
 
-export const lab = Lab.script();
-const { test, suite } = lab;
+const { Given, And, When } = makeBdd({ describe, it });
 
-suite('Given factory', () => {
-	suite('And mock.method', () => {
+Given('factory', () => {
+	And('mock.method', () => {
 		['korin.getChartTopTracks'].forEach(name => {
-			suite(`When param is ${name}`, () => {
-				test(`server has method ${name} as function`, async () => {
+			When(
+				`param is ${name} server has method ${name} as function`,
+				async () => {
 					const server = Hapi.Server();
 					await factory.mock.method({
 						server,
 						name,
 						plugin: korinPlugin,
-						fn: sinon.stub().resolves('test'),
+						fn: jest.fn().mockResolvedValue('test'),
 					});
 					const [app, method] = name.split('.');
 
 					expect(server.methods[app][method]).to.be.a.function();
-				});
-			});
+				},
+			);
 		});
 
-		test('null is default', async () => {
+		When('null is default result should be null', async () => {
 			const server = Hapi.Server();
 			const result = await factory.mock.method({
 				server,
 				name: 'unknown',
 				plugin: korinPlugin,
-				fn: sinon.stub().resolves('test'),
+				fn: jest.fn().mockResolvedValue('test'),
 			});
 
 			expect(result).to.equal(null);
 		});
 
-		test('dont overwrite existing methods', async () => {
+		When('creating mock dont overwrite existing methods', async () => {
 			const server = Hapi.Server();
 			await server.register({
 				plugin: {
@@ -61,11 +58,11 @@ suite('Given factory', () => {
 				server,
 				name: 'korin.getChartTopTracks',
 				plugin: korinPlugin,
-				fn: sinon.stub().resolves('test'),
+				fn: jest.fn().mockResolvedValue('test'),
 			});
 
-			expect(server.methods.korin.getChartTopTracks).to.exist();
-			expect(server.methods.test.method).to.exist();
+			expect(server.methods.korin.getChartTopTracks).toBeDefined();
+			expect(server.methods.test.method).toBeDefined();
 		});
 	});
 });

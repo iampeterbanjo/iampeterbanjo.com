@@ -4,8 +4,16 @@
  * 	When(`test result`, () => {})
  * })
  */
-export default function(callback, prefix: string) {
+function bdd(callback, prefix: string) {
 	return function(description: string, handler: () => void | Promise<void>) {
 		callback(`${prefix} ${description}`, handler);
+	};
+}
+
+export default function makeBdd({ describe, it }) {
+	return {
+		Given: bdd(describe, 'Given'),
+		And: bdd(describe, 'And'),
+		When: bdd(it, 'When'),
 	};
 }
