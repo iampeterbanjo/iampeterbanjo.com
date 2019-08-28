@@ -6,7 +6,7 @@ Date: 2019-05-10
 
 2019-05-10 proposed
 
-2019-05-10 done
+2019-05-10 accepted
 
 ## Context
 
