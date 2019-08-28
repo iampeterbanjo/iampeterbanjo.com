@@ -1,5 +1,5 @@
 import faker from 'faker';
-import utils from '../../utils';
+import utils from '../src/utils';
 
 const { slugger } = utils;
 const title = faker.random.words();

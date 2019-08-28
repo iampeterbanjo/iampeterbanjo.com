@@ -20,7 +20,7 @@ Given('factory', () => {
 					});
 					const [app, method] = name.split('.');
 
-					expect(server.methods[app][method]).to.be.a.function();
+					expect(typeof server.methods[app][method]).toEqual('function');
 				},
 			);
 		});
@@ -34,7 +34,7 @@ Given('factory', () => {
 				fn: jest.fn().mockResolvedValue('test'),
 			});
 
-			expect(result).to.equal(null);
+			expect(result).toEqual(null);
 		});
 
 		When('creating mock dont overwrite existing methods', async () => {
