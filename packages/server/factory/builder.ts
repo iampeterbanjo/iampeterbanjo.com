@@ -19,10 +19,10 @@ const generate = (count: number, item: Object) => {
 	return result;
 };
 
-const factory = {
+const builder = {
 	topTrack: count => generate(count, topTrack),
 	profile: count => generate(count, profile),
 	mock,
 };
 
-export default factory;
+export default builder;

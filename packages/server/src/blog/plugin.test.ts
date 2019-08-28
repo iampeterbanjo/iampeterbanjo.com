@@ -11,8 +11,6 @@ const { message } = utils;
 export const lab = Lab.script();
 const { suite, test, beforeEach } = lab;
 
-
-
 suite('getBlogFiles', () => {
 	let server;
 
