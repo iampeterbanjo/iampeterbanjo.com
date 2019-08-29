@@ -1,32 +1,30 @@
-// import Hapi from '@hapi/hapi';
-// import { expect } from '@hapi/code';
-// import Lab from '@hapi/lab';
-// import sinon from 'sinon';
-// import Wreck from '@hapi/wreck';
-// import plugin from '../cqc';
+import Hapi from '@hapi/hapi';
+import Wreck from '@hapi/wreck';
+import plugin from '../cqc';
 
-// export const lab = Lab.script();
-// const { test, before, suite } = lab;
+import { makeBdd } from '../../factory';
 
-// const server = Hapi.Server();
+const { Given, When } = makeBdd({ describe, it });
+const server = Hapi.Server();
 
-// Given('cqc:', () => {
-// 	before(async ({ context }) => {
-// 		const client = Wreck.defaults({ baseUrl: '/' });
-// 		context.response = { body: 'Done' };
-// 		sinon.stub(client, 'get').resolves(context.response);
+Given('cqc', () => {
+	afterAll(jest.restoreAllMocks);
 
-// 		server.register({
-// 			plugin,
-// 			options: { client },
-// 		});
-// 	});
+	When('a request returns, it has response body', async () => {
+		const client = Wreck.defaults({ baseUrl: '/' });
+		const response = { body: 'Done' };
+		jest.spyOn(client, 'get').mockResolvedValue(response);
 
-// 	When('cqc providers request returns expected', async ({ context }) => {
-// 		const { result } = await server.inject({
-// 			method: 'GET',
-// 			url: '/cqc/providers',
-// 		});
-// 		expect(result).toEqual(context.response.body);
-// 	});
-// });
+		server.register({
+			plugin,
+			options: { client },
+		});
+
+		const { result } = await server.inject({
+			method: 'GET',
+			url: '/cqc/providers',
+		});
+
+		expect(result).toEqual(response.body);
+	});
+});
