@@ -1,31 +1,32 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import routes from '../../blog/routes';
+import routes from './routes';
+import { makeBdd } from '../../factory';
 
-// export const lab = Lab.script();
-// const { test, suite } = lab;
+const { Given, When } = makeBdd({ describe, it });
 
-// suite('blog api', () => {
-// 	test('blog posts route has expected method, path, url', () => {
-// 		const { method, path, url } = routes.v1.get_blog_posts();
+Given('blog api', () => {
+	When('its called, blog posts route has expected method, path, url', () => {
+		const { method, path, url } = routes.v1.get_blog_posts();
 
-// 		expect(method).to.equal('GET');
-// 		expect(path).to.equal('/v1/blog/posts');
-// 		expect(url).to.equal('/v1/blog/posts');
-// 	});
+		expect(method).toEqual('GET');
+		expect(path).toEqual('/v1/blog/posts');
+		expect(url).toEqual('/v1/blog/posts');
+	});
 
-// 	test('blog post details route has correct method, path, url', () => {
-// 		const post = 'get-a-blog-post';
-// 		const { method, path, url } = routes.v1.get_blog_details(post);
+	When(
+		'its called, blog post details route has correct method, path, url',
+		() => {
+			const post = 'get-a-blog-post';
+			const { method, path, url } = routes.v1.get_blog_details(post);
 
-// 		expect(method).to.equal('GET');
-// 		expect(path).to.equal('/v1/blog/posts/{post}');
-// 		expect(url).to.equal(`/v1/blog/posts/${post}`);
-// 	});
+			expect(method).toEqual('GET');
+			expect(path).toEqual('/v1/blog/posts/{post}');
+			expect(url).toEqual(`/v1/blog/posts/${post}`);
+		},
+	);
 
-// 	test('blog post details has correct url without filename', () => {
-// 		const { url } = routes.v1.get_blog_details();
+	When('its called, blog post details has correct url without filename', () => {
+		const { url } = routes.v1.get_blog_details();
 
-// 		expect(url).to.equal('/v1/blog/posts/');
-// 	});
-// });
+		expect(url).toEqual('/v1/blog/posts/');
+	});
+});

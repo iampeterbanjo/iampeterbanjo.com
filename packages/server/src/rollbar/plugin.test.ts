@@ -17,9 +17,9 @@
 // 	return server;
 // };
 
-// suite('rollbar plugin', () => {
-// 	suite('Given plugin', () => {
-// 		test('server exposes rollbar', async () => {
+// Given('rollbar plugin', () => {
+// 	Given('Given plugin', () => {
+// 		When('server exposes rollbar', async () => {
 // 			const server = await Server();
 
 // 			expect(server.plugins.rollbar).to.exist();

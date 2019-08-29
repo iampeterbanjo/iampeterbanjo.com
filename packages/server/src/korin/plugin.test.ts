@@ -13,7 +13,7 @@
 // const { suite, test, before } = lab;
 // const server = Hapi.Server();
 
-// suite('korin tracks API', async () => {
+// Given('korin tracks API', async () => {
 // 	before(async () => {
 // 		await factory.mock.method({
 // 			server,
@@ -23,7 +23,7 @@
 // 		});
 // 	});
 
-// 	test('requesting korin tracks gives expected results', async () => {
+// 	When('requesting korin tracks gives expected results', async () => {
 // 		const { method, url } = routes.v1.get_korin_tracks();
 
 // 		const response = await server.inject({
@@ -31,6 +31,6 @@
 // 			url,
 // 		});
 
-// 		expect(response.statusCode).to.equal(200);
+// 		expect(response.statusCode).toEqual(200);
 // 	});
 // });

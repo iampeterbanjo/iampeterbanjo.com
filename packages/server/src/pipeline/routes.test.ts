@@ -5,8 +5,8 @@
 // export const lab = Lab.script();
 // const { test, suite } = lab;
 
-// suite('Given pipeline routes', () => {
-// 	test('/topTracks/extract', () => {
+// Given('Given pipeline routes', () => {
+// 	When('/topTracks/extract', () => {
 // 		const result = routes.v1.extract_top_tracks();
 
 // 		// @ts-ignore

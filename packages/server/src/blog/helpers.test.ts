@@ -1,88 +1,88 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import fecha from 'fecha';
-// import { getUrlPath, getBlogFiles, getBlogContents } from '../../blog/helpers';
+import fecha from 'fecha';
+import { getUrlPath, getBlogFiles, getBlogContents } from './helpers';
+import { makeBdd } from '../../factory';
 
-// export const lab = Lab.script();
+const { Given, And, When } = makeBdd({ describe, it });
 
-// const { suite, test, before } = lab;
+Given('getUrlPath', () => {
+	And('a blog post filePath', () => {
+		const filePath =
+			'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com/packages/blog/posts/graphql-eats-rest.md';
 
-// suite('getUrlPath', () => {
-// 	const filePath =
-// 		'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com/packages/blog/posts/graphql-eats-rest.md';
+		When('filePath ends in `.md` the url does not contain md', () => {
+			const urlPath = getUrlPath(filePath);
 
-// 	test('url does not contain md', () => {
-// 		const urlPath = getUrlPath(filePath);
+			expect(urlPath).not.toEqual(expect.stringContaining('.md'));
+		});
 
-// 		expect(urlPath).not.to.endWith('.md');
-// 	});
+		When('filePath has /packages the url does not contain packages/', () => {
+			const urlPath = getUrlPath(filePath);
 
-// 	test('url does not contain packages/', () => {
-// 		const urlPath = getUrlPath(filePath);
+			expect(urlPath).not.toEqual(expect.stringContaining('packages/'));
+			expect(urlPath).not.toEqual(
+				expect.stringContaining(
+					'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com',
+				),
+			);
+		});
 
-// 		expect(urlPath).not.contain('packages/');
-// 		expect(urlPath).not.contain(
-// 			'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com',
-// 		);
-// 	});
+		When('filPath is a blog post the url should contain "/blog/posts"', () => {
+			const urlPath = getUrlPath(filePath);
 
-// 	test('url should contain "/blog/posts"', () => {
-// 		const urlPath = getUrlPath(filePath);
+			expect(urlPath.indexOf('/blog/posts')).toEqual(0);
+		});
+	});
+});
 
-// 		expect(urlPath).to.startWith('/blog/posts');
-// 	});
-// });
+Given('getBlogFiles', () => {
+	When('its called it returns list of relative paths', async () => {
+		const results = await getBlogFiles();
+		expect(results.length).toBeGreaterThan(0);
+	});
 
-// suite('getBlogFiles', () => {
-// 	before(async ({ context }) => {
-// 		context.results = await getBlogFiles();
-// 	});
+	When('result is blog frontmatter, it has required properties', async () => {
+		const results = await getBlogFiles();
 
-// 	test('that it returns list of relative paths', ({ context }) => {
-// 		expect(context.results.length).to.be.above(0);
-// 	});
+		results.forEach(result => {
+			const { description, title, url, date } = result as any;
+			expect(url).toBeDefined();
+			expect(title).toBeDefined();
+			expect(description).toBeDefined();
+			expect(date).toBeDefined();
+		});
+	});
+});
 
-// 	test('blog frontmatter is in result', ({ context }) => {
-// 		context.results.forEach(result => {
-// 			const { description, title, url, date } = result;
+Given('getBlogContents', () => {
+	['', 'the-GVDuMVROxCVNpgWy-file'].forEach(post => {
+		When(`empty ${post}, content is also empty`, async () => {
+			const result = await getBlogContents(post);
 
-// 			expect(url).to.exist();
-// 			expect(title, `given ${url}`).to.exist();
-// 			expect(description, `given ${title}`).to.exist();
-// 			expect(date, `given ${title}`).to.exist();
-// 		});
-// 	});
-// });
+			expect(result).toBeNull();
+		});
+	});
 
-// suite('getBlogContents', () => {
-// 	['', 'the-GVDuMVROxCVNpgWy-file'].forEach(post => {
-// 		test(`when empty ${post}, content is also empty`, async () => {
-// 			const result = await getBlogContents(post);
+	['graphql-eats-rest', 'i-like-jsonata'].forEach(post => {
+		When(`${post} is NOT empty, the content is found`, async () => {
+			const result = await getBlogContents(post);
+			if (!result) return;
+			const { title, content, date } = result;
+			const details = `given ${title}`;
+			const validDate = fecha.format(new Date(date), 'mediumDate');
 
-// 			expect(result, `given ${post}`).to.not.exist();
-// 		});
-// 	});
+			expect(date).toBeDefined();
+			expect(date).toEqual(validDate);
+			expect(content.length).toBeGreaterThan(1);
+		});
+	});
 
-// 	['graphql-eats-rest', 'i-like-jsonata'].forEach(post => {
-// 		test(`when ${post} is NOT empty, the content is found`, async () => {
-// 			const result = await getBlogContents(post);
-// 			if (!result) return;
-// 			const { title, content, date } = result;
-// 			const details = `given ${title}`;
-// 			const validDate = fecha.format(new Date(date), 'mediumDate');
+	When('markdown content is parsed it returns HTML', async () => {
+		expect.assertions(1);
 
-// 			expect(date, details).to.exist();
-// 			expect(date, details).to.equal(validDate);
-// 			expect(content, details).to.exist();
-// 		});
-// 	});
+		const result = await getBlogContents('i-like-jsonata');
+		const { content = '' } = result || {};
+		const isHTML = content.indexOf('</p>') > -1;
 
-// 	test('markdown content is parsed', async () => {
-// 		const result = await getBlogContents('i-like-jsonata');
-// 		if (!result) return;
-// 		const { content } = result;
-// 		const isHTML = content.indexOf('</p>') > -1;
-
-// 		expect(isHTML).to.be.true();
-// 	});
-// });
+		expect(isHTML).toBeTruthy();
+	});
+});

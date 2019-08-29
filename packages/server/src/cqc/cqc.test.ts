@@ -10,7 +10,7 @@
 
 // const server = Hapi.Server();
 
-// suite('cqc:', () => {
+// Given('cqc:', () => {
 // 	before(async ({ context }) => {
 // 		const client = Wreck.defaults({ baseUrl: '/' });
 // 		context.response = { body: 'Done' };
@@ -22,11 +22,11 @@
 // 		});
 // 	});
 
-// 	test('cqc providers request returns expected', async ({ context }) => {
+// 	When('cqc providers request returns expected', async ({ context }) => {
 // 		const { result } = await server.inject({
 // 			method: 'GET',
 // 			url: '/cqc/providers',
 // 		});
-// 		expect(result).to.equal(context.response.body);
+// 		expect(result).toEqual(context.response.body);
 // 	});
 // });

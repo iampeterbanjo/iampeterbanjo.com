@@ -11,36 +11,36 @@
 // const { test, suite } = lab;
 // const { MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
-// suite('Given model `connex` helper', () => {
-// 	suite('And `isTest` is true', () => {
-// 		test('dbName is correct', () => {
-// 			expect(connex.dbName(true)).to.equal('test');
+// Given('Given model `connex` helper', () => {
+// 	And(' `isTest` is true', () => {
+// 		When('dbName is correct', () => {
+// 			expect(connex.dbName(true)).toEqual('test');
 // 		});
 // 	});
 
-// 	suite('And `isTest` is false', () => {
-// 		test('dbName is correct', () => {
-// 			expect(connex.dbName()).to.equal(MONGODB_ADDON_DB);
+// 	And(' `isTest` is false', () => {
+// 		When('dbName is correct', () => {
+// 			expect(connex.dbName()).toEqual(MONGODB_ADDON_DB);
 // 		});
 // 	});
 
-// 	test('uri is correct', () => {
-// 		expect(connex.uri).to.equal(MONGODB_ADDON_URI);
+// 	When('uri is correct', () => {
+// 		expect(connex.uri).toEqual(MONGODB_ADDON_URI);
 // 	});
 
-// 	suite('And `connex.options`', () => {
+// 	And(' `connex.options`', () => {
 // 		const { options } = connex;
 
-// 		test('useNewUrlParser is true', () => {
-// 			expect(options.useNewUrlParser).to.equal(true);
+// 		When('useNewUrlParser is true', () => {
+// 			expect(options.useNewUrlParser).toEqual(true);
 // 		});
 
-// 		test('dbName is correct', () => {
-// 			expect(options.dbName).to.equal('test');
+// 		When('dbName is correct', () => {
+// 			expect(options.dbName).toEqual('test');
 // 		});
 
-// 		test('promise library is Bluebird', () => {
-// 			expect(options.promiseLibrary).to.equal(Bluebird);
+// 		When('promise library is Bluebird', () => {
+// 			expect(options.promiseLibrary).toEqual(Bluebird);
 // 		});
 // 	});
 // });

@@ -10,10 +10,10 @@
 // export const lab = Lab.script();
 // const { test, suite } = lab;
 
-// suite('Given pipeline helpers', () => {
-// 	suite('And checkTopTrack', () => {
-// 		suite('When topTrack is invalid', () => {
-// 			test('an error is thrown for an empty object', async () => {
+// Given('Given pipeline helpers', () => {
+// 	And(' checkTopTrack', () => {
+// 		Given('When topTrack is invalid', () => {
+// 			When('an error is thrown for an empty object', async () => {
 // 				const error = await expect(checkTopTrack({})).to.reject();
 
 // 				expect(error).to.be.an.error();
@@ -33,8 +33,8 @@
 // 			});
 // 		});
 
-// 		suite('When topTrack is valid', () => {
-// 			test('error is not thrown', async () => {
+// 		Given('When topTrack is valid', () => {
+// 			When('error is not thrown', async () => {
 // 				const [topTrack] = factory.topTrack(1);
 
 // 				await expect(checkTopTrack(topTrack)).not.to.reject();
@@ -42,15 +42,15 @@
 // 		});
 // 	});
 
-// 	suite('And checkRawTopTrack', () => {
-// 		suite('When rawTopTrack is invalid', () => {
-// 			test('an error is thrown for an empty object', async () => {
+// 	And(' checkRawTopTrack', () => {
+// 		Given('When rawTopTrack is invalid', () => {
+// 			When('an error is thrown for an empty object', async () => {
 // 				const error = await expect(checkRawTopTrack({})).to.reject();
 
 // 				expect(error).to.be.an.error();
 // 			});
 
-// 			test('an error is thrown for a partial object', async () => {
+// 			When('an error is thrown for a partial object', async () => {
 // 				const partial = {
 // 					name: '7 rings',
 // 					artist: {
@@ -87,8 +87,8 @@
 // 			});
 // 		});
 
-// 		suite('When topTrack is valid', () => {
-// 			test('error is not thrown', async () => {
+// 		Given('When topTrack is valid', () => {
+// 			When('error is not thrown', async () => {
 // 				const [topTrackRaw] = topTracksData.tracks.track;
 
 // 				await expect(checkRawTopTrack(topTrackRaw)).not.to.reject();

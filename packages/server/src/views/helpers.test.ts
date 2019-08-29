@@ -8,8 +8,8 @@
 // const { parseTopTracks } = helpers;
 // const topTracksData = require('../fixtures/lastfm-topTracks.json');
 
-// suite('Given View helpers:', () => {
-// 	test('When data is valid top tracks are parsed correctly', () => {
+// Given('Given View helpers:', () => {
+// 	When('When data is valid top tracks are parsed correctly', () => {
 // 		const [track] = parseTopTracks(topTracksData);
 // 		const { title, image, artist, url, profileUrl } = track;
 

@@ -33,8 +33,8 @@
 // 	return server;
 // };
 
-// suite('Given pipeline plugin', () => {
-// 	suite('And saved TopTracksRaw, transformTopTracks', () => {
+// Given('Given pipeline plugin', () => {
+// 	And(' saved TopTracksRaw, transformTopTracks', () => {
 // 		let server;
 
 // 		before(async () => {
@@ -59,8 +59,8 @@
 // 		});
 // 	});
 
-// 	suite('And saveRawTopTracks, models, korin plugins', () => {
-// 		suite('And valid API response', () => {
+// 	And(' saveRawTopTracks, models, korin plugins', () => {
+// 		And(' valid API response', () => {
 // 			let server;
 
 // 			before(async () => {
@@ -78,25 +78,25 @@
 // 				await databaseCleaner.clean(server.app.db.pipeline.link);
 // 			});
 
-// 			test('When raw top tracks are saved to db length is 50', async () => {
+// 			When('When raw top tracks are saved to db length is 50', async () => {
 // 				await server.methods.pipeline.saveRawTopTracks(server);
 
 // 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
-// 				expect(result.length).to.equal(50);
+// 				expect(result.length).toEqual(50);
 // 			});
 
-// 			test('When requesting API status code 200', async () => {
+// 			When('When requesting API status code 200', async () => {
 // 				const { method, url } = routes.v1.extract_top_tracks();
 // 				const response = await server.inject({
 // 					method,
 // 					url,
 // 				});
 
-// 				expect(response.statusCode).to.equal(200);
+// 				expect(response.statusCode).toEqual(200);
 // 			});
 // 		});
 
-// 		suite('And BAD API response', () => {
+// 		And(' BAD API response', () => {
 // 			let server;
 
 // 			before(async () => {
@@ -110,26 +110,26 @@
 // 				});
 // 			});
 
-// 			test('When there is no data an Error is thrown', async () => {
+// 			When('When there is no data an Error is thrown', async () => {
 // 				const { message } = await expect(
 // 					server.methods.pipeline.saveRawTopTracks(server),
 // 				).to.reject();
 
-// 				expect(message).to.equal('No tracks found');
+// 				expect(message).toEqual('No tracks found');
 // 			});
 
-// 			test('When there is an error no data is not saved', async () => {
+// 			When('When there is an error no data is not saved', async () => {
 // 				await expect(
 // 					server.methods.pipeline.saveRawTopTracks(server),
 // 				).to.reject();
 
 // 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
 
-// 				expect(result.length).to.equal(0);
+// 				expect(result.length).toEqual(0);
 // 			});
 // 		});
 
-// 		suite('And different API response', () => {
+// 		And(' different API response', () => {
 // 			let server;
 
 // 			before(async () => {
@@ -152,12 +152,12 @@
 // 				});
 // 			});
 
-// 			test('When the data is not valid a ValidationError is thrown', async () => {
+// 			When('When the data is not valid a ValidationError is thrown', async () => {
 // 				const error = await expect(
 // 					server.methods.pipeline.saveRawTopTracks(server),
 // 				).to.reject();
 
-// 				expect(error.name).to.equal('ValidationError');
+// 				expect(error.name).toEqual('ValidationError');
 // 			});
 // 		});
 // 	});

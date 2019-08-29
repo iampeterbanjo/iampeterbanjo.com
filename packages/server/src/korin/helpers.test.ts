@@ -20,7 +20,7 @@
 // const { suite, test, before, after, beforeEach, afterEach } = lab;
 // const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
 
-// suite('getChartTopTracks', () => {
+// Given('getChartTopTracks', () => {
 // 	beforeEach(async () => {
 // 		await nock(LASTFM_API_URL)
 // 			.get('/')
@@ -36,14 +36,14 @@
 // 		nock.cleanAll();
 // 	});
 
-// 	test('lastfm API request for top tracks', async () => {
+// 	When('lastfm API request for top tracks', async () => {
 // 		const result = await getChartTopTracks();
 
-// 		expect(result).to.equal(topTracksData);
+// 		expect(result).toEqual(topTracksData);
 // 	});
 // });
 
-// suite('getSongData', () => {
+// Given('getSongData', () => {
 // 	const q = 'Kendrick Lamar HUMBLE';
 
 // 	before(async () => {
@@ -57,53 +57,53 @@
 // 		nock.cleanAll();
 // 	});
 
-// 	test('genius API request for song data', async () => {
+// 	When('genius API request for song data', async () => {
 // 		const result = await getSongData(q);
 
-// 		expect(result).to.equal(songData);
+// 		expect(result).toEqual(songData);
 // 	});
 // });
 
-// suite('getSongId', async () => {
-// 	test('get expected songId', async () => {
+// Given('getSongId', async () => {
+// 	When('get expected songId', async () => {
 // 		const result = await getSongId(songData);
 
-// 		expect(result).to.equal(3039923);
+// 		expect(result).toEqual(3039923);
 // 	});
 
-// 	test('get undefined songId', async () => {
+// 	When('get undefined songId', async () => {
 // 		const result = await getSongId({});
 
-// 		expect(result).to.equal(undefined);
+// 		expect(result).toEqual(undefined);
 // 	});
 // });
 
-// suite('getSongInfo', async () => {
-// 	test('get expected id', async () => {
+// Given('getSongInfo', async () => {
+// 	When('get expected id', async () => {
 // 		const { id } = await getSongInfo(songData);
 
-// 		expect(id).to.equal(3039923);
+// 		expect(id).toEqual(3039923);
 // 	});
 
-// 	test('get expected thumbnail', async () => {
+// 	When('get expected thumbnail', async () => {
 // 		const { thumbnail } = await getSongInfo(songData);
 
-// 		expect(thumbnail).to.equal(
+// 		expect(thumbnail).toEqual(
 // 			'https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg',
 // 		);
 // 	});
 
-// 	test('get undefined songId', async () => {
+// 	When('get undefined songId', async () => {
 // 		const result = await getSongId({});
 
-// 		expect(result).to.equal(undefined);
+// 		expect(result).toEqual(undefined);
 // 	});
 // });
 
-// suite('getPersonalityProfile', () => {
-// 	test('when called with no lyrics', async () => {
+// Given('getPersonalityProfile', () => {
+// 	When('when called with no lyrics', async () => {
 // 		const { profile } = await getPersonalityProfile('');
 
-// 		expect(profile).to.equal(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
+// 		expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
 // 	});
 // });

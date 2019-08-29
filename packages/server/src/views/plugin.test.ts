@@ -50,65 +50,65 @@
 // 	return server;
 // };
 
-// suite('Given Berserker route', () => {
-// 	suite('And server', () => {
+// Given('Given Berserker route', () => {
+// 	And(' server', () => {
 // 		let server;
 
 // 		before(async () => {
 // 			server = await Server();
 // 		});
 
-// 		test('status is 200', async () => {
+// 		When('status is 200', async () => {
 // 			const { method, url } = routes.get_berserker();
 // 			const response = await server.inject({
 // 				method,
 // 				url,
 // 			});
 
-// 			expect(response.statusCode).to.equal(200);
+// 			expect(response.statusCode).toEqual(200);
 // 		});
 // 	});
 // });
 
-// suite('view blog', async () => {
+// Given('view blog', async () => {
 // 	let server;
 
 // 	before(async () => {
 // 		server = await Server();
 // 	});
 
-// 	test('requesting blog posts gives 200 status', async () => {
+// 	When('requesting blog posts gives 200 status', async () => {
 // 		const { method, url } = routes.get_blog_posts();
 // 		const response = await server.inject({
 // 			method,
 // 			url,
 // 		});
 
-// 		expect(response.statusCode).to.equal(200);
+// 		expect(response.statusCode).toEqual(200);
 // 	});
 
-// 	test('requesting blog posts gives 200 status', async () => {
+// 	When('requesting blog posts gives 200 status', async () => {
 // 		const { method, url } = routes.get_blog_details();
 // 		const response = await server.inject({
 // 			method,
 // 			url,
 // 		});
 
-// 		expect(response.statusCode).to.equal(200);
+// 		expect(response.statusCode).toEqual(200);
 // 	});
 
-// 	test('requesting home page gives 200 status', async () => {
+// 	When('requesting home page gives 200 status', async () => {
 // 		const { method, url } = routes.get_home();
 // 		const response = await server.inject({
 // 			method,
 // 			url,
 // 		});
 
-// 		expect(response.statusCode).to.equal(200);
+// 		expect(response.statusCode).toEqual(200);
 // 	});
 // });
 
-// suite('SEO', () => {
+// Given('SEO', () => {
 // 	before(async ({ context }) => {
 // 		const server = await Server();
 // 		const { method, url } = routes.get_home();
@@ -121,41 +121,41 @@
 // 		context.result = result;
 // 	});
 
-// 	test('HTML5 doctype', ({ context }) => {
+// 	When('HTML5 doctype', ({ context }) => {
 // 		expect(context.result).to.startWith('<!DOCTYPE html>');
 // 	});
 
-// 	test('title tag', ({ context }) => {
+// 	When('title tag', ({ context }) => {
 // 		const result = context.$('title').text();
-// 		expect(result).to.equal(data.title);
+// 		expect(result).toEqual(data.title);
 // 	});
 
-// 	test('meta charset', ({ context }) => {
+// 	When('meta charset', ({ context }) => {
 // 		const result = context.$('meta[charset="utf-8"]');
 // 		expect(result).to.exist();
 // 	});
 
-// 	test('meta viewport', ({ context }) => {
+// 	When('meta viewport', ({ context }) => {
 // 		const result = context.$('meta[name="viewport"]').attr('content');
 // 		expect(result).to.exist();
 // 	});
 
-// 	test('meta description', ({ context }) => {
+// 	When('meta description', ({ context }) => {
 // 		const result = context.$('meta[name="description"]').attr('content');
-// 		expect(result).to.equal(data.description);
+// 		expect(result).toEqual(data.description);
 // 	});
 
-// 	test('html language', ({ context }) => {
+// 	When('html language', ({ context }) => {
 // 		const result = context.$('html').attr('lang');
-// 		expect(result).to.equal('en');
+// 		expect(result).toEqual('en');
 // 	});
 
-// 	test('css in head element', ({ context }) => {
+// 	When('css in head element', ({ context }) => {
 // 		const result = context.$('head').has('[rel="stylesheet"]');
 // 		expect(result.length).to.greaterThan(0);
 // 	});
 
-// 	test('favicon link', ({ context }) => {
+// 	When('favicon link', ({ context }) => {
 // 		const result = context.$('[rel="icon"]').attr('href');
 // 		expect(result).to.exist();
 // 	});

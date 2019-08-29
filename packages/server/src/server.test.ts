@@ -11,40 +11,40 @@
 
 // const Server = async () => api();
 
-// suite('cache', () => {
+// Given('cache', () => {
 // 	before(async ({ context }) => {
 // 		const path = ['settings', 'cache', 0];
 // 		const server = await Server();
 // 		context.provisioned = R.path(path, server);
 // 	});
 
-// 	test('mongodb-cache is provisioned', async ({ context }) => {
+// 	When('mongodb-cache is provisioned', async ({ context }) => {
 // 		const { name } = context.provisioned;
 
-// 		expect(name).to.equal('mongodb-cache');
+// 		expect(name).toEqual('mongodb-cache');
 // 	});
 
-// 	test('mongodb-cache connection', ({ context }) => {
+// 	When('mongodb-cache connection', ({ context }) => {
 // 		const { uri, partition } = R.path(
 // 			['provider', 'options'],
 // 			context.provisioned,
 // 		);
 
-// 		expect(uri).to.equal(MONGODB_ADDON_URI);
-// 		expect(partition).to.equal(MONGODB_ADDON_DB);
+// 		expect(uri).toEqual(MONGODB_ADDON_URI);
+// 		expect(partition).toEqual(MONGODB_ADDON_DB);
 // 	});
 // });
 
-// suite('info', () => {
+// Given('info', () => {
 // 	before(async ({ context }) => {
 // 		context.server = await Server();
 // 	});
 
-// 	test('port value', ({ context }) => {
-// 		expect(context.server.info.port).to.equal(Number(PORT));
+// 	When('port value', ({ context }) => {
+// 		expect(context.server.info.port).toEqual(Number(PORT));
 // 	});
 
-// 	test('host value', ({ context }) => {
-// 		expect(context.server.info.host).to.equal('0.0.0.0');
+// 	When('host value', ({ context }) => {
+// 		expect(context.server.info.host).toEqual('0.0.0.0');
 // 	});
 // });

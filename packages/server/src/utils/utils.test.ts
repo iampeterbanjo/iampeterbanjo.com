@@ -7,8 +7,8 @@
 // const { suite, test } = lab;
 // const { time, getCache } = utils;
 
-// suite('getCache', () => {
-// 	test('default cache is expected', () => {
+// Given('getCache', () => {
+// 	When('default cache is expected', () => {
 // 		const defaultCache = {
 // 			expiresIn: time.oneDay,
 // 			staleIn: time.tenSeconds,
@@ -17,7 +17,7 @@
 // 			cache: 'mongodb-cache',
 // 		};
 
-// 		expect(defaultCache).to.equal(getCache());
+// 		expect(defaultCache).toEqual(getCache());
 // 	});
 
 // 	[

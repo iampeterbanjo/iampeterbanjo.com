@@ -7,11 +7,11 @@
 // const { suite, test } = lab;
 // const { slugger } = utils;
 
-// suite('Given Berserker routes', () => {
-// 	suite('And get_berserker', () => {
+// Given('Given Berserker routes', () => {
+// 	And(' get_berserker', () => {
 // 		const result = routes.get_berserker();
 
-// 		test('route properties', () => {
+// 		When('route properties', () => {
 // 			expect(result).to.include({
 // 				method: 'GET',
 // 				path: '/berserker',
@@ -21,8 +21,8 @@
 // 	});
 // });
 
-// suite('blog view', () => {
-// 	test('when viewing blog posts', () => {
+// Given('blog view', () => {
+// 	When('when viewing blog posts', () => {
 // 		const result = routes.get_blog_posts();
 
 // 		expect(result).to.include({
@@ -32,7 +32,7 @@
 // 		});
 // 	});
 
-// 	test('when viewing blog details', () => {
+// 	When('when viewing blog details', () => {
 // 		const post = 'the-problem-with-problems';
 // 		const result = routes.get_blog_details(post);
 
@@ -44,8 +44,8 @@
 // 	});
 // });
 
-// suite('korin views', () => {
-// 	test('when viewing tracks', () => {
+// Given('korin views', () => {
+// 	When('when viewing tracks', () => {
 // 		const hope = routes.get_korin_tracks();
 
 // 		expect(hope).to.include({
@@ -55,7 +55,7 @@
 // 		});
 // 	});
 
-// 	test('when viewing profiles', () => {
+// 	When('when viewing profiles', () => {
 // 		const artist = 'Ariana Grande';
 // 		const track = 'God is a woman';
 // 		const { method, path, url } = routes.get_korin_profiles({
@@ -63,14 +63,14 @@
 // 			track,
 // 		});
 
-// 		expect(method).to.equal('GET');
-// 		expect(path).to.equal('/projects/korin/profiles/{artist}/{track}');
+// 		expect(method).toEqual('GET');
+// 		expect(path).toEqual('/projects/korin/profiles/{artist}/{track}');
 // 		expect(url).to.include('/projects/korin/profiles/');
 // 		expect(url).to.include(slugger.parse(artist));
 // 		expect(url).to.include(slugger.parse(track));
 // 	});
 
-// 	test('when artist and track are missing', () => {
+// 	When('when artist and track are missing', () => {
 // 		const result = routes.get_korin_profiles();
 
 // 		expect(result).to.include({

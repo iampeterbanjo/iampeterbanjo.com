@@ -20,8 +20,8 @@
 // 	return server;
 // };
 
-// suite('https-here:', () => {
-// 	test('proxied http requests are redirected to https', async () => {
+// Given('https-here:', () => {
+// 	When('proxied http requests are redirected to https', async () => {
 // 		const res = await Server().inject({
 // 			method: 'GET',
 // 			url: '/',
@@ -30,22 +30,22 @@
 // 				'x-forwarded-proto': 'http',
 // 			},
 // 		});
-// 		expect(res.statusCode).to.equal(301);
-// 		expect(res.headers.location).to.equal('https://host/');
+// 		expect(res.statusCode).toEqual(301);
+// 		expect(res.headers.location).toEqual('https://host/');
 // 	});
 
-// 	test('un-proxied http requests are redirected to https', async () => {
+// 	When('un-proxied http requests are redirected to https', async () => {
 // 		const res = await Server({ proxy: false }).inject({
 // 			url: '/',
 // 			headers: {
 // 				host: 'host',
 // 			},
 // 		});
-// 		expect(res.statusCode).to.equal(301);
-// 		expect(res.headers.location).to.equal('https://host/');
+// 		expect(res.statusCode).toEqual(301);
+// 		expect(res.headers.location).toEqual('https://host/');
 // 	});
 
-// 	test('query string', async () => {
+// 	When('query string', async () => {
 // 		const res = await Server().inject({
 // 			url: '/?test=test&test2=test2',
 // 			headers: {
@@ -53,13 +53,13 @@
 // 				'x-forwarded-proto': 'http',
 // 			},
 // 		});
-// 		expect(res.statusCode).to.equal(301);
-// 		expect(res.headers.location).to.equal(
+// 		expect(res.statusCode).toEqual(301);
+// 		expect(res.headers.location).toEqual(
 // 			'https://host/?test=test&test2=test2',
 // 		);
 // 	});
 
-// 	test('ignores unmatched', async () => {
+// 	When('ignores unmatched', async () => {
 // 		const res = await Server().inject({
 // 			url: '/',
 // 			headers: {
@@ -67,11 +67,11 @@
 // 				'x-forwarded-proto': 'https',
 // 			},
 // 		});
-// 		expect(res.statusCode).to.equal(200);
-// 		expect(res.result).to.equal('Hello!');
+// 		expect(res.statusCode).toEqual(200);
+// 		expect(res.result).toEqual('Hello!');
 // 	});
 
-// 	test('x-forward-host support', async () => {
+// 	When('x-forward-host support', async () => {
 // 		const res = await Server().inject({
 // 			url: '/',
 // 			headers: {
@@ -80,7 +80,7 @@
 // 				'x-forwarded-host': 'host2',
 // 			},
 // 		});
-// 		expect(res.statusCode).to.equal(301);
-// 		expect(res.headers.location).to.equal('https://host2/');
+// 		expect(res.statusCode).toEqual(301);
+// 		expect(res.headers.location).toEqual('https://host2/');
 // 	});
 // });

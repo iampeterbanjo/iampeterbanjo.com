@@ -38,10 +38,10 @@
 // 	};
 // };
 
-// suite('rollbar helpers', () => {
-// 	suite('Given errorLogger', () => {
-// 		suite('And error message and rollbar instance', () => {
-// 			test('rollbar.error is called with error message', () => {
+// Given('rollbar helpers', () => {
+// 	Given('Given errorLogger', () => {
+// 		And(' error message and rollbar instance', () => {
+// 			When('rollbar.error is called with error message', () => {
 // 				const rollbar = MockRollbar();
 // 				const error = 'Ooops';
 // 				const callback = sinon.stub();
@@ -51,13 +51,13 @@
 // 				const [first, second, third] = rollbar.error.args[0];
 
 // 				expect(first).to.contain(`Error: ${error}`);
-// 				expect(second).to.equal(request);
-// 				expect(third).to.equal(callback);
+// 				expect(second).toEqual(request);
+// 				expect(third).toEqual(callback);
 // 			});
 // 		});
 
-// 		suite('And Error and rollbar instance', () => {
-// 			test('rollbar.error is called with Error', () => {
+// 		And(' Error and rollbar instance', () => {
+// 			When('rollbar.error is called with Error', () => {
 // 				const rollbar = MockRollbar();
 // 				const error = new Error('Oops');
 // 				const callback = sinon.stub();
@@ -66,16 +66,16 @@
 // 				errorLogger({ error, rollbar, callback, request });
 // 				const [first, second, third] = rollbar.error.args[0];
 
-// 				expect(first).to.equal(error);
-// 				expect(second).to.equal(request);
-// 				expect(third).to.equal(callback);
+// 				expect(first).toEqual(error);
+// 				expect(second).toEqual(request);
+// 				expect(third).toEqual(callback);
 // 			});
 // 		});
 // 	});
 
-// 	suite('Given rollbarErrorHandler', () => {
-// 		suite('And NO `rollbarError`', () => {
-// 			test('rollbar.log is NOT called', () => {
+// 	Given('Given rollbarErrorHandler', () => {
+// 		And(' NO `rollbarError`', () => {
+// 			When('rollbar.log is NOT called', () => {
 // 				const rollbar = MockRollbar();
 // 				const error = null;
 // 				rollbarErrorHandler(error, rollbar);
@@ -84,8 +84,8 @@
 // 			});
 // 		});
 
-// 		suite('And `rollbarError`', () => {
-// 			test('rollbar.log is called', () => {
+// 		And(' `rollbarError`', () => {
+// 			When('rollbar.log is called', () => {
 // 				const rollbar = MockRollbar();
 // 				const error = 'Oops';
 // 				rollbarErrorHandler(error, rollbar);
@@ -93,7 +93,7 @@
 // 				expect(rollbar.log.called).to.be.true();
 // 			});
 
-// 			test('rollbar.log called correctly', () => {
+// 			When('rollbar.log called correctly', () => {
 // 				const rollbar = MockRollbar();
 // 				const error = 'Oops';
 // 				rollbarErrorHandler(error, rollbar);
@@ -107,9 +107,9 @@
 // 		});
 // 	});
 
-// 	suite('Given preResponse and rollbar', () => {
-// 		suite('And `response.request.isBoom` is false', () => {
-// 			test('rollbar.error is NOT called', () => {
+// 	Given('Given preResponse and rollbar', () => {
+// 		And(' `response.request.isBoom` is false', () => {
+// 			When('rollbar.error is NOT called', () => {
 // 				const rollbar = MockRollbar();
 // 				const { request, h } = MockParams();
 
@@ -119,8 +119,8 @@
 // 			});
 // 		});
 
-// 		suite('And `response.request.isBoom` is true', () => {
-// 			test('rollbar.error is called', () => {
+// 		And(' `response.request.isBoom` is true', () => {
+// 			When('rollbar.error is called', () => {
 // 				const rollbar = MockRollbar();
 // 				const { request, h } = MockParams();
 // 				request.response.isBoom = true;

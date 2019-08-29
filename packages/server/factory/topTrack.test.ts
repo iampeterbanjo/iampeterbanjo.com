@@ -1,4 +1,3 @@
-import Lab from '@hapi/lab';
 import factory, { makeBdd } from '.';
 
 const { Given, And, When } = makeBdd({ describe, it });

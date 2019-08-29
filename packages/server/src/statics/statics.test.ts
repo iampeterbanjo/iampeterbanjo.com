@@ -20,8 +20,8 @@
 // 	await server.register(Inert);
 // });
 
-// suite('statics', () => {
-// 	test('/ rootPath is served', async () => {
+// Given('statics', () => {
+// 	When('/ rootPath is served', async () => {
 // 		await server.register({
 // 			plugin,
 // 			options: { rootPath, cssPath, jsPath, imagePath },
@@ -31,6 +31,6 @@
 // 			url: '/',
 // 		});
 
-// 		expect(res.statusCode).to.equal(200);
+// 		expect(res.statusCode).toEqual(200);
 // 	});
 // });

@@ -7,8 +7,8 @@
 // const { test, suite } = lab;
 // const { slugger } = utils;
 
-// suite('routes: korin api', () => {
-// 	test('when requesting tracks', () => {
+// Given('routes: korin api', () => {
+// 	When('when requesting tracks', () => {
 // 		const result = routes.v1.get_korin_tracks();
 
 // 		// @ts-ignore
@@ -19,7 +19,7 @@
 // 		});
 // 	});
 
-// 	test('when requesting artist profile', () => {
+// 	When('when requesting artist profile', () => {
 // 		const artist = 'Sofia Reyes';
 // 		const track = 'R.I.P';
 // 		const result = routes.v1.get_korin_profiles({ artist, track });
@@ -34,7 +34,7 @@
 // 		});
 // 	});
 
-// 	test('when requesting artist profile method and path', () => {
+// 	When('when requesting artist profile method and path', () => {
 // 		const result = routes.v1.get_korin_profiles();
 
 // 		// @ts-ignore

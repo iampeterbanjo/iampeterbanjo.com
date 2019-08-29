@@ -7,7 +7,7 @@
 // const { slugger } = utils;
 // const { test, suite } = lab;
 
-// suite('parsing and reversing', () => {
+// Given('parsing and reversing', () => {
 // 	[
 // 		{
 // 			text: 'Ariana Grande',
@@ -17,8 +17,8 @@
 // 		test(`that ${text} should return ${parsed} and can be unparsed`, () => {
 // 			const result = slugger.parse(text);
 
-// 			expect(result).to.equal(parsed);
-// 			expect(slugger.unparse(result)).to.equal(text);
+// 			expect(result).toEqual(parsed);
+// 			expect(slugger.unparse(result)).toEqual(text);
 // 		});
 // 	});
 // });

@@ -11,7 +11,7 @@
 // 	server = await api();
 // });
 
-// suite('korin API', () => {
+// Given('korin API', () => {
 // 	['getProfileByArtistAndTrack', 'getChartTopTracks'].forEach(name => {
 // 		test(`method ${name} is registered`, () => {
 // 			const result = server.methods.korin[name];
@@ -21,7 +21,7 @@
 // 	});
 // });
 
-// suite('blog API', () => {
+// Given('blog API', () => {
 // 	['getBlogContents', 'getBlogFiles'].forEach(name => {
 // 		test(`method ${name} is registered`, () => {
 // 			const result = server.methods.blog[name];
@@ -31,7 +31,7 @@
 // 	});
 // });
 
-// suite('view API', () => {
+// Given('view API', () => {
 // 	['topTracks', 'trackProfile'].forEach(name => {
 // 		test(`method ${name} is registered`, () => {
 // 			const result = server.methods.view[name];
