@@ -1,41 +1,37 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
+import utils from '.';
+import { makeBdd } from '../../factory';
 
-// import utils from '../utils';
+const { Given, When } = makeBdd({ describe, it });
+const { time, getCache } = utils;
 
-// export const lab = Lab.script();
-// const { suite, test } = lab;
-// const { time, getCache } = utils;
+Given('getCache', () => {
+	When('its called the default cache is expected', () => {
+		const defaultCache = {
+			expiresIn: time.oneDay,
+			staleIn: time.tenSeconds,
+			staleTimeout: time.oneHundredMilliseconds,
+			generateTimeout: time.oneMinute,
+			cache: 'mongodb-cache',
+		};
 
-// Given('getCache', () => {
-// 	When('default cache is expected', () => {
-// 		const defaultCache = {
-// 			expiresIn: time.oneDay,
-// 			staleIn: time.tenSeconds,
-// 			staleTimeout: time.oneHundredMilliseconds,
-// 			generateTimeout: time.oneMinute,
-// 			cache: 'mongodb-cache',
-// 		};
+		expect(defaultCache).toEqual(getCache());
+	});
 
-// 		expect(defaultCache).toEqual(getCache());
-// 	});
+	[
+		{
+			expiresIn: 100,
+		},
+		{
+			staleIn: 0,
+		},
+		{
+			cache: 'random',
+		},
+	].forEach(options => {
+		When(`cache is called with ${options} the cache contains them `, () => {
+			const cache = getCache(options);
 
-// 	[
-// 		{
-// 			expiresIn: 100,
-// 		},
-// 		{
-// 			staleIn: 0,
-// 		},
-// 		{
-// 			cache: 'random',
-// 		},
-// 	].forEach(options => {
-// 		test(`cache is correct with ${options} options `, () => {
-// 			const cache = getCache(options);
-
-// 			// @ts-ignore
-// 			expect(cache).to.include(options);
-// 		});
-// 	});
-// });
+			expect(cache).toEqual(expect.objectContaining(options));
+		});
+	});
+});
