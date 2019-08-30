@@ -7,6 +7,7 @@
 function bdd(callback, prefix: string) {
 	return function(description: string, handler: () => void | Promise<void>) {
 		callback(`${prefix} ${description}`, handler);
+		return callback;
 	};
 }
 

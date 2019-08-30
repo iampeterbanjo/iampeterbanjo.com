@@ -1,109 +1,117 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import nock from 'nock';
-// import utils from '../../utils';
-// import helpers from '../../korin/helpers';
+import nock from 'nock';
 
-// export const lab = Lab.script();
-// const { vars, message } = utils;
-// const {
-// 	getChartTopTracks,
-// 	getSongData,
-// 	getPersonalityProfile,
-// 	getSongId,
-// 	getSongInfo,
-// } = helpers;
+import utils from '../../src/utils';
+import helpers from '../../src/korin/helpers';
+import { makeBdd } from '../../factory';
 
-// const topTracksData = require('../fixtures/lastfm-topTracks.json');
-// const songData = require('../fixtures/genius-search.json');
+const topTracksData = require('../../fixtures/lastfm-topTracks.json');
+const songData = require('../../fixtures/genius-search.json');
 
-// const { suite, test, before, after, beforeEach, afterEach } = lab;
-// const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
+const { Given, When } = makeBdd({ describe, it });
+const { vars, message } = utils;
+const {
+	getChartTopTracks,
+	getSongData,
+	getPersonalityProfile,
+	getSongId,
+	getSongInfo,
+} = helpers;
 
-// Given('getChartTopTracks', () => {
-// 	beforeEach(async () => {
-// 		await nock(LASTFM_API_URL)
-// 			.get('/')
-// 			.query({
-// 				method: 'chart.getTopTracks',
-// 				format: 'json',
-// 				api_key: LASTFM_API_KEY,
-// 			})
-// 			.reply(200, topTracksData);
-// 	});
+const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
 
-// 	afterEach(() => {
-// 		nock.cleanAll();
-// 	});
+Given('getChartTopTracks', () => {
+	beforeEach(async () => {
+		await nock(LASTFM_API_URL)
+			.get('/')
+			.query({
+				method: 'chart.getTopTracks',
+				format: 'json',
+				api_key: LASTFM_API_KEY,
+			})
+			.reply(200, topTracksData);
+	});
 
-// 	When('lastfm API request for top tracks', async () => {
-// 		const result = await getChartTopTracks();
+	afterEach(() => {
+		nock.cleanAll();
+	});
 
-// 		expect(result).toEqual(topTracksData);
-// 	});
-// });
+	When(
+		'lastfm API request for top tracks the response should be correct',
+		async () => {
+			const result = await getChartTopTracks();
 
-// Given('getSongData', () => {
-// 	const q = 'Kendrick Lamar HUMBLE';
+			expect(result).toEqual(topTracksData);
+		},
+	);
+});
 
-// 	before(async () => {
-// 		await nock(GENIUS_API_URL)
-// 			.get('/search')
-// 			.query({ q })
-// 			.reply(200, songData);
-// 	});
+Given('getSongData', () => {
+	const q = 'Kendrick Lamar HUMBLE';
 
-// 	after(() => {
-// 		nock.cleanAll();
-// 	});
+	beforeEach(async () => {
+		await nock(GENIUS_API_URL)
+			.get('/search')
+			.query({ q })
+			.reply(200, songData);
+	});
 
-// 	When('genius API request for song data', async () => {
-// 		const result = await getSongData(q);
+	afterEach(() => {
+		nock.cleanAll();
+	});
 
-// 		expect(result).toEqual(songData);
-// 	});
-// });
+	When(
+		'genius API request for song data the response should be correct',
+		async () => {
+			const result = await getSongData(q);
 
-// Given('getSongId', async () => {
-// 	When('get expected songId', async () => {
-// 		const result = await getSongId(songData);
+			expect(result).toEqual(songData);
+		},
+	);
+});
 
-// 		expect(result).toEqual(3039923);
-// 	});
+Given('getSongId', () => {
+	When('parsing songData the correct songId is returned', async () => {
+		const result = await getSongId(songData);
 
-// 	When('get undefined songId', async () => {
-// 		const result = await getSongId({});
+		expect(result).toEqual(3039923);
+	});
 
-// 		expect(result).toEqual(undefined);
-// 	});
-// });
+	When('parsing invalid songData the songId is undefined', async () => {
+		const result = await getSongId({});
 
-// Given('getSongInfo', async () => {
-// 	When('get expected id', async () => {
-// 		const { id } = await getSongInfo(songData);
+		expect(result).toEqual(undefined);
+	});
+});
 
-// 		expect(id).toEqual(3039923);
-// 	});
+Given('getSongInfo', () => {
+	When('parsing songData the id is correct', async () => {
+		const { id } = await getSongInfo(songData);
 
-// 	When('get expected thumbnail', async () => {
-// 		const { thumbnail } = await getSongInfo(songData);
+		expect(id).toEqual(3039923);
+	});
 
-// 		expect(thumbnail).toEqual(
-// 			'https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg',
-// 		);
-// 	});
+	When('parsing songData get the expected thumbnail', async () => {
+		const { thumbnail } = await getSongInfo(songData);
 
-// 	When('get undefined songId', async () => {
-// 		const result = await getSongId({});
+		expect(thumbnail).toEqual(
+			'https://images.genius.com/4387b0bcc88e07676997ba73793cc73c.300x300x1.jpg',
+		);
+	});
 
-// 		expect(result).toEqual(undefined);
-// 	});
-// });
+	When('parsing invalid songData the songId is undefined', async () => {
+		const result = await getSongId({});
 
-// Given('getPersonalityProfile', () => {
-// 	When('when called with no lyrics', async () => {
-// 		const { profile } = await getPersonalityProfile('');
+		expect(result).toEqual(undefined);
+	});
+});
 
-// 		expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
-// 	});
-// });
+Given('getPersonalityProfile', () => {
+	When(
+		'called with no lyrics, the correct error message is returned',
+		async () => {
+			const { profile } = await getPersonalityProfile('');
+
+			expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
+		},
+	);
+});

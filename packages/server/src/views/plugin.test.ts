@@ -2,7 +2,6 @@
 // import Lab from '@hapi/lab';
 // import { expect } from '@hapi/code';
 // import Vision from '@hapi/vision';
-// import sinon from 'sinon';
 // import cheerio from 'cheerio';
 
 // import plugin from '../../views/plugin';
@@ -29,11 +28,11 @@
 // const methods = [
 // 	{
 // 		name: 'view.blogContent',
-// 		method: sinon.stub().resolves({ content: 42 }),
+// 		method: jest.fn().mockResolvedValue({ content: 42 }),
 // 	},
 // 	{
 // 		name: 'view.blogList',
-// 		method: sinon.stub().resolves(posts),
+// 		method: jest.fn().mockResolvedValue(posts),
 // 	},
 // ];
 // const Server = async () => {

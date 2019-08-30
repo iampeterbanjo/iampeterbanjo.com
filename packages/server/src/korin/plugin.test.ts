@@ -1,36 +1,32 @@
-// import Hapi from '@hapi/hapi';
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import sinon from 'sinon';
+import Hapi from '@hapi/hapi';
 
-// import factory from '../factory';
-// import plugin from '../../korin/plugin';
-// import routes from '../../korin/routes';
+import plugin from '../../src/korin/plugin';
+import routes from '../../src/korin/routes';
+import factory, { makeBdd } from '../../factory';
 
-// export const lab = Lab.script();
+import topTracksData from '../../fixtures/lastfm-topTracks.json';
+const { Given, When } = makeBdd({ describe, it });
 
-// const topTracksData = require('../fixtures/lastfm-topTracks.json');
-// const { suite, test, before } = lab;
-// const server = Hapi.Server();
+const server = Hapi.Server();
 
-// Given('korin tracks API', async () => {
-// 	before(async () => {
-// 		await factory.mock.method({
-// 			server,
-// 			name: 'korin.getChartTopTracks',
-// 			plugin,
-// 			fn: sinon.stub().resolves(topTracksData),
-// 		});
-// 	});
+Given('korin tracks API', () => {
+	beforeEach(async () => {
+		await factory.mock.method({
+			server,
+			name: 'korin.getChartTopTracks',
+			plugin,
+			fn: jest.fn().mockResolvedValue(topTracksData),
+		});
+	});
 
-// 	When('requesting korin tracks gives expected results', async () => {
-// 		const { method, url } = routes.v1.get_korin_tracks();
+	When('requesting korin tracks the status code is 200', async () => {
+		const { method, url } = routes.v1.get_korin_tracks();
 
-// 		const response = await server.inject({
-// 			method,
-// 			url,
-// 		});
+		const response = await server.inject({
+			method,
+			url,
+		});
 
-// 		expect(response.statusCode).toEqual(200);
-// 	});
-// });
+		expect(response.statusCode).toEqual(200);
+	});
+});

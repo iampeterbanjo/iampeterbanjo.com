@@ -1,5 +1,4 @@
 import Hapi from '@hapi/hapi';
-import sinon from 'sinon';
 
 import utils from '../utils';
 import routes from './routes';
@@ -19,7 +18,7 @@ Given('getBlogFiles', () => {
 
 	When('get posts route gets markdown files', async () => {
 		const files = ['that.md', 'this.md'];
-		const getBlogFiles = sinon.stub().resolves(files);
+		const getBlogFiles = jest.fn().mockResolvedValue(files);
 		const stubMethods = [{ name: 'blog.getBlogFiles', method: getBlogFiles }];
 
 		await server.register({
@@ -47,7 +46,7 @@ Given('getBlogContents', () => {
 	When(
 		'a request is made the API returns 404 for an unknown file',
 		async () => {
-			const getBlogContents = sinon.stub().resolves('');
+			const getBlogContents = jest.fn().mockResolvedValue('');
 			const stubMethods = [
 				{ name: 'blog.getBlogContents', method: getBlogContents },
 			];
@@ -78,7 +77,7 @@ Given('getBlogContents', () => {
 		async () => {
 			const filename = 'the-ok-gatsby';
 			const contents = 'its a wonderful world';
-			const getBlogContents = sinon.stub().resolves(contents);
+			const getBlogContents = jest.fn().mockResolvedValue(contents);
 			const stubMethods = [
 				{ name: 'blog.getBlogContents', method: getBlogContents },
 			];

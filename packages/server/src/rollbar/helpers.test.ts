@@ -1,6 +1,5 @@
 // import { expect } from '@hapi/code';
 // import Lab from '@hapi/lab';
-// import sinon from 'sinon';
 
 // import * as helpers from '../../rollbar/helpers';
 // const { preResponse, rollbarErrorHandler, errorLogger } = helpers;

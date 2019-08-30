@@ -1,113 +1,107 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import Hapi from '@hapi/hapi';
-// import DatabaseCleaner from 'database-cleaner';
+import Hapi from '@hapi/hapi';
+import DatabaseCleaner from 'database-cleaner';
 
-// import plugin from '../../models/plugin';
-// import utils from '../../utils';
-// import factory from '../factory';
+import plugin from '../../src/models/plugin';
+import utils from '../../src/utils';
+import factory, { makeBdd } from '../../factory';
 
-// export const lab = Lab.script();
+const { Given, And, When } = makeBdd({ describe, it });
+const databaseCleaner = new DatabaseCleaner('mongodb');
+const { slugger } = utils;
+const [fakeProfile] = factory.profile(1);
+const [fakeTopTrack] = factory.topTrack(1);
 
-// const databaseCleaner = new DatabaseCleaner('mongodb');
-// const { test, suite, after, before } = lab;
-// const { slugger } = utils;
-// const [fakeProfile] = factory.profile(1);
-// const [fakeTopTrack] = factory.topTrack(1);
+const Server = async () => {
+	const server = Hapi.Server();
 
-// const Server = async () => {
-// 	const server = Hapi.Server();
+	await server.register({
+		plugin,
+	});
 
-// 	await server.register({
-// 		plugin,
-// 	});
+	return server;
+};
 
-// 	return server;
-// };
+Given('Given models plugin', () => {
+	And(' registered plugin', () => {
+		let server;
 
-// Given('Given models plugin', () => {
-// 	And(' registered plugin', () => {
-// 		let server;
+		beforeEach(async () => {
+			server = await Server();
+		});
 
-// 		before(async () => {
-// 			server = await Server();
-// 		});
+		afterEach(async () => {
+			await databaseCleaner.clean(server.app.db.korin.link);
+		});
 
-// 		after(async () => {
-// 			await databaseCleaner.clean(server.app.db.korin.link);
-// 		});
+		And(' korin app', () => {
+			When('server.app.db.korin has link', () => {
+				expect(server.app.db.korin.link).toBeDefined();
+			});
 
-// 		And(' korin app', () => {
-// 			When('server.app.db.korin has link', () => {
-// 				expect(server.app.db.korin.link).to.exist();
-// 			});
+			['TopTrack', 'Profile'].forEach(model => {
+				test(`server.app.db.korin has ${model}`, () => {
+					expect(server.app.db.korin[model].modelName).toEqual(model);
+				});
+			});
 
-// 			['TopTrack', 'Profile'].forEach(model => {
-// 				test(`server.app.db.korin has ${model}`, () => {
-// 					expect(server.app.db.korin[model].modelName).toEqual(model);
-// 				});
-// 			});
+			And(' TopTrack model', () => {
+				let topTrack;
 
-// 			And(' TopTrack model', () => {
-// 				let topTrack;
-// 				before(() => {
-// 					topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
-// 				});
+				beforeEach(() => {
+					topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
+				});
 
-// 				When('it can be saved', async () => {
-// 					expect(topTrack.profileUrl).not.to.exist();
+				When('it can be saved', async () => {
+					expect(topTrack.profileUrl).not.toBeDefined();
 
-// 					const result = await topTrack.save();
-// 					const expected = slugger.slugify(
-// 						`${topTrack.artist} ${topTrack.title}`,
-// 					);
+					const result = await topTrack.save();
+					const expected = slugger.slugify(
+						`${topTrack.artist} ${topTrack.title}`,
+					);
 
-// 					expect(result._id).to.exist();
-// 					expect(result.profileUrl).toEqual(expected);
-// 				});
+					expect(result._id).toBeDefined();
+					expect(result.profileUrl).toEqual(expected);
+				});
 
-// 				When('it can be found', async () => {
-// 					const track = await server.app.db.korin.TopTrack.findOne({
-// 						title: fakeTopTrack.title,
-// 					});
+				When('it can be found', async () => {
+					const track = await server.app.db.korin.TopTrack.findOne({
+						title: fakeTopTrack.title,
+					});
 
-// 					expect(track.artist).toEqual(fakeTopTrack.artist);
-// 					expect(track._id).to.exist();
-// 				});
-// 			});
+					expect(track.artist).toEqual(fakeTopTrack.artist);
+					expect(track._id).toBeDefined();
+				});
+			});
 
-// 			And(' Profile model', () => {
-// 				before(({ context }) => {
-// 					context.profile = new server.app.db.korin.Profile(fakeProfile);
-// 				});
+			And(' Profile model', () => {
+				When('it can be saved', async () => {
+					const profile = new server.app.db.korin.Profile(fakeProfile);
+					const result = await profile.save();
 
-// 				When('it can be saved', async ({ context }) => {
-// 					const result = await context.profile.save();
+					expect(result._id).toBeDefined();
+				});
 
-// 					expect(result._id).to.exist();
-// 				});
+				When('it can be found', async () => {
+					const track = await server.app.db.korin.Profile.findOne({
+						title: fakeProfile.title,
+					});
 
-// 				When('it can be found', async () => {
-// 					const track = await server.app.db.korin.Profile.findOne({
-// 						title: fakeProfile.title,
-// 					});
+					expect(track.artist).toEqual(fakeProfile.artist);
+					expect(track._id).toBeDefined();
+				});
+			});
+		});
 
-// 					expect(track.artist).toEqual(fakeProfile.artist);
-// 					expect(track._id).to.exist();
-// 				});
-// 			});
-// 		});
+		And(' pipeline app', () => {
+			When('server.app.db.pipeline has link', () => {
+				expect(server.app.db.pipeline.link).toBeDefined();
+			});
 
-// 		And(' pipeline app', () => {
-// 			When('server.app.db.pipeline has link', () => {
-// 				expect(server.app.db.pipeline.link).to.exist();
-// 			});
-
-// 			['TopTracksRaw'].forEach(model => {
-// 				test(`server.app.db.pipeline has ${model}`, () => {
-// 					expect(server.app.db.pipeline[model].modelName).toEqual(model);
-// 				});
-// 			});
-// 		});
-// 	});
-// });
+			['TopTracksRaw'].forEach(model => {
+				test(`server.app.db.pipeline has ${model}`, () => {
+					expect(server.app.db.pipeline[model].modelName).toEqual(model);
+				});
+			});
+		});
+	});
+});

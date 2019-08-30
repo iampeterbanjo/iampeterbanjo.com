@@ -44,7 +44,7 @@
 // 				server,
 // 				name: 'korin.getChartTopTracks',
 // 				plugin: korinPlugin,
-// 				fn: sinon.stub().resolves(topTracksData),
+// 				fn: jest.fn().mockResolvedValue(topTracksData),
 // 			});
 
 // 			await server.methods.pipeline.saveRawTopTracks(server);
@@ -70,7 +70,7 @@
 // 					server,
 // 					name: 'korin.getChartTopTracks',
 // 					plugin: korinPlugin,
-// 					fn: sinon.stub().resolves(topTracksData),
+// 					fn: jest.fn().mockResolvedValue(topTracksData),
 // 				});
 // 			});
 
@@ -106,7 +106,7 @@
 // 					server,
 // 					name: 'korin.getChartTopTracks',
 // 					plugin: korinPlugin,
-// 					fn: sinon.stub().resolves('BAD'),
+// 					fn: jest.fn().mockResolvedValue('BAD'),
 // 				});
 // 			});
 
@@ -148,7 +148,7 @@
 // 					server,
 // 					name: 'korin.getChartTopTracks',
 // 					plugin: korinPlugin,
-// 					fn: sinon.stub().resolves(different),
+// 					fn: jest.fn().mockResolvedValue(different),
 // 				});
 // 			});
 

@@ -1,46 +1,47 @@
-// import { expect } from '@hapi/code';
-// import Lab from '@hapi/lab';
-// import utils from '../../utils';
-// import routes from '../../korin/routes';
+import utils from '../../src/utils';
+import routes from '../../src/korin/routes';
+import { makeBdd } from '../../factory';
 
-// export const lab = Lab.script();
-// const { test, suite } = lab;
-// const { slugger } = utils;
+const { Given, When } = makeBdd({ describe, it });
+const { slugger } = utils;
 
-// Given('routes: korin api', () => {
-// 	When('when requesting tracks', () => {
-// 		const result = routes.v1.get_korin_tracks();
+Given('routes: korin api', () => {
+	When('requesting tracks the route details are correct', () => {
+		const result = routes.v1.get_korin_tracks();
 
-// 		// @ts-ignore
-// 		expect(result).to.include({
-// 			method: 'GET',
-// 			path: '/v1/korin/tracks',
-// 			url: '/v1/korin/tracks',
-// 		});
-// 	});
+		expect(result).toEqual(
+			expect.objectContaining({
+				method: 'GET',
+				path: '/v1/korin/tracks',
+				url: '/v1/korin/tracks',
+			}),
+		);
+	});
 
-// 	When('when requesting artist profile', () => {
-// 		const artist = 'Sofia Reyes';
-// 		const track = 'R.I.P';
-// 		const result = routes.v1.get_korin_profiles({ artist, track });
-// 		const artistParam = slugger.parse(artist);
-// 		const trackParam = slugger.parse(track);
+	When('requesting artist profile the route details are correct', () => {
+		const artist = 'Sofia Reyes';
+		const track = 'R.I.P';
+		const result = routes.v1.get_korin_profiles({ artist, track });
+		const artistParam = slugger.parse(artist);
+		const trackParam = slugger.parse(track);
 
-// 		// @ts-ignore
-// 		expect(result).to.include({
-// 			method: 'GET',
-// 			path: '/v1/korin/{artist}/{track}',
-// 			url: `/v1/korin/${artistParam}/${trackParam}`,
-// 		});
-// 	});
+		expect(result).toEqual(
+			expect.objectContaining({
+				method: 'GET',
+				path: '/v1/korin/{artist}/{track}',
+				url: `/v1/korin/${artistParam}/${trackParam}`,
+			}),
+		);
+	});
 
-// 	When('when requesting artist profile method and path', () => {
-// 		const result = routes.v1.get_korin_profiles();
+	When('when requesting artist profile the method and path are correct', () => {
+		const result = routes.v1.get_korin_profiles();
 
-// 		// @ts-ignore
-// 		expect(result).to.include({
-// 			method: 'GET',
-// 			path: '/v1/korin/{artist}/{track}',
-// 		});
-// 	});
-// });
+		expect(result).toEqual(
+			expect.objectContaining({
+				method: 'GET',
+				path: '/v1/korin/{artist}/{track}',
+			}),
+		);
+	});
+});
