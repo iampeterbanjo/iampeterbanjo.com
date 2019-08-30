@@ -10,34 +10,34 @@ const { connex } = helpers;
 const { MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
 Given('Given model `connex` helper', () => {
-	And(' `isTest` is true', () => {
-		When('dbName is correct', () => {
+	And('`isTest` is true', () => {
+		When('connected dbName is correct', () => {
 			expect(connex.dbName(true)).toEqual('test');
 		});
 	});
 
-	And(' `isTest` is false', () => {
-		When('dbName is correct', () => {
+	And('`isTest` is false', () => {
+		When('connected dbName is correct', () => {
 			expect(connex.dbName()).toEqual(MONGODB_ADDON_DB);
 		});
 	});
 
-	When('uri is correct', () => {
+	When('connected uri is correct', () => {
 		expect(connex.uri).toEqual(MONGODB_ADDON_URI);
 	});
 
-	And(' `connex.options`', () => {
+	And('`connex.options`', () => {
 		const { options } = connex;
 
-		When('useNewUrlParser is true', () => {
+		When('set useNewUrlParser is true', () => {
 			expect(options.useNewUrlParser).toEqual(true);
 		});
 
-		When('dbName is correct', () => {
+		When('set dbName is correct', () => {
 			expect(options.dbName).toEqual('test');
 		});
 
-		When('promise library is Bluebird', () => {
+		When('set promise library is Bluebird', () => {
 			expect(options.promiseLibrary).toEqual(Bluebird);
 		});
 	});

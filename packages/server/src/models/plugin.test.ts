@@ -13,57 +13,57 @@ const [fakeTopTrack] = factory.topTrack(1);
 
 const Server = async () => {
 	const server = Hapi.Server();
-
-	await server.register({
-		plugin,
-	});
+	await server.register({ plugin });
 
 	return server;
 };
 
 Given('Given models plugin', () => {
-	And(' registered plugin', () => {
+	And('registered plugin', () => {
 		let server;
 
-		beforeEach(async () => {
+		beforeAll(async () => {
 			server = await Server();
 		});
 
-		afterEach(async () => {
+		afterAll(async () => {
 			await databaseCleaner.clean(server.app.db.korin.link);
 		});
 
-		And(' korin app', () => {
-			When('server.app.db.korin has link', () => {
+		And('korin app', () => {
+			When('server.app.db.korin has link it is defined', () => {
 				expect(server.app.db.korin.link).toBeDefined();
 			});
 
 			['TopTrack', 'Profile'].forEach(model => {
-				test(`server.app.db.korin has ${model}`, () => {
+				When(`server.app.db.korin has ${model} equal to modelName`, () => {
 					expect(server.app.db.korin[model].modelName).toEqual(model);
 				});
 			});
 
-			And(' TopTrack model', () => {
+			And('TopTrack model', () => {
 				let topTrack;
 
 				beforeEach(() => {
 					topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
 				});
 
-				When('it can be saved', async () => {
-					expect(topTrack.profileUrl).not.toBeDefined();
+				When(
+					'its saved the _id is defined and profileUrl is correct',
+					async () => {
+						expect(topTrack.profileUrl).not.toBeDefined();
 
-					const result = await topTrack.save();
-					const expected = slugger.slugify(
-						`${topTrack.artist} ${topTrack.title}`,
-					);
+						const result = await topTrack.save();
+						const expected = slugger.slugify(
+							`${topTrack.artist} ${topTrack.title}`,
+						);
 
-					expect(result._id).toBeDefined();
-					expect(result.profileUrl).toEqual(expected);
-				});
+						expect(result._id).toBeDefined();
+						expect(result.profileUrl).toEqual(expected);
+					},
+				);
 
-				When('it can be found', async () => {
+				When('its found the artist is correct and _id is set', async () => {
 					const track = await server.app.db.korin.TopTrack.findOne({
 						title: fakeTopTrack.title,
 					});
@@ -74,14 +74,14 @@ Given('Given models plugin', () => {
 			});
 
 			And(' Profile model', () => {
-				When('it can be saved', async () => {
+				When('its saved the _id is set', async () => {
 					const profile = new server.app.db.korin.Profile(fakeProfile);
 					const result = await profile.save();
 
 					expect(result._id).toBeDefined();
 				});
 
-				When('it can be found', async () => {
+				When('its found the artist is correct and the _id is set', async () => {
 					const track = await server.app.db.korin.Profile.findOne({
 						title: fakeProfile.title,
 					});
@@ -92,13 +92,13 @@ Given('Given models plugin', () => {
 			});
 		});
 
-		And(' pipeline app', () => {
-			When('server.app.db.pipeline has link', () => {
+		And('pipeline app', () => {
+			When('server.app.db.pipeline has link defined', () => {
 				expect(server.app.db.pipeline.link).toBeDefined();
 			});
 
 			['TopTracksRaw'].forEach(model => {
-				test(`server.app.db.pipeline has ${model}`, () => {
+				When(`server.app.db.pipeline has ${model} equal to modelName`, () => {
 					expect(server.app.db.pipeline[model].modelName).toEqual(model);
 				});
 			});
