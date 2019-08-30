@@ -1,98 +1,87 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import R from 'ramda';
-// import helpers from '../../pipeline/helpers';
-// import factory from '../factory';
+import R from 'ramda';
 
-// const topTracksData = require('../fixtures/lastfm-topTracks.json');
+import helpers from './helpers';
+import factory, { makeBdd } from '../../factory';
+import topTracksData from '../../fixtures/lastfm-topTracks.json';
 
-// const { checkTopTrack, checkRawTopTrack } = helpers;
-// export const lab = Lab.script();
-// const { test, suite } = lab;
+const { Given, And, When } = makeBdd({ describe, it });
+const { checkTopTrack, checkRawTopTrack } = helpers;
 
-// Given('Given pipeline helpers', () => {
-// 	And(' checkTopTrack', () => {
-// 		Given('When topTrack is invalid', () => {
-// 			When('an error is thrown for an empty object', async () => {
-// 				const error = await expect(checkTopTrack({})).to.reject();
+Given('Given pipeline helpers', () => {
+	And('checkTopTrack', () => {
+		When('topTrack is invalid an error is thrown', async () => {
+			expect(checkTopTrack({})).rejects.toThrow();
+		});
 
-// 				expect(error).to.be.an.error();
-// 			});
+		['title', 'image', 'artist', 'lastFmUrl'].forEach(prop => {
+			test(`missing ${prop} throws an error`, async () => {
+				const [topTrack] = factory.topTrack(1);
 
-// 			['title', 'image', 'artist', 'lastFmUrl'].forEach(prop => {
-// 				test(`missing ${prop} throws an error`, async () => {
-// 					const [topTrack] = factory.topTrack(1);
+				expect(checkTopTrack(R.omit([prop], topTrack))).rejects.toThrow(
+					expect.objectContaining({
+						name: 'ValidationError',
+						message: expect.stringContaining(prop),
+					}),
+				);
+			});
+		});
 
-// 					const { details } = await expect(
-// 						checkTopTrack(R.omit([prop], topTrack)),
-// 					).to.reject();
-// 					const [error] = details;
+		Given('When topTrack is valid', () => {
+			When('error is not thrown', async () => {
+				const [topTrack] = factory.topTrack(1);
 
-// 					expect(error).to.include({ path: [prop] });
-// 				});
-// 			});
-// 		});
+				expect(checkTopTrack(topTrack)).resolves.toBeTruthy();
+			});
+		});
+	});
 
-// 		Given('When topTrack is valid', () => {
-// 			When('error is not thrown', async () => {
-// 				const [topTrack] = factory.topTrack(1);
+	And(' checkRawTopTrack', () => {
+		Given('When rawTopTrack is invalid', () => {
+			When('an error is thrown for an empty object', async () => {
+				expect(checkRawTopTrack({})).rejects.toThrow();
+			});
 
-// 				await expect(checkTopTrack(topTrack)).not.to.reject();
-// 			});
-// 		});
-// 	});
+			When('an error is thrown for a partial object', async () => {
+				const partial = {
+					name: '7 rings',
+					artist: {
+						name: 'Ariana Grande',
+						mbid: 'f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387',
+						url: 'https://www.last.fm/music/Ariana+Grande',
+					},
+				};
 
-// 	And(' checkRawTopTrack', () => {
-// 		Given('When rawTopTrack is invalid', () => {
-// 			When('an error is thrown for an empty object', async () => {
-// 				const error = await expect(checkRawTopTrack({})).to.reject();
+				expect(checkRawTopTrack(partial)).rejects.toThrow();
+			});
 
-// 				expect(error).to.be.an.error();
-// 			});
+			[
+				'name',
+				'duration',
+				'playcount',
+				'listeners',
+				'url',
+				'artist',
+				'image',
+			].forEach(prop => {
+				test(`missing ${prop} throws an error`, async () => {
+					const [topTrackRaw] = R.path(['tracks', 'track'], topTracksData);
 
-// 			When('an error is thrown for a partial object', async () => {
-// 				const partial = {
-// 					name: '7 rings',
-// 					artist: {
-// 						name: 'Ariana Grande',
-// 						mbid: 'f4fdbb4c-e4b7-47a0-b83b-d91bbfcfa387',
-// 						url: 'https://www.last.fm/music/Ariana+Grande',
-// 					},
-// 				};
+					expect(checkRawTopTrack(R.omit([prop], topTrackRaw))).rejects.toThrow(
+						expect.objectContaining({
+							name: 'ValidationError',
+							message: expect.stringContaining(prop),
+						}),
+					);
+				});
+			});
+		});
 
-// 				const error = await expect(checkRawTopTrack(partial)).to.reject();
+		Given('When topTrack is valid', () => {
+			When('error is not thrown', async () => {
+				const [topTrackRaw] = topTracksData.tracks.track;
 
-// 				expect(error).to.be.an.error();
-// 			});
-
-// 			[
-// 				'name',
-// 				'duration',
-// 				'playcount',
-// 				'listeners',
-// 				'url',
-// 				'artist',
-// 				'image',
-// 			].forEach(prop => {
-// 				test(`missing ${prop} throws an error`, async () => {
-// 					const [topTrackRaw] = R.path(['tracks', 'track'], topTracksData);
-
-// 					const { details } = await expect(
-// 						checkRawTopTrack(R.omit([prop], topTrackRaw)),
-// 					).to.reject();
-// 					const [error] = details;
-
-// 					expect(error).to.include({ path: [prop] });
-// 				});
-// 			});
-// 		});
-
-// 		Given('When topTrack is valid', () => {
-// 			When('error is not thrown', async () => {
-// 				const [topTrackRaw] = topTracksData.tracks.track;
-
-// 				await expect(checkRawTopTrack(topTrackRaw)).not.to.reject();
-// 			});
-// 		});
-// 	});
-// });
+				expect(checkRawTopTrack(topTrackRaw)).resolves.toBeTruthy();
+			});
+		});
+	});
+});

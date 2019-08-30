@@ -1,19 +1,18 @@
-// import { expect } from '@hapi/code';
-// import Lab from '@hapi/lab';
-// import routes from '../../pipeline/routes';
+import routes from './routes';
 
-// export const lab = Lab.script();
-// const { test, suite } = lab;
+import { makeBdd } from '../../factory';
+const { Given, When } = makeBdd({ describe, it });
 
-// Given('Given pipeline routes', () => {
-// 	When('/topTracks/extract', () => {
-// 		const result = routes.v1.extract_top_tracks();
+Given('pipeline routes', () => {
+	When('called /topTracks/extract is correct', () => {
+		const result = routes.v1.extract_top_tracks();
 
-// 		// @ts-ignore
-// 		expect(result).to.include({
-// 			method: 'GET',
-// 			path: '/v1/pipeline/extract/topTracks',
-// 			url: '/v1/pipeline/extract/topTracks',
-// 		});
-// 	});
-// });
+		expect(result).toEqual(
+			expect.objectContaining({
+				method: 'GET',
+				path: '/v1/pipeline/extract/topTracks',
+				url: '/v1/pipeline/extract/topTracks',
+			}),
+		);
+	});
+});
