@@ -1,133 +1,129 @@
-// import { expect } from '@hapi/code';
-// import Lab from '@hapi/lab';
+import * as helpers from './helpers';
+import factory, { makeBdd } from '../../factory';
 
-// import * as helpers from '../../rollbar/helpers';
-// const { preResponse, rollbarErrorHandler, errorLogger } = helpers;
-// export const lab = Lab.script();
-// const { test, suite } = lab;
+const { Given, And, When } = makeBdd({ describe, it });
+const { preResponse, rollbarErrorHandler, errorLogger } = helpers;
 
-// interface MockParamsType {
-// 	request: {
-// 		response: {
-// 			isBoom: boolean | null;
-// 		};
-// 	};
-// 	h: {
-// 		continue: any;
-// 	};
-// }
+interface MockParamsType {
+	request: {
+		response: {
+			isBoom: boolean | null;
+		};
+	};
+	h: {
+		continue: any;
+	};
+}
 
-// const MockParams = (): MockParamsType => {
-// 	return {
-// 		request: {
-// 			response: {
-// 				isBoom: null,
-// 			},
-// 		},
-// 		h: {
-// 			continue: sinon.spy(),
-// 		},
-// 	};
-// };
+const MockParams = (): MockParamsType => {
+	return {
+		request: {
+			response: {
+				isBoom: null,
+			},
+		},
+		h: {
+			continue: jest.fn(),
+		},
+	};
+};
 
-// const MockRollbar = () => {
-// 	return {
-// 		log: sinon.spy(),
-// 		error: sinon.spy(),
-// 	};
-// };
+const MockRollbar = () => {
+	return {
+		log: jest.fn(),
+		error: jest.fn(),
+	};
+};
 
-// Given('rollbar helpers', () => {
-// 	Given('Given errorLogger', () => {
-// 		And(' error message and rollbar instance', () => {
-// 			When('rollbar.error is called with error message', () => {
-// 				const rollbar = MockRollbar();
-// 				const error = 'Ooops';
-// 				const callback = sinon.stub();
-// 				const request = sinon.stub();
+Given('rollbar helpers', () => {
+	And('errorLogger', () => {
+		When(
+			'an error is thrown rollbar.error is called with error message',
+			() => {
+				const rollbar = MockRollbar();
+				const error = 'Ooops';
+				const callback = jest.fn()();
+				const request = jest.fn()();
 
-// 				errorLogger({ error, rollbar, request, callback });
-// 				const [first, second, third] = rollbar.error.args[0];
+				errorLogger({ error, rollbar, request, callback });
+				const [first, second, third] = rollbar.error.mock.calls[0];
 
-// 				expect(first).to.contain(`Error: ${error}`);
-// 				expect(second).toEqual(request);
-// 				expect(third).toEqual(callback);
-// 			});
-// 		});
+				expect(first).toEqual(expect.stringContaining(`Error: ${error}`));
+				expect(second).toEqual(request);
+				expect(third).toEqual(callback);
+			},
+		);
 
-// 		And(' Error and rollbar instance', () => {
-// 			When('rollbar.error is called with Error', () => {
-// 				const rollbar = MockRollbar();
-// 				const error = new Error('Oops');
-// 				const callback = sinon.stub();
-// 				const request = sinon.stub();
+		And('Error and rollbar instance', () => {
+			When('an error is thrown rollbar.error is called with Error', () => {
+				const rollbar = MockRollbar();
+				const error = new Error('Oops');
+				const callback = jest.fn()();
+				const request = jest.fn()();
 
-// 				errorLogger({ error, rollbar, callback, request });
-// 				const [first, second, third] = rollbar.error.args[0];
+				errorLogger({ error, rollbar, callback, request });
+				const [first, second, third] = rollbar.error.mock.calls[0];
 
-// 				expect(first).toEqual(error);
-// 				expect(second).toEqual(request);
-// 				expect(third).toEqual(callback);
-// 			});
-// 		});
-// 	});
+				expect(first).toEqual(error);
+				expect(second).toEqual(request);
+				expect(third).toEqual(callback);
+			});
+		});
+	});
 
-// 	Given('Given rollbarErrorHandler', () => {
-// 		And(' NO `rollbarError`', () => {
-// 			When('rollbar.log is NOT called', () => {
-// 				const rollbar = MockRollbar();
-// 				const error = null;
-// 				rollbarErrorHandler(error, rollbar);
+	Given('rollbarErrorHandler', () => {
+		When('there is NO error rollbar.log is NOT called', () => {
+			const rollbar = MockRollbar();
+			const error = null;
+			rollbarErrorHandler(error, rollbar);
 
-// 				expect(rollbar.log.called).not.to.be.true();
-// 			});
-// 		});
+			expect(rollbar.log).not.toHaveBeenCalled();
+		});
 
-// 		And(' `rollbarError`', () => {
-// 			When('rollbar.log is called', () => {
-// 				const rollbar = MockRollbar();
-// 				const error = 'Oops';
-// 				rollbarErrorHandler(error, rollbar);
+		When('there is an error rollbar.log is called', () => {
+			const rollbar = MockRollbar();
+			const error = 'Oops';
+			rollbarErrorHandler(error, rollbar);
 
-// 				expect(rollbar.log.called).to.be.true();
-// 			});
+			expect(rollbar.log).toHaveBeenCalled();
+		});
 
-// 			When('rollbar.log called correctly', () => {
-// 				const rollbar = MockRollbar();
-// 				const error = 'Oops';
-// 				rollbarErrorHandler(error, rollbar);
+		When('there is an error rollbar.log called correctly', () => {
+			const rollbar = MockRollbar();
+			const error = 'Oops';
+			rollbarErrorHandler(error, rollbar);
 
-// 				const [result] = rollbar.log.args[0];
+			const [result] = rollbar.log.mock.calls[0];
 
-// 				expect(result).to.contain(
-// 					`Error reporting to rollbar, ignoring: ${error}`,
-// 				);
-// 			});
-// 		});
-// 	});
+			expect(result).toEqual(
+				expect.stringContaining(
+					`Error reporting to rollbar, ignoring: ${error}`,
+				),
+			);
+		});
+	});
 
-// 	Given('Given preResponse and rollbar', () => {
-// 		And(' `response.request.isBoom` is false', () => {
-// 			When('rollbar.error is NOT called', () => {
-// 				const rollbar = MockRollbar();
-// 				const { request, h } = MockParams();
+	Given('preResponse and rollbar', () => {
+		When(
+			'`response.request.isBoom` is false rollbar.error is NOT called',
+			() => {
+				const rollbar = MockRollbar();
+				const { request, h } = MockParams();
 
-// 				preResponse({ request, h, rollbar });
+				preResponse({ request, h, rollbar });
 
-// 				expect(rollbar.error.called).not.to.be.true();
-// 			});
-// 		});
+				expect(rollbar.error).not.toHaveBeenCalled();
+			},
+		);
 
-// 		And(' `response.request.isBoom` is true', () => {
-// 			When('rollbar.error is called', () => {
-// 				const rollbar = MockRollbar();
-// 				const { request, h } = MockParams();
-// 				request.response.isBoom = true;
+		When('`response.request.isBoom` is true rollbar.error is called', () => {
+			const rollbar = MockRollbar();
+			const { request, h } = MockParams();
+			request.response.isBoom = true;
 
-// 				preResponse({ request, h, rollbar });
+			preResponse({ request, h, rollbar });
 
-// 				expect(rollbar.error.called).to.be.true();
-// 			});
-// 		});
-// 	});
-// });
+			expect(rollbar.error).toHaveBeenCalled();
+		});
+	});
+});
