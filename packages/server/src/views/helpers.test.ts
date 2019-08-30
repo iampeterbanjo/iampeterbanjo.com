@@ -1,24 +1,21 @@
-// import Lab from '@hapi/lab';
-// import { expect } from '@hapi/code';
-// import helpers from '../../views/helpers';
+import helpers from './helpers';
+import { makeBdd } from '../../factory';
+import topTracksData from '../../fixtures/lastfm-topTracks.json';
 
-// export const lab = Lab.script();
-// const { test, suite } = lab;
+const { Given, When } = makeBdd({ describe, it });
+const { parseTopTracks } = helpers;
 
-// const { parseTopTracks } = helpers;
-// const topTracksData = require('../fixtures/lastfm-topTracks.json');
+Given('Given View helpers:', () => {
+	When('data is valid top tracks are parsed correctly', () => {
+		const [track] = parseTopTracks(topTracksData);
+		const { title, image, artist, url, profileUrl } = track;
 
-// Given('Given View helpers:', () => {
-// 	When('When data is valid top tracks are parsed correctly', () => {
-// 		const [track] = parseTopTracks(topTracksData);
-// 		const { title, image, artist, url, profileUrl } = track;
+		expect(title).toBeDefined();
+		expect(image).toBeDefined();
+		expect(artist).toBeDefined();
+		expect(url).toBeDefined();
 
-// 		expect(title, 'given title').to.exist();
-// 		expect(image, 'given image').to.exist();
-// 		expect(artist, 'given artist').to.exist();
-// 		expect(url, 'given url').to.exist();
-
-// 		expect(profileUrl, 'given profileUrl').to.exist();
-// 		expect(profileUrl, 'given profileUrl').not.to.contain('/v1');
-// 	});
-// });
+		expect(profileUrl).toBeDefined();
+		expect(profileUrl).not.toEqual(expect.stringContaining('/v1'));
+	});
+});
