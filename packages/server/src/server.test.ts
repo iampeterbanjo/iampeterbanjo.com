@@ -1,50 +1,45 @@
-// import { expect } from '@hapi/code';
-// import Lab from '@hapi/lab';
+import * as R from 'ramda';
+import { api } from '.';
 
-// import * as R from 'ramda';
-// import { api } from '..';
+import { makeBdd } from '../factory';
+const { Given, When } = makeBdd({ describe, it });
 
-// const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
+const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
+const Server = async () => api();
 
-// export const lab = Lab.script();
-// const { test, suite, before } = lab;
+Given('cache', () => {
+	let provisioned;
 
-// const Server = async () => api();
+	beforeEach(async () => {
+		const path = ['settings', 'cache', 0];
+		const server = await Server();
+		provisioned = R.path(path, server);
+	});
 
-// Given('cache', () => {
-// 	before(async ({ context }) => {
-// 		const path = ['settings', 'cache', 0];
-// 		const server = await Server();
-// 		context.provisioned = R.path(path, server);
-// 	});
+	When('mongodb-cache is provisioned the name is correct', async () => {
+		expect(provisioned.name).toEqual('mongodb-cache');
+	});
 
-// 	When('mongodb-cache is provisioned', async ({ context }) => {
-// 		const { name } = context.provisioned;
+	When('mongodb-cache connection is made the details are correct', () => {
+		const { uri, partition } = R.path(['provider', 'options'], provisioned);
 
-// 		expect(name).toEqual('mongodb-cache');
-// 	});
+		expect(uri).toEqual(MONGODB_ADDON_URI);
+		expect(partition).toEqual(MONGODB_ADDON_DB);
+	});
+});
 
-// 	When('mongodb-cache connection', ({ context }) => {
-// 		const { uri, partition } = R.path(
-// 			['provider', 'options'],
-// 			context.provisioned,
-// 		);
+Given('info', () => {
+	let server;
 
-// 		expect(uri).toEqual(MONGODB_ADDON_URI);
-// 		expect(partition).toEqual(MONGODB_ADDON_DB);
-// 	});
-// });
+	beforeEach(async () => {
+		server = await Server();
+	});
 
-// Given('info', () => {
-// 	before(async ({ context }) => {
-// 		context.server = await Server();
-// 	});
+	When('server is set port value is correct', () => {
+		expect(server.info.port).toEqual(Number(PORT));
+	});
 
-// 	When('port value', ({ context }) => {
-// 		expect(context.server.info.port).toEqual(Number(PORT));
-// 	});
-
-// 	When('host value', ({ context }) => {
-// 		expect(context.server.info.host).toEqual('0.0.0.0');
-// 	});
-// });
+	When('server is set host value is correct', () => {
+		expect(server.info.host).toEqual('0.0.0.0');
+	});
+});

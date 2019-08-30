@@ -1,42 +1,40 @@
-// import { expect } from '@hapi/code';
-// import Lab from '@hapi/lab';
-// import api from '../api';
+import api from './api';
 
-// export const lab = Lab.script();
-// const { before, test, suite } = lab;
+import { makeBdd } from '../factory';
+const { Given, When } = makeBdd({ describe, it });
 
-// let server;
+let server;
 
-// before(async () => {
-// 	server = await api();
-// });
+beforeEach(async () => {
+	server = await api();
+});
 
-// Given('korin API', () => {
-// 	['getProfileByArtistAndTrack', 'getChartTopTracks'].forEach(name => {
-// 		test(`method ${name} is registered`, () => {
-// 			const result = server.methods.korin[name];
+Given('korin API', () => {
+	['getProfileByArtistAndTrack', 'getChartTopTracks'].forEach(name => {
+		When(`method ${name} is registered its a function`, () => {
+			const result = server.methods.korin[name];
 
-// 			expect(result).to.be.a.function();
-// 		});
-// 	});
-// });
+			expect(typeof result).toEqual('function');
+		});
+	});
+});
 
-// Given('blog API', () => {
-// 	['getBlogContents', 'getBlogFiles'].forEach(name => {
-// 		test(`method ${name} is registered`, () => {
-// 			const result = server.methods.blog[name];
+Given('blog API', () => {
+	['getBlogContents', 'getBlogFiles'].forEach(name => {
+		When(`method ${name} is registered its`, () => {
+			const result = server.methods.blog[name];
 
-// 			expect(result).to.be.a.function();
-// 		});
-// 	});
-// });
+			expect(typeof result).toEqual('function');
+		});
+	});
+});
 
-// Given('view API', () => {
-// 	['topTracks', 'trackProfile'].forEach(name => {
-// 		test(`method ${name} is registered`, () => {
-// 			const result = server.methods.view[name];
+Given('view API', () => {
+	['topTracks', 'trackProfile'].forEach(name => {
+		When(`method ${name} is registered its a function`, () => {
+			const result = server.methods.view[name];
 
-// 			expect(result).to.be.a.function();
-// 		});
-// 	});
-// });
+			expect(typeof result).toEqual('function');
+		});
+	});
+});
