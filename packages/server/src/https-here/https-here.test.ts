@@ -1,9 +1,6 @@
 import Hapi from '@hapi/hapi';
 import plugin from '../https-here';
 
-import { makeBdd } from '../../factory';
-const { Given, And, When } = makeBdd({ describe, it });
-
 const Server = (options?: Object) => {
 	const server = Hapi.Server();
 	server.register({ plugin, options });
@@ -17,8 +14,8 @@ const Server = (options?: Object) => {
 	return server;
 };
 
-Given('https-here:', () => {
-	When('a proxied http request is made, its redirected to https', async () => {
+describe('Givenhttps-here:', () => {
+	it('When a proxied http request is made, its redirected to https', async () => {
 		const res = await Server().inject({
 			method: 'GET',
 			url: '/',
@@ -32,22 +29,19 @@ Given('https-here:', () => {
 		expect(res.headers.location).toEqual('https://host/');
 	});
 
-	When(
-		'an unproxied http request is made, its redirected to https',
-		async () => {
-			const res = await Server({ proxy: false }).inject({
-				url: '/',
-				headers: {
-					host: 'host',
-				},
-			});
+	it('When an unproxied http request is made, its redirected to https', async () => {
+		const res = await Server({ proxy: false }).inject({
+			url: '/',
+			headers: {
+				host: 'host',
+			},
+		});
 
-			expect(res.statusCode).toEqual(301);
-			expect(res.headers.location).toEqual('https://host/');
-		},
-	);
+		expect(res.statusCode).toEqual(301);
+		expect(res.headers.location).toEqual('https://host/');
+	});
 
-	When('a request is redirected the query string is preserved', async () => {
+	it('When a request is redirected the query string is preserved', async () => {
 		const res = await Server().inject({
 			url: '/?test=test&test2=test2',
 			headers: {
@@ -60,7 +54,7 @@ Given('https-here:', () => {
 		expect(res.headers.location).toEqual('https://host/?test=test&test2=test2');
 	});
 
-	When('a https request is made it is not redirected', async () => {
+	it('When a https request is made it is not redirected', async () => {
 		const res = await Server().inject({
 			url: '/',
 			headers: {
@@ -72,19 +66,16 @@ Given('https-here:', () => {
 		expect(res.result).toEqual('Hello!');
 	});
 
-	When(
-		'a request is redirected the x-forward-host support is used',
-		async () => {
-			const res = await Server().inject({
-				url: '/',
-				headers: {
-					host: 'host',
-					'x-forwarded-proto': 'http',
-					'x-forwarded-host': 'host2',
-				},
-			});
-			expect(res.statusCode).toEqual(301);
-			expect(res.headers.location).toEqual('https://host2/');
-		},
-	);
+	it('When a request is redirected the x-forward-host support is used', async () => {
+		const res = await Server().inject({
+			url: '/',
+			headers: {
+				host: 'host',
+				'x-forwarded-proto': 'http',
+				'x-forwarded-host': 'host2',
+			},
+		});
+		expect(res.statusCode).toEqual(301);
+		expect(res.headers.location).toEqual('https://host2/');
+	});
 });

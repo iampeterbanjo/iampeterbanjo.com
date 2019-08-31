@@ -1,12 +1,10 @@
 import utils from '../../src/utils';
 import routes from '../../src/korin/routes';
-import { makeBdd } from '../../factory';
 
-const { Given, When } = makeBdd({ describe, it });
 const { slugger } = utils;
 
-Given('routes: korin api', () => {
-	When('requesting tracks the route details are correct', () => {
+describe('Givenroutes: korin api', () => {
+	it('When requesting tracks the route details are correct', () => {
 		const result = routes.v1.get_korin_tracks();
 
 		expect(result).toEqual(
@@ -18,7 +16,7 @@ Given('routes: korin api', () => {
 		);
 	});
 
-	When('requesting artist profile the route details are correct', () => {
+	it('When requesting artist profile the route details are correct', () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
 		const result = routes.v1.get_korin_profiles({ artist, track });
@@ -34,7 +32,7 @@ Given('routes: korin api', () => {
 		);
 	});
 
-	When('when requesting artist profile the method and path are correct', () => {
+	it('When when requesting artist profile the method and path are correct', () => {
 		const result = routes.v1.get_korin_profiles();
 
 		expect(result).toEqual(

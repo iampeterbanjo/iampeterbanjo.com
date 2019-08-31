@@ -1,20 +1,19 @@
 import R from 'ramda';
 
 import helpers from './helpers';
-import factory, { makeBdd } from '../../factory';
+import factory from '../../factory';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 
-const { Given, And, When } = makeBdd({ describe, it });
 const { checkTopTrack, checkRawTopTrack } = helpers;
 
-Given('Given pipeline helpers', () => {
-	And('checkTopTrack', () => {
-		When('topTrack is invalid an error is thrown', async () => {
+describe('GivenGiven pipeline helpers', () => {
+	describe('And checkTopTrack', () => {
+		it('When topTrack is invalid an error is thrown', async () => {
 			expect(checkTopTrack({})).rejects.toThrow();
 		});
 
 		['title', 'image', 'artist', 'lastFmUrl'].forEach(prop => {
-			test(`missing ${prop} throws an error`, async () => {
+			it(`When missing ${prop} throws an error`, async () => {
 				const [topTrack] = factory.topTrack(1);
 
 				expect(checkTopTrack(R.omit([prop], topTrack))).rejects.toThrow(
@@ -26,8 +25,8 @@ Given('Given pipeline helpers', () => {
 			});
 		});
 
-		Given('When topTrack is valid', () => {
-			When('error is not thrown', async () => {
+		describe('GivenWhen topTrack is valid', () => {
+			it('When error is not thrown', async () => {
 				const [topTrack] = factory.topTrack(1);
 
 				expect(checkTopTrack(topTrack)).resolves.toBeTruthy();
@@ -35,13 +34,13 @@ Given('Given pipeline helpers', () => {
 		});
 	});
 
-	And(' checkRawTopTrack', () => {
-		Given('When rawTopTrack is invalid', () => {
-			When('an error is thrown for an empty object', async () => {
+	describe('And checkRawTopTrack', () => {
+		describe('GivenWhen rawTopTrack is invalid', () => {
+			it('When an error is thrown for an empty object', async () => {
 				expect(checkRawTopTrack({})).rejects.toThrow();
 			});
 
-			When('an error is thrown for a partial object', async () => {
+			it('When an error is thrown for a partial object', async () => {
 				const partial = {
 					name: '7 rings',
 					artist: {
@@ -63,7 +62,7 @@ Given('Given pipeline helpers', () => {
 				'artist',
 				'image',
 			].forEach(prop => {
-				test(`missing ${prop} throws an error`, async () => {
+				it(`When missing ${prop} throws an error`, async () => {
 					const [topTrackRaw] = R.path(['tracks', 'track'], topTracksData);
 
 					expect(checkRawTopTrack(R.omit([prop], topTrackRaw))).rejects.toThrow(
@@ -76,8 +75,8 @@ Given('Given pipeline helpers', () => {
 			});
 		});
 
-		Given('When topTrack is valid', () => {
-			When('error is not thrown', async () => {
+		describe('GivenWhen topTrack is valid', () => {
+			it('When error is not thrown', async () => {
 				const [topTrackRaw] = topTracksData.tracks.track;
 
 				expect(checkRawTopTrack(topTrackRaw)).resolves.toBeTruthy();

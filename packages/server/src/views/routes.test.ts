@@ -1,15 +1,13 @@
-import { makeBdd } from '../../factory';
-const { Given, And, When } = makeBdd({ describe, it });
 import routes from './routes';
 import utils from '../utils';
 
 const { slugger } = utils;
 
-Given('Given Berserker routes', () => {
-	And(' get_berserker', () => {
+describe('GivenGiven Berserker routes', () => {
+	describe('And get_berserker', () => {
 		const result = routes.get_berserker();
 
-		When('route properties', () => {
+		it('When route properties', () => {
 			expect(result).toEqual(
 				expect.objectContaining({
 					method: 'GET',
@@ -21,8 +19,8 @@ Given('Given Berserker routes', () => {
 	});
 });
 
-Given('blog view', () => {
-	When('when viewing blog posts', () => {
+describe('Givenblog view', () => {
+	it('When when viewing blog posts', () => {
 		const result = routes.get_blog_posts();
 
 		expect(result).toEqual(
@@ -34,7 +32,7 @@ Given('blog view', () => {
 		);
 	});
 
-	When('when viewing blog details', () => {
+	it('When when viewing blog details', () => {
 		const post = 'the-problem-with-problems';
 		const result = routes.get_blog_details(post);
 
@@ -48,11 +46,11 @@ Given('blog view', () => {
 	});
 });
 
-Given('korin views', () => {
-	When('when viewing tracks', () => {
-		const hope = routes.get_korin_tracks();
+describe('Givenkorin views', () => {
+	it('When when viewing tracks', () => {
+		const result = routes.get_korin_tracks();
 
-		expect(hope).toEqual(
+		expect(result).toEqual(
 			expect.objectContaining({
 				method: 'GET',
 				path: '/projects/korin/tracks',
@@ -61,7 +59,7 @@ Given('korin views', () => {
 		);
 	});
 
-	When('when viewing profiles', () => {
+	it('When when viewing profiles', () => {
 		const artist = 'Ariana Grande';
 		const track = 'God is a woman';
 		const { method, path, url } = routes.get_korin_profiles({
@@ -76,7 +74,7 @@ Given('korin views', () => {
 		expect(url).toEqual(expect.stringContaining(slugger.parse(track)));
 	});
 
-	When('when artist and track are missing', () => {
+	it('When when artist and track are missing', () => {
 		const result = routes.get_korin_profiles();
 
 		expect(result).toEqual(

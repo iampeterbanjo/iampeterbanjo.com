@@ -1,11 +1,9 @@
 import utils from '.';
-import { makeBdd } from '../../factory';
 
-const { Given, When } = makeBdd({ describe, it });
 const { time, getCache } = utils;
 
-Given('getCache', () => {
-	When('its called the default cache is expected', () => {
+describe('GivengetCache', () => {
+	it('When its called the default cache is expected', () => {
 		const defaultCache = {
 			expiresIn: time.oneDay,
 			staleIn: time.tenSeconds,
@@ -28,7 +26,7 @@ Given('getCache', () => {
 			cache: 'random',
 		},
 	].forEach(options => {
-		When(`cache is called with ${options} the cache contains them `, () => {
+		it(`When cache is called with ${options} the cache contains them `, () => {
 			const cache = getCache(options);
 
 			expect(cache).toEqual(expect.objectContaining(options));

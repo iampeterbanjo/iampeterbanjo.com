@@ -1,9 +1,6 @@
 import Hapi from '@hapi/hapi';
 import plugin from './plugin';
 
-import { makeBdd } from '../../factory';
-const { Given, When } = makeBdd({ describe, it });
-
 const Server = async () => {
 	const server = Hapi.Server();
 	await server.register({ plugin });
@@ -11,9 +8,9 @@ const Server = async () => {
 	return server;
 };
 
-Given('rollbar plugin', () => {
-	Given('Given plugin', () => {
-		When('server exposes rollbar', async () => {
+describe('Givenrollbar plugin', () => {
+	describe('GivenGiven plugin', () => {
+		it('When server exposes rollbar', async () => {
 			const server = await Server();
 
 			expect(server.plugins.rollbar).toBeDefined();

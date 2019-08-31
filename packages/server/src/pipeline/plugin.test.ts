@@ -9,11 +9,9 @@ import methods from './methods';
 import korinPlugin from '../korin/plugin';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
-import factory, { makeBdd } from '../../factory';
+import factory from '../../factory';
 
-const { Given, And, When } = makeBdd({ describe, it });
 const databaseCleaner = new DatabaseCleaner('mongodb');
-
 const Server = async () => {
 	const server = Hapi.Server();
 
@@ -29,8 +27,8 @@ const Server = async () => {
 	return server;
 };
 
-Given('Given pipeline plugin', () => {
-	And(' saved TopTracksRaw, transformTopTracks', () => {
+describe('GivenGiven pipeline plugin', () => {
+	describe('And saved TopTracksRaw, transformTopTracks', () => {
 		let server;
 
 		beforeAll(async () => {
@@ -53,8 +51,8 @@ Given('Given pipeline plugin', () => {
 		test.todo('When TopTracksRaw are transformed to TrackProfile its valid');
 	});
 
-	And('saveRawTopTracks, models, korin plugins', () => {
-		And('valid API response', () => {
+	describe('And saveRawTopTracks, models, korin plugins', () => {
+		describe('And valid API response', () => {
 			let server;
 
 			beforeAll(async () => {
@@ -72,14 +70,14 @@ Given('Given pipeline plugin', () => {
 				await databaseCleaner.clean(server.app.db.pipeline.link);
 			});
 
-			When('raw top tracks are saved to db length is 50', async () => {
+			it('When raw top tracks are saved to db length is 50', async () => {
 				await server.methods.pipeline.saveRawTopTracks(server);
 
 				const result = await server.app.db.pipeline.TopTracksRaw.find({});
 				expect(result.length).toEqual(50);
 			});
 
-			When('requesting API status code 200', async () => {
+			it('When requesting API status code 200', async () => {
 				const { method, url } = routes.v1.extract_top_tracks();
 				const response = await server.inject({
 					method,
@@ -90,7 +88,7 @@ Given('Given pipeline plugin', () => {
 			});
 		});
 
-		And('BAD API response', () => {
+		describe('And BAD API response', () => {
 			let server;
 
 			beforeAll(async () => {
@@ -104,13 +102,13 @@ Given('Given pipeline plugin', () => {
 				});
 			});
 
-			When('there is no data an Error is thrown', async () => {
+			it('When there is no data an Error is thrown', async () => {
 				expect(
 					server.methods.pipeline.saveRawTopTracks(server),
 				).rejects.toThrow('No tracks found');
 			});
 
-			When('there is an error no data is not saved', async () => {
+			it('When there is an error no data is not saved', async () => {
 				expect(
 					server.methods.pipeline.saveRawTopTracks(server),
 				).rejects.toThrow();
@@ -121,7 +119,7 @@ Given('Given pipeline plugin', () => {
 			});
 		});
 
-		And('different API response', () => {
+		describe('And different API response', () => {
 			let server;
 
 			beforeAll(async () => {
@@ -144,7 +142,7 @@ Given('Given pipeline plugin', () => {
 				});
 			});
 
-			When('the data is not valid a ValidationError is thrown', async () => {
+			it('When the data is not valid a ValidationError is thrown', async () => {
 				expect(
 					server.methods.pipeline.saveRawTopTracks(server),
 				).rejects.toThrow(expect.objectContaining({ name: 'ValidationError' }));

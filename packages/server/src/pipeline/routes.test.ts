@@ -1,10 +1,7 @@
 import routes from './routes';
 
-import { makeBdd } from '../../factory';
-const { Given, When } = makeBdd({ describe, it });
-
-Given('pipeline routes', () => {
-	When('called /topTracks/extract is correct', () => {
+describe('Givenpipeline routes', () => {
+	it('When called /topTracks/extract is correct', () => {
 		const result = routes.v1.extract_top_tracks();
 
 		expect(result).toEqual(

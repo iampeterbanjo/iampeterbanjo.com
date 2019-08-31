@@ -2,12 +2,10 @@ import nock from 'nock';
 
 import utils from '../../src/utils';
 import helpers from '../../src/korin/helpers';
-import { makeBdd } from '../../factory';
 
 const topTracksData = require('../../fixtures/lastfm-topTracks.json');
 const songData = require('../../fixtures/genius-search.json');
 
-const { Given, When } = makeBdd({ describe, it });
 const { vars, message } = utils;
 const {
 	getChartTopTracks,
@@ -19,7 +17,7 @@ const {
 
 const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
 
-Given('getChartTopTracks', () => {
+describe('GivengetChartTopTracks', () => {
 	beforeEach(async () => {
 		await nock(LASTFM_API_URL)
 			.get('/')
@@ -35,17 +33,14 @@ Given('getChartTopTracks', () => {
 		nock.cleanAll();
 	});
 
-	When(
-		'lastfm API request for top tracks the response should be correct',
-		async () => {
-			const result = await getChartTopTracks();
+	it('When lastfm API request for top tracks the response should be correct', async () => {
+		const result = await getChartTopTracks();
 
-			expect(result).toEqual(topTracksData);
-		},
-	);
+		expect(result).toEqual(topTracksData);
+	});
 });
 
-Given('getSongData', () => {
+describe('GivengetSongData', () => {
 	const q = 'Kendrick Lamar HUMBLE';
 
 	beforeEach(async () => {
@@ -59,38 +54,35 @@ Given('getSongData', () => {
 		nock.cleanAll();
 	});
 
-	When(
-		'genius API request for song data the response should be correct',
-		async () => {
-			const result = await getSongData(q);
+	it('When genius API request for song data the response should be correct', async () => {
+		const result = await getSongData(q);
 
-			expect(result).toEqual(songData);
-		},
-	);
+		expect(result).toEqual(songData);
+	});
 });
 
-Given('getSongId', () => {
-	When('parsing songData the correct songId is returned', async () => {
+describe('GivengetSongId', () => {
+	it('When parsing songData the correct songId is returned', async () => {
 		const result = await getSongId(songData);
 
 		expect(result).toEqual(3039923);
 	});
 
-	When('parsing invalid songData the songId is undefined', async () => {
+	it('When parsing invalid songData the songId is undefined', async () => {
 		const result = await getSongId({});
 
 		expect(result).toEqual(undefined);
 	});
 });
 
-Given('getSongInfo', () => {
-	When('parsing songData the id is correct', async () => {
+describe('GivengetSongInfo', () => {
+	it('When parsing songData the id is correct', async () => {
 		const { id } = await getSongInfo(songData);
 
 		expect(id).toEqual(3039923);
 	});
 
-	When('parsing songData get the expected thumbnail', async () => {
+	it('When parsing songData get the expected thumbnail', async () => {
 		const { thumbnail } = await getSongInfo(songData);
 
 		expect(thumbnail).toEqual(
@@ -98,20 +90,17 @@ Given('getSongInfo', () => {
 		);
 	});
 
-	When('parsing invalid songData the songId is undefined', async () => {
+	it('When parsing invalid songData the songId is undefined', async () => {
 		const result = await getSongId({});
 
 		expect(result).toEqual(undefined);
 	});
 });
 
-Given('getPersonalityProfile', () => {
-	When(
-		'called with no lyrics, the correct error message is returned',
-		async () => {
-			const { profile } = await getPersonalityProfile('');
+describe('GivengetPersonalityProfile', () => {
+	it('When called with no lyrics, the correct error message is returned', async () => {
+		const { profile } = await getPersonalityProfile('');
 
-			expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
-		},
-	);
+		expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
+	});
 });

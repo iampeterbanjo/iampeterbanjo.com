@@ -1,12 +1,10 @@
 import helpers from './helpers';
-import { makeBdd } from '../../factory';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 
-const { Given, When } = makeBdd({ describe, it });
 const { parseTopTracks } = helpers;
 
-Given('Given View helpers:', () => {
-	When('data is valid top tracks are parsed correctly', () => {
+describe('GivenGiven View helpers:', () => {
+	it('When data is valid top tracks are parsed correctly', () => {
 		const [track] = parseTopTracks(topTracksData);
 		const { title, image, artist, url, profileUrl } = track;
 

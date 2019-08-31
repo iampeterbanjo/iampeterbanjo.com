@@ -1,13 +1,10 @@
 import * as R from 'ramda';
 import { api } from '.';
 
-import { makeBdd } from '../factory';
-const { Given, When } = makeBdd({ describe, it });
-
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = process.env;
 const Server = async () => api();
 
-Given('cache', () => {
+describe('Givenserver cache', () => {
 	let provisioned;
 
 	beforeEach(async () => {
@@ -16,11 +13,11 @@ Given('cache', () => {
 		provisioned = R.path(path, server);
 	});
 
-	When('mongodb-cache is provisioned the name is correct', async () => {
+	it('When mongodb-cache is provisioned the name is correct', async () => {
 		expect(provisioned.name).toEqual('mongodb-cache');
 	});
 
-	When('mongodb-cache connection is made the details are correct', () => {
+	it('When mongodb-cache connection is made the details are correct', () => {
 		const { uri, partition } = R.path(['provider', 'options'], provisioned);
 
 		expect(uri).toEqual(MONGODB_ADDON_URI);
@@ -28,18 +25,18 @@ Given('cache', () => {
 	});
 });
 
-Given('info', () => {
+describe('Givenserver info', () => {
 	let server;
 
 	beforeEach(async () => {
 		server = await Server();
 	});
 
-	When('server is set port value is correct', () => {
+	it('When server is set port value is correct', () => {
 		expect(server.info.port).toEqual(Number(PORT));
 	});
 
-	When('server is set host value is correct', () => {
+	it('When server is set host value is correct', () => {
 		expect(server.info.host).toEqual('0.0.0.0');
 	});
 });

@@ -1,31 +1,26 @@
 import Hapi from '@hapi/hapi';
 
-import factory, { makeBdd } from '.';
+import factory from '.';
 import korinPlugin from '../src/korin/plugin';
 
-const { Given, And, When } = makeBdd({ describe, it });
-
-Given('factory', () => {
-	And('mock.method', () => {
+describe('Givenfactory', () => {
+	describe('And mock.method', () => {
 		['korin.getChartTopTracks'].forEach(name => {
-			When(
-				`param is ${name} server has method ${name} as function`,
-				async () => {
-					const server = Hapi.Server();
-					await factory.mock.method({
-						server,
-						name,
-						plugin: korinPlugin,
-						fn: jest.fn().mockResolvedValue('test'),
-					});
-					const [app, method] = name.split('.');
+			it(`When param is ${name} server has method ${name} as function`, async () => {
+				const server = Hapi.Server();
+				await factory.mock.method({
+					server,
+					name,
+					plugin: korinPlugin,
+					fn: jest.fn().mockResolvedValue('test'),
+				});
+				const [app, method] = name.split('.');
 
-					expect(typeof server.methods[app][method]).toEqual('function');
-				},
-			);
+				expect(typeof server.methods[app][method]).toEqual('function');
+			});
 		});
 
-		When('null is default result should be null', async () => {
+		it('When null is default result should be null', async () => {
 			const server = Hapi.Server();
 			const result = await factory.mock.method({
 				server,
@@ -37,7 +32,7 @@ Given('factory', () => {
 			expect(result).toEqual(null);
 		});
 
-		When('creating mock dont overwrite existing methods', async () => {
+		it('When creating mock dont overwrite existing methods', async () => {
 			const server = Hapi.Server();
 			await server.register({
 				plugin: {
