@@ -50,17 +50,17 @@ export default async function main() {
 
 		await Promise.all([
 			server.register(good),
-			server.register(rollbar),
-			server.register(blog),
-			server.register(devErrors),
-			server.register(inert),
-			server.register(vision),
+			// server.register(rollbar),
+			// server.register(blog),
+			// server.register(devErrors),
+			// server.register(inert),
+			// server.register(vision),
 			server.register(views),
-			server.register(statics),
-			server.register(korin),
-			server.register(pipeline),
-			server.register(cqc),
-			server.register(httpsHere),
+			// server.register(statics),
+			// server.register(korin),
+			// server.register(pipeline),
+			// server.register(cqc),
+			// server.register(httpsHere),
 		]);
 
 		return server;
