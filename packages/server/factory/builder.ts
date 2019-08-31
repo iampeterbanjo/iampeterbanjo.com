@@ -1,5 +1,5 @@
-import topTrack from './topTrack';
-import profile from './profile';
+import getTopTrack from './topTrack';
+import getProfile from './profile';
 import * as mock from './mock';
 import * as R from 'ramda';
 
@@ -23,8 +23,8 @@ const generate = (
 };
 
 const builder = {
-	topTrack: count => generate(count, topTrack),
-	profile: count => generate(count, profile),
+	topTrack: count => generate(count, getTopTrack),
+	profile: count => generate(count, getProfile),
 	mock,
 };
 

@@ -1,10 +1,10 @@
-import faker from 'faker';
+import casual from 'casual';
 
-export default function make() {
+export default function getTopTrack() {
 	return {
-		artist: faker.name.findName(),
-		title: faker.random.words(),
-		image: faker.random.image(),
-		lastFmUrl: faker.internet.url(),
+		artist: casual.full_name,
+		title: casual.title,
+		image: casual.url,
+		lastFmUrl: casual.url,
 	};
 }
