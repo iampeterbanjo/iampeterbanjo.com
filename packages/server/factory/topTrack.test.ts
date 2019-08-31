@@ -3,7 +3,7 @@ import pipelineHelpers from '../src/pipeline/helpers';
 
 const { checkTopTrack } = pipelineHelpers;
 
-describe('Given topTracks', () => {
+describe('Given a topTrack', () => {
 	it('When checked there are no validation errors', () => {
 		const { error } = checkTopTrack(topTrack());
 

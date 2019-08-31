@@ -18,6 +18,15 @@ export const RawTopTrackValidator = Joi.object({
 	image: Joi.array(),
 });
 
+export const TrackProfileValidator = Joi.object({
+	title: Joi.string(),
+	image: Joi.string().uri(),
+	artist: Joi.string(),
+	lastFmUrl: Joi.string().uri(),
+	profileUrl: Joi.string().uri(),
+	summary: Joi.string(),
+});
+
 const checkTopTrack = (topTrack: object) => {
 	return Joi.validate(topTrack, TopTrackValidator, { presence: 'required' });
 };
@@ -35,9 +44,9 @@ const checkRawTopTrack = topTrackRaw => {
  * @param {object} trackProfile
  */
 const checkTrackProfile = trackProfile => {
-	const schema = {};
-
-	return Joi.validate(trackProfile, schema);
+	return Joi.validate(trackProfile, TrackProfileValidator, {
+		presence: 'required',
+	});
 };
 
 const saveRawTopTracks = async server => {

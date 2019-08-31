@@ -1,31 +1,19 @@
-import factory from '.';
+import profile from './profile';
+import pipelineHelpers from '../src/pipeline/helpers';
 
-describe('Givenfactory', () => {
-	describe('And profile', () => {
-		const count = Math.ceil((1 - Math.random()) * 10);
-		const profiles = factory.profile(count);
+const { checkTrackProfile } = pipelineHelpers;
 
-		it('When profile length is equal to count parameter', () => {
-			expect(profiles.length).toEqual(count);
-		});
+describe('Given a profile', () => {
+	it('When checked there are no validation errors', () => {
+		const { error } = checkTrackProfile(profile());
 
-		profiles.forEach(profile => {
-			const {
-				artist,
-				title,
-				image,
-				lastFmUrl,
-				profileUrl,
-				summary,
-			} = profile as any;
-			it(`When ${artist} - ${title}`, () => {
-				expect(typeof artist).toEqual('string');
-				expect(typeof title).toEqual('string');
-				expect(typeof summary).toEqual('string');
-				expect(typeof image).toEqual('string');
-				expect(typeof lastFmUrl).toEqual('string');
-				expect(typeof profileUrl).toEqual('string');
-			});
-		});
+		expect(error).toBeNull();
+	});
+
+	it('When profiles are created they should be unique', () => {
+		const first = profile();
+		const second = profile();
+
+		expect(first).not.toEqual(second);
 	});
 });
