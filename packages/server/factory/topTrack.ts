@@ -1,11 +1,10 @@
 import faker from 'faker';
 
-const title = faker.random.words();
-const artist = faker.name.findName();
-
-export default {
-	artist,
-	title,
-	image: faker.random.image(),
-	lastFmUrl: faker.internet.url(),
-};
+export default function make() {
+	return {
+		artist: faker.name.findName(),
+		title: faker.random.words(),
+		image: faker.random.image(),
+		lastFmUrl: faker.internet.url(),
+	};
+}

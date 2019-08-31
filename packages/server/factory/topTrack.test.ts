@@ -1,23 +1,19 @@
-import factory from '.';
+import topTrack from './topTrack';
+import pipelineHelpers from '../src/pipeline/helpers';
 
-describe('Givenfactory', () => {
-	describe('And topTracks', () => {
-		const count = Math.ceil((1 - Math.random()) * 10);
-		const topTracks = factory.topTrack(count);
+const { checkTopTrack } = pipelineHelpers;
 
-		it('When topTracks are created count is correct', () => {
-			expect(topTracks).toHaveProperty('length', count);
-		});
+describe('Given topTracks', () => {
+	it('When checked there are no validation errors', () => {
+		const { error } = checkTopTrack(topTrack());
 
-		topTracks.forEach(topTrack => {
-			const { artist, title, image, lastFmUrl, profileUrl } = topTrack as any;
-			it(`when ${artist} - ${title}`, () => {
-				expect(typeof artist).toEqual('string');
-				expect(typeof title).toEqual('string');
-				expect(typeof image).toEqual('string');
-				expect(typeof lastFmUrl).toEqual('string');
-				expect(profileUrl).toBeUndefined();
-			});
-		});
+		expect(error).toBeNull();
+	});
+
+	it('When topTracks are created they should be unique', () => {
+		const first = topTrack();
+		const second = topTrack();
+
+		expect(first).not.toEqual(second);
 	});
 });

@@ -1,22 +1,25 @@
 import topTrack from './topTrack';
 import profile from './profile';
 import * as mock from './mock';
+import * as R from 'ramda';
 
-interface TopTrack {
-	title: string;
+type TopTrack = {
 	artist: string;
-}
+	title: string;
+	image: string;
+	lastFmUrl: string;
+};
 
-const generate = (count: number, item: Object) => {
-	const result: TopTrack[] = [];
-	let limit = count;
+type Profile = TopTrack & {
+	summary: string;
+	profileUrl: string;
+};
 
-	while (limit) {
-		limit -= 1;
-		result.push(Object.assign({} as TopTrack, item));
-	}
-
-	return result;
+const generate = (
+	count: number,
+	item: () => TopTrack | Profile,
+): TopTrack[] | Profile[] => {
+	return R.range(0, count).map(() => item());
 };
 
 const builder = {

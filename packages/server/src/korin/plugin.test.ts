@@ -17,6 +17,8 @@ describe('Givenkorin tracks API', () => {
 		});
 	});
 
+	afterEach(jest.restoreAllMocks);
+
 	it('When requesting korin tracks the status code is 200', async () => {
 		const { method, url } = routes.v1.get_korin_tracks();
 

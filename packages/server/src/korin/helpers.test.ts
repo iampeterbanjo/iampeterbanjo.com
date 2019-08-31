@@ -17,6 +17,10 @@ const {
 
 const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
 
+afterAll(() => {
+	nock.restore();
+});
+
 describe('GivengetChartTopTracks', () => {
 	beforeEach(async () => {
 		await nock(LASTFM_API_URL)
