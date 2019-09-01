@@ -15,7 +15,6 @@
 		"start-debug": "node --inspect ./build/start.js",
 		"start": "node ./build/start.js",
 		"test": "CI=true jest --detectLeaks --logHeapUsage",
-		"pretest": "npm run build-dev",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-ts": "tsc-watch -p tsconfig.json --onSuccess \"node --inspect ./build/start.js\"",

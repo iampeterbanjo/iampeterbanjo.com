@@ -1,0 +1,20 @@
+import layout from '../layout'
+
+<include(layout)>
+	<@body>
+		<heading-component title="${data.track}" subtitle="${data.artist}"/>
+		<h2 class="lh-title mv3">Profile</h2>
+		<paragraph-component text="${data.summary}"/>
+		<p class="flex justify-between">
+			<a class="flex items-center" rel="prev" href="${data.tracksUrl}">
+				<i>
+	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+						<line x1="19" y1="12" x2="5" y2="12"/>
+						<polyline points="12 19 5 12 12 5"/>
+					</svg>
+				</i>
+				<span class="ml3 f4">Back to tracks</span>
+			</a>
+		</p>
+	</@body>
+</include>
