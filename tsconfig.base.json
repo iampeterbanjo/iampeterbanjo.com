@@ -19,5 +19,5 @@
 		"noImplicitAny": false,
 		"resolveJsonModule": true
 	},
-	"exclude": ["node_modules", "!node_modules/@types"]
+	"exclude": ["node_modules", "build", "!node_modules/@types"]
 }

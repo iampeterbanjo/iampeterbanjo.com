@@ -3,17 +3,17 @@ import Path from 'path';
 import Marko from 'marko';
 import routes from './routes';
 import * as context from './context';
-// import createApp from './ssr/app';
-// import { createRenderer } from 'vue-server-renderer';
+import createApp from './ssr/app';
+import { createRenderer } from 'vue-server-renderer';
+
+import 'marko/node-require';
 
 const registerViews = {
 	engines: {
 		marko: {
 			compile: (src, options) => {
 				const opts = { preserveWhitespace: true, writeToDisk: false };
-
 				const template = Marko.load(options.filename, opts);
-
 				return context => {
 					return template.renderToString(context);
 				};
@@ -44,16 +44,16 @@ const registerViews = {
 
 const getBerserker = server => {
 	const { method, path } = routes.get_berserker();
-	// server.route({
-	// 	method,
-	// 	path,
-	// 	handler: async (request, h) => {
-	// 		// const app = createApp({ message: 'Fatality' });
-	// 		const html = ''; //await createRenderer().renderToString(app);
+	server.route({
+		method,
+		path,
+		handler: async (request, h) => {
+			const app = createApp({ message: 'Fatality' });
+			const html = await createRenderer().renderToString(app);
 
-	// 		return h.view('berserker/list', { html });
-	// 	},
-	// });
+			return h.view('berserker/list', { html });
+		},
+	});
 };
 
 const getKorinProfiles = server => {
@@ -139,13 +139,13 @@ export default {
 		vision: '5.x.x',
 	},
 	register: (server, { methods }) => {
-		// server.views(registerViews);
-		// server.method(methods);
-		// getKorinTracks(server);
-		// getKorinProfiles(server);
-		// viewBlogList(server);
-		// viewBlogContent(server);
-		// viewHomePage(server);
-		// getBerserker(server);
+		server.views(registerViews);
+		server.method(methods);
+		getKorinTracks(server);
+		getKorinProfiles(server);
+		viewBlogList(server);
+		viewBlogContent(server);
+		viewHomePage(server);
+		getBerserker(server);
 	},
 };

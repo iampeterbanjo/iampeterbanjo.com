@@ -6,9 +6,14 @@
 <!--  -->
 {% block content %}
 <div>
-	{{ helpers.heading('Top 50 tracks', 'LastFm') }} {{ helpers.p( 'Select a track
-	to generate a personality profile based on its lyrics' ) }}
-
+	{{ helpers.heading('Top 50 tracks', 'LastFm') }}
+	{{
+		helpers.p(
+			'Select a track
+	to generate a personality profile based on its lyrics'
+		)
+	}}
+	<h1>Test test</h1>
 	<ul class="cf pa0 list tracks">
 		{% for track in tracks %}
 		<li class="fl w-50 w-25-m w-20-l">
