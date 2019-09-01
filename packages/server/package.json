@@ -14,7 +14,7 @@
 		"copy-templates": "ncp ./src/views/templates ./build/views/templates",
 		"copy-fixtures": "ncp ./src/__tests__/fixtures ./build/__tests__/fixtures",
 		"dev": "npm link css; run-s build-dev watch",
-		"start-debug": "node --inspect start.js",
+		"start-debug": "node --inspect ./build/start.js",
 		"start": "node ./build/start.js",
 		"pretest": "npm run build-dev",
 		"test": "lab ./build/__tests__/",
