@@ -1,5 +1,6 @@
 import Nunjucks from 'nunjucks';
 import Path from 'path';
+import Marko from 'marko';
 import routes from './routes';
 import * as context from './context';
 // import createApp from './ssr/app';
@@ -7,23 +8,38 @@ import * as context from './context';
 
 const registerViews = {
 	engines: {
-		html: {
+		marko: {
 			compile: (src, options) => {
-				const template = Nunjucks.compile(src, options.environment);
-				return data => {
-					return template.render(data);
+				const opts = { preserveWhitespace: true, writeToDisk: false };
+
+				const template = Marko.load(options.filename, opts);
+
+				return context => {
+					return template.renderToString(context);
 				};
-			},
-			prepare: (options, next) => {
-				options.compileOptions.environment = Nunjucks.configure(options.path, {
-					watch: false,
-				});
-				return next();
 			},
 		},
 	},
-	context,
+	relativeTo: __dirname,
 	path: Path.join(__dirname, './templates'),
+	// engines: {
+	// 	html: {
+	// 		compile: (src, options) => {
+	// 			const template = Nunjucks.compile(src, options.environment);
+	// 			return data => {
+	// 				return template.render(data);
+	// 			};
+	// 		},
+	// 		prepare: (options, next) => {
+	// 			options.compileOptions.environment = Nunjucks.configure(options.path, {
+	// 				watch: false,
+	// 			});
+	// 			return next();
+	// 		},
+	// 	},
+	// },
+	// context,
+	// path: Path.join(__dirname, './templates'),
 };
 
 const getBerserker = server => {
