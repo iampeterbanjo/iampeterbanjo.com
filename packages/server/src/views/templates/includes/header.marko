@@ -1,15 +1,13 @@
+import Nav from "./nav"
+
 <header class="w-100 pt3 pt5-ns ph3 pt5-l ph5-ns mb4-l">
 	<div class="dib dt-ns mw9 center w-100">
 		<div class="dn dib-ns flex justify-center tl w-50-ns w-25">
 			<a href="/" class="f5 f4-ns fw6 mt0 mb1 code" title="home">iam</a>
 		</div>
 		<div class="dib tl w-50-ns w-100">
-			<nav
-				class="db flex justify-center w-100 mt0-ns tr-ns"
-				role="navigation"
-				aria-label="navigation"
-			>
-				{% include './nav.html' %}
+			<nav class="db flex justify-center w-100 mt0-ns tr-ns" role="navigation" aria-label="navigation">
+				<${Nav}/>
 			</nav>
 		</div>
 	</div>

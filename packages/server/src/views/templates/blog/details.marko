@@ -1,7 +1,7 @@
-import layout from "../layout"
-import bio from "../includes/bio"
+import Layout from "../layout"
+import Bio from "../includes/bio"
 
-<include(layout)>
+<${Layout}>
 	<@body>
 		<div>
 			<article class="cf mw9 center">
@@ -15,7 +15,7 @@ import bio from "../includes/bio"
 						<!-- prev TODO -->
 						<if(false)>
 							<li class="post-prev">
-								<a class="flex items-center" rel="prev" href="${data.prev.link}">
+								<a class="flex items-center" rel="prev" href=`${data.prev.link}`>
 									<i>
 	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
 											<line x1="19" y1="12" x2="5" y2="12"/>
@@ -29,7 +29,7 @@ import bio from "../includes/bio"
 						<!-- next TODO -->
 						<if(false)>
 							<li class="post-next">
-								<a class="flex items-center" rel="next" href="${data.next.link}">
+								<a class="flex items-center" rel="next" href=`${data.next.link}`>
 									<span class="mr3 f4">${data.next.title}</span>
 									<i>
 	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
@@ -44,6 +44,6 @@ import bio from "../includes/bio"
 				</footer>
 			</article>
 		</div>
-		<include(bio)/>
+		<${Bio}/>
 	</@body>
-</include>
+</>

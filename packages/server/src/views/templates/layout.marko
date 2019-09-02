@@ -1,22 +1,23 @@
+import Header from "./includes/header"
+import Footer from "./includes/footer"
+
 <!doctype html>
 <html lang="en">
-		<head>
-				<meta charset="utf-8"/>
-				<title>${data.title}</title>
-				<link rel="stylesheet" href="/css/main.css"/>
-				<link rel="icon" href="/images/iampeterbanjo-w400.jpg"/>
-				<meta name="description" content="{{ description }}"/>
-				<meta
-						name="viewport"
-						content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-		</head>
-		<body class="w-100 sans-serif black bg-lightest-blue">
-				<include("./header")/>
-				<main class="ma5-ns">
-						<div class="dib dt-ns mw9 center w-100">
-								<include(input.body)/>
-						</div>
-				</main>
-				<include("./footer")/>
-		</body>
+	<head>
+		<meta charset="utf-8"/>
+		<title>${data.title}</title>
+		<link rel="stylesheet" href="/css/main.css"/>
+		<link rel="icon" href="/images/iampeterbanjo-w400.jpg"/>
+		<meta name="description" content="{{ description }}"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+	</head>
+	<body class="w-100 sans-serif black bg-lightest-blue">
+		<${Header}/>
+		<main class="ma5-ns">
+			<div class="dib dt-ns mw9 center w-100">
+				<${input.body}/>
+			</div>
+		</main>
+		<${Footer}/>
+	</body>
 </html>
