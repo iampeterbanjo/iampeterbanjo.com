@@ -1,6 +1,6 @@
 import routes from './routes';
 
-describe('Givenpipeline routes', () => {
+describe('Given pipeline routes', () => {
 	it('When called /topTracks/extract is correct', () => {
 		const result = routes.v1.extract_top_tracks();
 

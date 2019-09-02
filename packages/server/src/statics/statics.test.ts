@@ -15,7 +15,7 @@ beforeEach(async () => {
 	await server.register(Inert);
 });
 
-describe('Givenstatics', () => {
+describe('Given statics', () => {
 	it('When / rootPath is served statusCode is 200', async () => {
 		await server.register({
 			plugin,

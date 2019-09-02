@@ -17,7 +17,7 @@ const Server = async () => {
 	return server;
 };
 
-describe('GivenGiven models plugin', () => {
+describe('Given models plugin', () => {
 	describe('And registered plugin', () => {
 		let server;
 

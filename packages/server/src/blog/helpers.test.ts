@@ -1,7 +1,7 @@
 import fecha from 'fecha';
 import { getUrlPath, getBlogFiles, getBlogContents } from './helpers';
 
-describe('GivengetUrlPath', () => {
+describe('Given getUrlPath', () => {
 	describe('And a blog post filePath', () => {
 		const filePath =
 			'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com/packages/blog/posts/graphql-eats-rest.md';
@@ -31,7 +31,7 @@ describe('GivengetUrlPath', () => {
 	});
 });
 
-describe('GivengetBlogFiles', () => {
+describe('Given getBlogFiles', () => {
 	it('When its called it returns list of relative paths', async () => {
 		const results = await getBlogFiles();
 		expect(results.length).toBeGreaterThan(0);
@@ -50,7 +50,7 @@ describe('GivengetBlogFiles', () => {
 	});
 });
 
-describe('GivengetBlogContents', () => {
+describe('Given getBlogContents', () => {
 	['', 'the-GVDuMVROxCVNpgWy-file'].forEach(post => {
 		it(`When empty ${post}, content is also empty`, async () => {
 			const result = await getBlogContents(post);

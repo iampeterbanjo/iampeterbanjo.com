@@ -7,7 +7,7 @@ import topTracksData from '../../fixtures/lastfm-topTracks.json';
 
 const server = Hapi.Server();
 
-describe('Givenkorin tracks API', () => {
+describe('Given korin tracks API', () => {
 	beforeEach(async () => {
 		await factory.mock.method({
 			server,

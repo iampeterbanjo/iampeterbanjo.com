@@ -14,7 +14,7 @@ const Server = (options?: Object) => {
 	return server;
 };
 
-describe('Givenhttps-here:', () => {
+describe('Given https-here:', () => {
 	it('When a proxied http request is made, its redirected to https', async () => {
 		const res = await Server().inject({
 			method: 'GET',

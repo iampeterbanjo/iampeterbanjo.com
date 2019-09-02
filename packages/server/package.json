@@ -7,7 +7,7 @@
 		"node": "10.14.2"
 	},
 	"scripts": {
-		"build": "tsc -p tsconfig.json; run-p copy-*",
+		"build": "tsc -p tsconfig.build.json; run-p copy-*",
 		"prebuild": "rm -rf build",
 		"clean": "rm -rf node_modules",
 		"copy-templates": "ncp ./src/views/templates ./build/views/templates",
@@ -17,7 +17,7 @@
 		"test": "CI=true jest --detectLeaks --logHeapUsage",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
-		"watch-ts": "tsc-watch -p tsconfig.json --onSuccess \"node --inspect ./build/start.js\"",
+		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect ./build/start.js\"",
 		"watch-build": "npm-run-all copy-* watch-ts",
 		"watch-test": "jest --watch --detectLeaks --logHeapUsage"
 	},

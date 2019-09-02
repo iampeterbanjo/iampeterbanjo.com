@@ -8,8 +8,8 @@ const Server = async () => {
 	return server;
 };
 
-describe('Givenrollbar plugin', () => {
-	describe('GivenGiven plugin', () => {
+describe('Given rollbar plugin', () => {
+	describe('Given plugin', () => {
 		it('When server exposes rollbar', async () => {
 			const server = await Server();
 

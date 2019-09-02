@@ -21,7 +21,7 @@ afterAll(() => {
 	nock.restore();
 });
 
-describe('GivengetChartTopTracks', () => {
+describe('Given getChartTopTracks', () => {
 	beforeEach(async () => {
 		await nock(LASTFM_API_URL)
 			.get('/')
@@ -44,7 +44,7 @@ describe('GivengetChartTopTracks', () => {
 	});
 });
 
-describe('GivengetSongData', () => {
+describe('Given getSongData', () => {
 	const q = 'Kendrick Lamar HUMBLE';
 
 	beforeEach(async () => {
@@ -65,7 +65,7 @@ describe('GivengetSongData', () => {
 	});
 });
 
-describe('GivengetSongId', () => {
+describe('Given getSongId', () => {
 	it('When parsing songData the correct songId is returned', async () => {
 		const result = await getSongId(songData);
 
@@ -79,7 +79,7 @@ describe('GivengetSongId', () => {
 	});
 });
 
-describe('GivengetSongInfo', () => {
+describe('Given getSongInfo', () => {
 	it('When parsing songData the id is correct', async () => {
 		const { id } = await getSongInfo(songData);
 
@@ -101,7 +101,7 @@ describe('GivengetSongInfo', () => {
 	});
 });
 
-describe('GivengetPersonalityProfile', () => {
+describe('Given getPersonalityProfile', () => {
 	it('When called with no lyrics, the correct error message is returned', async () => {
 		const { profile } = await getPersonalityProfile('');
 

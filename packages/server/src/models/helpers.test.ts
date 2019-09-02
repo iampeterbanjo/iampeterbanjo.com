@@ -7,7 +7,7 @@ const { vars } = utils;
 const { connex } = helpers;
 const { MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
 
-describe('GivenGiven model `connex` helper', () => {
+describe('Given model `connex` helper', () => {
 	describe('And`isTest` is true', () => {
 		it('When connected dbName is correct', () => {
 			expect(connex.dbName(true)).toEqual('test');

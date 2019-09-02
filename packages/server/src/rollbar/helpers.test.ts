@@ -33,7 +33,7 @@ const MockRollbar = () => {
 	};
 };
 
-describe('Givenrollbar helpers', () => {
+describe('Given rollbar helpers', () => {
 	describe('And errorLogger', () => {
 		it('When an error is thrown rollbar.error is called with error message', () => {
 			const rollbar = MockRollbar();
@@ -66,7 +66,7 @@ describe('Givenrollbar helpers', () => {
 		});
 	});
 
-	describe('GivenrollbarErrorHandler', () => {
+	describe('Given rollbarErrorHandler', () => {
 		it('When there is NO error rollbar.log is NOT called', () => {
 			const rollbar = MockRollbar();
 			const error = null;
@@ -98,7 +98,7 @@ describe('Givenrollbar helpers', () => {
 		});
 	});
 
-	describe('GivenpreResponse and rollbar', () => {
+	describe('Given preResponse and rollbar', () => {
 		it('When `response.request.isBoom` is false rollbar.error is NOT called', () => {
 			const rollbar = MockRollbar();
 			const { request, h } = MockParams();

@@ -27,7 +27,7 @@ const Server = async () => {
 	return server;
 };
 
-describe('GivenGiven pipeline plugin', () => {
+describe('Given pipeline plugin', () => {
 	describe('And saved TopTracksRaw, transformTopTracks', () => {
 		let server;
 

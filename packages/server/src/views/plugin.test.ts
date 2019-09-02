@@ -44,7 +44,7 @@ const Server = async () => {
 	return server;
 };
 
-describe('GivenGiven Berserker route', () => {
+describe('Given Berserker route', () => {
 	describe('And server', () => {
 		let server;
 
@@ -64,7 +64,7 @@ describe('GivenGiven Berserker route', () => {
 	});
 });
 
-describe('Givenview blog', () => {
+describe('Given view blog', () => {
 	let server;
 
 	beforeEach(async () => {
@@ -102,7 +102,7 @@ describe('Givenview blog', () => {
 	});
 });
 
-describe('GivenHome page: SEO', () => {
+describe('Given Home page: SEO', () => {
 	let $;
 	let result;
 

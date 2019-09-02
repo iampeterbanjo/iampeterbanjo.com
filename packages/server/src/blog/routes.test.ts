@@ -1,6 +1,6 @@
 import routes from './routes';
 
-describe('Givenblog api', () => {
+describe('Given blog api', () => {
 	it('When its called, blog posts route has expected method, path, url', () => {
 		const { method, path, url } = routes.v1.get_blog_posts();
 

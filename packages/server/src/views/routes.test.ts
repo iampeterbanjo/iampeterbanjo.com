@@ -3,7 +3,7 @@ import utils from '../utils';
 
 const { slugger } = utils;
 
-describe('GivenGiven Berserker routes', () => {
+describe('Given Berserker routes', () => {
 	describe('And get_berserker', () => {
 		const result = routes.get_berserker();
 
@@ -19,7 +19,7 @@ describe('GivenGiven Berserker routes', () => {
 	});
 });
 
-describe('Givenblog view', () => {
+describe('Given blog view', () => {
 	it('When when viewing blog posts', () => {
 		const result = routes.get_blog_posts();
 
@@ -46,7 +46,7 @@ describe('Givenblog view', () => {
 	});
 });
 
-describe('Givenkorin views', () => {
+describe('Given korin views', () => {
 	it('When when viewing tracks', () => {
 		const result = routes.get_korin_tracks();
 

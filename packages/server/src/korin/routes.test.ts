@@ -3,7 +3,7 @@ import routes from '../../src/korin/routes';
 
 const { slugger } = utils;
 
-describe('Givenroutes: korin api', () => {
+describe('Given routes: korin api', () => {
 	it('When requesting tracks the route details are correct', () => {
 		const result = routes.v1.get_korin_tracks();
 

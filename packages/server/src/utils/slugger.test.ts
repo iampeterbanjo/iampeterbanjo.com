@@ -2,7 +2,7 @@ import utils from '.';
 
 const { slugger } = utils;
 
-describe('Givenparsing and reversing', () => {
+describe('Given parsing and reversing', () => {
 	[
 		{
 			text: 'Ariana Grande',

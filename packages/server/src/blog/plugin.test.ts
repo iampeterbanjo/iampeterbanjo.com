@@ -5,7 +5,7 @@ import plugin from './plugin';
 
 const { message } = utils;
 
-describe('GivengetBlogFiles', () => {
+describe('Given getBlogFiles', () => {
 	let server;
 
 	beforeEach(() => {
@@ -32,7 +32,7 @@ describe('GivengetBlogFiles', () => {
 	});
 });
 
-describe('GivengetBlogContents', () => {
+describe('Given getBlogContents', () => {
 	let server;
 
 	beforeEach(() => {

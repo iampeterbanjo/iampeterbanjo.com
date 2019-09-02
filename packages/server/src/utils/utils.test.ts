@@ -2,7 +2,7 @@ import utils from '.';
 
 const { time, getCache } = utils;
 
-describe('GivengetCache', () => {
+describe('Given getCache', () => {
 	it('When its called the default cache is expected', () => {
 		const defaultCache = {
 			expiresIn: time.oneDay,
