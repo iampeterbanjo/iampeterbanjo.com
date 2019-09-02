@@ -22,24 +22,6 @@ const registerViews = {
 	},
 	relativeTo: __dirname,
 	path: Path.join(__dirname, './templates'),
-	// engines: {
-	// 	html: {
-	// 		compile: (src, options) => {
-	// 			const template = Nunjucks.compile(src, options.environment);
-	// 			return data => {
-	// 				return template.render(data);
-	// 			};
-	// 		},
-	// 		prepare: (options, next) => {
-	// 			options.compileOptions.environment = Nunjucks.configure(options.path, {
-	// 				watch: false,
-	// 			});
-	// 			return next();
-	// 		},
-	// 	},
-	// },
-	// context,
-	// path: Path.join(__dirname, './templates'),
 };
 
 const getBerserker = server => {
@@ -115,8 +97,9 @@ const viewBlogContent = server => {
 		handler: async (request, h) => {
 			const { post } = request.params;
 			const details = await server.methods.view.blogContent(post);
+			const { content, date, title } = details;
 
-			return h.view('blog/details', { ...details });
+			return h.view('blog/details', { content, date, title });
 		},
 	});
 };

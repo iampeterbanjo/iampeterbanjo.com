@@ -1,0 +1,27 @@
+import layout from "../layout"
+import bio from "../includes/bio"
+
+<include(layout)>
+	<@body>
+		<div>
+			<h1>Blog</h1>
+			<for|post| of=input.posts>
+				<article class="cf mw9 center flex-l items-start">
+					<div class="w-100 w-25-l post-title">
+						<h2 class="lh-title f2 mb2">
+							<a href="${post.url}">${post.title}</a>
+						</h2>
+						<small>${post.date}</small>
+					</div>
+					<div class="w-100 w-75-l post-excerpt">
+						<p class="ml4-l f3 measure-wide lh-copy">
+							<span>${post.description}</span>
+							<a class="ml2 f4" href="${post.url}">Read more</a>
+						</p>
+					</div>
+				</article>
+			</for>
+		</div>
+		<include(bio)/>
+	</@body>
+</include>

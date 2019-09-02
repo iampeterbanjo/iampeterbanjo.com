@@ -64,9 +64,10 @@ describe('GivengetBlogContents', () => {
 			const result = await getBlogContents(post);
 			if (!result) return;
 			const { title, content, date } = result;
-			const details = `given ${title}`;
 			const validDate = fecha.format(new Date(date), 'mediumDate');
 
+			expect(content).toBeDefined();
+			expect(title).toBeDefined();
 			expect(date).toBeDefined();
 			expect(date).toEqual(validDate);
 			expect(content.length).toBeGreaterThan(1);
