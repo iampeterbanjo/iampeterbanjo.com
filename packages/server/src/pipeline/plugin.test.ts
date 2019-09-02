@@ -102,7 +102,7 @@ describe('Given pipeline plugin', () => {
 				});
 			});
 
-			it('When there is no data an Error is thrown', async () => {
+			it('When there is no data an Error is thrown', () => {
 				expect(
 					server.methods.pipeline.saveRawTopTracks(server),
 				).rejects.toThrow('No tracks found');

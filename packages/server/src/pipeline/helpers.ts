@@ -23,7 +23,7 @@ export const TrackProfileValidator = Joi.object({
 	image: Joi.string().uri(),
 	artist: Joi.string(),
 	lastFmUrl: Joi.string().uri(),
-	profileUrl: Joi.string().uri(),
+	profileUrl: Joi.string(),
 	summary: Joi.string(),
 });
 
@@ -38,11 +38,6 @@ const checkRawTopTrack = topTrackRaw => {
 	});
 };
 
-/**
- * Check track profile. Combines data for chart track info
- * and profile summary
- * @param {object} trackProfile
- */
 const checkTrackProfile = trackProfile => {
 	return Joi.validate(trackProfile, TrackProfileValidator, {
 		presence: 'required',
@@ -54,7 +49,7 @@ const saveRawTopTracks = async server => {
 
 	const tracks = R.pathOr(null, ['tracks', 'track'], rawTopTracks) || [];
 
-	if (!tracks) throw new Error('No tracks found');
+	if (!tracks || !tracks.length) throw new Error('No tracks found');
 
 	tracks.forEach(track => {
 		const { error } = checkRawTopTrack(track);

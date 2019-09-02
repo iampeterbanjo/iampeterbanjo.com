@@ -14,12 +14,13 @@
 		"dev": "npm link css; run-s build watch-ts",
 		"start-debug": "node --inspect ./build/start.js",
 		"start": "node ./build/start.js",
-		"test": "CI=true jest --detectLeaks --logHeapUsage",
+		"test": "CI=true jest",
+		"test-leaks": "CI=true jest --detectLeaks --logHeapUsage",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect ./build/start.js\"",
 		"watch-build": "npm-run-all copy-* watch-ts",
-		"watch-test": "jest --watch --detectLeaks --logHeapUsage"
+		"watch-test": "jest --watch"
 	},
 	"keywords": [
 		"personal",
