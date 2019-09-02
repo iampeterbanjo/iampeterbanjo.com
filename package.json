@@ -39,6 +39,7 @@
 		"install-docs": "cd ./packages/docs; npm install",
 		"install-e2e": "cd ./packages/e2e; npm install",
 		"install-server": "cd ./packages/server; npm install",
+		"e2e": "cd ./packages/e2e; npm",
 		"server": "cd ./packages/server; npm",
 		"format": "pretty-quick",
 		"lint": "npx pretty-quick --check",
