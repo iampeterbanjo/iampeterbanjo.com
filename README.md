@@ -1,10 +1,15 @@
 # Personal portfolio and blog
 
+| Package | Coverage                            |
+| ------- | ----------------------------------- |
+| server  | ![server coverage][coverage-server] |
+
 Made with
 
 - [NodeJS][node-green]
 - [Hapi][hapijs]
-- [Vue][vue]
+- [Typescript][typescript]
+- [Jest][jest]
 
 ## Development
 
@@ -131,3 +136,6 @@ Documenting significant architecture decisions will help in reflection and learn
 [vue]: https://vuejs.org
 [adr]: https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records
 [adr-toc]: ./packages/docs/adr/README.md
+[typescript]: https://www.typescriptlang.org
+[jest]: https://jestjs.io
+[coverage-server]: ./packages/server/badges/badge-lines.svg
