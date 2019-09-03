@@ -22,17 +22,12 @@ Made with
 
 Each package has a test and test watch script e.g.
 
-- `npm run watch-server-test`
+- `npm test`
 
-  - watches server tests
-
-- `npm run server-test`
-
-  - runs server tests
+  - runs data, e2e and server tests
 
 - `npm run dry-run` (to check deployment)
   - builds css
-  - starts data
   - starts server
 
 ### Docker
@@ -44,7 +39,7 @@ Each package has a test and test watch script e.g.
 
 - `npm run deploy`
   - runs tests
-  - runs e2e tests (needs development server to be running e.g. `yarn dev`)
+  - runs e2e tests (needs development server to be running e.g. `npm run dev`)
   - pushes to [Clever cloud][clever-cloud]
   - pushes to [Github][repo]
 
@@ -90,9 +85,9 @@ expect(result).to.equal(files);
 Test results should make it clear what features are working or broken. Using a BDD makes this easier by providing the context for the test results. [Learn more][bdd]. For example,
 
 ```JavaScript
-suite('Given model `connex` helper', () => {
-  suite('And `isTest` is true', () => {
-    test('dbName is correct', () => {
+describe('Given model `connex` helper', () => {
+  describe('And `isTest` is true', () => {
+    it('When dbName is correct', () => {
       expect(connex.dbName(true)).to.equal('test');
     });
   });
@@ -101,7 +96,7 @@ suite('Given model `connex` helper', () => {
 
 ### 5. Add tools sparingly
 
-Each additional tool like a compiler, library, framework etc. adds a maintenance burden that can slow down progress. Instead of focusing on what I want to do, I'm forced to debug and fix an upstream issue.
+Each additional tool like a compiler, library, framework etc. adds a maintenance burden that can slow down progress. This has the unintended consequence of distracting me from my goal and working on upstream issues. [Learn more][journal]
 
 ### 6. Tabs over spaces
 
@@ -109,16 +104,16 @@ I've tried both and I prefer tabs because I can change my indentation without ch
 
 ### 7. Pay down debts
 
-I want to keep this site running over a a few years (2+) and technical debt is what makes it harder to make changes over time. They should be paid down and in order to do this -
+I want to keep this site running over a few years (5+) and technical debt is what makes it harder to make changes over time. They should be paid down and in order to do this -
 
 - Keep concepts and abstractions simple
 - Have test coverage above 90%
 - Refactor frequently
 - Ship often to keep code in working state
 
-### 8. Architecture Decision Records
+### 8. Reflect on decisions
 
-Documenting significant architecture decisions will help in reflection and learning from previous iterations. [Learn more][adr]
+Journaling and documenting significant architecture decisions will help in reflection and learning from previous iterations. [Learn more][adr]
 
 #### [ADR Table of Contents][adr-toc]
 
@@ -139,3 +134,4 @@ Documenting significant architecture decisions will help in reflection and learn
 [typescript]: https://www.typescriptlang.org
 [jest]: https://jestjs.io
 [coverage-server]: ./packages/server/badges/badge-lines.svg
+[journal]: ./JOURNAL.md
