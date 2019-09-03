@@ -1,10 +1,12 @@
 # Personal portfolio and blog
 
-| Package | Coverage                            |
-| ------- | ----------------------------------- |
-| server  | ![server coverage][coverage-server] |
+| Packages    | Coverage                            |
+| ----------- | ----------------------------------- |
+| server      | ![server coverage][coverage-server] |
+| hapi-roller | 98.77% (2/163)                      |
+| data        | 100.00%                             |
 
-Made with
+## Made with
 
 - [NodeJS][node-green]
 - [Hapi][hapijs]
