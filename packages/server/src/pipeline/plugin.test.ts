@@ -46,6 +46,7 @@ describe('Given pipeline plugin', () => {
 
 		afterAll(async () => {
 			await databaseCleaner.clean(server.app.db.pipeline.link);
+			jest.restoreAllMocks();
 		});
 
 		test.todo('When TopTracksRaw are transformed to TrackProfile its valid');
@@ -68,6 +69,7 @@ describe('Given pipeline plugin', () => {
 
 			afterAll(async () => {
 				await databaseCleaner.clean(server.app.db.pipeline.link);
+				jest.restoreAllMocks();
 			});
 
 			it('When raw top tracks are saved to db length is 50', async () => {
@@ -101,6 +103,8 @@ describe('Given pipeline plugin', () => {
 					fn: jest.fn().mockResolvedValue('BAD'),
 				});
 			});
+
+			afterAll(jest.restoreAllMocks);
 
 			it('When there is no data an Error is thrown', () => {
 				expect(
@@ -141,6 +145,8 @@ describe('Given pipeline plugin', () => {
 					fn: jest.fn().mockResolvedValue(different),
 				});
 			});
+
+			afterAll(jest.resetAllMocks);
 
 			it('When the data is not valid a ValidationError is thrown', async () => {
 				expect(

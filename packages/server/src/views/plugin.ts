@@ -31,11 +31,11 @@ const getBerserker = server => {
 	server.route({
 		method,
 		path,
-		handler: async (request, h) => {
+		handler: async (request, reply) => {
 			const app = createApp({ message: 'Fatality' });
 			const html = await createRenderer().renderToString(app);
 
-			return h.view('berserker/list', { html });
+			return reply.view('berserker/list', { html });
 		},
 	});
 };
@@ -45,14 +45,14 @@ const getKorinProfiles = server => {
 	server.route({
 		method,
 		path,
-		handler: async (request, h) => {
+		handler: async (request, reply) => {
 			const { artist, track } = request.params;
 			const { profile, summary } = await server.methods.view.trackProfile({
 				artist,
 				track,
 			});
 
-			return h.view('korin/profiles', {
+			return reply.view('korin/profiles', {
 				profile: JSON.stringify(profile),
 				summary,
 				artist,
@@ -67,10 +67,10 @@ const getKorinTracks = server => {
 	server.route({
 		method,
 		path,
-		handler: async (request, h) => {
+		handler: async (request, reply) => {
 			const tracks = await server.methods.view.topTracks();
 
-			return h.view('korin/tracks', { tracks });
+			return reply.view('korin/tracks', { tracks });
 		},
 	});
 };
@@ -81,10 +81,10 @@ const viewBlogList = server => {
 	server.route({
 		method,
 		path,
-		handler: async (request, h) => {
+		handler: async (request, reply) => {
 			const posts = await server.methods.view.blogList();
 
-			return h.view('blog/list', { posts });
+			return reply.view('blog/list', { posts });
 		},
 	});
 };
@@ -95,11 +95,11 @@ const viewBlogContent = server => {
 	server.route({
 		method,
 		path,
-		handler: async (request, h) => {
+		handler: async (request, reply) => {
 			const { post } = request.params;
 			const details = await server.methods.view.blogContent(post);
 
-			return h.view('blog/details', { ...details });
+			return reply.view('blog/details', { ...details });
 		},
 	});
 };
@@ -110,8 +110,8 @@ const viewHomePage = server => {
 	server.route({
 		method,
 		path,
-		handler: (request, h) => {
-			return h.view('misc/home');
+		handler: (request, reply) => {
+			return reply.view('misc/home');
 		},
 	});
 };

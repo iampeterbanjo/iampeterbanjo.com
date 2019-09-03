@@ -52,6 +52,8 @@ describe('Given Berserker route', () => {
 			server = await Server();
 		});
 
+		afterEach(jest.restoreAllMocks);
+
 		it('When GET /berserker is requested status is 200', async () => {
 			const { method, url } = routes.get_berserker();
 			const response = await server.inject({
@@ -70,6 +72,8 @@ describe('Given view blog', () => {
 	beforeEach(async () => {
 		server = await Server();
 	});
+
+	afterEach(jest.restoreAllMocks);
 
 	it('When GET /blog/posts requested status code is 200', async () => {
 		const { method, url } = routes.get_blog_posts();
@@ -117,6 +121,8 @@ describe('Given Home page: SEO', () => {
 		$ = cheerio.load(payload);
 		result = payload;
 	});
+
+	afterAll(jest.resetAllMocks);
 
 	it('When parsed page is HTML5 doctype', () => {
 		expect(result).toEqual(expect.stringMatching(/^\<!DOCTYPE html\>/));
