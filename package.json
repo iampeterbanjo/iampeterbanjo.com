@@ -18,7 +18,7 @@
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
 		"build": "npm-run-all build-*",
-		"build-css": "cd ./packages/css; npm run build && npm link",
+		"build-css": "cd ./packages/css; npm run build",
 		"build-server": "cd ./packages/server; npm run build",
 		"clean-css": "cd ./packages/css; rm -rf node_modules main.css",
 		"clean-data": "cd ./packages/data; rm -rf node_modules",
