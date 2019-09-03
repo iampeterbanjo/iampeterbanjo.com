@@ -1,4 +1,4 @@
-# Personal portfolio and blog
+# :construction_worker: Personal portfolio and blog
 
 | Packages    | Coverage                            |
 | ----------- | ----------------------------------- |
