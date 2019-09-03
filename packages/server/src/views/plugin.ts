@@ -1,26 +1,28 @@
 import Nunjucks from 'nunjucks';
 import Path from 'path';
-import Marko from 'marko';
 import routes from './routes';
 import * as context from './context';
 import createApp from './ssr/app';
 import { createRenderer } from 'vue-server-renderer';
 
-import 'marko/node-require';
-
 const registerViews = {
 	engines: {
-		marko: {
+		html: {
 			compile: (src, options) => {
-				const opts = { preserveWhitespace: true, writeToDisk: false };
-				const template = Marko.load(options.filename, opts);
-				return context => {
-					return template.renderToString(context);
+				const template = Nunjucks.compile(src, options.environment);
+				return data => {
+					return template.render(data);
 				};
+			},
+			prepare: (options, next) => {
+				options.compileOptions.environment = Nunjucks.configure(options.path, {
+					watch: false,
+				});
+				return next();
 			},
 		},
 	},
-	relativeTo: __dirname,
+	context,
 	path: Path.join(__dirname, './templates'),
 };
 
@@ -55,7 +57,6 @@ const getKorinProfiles = server => {
 				summary,
 				artist,
 				track,
-				tracksUrl: routes.get_korin_tracks().path,
 			});
 		},
 	});
@@ -97,9 +98,8 @@ const viewBlogContent = server => {
 		handler: async (request, h) => {
 			const { post } = request.params;
 			const details = await server.methods.view.blogContent(post);
-			const { content, date, title } = details;
 
-			return h.view('blog/details', { content, date, title });
+			return h.view('blog/details', { ...details });
 		},
 	});
 };
@@ -125,6 +125,7 @@ export default {
 	register: (server, { methods }) => {
 		server.views(registerViews);
 		server.method(methods);
+
 		getKorinTracks(server);
 		getKorinProfiles(server);
 		viewBlogList(server);

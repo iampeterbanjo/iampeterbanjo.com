@@ -31,7 +31,7 @@ const methods = [
 	},
 ];
 const Server = async () => {
-	const server = Hapi.Server();
+	const server = Hapi.Server({ debug: { request: ['error'] } });
 
 	await server.register([
 		Vision,
