@@ -18,7 +18,7 @@ COPY .envrc ./
 # Bundle app source
 COPY --chown=node:node . .
 
-RUN npm install
+RUN npm install --production=true
 
 EXPOSE 8080
 
