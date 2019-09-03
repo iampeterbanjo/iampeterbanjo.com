@@ -4,7 +4,7 @@ Date: 2019-08-24
 
 ## Status
 
-2019-08-24 done
+2019-08-24 accepted
 
 ## Context
 

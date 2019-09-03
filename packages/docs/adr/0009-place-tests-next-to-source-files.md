@@ -5,6 +5,7 @@ Date: 2019-08-27
 ## Status
 
 2019-08-27 proposed
+2019-09-02 accepted
 
 ## Context
 
@@ -12,8 +13,8 @@ While migrating to Typescript, fixing tests means switching between the source f
 
 ## Decision
 
-Decision here...
+Moving test files next to the source code makes it much easier to switch between source and tests. It's also easier to see which test files do not have any unit tests.
 
 ## Consequences
 
-Consequences here...
+- Refactoring

@@ -1,5 +1,5 @@
 import Wreck from '@hapi/wreck';
-import plugin from './api';
+import plugin from './plugin';
 
 const client = Wreck.defaults({ baseUrl: process.env.CQC_API_URL });
 

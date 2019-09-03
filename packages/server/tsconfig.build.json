@@ -1,4 +1,14 @@
 {
-	"extends": "./tsconfig.json",
-	"exclude": ["node_modules", "**/node_modules", "src/__tests__", "**/*spec.ts"]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"outDir": "./build"
+	},
+	"include": ["src/**/*"],
+	"exclude": [
+		"node_modules",
+		"build",
+		"./factory",
+		"./fixtures",
+		"**/*.test.ts"
+	]
 }
