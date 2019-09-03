@@ -1,10 +1,10 @@
-import { expect } from '@hapi/code';
-import Lab from '@hapi/lab';
+const { expect } = require('@hapi/code');
+const Lab = require('@hapi/lab');
 const sinon = require('sinon');
 
 const { preResponse, rollbarErrorHandler, errorLogger } = require('../helpers');
 
-export const lab = Lab.script();
+const lab = (exports.lab = Lab.script());
 const { test, suite } = lab;
 
 const MockParams = () => {
