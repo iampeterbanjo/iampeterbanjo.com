@@ -24,6 +24,8 @@
     (node:24262) [DEP0079] DeprecationWarning: Custom inspection function on Objects via .inspect() is deprecated 🚨   The argument 'path' must be a string or Uint8Array without null bytes. Received '\u0000commonjs-proxy:/home/iampeterbanjo/github/marko-js-samples/marko-rollup/node_modules/marko/src/runtime/package.json'
     ```
 
+  - 3 September 2019: Converting to Typescript and Jest has reduced code coverage from 97% to 85%. How come? Maybe Jest calculates line coverage differently to Lab.
+
 [github-faker]: https://github.com/marak/faker.js
 [github-casual]: https://github.com/boo1ean/casual
 [marko-rollup]: https://github.com/marko-js-samples/marko-rollup
