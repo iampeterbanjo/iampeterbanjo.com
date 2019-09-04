@@ -47,24 +47,32 @@ Each package has a test and test watch script e.g.
 
 ## Design principles
 
-### 1. Structure folders by components
+### 0. :thinking: Reflect on decisions and processes
+
+> The best approach to improving a software development environment is to amplify learning. _Lean software development, an Agile Toolkit - Mary Poppendick, Tom Poppendick._
+
+[Journaling][journal] and documenting significant [architecture decisions][adr] will help in reflection and learning from previous iterations. [Learn more][adr]
+
+### 1. Structure folders by projects and components
+
+> It turns out that understanding the existing product is the dominant maintenance activity... Once we know what we need to change, the modification itself may well be trivial. But the road to that enlightenment is often painful. This means our primary task as programmers isn’t to write code, but to understand it. _Your Code as a Crime Scene - Adam Tornhill_
 
 Organising the project by components, and by extension features, makes the folder hierarchy helpful in searching, reading and editing code. [Learn more][breakintcomponents]
 
-### 2. Folders are plugins
-
-Each folder contains one or more features that will be registered as a HapiJS plugin. This is used to create API boundaries between parts of the application. A plugin contains -
+A follow-on from this idea is that each server folder contains one or more features that will be registered as a HapiJS plugin. This is used to create API boundaries between parts of the application. A plugin contains -
 
 - methods: for sharing features across plugin boundaries
 - helpers: where the features are implemented
 - plugin: HapiJS plugin definition e.g. name, version etc.
-- index.js: exported function that can be registered on the server. [Learn more][require-modules]
+- index: exported function that can be registered on the server. [Learn more][require-modules]
 
-This makes testing easier since a feature can be easily composed, spied or mocked.
+This makes testing easier since a feature can be easily composed.
 
-### 3. Test everything
+### 2. Test everything
 
-Instead of asking how much should I test, I've made it a design goal to make everything testable. HapiJS makes this easier by providing tools and properties to spy or inspect. For example,
+> Tip 48: Design to test: Start thinking about testing before you write a line of code. _The Pragmatic Programmer: From journeyman to master - Andrew Hunt, David Thomas_
+
+Instead of asking how much should I test, I've made it a design goal to make everything testable. HapiJS makes this easier by providing an API that can use dependency injection and instrument requests. For example,
 
 ```JavaScript
 await server.register({
@@ -82,9 +90,11 @@ expect(result).to.equal(files);
 
 ```
 
-### 4. Behaviour Driven Design for test descriptions
+### 3. Behaviour Driven Design for test descriptions
 
-Test results should make it clear what features are working or broken. Using a BDD makes this easier by providing the context for the test results. [Learn more][bdd]. For example,
+> ...vocabulary is the perhaps the most important aspect of BDD, because it tries to normalize the vocabulary used by programmers, business developers, testers and others in the development of a system when discussing problems, requirements, and solutions. _Test-driven JavaScript Development - Christian Johansen_
+
+Test results should make it clear what features are working or broken. Using BDD makes this easier by providing the context for the test results. [Learn more][bdd]. For example,
 
 ```JavaScript
 describe('Given model `connex` helper', () => {
@@ -96,15 +106,15 @@ describe('Given model `connex` helper', () => {
 });
 ```
 
-### 5. Add tools sparingly
+### 4. Add tools sparingly
 
-Each additional tool like a compiler, library, framework etc. adds a maintenance burden that can slow down progress. This has the unintended consequence of distracting me from my goal and working on upstream issues. [Learn more][journal]
+> [4] UNPLANNED WORK OR RECOVERY WORK: These include operational incidents and problems, often caused by the previous types of work and always come at the expense of other planned work commitments. _The Four Types of Work from The Phoenix Project - George Spafford, Kevin Behr, Gene Kim_
 
-### 6. Tabs over spaces
+Each additional tool like a compiler, library, framework etc. adds a maintenance burden that can potentially slow down progress. This has the unintended consequence of distracting me from my goals and working on upstream issues. [Learn more][journal]
 
-I've tried both and I prefer tabs because I can change my indentation without changing the file history. Except in Markdown files because the linter is not customisable and it's not code.
+### 5. Pay down technical debts
 
-### 7. Pay down debts
+> Always leave the code base healthier than when you found it. It will never be perfect, but it should be better. _Refactoring: Improving the Design of Existing Code - Martin Fowler_
 
 I want to keep this site running over a few years (5+) and technical debt is what makes it harder to make changes over time. They should be paid down and in order to do this -
 
@@ -112,10 +122,6 @@ I want to keep this site running over a few years (5+) and technical debt is wha
 - Have test coverage above 90%
 - Refactor frequently
 - Ship often to keep code in working state
-
-### 8. Reflect on decisions
-
-Journaling and documenting significant architecture decisions will help in reflection and learning from previous iterations. [Learn more][adr]
 
 #### [ADR Table of Contents][adr-toc]
 
