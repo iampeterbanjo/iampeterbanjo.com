@@ -53,7 +53,7 @@ Each package has a test and test watch script e.g.
 
 [Journaling][journal] and documenting significant [architecture decisions][adr] will help in reflection and learning from previous iterations. [Learn more][adr]
 
-### 1. Structure folders by projects and components
+### 1. :gear: Structure folders by projects and components
 
 > It turns out that understanding the existing product is the dominant maintenance activity... Once we know what we need to change, the modification itself may well be trivial. But the road to that enlightenment is often painful. This means our primary task as programmers isn’t to write code, but to understand it. _Your Code as a Crime Scene - Adam Tornhill_
 
@@ -68,7 +68,7 @@ A follow-on from this idea is that each server folder contains one or more featu
 
 This makes testing easier since a feature can be easily composed.
 
-### 2. Test everything
+### 2. :shield: Test everything
 
 > Tip 48: Design to test: Start thinking about testing before you write a line of code. _The Pragmatic Programmer: From journeyman to master - Andrew Hunt, David Thomas_
 
@@ -90,7 +90,7 @@ expect(result).to.equal(files);
 
 ```
 
-### 3. Behaviour Driven Design for test descriptions
+### 3. :open_book: Behaviour Driven Design for test descriptions
 
 > ...vocabulary is the perhaps the most important aspect of BDD, because it tries to normalize the vocabulary used by programmers, business developers, testers and others in the development of a system when discussing problems, requirements, and solutions. _Test-driven JavaScript Development - Christian Johansen_
 
@@ -106,13 +106,13 @@ describe('Given model `connex` helper', () => {
 });
 ```
 
-### 4. Add tools sparingly
+### 4. :hammer_and_wrench: Add tools sparingly
 
 > [4] UNPLANNED WORK OR RECOVERY WORK: These include operational incidents and problems, often caused by the previous types of work and always come at the expense of other planned work commitments. _The Four Types of Work from The Phoenix Project - George Spafford, Kevin Behr, Gene Kim_
 
 Each additional tool like a compiler, library, framework etc. adds a maintenance burden that can potentially slow down progress. This has the unintended consequence of distracting me from my goals and working on upstream issues. [Learn more][journal]
 
-### 5. Pay down technical debts
+### 5. :money_with_wings: Pay down technical debts
 
 > Always leave the code base healthier than when you found it. It will never be perfect, but it should be better. _Refactoring: Improving the Design of Existing Code - Martin Fowler_
 
