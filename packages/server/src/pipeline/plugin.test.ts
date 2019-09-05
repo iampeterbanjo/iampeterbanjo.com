@@ -13,7 +13,7 @@ import factory from '../../factory';
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
 const Server = async () => {
-	const server = Hapi.Server();
+	const server = Hapi.Server({ debug: { request: ['log'] } });
 
 	await server.register({
 		plugin,
@@ -87,6 +87,18 @@ describe('Given pipeline plugin', () => {
 				});
 
 				expect(response.statusCode).toEqual(200);
+			});
+
+			it('When requesting API response is expected', async () => {
+				const { method, url } = routes.v1.extract_top_tracks();
+				const response = await server.inject({
+					method,
+					url,
+				});
+
+				expect(response.payload).toEqual(
+					expect.stringContaining(`Extracted 50 tracks`),
+				);
 			});
 		});
 

@@ -4,6 +4,9 @@ import routes from './routes';
 export default {
 	name: 'korin-api',
 	version: '1.0.0',
+	dependencies: {
+		models: '1.x.x',
+	},
 	register: (server, { methods }) => {
 		server.method(methods);
 

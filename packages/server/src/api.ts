@@ -10,6 +10,7 @@ import devErrors from './hapi-dev-errors';
 import inert from './hapi-inert';
 import vision from './hapi-vision';
 import views from './views';
+import models from './models';
 import statics from './statics';
 import pipeline from './pipeline';
 import cqc from './cqc';
@@ -57,6 +58,7 @@ export default async function main() {
 			server.register(vision),
 			server.register(views),
 			server.register(statics),
+			server.register(models),
 			server.register(korin),
 			server.register(pipeline),
 			server.register(cqc),

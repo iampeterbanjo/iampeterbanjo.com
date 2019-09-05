@@ -22,7 +22,7 @@
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect ./build/start.js\"",
 		"watch-build": "npm-run-all copy-* watch-ts",
-		"watch-test": "jest --watch"
+		"watch-test": "node --trace-warnings node_modules/.bin/jest --watch"
 	},
 	"keywords": [
 		"personal",
