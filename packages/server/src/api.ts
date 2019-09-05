@@ -2,7 +2,6 @@ import catboxMongodb from 'catbox-mongodb';
 import Hapi from '@hapi/hapi';
 import utils from './utils';
 
-import good from './good';
 import rollbar from './rollbar';
 import korin from './korin';
 import blog from './blog';
@@ -15,6 +14,7 @@ import statics from './statics';
 import pipeline from './pipeline';
 import cqc from './cqc';
 import httpsHere from './https-here';
+import hapiPino from './hapi-pino';
 
 const { vars } = utils;
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
@@ -50,7 +50,7 @@ export default async function main() {
 		});
 
 		await Promise.all([
-			server.register(good),
+			server.register(hapiPino),
 			server.register(rollbar),
 			server.register(blog),
 			server.register(devErrors),

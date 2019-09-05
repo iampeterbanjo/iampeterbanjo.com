@@ -80,3 +80,9 @@ describe('Given server cache', () => {
 		expect(partition).toEqual(MONGODB_ADDON_DB);
 	});
 });
+
+describe('Given hapi-pino', () => {
+	it('When server is started it has logger attached', () => {
+		expect(server.logger).toBeDefined();
+	});
+});
