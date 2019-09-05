@@ -6,6 +6,8 @@ RUN=docker run --network=host --env-file .env -d -it -p 8080:8080 --name iampete
 START=docker start iampeterbanjo-app
 STOP=docker stop iampeterbanjo-app
 LOGS=docker logs iampeterbanjo-app
+INSTALL=cd packages/{css,data,server}; npm install
+SERVER=cd packages/server;
 
 .PHONY: build
 build: ## build docker image
@@ -38,6 +40,16 @@ start: # start image
 .PHONY: stop
 stop: # stop image
 	$(STOP)
+
+.PHONY: install
+install: # install packages
+	$(INSTALL)
+
+.PHONY: server
+server: # run commands in server directory
+	@echo $(SERVER) $(filter-out $@,$(MAKECMDGOALS))
+%:
+	@:
 
 .PHONY: help
 help:
