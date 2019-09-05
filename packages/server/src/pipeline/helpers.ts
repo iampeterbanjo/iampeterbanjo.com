@@ -57,6 +57,8 @@ const saveRawTopTracks = async server => {
 	});
 
 	await server.app.db.pipeline.TopTracksRaw.insertMany(tracks);
+
+	return tracks.length;
 };
 
 export default {

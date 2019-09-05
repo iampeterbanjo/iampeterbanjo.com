@@ -14,11 +14,11 @@ export default {
 		server.route({
 			path: extractTopTracks.path,
 			method: extractTopTracks.method,
-			handler: async (req, h) => {
+			handler: async () => {
 				try {
-					await server.methods.pipeline.saveRawTopTracks(server);
+					const count = await server.methods.pipeline.saveRawTopTracks(server);
 
-					return { message: 'Extraction started' };
+					return { message: `Extracted ${count} tracks` };
 				} catch (error) {
 					return Boom.boomify(error);
 				}
