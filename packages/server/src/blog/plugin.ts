@@ -1,4 +1,4 @@
-import Boom from 'boom';
+import Boom from '@hapi/boom';
 import utils from '../utils';
 import routes from './routes';
 
