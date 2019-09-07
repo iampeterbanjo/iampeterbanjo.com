@@ -28,30 +28,6 @@ const Server = async () => {
 };
 
 describe('Given pipeline plugin', () => {
-	describe('And saved RawTopTracks, transformTopTracks', () => {
-		let server;
-
-		beforeAll(async () => {
-			server = await Server();
-
-			await factory.mock.method({
-				server,
-				name: 'korin.getChartTopTracks',
-				plugin: korinPlugin,
-				fn: jest.fn().mockResolvedValue(topTracksData),
-			});
-
-			await server.methods.pipeline.saveRawTopTracks(server);
-		});
-
-		afterAll(async () => {
-			await databaseCleaner.clean(server.app.db.pipeline.link);
-			jest.restoreAllMocks();
-		});
-
-		test.todo('When RawTopTracks are transformed to TrackProfile its valid');
-	});
-
 	describe('And saveRawTopTracks, models, korin plugins', () => {
 		describe('And valid API response', () => {
 			let server;

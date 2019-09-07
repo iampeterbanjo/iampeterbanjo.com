@@ -9,3 +9,4 @@
 - [7. module.exports-vs-export-default](0007-module.exports-vs-export-default.md)
 - [8. use-ava-test-runner](0008-use-ava-test-runner.md)
 - [9. place-tests-next-to-source-files](0009-place-tests-next-to-source-files.md)
+- [10. mongoose-schema-and-type-definitions](0010-mongoose-schema-and-type-definitions.md)
