@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import util from 'util';
 import helpers from './helpers';
 import TopTrack from './TopTrack';
-import TopTracksRaw from './TopTracksRaw';
+import RawTopTrack from './RawTopTrack';
 import Profile from './Profile';
 
 mongoose.connect[util.promisify.custom] = (error, db) => {
@@ -28,7 +28,7 @@ export default {
 				},
 				pipeline: {
 					link: connection.db,
-					TopTracksRaw,
+					RawTopTrack,
 				},
 			};
 		} catch (error) {

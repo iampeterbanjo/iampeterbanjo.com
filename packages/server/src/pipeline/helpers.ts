@@ -51,12 +51,13 @@ const saveRawTopTracks = async server => {
 
 	if (!tracks || !tracks.length) throw new Error('No tracks found');
 
-	tracks.forEach(track => {
+	tracks.forEach((track: RawTopTrack) => {
+		track.importedDate = Date.now();
 		const { error } = checkRawTopTrack(track);
 		if (error) throw error;
 	});
 
-	await server.app.db.pipeline.TopTracksRaw.insertMany(tracks);
+	await server.app.db.pipeline.RawTopTrack.insertMany(tracks);
 
 	return tracks.length;
 };

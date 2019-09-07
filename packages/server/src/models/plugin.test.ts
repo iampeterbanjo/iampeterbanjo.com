@@ -93,7 +93,7 @@ describe('Given models plugin', () => {
 				expect(server.app.db.pipeline.link).toBeDefined();
 			});
 
-			['TopTracksRaw'].forEach(model => {
+			['RawTopTrack'].forEach(model => {
 				it(`When server.app.db.pipeline has ${model} equal to modelName`, () => {
 					expect(server.app.db.pipeline[model].modelName).toEqual(model);
 				});

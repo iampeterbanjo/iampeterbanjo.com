@@ -3,18 +3,6 @@ import getProfile from './profile';
 import * as mock from './mock';
 import * as R from 'ramda';
 
-type TopTrack = {
-	artist: string;
-	title: string;
-	image: string;
-	lastFmUrl: string;
-};
-
-type Profile = TopTrack & {
-	summary: string;
-	profileUrl: string;
-};
-
 const generate = (
 	count: number,
 	item: () => TopTrack | Profile,

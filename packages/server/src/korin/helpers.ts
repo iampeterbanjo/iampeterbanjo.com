@@ -29,7 +29,7 @@ const getSongData = async search => {
 	return (await genius.get(`search?${query}`)).payload;
 };
 
-const getChartTopTracks = async () => {
+const getChartTopTracks = async (): Promise<RawTopTrack[]> => {
 	const query = new URLSearchParams([
 		['method', 'chart.getTopTracks'],
 		['format', 'json'],

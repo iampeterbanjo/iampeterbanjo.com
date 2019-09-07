@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const TopTracksRawSchema = new mongoose.Schema({
+const RawTopTrackSchema = new mongoose.Schema({
 	name: String,
 	duration: String,
 	playcount: String,
@@ -24,4 +24,4 @@ const TopTracksRawSchema = new mongoose.Schema({
 	],
 });
 
-export default mongoose.model('TopTracksRaw', TopTracksRawSchema);
+export default mongoose.model('RawTopTrack', RawTopTrackSchema);

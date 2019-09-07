@@ -28,7 +28,7 @@ const Server = async () => {
 };
 
 describe('Given pipeline plugin', () => {
-	describe('And saved TopTracksRaw, transformTopTracks', () => {
+	describe('And saved RawTopTracks, transformTopTracks', () => {
 		let server;
 
 		beforeAll(async () => {
@@ -49,7 +49,7 @@ describe('Given pipeline plugin', () => {
 			jest.restoreAllMocks();
 		});
 
-		test.todo('When TopTracksRaw are transformed to TrackProfile its valid');
+		test.todo('When RawTopTracks are transformed to TrackProfile its valid');
 	});
 
 	describe('And saveRawTopTracks, models, korin plugins', () => {
@@ -75,7 +75,7 @@ describe('Given pipeline plugin', () => {
 			it('When raw top tracks are saved to db length is 50', async () => {
 				await server.methods.pipeline.saveRawTopTracks(server);
 
-				const result = await server.app.db.pipeline.TopTracksRaw.find({});
+				const result = await server.app.db.pipeline.RawTopTrack.find({});
 				expect(result.length).toEqual(50);
 			});
 
@@ -129,7 +129,7 @@ describe('Given pipeline plugin', () => {
 					server.methods.pipeline.saveRawTopTracks(server),
 				).rejects.toThrow();
 
-				const result = await server.app.db.pipeline.TopTracksRaw.find({});
+				const result = await server.app.db.pipeline.RawTopTrack.find({});
 
 				expect(result.length).toEqual(0);
 			});
