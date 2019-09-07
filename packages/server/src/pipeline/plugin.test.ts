@@ -56,6 +56,12 @@ describe('Given pipeline plugin', () => {
 				expect(result.length).toEqual(50);
 			});
 
+			it('When saved it includes importedDate', async () => {
+				const result = await server.app.db.pipeline.RawTopTrack.findOne({});
+
+				expect(result.importedDate).toBeDefined();
+			});
+
 			it('When requesting API status code 200', async () => {
 				const { method, url } = routes.v1.extract_top_tracks();
 				const response = await server.inject({

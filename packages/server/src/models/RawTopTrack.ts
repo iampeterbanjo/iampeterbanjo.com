@@ -22,6 +22,7 @@ declare interface IRawTopTrack extends Document {
 			size: string;
 		},
 	];
+	importedDate: Date;
 }
 
 export interface RawTopTrackModel extends Model<IRawTopTrack> {}
@@ -52,6 +53,10 @@ export class RawTopTrack {
 					size: String,
 				},
 			],
+			importedDate: {
+				type: Date,
+				default: new Date(),
+			},
 		});
 
 		this._model = model<IRawTopTrack>('RawTopTrack', schema);
