@@ -16,9 +16,15 @@ export default {
 			method: extractTopTracks.method,
 			handler: async () => {
 				try {
-					const count = await server.methods.pipeline.saveRawTopTracks(server);
+					const extracted = await server.methods.pipeline.saveRawTopTracks(
+						server,
+					);
+					const converted = await server.methods.pipeline.convertRawTopTracks(
+						server,
+					);
+					const message = `Extracted ${extracted.length} and converted ${converted.length} tracks`;
 
-					return { message: `Extracted ${count} tracks` };
+					return { message };
 				} catch (error) {
 					return Boom.boomify(error);
 				}

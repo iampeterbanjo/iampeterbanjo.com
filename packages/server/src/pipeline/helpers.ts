@@ -51,8 +51,8 @@ const checkTrackProfile = trackProfile => {
 	});
 };
 
-const parseRawTopTracks = rawTopTracks => {
-	const tracks = R.pathOr(null, ['tracks', 'track'], rawTopTracks) || [];
+const parseRawTopTracks = (rawTopTracks): RawTopTrack[] => {
+	const tracks = R.pathOr([], ['tracks', 'track'], rawTopTracks);
 
 	if (!tracks || !tracks.length) throw new Error('No tracks found');
 
@@ -60,6 +60,8 @@ const parseRawTopTracks = rawTopTracks => {
 		track.importedDate = Date.now();
 		const { error } = checkRawTopTrack(track);
 		if (error) throw error;
+
+		return track;
 	});
 };
 
@@ -69,7 +71,7 @@ const saveRawTopTracks = async server => {
 
 	await server.app.db.pipeline.RawTopTrack.insertMany(tracks);
 
-	return tracks.length;
+	return tracks;
 };
 
 const parseTopTracks = topTracks => {
@@ -92,6 +94,8 @@ const convertRawTopTracks = async server => {
 	const tracks = parseTopTracks(rawTracks);
 
 	await server.app.db.korin.TopTrack.insertMany(tracks);
+
+	return tracks;
 };
 
 export default {

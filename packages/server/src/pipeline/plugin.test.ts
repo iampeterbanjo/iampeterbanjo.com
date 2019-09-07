@@ -10,13 +10,14 @@ import methods from './methods';
 import korinPlugin from '../korin/plugin';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
+import rawTopTracks from '../../fixtures/rawTopTracks.json';
 import factory from '../../factory';
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
 const asyncDbClean = promisify(databaseCleaner.clean);
 
 const Server = async () => {
-	const server = Hapi.Server({ debug: { request: ['log'] } });
+	const server = Hapi.Server({ debug: { request: ['error'] } });
 
 	await server.register({
 		plugin,
@@ -36,24 +37,20 @@ describe('Given pipeline plugin', () => {
 		beforeAll(async () => {
 			server = await Server();
 
-			await factory.mock.method({
-				server,
-				name: 'korin.getChartTopTracks',
-				plugin: korinPlugin,
-				fn: jest.fn().mockResolvedValue(topTracksData),
-			});
-			await asyncDbClean(server.app.db.pipeline.link);
+			jest
+				.spyOn(server.app.db.pipeline.RawTopTrack, 'find')
+				.mockResolvedValue(rawTopTracks);
 		});
 
 		afterAll(jest.restoreAllMocks);
 
-		it.skip('When RawTopTracks exist they are converted to TopTracks', async () => {
-			await server.methods.pipeline.saveRawTopTracks(server);
-			await server.methods.pipeline.convertRawTopTracks(server);
+		it('When RawTopTracks exist they are converted to TopTracks', async () => {
+			const converted = await server.methods.pipeline.convertRawTopTracks(
+				server,
+			);
+			const tracks = await server.app.db.korin.TopTrack.find({});
 
-			const tracks = server.app.db.korin.TopTrack.find({});
-
-			expect(tracks.length).toEqual(50);
+			expect(tracks.length).toEqual(converted.length);
 		});
 	});
 
@@ -67,22 +64,20 @@ describe('Given pipeline plugin', () => {
 				plugin: korinPlugin,
 				fn: jest.fn().mockResolvedValue(topTracksData),
 			});
+		});
+
+		beforeEach(async () => {
 			await asyncDbClean(server.app.db.pipeline.link);
 		});
 
 		afterAll(jest.restoreAllMocks);
 
-		it('When RawTopTracks are saved to db length is 50', async () => {
+		it('When 50 RawTopTracks are saved to db they have exported date', async () => {
 			await server.methods.pipeline.saveRawTopTracks(server);
 
 			const result = await server.app.db.pipeline.RawTopTrack.find({});
 			expect(result.length).toEqual(50);
-		});
-
-		it('When saved it includes importedDate', async () => {
-			const result = await server.app.db.pipeline.RawTopTrack.findOne({});
-
-			expect(result.importedDate).toBeDefined();
+			expect(result[0].importedDate).toBeDefined();
 		});
 
 		it('When requesting API status code 200', async () => {
@@ -103,7 +98,7 @@ describe('Given pipeline plugin', () => {
 			});
 
 			expect(response.payload).toEqual(
-				expect.stringContaining(`Extracted 50 tracks`),
+				expect.stringContaining(`Extracted 50 and converted 50 tracks`),
 			);
 		});
 

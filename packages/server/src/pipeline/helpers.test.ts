@@ -13,6 +13,14 @@ const {
 } = helpers;
 
 describe('Given pipeline helpers', () => {
+	describe('And parseRawTopTracks', () => {
+		it('When converted to TopTrack it is valid', async () => {
+			const [result] = parseRawTopTracks(topTracksData);
+
+			expect(checkRawTopTrack(result)).resolves.toBeTruthy();
+		});
+	});
+
 	describe('And parseTopTracks', () => {
 		it('When converted to TopTrack it is valid', async () => {
 			const [result] = parseTopTracks(rawTopTracks);
