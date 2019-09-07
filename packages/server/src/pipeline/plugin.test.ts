@@ -1,6 +1,7 @@
 import Hapi from '@hapi/hapi';
 import DatabaseCleaner from 'database-cleaner';
 import R from 'ramda';
+import { promisify } from 'util';
 
 import plugin from './plugin';
 import routes from './routes';
@@ -12,6 +13,8 @@ import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import factory from '../../factory';
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
+const asyncDbClean = promisify(databaseCleaner.clean);
+
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['log'] } });
 
@@ -41,12 +44,10 @@ describe('Given pipeline plugin', () => {
 					plugin: korinPlugin,
 					fn: jest.fn().mockResolvedValue(topTracksData),
 				});
+				await asyncDbClean(server.app.db.pipeline.link);
 			});
 
-			afterAll(async () => {
-				await databaseCleaner.clean(server.app.db.pipeline.link);
-				jest.restoreAllMocks();
-			});
+			afterAll(jest.restoreAllMocks);
 
 			it('When raw top tracks are saved to db length is 50', async () => {
 				await server.methods.pipeline.saveRawTopTracks(server);
@@ -90,6 +91,7 @@ describe('Given pipeline plugin', () => {
 					plugin: korinPlugin,
 					fn: jest.fn().mockResolvedValue('BAD'),
 				});
+				await asyncDbClean(server.app.db.pipeline.link);
 			});
 
 			afterAll(jest.restoreAllMocks);
