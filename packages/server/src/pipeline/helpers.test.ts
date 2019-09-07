@@ -3,10 +3,24 @@ import * as R from 'ramda';
 import helpers from './helpers';
 import factory from '../../factory';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
+import rawTopTracks from '../../fixtures/rawTopTracks.json';
 
-const { checkTopTrack, checkRawTopTrack } = helpers;
+const {
+	checkTopTrack,
+	checkRawTopTrack,
+	parseTopTracks,
+	parseRawTopTracks,
+} = helpers;
 
 describe('Given pipeline helpers', () => {
+	describe('And parseTopTracks', () => {
+		it('When converted to TopTrack it is valid', async () => {
+			const [result] = parseTopTracks(rawTopTracks);
+
+			expect(checkTopTrack(result)).resolves.toBeTruthy();
+		});
+	});
+
 	describe('And checkTopTrack', () => {
 		it('When topTrack is invalid an error is thrown', async () => {
 			expect(checkTopTrack({})).rejects.toThrow();

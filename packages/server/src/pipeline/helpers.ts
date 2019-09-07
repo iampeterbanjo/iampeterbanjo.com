@@ -1,11 +1,18 @@
 import Joi from '@hapi/joi';
 import * as R from 'ramda';
+import jsonata from 'jsonata';
+import viewRoutes from '../views/routes';
+import utils from '../utils';
+
+const { vars, slugger } = utils;
+const { topTracksPath, convertTopTracksPath } = vars;
 
 export const TopTrackValidator = Joi.object({
 	title: Joi.string(),
 	image: Joi.string().uri(),
 	artist: Joi.string(),
 	lastFmUrl: Joi.string().uri(),
+	profileUrl: Joi.string(),
 });
 
 export const RawTopTrackValidator = Joi.object({
@@ -44,27 +51,55 @@ const checkTrackProfile = trackProfile => {
 	});
 };
 
-const saveRawTopTracks = async server => {
-	const rawTopTracks = await server.methods.korin.getChartTopTracks();
-
+const parseRawTopTracks = rawTopTracks => {
 	const tracks = R.pathOr(null, ['tracks', 'track'], rawTopTracks) || [];
 
 	if (!tracks || !tracks.length) throw new Error('No tracks found');
 
-	tracks.forEach((track: RawTopTrack) => {
+	return tracks.map((track: RawTopTrack) => {
 		track.importedDate = Date.now();
 		const { error } = checkRawTopTrack(track);
 		if (error) throw error;
 	});
+};
+
+const saveRawTopTracks = async server => {
+	const rawTopTracks = await server.methods.korin.getChartTopTracks();
+	const tracks = parseRawTopTracks(rawTopTracks);
 
 	await server.app.db.pipeline.RawTopTrack.insertMany(tracks);
 
 	return tracks.length;
 };
 
+const parseTopTracks = topTracks => {
+	const expression = jsonata(convertTopTracksPath);
+
+	expression.registerFunction('getProfileUrl', (artist, title) => {
+		return slugger.slugify(`${artist} ${title}`).toLowerCase();
+	});
+	expression.registerFunction('getImageUrl', (artist, track) => {
+		const { url } = viewRoutes.get_korin_profiles({ artist, track });
+		return url;
+	});
+	const tracks = expression.evaluate(topTracks);
+
+	return tracks;
+};
+
+const convertRawTopTracks = async server => {
+	const rawTracks = await server.app.db.pipeline.RawTopTrack.find({});
+	const tracks = parseTopTracks(rawTracks);
+
+	await server.app.db.korin.TopTrack.insertMany(tracks);
+};
+
 export default {
 	checkTopTrack,
 	checkRawTopTrack,
 	saveRawTopTracks,
+	parseTopTracks,
+	parseRawTopTracks,
+	convertRawTopTracks,
 	checkTrackProfile,
 };

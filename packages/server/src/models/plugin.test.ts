@@ -48,8 +48,6 @@ describe('Given models plugin', () => {
 				});
 
 				it('When its saved the _id is defined and profileUrl is correct', async () => {
-					expect(topTrack.profileUrl).not.toBeDefined();
-
 					const result = await topTrack.save();
 					const expected = slugger.slugify(
 						`${topTrack.artist} ${topTrack.title}`,

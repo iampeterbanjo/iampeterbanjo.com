@@ -30,62 +30,84 @@ const Server = async () => {
 	return server;
 };
 
+let server;
 describe('Given pipeline plugin', () => {
-	describe('And saveRawTopTracks, models, korin plugins', () => {
-		describe('And valid API response', () => {
-			let server;
+	describe('And RawTopTracks are converted to TopTracks', () => {
+		beforeAll(async () => {
+			server = await Server();
 
-			beforeAll(async () => {
-				server = await Server();
-
-				await factory.mock.method({
-					server,
-					name: 'korin.getChartTopTracks',
-					plugin: korinPlugin,
-					fn: jest.fn().mockResolvedValue(topTracksData),
-				});
-				await asyncDbClean(server.app.db.pipeline.link);
+			await factory.mock.method({
+				server,
+				name: 'korin.getChartTopTracks',
+				plugin: korinPlugin,
+				fn: jest.fn().mockResolvedValue(topTracksData),
 			});
-
-			afterAll(jest.restoreAllMocks);
-
-			it('When raw top tracks are saved to db length is 50', async () => {
-				await server.methods.pipeline.saveRawTopTracks(server);
-
-				const result = await server.app.db.pipeline.RawTopTrack.find({});
-				expect(result.length).toEqual(50);
-			});
-
-			it('When saved it includes importedDate', async () => {
-				const result = await server.app.db.pipeline.RawTopTrack.findOne({});
-
-				expect(result.importedDate).toBeDefined();
-			});
-
-			it('When requesting API status code 200', async () => {
-				const { method, url } = routes.v1.extract_top_tracks();
-				const response = await server.inject({
-					method,
-					url,
-				});
-
-				expect(response.statusCode).toEqual(200);
-			});
-
-			it('When requesting API response is expected', async () => {
-				const { method, url } = routes.v1.extract_top_tracks();
-				const response = await server.inject({
-					method,
-					url,
-				});
-
-				expect(response.payload).toEqual(
-					expect.stringContaining(`Extracted 50 tracks`),
-				);
-			});
+			await asyncDbClean(server.app.db.pipeline.link);
 		});
 
-		describe('And BAD API response', () => {
+		afterAll(jest.restoreAllMocks);
+
+		it.skip('When RawTopTracks exist they are converted to TopTracks', async () => {
+			await server.methods.pipeline.saveRawTopTracks(server);
+			await server.methods.pipeline.convertRawTopTracks(server);
+
+			const tracks = server.app.db.korin.TopTrack.find({});
+
+			expect(tracks.length).toEqual(50);
+		});
+	});
+
+	describe('And saveRawTopTracks, models, korin plugins', () => {
+		beforeAll(async () => {
+			server = await Server();
+
+			await factory.mock.method({
+				server,
+				name: 'korin.getChartTopTracks',
+				plugin: korinPlugin,
+				fn: jest.fn().mockResolvedValue(topTracksData),
+			});
+			await asyncDbClean(server.app.db.pipeline.link);
+		});
+
+		afterAll(jest.restoreAllMocks);
+
+		it('When RawTopTracks are saved to db length is 50', async () => {
+			await server.methods.pipeline.saveRawTopTracks(server);
+
+			const result = await server.app.db.pipeline.RawTopTrack.find({});
+			expect(result.length).toEqual(50);
+		});
+
+		it('When saved it includes importedDate', async () => {
+			const result = await server.app.db.pipeline.RawTopTrack.findOne({});
+
+			expect(result.importedDate).toBeDefined();
+		});
+
+		it('When requesting API status code 200', async () => {
+			const { method, url } = routes.v1.extract_top_tracks();
+			const response = await server.inject({
+				method,
+				url,
+			});
+
+			expect(response.statusCode).toEqual(200);
+		});
+
+		it('When requesting API response is expected', async () => {
+			const { method, url } = routes.v1.extract_top_tracks();
+			const response = await server.inject({
+				method,
+				url,
+			});
+
+			expect(response.payload).toEqual(
+				expect.stringContaining(`Extracted 50 tracks`),
+			);
+		});
+
+		describe('And BAD API response from lastFm', () => {
 			let server;
 
 			beforeAll(async () => {
@@ -119,7 +141,7 @@ describe('Given pipeline plugin', () => {
 			});
 		});
 
-		describe('And different API response', () => {
+		describe('And different API response from lastFm', () => {
 			let server;
 
 			beforeAll(async () => {

@@ -11,6 +11,14 @@ export const topTracksPath = `tracks.track.{
 		"url": artist.url,
 		"profileUrl": $getProfileUrl(artist.name, name)
 }`;
+export const convertTopTracksPath = `
+	$.{
+		"title": name,
+		"lastFmUrl": url,
+		"artist": artist.name,
+		"profileUrl": $getProfileUrl(artist.name, name),
+		"image": "https://test.com"
+	}`;
 export const GENIUS_API_ACCESS_TOKEN =
 	process.env.GENIUS_API_ACCESS_TOKEN || '';
 export const GENIUS_API_URL = process.env.GENIUS_API_URL || '';

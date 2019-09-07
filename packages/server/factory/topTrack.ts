@@ -6,5 +6,6 @@ export default function getTopTrack() {
 		title: casual.title,
 		image: casual.url,
 		lastFmUrl: casual.url,
+		profileUrl: casual.url,
 	};
 }
