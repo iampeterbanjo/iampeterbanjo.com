@@ -18,18 +18,12 @@ export default {
 	register: async server => {
 		const { uri, options } = helpers.connex;
 		try {
-			// @ts-ignore for Bluebird
 			const { connection } = await mongoose.connect(uri, options);
 			server.app.db = {
-				korin: {
-					link: connection.db,
-					TopTrack,
-					Profile,
-				},
-				pipeline: {
-					link: connection.db,
-					RawTopTrack,
-				},
+				link: connection.db,
+				TopTrack,
+				Profile,
+				RawTopTrack,
 			};
 		} catch (error) {
 			console.warn(error);

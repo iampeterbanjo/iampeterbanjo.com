@@ -53,7 +53,7 @@ describe('Given view API', () => {
 
 describe('Given models plugin', () => {
 	it('When expect pipeline to be defined', () => {
-		expect(server.app.db.pipeline).toBeDefined();
+		expect(server.app.db).toBeDefined();
 	});
 });
 

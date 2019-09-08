@@ -26,17 +26,17 @@ describe('Given models plugin', () => {
 		});
 
 		afterAll(async () => {
-			await databaseCleaner.clean(server.app.db.korin.link);
+			await databaseCleaner.clean(server.app.db.link);
 		});
 
 		describe('And korin app', () => {
-			it('When server.app.db.korin has link it is defined', () => {
-				expect(server.app.db.korin.link).toBeDefined();
+			it('When server.app.db has link it is defined', () => {
+				expect(server.app.db.link).toBeDefined();
 			});
 
 			['TopTrack', 'Profile'].forEach(model => {
-				it(`When server.app.db.korin has ${model} equal to modelName`, () => {
-					expect(server.app.db.korin[model].modelName).toEqual(model);
+				it(`When server.app.db has ${model} equal to modelName`, () => {
+					expect(server.app.db[model].modelName).toEqual(model);
 				});
 			});
 
@@ -44,7 +44,7 @@ describe('Given models plugin', () => {
 				let topTrack;
 
 				beforeEach(() => {
-					topTrack = new server.app.db.korin.TopTrack(fakeTopTrack);
+					topTrack = new server.app.db.TopTrack(fakeTopTrack);
 				});
 
 				it('When its saved the _id is defined and profileUrl is correct', async () => {
@@ -58,7 +58,7 @@ describe('Given models plugin', () => {
 				});
 
 				it('When its found the artist is correct and _id is set', async () => {
-					const track = await server.app.db.korin.TopTrack.findOne({
+					const track = await server.app.db.TopTrack.findOne({
 						title: fakeTopTrack.title,
 					});
 
@@ -69,14 +69,14 @@ describe('Given models plugin', () => {
 
 			describe('And Profile model', () => {
 				it('When its saved the _id is set', async () => {
-					const profile = new server.app.db.korin.Profile(fakeProfile);
+					const profile = new server.app.db.Profile(fakeProfile);
 					const result = await profile.save();
 
 					expect(result._id).toBeDefined();
 				});
 
 				it('When its found the artist is correct and the _id is set', async () => {
-					const track = await server.app.db.korin.Profile.findOne({
+					const track = await server.app.db.Profile.findOne({
 						title: fakeProfile.title,
 					});
 
@@ -87,13 +87,13 @@ describe('Given models plugin', () => {
 		});
 
 		describe('And pipeline app', () => {
-			it('When server.app.db.pipeline has link defined', () => {
-				expect(server.app.db.pipeline.link).toBeDefined();
+			it('When server.app.db has link defined', () => {
+				expect(server.app.db.link).toBeDefined();
 			});
 
 			['RawTopTrack'].forEach(model => {
-				it(`When server.app.db.pipeline has ${model} equal to modelName`, () => {
-					expect(server.app.db.pipeline[model].modelName).toEqual(model);
+				it(`When server.app.db has ${model} equal to modelName`, () => {
+					expect(server.app.db[model].modelName).toEqual(model);
 				});
 			});
 		});

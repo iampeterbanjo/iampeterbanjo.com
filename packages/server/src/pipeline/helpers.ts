@@ -69,8 +69,8 @@ const saveRawTopTracks = async server => {
 	const rawTopTracks = await server.methods.korin.getChartTopTracks();
 	const tracks = parseRawTopTracks(rawTopTracks);
 
-	await server.app.db.pipeline.RawTopTrack.deleteMany();
-	await server.app.db.pipeline.RawTopTrack.insertMany(tracks);
+	await server.app.db.RawTopTrack.deleteMany();
+	await server.app.db.RawTopTrack.insertMany(tracks);
 
 	return tracks;
 };
@@ -87,11 +87,11 @@ const parseTopTracks = topTracks => {
 };
 
 const convertRawTopTracks = async server => {
-	const rawTracks = await server.app.db.pipeline.RawTopTrack.find({});
+	const rawTracks = await server.app.db.RawTopTrack.find({});
 	const tracks = parseTopTracks(rawTracks);
 
-	await server.app.db.korin.TopTrack.deleteMany();
-	await server.app.db.korin.TopTrack.insertMany(tracks);
+	await server.app.db.TopTrack.deleteMany();
+	await server.app.db.TopTrack.insertMany(tracks);
 
 	return tracks;
 };

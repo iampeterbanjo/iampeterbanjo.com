@@ -38,12 +38,12 @@ describe('Given pipeline plugin', () => {
 			server = await Server();
 
 			jest
-				.spyOn(server.app.db.pipeline.RawTopTrack, 'find')
+				.spyOn(server.app.db.RawTopTrack, 'find')
 				.mockResolvedValue(rawTopTracks);
 		});
 
 		beforeEach(async () => {
-			await asyncDbClean(server.app.db.pipeline.link);
+			await asyncDbClean(server.app.db.link);
 		});
 
 		afterAll(jest.restoreAllMocks);
@@ -52,7 +52,7 @@ describe('Given pipeline plugin', () => {
 			const converted = await server.methods.pipeline.convertRawTopTracks(
 				server,
 			);
-			const tracks = await server.app.db.korin.TopTrack.find({});
+			const tracks = await server.app.db.TopTrack.find({});
 
 			expect(tracks.length).toEqual(converted.length);
 		});
@@ -61,7 +61,7 @@ describe('Given pipeline plugin', () => {
 			await server.methods.pipeline.convertRawTopTracks(server);
 			await server.methods.pipeline.convertRawTopTracks(server);
 
-			const tracks = await server.app.db.korin.TopTrack.find({});
+			const tracks = await server.app.db.TopTrack.find({});
 
 			expect(tracks.length).toEqual(50);
 		});
@@ -80,7 +80,7 @@ describe('Given pipeline plugin', () => {
 		});
 
 		beforeEach(async () => {
-			await asyncDbClean(server.app.db.pipeline.link);
+			await asyncDbClean(server.app.db.link);
 		});
 
 		afterAll(jest.restoreAllMocks);
@@ -88,7 +88,7 @@ describe('Given pipeline plugin', () => {
 		it('When 50 RawTopTracks are saved to db they have exported date', async () => {
 			await server.methods.pipeline.saveRawTopTracks(server);
 
-			const result = await server.app.db.pipeline.RawTopTrack.find({});
+			const result = await server.app.db.RawTopTrack.find({});
 			expect(result.length).toEqual(50);
 			expect(result[0].importedDate).toBeDefined();
 		});
@@ -97,7 +97,7 @@ describe('Given pipeline plugin', () => {
 			await server.methods.pipeline.saveRawTopTracks(server);
 			await server.methods.pipeline.saveRawTopTracks(server);
 
-			const result = await server.app.db.pipeline.RawTopTrack.find({});
+			const result = await server.app.db.RawTopTrack.find({});
 			expect(result.length).toEqual(50);
 		});
 
@@ -135,7 +135,7 @@ describe('Given pipeline plugin', () => {
 					plugin: korinPlugin,
 					fn: jest.fn().mockResolvedValue('BAD'),
 				});
-				await asyncDbClean(server.app.db.pipeline.link);
+				await asyncDbClean(server.app.db.link);
 			});
 
 			afterAll(jest.restoreAllMocks);
@@ -151,7 +151,7 @@ describe('Given pipeline plugin', () => {
 					server.methods.pipeline.saveRawTopTracks(server),
 				).rejects.toThrow();
 
-				const result = await server.app.db.pipeline.RawTopTrack.find({});
+				const result = await server.app.db.RawTopTrack.find({});
 
 				expect(result.length).toEqual(0);
 			});
