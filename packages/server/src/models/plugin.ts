@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
-import Boom from '@hapi/boom';
 import util from 'util';
-
 import helpers from './helpers';
 import TopTrack from './TopTrack';
 import RawTopTrack from './RawTopTrack';
@@ -28,7 +26,7 @@ export default {
 				RawTopTrack,
 			};
 		} catch (error) {
-			return Boom.boomify(error);
+			console.warn(error);
 		}
 	},
 };
