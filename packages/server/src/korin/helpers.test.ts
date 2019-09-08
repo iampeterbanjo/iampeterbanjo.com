@@ -2,6 +2,8 @@ import nock from 'nock';
 
 import utils from '../../src/utils';
 import helpers from '../../src/korin/helpers';
+import spotifyApiArtistSearch from '../../fixtures/spotify-api-artist-search.json';
+import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
 
 const topTracksData = require('../../fixtures/lastfm-topTracks.json');
 const songData = require('../../fixtures/genius-search.json');
@@ -13,6 +15,7 @@ const {
 	getPersonalityProfile,
 	getSongId,
 	getSongInfo,
+	getArtistImage,
 } = helpers;
 
 const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
@@ -106,5 +109,26 @@ describe('Given getPersonalityProfile', () => {
 		const { profile } = await getPersonalityProfile('');
 
 		expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
+	});
+});
+
+describe('Given getArtistImage', () => {
+	beforeAll(async () => {
+		await nock('https://api.spotify.com')
+			.get('/v1/search/')
+			.query(true)
+			.reply(200, spotifyApiArtistSearch);
+
+		await nock('https://accounts.spotify.com')
+			.post('/api/token', 'grant_type=client_credentials')
+			.reply(200, spotifyApiTokenGrant);
+	});
+
+	afterAll(() => {
+		nock.cleanAll();
+	});
+
+	it('When called with artist name, an image is returned', async () => {
+		const image = await getArtistImage('Ariana Grande');
 	});
 });

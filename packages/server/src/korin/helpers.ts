@@ -1,6 +1,7 @@
 import jsonata from 'jsonata';
 import PersonalityInsightsV3 from 'watson-developer-cloud/personality-insights/v3';
 import PersonalityTextSummary from 'personality-text-summary';
+import SpotifyWebApi from 'spotify-web-api-node';
 import utils from '../utils';
 
 const {
@@ -16,6 +17,8 @@ const {
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
 	WATSON_PI_API_VERSION,
+	SPOTIFY_CLIENT_KEY,
+	SPOTIFY_CLIENT_SECRET,
 } = vars;
 
 /**
@@ -170,6 +173,27 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 	return { profile, summary };
 };
 
+const getArtistImage = async (artist: string): Promise<any> => {
+	const spotifyApi = new SpotifyWebApi({
+		clientId: SPOTIFY_CLIENT_KEY,
+		clientSecret: SPOTIFY_CLIENT_SECRET,
+	});
+
+	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
+
+	spotifyApi.setAccessToken(data.body.access_token);
+	const result: SpotifyApiArtistSearchResponse = await spotifyApi.search(
+		artist,
+		['artist'],
+	);
+
+	const { url } = result.body.artists.items[0].images.filter(
+		image => image.height === 640,
+	)[0];
+
+	return url;
+};
+
 export default {
 	getSongId,
 	getSongInfo,
@@ -180,4 +204,5 @@ export default {
 	getLyrics,
 	getPersonalityProfile,
 	getProfileByArtistAndTrack,
+	getArtistImage,
 };
