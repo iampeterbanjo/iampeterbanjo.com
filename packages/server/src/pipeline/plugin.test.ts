@@ -42,6 +42,10 @@ describe('Given pipeline plugin', () => {
 				.mockResolvedValue(rawTopTracks);
 		});
 
+		beforeEach(async () => {
+			await asyncDbClean(server.app.db.pipeline.link);
+		});
+
 		afterAll(jest.restoreAllMocks);
 
 		it('When RawTopTracks exist they are converted to TopTracks', async () => {
@@ -51,6 +55,15 @@ describe('Given pipeline plugin', () => {
 			const tracks = await server.app.db.korin.TopTrack.find({});
 
 			expect(tracks.length).toEqual(converted.length);
+		});
+
+		it('When RawTopTracks are converted to TopTracks they are not duplicated', async () => {
+			await server.methods.pipeline.convertRawTopTracks(server);
+			await server.methods.pipeline.convertRawTopTracks(server);
+
+			const tracks = await server.app.db.korin.TopTrack.find({});
+
+			expect(tracks.length).toEqual(50);
 		});
 	});
 
@@ -78,6 +91,14 @@ describe('Given pipeline plugin', () => {
 			const result = await server.app.db.pipeline.RawTopTrack.find({});
 			expect(result.length).toEqual(50);
 			expect(result[0].importedDate).toBeDefined();
+		});
+
+		it('When 50 RawTopTracks are saved to db they are not duplicated', async () => {
+			await server.methods.pipeline.saveRawTopTracks(server);
+			await server.methods.pipeline.saveRawTopTracks(server);
+
+			const result = await server.app.db.pipeline.RawTopTrack.find({});
+			expect(result.length).toEqual(50);
 		});
 
 		it('When requesting API status code 200', async () => {

@@ -69,6 +69,7 @@ const saveRawTopTracks = async server => {
 	const rawTopTracks = await server.methods.korin.getChartTopTracks();
 	const tracks = parseRawTopTracks(rawTopTracks);
 
+	await server.app.db.pipeline.RawTopTrack.deleteMany();
 	await server.app.db.pipeline.RawTopTrack.insertMany(tracks);
 
 	return tracks;
@@ -80,10 +81,6 @@ const parseTopTracks = topTracks => {
 	expression.registerFunction('getProfileUrl', (artist, title) => {
 		return slugger.slugify(`${artist} ${title}`).toLowerCase();
 	});
-	expression.registerFunction('getImageUrl', (artist, track) => {
-		const { url } = viewRoutes.get_korin_profiles({ artist, track });
-		return url;
-	});
 	const tracks = expression.evaluate(topTracks);
 
 	return tracks;
@@ -93,6 +90,7 @@ const convertRawTopTracks = async server => {
 	const rawTracks = await server.app.db.pipeline.RawTopTrack.find({});
 	const tracks = parseTopTracks(rawTracks);
 
+	await server.app.db.korin.TopTrack.deleteMany();
 	await server.app.db.korin.TopTrack.insertMany(tracks);
 
 	return tracks;
