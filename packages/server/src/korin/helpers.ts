@@ -21,6 +21,11 @@ const {
 	SPOTIFY_CLIENT_SECRET,
 } = vars;
 
+const spotifyApi = new SpotifyWebApi({
+	clientId: SPOTIFY_CLIENT_KEY,
+	clientSecret: SPOTIFY_CLIENT_SECRET,
+});
+
 /**
  * Search Genius for info about an artist's track
  * @param {string} search Artist name and track title
@@ -174,25 +179,16 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 };
 
 const getSpotifyAccessToken = async (): Promise<any> => {
-	const spotifyApi = new SpotifyWebApi({
-		clientId: SPOTIFY_CLIENT_KEY,
-		clientSecret: SPOTIFY_CLIENT_SECRET,
-	});
-
 	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
 
 	return data.body.access_token;
 };
 
-const getArtistImage = async (artist: string): Promise<any> => {
-	const spotifyApi = new SpotifyWebApi({
-		clientId: SPOTIFY_CLIENT_KEY,
-		clientSecret: SPOTIFY_CLIENT_SECRET,
-	});
-
-	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
-
-	spotifyApi.setAccessToken(data.body.access_token);
+const getArtistImage = async (
+	artist: string,
+	accessToken: string,
+): Promise<any> => {
+	spotifyApi.setAccessToken(accessToken);
 	const result: SpotifyApiArtistSearchResponse = await spotifyApi.search(
 		artist,
 		['artist'],

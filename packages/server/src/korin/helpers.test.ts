@@ -137,10 +137,6 @@ describe('Given getArtistImage', () => {
 			.get('/v1/search/')
 			.query(true)
 			.reply(200, spotifyApiArtistSearch);
-
-		await nock('https://accounts.spotify.com')
-			.post('/api/token', 'grant_type=client_credentials')
-			.reply(200, spotifyApiTokenGrant);
 	});
 
 	afterAll(() => {
@@ -148,7 +144,7 @@ describe('Given getArtistImage', () => {
 	});
 
 	it('When called with artist name, an image is returned', async () => {
-		const image = await getArtistImage('Ariana Grande');
+		const image = await getArtistImage('Ariana Grande', 'NgCXRK...MzYjw');
 
 		expect(image).toBeDefined();
 	});
