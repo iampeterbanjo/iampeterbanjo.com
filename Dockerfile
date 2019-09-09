@@ -13,7 +13,6 @@ RUN apt-get update \
 USER node
 # A wildcard is used to ensure both pnpm lock and workspace files are copied
 COPY package*.json ./
-COPY .envrc ./
 
 # Bundle app source
 COPY --chown=node:node . .
