@@ -43,7 +43,7 @@ describe('Given models plugin', () => {
 			describe('And TopTrack model', () => {
 				let topTrack;
 
-				beforeEach(() => {
+				beforeAll(() => {
 					topTrack = new server.app.db.TopTrack(fakeTopTrack);
 				});
 
