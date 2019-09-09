@@ -4,13 +4,13 @@ import PersonalityTextSummary from 'personality-text-summary';
 import SpotifyWebApi from 'spotify-web-api-node';
 import utils from '../utils';
 
-const {
+export const {
 	vars,
 	jsonParser,
 	message,
 	clientel: { genius, lastfm, lyricist },
 } = utils;
-const {
+export const {
 	lyricsIdPath,
 	songInfoPath,
 	LASTFM_API_KEY = '',
@@ -21,7 +21,7 @@ const {
 	SPOTIFY_CLIENT_SECRET,
 } = vars;
 
-const spotifyApi = new SpotifyWebApi({
+export const spotifyApi = new SpotifyWebApi({
 	clientId: SPOTIFY_CLIENT_KEY,
 	clientSecret: SPOTIFY_CLIENT_SECRET,
 });
@@ -31,13 +31,13 @@ const spotifyApi = new SpotifyWebApi({
  * @param {string} search Artist name and track title
  * @return {Promise<GeniusData>}
  */
-const getSongData = async search => {
+export const getSongData = async search => {
 	const query = new URLSearchParams([['q', search]]);
 
 	return (await genius.get(`search?${query}`)).payload;
 };
 
-const getChartTopTracks = async (): Promise<RawTopTrack[]> => {
+export const getChartTopTracks = async (): Promise<RawTopTrack[]> => {
 	const query = new URLSearchParams([
 		['method', 'chart.getTopTracks'],
 		['format', 'json'],
@@ -47,29 +47,29 @@ const getChartTopTracks = async (): Promise<RawTopTrack[]> => {
 	return (await lastfm.get(`?${query}`)).payload;
 };
 
-const getSongId = (data: GeniusData) => {
+export const getSongId = (data: GeniusData) => {
 	const expression = jsonata(lyricsIdPath);
 	const songId = expression.evaluate(data);
 
 	return songId;
 };
 
-const getSongInfo = (data: GeniusData): SongInfo =>
+export const getSongInfo = (data: GeniusData): SongInfo =>
 	jsonParser.evaluate(data, songInfoPath);
 
-const getSongIdFromSearch = async (search: string) => {
+export const getSongIdFromSearch = async (search: string) => {
 	const songData = await getSongData(search);
 	const songId = getSongId(songData);
 	return songId;
 };
 
-const getLyrics = async (songId: number) => {
+export const getLyrics = async (songId: number) => {
 	const { lyrics } = await lyricist.song(songId, { fetchLyrics: true });
 
 	return lyrics;
 };
 
-const getProfile = (options: WatsonProfileParams): Promise<string> => {
+export const getProfile = (options: WatsonProfileParams): Promise<string> => {
 	const personalityInsights = new PersonalityInsightsV3({
 		version: WATSON_PI_API_VERSION,
 		iam_apikey: WATSON_PI_API_KEY,
@@ -86,7 +86,7 @@ const getProfile = (options: WatsonProfileParams): Promise<string> => {
 	});
 };
 
-const getTextSummary = (profile: string) => {
+export const getTextSummary = (profile: string) => {
 	const textSummary = new PersonalityTextSummary({
 		locale: 'en',
 		version: 'v3',
@@ -96,7 +96,7 @@ const getTextSummary = (profile: string) => {
 	return summary;
 };
 
-const getPersonalityProfile = async (
+export const getPersonalityProfile = async (
 	lyrics: string,
 ): Promise<WatsonProfileInsights> => {
 	if (!lyrics) {
@@ -118,7 +118,7 @@ const getPersonalityProfile = async (
 	return { profile, summary };
 };
 
-const getProfileByArtistAndTrack = async ({
+export const getProfileByArtistAndTrack = async ({
 	artist,
 	track,
 }: {
@@ -134,13 +134,13 @@ const getProfileByArtistAndTrack = async ({
 	return { profile, summary };
 };
 
-const getSpotifyAccessToken = async (): Promise<string> => {
+export const getSpotifyAccessToken = async (): Promise<string> => {
 	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
 
 	return data.body.access_token;
 };
 
-const getArtistImage = async (
+export const getArtistImage = async (
 	artist: string,
 	accessToken: string,
 ): Promise<string> => {
@@ -155,18 +155,4 @@ const getArtistImage = async (
 	)[0];
 
 	return url;
-};
-
-export default {
-	getSongId,
-	getSongInfo,
-	getSongData,
-	getSongIdFromSearch,
-	getTextSummary,
-	getChartTopTracks,
-	getLyrics,
-	getPersonalityProfile,
-	getProfileByArtistAndTrack,
-	getArtistImage,
-	getSpotifyAccessToken,
 };
