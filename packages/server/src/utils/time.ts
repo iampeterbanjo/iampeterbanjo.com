@@ -8,3 +8,4 @@ export const oneDay = 86400000;
 export const oneYear = 31556900000;
 export const oneMonth = 2629746000;
 export const oneWeek = 604800000;
+export const fiftyMinutes = 3000000;

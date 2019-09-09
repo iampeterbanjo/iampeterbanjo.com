@@ -178,7 +178,7 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 	return { profile, summary };
 };
 
-const getSpotifyAccessToken = async (): Promise<any> => {
+const getSpotifyAccessToken = async (): Promise<string> => {
 	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
 
 	return data.body.access_token;
@@ -187,7 +187,7 @@ const getSpotifyAccessToken = async (): Promise<any> => {
 const getArtistImage = async (
 	artist: string,
 	accessToken: string,
-): Promise<any> => {
+): Promise<string> => {
 	spotifyApi.setAccessToken(accessToken);
 	const result: SpotifyApiArtistSearchResponse = await spotifyApi.search(
 		artist,

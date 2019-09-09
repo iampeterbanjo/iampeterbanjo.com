@@ -22,15 +22,18 @@ describe('Given server info', () => {
 });
 
 describe('Given korin API', () => {
-	['getProfileByArtistAndTrack', 'getChartTopTracks', 'getArtistImage'].forEach(
-		name => {
-			it(`When method ${name} is registered its a function`, () => {
-				const result = server.methods.korin[name];
+	[
+		'getProfileByArtistAndTrack',
+		'getChartTopTracks',
+		'getArtistImage',
+		'getSpotifyAccessToken',
+	].forEach(name => {
+		it(`When method ${name} is registered its a function`, () => {
+			const result = server.methods.korin[name];
 
-				expect(typeof result).toEqual('function');
-			});
-		},
-	);
+			expect(typeof result).toEqual('function');
+		});
+	});
 });
 
 describe('Given blog API', () => {

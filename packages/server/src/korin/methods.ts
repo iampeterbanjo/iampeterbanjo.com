@@ -6,6 +6,7 @@ const {
 	getProfileByArtistAndTrack,
 	getChartTopTracks,
 	getArtistImage,
+	getSpotifyAccessToken,
 } = helpers;
 const { time, getCache } = utils;
 export default [
@@ -41,6 +42,14 @@ export default [
 					.update(artist)
 					.digest('hex');
 			},
+		},
+	},
+	{
+		name: 'korin.getSpotifyAccessToken',
+		method: getSpotifyAccessToken,
+		options: {
+			cache: getCache({ expiresIn: time.fiftyMinutes }),
+			generateKey: () => `korinGetSpotifyAccessToken-${Date.now()}`,
 		},
 	},
 ];
