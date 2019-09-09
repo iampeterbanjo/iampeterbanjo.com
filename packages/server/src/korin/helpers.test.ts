@@ -16,6 +16,7 @@ const {
 	getSongId,
 	getSongInfo,
 	getArtistImage,
+	getSpotifyAccessToken,
 } = helpers;
 
 const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
@@ -112,6 +113,24 @@ describe('Given getPersonalityProfile', () => {
 	});
 });
 
+describe('Given getSpotifyAccessToken', () => {
+	beforeAll(async () => {
+		await nock('https://accounts.spotify.com')
+			.post('/api/token', 'grant_type=client_credentials')
+			.reply(200, spotifyApiTokenGrant);
+	});
+
+	afterAll(() => {
+		nock.cleanAll();
+	});
+
+	it('When called returns access token', async () => {
+		const accessToken = await getSpotifyAccessToken();
+
+		expect(typeof accessToken).toEqual('string');
+	});
+});
+
 describe('Given getArtistImage', () => {
 	beforeAll(async () => {
 		await nock('https://api.spotify.com')
@@ -130,5 +149,7 @@ describe('Given getArtistImage', () => {
 
 	it('When called with artist name, an image is returned', async () => {
 		const image = await getArtistImage('Ariana Grande');
+
+		expect(image).toBeDefined();
 	});
 });

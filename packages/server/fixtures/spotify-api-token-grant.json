@@ -1,20 +1,6 @@
 {
-	"body": {
-		"access_token": "BQCrwzw8CCPCLyibu-e68L9k9MQ3NCVP7LM7ENuzpZvuOvcgVbAr_W3s6OkkAi_j-ThJxnqYr3g_xNFjO88",
-		"token_type": "Bearer",
-		"expires_in": 3600,
-		"scope": ""
-	},
-	"headers": {
-		"server": "nginx",
-		"date": "Sun, 08 Sep 2019 19:46:50 GMT",
-		"content-type": "application/json",
-		"transfer-encoding": "chunked",
-		"connection": "close",
-		"vary": "Accept-Encoding",
-		"x-content-type-options": "nosniff",
-		"strict-transport-security": "max-age=31536000",
-		"content-encoding": "gzip"
-	},
-	"statusCode": 200
+	"access_token": "BQCrwzw8CCPCLyibu-e68L9k9MQ3NCVP7LM7ENuzpZvuOvcgVbAr_W3s6OkkAi_j-ThJxnqYr3g_xNFjO88",
+	"token_type": "Bearer",
+	"expires_in": 3600,
+	"scope": ""
 }

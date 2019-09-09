@@ -173,6 +173,17 @@ const getProfileByArtistAndTrack = async ({ artist, track }) => {
 	return { profile, summary };
 };
 
+const getSpotifyAccessToken = async (): Promise<any> => {
+	const spotifyApi = new SpotifyWebApi({
+		clientId: SPOTIFY_CLIENT_KEY,
+		clientSecret: SPOTIFY_CLIENT_SECRET,
+	});
+
+	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
+
+	return data.body.access_token;
+};
+
 const getArtistImage = async (artist: string): Promise<any> => {
 	const spotifyApi = new SpotifyWebApi({
 		clientId: SPOTIFY_CLIENT_KEY,
@@ -205,4 +216,5 @@ export default {
 	getPersonalityProfile,
 	getProfileByArtistAndTrack,
 	getArtistImage,
+	getSpotifyAccessToken,
 };
