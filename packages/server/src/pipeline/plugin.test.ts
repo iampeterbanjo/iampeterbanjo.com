@@ -7,11 +7,9 @@ import plugin from './plugin';
 import routes from './routes';
 import methods from './methods';
 
-import korinPlugin from '../korin/plugin';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import rawTopTracks from '../../fixtures/rawTopTracks.json';
-import factory from '../../factory';
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
 const asyncDbClean = promisify(databaseCleaner.clean);
@@ -112,12 +110,15 @@ describe('Given pipeline plugin', () => {
 		beforeAll(async () => {
 			server = await Server();
 
-			await factory.mock.method({
-				server,
-				name: 'korin.getChartTopTracks',
-				plugin: korinPlugin,
-				fn: jest.fn().mockResolvedValue(topTracksData),
-			});
+			server.methods.korin = {
+				getChartTopTracks: jest.fn().mockResolvedValue(topTracksData),
+				getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+				getArtistImage: jest
+					.fn()
+					.mockResolvedValue(
+						'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
+					),
+			};
 		});
 
 		beforeEach(async () => {
@@ -170,12 +171,16 @@ describe('Given pipeline plugin', () => {
 			beforeAll(async () => {
 				server = await Server();
 
-				await factory.mock.method({
-					server,
-					name: 'korin.getChartTopTracks',
-					plugin: korinPlugin,
-					fn: jest.fn().mockResolvedValue('BAD'),
-				});
+				server.methods.korin = {
+					getChartTopTracks: jest.fn().mockResolvedValue('BAD'),
+					getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+					getArtistImage: jest
+						.fn()
+						.mockResolvedValue(
+							'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
+						),
+				};
+
 				await asyncDbClean(server.app.db.link);
 			});
 
@@ -213,12 +218,15 @@ describe('Given pipeline plugin', () => {
 					return R.pick(['name', 'artist'], t);
 				});
 
-				await factory.mock.method({
-					server,
-					name: 'korin.getChartTopTracks',
-					plugin: korinPlugin,
-					fn: jest.fn().mockResolvedValue(different),
-				});
+				server.methods.korin = {
+					getChartTopTracks: jest.fn().mockResolvedValue(different),
+					getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+					getArtistImage: jest
+						.fn()
+						.mockResolvedValue(
+							'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
+						),
+				};
 			});
 
 			afterAll(jest.resetAllMocks);
