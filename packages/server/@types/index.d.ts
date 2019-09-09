@@ -1,3 +1,13 @@
+type Connex = {
+	dbName: (isTest?: boolean) => string;
+	uri: string;
+	options: {
+		useNewUrlParser: boolean;
+		dbName: string;
+		promiseLibrary: any;
+	};
+};
+
 type MongooseModel = {
 	save: () => Promise<void>;
 	remove: () => Promise<void>;
