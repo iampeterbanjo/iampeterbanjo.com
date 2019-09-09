@@ -22,6 +22,8 @@ export default {
 					const converted = await server.methods.pipeline.convertRawTopTracks(
 						server,
 					);
+					await server.methods.pipeline.addArtistImages(server);
+
 					const message = `Extracted ${extracted.length} and converted ${converted.length} tracks`;
 
 					return { message };
