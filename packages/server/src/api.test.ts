@@ -36,6 +36,18 @@ describe('Given korin API', () => {
 	});
 });
 
+describe('Given pipeline API', () => {
+	['convertRawTopTracks', 'saveRawTopTracks', 'addArtistImages'].forEach(
+		name => {
+			it(`When method ${name} is registered its a function`, () => {
+				const result = server.methods.pipeline[name];
+
+				expect(typeof result).toEqual('function');
+			});
+		},
+	);
+});
+
 describe('Given blog API', () => {
 	['getBlogContents', 'getBlogFiles'].forEach(name => {
 		it(`When method ${name} is registered its`, () => {

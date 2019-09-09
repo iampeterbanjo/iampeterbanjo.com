@@ -31,9 +31,10 @@ const Server = async () => {
 	return server;
 };
 
-let server;
 describe('Given pipeline plugin', () => {
 	describe('And RawTopTracks are converted to TopTracks', () => {
+		let server;
+
 		beforeAll(async () => {
 			server = await Server();
 
@@ -67,7 +68,47 @@ describe('Given pipeline plugin', () => {
 		});
 	});
 
+	describe('And addArtistImages', () => {
+		let server;
+
+		beforeAll(async () => {
+			server = await Server();
+
+			server.methods.korin = {
+				getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+				getArtistImage: jest
+					.fn()
+					.mockResolvedValue(
+						'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
+					),
+			};
+
+			jest
+				.spyOn(server.app.db.RawTopTrack, 'find')
+				.mockResolvedValue(rawTopTracks);
+
+			await server.methods.pipeline.convertRawTopTracks(server);
+		});
+
+		afterAll(async () => {
+			await asyncDbClean(server.app.db.link);
+			jest.restoreAllMocks();
+		});
+
+		it('When addArtistImages runs tracks have image urls', async () => {
+			await server.methods.pipeline.addArtistImages(server);
+
+			const track: TopTrack = await server.app.db.TopTrack.findOne({});
+
+			expect(track.image).toEqual(
+				expect.stringContaining('https://i.scdn.co/image'),
+			);
+		});
+	});
+
 	describe('And saveRawTopTracks, models, korin plugins', () => {
+		let server;
+
 		beforeAll(async () => {
 			server = await Server();
 

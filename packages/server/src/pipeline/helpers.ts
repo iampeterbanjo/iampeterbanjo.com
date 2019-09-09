@@ -96,6 +96,24 @@ const convertRawTopTracks = async server => {
 	return tracks;
 };
 
+const addArtistImages = async server => {
+	const tracks = await server.app.db.TopTrack.find({});
+
+	await Promise.all(
+		tracks.map(async (track: TopTrack) => {
+			const accessToken = await server.methods.korin.getAccessToken();
+			const imageUrl = await server.methods.korin.getArtistImage(
+				track.artist,
+				accessToken,
+			);
+
+			track.image = imageUrl;
+
+			await track.save();
+		}),
+	);
+};
+
 export default {
 	checkTopTrack,
 	checkRawTopTrack,
@@ -104,4 +122,5 @@ export default {
 	parseRawTopTracks,
 	convertRawTopTracks,
 	checkTrackProfile,
+	addArtistImages,
 };

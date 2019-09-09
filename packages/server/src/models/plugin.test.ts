@@ -41,13 +41,9 @@ describe('Given models plugin', () => {
 			});
 
 			describe('And TopTrack model', () => {
-				let topTrack;
-
-				beforeAll(() => {
-					topTrack = new server.app.db.TopTrack(fakeTopTrack);
-				});
-
 				it('When its saved the _id is defined and profileUrl is correct', async () => {
+					const topTrack = new server.app.db.TopTrack(fakeTopTrack);
+
 					const result = await topTrack.save();
 					const expected = slugger.slugify(
 						`${topTrack.artist} ${topTrack.title}`,
@@ -58,6 +54,9 @@ describe('Given models plugin', () => {
 				});
 
 				it('When its found the artist is correct and _id is set', async () => {
+					const topTrack = new server.app.db.TopTrack(fakeTopTrack);
+
+					await topTrack.save();
 					const track = await server.app.db.TopTrack.findOne({
 						title: fakeTopTrack.title,
 					});

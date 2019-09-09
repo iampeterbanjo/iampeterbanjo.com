@@ -1,4 +1,9 @@
-type RawTopTrack = {
+type MongooseModel = {
+	save: () => Promise<void>;
+	remove: () => Promise<void>;
+};
+
+type RawTopTrack = MongooseModel & {
 	name: string;
 	duration: string;
 	playcount: string;
@@ -23,7 +28,7 @@ type RawTopTrack = {
 	importedDate?: number;
 };
 
-type Track = {
+type Track = MongooseModel & {
 	artist: string;
 	title: string;
 	image: string;
