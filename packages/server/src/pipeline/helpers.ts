@@ -1,11 +1,10 @@
 import Joi from '@hapi/joi';
 import * as R from 'ramda';
 import jsonata from 'jsonata';
-import viewRoutes from '../views/routes';
 import utils from '../utils';
 
 const { vars, slugger } = utils;
-const { topTracksPath, convertTopTracksPath } = vars;
+const { convertTopTracksPath } = vars;
 
 export const TopTrackValidator = Joi.object({
 	title: Joi.string(),
