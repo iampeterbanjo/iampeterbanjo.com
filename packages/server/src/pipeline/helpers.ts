@@ -3,8 +3,8 @@ import * as R from 'ramda';
 import jsonata from 'jsonata';
 import utils from '../utils';
 
-const { vars, slugger } = utils;
-const { convertTopTracksPath } = vars;
+export const { vars, slugger } = utils;
+export const { convertTopTracksPath } = vars;
 
 export const TopTrackValidator = Joi.object({
 	title: Joi.string(),
@@ -33,24 +33,24 @@ export const TrackProfileValidator = Joi.object({
 	summary: Joi.string(),
 });
 
-const checkTopTrack = (topTrack: object) => {
+export const checkTopTrack = (topTrack: object) => {
 	return Joi.validate(topTrack, TopTrackValidator, { presence: 'required' });
 };
 
-const checkRawTopTrack = topTrackRaw => {
+export const checkRawTopTrack = topTrackRaw => {
 	return Joi.validate(topTrackRaw, RawTopTrackValidator, {
 		allowUnknown: true,
 		presence: 'required',
 	});
 };
 
-const checkTrackProfile = trackProfile => {
+export const checkTrackProfile = trackProfile => {
 	return Joi.validate(trackProfile, TrackProfileValidator, {
 		presence: 'required',
 	});
 };
 
-const parseRawTopTracks = (rawTopTracks): RawTopTrack[] => {
+export const parseRawTopTracks = (rawTopTracks): RawTopTrack[] => {
 	const tracks = R.pathOr([], ['tracks', 'track'], rawTopTracks);
 
 	if (!tracks || !tracks.length) throw new Error('No tracks found');
@@ -64,7 +64,7 @@ const parseRawTopTracks = (rawTopTracks): RawTopTrack[] => {
 	});
 };
 
-const saveRawTopTracks = async server => {
+export const saveRawTopTracks = async server => {
 	const rawTopTracks = await server.methods.korin.getChartTopTracks();
 	const tracks = parseRawTopTracks(rawTopTracks);
 
@@ -74,7 +74,7 @@ const saveRawTopTracks = async server => {
 	return tracks;
 };
 
-const parseTopTracks = topTracks => {
+export const parseTopTracks = topTracks => {
 	const expression = jsonata(convertTopTracksPath);
 
 	expression.registerFunction('getProfileUrl', (artist, title) => {
@@ -85,7 +85,7 @@ const parseTopTracks = topTracks => {
 	return tracks;
 };
 
-const convertRawTopTracks = async server => {
+export const convertRawTopTracks = async server => {
 	const rawTracks = await server.app.db.RawTopTrack.find({});
 	const tracks = parseTopTracks(rawTracks);
 
@@ -95,7 +95,7 @@ const convertRawTopTracks = async server => {
 	return tracks;
 };
 
-const addArtistImages = async server => {
+export const addArtistImages = async server => {
 	const tracks = await server.app.db.TopTrack.find({});
 
 	await Promise.all(
@@ -111,15 +111,4 @@ const addArtistImages = async server => {
 			await track.save();
 		}),
 	);
-};
-
-export default {
-	checkTopTrack,
-	checkRawTopTrack,
-	saveRawTopTracks,
-	parseTopTracks,
-	parseRawTopTracks,
-	convertRawTopTracks,
-	checkTrackProfile,
-	addArtistImages,
 };

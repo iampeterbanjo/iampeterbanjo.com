@@ -1,4 +1,4 @@
-import helpers from './helpers';
+import * as helpers from './helpers';
 
 const { saveRawTopTracks, convertRawTopTracks, addArtistImages } = helpers;
 

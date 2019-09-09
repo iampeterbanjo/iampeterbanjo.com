@@ -1,5 +1,5 @@
 import profile from './profile';
-import pipelineHelpers from '../src/pipeline/helpers';
+import * as pipelineHelpers from '../src/pipeline/helpers';
 
 const { checkTrackProfile } = pipelineHelpers;
 

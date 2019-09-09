@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-import helpers from './helpers';
+import * as helpers from './helpers';
 import factory from '../../factory';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import rawTopTracks from '../../fixtures/rawTopTracks.json';
