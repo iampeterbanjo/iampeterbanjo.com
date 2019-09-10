@@ -1,5 +1,5 @@
 import Crypto from 'crypto';
-import helpers from './helpers';
+import * as helpers from './helpers';
 import utils from '../utils';
 
 const { time, getCache } = utils;

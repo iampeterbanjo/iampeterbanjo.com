@@ -69,6 +69,12 @@ type RawTopTrack = MongooseModel & {
 	importedDate?: number;
 };
 
+type RawTopTrackJson = {
+	tracks: {
+		track: RawTopTrack[];
+	};
+};
+
 type Track = MongooseModel & {
 	artist: string;
 	title: string;

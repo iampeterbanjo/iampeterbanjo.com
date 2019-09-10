@@ -1,11 +1,11 @@
-import helpers from './helpers';
+import * as helpers from './helpers';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 
-const { parseTopTracks } = helpers;
+const { parseRawTopTrackJson } = helpers;
 
 describe('Given View helpers:', () => {
 	it('When data is valid top tracks are parsed correctly', () => {
-		const [track] = parseTopTracks(topTracksData);
+		const [track] = parseRawTopTrackJson(topTracksData);
 		const { title, image, artist, url, profileUrl } = track;
 
 		expect(title).toBeDefined();

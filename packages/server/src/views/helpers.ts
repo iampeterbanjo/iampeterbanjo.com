@@ -5,15 +5,15 @@ import * as blogHelpers from '../blog/helpers';
 import * as korinHelpers from '../korin/helpers';
 import utils from '../utils';
 
-const { vars } = utils;
-const { topTracksPath } = vars;
+export const { vars } = utils;
+export const { topTracksPath } = vars;
 
-const viewBlogPost = (post: string): Object =>
+export const viewBlogPost = (post: string): Object =>
 	blogHelpers.getBlogContents(post);
 
-const viewBlogList = () => blogHelpers.getBlogFiles();
+export const viewBlogList = () => blogHelpers.getBlogFiles();
 
-const parseTopTracks = (topTracks: RawTopTrack[]) => {
+export const parseRawTopTrackJson = (topTracks: RawTopTrackJson) => {
 	const expression = jsonata(topTracksPath);
 
 	expression.registerFunction('getProfileUrl', (artist, track) => {
@@ -25,12 +25,12 @@ const parseTopTracks = (topTracks: RawTopTrack[]) => {
 	return tracks;
 };
 
-const viewTopTracks = async () => {
+export const viewTopTracks = async () => {
 	const topTracks = await korinHelpers.getChartTopTracks();
-	return parseTopTracks(topTracks);
+	return parseRawTopTrackJson(topTracks);
 };
 
-const viewTrackProfile = async ({ artist, track }: TrackInfo) => {
+export const viewTrackProfile = async ({ artist, track }: TrackInfo) => {
 	const { profile, summary } = await korinHelpers.getProfileByArtistAndTrack({
 		artist,
 		track,
@@ -42,12 +42,4 @@ const viewTrackProfile = async ({ artist, track }: TrackInfo) => {
 		artist,
 		track,
 	};
-};
-
-export default {
-	viewBlogPost,
-	viewBlogList,
-	viewTopTracks,
-	viewTrackProfile,
-	parseTopTracks,
 };
