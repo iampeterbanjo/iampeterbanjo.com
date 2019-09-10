@@ -26,7 +26,7 @@
 		"clean-e2e": "cd ./packages/e2e; rm -rf node_modules",
 		"clean-server": "cd ./packages/server; rm -rf node_modules build",
 		"clean": "npm-run-all clean-*; rm -rf node_modules",
-		"deploy": "npm run lint && npm run test && git push && git push github",
+		"deploy": "npm run lint && npm run test && git push",
 		"dev-css": "cd ./packages/css; npm run dev",
 		"dev-server": "cd ./packages/server; npm run dev",
 		"dev": "run-s install-*; run-p dev-*",

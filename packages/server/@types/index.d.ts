@@ -1,3 +1,44 @@
+type GeniusData = {
+	meta: {
+		status: number;
+	};
+	response: object;
+	hits: object[];
+};
+
+type SongInfo = {
+	id: number;
+	thumbnail: string;
+};
+
+type TrackInfo = {
+	artist: string;
+	track: string;
+};
+
+type WatsonProfileContentType = 'text/plain' | 'application/json';
+
+interface WatsonProfileParams {
+	content: string;
+	content_type: WatsonProfileContentType;
+	consumption_preferences: boolean;
+}
+
+type WatsonProfileInsights = {
+	profile: object | string;
+	summary: string;
+};
+
+type Connex = {
+	dbName: (isTest?: boolean) => string;
+	uri: string;
+	options: {
+		useNewUrlParser: boolean;
+		dbName: string;
+		promiseLibrary: any;
+	};
+};
+
 type MongooseModel = {
 	save: () => Promise<void>;
 	remove: () => Promise<void>;
@@ -26,6 +67,12 @@ type RawTopTrack = MongooseModel & {
 		},
 	];
 	importedDate?: number;
+};
+
+type RawTopTrackJson = {
+	tracks: {
+		track: RawTopTrack[];
+	};
 };
 
 type Track = MongooseModel & {

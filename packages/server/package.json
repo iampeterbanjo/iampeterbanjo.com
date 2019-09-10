@@ -20,7 +20,8 @@
 		"test": "run-s test-ci test-badges",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
-		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect ./build/start.js\"",
+		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
+		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"run-s copy-templates start-debug\"",
 		"watch-build": "npm-run-all copy-* watch-ts",
 		"watch-test": "node --trace-warnings node_modules/.bin/jest --watch"
 	},

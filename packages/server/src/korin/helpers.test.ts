@@ -1,7 +1,7 @@
 import nock from 'nock';
 
 import utils from '../../src/utils';
-import helpers from '../../src/korin/helpers';
+import * as helpers from '../../src/korin/helpers';
 import spotifyApiArtistSearch from '../../fixtures/spotify-api-artist-search.json';
 import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
 
@@ -77,7 +77,7 @@ describe('Given getSongId', () => {
 	});
 
 	it('When parsing invalid songData the songId is undefined', async () => {
-		const result = await getSongId({});
+		const result = await getSongId({} as GeniusData);
 
 		expect(result).toEqual(undefined);
 	});
@@ -99,7 +99,7 @@ describe('Given getSongInfo', () => {
 	});
 
 	it('When parsing invalid songData the songId is undefined', async () => {
-		const result = await getSongId({});
+		const result = await getSongId({} as GeniusData);
 
 		expect(result).toEqual(undefined);
 	});

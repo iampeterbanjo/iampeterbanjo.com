@@ -1,5 +1,5 @@
 import topTrack from './topTrack';
-import pipelineHelpers from '../src/pipeline/helpers';
+import * as pipelineHelpers from '../src/pipeline/helpers';
 
 const { checkTopTrack } = pipelineHelpers;
 

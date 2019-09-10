@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import util from 'util';
-import helpers from './helpers';
+import * as helpers from './helpers';
 import TopTrack from './TopTrack';
 import RawTopTrack from './RawTopTrack';
 import Profile from './Profile';

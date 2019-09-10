@@ -57,6 +57,7 @@ const getKorinProfiles = server => {
 				summary,
 				artist,
 				track,
+				pathToTracks: routes.get_korin_tracks().url,
 			});
 		},
 	});

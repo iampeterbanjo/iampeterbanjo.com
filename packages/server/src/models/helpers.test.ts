@@ -1,7 +1,7 @@
 import Bluebird from 'bluebird';
 
 import utils from '../../src/utils';
-import helpers from '../../src/models/helpers';
+import * as helpers from '../../src/models/helpers';
 
 const { vars } = utils;
 const { connex } = helpers;

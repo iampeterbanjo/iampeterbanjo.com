@@ -1,6 +1,6 @@
 import Crypto from 'crypto';
 import utils from '../utils';
-import helpers from './helpers';
+import * as helpers from './helpers';
 
 const {
 	getProfileByArtistAndTrack,
