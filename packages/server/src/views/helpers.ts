@@ -13,18 +13,7 @@ const viewBlogPost = (post: string): Object =>
 
 const viewBlogList = () => blogHelpers.getBlogFiles();
 
-/**
- * Parse top tracks to get artist, track, image etc.
- * @typedef Tracks
- * @property {string} artist name
- * @property {string} title track title
- * @property {string} image url to track image
- * @property {string} url uri to LastFM track
- * @property {string} profileUrl url to personality profile
- *
- * @return {Array<Tracks>} topTracks Top 50 tracks from LastFM API
- */
-const parseTopTracks = topTracks => {
+const parseTopTracks = (topTracks: RawTopTrack[]) => {
 	const expression = jsonata(topTracksPath);
 
 	expression.registerFunction('getProfileUrl', (artist, track) => {
@@ -41,15 +30,7 @@ const viewTopTracks = async () => {
 	return parseTopTracks(topTracks);
 };
 
-/**
- * Get track profile
- * @typedef ViewTrack
- * @property {string} artist name
- * @property {string} track title
- *
- * @param {ViewTrack} info
- */
-const viewTrackProfile = async ({ artist, track }) => {
+const viewTrackProfile = async ({ artist, track }: TrackInfo) => {
 	const { profile, summary } = await korinHelpers.getProfileByArtistAndTrack({
 		artist,
 		track,

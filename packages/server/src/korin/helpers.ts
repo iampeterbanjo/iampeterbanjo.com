@@ -121,10 +121,7 @@ export const getPersonalityProfile = async (
 export const getProfileByArtistAndTrack = async ({
 	artist,
 	track,
-}: {
-	artist: string;
-	track: string;
-}): Promise<WatsonProfileInsights> => {
+}: TrackInfo): Promise<WatsonProfileInsights> => {
 	const search = `${artist} ${track}`;
 	const songData = await getSongData(search);
 	const songId = await getSongId(songData);

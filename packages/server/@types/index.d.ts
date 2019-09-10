@@ -11,6 +11,11 @@ type SongInfo = {
 	thumbnail: string;
 };
 
+type TrackInfo = {
+	artist: string;
+	track: string;
+};
+
 type WatsonProfileContentType = 'text/plain' | 'application/json';
 
 interface WatsonProfileParams {
