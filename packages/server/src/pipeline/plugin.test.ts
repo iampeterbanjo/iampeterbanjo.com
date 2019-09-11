@@ -10,6 +10,9 @@ import methods from './methods';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import rawTopTracks from '../../fixtures/rawTopTracks.json';
+import topTracksWithImages from '../../fixtures/topTracks-with-images.json';
+import profile from '../../fixtures/personality-profile.json';
+import { summary } from '../../fixtures/personality-summary.json';
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
 const asyncDbClean = promisify(databaseCleaner.clean);
@@ -63,6 +66,40 @@ describe('Given pipeline plugin', () => {
 			const tracks = await server.app.db.TopTrack.find({});
 
 			expect(tracks.length).toEqual(50);
+		});
+	});
+
+	describe('And addTrackProfile', () => {
+		let server;
+
+		beforeAll(async () => {
+			server = await Server();
+
+			server.methods.korin = {
+				getPersonalityProfile: jest
+					.fn()
+					.mockResolvedValue({ profile, summary }),
+			};
+
+			jest
+				.spyOn(server.app.db.Track, 'find')
+				.mockResolvedValue(topTracksWithImages);
+
+			await server.methods.pipeline.convertRawTopTracks(server);
+		});
+
+		afterAll(async () => {
+			await asyncDbClean(server.app.db.link);
+			jest.restoreAllMocks();
+		});
+
+		it('When addTrackProfile runs tracks have personality profiles', async () => {
+			await server.methods.pipeline.addTrackProfile(server);
+
+			const track: TopTrackModel = await server.app.db.TopTrack.findOne({});
+
+			expect(track.profile).toBeDefined();
+			expect(track.summary).toBeDefined();
 		});
 	});
 
