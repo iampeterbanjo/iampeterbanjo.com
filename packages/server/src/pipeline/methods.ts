@@ -1,6 +1,11 @@
 import * as helpers from './helpers';
 
-const { saveRawTopTracks, convertRawTopTracks, addArtistImages } = helpers;
+const {
+	saveRawTopTracks,
+	convertRawTopTracks,
+	addArtistImages,
+	addTrackProfile,
+} = helpers;
 
 export default [
 	{
@@ -14,5 +19,9 @@ export default [
 	{
 		name: 'pipeline.addArtistImages',
 		method: addArtistImages,
+	},
+	{
+		name: 'pipeline.addTrackProfile',
+		method: addTrackProfile,
 	},
 ];

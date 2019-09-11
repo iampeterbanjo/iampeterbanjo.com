@@ -24,7 +24,7 @@
 		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
 		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"run-s copy-templates start-debug\"",
 		"watch-build": "npm-run-all copy-* watch-ts",
-		"watch-test": "nodemon --watch src -e js,ts,json,html -x 'run-s test-jest test-badges'"
+		"watch-test": "nodemon --watch src --watch fixtures -e js,ts,json,html -x 'run-s test-jest test-badges'"
 	},
 	"keywords": [
 		"personal",

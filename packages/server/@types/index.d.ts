@@ -89,6 +89,7 @@ type TopTrack = Track & {
 };
 
 type Profile = TopTrack & {
+	profile: object;
 	summary: string;
 	profileUrl: string;
 };

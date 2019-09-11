@@ -69,39 +69,39 @@ describe('Given pipeline plugin', () => {
 		});
 	});
 
-	describe('And addTrackProfile', () => {
-		let server;
+	// describe('And addTrackProfile', () => {
+	// 	let server;
 
-		beforeAll(async () => {
-			server = await Server();
+	// 	beforeAll(async () => {
+	// 		server = await Server();
 
-			server.methods.korin = {
-				getPersonalityProfile: jest
-					.fn()
-					.mockResolvedValue({ profile, summary }),
-			};
+	// 		server.methods.korin = {
+	// 			getPersonalityProfile: jest
+	// 				.fn()
+	// 				.mockResolvedValue({ profile, summary }),
+	// 		};
 
-			jest
-				.spyOn(server.app.db.Track, 'find')
-				.mockResolvedValue(topTracksWithImages);
+	// 		jest
+	// 			.spyOn(server.app.db.Track, 'find')
+	// 			.mockResolvedValue(topTracksWithImages);
 
-			await server.methods.pipeline.convertRawTopTracks(server);
-		});
+	// 		await server.methods.pipeline.convertRawTopTracks(server);
+	// 	});
 
-		afterAll(async () => {
-			await asyncDbClean(server.app.db.link);
-			jest.restoreAllMocks();
-		});
+	// 	afterAll(async () => {
+	// 		await asyncDbClean(server.app.db.link);
+	// 		jest.restoreAllMocks();
+	// 	});
 
-		it('When addTrackProfile runs tracks have personality profiles', async () => {
-			await server.methods.pipeline.addTrackProfile(server);
+	// 	it('When addTrackProfile runs tracks have personality profiles', async () => {
+	// 		await server.methods.pipeline.addTrackProfile(server);
 
-			const track: TopTrackModel = await server.app.db.TopTrack.findOne({});
+	// 		const track: ProfileModel = await server.app.db.TopTrack.findOne({});
 
-			expect(track.profile).toBeDefined();
-			expect(track.summary).toBeDefined();
-		});
-	});
+	// 		expect(track.profile).toBeDefined();
+	// 		expect(track.summary).toBeDefined();
+	// 	});
+	// });
 
 	describe('And addArtistImages', () => {
 		let server;
