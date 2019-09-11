@@ -73,7 +73,7 @@ describe('Given pipeline plugin', () => {
 			server = await Server();
 
 			server.methods.korin = {
-				getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+				getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
 				getArtistImage: jest
 					.fn()
 					.mockResolvedValue(
@@ -112,7 +112,7 @@ describe('Given pipeline plugin', () => {
 
 			server.methods.korin = {
 				getChartTopTracks: jest.fn().mockResolvedValue(topTracksData),
-				getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+				getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
 				getArtistImage: jest
 					.fn()
 					.mockResolvedValue(
@@ -173,7 +173,7 @@ describe('Given pipeline plugin', () => {
 
 				server.methods.korin = {
 					getChartTopTracks: jest.fn().mockResolvedValue('BAD'),
-					getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+					getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
 					getArtistImage: jest
 						.fn()
 						.mockResolvedValue(
@@ -220,7 +220,7 @@ describe('Given pipeline plugin', () => {
 
 				server.methods.korin = {
 					getChartTopTracks: jest.fn().mockResolvedValue(different),
-					getAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
+					getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
 					getArtistImage: jest
 						.fn()
 						.mockResolvedValue(

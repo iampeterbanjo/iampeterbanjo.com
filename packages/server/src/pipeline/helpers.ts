@@ -100,7 +100,7 @@ export const addArtistImages = async server => {
 
 	await Promise.all(
 		tracks.map(async (track: TopTrackModel) => {
-			const accessToken = await server.methods.korin.getAccessToken();
+			const accessToken = await server.methods.korin.getSpotifyAccessToken();
 			const imageUrl = await server.methods.korin.getArtistImage(
 				track.artist,
 				accessToken,
