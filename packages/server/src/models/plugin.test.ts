@@ -42,9 +42,11 @@ describe('Given models plugin', () => {
 
 			describe('And TopTrack model', () => {
 				it('When its saved the _id is defined and profileUrl is correct', async () => {
-					const topTrack = new server.app.db.TopTrack(fakeTopTrack);
+					const topTrack: TopTrackModel = new server.app.db.TopTrack(
+						fakeTopTrack,
+					);
 
-					const result = await topTrack.save();
+					const result: TopTrackModel = await topTrack.save();
 					const expected = slugger.slugify(
 						`${topTrack.artist} ${topTrack.title}`,
 					);

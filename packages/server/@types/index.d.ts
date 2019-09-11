@@ -40,7 +40,8 @@ type Connex = {
 };
 
 type MongooseModel = {
-	save: () => Promise<void>;
+	_id: string;
+	save: () => Promise<any>;
 	remove: () => Promise<void>;
 };
 
@@ -75,7 +76,7 @@ type RawTopTrackJson = {
 	};
 };
 
-type Track = MongooseModel & {
+type Track = {
 	artist: string;
 	title: string;
 	image: string;
@@ -83,6 +84,7 @@ type Track = MongooseModel & {
 };
 
 type TopTrack = Track & {
+	profileUrl: string;
 	importedDate?: number;
 };
 
@@ -90,6 +92,9 @@ type Profile = TopTrack & {
 	summary: string;
 	profileUrl: string;
 };
+
+type TopTrackModel = MongooseModel & TopTrack;
+type ProfileModel = MongooseModel & Profile;
 
 type SpotifyApiGrantResponse = {
 	body: {

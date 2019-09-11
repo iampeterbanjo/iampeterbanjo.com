@@ -11,8 +11,8 @@ const generate = (
 };
 
 const builder = {
-	topTrack: count => generate(count, getTopTrack),
-	profile: count => generate(count, getProfile),
+	topTrack: (count: number) => generate(count, getTopTrack),
+	profile: (count: number) => generate(count, getProfile),
 	mock,
 };
 
