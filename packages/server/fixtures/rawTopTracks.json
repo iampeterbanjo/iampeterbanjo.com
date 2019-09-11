@@ -1,8 +1,6 @@
 [
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be862a"
-		},
+		"_id": "5d738ad74d228f6654be862a",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271635"
@@ -24,39 +22,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be862e"
-				},
+				"_id": "5d738ad74d228f6654be862e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be862d"
-				},
+				"_id": "5d738ad74d228f6654be862d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be862c"
-				},
+				"_id": "5d738ad74d228f6654be862c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be862b"
-				},
+				"_id": "5d738ad74d228f6654be862b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be862f"
-		},
+		"_id": "5d738ad74d228f6654be862f",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271642"
@@ -78,39 +66,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8633"
-				},
+				"_id": "5d738ad74d228f6654be8633",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8632"
-				},
+				"_id": "5d738ad74d228f6654be8632",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8631"
-				},
+				"_id": "5d738ad74d228f6654be8631",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8630"
-				},
+				"_id": "5d738ad74d228f6654be8630",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8634"
-		},
+		"_id": "5d738ad74d228f6654be8634",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271642"
@@ -132,39 +110,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8638"
-				},
+				"_id": "5d738ad74d228f6654be8638",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8637"
-				},
+				"_id": "5d738ad74d228f6654be8637",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8636"
-				},
+				"_id": "5d738ad74d228f6654be8636",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8635"
-				},
+				"_id": "5d738ad74d228f6654be8635",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8639"
-		},
+		"_id": "5d738ad74d228f6654be8639",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -186,39 +154,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be863d"
-				},
+				"_id": "5d738ad74d228f6654be863d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be863c"
-				},
+				"_id": "5d738ad74d228f6654be863c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be863b"
-				},
+				"_id": "5d738ad74d228f6654be863b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be863a"
-				},
+				"_id": "5d738ad74d228f6654be863a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be863e"
-		},
+		"_id": "5d738ad74d228f6654be863e",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -240,39 +198,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8642"
-				},
+				"_id": "5d738ad74d228f6654be8642",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8641"
-				},
+				"_id": "5d738ad74d228f6654be8641",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8640"
-				},
+				"_id": "5d738ad74d228f6654be8640",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be863f"
-				},
+				"_id": "5d738ad74d228f6654be863f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8643"
-		},
+		"_id": "5d738ad74d228f6654be8643",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -294,39 +242,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8647"
-				},
+				"_id": "5d738ad74d228f6654be8647",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8646"
-				},
+				"_id": "5d738ad74d228f6654be8646",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8645"
-				},
+				"_id": "5d738ad74d228f6654be8645",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8644"
-				},
+				"_id": "5d738ad74d228f6654be8644",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8648"
-		},
+		"_id": "5d738ad74d228f6654be8648",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -348,39 +286,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be864c"
-				},
+				"_id": "5d738ad74d228f6654be864c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be864b"
-				},
+				"_id": "5d738ad74d228f6654be864b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be864a"
-				},
+				"_id": "5d738ad74d228f6654be864a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8649"
-				},
+				"_id": "5d738ad74d228f6654be8649",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be864d"
-		},
+		"_id": "5d738ad74d228f6654be864d",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -402,39 +330,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8651"
-				},
+				"_id": "5d738ad74d228f6654be8651",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8650"
-				},
+				"_id": "5d738ad74d228f6654be8650",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be864f"
-				},
+				"_id": "5d738ad74d228f6654be864f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be864e"
-				},
+				"_id": "5d738ad74d228f6654be864e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8652"
-		},
+		"_id": "5d738ad74d228f6654be8652",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -456,39 +374,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8656"
-				},
+				"_id": "5d738ad74d228f6654be8656",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8655"
-				},
+				"_id": "5d738ad74d228f6654be8655",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8654"
-				},
+				"_id": "5d738ad74d228f6654be8654",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8653"
-				},
+				"_id": "5d738ad74d228f6654be8653",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8657"
-		},
+		"_id": "5d738ad74d228f6654be8657",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -510,39 +418,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be865b"
-				},
+				"_id": "5d738ad74d228f6654be865b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be865a"
-				},
+				"_id": "5d738ad74d228f6654be865a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8659"
-				},
+				"_id": "5d738ad74d228f6654be8659",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8658"
-				},
+				"_id": "5d738ad74d228f6654be8658",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be865c"
-		},
+		"_id": "5d738ad74d228f6654be865c",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -564,39 +462,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8660"
-				},
+				"_id": "5d738ad74d228f6654be8660",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be865f"
-				},
+				"_id": "5d738ad74d228f6654be865f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be865e"
-				},
+				"_id": "5d738ad74d228f6654be865e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be865d"
-				},
+				"_id": "5d738ad74d228f6654be865d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8661"
-		},
+		"_id": "5d738ad74d228f6654be8661",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -618,39 +506,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8665"
-				},
+				"_id": "5d738ad74d228f6654be8665",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8664"
-				},
+				"_id": "5d738ad74d228f6654be8664",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8663"
-				},
+				"_id": "5d738ad74d228f6654be8663",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8662"
-				},
+				"_id": "5d738ad74d228f6654be8662",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8666"
-		},
+		"_id": "5d738ad74d228f6654be8666",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -672,39 +550,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be866a"
-				},
+				"_id": "5d738ad74d228f6654be866a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8669"
-				},
+				"_id": "5d738ad74d228f6654be8669",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8668"
-				},
+				"_id": "5d738ad74d228f6654be8668",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8667"
-				},
+				"_id": "5d738ad74d228f6654be8667",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be866b"
-		},
+		"_id": "5d738ad74d228f6654be866b",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -726,39 +594,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be866f"
-				},
+				"_id": "5d738ad74d228f6654be866f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be866e"
-				},
+				"_id": "5d738ad74d228f6654be866e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be866d"
-				},
+				"_id": "5d738ad74d228f6654be866d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be866c"
-				},
+				"_id": "5d738ad74d228f6654be866c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8670"
-		},
+		"_id": "5d738ad74d228f6654be8670",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -780,39 +638,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8674"
-				},
+				"_id": "5d738ad74d228f6654be8674",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8673"
-				},
+				"_id": "5d738ad74d228f6654be8673",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8672"
-				},
+				"_id": "5d738ad74d228f6654be8672",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8671"
-				},
+				"_id": "5d738ad74d228f6654be8671",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8675"
-		},
+		"_id": "5d738ad74d228f6654be8675",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -834,39 +682,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8679"
-				},
+				"_id": "5d738ad74d228f6654be8679",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8678"
-				},
+				"_id": "5d738ad74d228f6654be8678",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8677"
-				},
+				"_id": "5d738ad74d228f6654be8677",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8676"
-				},
+				"_id": "5d738ad74d228f6654be8676",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be867a"
-		},
+		"_id": "5d738ad74d228f6654be867a",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -888,39 +726,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be867e"
-				},
+				"_id": "5d738ad74d228f6654be867e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be867d"
-				},
+				"_id": "5d738ad74d228f6654be867d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be867c"
-				},
+				"_id": "5d738ad74d228f6654be867c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be867b"
-				},
+				"_id": "5d738ad74d228f6654be867b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be867f"
-		},
+		"_id": "5d738ad74d228f6654be867f",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -942,39 +770,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8683"
-				},
+				"_id": "5d738ad74d228f6654be8683",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8682"
-				},
+				"_id": "5d738ad74d228f6654be8682",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8681"
-				},
+				"_id": "5d738ad74d228f6654be8681",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8680"
-				},
+				"_id": "5d738ad74d228f6654be8680",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8684"
-		},
+		"_id": "5d738ad74d228f6654be8684",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271643"
@@ -996,39 +814,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8688"
-				},
+				"_id": "5d738ad74d228f6654be8688",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8687"
-				},
+				"_id": "5d738ad74d228f6654be8687",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8686"
-				},
+				"_id": "5d738ad74d228f6654be8686",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8685"
-				},
+				"_id": "5d738ad74d228f6654be8685",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8689"
-		},
+		"_id": "5d738ad74d228f6654be8689",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1050,39 +858,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be868d"
-				},
+				"_id": "5d738ad74d228f6654be868d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be868c"
-				},
+				"_id": "5d738ad74d228f6654be868c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be868b"
-				},
+				"_id": "5d738ad74d228f6654be868b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be868a"
-				},
+				"_id": "5d738ad74d228f6654be868a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be868e"
-		},
+		"_id": "5d738ad74d228f6654be868e",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1104,39 +902,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8692"
-				},
+				"_id": "5d738ad74d228f6654be8692",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8691"
-				},
+				"_id": "5d738ad74d228f6654be8691",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8690"
-				},
+				"_id": "5d738ad74d228f6654be8690",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be868f"
-				},
+				"_id": "5d738ad74d228f6654be868f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8693"
-		},
+		"_id": "5d738ad74d228f6654be8693",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1158,39 +946,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8697"
-				},
+				"_id": "5d738ad74d228f6654be8697",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8696"
-				},
+				"_id": "5d738ad74d228f6654be8696",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8695"
-				},
+				"_id": "5d738ad74d228f6654be8695",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8694"
-				},
+				"_id": "5d738ad74d228f6654be8694",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8698"
-		},
+		"_id": "5d738ad74d228f6654be8698",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1212,39 +990,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be869c"
-				},
+				"_id": "5d738ad74d228f6654be869c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be869b"
-				},
+				"_id": "5d738ad74d228f6654be869b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be869a"
-				},
+				"_id": "5d738ad74d228f6654be869a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8699"
-				},
+				"_id": "5d738ad74d228f6654be8699",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be869d"
-		},
+		"_id": "5d738ad74d228f6654be869d",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1266,39 +1034,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a1"
-				},
+				"_id": "5d738ad74d228f6654be86a1",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a0"
-				},
+				"_id": "5d738ad74d228f6654be86a0",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be869f"
-				},
+				"_id": "5d738ad74d228f6654be869f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be869e"
-				},
+				"_id": "5d738ad74d228f6654be869e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86a2"
-		},
+		"_id": "5d738ad74d228f6654be86a2",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1320,39 +1078,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a6"
-				},
+				"_id": "5d738ad74d228f6654be86a6",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a5"
-				},
+				"_id": "5d738ad74d228f6654be86a5",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a4"
-				},
+				"_id": "5d738ad74d228f6654be86a4",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a3"
-				},
+				"_id": "5d738ad74d228f6654be86a3",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86a7"
-		},
+		"_id": "5d738ad74d228f6654be86a7",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1374,39 +1122,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ab"
-				},
+				"_id": "5d738ad74d228f6654be86ab",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86aa"
-				},
+				"_id": "5d738ad74d228f6654be86aa",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a9"
-				},
+				"_id": "5d738ad74d228f6654be86a9",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86a8"
-				},
+				"_id": "5d738ad74d228f6654be86a8",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86ac"
-		},
+		"_id": "5d738ad74d228f6654be86ac",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1428,39 +1166,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b0"
-				},
+				"_id": "5d738ad74d228f6654be86b0",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86af"
-				},
+				"_id": "5d738ad74d228f6654be86af",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ae"
-				},
+				"_id": "5d738ad74d228f6654be86ae",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ad"
-				},
+				"_id": "5d738ad74d228f6654be86ad",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86b1"
-		},
+		"_id": "5d738ad74d228f6654be86b1",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1482,39 +1210,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b5"
-				},
+				"_id": "5d738ad74d228f6654be86b5",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b4"
-				},
+				"_id": "5d738ad74d228f6654be86b4",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b3"
-				},
+				"_id": "5d738ad74d228f6654be86b3",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b2"
-				},
+				"_id": "5d738ad74d228f6654be86b2",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86b6"
-		},
+		"_id": "5d738ad74d228f6654be86b6",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1536,39 +1254,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ba"
-				},
+				"_id": "5d738ad74d228f6654be86ba",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b9"
-				},
+				"_id": "5d738ad74d228f6654be86b9",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b8"
-				},
+				"_id": "5d738ad74d228f6654be86b8",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86b7"
-				},
+				"_id": "5d738ad74d228f6654be86b7",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86bb"
-		},
+		"_id": "5d738ad74d228f6654be86bb",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1590,39 +1298,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86bf"
-				},
+				"_id": "5d738ad74d228f6654be86bf",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86be"
-				},
+				"_id": "5d738ad74d228f6654be86be",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86bd"
-				},
+				"_id": "5d738ad74d228f6654be86bd",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86bc"
-				},
+				"_id": "5d738ad74d228f6654be86bc",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86c0"
-		},
+		"_id": "5d738ad74d228f6654be86c0",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1644,39 +1342,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c4"
-				},
+				"_id": "5d738ad74d228f6654be86c4",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c3"
-				},
+				"_id": "5d738ad74d228f6654be86c3",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c2"
-				},
+				"_id": "5d738ad74d228f6654be86c2",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c1"
-				},
+				"_id": "5d738ad74d228f6654be86c1",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86c5"
-		},
+		"_id": "5d738ad74d228f6654be86c5",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1698,39 +1386,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c9"
-				},
+				"_id": "5d738ad74d228f6654be86c9",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c8"
-				},
+				"_id": "5d738ad74d228f6654be86c8",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c7"
-				},
+				"_id": "5d738ad74d228f6654be86c7",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86c6"
-				},
+				"_id": "5d738ad74d228f6654be86c6",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86ca"
-		},
+		"_id": "5d738ad74d228f6654be86ca",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1752,39 +1430,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ce"
-				},
+				"_id": "5d738ad74d228f6654be86ce",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86cd"
-				},
+				"_id": "5d738ad74d228f6654be86cd",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86cc"
-				},
+				"_id": "5d738ad74d228f6654be86cc",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86cb"
-				},
+				"_id": "5d738ad74d228f6654be86cb",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86cf"
-		},
+		"_id": "5d738ad74d228f6654be86cf",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271644"
@@ -1806,39 +1474,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d3"
-				},
+				"_id": "5d738ad74d228f6654be86d3",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d2"
-				},
+				"_id": "5d738ad74d228f6654be86d2",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d1"
-				},
+				"_id": "5d738ad74d228f6654be86d1",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d0"
-				},
+				"_id": "5d738ad74d228f6654be86d0",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86d4"
-		},
+		"_id": "5d738ad74d228f6654be86d4",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -1860,39 +1518,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d8"
-				},
+				"_id": "5d738ad74d228f6654be86d8",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d7"
-				},
+				"_id": "5d738ad74d228f6654be86d7",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d6"
-				},
+				"_id": "5d738ad74d228f6654be86d6",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86d5"
-				},
+				"_id": "5d738ad74d228f6654be86d5",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86d9"
-		},
+		"_id": "5d738ad74d228f6654be86d9",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -1914,39 +1562,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86dd"
-				},
+				"_id": "5d738ad74d228f6654be86dd",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86dc"
-				},
+				"_id": "5d738ad74d228f6654be86dc",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86db"
-				},
+				"_id": "5d738ad74d228f6654be86db",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86da"
-				},
+				"_id": "5d738ad74d228f6654be86da",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86de"
-		},
+		"_id": "5d738ad74d228f6654be86de",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -1968,39 +1606,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e2"
-				},
+				"_id": "5d738ad74d228f6654be86e2",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e1"
-				},
+				"_id": "5d738ad74d228f6654be86e1",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e0"
-				},
+				"_id": "5d738ad74d228f6654be86e0",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86df"
-				},
+				"_id": "5d738ad74d228f6654be86df",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86e3"
-		},
+		"_id": "5d738ad74d228f6654be86e3",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -2022,39 +1650,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e7"
-				},
+				"_id": "5d738ad74d228f6654be86e7",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e6"
-				},
+				"_id": "5d738ad74d228f6654be86e6",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e5"
-				},
+				"_id": "5d738ad74d228f6654be86e5",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e4"
-				},
+				"_id": "5d738ad74d228f6654be86e4",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86e8"
-		},
+		"_id": "5d738ad74d228f6654be86e8",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -2076,39 +1694,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ec"
-				},
+				"_id": "5d738ad74d228f6654be86ec",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86eb"
-				},
+				"_id": "5d738ad74d228f6654be86eb",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ea"
-				},
+				"_id": "5d738ad74d228f6654be86ea",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86e9"
-				},
+				"_id": "5d738ad74d228f6654be86e9",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86ed"
-		},
+		"_id": "5d738ad74d228f6654be86ed",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -2130,39 +1738,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f1"
-				},
+				"_id": "5d738ad74d228f6654be86f1",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f0"
-				},
+				"_id": "5d738ad74d228f6654be86f0",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ef"
-				},
+				"_id": "5d738ad74d228f6654be86ef",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ee"
-				},
+				"_id": "5d738ad74d228f6654be86ee",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86f2"
-		},
+		"_id": "5d738ad74d228f6654be86f2",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -2184,39 +1782,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f6"
-				},
+				"_id": "5d738ad74d228f6654be86f6",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f5"
-				},
+				"_id": "5d738ad74d228f6654be86f5",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f4"
-				},
+				"_id": "5d738ad74d228f6654be86f4",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f3"
-				},
+				"_id": "5d738ad74d228f6654be86f3",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86f7"
-		},
+		"_id": "5d738ad74d228f6654be86f7",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271645"
@@ -2238,39 +1826,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86fb"
-				},
+				"_id": "5d738ad74d228f6654be86fb",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86fa"
-				},
+				"_id": "5d738ad74d228f6654be86fa",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f9"
-				},
+				"_id": "5d738ad74d228f6654be86f9",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86f8"
-				},
+				"_id": "5d738ad74d228f6654be86f8",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be86fc"
-		},
+		"_id": "5d738ad74d228f6654be86fc",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2292,39 +1870,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8700"
-				},
+				"_id": "5d738ad74d228f6654be8700",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86ff"
-				},
+				"_id": "5d738ad74d228f6654be86ff",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86fe"
-				},
+				"_id": "5d738ad74d228f6654be86fe",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be86fd"
-				},
+				"_id": "5d738ad74d228f6654be86fd",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8701"
-		},
+		"_id": "5d738ad74d228f6654be8701",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2346,39 +1914,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8705"
-				},
+				"_id": "5d738ad74d228f6654be8705",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8704"
-				},
+				"_id": "5d738ad74d228f6654be8704",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8703"
-				},
+				"_id": "5d738ad74d228f6654be8703",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8702"
-				},
+				"_id": "5d738ad74d228f6654be8702",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8706"
-		},
+		"_id": "5d738ad74d228f6654be8706",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2400,39 +1958,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be870a"
-				},
+				"_id": "5d738ad74d228f6654be870a",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8709"
-				},
+				"_id": "5d738ad74d228f6654be8709",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8708"
-				},
+				"_id": "5d738ad74d228f6654be8708",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8707"
-				},
+				"_id": "5d738ad74d228f6654be8707",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be870b"
-		},
+		"_id": "5d738ad74d228f6654be870b",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2454,39 +2002,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be870f"
-				},
+				"_id": "5d738ad74d228f6654be870f",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be870e"
-				},
+				"_id": "5d738ad74d228f6654be870e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be870d"
-				},
+				"_id": "5d738ad74d228f6654be870d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be870c"
-				},
+				"_id": "5d738ad74d228f6654be870c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8710"
-		},
+		"_id": "5d738ad74d228f6654be8710",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2508,39 +2046,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8714"
-				},
+				"_id": "5d738ad74d228f6654be8714",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8713"
-				},
+				"_id": "5d738ad74d228f6654be8713",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8712"
-				},
+				"_id": "5d738ad74d228f6654be8712",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8711"
-				},
+				"_id": "5d738ad74d228f6654be8711",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be8715"
-		},
+		"_id": "5d738ad74d228f6654be8715",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2562,39 +2090,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8719"
-				},
+				"_id": "5d738ad74d228f6654be8719",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8718"
-				},
+				"_id": "5d738ad74d228f6654be8718",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8717"
-				},
+				"_id": "5d738ad74d228f6654be8717",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8716"
-				},
+				"_id": "5d738ad74d228f6654be8716",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be871a"
-		},
+		"_id": "5d738ad74d228f6654be871a",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2616,39 +2134,29 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be871e"
-				},
+				"_id": "5d738ad74d228f6654be871e",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be871d"
-				},
+				"_id": "5d738ad74d228f6654be871d",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be871c"
-				},
+				"_id": "5d738ad74d228f6654be871c",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be871b"
-				},
+				"_id": "5d738ad74d228f6654be871b",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}
 		]
 	},
 	{
-		"_id": {
-			"$oid": "5d738ad74d228f6654be871f"
-		},
+		"_id": "5d738ad74d228f6654be871f",
 		"importedDate": {
 			"$date": {
 				"$numberLong": "1567853271646"
@@ -2670,30 +2178,22 @@
 		},
 		"image": [
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8723"
-				},
+				"_id": "5d738ad74d228f6654be8723",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "small"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8722"
-				},
+				"_id": "5d738ad74d228f6654be8722",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "medium"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8721"
-				},
+				"_id": "5d738ad74d228f6654be8721",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "large"
 			},
 			{
-				"_id": {
-					"$oid": "5d738ad74d228f6654be8720"
-				},
+				"_id": "5d738ad74d228f6654be8720",
 				"#text": "https://lastfm-img2.akamaized.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
 				"size": "extralarge"
 			}

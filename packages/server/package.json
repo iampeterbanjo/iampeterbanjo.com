@@ -17,13 +17,14 @@
 		"test-badges": "jest-coverage-badges output ./badges",
 		"test-ci": "CI=true jest",
 		"test-leaks": "CI=true jest --detectLeaks --logHeapUsage",
+		"test-jest": "node --trace-warnings node_modules/.bin/jest",
 		"test": "run-s test-ci test-badges",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
 		"watch-ts": "tsc-watch -p tsconfig.build.json --onSuccess \"run-s copy-templates start-debug\"",
 		"watch-build": "npm-run-all copy-* watch-ts",
-		"watch-test": "node --trace-warnings node_modules/.bin/jest --watch"
+		"watch-test": "nodemon --watch src -x 'run-s test-jest test-badges'"
 	},
 	"keywords": [
 		"personal",
