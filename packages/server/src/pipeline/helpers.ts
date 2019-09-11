@@ -99,7 +99,7 @@ export const addArtistImages = async server => {
 	const tracks = await server.app.db.TopTrack.find({});
 
 	await Promise.all(
-		tracks.map(async (track: TopTrack) => {
+		tracks.map(async (track: TopTrackModel) => {
 			const accessToken = await server.methods.korin.getAccessToken();
 			const imageUrl = await server.methods.korin.getArtistImage(
 				track.artist,
