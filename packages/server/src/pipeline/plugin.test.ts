@@ -2,6 +2,7 @@ import Hapi from '@hapi/hapi';
 import DatabaseCleaner from 'database-cleaner';
 import R from 'ramda';
 import { promisify } from 'util';
+import casual from 'casual';
 
 import plugin from './plugin';
 import routes from './routes';
@@ -76,9 +77,9 @@ describe('Given pipeline plugin', () => {
 			server = await Server();
 
 			server.methods.korin = {
-				getPersonalityProfile: jest
+				getProfileByArtistAndTrack: jest
 					.fn()
-					.mockResolvedValue({ profile, summary }),
+					.mockResolvedValue({ profile, summary, lyrics: casual.sentences(4) }),
 			};
 
 			await server.app.db.TopTrack.insertMany(topTracksWithImages);
@@ -89,11 +90,12 @@ describe('Given pipeline plugin', () => {
 			jest.restoreAllMocks();
 		});
 
-		it('When addTrackProfile runs tracks have personality profiles', async () => {
+		it('When addTrackProfile runs tracks have lyrics, profile, summary', async () => {
 			await server.methods.pipeline.addTrackProfile(server);
 
 			const track: ProfileModel = await server.app.db.TopTrack.findOne({});
 
+			expect(track.lyrics).toBeDefined();
 			expect(track.profile).toBeDefined();
 			expect(track.summary).toBeDefined();
 		});

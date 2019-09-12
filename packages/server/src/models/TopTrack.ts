@@ -19,6 +19,7 @@ const TopTrackSchema = new mongoose.Schema({
 	profileUrl: { type: String },
 	profile: { type: Object },
 	summary: { type: String },
+	lyrics: { type: String },
 });
 
 TopTrackSchema.pre('save', function save(next) {

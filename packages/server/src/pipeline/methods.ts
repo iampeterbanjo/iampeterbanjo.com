@@ -5,7 +5,6 @@ const methods = [
 	'convertRawTopTracks',
 	'addArtistImages',
 	'addTrackProfile',
-	'addTrackLyrics',
 ].map((name: string) => {
 	return {
 		name: `pipeline.${name}`,

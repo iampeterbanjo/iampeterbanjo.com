@@ -95,8 +95,6 @@ export const convertRawTopTracks = async server => {
 	return tracks;
 };
 
-export const addTrackLyrics = () => {};
-
 export const addTrackProfile = async server => {
 	const tracks = await server.app.db.TopTrack.find({});
 
@@ -105,9 +103,10 @@ export const addTrackProfile = async server => {
 			const {
 				profile,
 				summary,
-			} = await server.methods.korin.getPersonalityProfile();
+				lyrics,
+			} = await server.methods.korin.getProfileByArtistAndTrack();
 
-			const updated = Object.assign(track, { profile, summary });
+			const updated = Object.assign(track, { profile, summary, lyrics });
 
 			await updated.save();
 		}),

@@ -29,6 +29,10 @@ type WatsonProfileInsights = {
 	summary: string;
 };
 
+type TrackProfile = WatsonProfileInsights & {
+	lyrics: string;
+};
+
 type Connex = {
 	dbName: (isTest?: boolean) => string;
 	uri: string;
@@ -87,6 +91,7 @@ type TopTrack = Track & {
 	profileUrl: string;
 	profile?: string;
 	summary?: string;
+	lyrics?: string;
 	importedDate?: number;
 };
 
