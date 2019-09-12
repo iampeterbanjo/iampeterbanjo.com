@@ -90,6 +90,18 @@ describe('Given pipeline plugin', () => {
 			jest.restoreAllMocks();
 		});
 
+		it('When addTrackProfile runs, it calls getProfileByArtistAndTrack with artist and track', async () => {
+			await server.methods.pipeline.addTrackProfile(server);
+
+			const [
+				params,
+			] = server.methods.korin.getProfileByArtistAndTrack.mock.calls[0];
+			const { artist, track } = params;
+
+			expect(artist).toBeDefined();
+			expect(track).toBeDefined();
+		});
+
 		it('When addTrackProfile runs tracks have lyrics, profile, summary', async () => {
 			await server.methods.pipeline.addTrackProfile(server);
 

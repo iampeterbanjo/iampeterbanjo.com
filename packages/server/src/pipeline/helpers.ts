@@ -104,7 +104,10 @@ export const addTrackProfile = async server => {
 				profile,
 				summary,
 				lyrics,
-			} = await server.methods.korin.getProfileByArtistAndTrack();
+			} = await server.methods.korin.getProfileByArtistAndTrack({
+				artist: track.artist,
+				track: track.title,
+			});
 
 			const updated = Object.assign(track, { profile, summary, lyrics });
 
