@@ -85,6 +85,8 @@ type Track = {
 
 type TopTrack = Track & {
 	profileUrl: string;
+	profile?: string;
+	summary?: string;
 	importedDate?: number;
 };
 

@@ -17,6 +17,8 @@ const TopTrackSchema = new mongoose.Schema({
 		required: true,
 	},
 	profileUrl: { type: String },
+	profile: { type: Object },
+	summary: { type: String },
 });
 
 TopTrackSchema.pre('save', function save(next) {

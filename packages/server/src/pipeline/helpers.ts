@@ -95,7 +95,22 @@ export const convertRawTopTracks = async server => {
 	return tracks;
 };
 
-export const addTrackProfile = () => {};
+export const addTrackProfile = async server => {
+	const tracks = await server.app.db.TopTrack.find({});
+
+	await Promise.all(
+		tracks.map(async (track: TopTrackModel) => {
+			const {
+				profile,
+				summary,
+			} = await server.methods.korin.getPersonalityProfile();
+
+			const updated = Object.assign(track, { profile, summary });
+
+			await updated.save();
+		}),
+	);
+};
 
 export const addArtistImages = async server => {
 	const tracks = await server.app.db.TopTrack.find({});

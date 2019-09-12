@@ -17,7 +17,7 @@
 		"test-badges": "jest-coverage-badges output ./badges",
 		"test-ci": "CI=true jest",
 		"test-leaks": "CI=true jest --detectLeaks --logHeapUsage",
-		"test-jest": "node --trace-warnings node_modules/.bin/jest",
+		"test-jest": "node --trace-warnings node_modules/.bin/jest --changedFilesWithAncestor",
 		"test": "run-s test-ci test-badges",
 		"lint": "eslint \"**/*.js\"",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
