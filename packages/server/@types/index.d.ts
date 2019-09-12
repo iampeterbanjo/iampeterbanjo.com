@@ -2,8 +2,9 @@ type GeniusData = {
 	meta: {
 		status: number;
 	};
-	response: object;
-	hits: object[];
+	response: {
+		hits: object[];
+	};
 };
 
 type SongInfo = {

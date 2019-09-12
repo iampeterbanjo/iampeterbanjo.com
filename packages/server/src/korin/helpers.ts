@@ -3,6 +3,7 @@ import PersonalityInsightsV3 from 'watson-developer-cloud/personality-insights/v
 import PersonalityTextSummary from 'personality-text-summary';
 import SpotifyWebApi from 'spotify-web-api-node';
 import utils from '../utils';
+import Joi from '@hapi/joi';
 
 export const {
 	vars,
@@ -26,15 +27,24 @@ export const spotifyApi = new SpotifyWebApi({
 	clientSecret: SPOTIFY_CLIENT_SECRET,
 });
 
-/**
- * Search Genius for info about an artist's track
- * @param {string} search Artist name and track title
- * @return {Promise<GeniusData>}
- */
-export const getSongData = async search => {
-	const query = new URLSearchParams([['q', search]]);
+const GeniusResponse = Joi.object({
+	meta: {
+		status: Joi.number().valid(200),
+	},
+	response: Joi.object(),
+});
 
-	return (await genius.get(`search?${query}`)).payload;
+export const getSongData = async (search: string): Promise<GeniusData> => {
+	const query = new URLSearchParams([['q', search]]);
+	const result = (await genius.get(`search?${query}`)).payload;
+	const { error } = Joi.validate(result, GeniusResponse, {
+		presence: 'required',
+	});
+
+	if (error)
+		throw new Error(`Invalid Genius API response: ${JSON.stringify(result)}`);
+
+	return result;
 };
 
 export const getChartTopTracks = async (): Promise<RawTopTrackJson> => {

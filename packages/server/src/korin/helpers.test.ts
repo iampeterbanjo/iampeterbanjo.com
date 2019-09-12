@@ -5,8 +5,8 @@ import * as helpers from '../../src/korin/helpers';
 import spotifyApiArtistSearch from '../../fixtures/spotify-api-artist-search.json';
 import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
 
-const topTracksData = require('../../fixtures/lastfm-topTracks.json');
-const songData = require('../../fixtures/genius-search.json');
+import topTracksData from '../../fixtures/lastfm-topTracks.json';
+import songData from '../../fixtures/genius-search.json';
 
 const { vars, message } = utils;
 const {
@@ -51,14 +51,14 @@ describe('Given getChartTopTracks', () => {
 describe('Given getSongData', () => {
 	const q = 'Kendrick Lamar HUMBLE';
 
-	beforeEach(async () => {
+	beforeAll(async () => {
 		await nock(GENIUS_API_URL)
 			.get('/search')
 			.query({ q })
 			.reply(200, songData);
 	});
 
-	afterEach(() => {
+	afterAll(() => {
 		nock.cleanAll();
 	});
 
@@ -66,6 +66,25 @@ describe('Given getSongData', () => {
 		const result = await getSongData(q);
 
 		expect(result).toEqual(songData);
+	});
+});
+
+describe('Given getSongData', () => {
+	const q = 'Kendrick Lamar HUMBLE';
+
+	beforeAll(async () => {
+		await nock(GENIUS_API_URL)
+			.get('/search')
+			.query({ q })
+			.reply(200, {});
+	});
+
+	afterAll(() => {
+		nock.cleanAll();
+	});
+
+	it('When genius API request is invalid there is an error', async () => {
+		expect(getSongData(q)).rejects.toThrow();
 	});
 });
 
