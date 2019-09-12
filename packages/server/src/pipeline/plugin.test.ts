@@ -153,6 +153,7 @@ describe('Given pipeline plugin', () => {
 					.mockResolvedValue(
 						'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
 					),
+				getProfileByArtistAndTrack: jest.fn().mockResolvedValue({}),
 			};
 		});
 
@@ -198,6 +199,29 @@ describe('Given pipeline plugin', () => {
 			expect(response.payload).toEqual(
 				expect.stringContaining(`Extracted 50 and converted 50 tracks`),
 			);
+		});
+
+		it('When requesting API pipeline, correct methods are called', async () => {
+			const methods = [
+				'addArtistImages',
+				'saveRawTopTracks',
+				'convertRawTopTracks',
+				'addTrackProfile',
+			];
+
+			expect.assertions(methods.length);
+
+			methods.forEach(method => jest.spyOn(server.methods.pipeline, method));
+
+			const { method, url } = routes.v1.extract_top_tracks();
+			await server.inject({
+				method,
+				url,
+			});
+
+			methods.forEach(method => {
+				expect(server.methods.pipeline[method]).toHaveBeenCalled();
+			});
 		});
 
 		describe('And BAD API response from lastFm', () => {

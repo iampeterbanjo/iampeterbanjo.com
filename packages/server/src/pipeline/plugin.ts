@@ -23,6 +23,7 @@ export default {
 						server,
 					);
 					await server.methods.pipeline.addArtistImages(server);
+					await server.methods.pipeline.addTrackProfile(server);
 
 					const message = `Extracted ${extracted.length} and converted ${converted.length} tracks`;
 
