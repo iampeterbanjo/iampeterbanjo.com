@@ -95,6 +95,8 @@ export const convertRawTopTracks = async server => {
 	return tracks;
 };
 
+export const addTrackLyrics = () => {};
+
 export const addTrackProfile = async server => {
 	const tracks = await server.app.db.TopTrack.find({});
 

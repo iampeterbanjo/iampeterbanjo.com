@@ -1,27 +1,16 @@
 import * as helpers from './helpers';
 
-const {
-	saveRawTopTracks,
-	convertRawTopTracks,
-	addArtistImages,
-	addTrackProfile,
-} = helpers;
+const methods = [
+	'saveRawTopTracks',
+	'convertRawTopTracks',
+	'addArtistImages',
+	'addTrackProfile',
+	'addTrackLyrics',
+].map((name: string) => {
+	return {
+		name: `pipeline.${name}`,
+		method: helpers[name],
+	};
+});
 
-export default [
-	{
-		name: 'pipeline.saveRawTopTracks',
-		method: saveRawTopTracks,
-	},
-	{
-		name: 'pipeline.convertRawTopTracks',
-		method: convertRawTopTracks,
-	},
-	{
-		name: 'pipeline.addArtistImages',
-		method: addArtistImages,
-	},
-	{
-		name: 'pipeline.addTrackProfile',
-		method: addTrackProfile,
-	},
-];
+export default methods;

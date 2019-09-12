@@ -42,6 +42,7 @@ describe('Given pipeline API', () => {
 		'saveRawTopTracks',
 		'addArtistImages',
 		'addTrackProfile',
+		'addTrackLyrics',
 	].forEach(name => {
 		it(`When method ${name} is registered its a function`, () => {
 			const result = server.methods.pipeline[name];
