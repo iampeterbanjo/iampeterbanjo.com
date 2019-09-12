@@ -201,26 +201,22 @@ describe('Given pipeline plugin', () => {
 			);
 		});
 
-		it('When requesting API pipeline, correct methods are called', async () => {
-			const methods = [
-				'addArtistImages',
-				'saveRawTopTracks',
-				'convertRawTopTracks',
-				'addTrackProfile',
-			];
+		[
+			'addArtistImages',
+			'saveRawTopTracks',
+			'convertRawTopTracks',
+			'addTrackProfile',
+		].forEach(expected => {
+			it(`When requesting API pipeline, ${expected} is called`, async () => {
+				jest.spyOn(server.methods.pipeline, expected);
 
-			expect.assertions(methods.length);
+				const { method, url } = routes.v1.extract_top_tracks();
+				await server.inject({
+					method,
+					url,
+				});
 
-			methods.forEach(method => jest.spyOn(server.methods.pipeline, method));
-
-			const { method, url } = routes.v1.extract_top_tracks();
-			await server.inject({
-				method,
-				url,
-			});
-
-			methods.forEach(method => {
-				expect(server.methods.pipeline[method]).toHaveBeenCalled();
+				expect(server.methods.pipeline[expected]).toHaveBeenCalled();
 			});
 		});
 
