@@ -31,7 +31,9 @@ const GeniusResponse = Joi.object({
 	meta: {
 		status: Joi.number().valid(200),
 	},
-	response: Joi.object(),
+	response: {
+		hits: Joi.array(),
+	},
 });
 
 export const getSongData = async (search: string): Promise<GeniusData> => {
@@ -132,13 +134,21 @@ export const getProfileByArtistAndTrack = async ({
 	artist,
 	track,
 }: TrackInfo): Promise<TrackProfile> => {
-	const search = `${artist} ${track}`;
-	const songData = await getSongData(search);
-	const songId = await getSongId(songData);
-	const lyrics = await getLyrics(songId);
-	const { profile, summary } = await getPersonalityProfile(lyrics);
+	try {
+		const search = `${artist} ${track}`;
+		const songData = await getSongData(search);
+		const songId = await getSongId(songData);
+		const lyrics = await getLyrics(songId);
+		const { profile, summary } = await getPersonalityProfile(lyrics);
 
-	return { profile, summary, lyrics };
+		return { profile, summary, lyrics };
+	} catch (error) {
+		return {
+			profile: message.ERROR_PROFILE_NOT_FOUND,
+			summary: message.ERROR_SUMMARY_NOT_FOUND,
+			lyrics: message.ERROR_LYRICS_NOT_FOUND,
+		};
+	}
 };
 
 export const getSpotifyAccessToken = async (): Promise<string> => {

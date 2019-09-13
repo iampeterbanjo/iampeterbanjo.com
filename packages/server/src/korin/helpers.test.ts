@@ -2,9 +2,9 @@ import nock from 'nock';
 
 import utils from '../../src/utils';
 import * as helpers from '../../src/korin/helpers';
+
 import spotifyApiArtistSearch from '../../fixtures/spotify-api-artist-search.json';
 import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
-
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import songData from '../../fixtures/genius-search.json';
 
@@ -26,7 +26,7 @@ afterAll(() => {
 });
 
 describe('Given getChartTopTracks', () => {
-	beforeEach(async () => {
+	beforeAll(async () => {
 		await nock(LASTFM_API_URL)
 			.get('/')
 			.query({
@@ -37,7 +37,7 @@ describe('Given getChartTopTracks', () => {
 			.reply(200, topTracksData);
 	});
 
-	afterEach(() => {
+	afterAll(() => {
 		nock.cleanAll();
 	});
 
@@ -125,10 +125,31 @@ describe('Given getSongInfo', () => {
 });
 
 describe('Given getPersonalityProfile', () => {
+	afterAll(jest.restoreAllMocks);
+
 	it('When called with no lyrics, the correct error message is returned', async () => {
 		const { profile } = await getPersonalityProfile('');
 
 		expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
+	});
+});
+
+describe('Given getProfileByArtistAndTrack', () => {
+	afterAll(jest.restoreAllMocks);
+
+	it('When no songId found it returns any object with empty values', async () => {
+		jest.spyOn(helpers, 'getSongData').mockResolvedValue(songData);
+		jest.spyOn(helpers, 'getSongId').mockResolvedValue(undefined);
+
+		const {
+			profile,
+			summary,
+			lyrics,
+		} = await helpers.getProfileByArtistAndTrack({ artist: '', track: '' });
+
+		expect(profile).toEqual(message.ERROR_PROFILE_NOT_FOUND);
+		expect(summary).toEqual(message.ERROR_SUMMARY_NOT_FOUND);
+		expect(lyrics).toEqual(message.ERROR_LYRICS_NOT_FOUND);
 	});
 });
 
