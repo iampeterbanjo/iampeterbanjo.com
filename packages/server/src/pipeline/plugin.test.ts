@@ -8,6 +8,7 @@ import plugin from './plugin';
 import routes from './routes';
 import methods from './methods';
 
+import { cleanDatabase, closeDatabase } from '../../factory';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import rawTopTracks from '../../fixtures/rawTopTracks.json';
@@ -34,9 +35,13 @@ const Server = async () => {
 };
 
 describe('Given pipeline plugin', () => {
-	describe('And RawTopTracks are converted to TopTracks', () => {
-		let server;
+	let server;
 
+	afterAll(async () => {
+		closeDatabase(server);
+	});
+
+	describe('And RawTopTracks are converted to TopTracks', () => {
 		beforeAll(async () => {
 			server = await Server();
 

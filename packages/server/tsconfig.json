@@ -3,6 +3,6 @@
 	"compilerOptions": {
 		"outDir": "./build"
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "factory/**/*"],
 	"exclude": ["node_modules", "build"]
 }

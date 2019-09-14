@@ -20,6 +20,7 @@ export default {
 		try {
 			const { connection } = await mongoose.connect(uri, options);
 			server.app.db = {
+				connection,
 				link: connection.db,
 				TopTrack,
 				Profile,
