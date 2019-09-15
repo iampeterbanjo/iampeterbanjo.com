@@ -15,6 +15,7 @@ import pipeline from './pipeline';
 import cqc from './cqc';
 import httpsHere from './https-here';
 import hapiPino from './hapi-pino';
+import agendaPlugin from './agenda';
 
 const { vars } = utils;
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
@@ -63,6 +64,7 @@ export default async function main() {
 			server.register(pipeline),
 			server.register(cqc),
 			server.register(httpsHere),
+			server.register(agendaPlugin),
 		]);
 
 		return server;

@@ -1,4 +1,6 @@
 import * as R from 'ramda';
+import Agenda from 'agenda';
+
 import api from './api';
 import utils from './utils';
 
@@ -104,5 +106,11 @@ describe('Given server cache', () => {
 describe('Given hapi-pino', () => {
 	it('When server is started it has logger attached', () => {
 		expect(server.logger).toBeDefined();
+	});
+});
+
+describe('Given agenda', () => {
+	it('When server, it has agenda start defined', () => {
+		expect(server.app.agenda).toBeInstanceOf(Agenda);
 	});
 });
