@@ -1,4 +1,6 @@
 import Agenda from 'agenda';
+import Helpers from './helpers';
+import jobs from './jobs';
 import utils from '../utils';
 
 const {
@@ -14,7 +16,8 @@ export default {
 		korin: '1.x.x',
 	},
 	register: server => {
-		agenda.define('');
+		const helpers = new Helpers(server);
+		agenda.define(jobs.IMPORT_CHART_TOP_TRACKS, helpers.importChartTracks);
 
 		server.app.agenda = agenda;
 	},
