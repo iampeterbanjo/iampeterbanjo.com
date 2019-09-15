@@ -2,8 +2,9 @@ import { api } from '.';
 
 (async () => {
 	try {
-		const server = await api();
+		const server: Api = await api();
 		await server.start();
+		await server.app.agenda.start();
 
 		console.log(`Server running at: ${server.info.uri}`);
 	} catch (error) {

@@ -13,7 +13,7 @@ export default {
 	version: '1.0.0',
 	dependencies: {
 		models: '1.x.x',
-		korin: '1.x.x',
+		'korin-api': '1.x.x',
 	},
 	register: server => {
 		const helpers = new Helpers(server);

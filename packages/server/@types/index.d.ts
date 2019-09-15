@@ -162,3 +162,27 @@ type SpotifyApiArtistSearchResponse = {
 		};
 	};
 };
+
+interface Api {
+	info: {
+		uri: string;
+		host: string;
+		port: number;
+	};
+	start: () => Promise<void>;
+	app: {
+		agenda: {
+			start: () => Promise<void>;
+		};
+		db: {};
+		logger: {};
+	};
+	methods: {
+		korin: {
+			getProfileByArtistAndTrack: () => Promise<TrackProfile>;
+			getChartTopTracks: () => Promise<RawTopTrackJson>;
+			getArtistImage: () => Promise<string>;
+			getSpotifyAccessToken: () => Promise<string>;
+		};
+	};
+}
