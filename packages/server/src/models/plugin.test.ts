@@ -3,7 +3,7 @@ import DatabaseCleaner from 'database-cleaner';
 
 import plugin from '../../src/models/plugin';
 import utils from '../../src/utils';
-import factory from '../../factory';
+import factory, { getDbConnection, disconnectAndStopDb } from '../../factory';
 
 const databaseCleaner = new DatabaseCleaner('mongodb');
 const { slugger } = utils;
@@ -12,7 +12,11 @@ const [fakeTopTrack] = factory.topTrack(1);
 
 const Server = async () => {
 	const server = Hapi.Server();
-	await server.register({ plugin });
+	const connection = await getDbConnection();
+	await server.register({
+		plugin,
+		options: { connection },
+	});
 
 	return server;
 };
@@ -26,14 +30,10 @@ describe('Given models plugin', () => {
 		});
 
 		afterAll(async () => {
-			await databaseCleaner.clean(server.app.db.link);
+			await disconnectAndStopDb();
 		});
 
 		describe('And korin app', () => {
-			it('When server.app.db has link it is defined', () => {
-				expect(server.app.db.link).toBeDefined();
-			});
-
 			['TopTrack', 'Profile'].forEach(model => {
 				it(`When server.app.db has ${model} equal to modelName`, () => {
 					expect(server.app.db[model].modelName).toEqual(model);
@@ -88,10 +88,6 @@ describe('Given models plugin', () => {
 		});
 
 		describe('And pipeline app', () => {
-			it('When server.app.db has link defined', () => {
-				expect(server.app.db.link).toBeDefined();
-			});
-
 			['RawTopTrack'].forEach(model => {
 				it(`When server.app.db has ${model} equal to modelName`, () => {
 					expect(server.app.db[model].modelName).toEqual(model);

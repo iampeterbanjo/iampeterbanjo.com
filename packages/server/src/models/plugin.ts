@@ -1,27 +1,14 @@
-import mongoose from 'mongoose';
-import util from 'util';
-import * as helpers from './helpers';
 import TopTrack from './TopTrack';
 import RawTopTrack from './RawTopTrack';
 import Profile from './Profile';
 
-mongoose.connect[util.promisify.custom] = (error, db) => {
-	return new Promise((resolve, reject) => {
-		if (error) return reject(error);
-		return resolve(db);
-	});
-};
-
 export default {
 	name: 'models',
 	version: '1.0.0',
-	register: async server => {
-		const { uri, options } = helpers.connex;
+	register: async (server, { connection }) => {
 		try {
-			const { connection } = await mongoose.connect(uri, options);
 			server.app.db = {
 				connection,
-				link: connection.db,
 				TopTrack,
 				Profile,
 				RawTopTrack,

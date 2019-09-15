@@ -34,16 +34,6 @@ type TrackProfile = WatsonProfileInsights & {
 	lyrics: string;
 };
 
-type Connex = {
-	dbName: (isTest?: boolean) => string;
-	uri: string;
-	options: {
-		useNewUrlParser: boolean;
-		dbName: string;
-		promiseLibrary: any;
-	};
-};
-
 type MongooseModel = {
 	_id: string;
 	save: () => Promise<any>;

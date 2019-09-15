@@ -1,13 +1,15 @@
-import DatabaseCleaner from 'database-cleaner';
-import { promisify } from 'util';
+import mongoose from 'mongoose';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
-const databaseCleaner = new DatabaseCleaner('mongodb');
-const asyncDbClean = promisify(databaseCleaner.clean);
+let mongoServer;
 
-export const closeDatabase = server => {
-	server.app.db.connection.close();
+export const disconnectAndStopDb = async () => {
+	await mongoose.disconnect();
+	await mongoServer.stop();
 };
 
-export const cleanDatabase = async server => {
-	await asyncDbClean(server.app.db.link);
+export const getDbConnection = async () => {
+	mongoServer = new MongoMemoryServer();
+	const mongoUri = await mongoServer.getConnectionString();
+	return mongoose.connect(mongoUri, { useNewUrlParser: true });
 };

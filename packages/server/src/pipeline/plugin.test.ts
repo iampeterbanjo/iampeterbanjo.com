@@ -1,14 +1,12 @@
 import Hapi from '@hapi/hapi';
-import DatabaseCleaner from 'database-cleaner';
 import R from 'ramda';
-import { promisify } from 'util';
 import casual from 'casual';
 
 import plugin from './plugin';
 import routes from './routes';
 import methods from './methods';
 
-import { cleanDatabase, closeDatabase } from '../../factory';
+import { getDbConnection, disconnectAndStopDb } from '../../factory';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import rawTopTracks from '../../fixtures/rawTopTracks.json';
@@ -16,11 +14,9 @@ import topTracksWithImages from '../../fixtures/topTracks-with-images.json';
 import profile from '../../fixtures/personality-profile.json';
 import { summary } from '../../fixtures/personality-summary.json';
 
-const databaseCleaner = new DatabaseCleaner('mongodb');
-const asyncDbClean = promisify(databaseCleaner.clean);
-
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
+	const connection = await getDbConnection();
 
 	await server.register({
 		plugin,
@@ -29,6 +25,7 @@ const Server = async () => {
 
 	await server.register({
 		plugin: modelsPlugin,
+		options: { connection },
 	});
 
 	return server;
@@ -38,7 +35,7 @@ describe('Given pipeline plugin', () => {
 	let server;
 
 	afterAll(async () => {
-		closeDatabase(server);
+		disconnectAndStopDb();
 	});
 
 	describe('And RawTopTracks are converted to TopTracks', () => {
@@ -50,11 +47,10 @@ describe('Given pipeline plugin', () => {
 				.mockResolvedValue(rawTopTracks);
 		});
 
-		beforeEach(async () => {
-			await asyncDbClean(server.app.db.link);
+		afterAll(async () => {
+			await disconnectAndStopDb();
+			jest.restoreAllMocks();
 		});
-
-		afterAll(jest.restoreAllMocks);
 
 		it('When RawTopTracks exist they are converted to TopTracks', async () => {
 			const converted = await server.methods.pipeline.convertRawTopTracks(
@@ -91,7 +87,7 @@ describe('Given pipeline plugin', () => {
 		});
 
 		afterAll(async () => {
-			await asyncDbClean(server.app.db.link);
+			await disconnectAndStopDb();
 			jest.restoreAllMocks();
 		});
 
@@ -141,7 +137,7 @@ describe('Given pipeline plugin', () => {
 		});
 
 		afterAll(async () => {
-			await asyncDbClean(server.app.db.link);
+			await disconnectAndStopDb();
 			jest.restoreAllMocks();
 		});
 
@@ -174,11 +170,12 @@ describe('Given pipeline plugin', () => {
 			};
 		});
 
-		beforeEach(async () => {
-			await asyncDbClean(server.app.db.link);
-		});
+		beforeEach(async () => {});
 
-		afterAll(jest.restoreAllMocks);
+		afterAll(async () => {
+			await disconnectAndStopDb();
+			jest.restoreAllMocks();
+		});
 
 		it('When 50 RawTopTracks are saved to db they have exported date', async () => {
 			await server.methods.pipeline.saveRawTopTracks(server);
@@ -252,11 +249,12 @@ describe('Given pipeline plugin', () => {
 							'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
 						),
 				};
-
-				await asyncDbClean(server.app.db.link);
 			});
 
-			afterAll(jest.restoreAllMocks);
+			afterAll(async () => {
+				await disconnectAndStopDb();
+				jest.restoreAllMocks();
+			});
 
 			it('When there is no data an Error is thrown', () => {
 				expect(
