@@ -1,5 +1,5 @@
 export default class Helpers {
-	server: any;
+	server: Api;
 
 	constructor(server) {
 		this.server = server;

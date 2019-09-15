@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 600000;
+
 let mongoServer;
 
 export const disconnectAndStopDb = async () => {

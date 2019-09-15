@@ -4,7 +4,7 @@ import { api } from '.';
 	try {
 		const server: Api = await api();
 		await server.start();
-		await server.app.agenda.start();
+		await server.app.agenda.init();
 
 		console.log(`Server running at: ${server.info.uri}`);
 	} catch (error) {

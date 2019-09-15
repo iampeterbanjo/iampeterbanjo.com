@@ -4,34 +4,32 @@ import plugin from './plugin';
 import Helpers from './helpers';
 
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
-import modelsPlugin from '../models/plugin';
 import rawTopTracks from '../../fixtures/rawTopTracks.json';
+import { mockModelPlugin, mockKorinPlugin } from '../../factory';
 
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
-	const connection = await getDbConnection();
 
 	await server.register({
 		plugin,
+		options: { getDbConnection },
 	});
 
-	await server.register({
-		plugin: modelsPlugin,
-		options: { connection },
-	});
+	await server.register(mockModelPlugin);
+	await server.register(mockKorinPlugin);
 
 	return server;
 };
 
 describe('Given importChartTracks', () => {
-	let server;
+	let server: Api;
 
 	beforeAll(async () => {
 		server = await Server();
 
-		server.methods.korin = {
-			getChartTopTracks: jest.fn().mockResolvedValue(rawTopTracks),
-		};
+		jest
+			.spyOn(server.methods.korin, 'getChartTopTracks')
+			.mockResolvedValue(rawTopTracks as any);
 	});
 
 	afterAll(async () => {

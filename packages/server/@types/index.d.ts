@@ -173,6 +173,7 @@ interface Api {
 	app: {
 		agenda: {
 			start: () => Promise<void>;
+			init: () => Promise<void>;
 		};
 		db: {};
 		logger: {};
