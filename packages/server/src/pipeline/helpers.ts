@@ -1,7 +1,9 @@
 import Joi from '@hapi/joi';
 import * as R from 'ramda';
 import jsonata from 'jsonata';
+
 import utils from '../utils';
+import { RawTopTrack, TopTrackModel } from '../types';
 
 export const { vars, slugger } = utils;
 export const { convertTopTracksPath } = vars;

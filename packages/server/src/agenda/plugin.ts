@@ -2,7 +2,7 @@ import Agenda from 'agenda';
 import Helpers from './helpers';
 import jobs from './jobs';
 
-class AgendaApi extends Agenda {
+export class AgendaApi extends Agenda {
 	constructor(options) {
 		super(options);
 	}

@@ -1,6 +1,6 @@
 import { AgendaApi } from '../src/agenda/plugin';
 
-type GeniusData = {
+export type GeniusData = {
 	meta: {
 		status: number;
 	};
@@ -9,40 +9,40 @@ type GeniusData = {
 	};
 };
 
-type SongInfo = {
+export type SongInfo = {
 	id: number;
 	thumbnail: string;
 };
 
-type TrackInfo = {
+export type TrackInfo = {
 	artist: string;
 	track: string;
 };
 
-type WatsonProfileContentType = 'text/plain' | 'application/json';
+export type WatsonProfileContentType = 'text/plain' | 'application/json';
 
-interface WatsonProfileParams {
+export type WatsonProfileParams = {
 	content: string;
 	content_type: WatsonProfileContentType;
 	consumption_preferences: boolean;
-}
+};
 
-type WatsonProfileInsights = {
+export type WatsonProfileInsights = {
 	profile: object | string;
 	summary: string;
 };
 
-type TrackProfile = WatsonProfileInsights & {
+export type TrackProfile = WatsonProfileInsights & {
 	lyrics: string;
 };
 
-type MongooseModel = {
+export type MongooseModel = {
 	_id: string;
 	save: () => Promise<any>;
 	remove: () => Promise<void>;
 };
 
-type RawTopTrack = MongooseModel & {
+export type RawTopTrack = MongooseModel & {
 	name: string;
 	duration: string;
 	playcount: string;
@@ -67,20 +67,20 @@ type RawTopTrack = MongooseModel & {
 	importedDate?: number;
 };
 
-type RawTopTrackJson = {
+export type RawTopTrackJson = {
 	tracks: {
 		track: RawTopTrack[];
 	};
 };
 
-type Track = {
+export type Track = {
 	artist: string;
 	title: string;
 	image: string;
 	lastFmUrl: string;
 };
 
-type TopTrack = Track & {
+export type TopTrack = Track & {
 	profileUrl: string;
 	profile?: string;
 	summary?: string;
@@ -88,16 +88,16 @@ type TopTrack = Track & {
 	importedDate?: number;
 };
 
-type Profile = TopTrack & {
+export type Profile = TopTrack & {
 	profile: object;
 	summary: string;
 	profileUrl: string;
 };
 
-type TopTrackModel = MongooseModel & TopTrack;
-type ProfileModel = MongooseModel & Profile;
+export type TopTrackModel = MongooseModel & TopTrack;
+export type ProfileModel = MongooseModel & Profile;
 
-type SpotifyApiGrantResponse = {
+export type SpotifyApiGrantResponse = {
 	body: {
 		access_token: string;
 		token_type: 'Bearer';
@@ -118,7 +118,7 @@ type SpotifyApiGrantResponse = {
 	statusCode: number;
 };
 
-type SpotifyApiArtistImages = [
+export type SpotifyApiArtistImages = [
 	{
 		height: 640;
 		url: string;
@@ -136,7 +136,7 @@ type SpotifyApiArtistImages = [
 	},
 ];
 
-type SpotifyApiArtist = {
+export type SpotifyApiArtist = {
 	external_urls: {
 		spotify: string;
 	};
@@ -151,7 +151,7 @@ type SpotifyApiArtist = {
 	uri: string;
 };
 
-type SpotifyApiArtistSearchResponse = {
+export type SpotifyApiArtistSearchResponse = {
 	body: {
 		artists: {
 			href: string;
@@ -165,7 +165,7 @@ type SpotifyApiArtistSearchResponse = {
 	};
 };
 
-interface Api {
+export interface Api {
 	info: {
 		uri: string;
 		host: string;

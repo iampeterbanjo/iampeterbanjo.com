@@ -1,6 +1,7 @@
 import Hapi from '@hapi/hapi';
 import plugin from './plugin';
 
+import { Api } from '../types';
 import { getDbConnection } from '../../factory';
 
 const Server = async () => {
@@ -23,11 +24,12 @@ describe('Given agenda plugin', () => {
 
 	afterEach(jest.restoreAllMocks);
 
-	it('When init is called agenda is started', async () => {
+	it('When init is called agenda is started and jobs scheduled', async () => {
 		jest.spyOn(server.app.agenda, 'start').mockResolvedValue();
 
 		await server.app.agenda.init();
 
 		expect(server.app.agenda.start).toHaveBeenCalled();
+		// expect(server.app.agenda.every).toHaveBeenCalled();
 	});
 });

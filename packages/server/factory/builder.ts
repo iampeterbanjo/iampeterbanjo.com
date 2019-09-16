@@ -1,7 +1,9 @@
+import * as R from 'ramda';
 import getTopTrack from './topTrack';
 import getProfile from './profile';
 import * as mock from './mock';
-import * as R from 'ramda';
+
+import { TopTrack, Profile } from '../src/types';
 
 const generate = (
 	count: number,

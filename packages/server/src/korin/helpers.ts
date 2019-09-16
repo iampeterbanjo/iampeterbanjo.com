@@ -4,6 +4,17 @@ import PersonalityTextSummary from 'personality-text-summary';
 import SpotifyWebApi from 'spotify-web-api-node';
 import utils from '../utils';
 import Joi from '@hapi/joi';
+import {
+	WatsonProfileInsights,
+	GeniusData,
+	RawTopTrackJson,
+	SongInfo,
+	WatsonProfileParams,
+	TrackInfo,
+	TrackProfile,
+	SpotifyApiGrantResponse,
+	SpotifyApiArtistSearchResponse,
+} from '../types';
 
 export const {
 	vars,

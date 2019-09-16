@@ -3,8 +3,9 @@ import Hapi from '@hapi/hapi';
 import plugin from './plugin';
 import Helpers from './helpers';
 
+import { Api } from '../types';
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
-import rawTopTracks from '../../fixtures/rawTopTracks.json';
+import topTracksJson from '../../fixtures/lastfm-topTracks.json';
 import { mockModelPlugin, mockKorinPlugin } from '../../factory';
 
 const Server = async () => {
@@ -29,7 +30,7 @@ describe('Given importChartTracks', () => {
 
 		jest
 			.spyOn(server.methods.korin, 'getChartTopTracks')
-			.mockResolvedValue(rawTopTracks as any);
+			.mockResolvedValue(topTracksJson);
 	});
 
 	afterAll(async () => {

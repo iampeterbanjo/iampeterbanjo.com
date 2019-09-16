@@ -1,3 +1,4 @@
+import { Api } from './types';
 import { api } from '.';
 
 (async () => {

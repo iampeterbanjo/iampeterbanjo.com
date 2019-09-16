@@ -1,5 +1,6 @@
 import Hapi from '@hapi/hapi';
 
+import { TopTrackModel } from '../types';
 import plugin from '../../src/models/plugin';
 import utils from '../../src/utils';
 import factory, { getDbConnection, disconnectAndStopDb } from '../../factory';

@@ -6,6 +6,7 @@ import plugin from './plugin';
 import routes from './routes';
 import methods from './methods';
 
+import { ProfileModel, TopTrack } from '../types';
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
 import modelsPlugin from '../models/plugin';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
