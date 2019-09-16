@@ -1,6 +1,9 @@
 import Agenda from 'agenda';
 import Helpers from './helpers';
 import jobs from './jobs';
+import utils from '../utils';
+
+const { time } = utils;
 
 export class AgendaApi extends Agenda {
 	constructor(options) {
@@ -9,6 +12,8 @@ export class AgendaApi extends Agenda {
 
 	async init() {
 		await this.start();
+
+		await this.every(time.oneDay, jobs.IMPORT_CHART_TOP_TRACKS);
 	}
 }
 

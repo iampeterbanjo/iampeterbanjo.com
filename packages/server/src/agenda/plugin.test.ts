@@ -26,10 +26,11 @@ describe('Given agenda plugin', () => {
 
 	it('When init is called agenda is started and jobs scheduled', async () => {
 		jest.spyOn(server.app.agenda, 'start').mockResolvedValue();
+		jest.spyOn(server.app.agenda, 'every').mockResolvedValue({} as any);
 
 		await server.app.agenda.init();
 
 		expect(server.app.agenda.start).toHaveBeenCalled();
-		// expect(server.app.agenda.every).toHaveBeenCalled();
+		expect(server.app.agenda.every).toHaveBeenCalled();
 	});
 });
