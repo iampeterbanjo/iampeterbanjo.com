@@ -2,6 +2,7 @@ import Agenda from 'agenda';
 import Helpers from './helpers';
 import jobs from './jobs';
 import utils from '../utils';
+import mongoose from 'mongoose';
 
 const { time } = utils;
 
@@ -25,10 +26,12 @@ export default {
 		'korin-api': '1.x.x',
 	},
 	register: async (server, { getDbConnection }) => {
-		const connection = await getDbConnection();
+		const { uri } = await getDbConnection();
+
 		const helpers = new Helpers(server);
 		const agenda = new AgendaApi({
-			db: connection.db,
+			db: { address: uri },
+			processEvery: time.fifteenMinutes,
 		});
 
 		agenda.define(jobs.IMPORT_CHART_TOP_TRACKS, helpers.importChartTracks);

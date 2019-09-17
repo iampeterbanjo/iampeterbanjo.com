@@ -5,7 +5,9 @@ import Profile from './Profile';
 export default {
 	name: 'models',
 	version: '1.0.0',
-	register: async (server, { connection }) => {
+	register: async (server, { getDbConnection }) => {
+		const { connection } = await getDbConnection();
+
 		try {
 			server.app.db = {
 				connection,

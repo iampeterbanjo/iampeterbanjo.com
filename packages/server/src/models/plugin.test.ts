@@ -11,10 +11,9 @@ const [fakeTopTrack] = factory.topTrack(1);
 
 const Server = async () => {
 	const server = Hapi.Server();
-	const connection = await getDbConnection();
 	await server.register({
 		plugin,
-		options: { connection },
+		options: { getDbConnection },
 	});
 
 	return server;

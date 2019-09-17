@@ -5,7 +5,7 @@ import * as helpers from '../../src/models/helpers';
 
 const { vars } = utils;
 const { connectionOptions } = helpers;
-const { MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
+const { MONGODB_ADDON_DB } = vars;
 
 describe('Given model connectionOptions', () => {
 	it('When connected dbName is correct', () => {

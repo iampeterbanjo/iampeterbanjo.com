@@ -11,13 +11,13 @@ import { mockModelPlugin, mockKorinPlugin } from '../../factory';
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
 
+	await server.register(mockModelPlugin);
+	await server.register(mockKorinPlugin);
+
 	await server.register({
 		plugin,
 		options: { getDbConnection },
 	});
-
-	await server.register(mockModelPlugin);
-	await server.register(mockKorinPlugin);
 
 	return server;
 };

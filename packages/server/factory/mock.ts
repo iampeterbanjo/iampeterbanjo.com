@@ -1,4 +1,4 @@
-import { getDbConnection } from '.';
+import { getDbConnection } from './helpers';
 import modelsPlugin from '../src/models/plugin';
 import korinPlugin from '../src/korin/plugin';
 

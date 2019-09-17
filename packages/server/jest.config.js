@@ -6,4 +6,5 @@ module.exports = {
 	collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/node_modules/**'],
 	notify: true,
 	notifyMode: 'failure-change',
+	setupFilesAfterEnv: ['<rootDir>/setupFilesAfterEnv.js'],
 };

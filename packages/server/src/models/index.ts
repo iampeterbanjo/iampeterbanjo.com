@@ -3,5 +3,5 @@ import { getDbConnection } from './helpers';
 
 export default {
 	plugin,
-	options: { connection: getDbConnection() },
+	options: { getDbConnection },
 };

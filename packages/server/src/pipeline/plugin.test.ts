@@ -17,7 +17,6 @@ import { summary } from '../../fixtures/personality-summary.json';
 
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
-	const connection = await getDbConnection();
 
 	await server.register({
 		plugin,
@@ -26,7 +25,7 @@ const Server = async () => {
 
 	await server.register({
 		plugin: modelsPlugin,
-		options: { connection },
+		options: { getDbConnection },
 	});
 
 	return server;

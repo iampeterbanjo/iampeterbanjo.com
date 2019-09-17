@@ -24,5 +24,10 @@ export const disconnectAndStopDb = async () => {
 };
 
 export const getDbConnection = async () => {
-	return mongoose.connect(MONGODB_ADDON_URI, connectionOptions);
+	await mongoose.connect(MONGODB_ADDON_URI, connectionOptions);
+
+	return {
+		uri: MONGODB_ADDON_URI,
+		connection: mongoose.connection,
+	};
 };
