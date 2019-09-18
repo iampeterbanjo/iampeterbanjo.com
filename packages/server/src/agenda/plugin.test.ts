@@ -1,6 +1,5 @@
 import Hapi from '@hapi/hapi';
 import plugin from './plugin';
-
 import { Api } from '../types';
 import {
 	getDbConnection,
@@ -40,8 +39,8 @@ describe('Given agenda plugin', () => {
 		jest
 			.spyOn(server.app.agenda, 'database')
 			.mockImplementation(() => undefined as any);
-		jest.spyOn(server.app.agenda, 'start').mockResolvedValue();
-		jest.spyOn(server.app.agenda, 'every').mockResolvedValue({} as any);
+		jest.spyOn(server.app.agenda, 'start').mockImplementation(() => {});
+		jest.spyOn(server.app.agenda, 'every').mockImplementation(() => {});
 
 		await server.app.agenda.init();
 

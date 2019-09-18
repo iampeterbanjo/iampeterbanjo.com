@@ -1,22 +1,7 @@
-import Agenda from 'agenda';
-import Helpers from './helpers';
-import jobs from './jobs';
+import AgendaApi from './AgendApi';
 import utils from '../utils';
-import mongoose from 'mongoose';
 
 const { time } = utils;
-
-export class AgendaApi extends Agenda {
-	constructor(options) {
-		super(options);
-	}
-
-	async init() {
-		await this.start();
-
-		await this.every(time.oneDay, jobs.IMPORT_CHART_TOP_TRACKS);
-	}
-}
 
 export default {
 	name: 'agenda',
@@ -28,13 +13,10 @@ export default {
 	register: async (server, { getDbConnection }) => {
 		const { uri } = await getDbConnection();
 
-		const helpers = new Helpers(server);
-		const agenda = new AgendaApi({
+		const agenda = new AgendaApi(server, {
 			db: { address: uri },
 			processEvery: time.fifteenMinutes,
 		});
-
-		agenda.define(jobs.IMPORT_CHART_TOP_TRACKS, helpers.importChartTracks);
 
 		server.app.agenda = agenda;
 	},
