@@ -1,4 +1,4 @@
-import { AgendaApi } from '../src/agenda/plugin';
+import AgendaApi from '../src/agenda/AgendApi';
 
 export type GeniusData = {
 	meta: {

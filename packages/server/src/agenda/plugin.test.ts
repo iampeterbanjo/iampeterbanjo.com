@@ -39,8 +39,8 @@ describe('Given agenda plugin', () => {
 		jest
 			.spyOn(server.app.agenda, 'database')
 			.mockImplementation(() => undefined as any);
-		jest.spyOn(server.app.agenda, 'start').mockImplementation(() => {});
-		jest.spyOn(server.app.agenda, 'every').mockImplementation(() => {});
+		jest.spyOn(server.app.agenda, 'start').mockImplementation();
+		jest.spyOn(server.app.agenda, 'every').mockImplementation();
 
 		await server.app.agenda.init();
 
