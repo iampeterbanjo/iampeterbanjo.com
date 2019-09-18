@@ -31,9 +31,8 @@ describe('Given agenda plugin', () => {
 
 	afterAll(async () => {
 		await disconnectAndStopDb();
+		jest.restoreAllMocks();
 	});
-
-	afterEach(jest.restoreAllMocks);
 
 	it('When init is called agenda is started and jobs scheduled', async () => {
 		jest
