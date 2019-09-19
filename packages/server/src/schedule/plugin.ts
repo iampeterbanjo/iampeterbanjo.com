@@ -1,5 +1,6 @@
 import utils from '../utils';
 import Scheduler from './Scheduler';
+import * as controller from './controller';
 
 const { time } = utils;
 
@@ -21,5 +22,7 @@ export default {
 				processEvery: time.fifteenMinutes,
 			},
 		});
+
+		server.route(controller.handleScheduleJobs());
 	},
 };

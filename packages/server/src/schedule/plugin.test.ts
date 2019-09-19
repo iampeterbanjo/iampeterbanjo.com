@@ -1,6 +1,7 @@
 import Hapi from '@hapi/hapi';
 import plugin from './plugin';
 import Agenda from 'agenda';
+import * as routes from './routes';
 
 import { Api } from '../types';
 import {
@@ -37,7 +38,7 @@ const Server = async () => {
 	return server;
 };
 
-describe.only('Given scheduler plugin', () => {
+describe('Given scheduler plugin', () => {
 	let server: Api;
 
 	beforeAll(async () => {
@@ -54,5 +55,24 @@ describe.only('Given scheduler plugin', () => {
 
 		expect(mockStart).toHaveBeenCalled();
 		expect(mockEvery).toHaveBeenCalled();
+	});
+});
+
+describe('Given scheduler plugin And no authentication', () => {
+	let server: Api;
+
+	beforeAll(async () => {
+		server = await Server();
+	});
+
+	afterAll(async () => {
+		await disconnectAndStopDb();
+		jest.restoreAllMocks();
+	});
+
+	it('When GET /projects/agenda/jobs response is 401', async () => {
+		const result = await server.inject(routes.get_jobs());
+
+		expect(result.statusCode).toEqual(401);
 	});
 });

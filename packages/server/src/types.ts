@@ -165,7 +165,17 @@ export type SpotifyApiArtistSearchResponse = {
 	};
 };
 
+export type Route = {
+	path: string;
+	method: '*' | 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS';
+	vhost?: string;
+	handler: (request, reply) => any;
+	options: object;
+	rules: object;
+};
+
 export interface Api {
+	inject: (Route) => Promise<{ [key: string]: any }>;
 	info: {
 		uri: string;
 		host: string;
