@@ -1,5 +1,7 @@
 import Hapi from '@hapi/hapi';
 import plugin from './plugin';
+import Agenda from 'agenda';
+
 import { Api } from '../types';
 import {
 	getDbConnection,
@@ -7,6 +9,19 @@ import {
 	mockModelPlugin,
 	mockKorinPlugin,
 } from '../../factory';
+
+const mockStart = jest.fn();
+const mockDefine = jest.fn();
+const mockEvery = jest.fn();
+jest.mock('agenda', () => {
+	return jest.fn().mockImplementation(() => {
+		return {
+			start: mockStart,
+			define: mockDefine,
+			every: mockEvery,
+		};
+	});
+});
 
 const Server = async () => {
 	const server = Hapi.Server();
@@ -16,13 +31,13 @@ const Server = async () => {
 
 	await server.register({
 		plugin,
-		options: { getDbConnection },
+		options: { getDbConnection, Agenda },
 	});
 
 	return server;
 };
 
-describe('Given agenda plugin', () => {
+describe.only('Given scheduler plugin', () => {
 	let server: Api;
 
 	beforeAll(async () => {
@@ -34,16 +49,10 @@ describe('Given agenda plugin', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When init is called agenda is started and jobs scheduled', async () => {
-		jest
-			.spyOn(server.app.agenda, 'database')
-			.mockImplementation(() => undefined as any);
-		jest.spyOn(server.app.agenda, 'start').mockImplementation();
-		jest.spyOn(server.app.agenda, 'every').mockImplementation();
+	it('When scheduler.init is called agenda is started and jobs scheduled', async () => {
+		await server.app.scheduler.init();
 
-		await server.app.agenda.init();
-
-		expect(server.app.agenda.start).toHaveBeenCalled();
-		expect(server.app.agenda.every).toHaveBeenCalled();
+		expect(mockStart).toHaveBeenCalled();
+		expect(mockEvery).toHaveBeenCalled();
 	});
 });

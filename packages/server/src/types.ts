@@ -1,4 +1,4 @@
-import AgendaApi from '../src/agenda/AgendApi';
+import Scheduler from './schedule/Scheduler';
 
 export type GeniusData = {
 	meta: {
@@ -173,7 +173,7 @@ export interface Api {
 	};
 	start: () => Promise<void>;
 	app: {
-		agenda: AgendaApi;
+		scheduler: Scheduler;
 		db: {};
 		logger: {};
 	};

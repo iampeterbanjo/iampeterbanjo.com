@@ -17,7 +17,6 @@ export default class AgendaApi extends Agenda {
 		this.define(jobs.IMPORT_CHART_TOP_TRACKS, this.helpers.importChartTracks);
 
 		await this.start();
-
 		await this.every(time.oneDay, jobs.IMPORT_CHART_TOP_TRACKS);
 	}
 }

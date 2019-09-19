@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import Agenda from 'agenda';
+import Scheduler from './schedule/Scheduler';
 
 import api from './api';
 import utils from './utils';
@@ -109,8 +109,8 @@ describe('Given hapi-pino', () => {
 	});
 });
 
-describe('Given agenda', () => {
-	it('When server, it has agenda start defined', () => {
-		expect(server.app.agenda).toBeInstanceOf(Agenda);
+describe('Given scheduler', () => {
+	it('When server, it has scheduler start defined', () => {
+		expect(server.app.scheduler).toBeInstanceOf(Scheduler);
 	});
 });

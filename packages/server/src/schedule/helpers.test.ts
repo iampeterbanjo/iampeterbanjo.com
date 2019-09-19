@@ -7,6 +7,9 @@ import { Api } from '../types';
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
 import topTracksJson from '../../fixtures/lastfm-topTracks.json';
 import { mockModelPlugin, mockKorinPlugin } from '../../factory';
+import Agenda from 'agenda';
+
+jest.mock('agenda');
 
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
@@ -16,7 +19,7 @@ const Server = async () => {
 
 	await server.register({
 		plugin,
-		options: { getDbConnection },
+		options: { getDbConnection, Agenda },
 	});
 
 	return server;
