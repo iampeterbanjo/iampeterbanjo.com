@@ -8,6 +8,7 @@ STOP=docker stop iampeterbanjo-app
 LOGS=docker logs iampeterbanjo-app
 INSTALL=cd packages/{css,data,server}; npm install
 SERVER-NPM=cd packages/server; npm
+WATCH-TEST=cd packages/server; npm run watch-test
 
 .PHONY: build
 build: ## build docker image
@@ -50,6 +51,10 @@ server-npm: # run commands in server directory
 	@echo $(SERVER-NPM) $(filter-out $@,$(MAKECMDGOALS))
 %:
 	@:
+
+.PHONY: watch-test
+watch-test: # run commands in server directory
+	$(WATCH-TEST)
 
 .PHONY: help
 help:
