@@ -1,8 +1,9 @@
 import * as routes from './routes';
 
-export const handleScheduleJobs = () => {
+export const handleScheduleJobsGet = server => {
 	const { method, url } = routes.get_jobs();
-	return {
+
+	return server.route({
 		method,
 		path: url,
 		config: {
@@ -12,5 +13,5 @@ export const handleScheduleJobs = () => {
 			},
 		},
 		handler: (request, reply) => 'OK',
-	};
+	});
 };

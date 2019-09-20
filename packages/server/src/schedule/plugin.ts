@@ -24,6 +24,6 @@ export default {
 			},
 		});
 
-		server.route(controller.handleScheduleJobs());
+		controller.handleScheduleJobsGet(server);
 	},
 };
