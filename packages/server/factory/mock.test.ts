@@ -20,7 +20,7 @@ describe('Givenfactory', () => {
 			});
 		});
 
-		it('When null is default result should be null', async () => {
+		test('When null is default result should be null', async () => {
 			const server = Hapi.Server();
 			const result = await factory.mock.method({
 				server,
@@ -32,7 +32,7 @@ describe('Givenfactory', () => {
 			expect(result).toEqual(null);
 		});
 
-		it('When creating mock dont overwrite existing methods', async () => {
+		test('When creating mock dont overwrite existing methods', async () => {
 			const server = Hapi.Server();
 			await server.register({
 				plugin: {

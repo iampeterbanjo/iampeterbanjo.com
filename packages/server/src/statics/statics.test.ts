@@ -16,7 +16,7 @@ beforeEach(async () => {
 });
 
 describe('Given statics', () => {
-	it('When / rootPath is served statusCode is 200', async () => {
+	test('When / rootPath is served statusCode is 200', async () => {
 		await server.register({
 			plugin,
 			options: { rootPath, cssPath, jsPath, imagePath },

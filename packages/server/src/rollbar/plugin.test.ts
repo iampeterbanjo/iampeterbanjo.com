@@ -10,7 +10,7 @@ const Server = async () => {
 
 describe('Given rollbar plugin', () => {
 	describe('Given plugin', () => {
-		it('When server exposes rollbar', async () => {
+		test('When server exposes rollbar', async () => {
 			const server = await Server();
 
 			expect(server.plugins.rollbar).toBeDefined();

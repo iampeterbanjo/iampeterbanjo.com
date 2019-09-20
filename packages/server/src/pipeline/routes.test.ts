@@ -1,7 +1,7 @@
 import routes from './routes';
 
 describe('Given pipeline routes', () => {
-	it('When called /topTracks/extract is correct', () => {
+	test('When called /topTracks/extract is correct', () => {
 		const result = routes.v1.extract_top_tracks();
 
 		expect(result).toEqual(

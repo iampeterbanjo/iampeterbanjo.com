@@ -14,7 +14,7 @@ const {
 
 describe('Given pipeline helpers', () => {
 	describe('And parseRawTopTracks', () => {
-		it('When converted to TopTrack it is valid', async () => {
+		test('When converted to TopTrack it is valid', async () => {
 			const [result] = parseRawTopTracks(topTracksData);
 
 			expect(checkRawTopTrack(result)).resolves.toBeTruthy();
@@ -22,7 +22,7 @@ describe('Given pipeline helpers', () => {
 	});
 
 	describe('And parseTopTracks', () => {
-		it('When converted to TopTrack it is valid', async () => {
+		test('When converted to TopTrack it is valid', async () => {
 			const [result] = parseTopTracks(rawTopTracks);
 
 			expect(checkTopTrack(result)).resolves.toBeTruthy();
@@ -30,7 +30,7 @@ describe('Given pipeline helpers', () => {
 	});
 
 	describe('And checkTopTrack', () => {
-		it('When topTrack is invalid an error is thrown', async () => {
+		test('When topTrack is invalid an error is thrown', async () => {
 			expect(checkTopTrack({})).rejects.toThrow();
 		});
 
@@ -48,7 +48,7 @@ describe('Given pipeline helpers', () => {
 		});
 
 		describe('Given topTrack is valid', () => {
-			it('When error is not thrown', async () => {
+			test('When error is not thrown', async () => {
 				const [topTrack] = factory.topTrack(1);
 
 				expect(checkTopTrack(topTrack)).resolves.toBeTruthy();
@@ -58,11 +58,11 @@ describe('Given pipeline helpers', () => {
 
 	describe('And checkRawTopTrack', () => {
 		describe('Given rawTopTrack is invalid', () => {
-			it('When an error is thrown for an empty object', async () => {
+			test('When an error is thrown for an empty object', async () => {
 				expect(checkRawTopTrack({})).rejects.toThrow();
 			});
 
-			it('When an error is thrown for a partial object', async () => {
+			test('When an error is thrown for a partial object', async () => {
 				const partial = {
 					name: '7 rings',
 					artist: {
@@ -102,7 +102,7 @@ describe('Given pipeline helpers', () => {
 		});
 
 		describe('Given topTrack is valid', () => {
-			it('When error is not thrown', async () => {
+			test('When error is not thrown', async () => {
 				const [topTrackRaw] = topTracksData.tracks.track;
 
 				expect(checkRawTopTrack(topTrackRaw)).resolves.toBeTruthy();

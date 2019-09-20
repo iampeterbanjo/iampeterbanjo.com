@@ -5,7 +5,7 @@ import plugin from './plugin';
 describe('cqc', () => {
 	afterAll(jest.restoreAllMocks);
 
-	it('When a request returns, it has response body', async () => {
+	test('When a request returns, it has response body', async () => {
 		const client = Wreck.defaults({ baseUrl: '/' });
 		const response = { body: 'Done' };
 		jest.spyOn(client, 'get').mockResolvedValue(response);

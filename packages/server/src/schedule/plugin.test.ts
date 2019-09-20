@@ -51,7 +51,7 @@ describe('Given scheduler plugin', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When scheduler.init is called agenda is started and jobs scheduled', async () => {
+	test('When scheduler.init is called agenda is started and jobs scheduled', async () => {
 		await server.app.scheduler.init();
 
 		expect(mockStart).toHaveBeenCalled();
@@ -71,7 +71,7 @@ describe('Given scheduler plugin And no authentication', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When GET /projects/agenda/jobs response is 401', async () => {
+	test('When GET /projects/agenda/jobs response is 401', async () => {
 		const result = await server.inject(routes.get_jobs());
 
 		expect(result.statusCode).toEqual(401);

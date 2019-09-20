@@ -8,15 +8,15 @@ const { connectionOptions } = helpers;
 const { MONGODB_ADDON_DB } = vars;
 
 describe('Given model connectionOptions', () => {
-	it('When connected dbName is correct', () => {
+	test('When connected dbName is correct', () => {
 		expect(connectionOptions.dbName).toEqual(MONGODB_ADDON_DB);
 	});
 
-	it('When set useNewUrlParser is true', () => {
+	test('When set useNewUrlParser is true', () => {
 		expect(connectionOptions.useNewUrlParser).toEqual(true);
 	});
 
-	it('When set promise library is Bluebird', () => {
+	test('When set promise library is Bluebird', () => {
 		expect(connectionOptions.promiseLibrary).toEqual(Bluebird);
 	});
 });

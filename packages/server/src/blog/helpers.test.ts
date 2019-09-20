@@ -6,13 +6,13 @@ describe('Given getUrlPath', () => {
 		const filePath =
 			'/home/iampeterbanjo/clever-cloud/iampeterbanjo.com/packages/blog/posts/graphql-eats-rest.md';
 
-		it('When filePath ends in `.md` the url does not contain md', () => {
+		test('When filePath ends in `.md` the url does not contain md', () => {
 			const urlPath = getUrlPath(filePath);
 
 			expect(urlPath).not.toEqual(expect.stringContaining('.md'));
 		});
 
-		it('When filePath has /packages the url does not contain packages/', () => {
+		test('When filePath has /packages the url does not contain packages/', () => {
 			const urlPath = getUrlPath(filePath);
 
 			expect(urlPath).not.toEqual(expect.stringContaining('packages/'));
@@ -23,7 +23,7 @@ describe('Given getUrlPath', () => {
 			);
 		});
 
-		it('When filPath is a blog post the url should contain "/blog/posts"', () => {
+		test('When filPath is a blog post the url should contain "/blog/posts"', () => {
 			const urlPath = getUrlPath(filePath);
 
 			expect(urlPath.indexOf('/blog/posts')).toEqual(0);
@@ -32,12 +32,12 @@ describe('Given getUrlPath', () => {
 });
 
 describe('Given getBlogFiles', () => {
-	it('When its called it returns list of relative paths', async () => {
+	test('When its called it returns list of relative paths', async () => {
 		const results = await getBlogFiles();
 		expect(results.length).toBeGreaterThan(0);
 	});
 
-	it('When result is blog frontmatter, it has required properties', async () => {
+	test('When result is blog frontmatter, it has required properties', async () => {
 		const results = await getBlogFiles();
 
 		results.forEach(result => {
@@ -74,7 +74,7 @@ describe('Given getBlogContents', () => {
 		});
 	});
 
-	it('When markdown content is parsed it returns HTML', async () => {
+	test('When markdown content is parsed it returns HTML', async () => {
 		expect.assertions(1);
 
 		const result = await getBlogContents('i-like-jsonata');

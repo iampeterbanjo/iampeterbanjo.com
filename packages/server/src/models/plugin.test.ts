@@ -39,7 +39,7 @@ describe('Given models plugin', () => {
 			});
 
 			describe('And TopTrack model', () => {
-				it('When its saved the _id is defined and profileUrl is correct', async () => {
+				test('When its saved the _id is defined and profileUrl is correct', async () => {
 					const topTrack: TopTrackModel = new server.app.db.TopTrack(
 						fakeTopTrack,
 					);
@@ -53,7 +53,7 @@ describe('Given models plugin', () => {
 					expect(result.profileUrl).toEqual(expected);
 				});
 
-				it('When its found the artist is correct and _id is set', async () => {
+				test('When its found the artist is correct and _id is set', async () => {
 					const topTrack = new server.app.db.TopTrack(fakeTopTrack);
 
 					await topTrack.save();
@@ -67,14 +67,14 @@ describe('Given models plugin', () => {
 			});
 
 			describe('And Profile model', () => {
-				it('When its saved the _id is set', async () => {
+				test('When its saved the _id is set', async () => {
 					const profile = new server.app.db.Profile(fakeProfile);
 					const result = await profile.save();
 
 					expect(result._id).toBeDefined();
 				});
 
-				it('When its found the artist is correct and the _id is set', async () => {
+				test('When its found the artist is correct and the _id is set', async () => {
 					const track = await server.app.db.Profile.findOne({
 						title: fakeProfile.title,
 					});

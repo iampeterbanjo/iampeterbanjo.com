@@ -35,7 +35,7 @@ const MockRollbar = () => {
 
 describe('Given rollbar helpers', () => {
 	describe('And errorLogger', () => {
-		it('When an error is thrown rollbar.error is called with error message', () => {
+		test('When an error is thrown rollbar.error is called with error message', () => {
 			const rollbar = MockRollbar();
 			const error = 'Ooops';
 			const callback = jest.fn()();
@@ -50,7 +50,7 @@ describe('Given rollbar helpers', () => {
 		});
 
 		describe('And Error and rollbar instance', () => {
-			it('When an error is thrown rollbar.error is called with Error', () => {
+			test('When an error is thrown rollbar.error is called with Error', () => {
 				const rollbar = MockRollbar();
 				const error = new Error('Oops');
 				const callback = jest.fn()();
@@ -67,7 +67,7 @@ describe('Given rollbar helpers', () => {
 	});
 
 	describe('Given rollbarErrorHandler', () => {
-		it('When there is NO error rollbar.log is NOT called', () => {
+		test('When there is NO error rollbar.log is NOT called', () => {
 			const rollbar = MockRollbar();
 			const error = null;
 			rollbarErrorHandler(error, rollbar);
@@ -75,7 +75,7 @@ describe('Given rollbar helpers', () => {
 			expect(rollbar.log).not.toHaveBeenCalled();
 		});
 
-		it('When there is an error rollbar.log is called', () => {
+		test('When there is an error rollbar.log is called', () => {
 			const rollbar = MockRollbar();
 			const error = 'Oops';
 			rollbarErrorHandler(error, rollbar);
@@ -83,7 +83,7 @@ describe('Given rollbar helpers', () => {
 			expect(rollbar.log).toHaveBeenCalled();
 		});
 
-		it('When there is an error rollbar.log called correctly', () => {
+		test('When there is an error rollbar.log called correctly', () => {
 			const rollbar = MockRollbar();
 			const error = 'Oops';
 			rollbarErrorHandler(error, rollbar);
@@ -99,7 +99,7 @@ describe('Given rollbar helpers', () => {
 	});
 
 	describe('Given preResponse and rollbar', () => {
-		it('When `response.request.isBoom` is false rollbar.error is NOT called', () => {
+		test('When `response.request.isBoom` is false rollbar.error is NOT called', () => {
 			const rollbar = MockRollbar();
 			const { request, h } = MockParams();
 
@@ -108,7 +108,7 @@ describe('Given rollbar helpers', () => {
 			expect(rollbar.error).not.toHaveBeenCalled();
 		});
 
-		it('When `response.request.isBoom` is true rollbar.error is called', () => {
+		test('When `response.request.isBoom` is true rollbar.error is called', () => {
 			const rollbar = MockRollbar();
 			const { request, h } = MockParams();
 			request.response.isBoom = true;

@@ -47,14 +47,14 @@ describe('Given RawTopTracks are converted to TopTracks', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When RawTopTracks exist they are converted to TopTracks', async () => {
+	test('When RawTopTracks exist they are converted to TopTracks', async () => {
 		const converted = await server.methods.pipeline.convertRawTopTracks(server);
 		const tracks = await server.app.db.TopTrack.find({});
 
 		expect(tracks.length).toEqual(converted.length);
 	});
 
-	it('When RawTopTracks are converted to TopTracks they are not duplicated', async () => {
+	test('When RawTopTracks are converted to TopTracks they are not duplicated', async () => {
 		await server.methods.pipeline.convertRawTopTracks(server);
 		await server.methods.pipeline.convertRawTopTracks(server);
 
@@ -84,7 +84,7 @@ describe('Given addTrackProfile', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When addTrackProfile runs, it calls getProfileByArtistAndTrack with artist and track', async () => {
+	test('When addTrackProfile runs, it calls getProfileByArtistAndTrack with artist and track', async () => {
 		await server.methods.pipeline.addTrackProfile(server);
 
 		const [
@@ -96,7 +96,7 @@ describe('Given addTrackProfile', () => {
 		expect(track).toBeDefined();
 	});
 
-	it('When addTrackProfile runs tracks have lyrics, profile, summary', async () => {
+	test('When addTrackProfile runs tracks have lyrics, profile, summary', async () => {
 		await server.methods.pipeline.addTrackProfile(server);
 
 		const track: ProfileModel = await server.app.db.TopTrack.findOne({});
@@ -134,7 +134,7 @@ describe('Given addArtistImages', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When addArtistImages runs tracks have image urls', async () => {
+	test('When addArtistImages runs tracks have image urls', async () => {
 		await server.methods.pipeline.addArtistImages(server);
 
 		const track: TopTrack = await server.app.db.TopTrack.findOne({});
@@ -168,7 +168,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When 50 RawTopTracks are saved to db they have exported date', async () => {
+	test('When 50 RawTopTracks are saved to db they have exported date', async () => {
 		await server.methods.pipeline.saveRawTopTracks(server);
 
 		const result = await server.app.db.RawTopTrack.find({});
@@ -176,7 +176,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 		expect(result[0].importedDate).toBeDefined();
 	});
 
-	it('When 50 RawTopTracks are saved to db they are not duplicated', async () => {
+	test('When 50 RawTopTracks are saved to db they are not duplicated', async () => {
 		await server.methods.pipeline.saveRawTopTracks(server);
 		await server.methods.pipeline.saveRawTopTracks(server);
 
@@ -184,7 +184,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 		expect(result.length).toEqual(50);
 	});
 
-	it('When requesting API status code 200', async () => {
+	test('When requesting API status code 200', async () => {
 		const { method, url } = routes.v1.extract_top_tracks();
 		const response = await server.inject({
 			method,
@@ -194,7 +194,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 		expect(response.statusCode).toEqual(200);
 	});
 
-	it('When requesting API response is expected', async () => {
+	test('When requesting API response is expected', async () => {
 		const { method, url } = routes.v1.extract_top_tracks();
 		const response = await server.inject({
 			method,
@@ -248,13 +248,13 @@ describe('Given BAD API response from lastFm', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When there is no data an Error is thrown', () => {
+	test('When there is no data an Error is thrown', () => {
 		expect(server.methods.pipeline.saveRawTopTracks(server)).rejects.toThrow(
 			'No tracks found',
 		);
 	});
 
-	it('When there is an error no data is not saved', async () => {
+	test('When there is an error no data is not saved', async () => {
 		expect(server.methods.pipeline.saveRawTopTracks(server)).rejects.toThrow();
 
 		const result = await server.app.db.RawTopTrack.find({});
@@ -294,7 +294,7 @@ describe('Given different API response from lastFm', () => {
 		jest.restoreAllMocks();
 	});
 
-	it('When the data is not valid a ValidationError is thrown', async () => {
+	test('When the data is not valid a ValidationError is thrown', async () => {
 		expect(server.methods.pipeline.saveRawTopTracks(server)).rejects.toThrow(
 			expect.objectContaining({ name: 'ValidationError' }),
 		);

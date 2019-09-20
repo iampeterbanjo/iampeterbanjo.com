@@ -3,7 +3,7 @@ import utils from '.';
 const { time, getCache } = utils;
 
 describe('Given getCache', () => {
-	it('When its called the default cache is expected', () => {
+	test('When its called the default cache is expected', () => {
 		const defaultCache = {
 			expiresIn: time.oneDay,
 			staleIn: time.tenSeconds,

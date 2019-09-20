@@ -4,13 +4,13 @@ import * as pipelineHelpers from '../src/pipeline/helpers';
 const { checkTrackProfile } = pipelineHelpers;
 
 describe('Given a profile', () => {
-	it('When checked there are no validation errors', () => {
+	test('When checked there are no validation errors', () => {
 		const { error } = checkTrackProfile(profile());
 
 		expect(error).toBeNull();
 	});
 
-	it('When profiles are created they should be unique', () => {
+	test('When profiles are created they should be unique', () => {
 		const first = profile();
 		const second = profile();
 

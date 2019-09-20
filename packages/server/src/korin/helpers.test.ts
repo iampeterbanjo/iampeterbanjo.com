@@ -42,7 +42,7 @@ describe('Given getChartTopTracks', () => {
 		nock.cleanAll();
 	});
 
-	it('When lastfm API request for top tracks the response should be correct', async () => {
+	test('When lastfm API request for top tracks the response should be correct', async () => {
 		const result = await getChartTopTracks();
 
 		expect(result).toEqual(topTracksData);
@@ -63,7 +63,7 @@ describe('Given getSongData', () => {
 		nock.cleanAll();
 	});
 
-	it('When genius API request for song data the response should be correct', async () => {
+	test('When genius API request for song data the response should be correct', async () => {
 		const result = await getSongData(q);
 
 		expect(result).toEqual(songData);
@@ -84,19 +84,19 @@ describe('Given getSongData', () => {
 		nock.cleanAll();
 	});
 
-	it('When genius API request is invalid there is an error', async () => {
+	test('When genius API request is invalid there is an error', async () => {
 		expect(getSongData(q)).rejects.toThrow();
 	});
 });
 
 describe('Given getSongId', () => {
-	it('When parsing songData the correct songId is returned', async () => {
+	test('When parsing songData the correct songId is returned', async () => {
 		const result = await getSongId(songData);
 
 		expect(result).toEqual(3039923);
 	});
 
-	it('When parsing invalid songData the songId is undefined', async () => {
+	test('When parsing invalid songData the songId is undefined', async () => {
 		const result = await getSongId({} as GeniusData);
 
 		expect(result).toEqual(undefined);
@@ -104,13 +104,13 @@ describe('Given getSongId', () => {
 });
 
 describe('Given getSongInfo', () => {
-	it('When parsing songData the id is correct', async () => {
+	test('When parsing songData the id is correct', async () => {
 		const { id } = await getSongInfo(songData);
 
 		expect(id).toEqual(3039923);
 	});
 
-	it('When parsing songData get the expected thumbnail', async () => {
+	test('When parsing songData get the expected thumbnail', async () => {
 		const { thumbnail } = await getSongInfo(songData);
 
 		expect(thumbnail).toEqual(
@@ -118,7 +118,7 @@ describe('Given getSongInfo', () => {
 		);
 	});
 
-	it('When parsing invalid songData the songId is undefined', async () => {
+	test('When parsing invalid songData the songId is undefined', async () => {
 		const result = await getSongId({} as GeniusData);
 
 		expect(result).toEqual(undefined);
@@ -128,7 +128,7 @@ describe('Given getSongInfo', () => {
 describe('Given getPersonalityProfile', () => {
 	afterAll(jest.restoreAllMocks);
 
-	it('When called with no lyrics, the correct error message is returned', async () => {
+	test('When called with no lyrics, the correct error message is returned', async () => {
 		const { profile } = await getPersonalityProfile('');
 
 		expect(profile).toEqual(message.ERROR_LYRICS_REQUIRED_FOR_PROFILE);
@@ -138,7 +138,7 @@ describe('Given getPersonalityProfile', () => {
 describe('Given getProfileByArtistAndTrack', () => {
 	afterAll(jest.restoreAllMocks);
 
-	it('When no songId found it returns any object with empty values', async () => {
+	test('When no songId found it returns any object with empty values', async () => {
 		jest.spyOn(helpers, 'getSongData').mockResolvedValue(songData);
 		jest.spyOn(helpers, 'getSongId').mockResolvedValue(undefined);
 
@@ -165,7 +165,7 @@ describe('Given getSpotifyAccessToken', () => {
 		nock.cleanAll();
 	});
 
-	it('When called returns access token', async () => {
+	test('When called returns access token', async () => {
 		const accessToken = await getSpotifyAccessToken();
 
 		expect(typeof accessToken).toEqual('string');
@@ -184,7 +184,7 @@ describe('Given getArtistImage', () => {
 		nock.cleanAll();
 	});
 
-	it('When called with artist name, an image is returned', async () => {
+	test('When called with artist name, an image is returned', async () => {
 		const image = await getArtistImage('Ariana Grande', 'NgCXRK...MzYjw');
 
 		expect(image).toBeDefined();

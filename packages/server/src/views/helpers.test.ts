@@ -4,7 +4,7 @@ import topTracksData from '../../fixtures/lastfm-topTracks.json';
 const { parseRawTopTrackJson } = helpers;
 
 describe('Given View helpers:', () => {
-	it('When data is valid top tracks are parsed correctly', () => {
+	test('When data is valid top tracks are parsed correctly', () => {
 		const [track] = parseRawTopTrackJson(topTracksData);
 		const { title, image, artist, url, profileUrl } = track;
 

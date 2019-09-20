@@ -54,7 +54,7 @@ describe('Given Berserker route', () => {
 
 		afterEach(jest.restoreAllMocks);
 
-		it('When GET /berserker is requested status is 200', async () => {
+		test('When GET /berserker is requested status is 200', async () => {
 			const { method, url } = routes.get_berserker();
 			const response = await server.inject({
 				method,
@@ -75,7 +75,7 @@ describe('Given view blog', () => {
 
 	afterEach(jest.restoreAllMocks);
 
-	it('When GET /blog/posts requested status code is 200', async () => {
+	test('When GET /blog/posts requested status code is 200', async () => {
 		const { method, url } = routes.get_blog_posts();
 		const response = await server.inject({
 			method,
@@ -85,7 +85,7 @@ describe('Given view blog', () => {
 		expect(response.statusCode).toEqual(200);
 	});
 
-	it('When GET /blog/posts/:id requested status code is 200', async () => {
+	test('When GET /blog/posts/:id requested status code is 200', async () => {
 		const { method, url } = routes.get_blog_details();
 		const response = await server.inject({
 			method,
@@ -95,7 +95,7 @@ describe('Given view blog', () => {
 		expect(response.statusCode).toEqual(200);
 	});
 
-	it('When GET / requested status is 200', async () => {
+	test('When GET / requested status is 200', async () => {
 		const { method, url } = routes.get_home();
 		const response = await server.inject({
 			method,
@@ -124,41 +124,41 @@ describe('Given Home page: SEO', () => {
 
 	afterAll(jest.resetAllMocks);
 
-	it('When parsed page is HTML5 doctype', () => {
+	test('When parsed page is HTML5 doctype', () => {
 		expect(result).toEqual(expect.stringMatching(/^\<!DOCTYPE html\>/));
 	});
 
-	it('When parsed page has title tag', () => {
+	test('When parsed page has title tag', () => {
 		const result = $('title').text();
 		expect(result).toEqual(data.title);
 	});
 
-	it('When parsed page has meta charset', () => {
+	test('When parsed page has meta charset', () => {
 		const result = $('meta[charset="utf-8"]');
 		expect(result).toBeDefined();
 	});
 
-	it('When parsed page has meta viewport', () => {
+	test('When parsed page has meta viewport', () => {
 		const result = $('meta[name="viewport"]').attr('content');
 		expect(result).toBeDefined();
 	});
 
-	it('When parsed page has meta description', () => {
+	test('When parsed page has meta description', () => {
 		const result = $('meta[name="description"]').attr('content');
 		expect(result).toEqual(data.description);
 	});
 
-	it('When parsed page has html language', () => {
+	test('When parsed page has html language', () => {
 		const result = $('html').attr('lang');
 		expect(result).toEqual('en');
 	});
 
-	it('When parsed page has css in head element', () => {
+	test('When parsed page has css in head element', () => {
 		const result = $('head').has('[rel="stylesheet"]');
 		expect(result.length).toBeGreaterThan(0);
 	});
 
-	it('When parsed page has favicon link', () => {
+	test('When parsed page has favicon link', () => {
 		const result = $('[rel="icon"]').attr('href');
 		expect(result).toBeDefined();
 	});

@@ -12,7 +12,7 @@ describe('Given getBlogFiles', () => {
 		server = Hapi.Server();
 	});
 
-	it('When get posts route gets markdown files', async () => {
+	test('When get posts route gets markdown files', async () => {
 		const files = ['that.md', 'this.md'];
 		const getBlogFiles = jest.fn().mockResolvedValue(files);
 		const stubMethods = [{ name: 'blog.getBlogFiles', method: getBlogFiles }];
@@ -39,7 +39,7 @@ describe('Given getBlogContents', () => {
 		server = Hapi.Server();
 	});
 
-	it('When a request is made the API returns 404 for an unknown file', async () => {
+	test('When a request is made the API returns 404 for an unknown file', async () => {
 		const getBlogContents = jest.fn().mockResolvedValue('');
 		const stubMethods = [
 			{ name: 'blog.getBlogContents', method: getBlogContents },
@@ -65,7 +65,7 @@ describe('Given getBlogContents', () => {
 		);
 	});
 
-	it('When a request is made the API gets the expected markdown file', async () => {
+	test('When a request is made the API gets the expected markdown file', async () => {
 		const filename = 'the-ok-gatsby';
 		const contents = 'its a wonderful world';
 		const getBlogContents = jest.fn().mockResolvedValue(contents);

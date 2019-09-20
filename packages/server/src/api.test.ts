@@ -14,11 +14,11 @@ beforeEach(async () => {
 });
 
 describe('Given server info', () => {
-	it('When server is set port value is correct', () => {
+	test('When server is set port value is correct', () => {
 		expect(server.info.port).toEqual(Number(PORT));
 	});
 
-	it('When server is set host value is correct', () => {
+	test('When server is set host value is correct', () => {
 		expect(server.info.host).toEqual('0.0.0.0');
 	});
 });
@@ -74,7 +74,7 @@ describe('Given view API', () => {
 });
 
 describe('Given models plugin', () => {
-	it('When expect pipeline to be defined', () => {
+	test('When expect pipeline to be defined', () => {
 		expect(server.app.db).toBeDefined();
 	});
 });
@@ -87,11 +87,11 @@ describe('Given server cache', () => {
 		provisioned = R.path(path, server);
 	});
 
-	it('When mongodb-cache is provisioned the name is correct', async () => {
+	test('When mongodb-cache is provisioned the name is correct', async () => {
 		expect(provisioned.name).toEqual('mongodb-cache');
 	});
 
-	it('When mongodb-cache connection is made the details are correct', () => {
+	test('When mongodb-cache connection is made the details are correct', () => {
 		const { uri, partition } = R.pathOr(
 			{} as any,
 			['provider', 'options'],
@@ -104,13 +104,13 @@ describe('Given server cache', () => {
 });
 
 describe('Given hapi-pino', () => {
-	it('When server is started it has logger attached', () => {
+	test('When server is started it has logger attached', () => {
 		expect(server.logger).toBeDefined();
 	});
 });
 
 describe('Given scheduler', () => {
-	it('When server, it has scheduler start defined', () => {
+	test('When server, it has scheduler start defined', () => {
 		expect(server.app.scheduler).toBeInstanceOf(Scheduler);
 	});
 });

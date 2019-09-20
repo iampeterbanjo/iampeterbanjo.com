@@ -42,7 +42,7 @@ describe('Given importChartTracks', () => {
 		await disconnectAndStopDb();
 	});
 
-	it('When called it should use korin.getChartTopTracks', async () => {
+	test('When called it should use korin.getChartTopTracks', async () => {
 		const helpers = new Helpers(server);
 
 		await helpers.importChartTracks();

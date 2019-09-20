@@ -15,7 +15,7 @@ const Server = (options?: Object) => {
 };
 
 describe('Given https-here:', () => {
-	it('When a proxied http request is made, its redirected to https', async () => {
+	test('When a proxied http request is made, its redirected to https', async () => {
 		const res = await Server().inject({
 			method: 'GET',
 			url: '/',
@@ -29,7 +29,7 @@ describe('Given https-here:', () => {
 		expect(res.headers.location).toEqual('https://host/');
 	});
 
-	it('When an unproxied http request is made, its redirected to https', async () => {
+	test('When an unproxied http request is made, its redirected to https', async () => {
 		const res = await Server({ proxy: false }).inject({
 			url: '/',
 			headers: {
@@ -41,7 +41,7 @@ describe('Given https-here:', () => {
 		expect(res.headers.location).toEqual('https://host/');
 	});
 
-	it('When a request is redirected the query string is preserved', async () => {
+	test('When a request is redirected the query string is preserved', async () => {
 		const res = await Server().inject({
 			url: '/?test=test&test2=test2',
 			headers: {
@@ -54,7 +54,7 @@ describe('Given https-here:', () => {
 		expect(res.headers.location).toEqual('https://host/?test=test&test2=test2');
 	});
 
-	it('When a https request is made it is not redirected', async () => {
+	test('When a https request is made it is not redirected', async () => {
 		const res = await Server().inject({
 			url: '/',
 			headers: {
@@ -66,7 +66,7 @@ describe('Given https-here:', () => {
 		expect(res.result).toEqual('Hello!');
 	});
 
-	it('When a request is redirected the x-forward-host support is used', async () => {
+	test('When a request is redirected the x-forward-host support is used', async () => {
 		const res = await Server().inject({
 			url: '/',
 			headers: {

@@ -1,7 +1,7 @@
 import routes from './routes';
 
 describe('Given blog api', () => {
-	it('When its called, blog posts route has expected method, path, url', () => {
+	test('When its called, blog posts route has expected method, path, url', () => {
 		const { method, path, url } = routes.v1.get_blog_posts();
 
 		expect(method).toEqual('GET');
@@ -9,7 +9,7 @@ describe('Given blog api', () => {
 		expect(url).toEqual('/v1/blog/posts');
 	});
 
-	it('When its called, blog post details route has correct method, path, url', () => {
+	test('When its called, blog post details route has correct method, path, url', () => {
 		const post = 'get-a-blog-post';
 		const { method, path, url } = routes.v1.get_blog_details(post);
 
@@ -18,7 +18,7 @@ describe('Given blog api', () => {
 		expect(url).toEqual(`/v1/blog/posts/${post}`);
 	});
 
-	it('When its called, blog post details has correct url without filename', () => {
+	test('When its called, blog post details has correct url without filename', () => {
 		const { url } = routes.v1.get_blog_details();
 
 		expect(url).toEqual('/v1/blog/posts/');
