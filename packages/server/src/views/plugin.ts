@@ -3,6 +3,7 @@ import Path from 'path';
 import routes from './routes';
 import * as context from './context';
 import createApp from './ssr/app';
+import * as controller from './controller';
 import { createRenderer } from 'vue-server-renderer';
 
 const registerViews = {
@@ -105,18 +106,6 @@ const viewBlogContent = server => {
 	});
 };
 
-const viewHomePage = server => {
-	const { method, path } = routes.get_home();
-
-	server.route({
-		method,
-		path,
-		handler: (request, reply) => {
-			return reply.view('misc/home');
-		},
-	});
-};
-
 export default {
 	name: 'views',
 	version: '1.0.0',
@@ -126,12 +115,12 @@ export default {
 	register: (server, { methods }) => {
 		server.views(registerViews);
 		server.method(methods);
+		server.route(controller.handleViewHomePage());
 
 		getKorinTracks(server);
 		getKorinProfiles(server);
 		viewBlogList(server);
 		viewBlogContent(server);
-		viewHomePage(server);
 		getBerserker(server);
 	},
 };
