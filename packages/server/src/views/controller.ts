@@ -1,13 +1,13 @@
 import routes from './routes';
 
-export const handleViewHomePage = () => {
+export const handleHomePage = server => {
 	const { method, path } = routes.get_home();
 
-	return {
+	server.route({
 		method,
 		path,
 		handler: (request, reply) => {
 			return reply.view('misc/home');
 		},
-	};
+	});
 };

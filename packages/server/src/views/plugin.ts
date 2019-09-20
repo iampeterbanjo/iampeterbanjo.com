@@ -115,7 +115,8 @@ export default {
 	register: (server, { methods }) => {
 		server.views(registerViews);
 		server.method(methods);
-		server.route(controller.handleViewHomePage());
+
+		controller.handleHomePage(server);
 
 		getKorinTracks(server);
 		getKorinProfiles(server);
