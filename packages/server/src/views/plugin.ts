@@ -1,10 +1,7 @@
 import Nunjucks from 'nunjucks';
 import Path from 'path';
-import routes from './routes';
 import * as context from './context';
-import createApp from './ssr/app';
 import * as controller from './controller';
-import { createRenderer } from 'vue-server-renderer';
 
 const registerViews = {
 	engines: {
@@ -27,85 +24,6 @@ const registerViews = {
 	path: Path.join(__dirname, './templates'),
 };
 
-const getBerserker = server => {
-	const { method, path } = routes.get_berserker();
-	server.route({
-		method,
-		path,
-		handler: async (request, reply) => {
-			const app = createApp({ message: 'Fatality' });
-			const html = await createRenderer().renderToString(app);
-
-			return reply.view('berserker/list', { html });
-		},
-	});
-};
-
-const getKorinProfiles = server => {
-	const { method, path } = routes.get_korin_profiles();
-	server.route({
-		method,
-		path,
-		handler: async (request, reply) => {
-			const { artist, track } = request.params;
-			const { profile, summary } = await server.methods.view.trackProfile({
-				artist,
-				track,
-			});
-
-			return reply.view('korin/profiles', {
-				profile: JSON.stringify(profile),
-				summary,
-				artist,
-				track,
-				pathToTracks: routes.get_korin_tracks().url,
-			});
-		},
-	});
-};
-
-const getKorinTracks = server => {
-	const { method, path } = routes.get_korin_tracks();
-	server.route({
-		method,
-		path,
-		handler: async (request, reply) => {
-			const tracks = await server.methods.view.topTracks();
-
-			return reply.view('korin/tracks', { tracks });
-		},
-	});
-};
-
-const viewBlogList = server => {
-	const { method, path } = routes.get_blog_posts();
-
-	server.route({
-		method,
-		path,
-		handler: async (request, reply) => {
-			const posts = await server.methods.view.blogList();
-
-			return reply.view('blog/list', { posts });
-		},
-	});
-};
-
-const viewBlogContent = server => {
-	const { method, path } = routes.get_blog_details();
-
-	server.route({
-		method,
-		path,
-		handler: async (request, reply) => {
-			const { post } = request.params;
-			const details = await server.methods.view.blogContent(post);
-
-			return reply.view('blog/details', { ...details });
-		},
-	});
-};
-
 export default {
 	name: 'views',
 	version: '1.0.0',
@@ -116,12 +34,11 @@ export default {
 		server.views(registerViews);
 		server.method(methods);
 
-		controller.handleHomePage(server);
-
-		getKorinTracks(server);
-		getKorinProfiles(server);
-		viewBlogList(server);
-		viewBlogContent(server);
-		getBerserker(server);
+		controller.handleHomePageGet(server);
+		controller.handleBlogContentGet(server);
+		controller.handleBlogListGet(server);
+		controller.handleKorinTracksGet(server);
+		controller.handleKorinProfilesGet(server);
+		controller.handleBerserkerGet(server);
 	},
 };
