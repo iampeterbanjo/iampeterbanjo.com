@@ -5,6 +5,12 @@ export const handleScheduleJobs = () => {
 	return {
 		method,
 		path: url,
+		config: {
+			auth: {
+				strategy: 'session',
+				mode: 'required',
+			},
+		},
 		handler: (request, reply) => 'OK',
 	};
 };

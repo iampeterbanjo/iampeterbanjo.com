@@ -1,6 +1,7 @@
 import Hapi from '@hapi/hapi';
 import plugin from './plugin';
 import Agenda from 'agenda';
+import securityPlugin from '../security';
 import * as routes from './routes';
 
 import { Api } from '../types';
@@ -27,9 +28,9 @@ jest.mock('agenda', () => {
 const Server = async () => {
 	const server = Hapi.Server();
 
+	await server.register(securityPlugin);
 	await server.register(mockModelPlugin);
 	await server.register(mockKorinPlugin);
-
 	await server.register({
 		plugin,
 		options: { getDbConnection, Agenda },

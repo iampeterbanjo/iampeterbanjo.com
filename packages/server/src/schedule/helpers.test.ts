@@ -3,6 +3,7 @@ import Hapi from '@hapi/hapi';
 import plugin from './plugin';
 import Helpers from './helpers';
 
+import securityPlugin from '../security';
 import { Api } from '../types';
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
 import topTracksJson from '../../fixtures/lastfm-topTracks.json';
@@ -14,6 +15,7 @@ jest.mock('agenda');
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
 
+	await server.register(securityPlugin);
 	await server.register(mockModelPlugin);
 	await server.register(mockKorinPlugin);
 
