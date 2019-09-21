@@ -1,7 +1,4 @@
-/// <reference types="cypress" />
-
-const BASE_URL = 'http://localhost:8080';
-const { clearServiceWorkers } = require('./helpers');
+import { clearServiceWorkers, BASE_URL } from './helpers';
 
 beforeEach(clearServiceWorkers);
 
@@ -30,7 +27,7 @@ describe('Blog content', () => {
 		it('has correct twitter link', () => {
 			cy.get('.social-twitter').then($link => {
 				expect($link.prop('href')).to.contain(
-					'https://twitter.com/dayosuperstar'
+					'https://twitter.com/dayosuperstar',
 				);
 			});
 		});
@@ -38,7 +35,7 @@ describe('Blog content', () => {
 		it('has correct github link', () => {
 			cy.get('.social-github').then($link => {
 				expect($link.prop('href')).to.contain(
-					'https://github.com/iampeterbanjo'
+					'https://github.com/iampeterbanjo',
 				);
 			});
 		});

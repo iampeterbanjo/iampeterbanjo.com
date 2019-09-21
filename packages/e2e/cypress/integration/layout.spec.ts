@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
-const { clearServiceWorkers } = require('./helpers');
+import { clearServiceWorkers, BASE_URL } from './helpers';
 
 beforeEach(clearServiceWorkers);
 
@@ -51,7 +50,7 @@ describe('layout', () => {
 
 		it('has navigation to projects', () => {
 			cy.get(`footer nav a[href="/projects/korin/tracks"]`).should(
-				'be.visible'
+				'be.visible',
 			);
 		});
 	});
@@ -75,7 +74,7 @@ describe('layout', () => {
 
 		it('has navigation to projects', () => {
 			cy.get(`header nav a[href="/projects/korin/tracks"]`).should(
-				'be.visible'
+				'be.visible',
 			);
 		});
 	});

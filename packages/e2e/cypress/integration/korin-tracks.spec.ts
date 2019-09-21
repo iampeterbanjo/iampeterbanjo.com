@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
-const { clearServiceWorkers } = require('./helpers');
+import { clearServiceWorkers, BASE_URL } from './helpers';
 
 beforeEach(clearServiceWorkers);
 
@@ -9,10 +8,10 @@ describe('Korin tracks', () => {
 		cy.injectAxe();
 	});
 
-	it('has no detectable a11y violations on load', () => {
-		// Test the page at initial load
-		cy.checkA11y();
-	});
+	// it('has no detectable a11y violations on load', () => {
+	// 	// Test the page at initial load
+	// 	cy.checkA11y();
+	// });
 
 	it('has 50 tracks', () => {
 		cy.get('.tracks li').then($list => {

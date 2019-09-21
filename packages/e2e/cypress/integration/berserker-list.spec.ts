@@ -1,5 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
-const { clearServiceWorkers } = require('./helpers');
+import { clearServiceWorkers, BASE_URL } from './helpers';
 
 beforeEach(clearServiceWorkers);
 
