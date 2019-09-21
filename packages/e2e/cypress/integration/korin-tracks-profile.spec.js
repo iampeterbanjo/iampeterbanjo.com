@@ -10,18 +10,18 @@ describe('Given Korin tracks profile', () => {
 		cy.injectAxe();
 	});
 
-	test('When loaded it has no detectable a11y violations on load', () => {
+	it('loads with no detectable a11y violations on load', () => {
 		// Test the page at initial load
 		cy.checkA11y();
 	});
 
-	test('When loaded it has a profile summary', () => {
+	it('loads with a profile summary', () => {
 		cy.get('h2 ~ p').should($p => {
 			expect($p[0].innerText.length).to.be.greaterThan(200);
 		});
 	});
 
-	test('When loaded it has go-back link', () => {
+	it('loads with a go-back link', () => {
 		cy.get('a.go-back').should('have.attr', 'href', '/projects/korin/tracks');
 	});
 });
