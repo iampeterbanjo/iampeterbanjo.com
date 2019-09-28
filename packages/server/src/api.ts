@@ -15,7 +15,6 @@ import pipeline from './pipeline';
 import cqc from './cqc';
 import httpsHere from './https-here';
 import hapiPino from './hapi-pino';
-import security from './security';
 import schedule from './schedule';
 
 const { vars } = utils;
@@ -65,7 +64,6 @@ export default async function main() {
 			server.register(pipeline),
 			server.register(cqc),
 			server.register(httpsHere),
-			server.register(security),
 			server.register(schedule),
 		]);
 

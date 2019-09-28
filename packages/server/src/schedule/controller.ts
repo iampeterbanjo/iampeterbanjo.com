@@ -6,12 +6,12 @@ export const handleScheduleJobsGet = server => {
 	return server.route({
 		method,
 		path: url,
-		config: {
-			auth: {
-				strategy: 'session',
-				mode: 'required',
-			},
-		},
+		// config: {
+		// 	auth: {
+		// 		strategy: 'session',
+		// 		mode: 'required',
+		// 	},
+		// },
 		handler: (request, reply) => 'OK',
 	});
 };
