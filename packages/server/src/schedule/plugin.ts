@@ -10,7 +10,7 @@ export default {
 	dependencies: {
 		models: '1.x.x',
 		'korin-api': '1.x.x',
-		// security: '1.x.x',
+		security: '1.x.x',
 	},
 	register: async (server, { getDbConnection, Agenda }) => {
 		const { uri } = await getDbConnection();
