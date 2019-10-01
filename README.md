@@ -141,5 +141,5 @@ I want to keep this site running over a few years (5+) and technical debt is wha
 [adr-toc]: ./packages/docs/adr/README.md
 [typescript]: https://www.typescriptlang.org
 [jest]: https://jestjs.io
-[coverage-server]: ./packages/server/badges/badge-lines.svg
+[coverage-server]: ./packages/server/badges/coverage.svg
 [journal]: ./JOURNAL.md

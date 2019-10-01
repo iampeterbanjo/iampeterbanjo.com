@@ -9,17 +9,19 @@
 	"scripts": {
 		"build": "tsc -p tsconfig.build.json; run-p copy-*",
 		"prebuild": "rm -rf build",
+		"before-commit": "run-s format test test-badges commit-badges",
+		"commit-badges": "git add './badges/coverage.svg'",
 		"clean": "rm -rf node_modules",
 		"copy-templates": "ncp ./src/views/templates ./build/views/templates",
 		"dev": "npm link css; run-s build watch-ts",
+		"format": "pretty-quick --staged",
 		"start-debug": "node --inspect ./build/start.js",
 		"start": "node ./build/start.js",
-		"test-badges": "jest-coverage-badges output ./badges",
 		"test-ci": "CI=true jest",
 		"test-leaks": "CI=true jest --detectLeaks --logHeapUsage",
 		"test-jest": "node --trace-warnings node_modules/.bin/jest --changedFilesWithAncestor",
 		"test": "run-s test-ci test-badges",
-		"lint": "eslint \"**/*.js\"",
+		"test-badges": "cat coverage/lcov.info | npx coverbadge -o ./badges/coverage.svg",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
 		"watch-ts": "tsc-watch --noClear -p tsconfig.build.json --onSuccess \"run-s copy-templates start-debug\"",
@@ -46,7 +48,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "pretty-quick --staged"
+			"pre-commit": "npm run before-commit"
 		}
 	},
 	"prettier": "@iampeterbanjo/diva",
@@ -97,9 +99,9 @@
 		"@types/nock": "^10.0.3",
 		"@types/ramda": "^0.26.21",
 		"casual": "^1.6.2",
+		"coverbadge": "^0.5.5",
 		"dependency-check": "^4.1.0",
 		"jest": "^24.9.0",
-		"jest-coverage-badges": "^1.1.2",
 		"mongodb-memory-server": "^5.2.3",
 		"nock": "^10.0.6",
 		"nodemon": "^1.18.9",

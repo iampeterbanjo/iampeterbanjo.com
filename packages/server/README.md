@@ -1,6 +1,6 @@
 # Server
 
-![coverage branches][badge-branches] ![coverage functions][badge-functions] ![coverage lines][badge-lines] ![coverage statements][badge-statements]
+![coverage][badge-coverage]
 
 Servers blog and API using HapiJS
 
@@ -10,7 +10,4 @@ Servers blog and API using HapiJS
 - `npm run test` runs tests
 
 [debugging]: https://nodejs.org/en/docs/guides/debugging-getting-started/
-[badge-branches]: ./badges/badge-branches.svg
-[badge-functions]: ./badges/badge-functions.svg
-[badge-lines]: ./badges/badge-lines.svg
-[badge-statements]: ./badges/badge-statements.svg
+[badge-coverage]: ./badges/coverage.svg
