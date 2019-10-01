@@ -1,0 +1,3 @@
+[submodule "packages/hapi-hodor"]
+	path = packages/hapi-hodor
+	url = git@github.com:iampeterbanjo/hapi-hodor.git
