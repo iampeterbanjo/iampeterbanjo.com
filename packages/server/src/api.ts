@@ -16,6 +16,7 @@ import cqc from './cqc';
 import httpsHere from './https-here';
 import hapiPino from './hapi-pino';
 import schedule from './schedule';
+import security from './security';
 
 const { vars } = utils;
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
@@ -64,6 +65,7 @@ export default async function main() {
 			server.register(pipeline),
 			server.register(cqc),
 			server.register(httpsHere),
+			server.register(security),
 			server.register(schedule),
 		]);
 
