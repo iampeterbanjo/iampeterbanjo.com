@@ -33,7 +33,7 @@
 		"diva": "cd ./packages/diva;",
 		"docs-adr": "cd ./packages/docs; npx adr",
 		"dry-run": "NODE_ENV=production npm install",
-		"preinstall": "git submodule update --init --recursive",
+		"predev": "git submodule update --init --recursive",
 		"postinstall": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else npm run dev; fi",
 		"install-css": "cd ./packages/css; npm install",
 		"install-data": "cd ./packages/data; npm install",
