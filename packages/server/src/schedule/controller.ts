@@ -7,10 +7,7 @@ export const handleScheduleJobsGet = server => {
 		method,
 		path: url,
 		config: {
-			auth: {
-				strategy: 'session',
-				mode: 'required',
-			},
+			auth: 'jwt',
 		},
 		handler: (request, reply) => 'OK',
 	});
