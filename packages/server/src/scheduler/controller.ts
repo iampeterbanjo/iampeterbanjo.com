@@ -1,6 +1,6 @@
 import * as routes from './routes';
 
-export const handleScheduleJobsGet = server => {
+export const handleListJobsGet = server => {
 	const { method, url } = routes.get_jobs();
 
 	return server.route({
@@ -9,6 +9,8 @@ export const handleScheduleJobsGet = server => {
 		config: {
 			auth: 'jwt',
 		},
-		handler: (request, reply) => 'OK',
+		handler: async (request, reply) => {
+			return server.app.scheduler.agenda.jobs({});
+		},
 	});
 };

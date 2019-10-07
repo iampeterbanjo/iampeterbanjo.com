@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import Scheduler from './schedule/Scheduler';
+import Scheduler from './scheduler/Scheduler';
 
 import api from './api';
 import utils from './utils';

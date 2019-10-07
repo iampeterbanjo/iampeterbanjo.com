@@ -15,7 +15,7 @@ import pipeline from './pipeline';
 import cqc from './cqc';
 import httpsHere from './https-here';
 import hapiPino from './hapi-pino';
-import schedule from './schedule';
+import schedule from './scheduler';
 import security from './security';
 
 const { vars } = utils;

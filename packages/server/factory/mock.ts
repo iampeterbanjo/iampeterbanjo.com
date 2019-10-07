@@ -1,7 +1,7 @@
 import { getDbConnection } from './helpers';
 import modelsPlugin from '../src/models/plugin';
 import korinPlugin from '../src/korin/plugin';
-import schedulePlugin from '../src/schedule/plugin';
+import schedulePlugin from '../src/scheduler/plugin';
 
 export const korinGetTopTracks = async ({ server, plugin, fn }) => {
 	const methods = [

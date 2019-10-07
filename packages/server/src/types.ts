@@ -1,4 +1,4 @@
-import Scheduler from './schedule/Scheduler';
+import Scheduler from './scheduler/Scheduler';
 
 export type GeniusData = {
 	meta: {
