@@ -66,11 +66,20 @@ export const mockSchedulePlugin = {
 	plugin: {
 		...schedulePlugin,
 		register: server => {
-			server.app.schedule = {
+			server.app.scheduler = {
 				agenda: {
 					jobs: () => ({ isMock: true }),
 				},
 			};
+
+			server.auth.scheme('jwt', () => ({
+				authenticate: async (request, reply) => {
+					return reply.authenticated({
+						credentials: 'test',
+					});
+				},
+			}));
+			server.auth.strategy('jwt', 'jwt');
 		},
 	},
 };

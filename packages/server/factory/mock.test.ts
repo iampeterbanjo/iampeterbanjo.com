@@ -83,6 +83,6 @@ describe('Given mockSchedulePlugin', () => {
 
 		await server.register(mockSchedulePlugin);
 
-		expect(typeof server.app.schedule.agenda.jobs).toEqual('function');
+		expect(typeof server.app.scheduler.agenda.jobs).toEqual('function');
 	});
 });
