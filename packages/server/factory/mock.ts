@@ -1,6 +1,7 @@
 import { getDbConnection } from './helpers';
 import modelsPlugin from '../src/models/plugin';
 import korinPlugin from '../src/korin/plugin';
+import schedulePlugin from '../src/schedule/plugin';
 
 export const korinGetTopTracks = async ({ server, plugin, fn }) => {
 	const methods = [
@@ -58,5 +59,18 @@ export const mockKorinPlugin = {
 				}),
 			},
 		],
+	},
+};
+
+export const mockSchedulePlugin = {
+	plugin: {
+		...schedulePlugin,
+		register: server => {
+			server.app.schedule = {
+				agenda: {
+					jobs: () => ({ isMock: true }),
+				},
+			};
+		},
 	},
 };

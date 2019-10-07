@@ -2,7 +2,7 @@ import Hapi from '@hapi/hapi';
 
 import factory from '.';
 import korinPlugin from '../src/korin/plugin';
-import { mockKorinPlugin } from './mock';
+import { mockKorinPlugin, mockSchedulePlugin } from './mock';
 
 describe('Given mock.method', () => {
 	['korin.getChartTopTracks'].forEach(name => {
@@ -62,7 +62,7 @@ describe('Given mock.method', () => {
 });
 
 describe('Given mockKorinPlugin', () => {
-	test('When registered server has expected methods', async () => {
+	test('When registered, server has expected methods', async () => {
 		const server = new Hapi.Server();
 		await server.register(mockKorinPlugin);
 
@@ -74,5 +74,15 @@ describe('Given mockKorinPlugin', () => {
 		].forEach(method => {
 			expect(typeof server.methods.korin[method]).toEqual('function');
 		});
+	});
+});
+
+describe('Given mockSchedulePlugin', () => {
+	test('When registered, server has path `app.scheduler.agenda.jobs`', async () => {
+		const server = new Hapi.Server();
+
+		await server.register(mockSchedulePlugin);
+
+		expect(typeof server.app.schedule.agenda.jobs).toEqual('function');
 	});
 });
