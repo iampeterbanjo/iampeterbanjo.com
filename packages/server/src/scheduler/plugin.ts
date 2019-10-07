@@ -25,5 +25,6 @@ export default {
 		});
 
 		controller.handleListJobsGet(server);
+		controller.handleListJobsFailedGet(server);
 	},
 };

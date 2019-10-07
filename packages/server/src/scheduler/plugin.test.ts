@@ -76,4 +76,10 @@ describe('Given scheduler plugin And no authentication', () => {
 
 		expect(result.statusCode).toEqual(401);
 	});
+
+	test('When GET /projects/agenda/jobs/failed response is 401', async () => {
+		const result = await server.inject(routes.get_jobs_failed());
+
+		expect(result.statusCode).toEqual(401);
+	});
 });

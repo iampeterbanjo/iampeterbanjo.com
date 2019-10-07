@@ -23,4 +23,18 @@ describe('Given handleListJobs', () => {
 
 		expect(server.app.scheduler.agenda.jobs).toHaveBeenCalledWith({});
 	});
+
+	test('When GET /jobs `server.app.scheduler.agenda.jobs` is called', async () => {
+		const server = await Server();
+		jest.spyOn(server.app.scheduler.agenda, 'jobs');
+		controller.handleListJobsFailedGet(server);
+
+		await server.inject({
+			url: routes.get_jobs_failed().url,
+		});
+
+		expect(server.app.scheduler.agenda.jobs).toHaveBeenCalledWith({
+			failReason: { $exists: true },
+		});
+	});
 });
