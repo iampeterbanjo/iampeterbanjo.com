@@ -5,8 +5,8 @@ import utils from '../utils';
 const { time } = utils;
 
 export default class Schedule {
-	helpers;
-	agenda;
+	public helpers;
+	public agenda;
 
 	constructor({ server, Agenda, options }) {
 		this.agenda = new Agenda(options);
