@@ -5,7 +5,7 @@ import * as controller from './controller';
 const { time } = utils;
 
 export default {
-	name: 'agenda',
+	name: 'schedule',
 	version: '1.0.0',
 	dependencies: {
 		models: '1.x.x',
