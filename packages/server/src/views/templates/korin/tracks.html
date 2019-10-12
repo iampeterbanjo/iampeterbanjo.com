@@ -1,10 +1,5 @@
-{% import "helpers.html" as helpers %}
-
-<!--  -->
-{% extends 'layout.html' %}
-
-<!--  -->
-{% block content %}
+{% import "helpers.html" as helpers %} {% extends 'layout.html' %} {% block
+content %}
 <div>
 	{{ helpers.heading('Top 50 tracks', 'LastFm') }} {{ helpers.p( 'Select a track
 	to generate a personality profile based on its lyrics' ) }}
@@ -13,7 +8,7 @@
 		{% for track in tracks %}
 		<li class="fl w-50 w-25-m w-20-l">
 			<a
-				class="db mw5 black link dim"
+				class="db mw5 black link dim aspect-ratio aspect-ratio--1x1"
 				title="{{ track.title }}"
 				href="{{ track.profileUrl }}"
 			>

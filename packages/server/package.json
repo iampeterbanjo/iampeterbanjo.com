@@ -23,9 +23,9 @@
 		"test": "run-s test-ci test-badges",
 		"test-badges": "cat coverage/lcov.info | npx coverbadge -o ./badges/coverage.svg",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
+		"watch-build": "nodemon --watch src --watch fixtures --watch factory --ext js,ts,json,html --exec 'run-s build'",
 		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
 		"watch-ts": "tsc-watch --noClear -p tsconfig.build.json --onSuccess \"run-s copy-templates start-debug\"",
-		"watch-build": "npm-run-all copy-* watch-ts",
 		"watch-test": "nodemon --watch src --watch fixtures --watch factory --ext js,ts,json,html --exec 'run-s test-jest'"
 	},
 	"keywords": [

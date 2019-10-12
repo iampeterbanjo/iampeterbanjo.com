@@ -49,7 +49,7 @@ export const handleKorinTracksGet = server => {
 		method,
 		path,
 		handler: async (request, reply) => {
-			const tracks = await server.methods.view.topTracks();
+			const tracks = await server.app.db.TopTrack.find({});
 
 			return reply.view('korin/tracks', { tracks });
 		},
