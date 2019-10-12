@@ -10,6 +10,15 @@ export default class Helpers {
 	async importChartTracks() {
 		console.info(`Started: scheduled saveRawTopTracks at ${new Date()}`);
 
-		await this.server.methods.pipeline.saveRawTopTracks(this.server);
+		try {
+			await this.server.methods.pipeline.saveRawTopTracks(this.server);
+			await this.server.methods.pipeline.convertRawTopTracks(this.server);
+			await this.server.methods.pipeline.addArtistImages(this.server);
+			await this.server.methods.pipeline.addTrackProfile(this.server);
+		} catch (error) {
+			console.error(error);
+
+			throw new Error(error);
+		}
 	}
 }

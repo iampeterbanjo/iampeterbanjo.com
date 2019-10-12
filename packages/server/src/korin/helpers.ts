@@ -178,9 +178,14 @@ export const getArtistImage = async (
 		['artist'],
 	);
 
-	const { url } = result.body.artists.items[0].images.filter(
+	const image = result.body.artists.items[0].images.filter(
 		image => image.height === 640,
 	)[0];
+	const { url = '' } = image || {};
+
+	if (!url) {
+		console.warn(`image url missing for ${artist}`);
+	}
 
 	return url;
 };

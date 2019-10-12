@@ -14,7 +14,17 @@ import {
 } from '../../factory';
 import Agenda from 'agenda';
 
-jest.mock('agenda');
+jest.mock('agenda', () => {
+	return jest.fn().mockImplementation(() => {
+		return {
+			start: jest.fn(),
+			define: jest.fn(),
+			every: jest.fn(),
+			now: jest.fn(),
+			on: jest.fn(),
+		};
+	});
+});
 
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });
@@ -32,23 +42,29 @@ const Server = async () => {
 	return server;
 };
 
+let server: Api;
+
+beforeAll(async () => {
+	server = await Server();
+});
+
+afterAll(async () => {
+	await disconnectAndStopDb();
+});
+
 describe('Given importChartTracks', () => {
-	let server: Api;
-
-	beforeAll(async () => {
-		server = await Server();
-		jest.spyOn(server.methods.pipeline, 'saveRawTopTracks');
-	});
-
-	afterAll(async () => {
-		await disconnectAndStopDb();
-	});
-
-	test('When called it should use pipeline.saveRawTopTracks', async () => {
+	test('When called it should use saveRawTopTracks, convertRawTopTracks, addArtistImages, addTrackProfile', async () => {
 		const helpers = new Helpers(server);
+		jest.spyOn(server.methods.pipeline, 'saveRawTopTracks');
+		jest.spyOn(server.methods.pipeline, 'convertRawTopTracks');
+		jest.spyOn(server.methods.pipeline, 'addArtistImages');
+		jest.spyOn(server.methods.pipeline, 'addTrackProfile');
 
 		await helpers.importChartTracks();
 
 		expect(server.methods.pipeline.saveRawTopTracks).toHaveBeenCalled();
+		expect(server.methods.pipeline.convertRawTopTracks).toHaveBeenCalled();
+		expect(server.methods.pipeline.addArtistImages).toHaveBeenCalled();
+		expect(server.methods.pipeline.addTrackProfile).toHaveBeenCalled();
 	});
 });
