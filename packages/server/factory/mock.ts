@@ -69,6 +69,7 @@ export const mockSchedulePlugin = {
 			server.app.scheduler = {
 				agenda: {
 					jobs: () => ({ isMock: true }),
+					now: () => ({ isMock: true }),
 				},
 			};
 

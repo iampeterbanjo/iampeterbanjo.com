@@ -1,3 +1,6 @@
 export default {
-	IMPORT_CHART_TOP_TRACKS: 'import chart top tracks',
+	IMPORT_CHART_TOP_TRACKS: {
+		description: 'import chart top tracks',
+		routine: () => {},
+	},
 };

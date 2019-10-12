@@ -26,5 +26,6 @@ export default {
 
 		controller.handleListJobsGet(server);
 		controller.handleListJobsFailedGet(server);
+		controller.handleStartJobPost(server);
 	},
 };

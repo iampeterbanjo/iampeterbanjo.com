@@ -37,4 +37,19 @@ describe('Given handleListJobs', () => {
 			failReason: { $exists: true },
 		});
 	});
+
+	test('When GET /jobs/now/:name `server.app.scheduler.agenda.jobs` is called', async () => {
+		const server = await Server();
+		const jobName = 'do it naaw';
+		jest.spyOn(server.app.scheduler.agenda, 'now');
+		controller.handleStartJobPost(server);
+
+		const { method, url } = routes.post_jobs_start();
+		await server.inject({
+			url: url.replace('{name}', jobName),
+			method,
+		});
+
+		expect(server.app.scheduler.agenda.now).toHaveBeenCalledWith(jobName);
+	});
 });

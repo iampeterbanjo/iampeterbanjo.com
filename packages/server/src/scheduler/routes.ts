@@ -13,3 +13,10 @@ export const get_jobs_failed = () => {
 		url: `${BASE_URL}/jobs/failed`,
 	};
 };
+
+export const post_jobs_start = () => {
+	return {
+		method: 'POST',
+		url: `${BASE_URL}/jobs/now/{name}`,
+	};
+};
