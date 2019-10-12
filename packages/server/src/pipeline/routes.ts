@@ -1,13 +1,9 @@
 const extract_top_tracks = () => ({
-	method: 'GET',
-	path: '/v1/pipeline/extract/topTracks',
-	url: '/v1/pipeline/extract/topTracks',
+	method: 'POST',
+	path: '/pipeline/extract/topTracks',
+	url: '/pipeline/extract/topTracks',
 });
 
-const routes = {
-	v1: {
-		extract_top_tracks,
-	},
+export default {
+	extract_top_tracks,
 };
-
-export default routes;

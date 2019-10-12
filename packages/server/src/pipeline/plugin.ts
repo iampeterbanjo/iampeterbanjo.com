@@ -10,7 +10,7 @@ export default {
 	register: (server, { methods }) => {
 		server.method(methods);
 
-		const extractTopTracks = routes.v1.extract_top_tracks();
+		const extractTopTracks = routes.extract_top_tracks();
 		server.route({
 			path: extractTopTracks.path,
 			method: extractTopTracks.method,

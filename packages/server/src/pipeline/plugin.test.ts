@@ -185,7 +185,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 	});
 
 	test('When requesting API status code 200', async () => {
-		const { method, url } = routes.v1.extract_top_tracks();
+		const { method, url } = routes.extract_top_tracks();
 		const response = await server.inject({
 			method,
 			url,
@@ -195,7 +195,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 	});
 
 	test('When requesting API response is expected', async () => {
-		const { method, url } = routes.v1.extract_top_tracks();
+		const { method, url } = routes.extract_top_tracks();
 		const response = await server.inject({
 			method,
 			url,
@@ -215,7 +215,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 		it(`When requesting API pipeline, ${expected} is called`, async () => {
 			jest.spyOn(server.methods.pipeline, expected);
 
-			const { method, url } = routes.v1.extract_top_tracks();
+			const { method, url } = routes.extract_top_tracks();
 			await server.inject({
 				method,
 				url,

@@ -10,7 +10,7 @@ export default {
 	register: (server, { methods }) => {
 		server.method(methods);
 
-		const getTracksRoute = routes.v1.get_korin_tracks();
+		const getTracksRoute = routes.get_korin_tracks();
 		server.route({
 			path: getTracksRoute.path,
 			method: getTracksRoute.method,
@@ -25,7 +25,7 @@ export default {
 			},
 		});
 
-		const getProfileRoute = routes.v1.get_korin_profiles();
+		const getProfileRoute = routes.get_korin_profiles();
 		server.route({
 			path: getProfileRoute.path,
 			method: getProfileRoute.method,

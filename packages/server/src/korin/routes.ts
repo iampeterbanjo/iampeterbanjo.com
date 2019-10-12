@@ -3,7 +3,7 @@ import utils from '../utils';
 const { slugger, clientel } = utils;
 const get_korin_tracks = () => {
 	const method = 'GET';
-	const url = '/v1/korin/tracks';
+	const url = '/korin/tracks';
 	return {
 		method,
 		path: url,
@@ -19,14 +19,12 @@ const get_korin_profiles = (
 	const artistParam = slugger.parse(artist);
 	const trackParam = slugger.parse(track);
 	const method = 'GET';
-	const url = `/v1/korin/${artistParam}/${trackParam}`;
-	const path = '/v1/korin/{artist}/{track}';
+	const url = `/korin/${artistParam}/${trackParam}`;
+	const path = '/korin/{artist}/{track}';
 	return { method, path, url, client: () => clientel.api(url, { method }) };
 };
 
 export default {
-	v1: {
-		get_korin_tracks,
-		get_korin_profiles,
-	},
+	get_korin_tracks,
+	get_korin_profiles,
 };

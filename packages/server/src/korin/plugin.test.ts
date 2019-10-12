@@ -20,7 +20,7 @@ describe('Given korin tracks API', () => {
 	afterEach(jest.restoreAllMocks);
 
 	test('When requesting korin tracks the status code is 200', async () => {
-		const { method, url } = routes.v1.get_korin_tracks();
+		const { method, url } = routes.get_korin_tracks();
 
 		const response = await server.inject({
 			method,
