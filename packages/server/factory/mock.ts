@@ -81,6 +81,7 @@ export const mockAgenda = (params?: MockAgendaParams) => {
 			every: every,
 			jobs: () => ({ isMock: true }),
 			now: () => ({ isMock: true }),
+			on: () => ({ isMock: true }),
 		};
 	});
 };

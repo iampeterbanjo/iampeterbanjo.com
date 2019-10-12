@@ -13,17 +13,22 @@ export default class Scheduler {
 		this.agenda = new Agenda(options);
 		this.helpers = new Helpers(server);
 		this.routines.set('IMPORT_CHART_TOP_TRACKS', {
+			id: 'IMPORT_CHART_TOP_TRACKS',
 			description: 'Import LastFm chart top tracks',
 		});
 	}
 
 	async init() {
-		this.agenda.define(
-			this.routines.get('IMPORT_CHART_TOP_TRACKS'),
-			this.helpers.importChartTracks,
-		);
-
+		this.setupImportChartTopTracks();
 		await this.agenda.start();
-		await this.agenda.every(time.oneDay, jobs.IMPORT_CHART_TOP_TRACKS);
 	}
+
+	setupImportChartTopTracks = async () => {
+		const { id, description } = this.routines.get('IMPORT_CHART_TOP_TRACKS');
+
+		this.agenda.define(id, this.helpers.importChartTracks);
+		this.agenda.on(`success:${id}`, console.info(`SUCCESS: ${description}`));
+
+		await this.agenda.every(time.oneDay, id);
+	};
 }

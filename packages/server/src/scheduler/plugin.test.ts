@@ -10,6 +10,7 @@ import {
 	disconnectAndStopDb,
 	mockModelPlugin,
 	mockKorinPlugin,
+	mockAgenda,
 } from '../../factory';
 
 const mockStart = jest.fn();
@@ -21,6 +22,8 @@ jest.mock('agenda', () => {
 			start: mockStart,
 			define: mockDefine,
 			every: mockEvery,
+			now: jest.fn(),
+			on: jest.fn(),
 		};
 	});
 });

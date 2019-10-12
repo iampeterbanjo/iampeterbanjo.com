@@ -8,7 +8,6 @@ export default class Helpers {
 	}
 
 	async importChartTracks() {
-		// console.log(this.server.methods);
 		await this.server.methods.korin.getChartTopTracks();
 	}
 }
