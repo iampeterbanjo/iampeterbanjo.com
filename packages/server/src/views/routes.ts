@@ -43,13 +43,10 @@ type KorinProfilesParams = {
 };
 
 const get_korin_profiles = (options?: KorinProfilesParams) => {
-	const { artist, track } = options || { artist: '', track: '' };
-	const artistParam = slugger.parse(artist);
-	const trackParam = slugger.parse(track);
 	return {
 		method: 'GET',
-		path: `${korinBaseUrl}/profiles/{artist}/{track}`,
-		url: `${korinBaseUrl}/profiles/${artistParam}/${trackParam}`,
+		path: `${korinBaseUrl}/profiles/{profileUrl}`,
+		url: `${korinBaseUrl}/profiles/{profileUrl}`,
 	};
 };
 

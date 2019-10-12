@@ -58,21 +58,26 @@ export const handleKorinTracksGet = server => {
 
 export const handleKorinProfilesGet = server => {
 	const { method, path } = routes.get_korin_profiles();
+
 	server.route({
 		method,
 		path,
 		handler: async (request, reply) => {
-			const { artist, track } = request.params;
-			const { profile, summary } = await server.methods.view.trackProfile({
+			const { profileUrl } = request.params;
+			const {
+				summary,
 				artist,
-				track,
+				title,
+				profile,
+			} = await server.app.db.TopTrack.findOne({
+				profileUrl,
 			});
 
 			return reply.view('korin/profiles', {
 				profile: JSON.stringify(profile),
 				summary,
 				artist,
-				track,
+				title,
 				pathToTracks: routes.get_korin_tracks().url,
 			});
 		},

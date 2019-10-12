@@ -1,5 +1,10 @@
-{% import "helpers.html" as helpers %} {% extends 'layout.html' %} {% block
-content %}
+{% import "helpers.html" as helpers %}
+
+<!--  -->
+{% extends 'layout.html' %}
+
+<!--  -->
+{% block content %}
 <div>
 	{{ helpers.heading('Top 50 tracks', 'LastFm') }} {{ helpers.p( 'Select a track
 	to generate a personality profile based on its lyrics' ) }}
@@ -10,7 +15,7 @@ content %}
 			<a
 				class="db mw5 black link dim aspect-ratio aspect-ratio--1x1"
 				title="{{ track.title }}"
-				href="{{ track.profileUrl }}"
+				href="/projects/korin/profiles/{{ track.profileUrl }}"
 			>
 				<img
 					class="db ba b--black-10"
