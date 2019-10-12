@@ -2,6 +2,7 @@ import { getDbConnection } from './helpers';
 import modelsPlugin from '../src/models/plugin';
 import korinPlugin from '../src/korin/plugin';
 import schedulePlugin from '../src/scheduler/plugin';
+import Scheduler from '../src/scheduler/Scheduler';
 
 export const korinGetTopTracks = async ({ server, plugin, fn }) => {
 	const methods = [
@@ -62,16 +63,37 @@ export const mockKorinPlugin = {
 	},
 };
 
+type MockAgendaParams = {
+	start?: () => void;
+	define?: () => void;
+	every?: () => void;
+};
+
+export const mockAgenda = (params?: MockAgendaParams) => {
+	const defaultFn = () => undefined;
+	const { start = defaultFn, define = defaultFn, every = defaultFn } =
+		params || {};
+
+	return jest.fn().mockImplementation(() => {
+		return {
+			start: start,
+			define: define,
+			every: every,
+			jobs: () => ({ isMock: true }),
+			now: () => ({ isMock: true }),
+		};
+	});
+};
+
 export const mockSchedulePlugin = {
 	plugin: {
 		...schedulePlugin,
 		register: server => {
-			server.app.scheduler = {
-				agenda: {
-					jobs: () => ({ isMock: true }),
-					now: () => ({ isMock: true }),
-				},
-			};
+			server.app.scheduler = new Scheduler({
+				server,
+				Agenda: mockAgenda(),
+				options: {},
+			});
 
 			server.auth.scheme('jwt', () => ({
 				authenticate: async (request, reply) => {

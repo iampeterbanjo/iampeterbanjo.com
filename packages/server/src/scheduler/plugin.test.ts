@@ -57,6 +57,14 @@ describe('Given scheduler plugin', () => {
 		expect(mockStart).toHaveBeenCalled();
 		expect(mockEvery).toHaveBeenCalled();
 	});
+
+	['IMPORT_CHART_TOP_TRACKS'].forEach(routine => {
+		test(`When scheduler, agenda has ${routine} routine`, () => {
+			const { routines } = server.app.scheduler;
+
+			expect(routines.has(routine)).toBeTruthy();
+		});
+	});
 });
 
 describe('Given scheduler plugin And no authentication', () => {

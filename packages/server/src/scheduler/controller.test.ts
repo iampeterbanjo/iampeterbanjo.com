@@ -38,9 +38,9 @@ describe('Given handleListJobs', () => {
 		});
 	});
 
-	test('When GET /jobs/now/:name `server.app.scheduler.agenda.jobs` is called', async () => {
+	test('When POST /jobs/now/:name `server.app.scheduler.agenda.jobs` is called', async () => {
 		const server = await Server();
-		const jobName = 'do it naaw';
+		const jobName = 'IMPORT_CHART_TOP_TRACKS';
 		jest.spyOn(server.app.scheduler.agenda, 'now');
 		controller.handleStartJobPost(server);
 
@@ -51,5 +51,21 @@ describe('Given handleListJobs', () => {
 		});
 
 		expect(server.app.scheduler.agenda.now).toHaveBeenCalledWith(jobName);
+	});
+
+	test('When POST /jobs/now/INVALID_JOB_NAME response is 422', async () => {
+		const server = await Server();
+		const jobName = 'INVALID_JOB_NAME';
+		jest.spyOn(server.app.scheduler.agenda, 'now');
+		controller.handleStartJobPost(server);
+
+		const { method, url } = routes.post_jobs_start();
+		const response = await server.inject({
+			url: url.replace('{name}', jobName),
+			method,
+		});
+
+		expect(response.statusCode).toEqual(422);
+		expect(server.app.scheduler.agenda.now).not.toHaveBeenCalled();
 	});
 });

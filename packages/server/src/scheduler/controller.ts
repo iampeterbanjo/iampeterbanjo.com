@@ -1,4 +1,5 @@
 import * as routes from './routes';
+import Boom from 'boom';
 
 export const handleListJobsGet = server => {
 	const { method, url } = routes.get_jobs();
@@ -42,6 +43,10 @@ export const handleStartJobPost = server => {
 			auth: 'jwt',
 		},
 		handler: async request => {
+			const { name } = request.params;
+			if (!server.app.scheduler.routines.has(name)) {
+				return Boom.badData(`${name} job does not exist`);
+			}
 			return server.app.scheduler.agenda.now(request.params.name);
 		},
 	});
