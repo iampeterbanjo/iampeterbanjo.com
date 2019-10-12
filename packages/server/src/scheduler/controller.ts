@@ -11,7 +11,7 @@ export const handleListJobsGet = server => {
 			auth: 'jwt',
 		},
 		handler: async () => {
-			return server.app.scheduler.agenda.jobs({});
+			return server.app.scheduler.agenda.jobs({}, { lastRunAt: -1 });
 		},
 	});
 };
@@ -26,9 +26,12 @@ export const handleListJobsFailedGet = server => {
 			auth: 'jwt',
 		},
 		handler: async () => {
-			return server.app.scheduler.agenda.jobs({
-				failReason: { $exists: true },
-			});
+			return server.app.scheduler.agenda.jobs(
+				{
+					failReason: { $exists: true },
+				},
+				{ failedAt: -1 },
+			);
 		},
 	});
 };

@@ -8,6 +8,8 @@ export default class Helpers {
 	}
 
 	async importChartTracks() {
-		await this.server.methods.korin.getChartTopTracks();
+		console.info(`Started: scheduled saveRawTopTracks at ${new Date()}`);
+
+		await this.server.methods.pipeline.saveRawTopTracks(this.server);
 	}
 }

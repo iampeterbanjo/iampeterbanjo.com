@@ -1,6 +1,7 @@
 import { getDbConnection } from './helpers';
 import modelsPlugin from '../src/models/plugin';
 import korinPlugin from '../src/korin/plugin';
+import pipelinePlugin from '../src/pipeline/plugin';
 import schedulePlugin from '../src/scheduler/plugin';
 import Scheduler from '../src/scheduler/Scheduler';
 
@@ -63,6 +64,38 @@ export const mockKorinPlugin = {
 	},
 };
 
+export const mockPipelinePlugin = {
+	plugin: pipelinePlugin,
+	options: {
+		methods: [
+			{
+				name: 'pipeline.saveRawTopTracks',
+				method: () => ({
+					isMock: true,
+				}),
+			},
+			{
+				name: 'pipeline.convertRawTopTracks',
+				method: () => ({
+					isMock: true,
+				}),
+			},
+			{
+				name: 'pipeline.addTrackProfile',
+				method: () => ({
+					isMock: true,
+				}),
+			},
+			{
+				name: 'pipeline.addArtistImages',
+				method: () => ({
+					isMock: true,
+				}),
+			},
+		],
+	},
+};
+
 type MockAgendaParams = {
 	start?: () => void;
 	define?: () => void;
@@ -81,7 +114,6 @@ export const mockAgenda = (params?: MockAgendaParams) => {
 			every: every,
 			jobs: () => ({ isMock: true }),
 			now: () => ({ isMock: true }),
-			on: () => ({ isMock: true }),
 		};
 	});
 };

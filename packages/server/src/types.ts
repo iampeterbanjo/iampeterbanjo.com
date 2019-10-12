@@ -80,6 +80,10 @@ export type Track = {
 	lastFmUrl: string;
 };
 
+export type ConvertedTrack = Track & {
+	profileUrl: string;
+};
+
 export type TopTrack = Track & {
 	profileUrl: string;
 	profile?: string;
@@ -193,6 +197,12 @@ export interface Api {
 			getChartTopTracks: () => Promise<RawTopTrackJson>;
 			getArtistImage: () => Promise<string>;
 			getSpotifyAccessToken: () => Promise<string>;
+		};
+		pipeline: {
+			saveRawTopTracks: (server: Api) => Promise<RawTopTrack[]>;
+			convertRawTopTracks: (server: Api) => Promise<ConvertedTrack[]>;
+			addArtistImages: (server: Api) => Promise<void>;
+			addTrackProfile: (server: Api) => Promise<void>;
 		};
 	};
 }
