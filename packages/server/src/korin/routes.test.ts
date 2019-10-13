@@ -13,8 +13,6 @@ describe('Given routes: korin api', () => {
 	});
 
 	test('When requesting artist profile the route details are correct', () => {
-		const artist = 'Sofia Reyes';
-		const track = 'R.I.P';
 		const result = routes.get_korin_profiles();
 
 		expect(result).toEqual(

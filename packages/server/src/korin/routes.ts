@@ -15,10 +15,9 @@ const get_korin_tracks = () => {
 
 const get_korin_profiles = () => {
 	const method = 'GET';
-	const url = `/korin/{profileUrl}`;
 	const path = '/korin/{profileUrl}';
 
-	return { method, path, url, client: () => clientel.api(url, { method }) };
+	return { method, path, client: () => clientel.api(path, { method }) };
 };
 
 export default {
