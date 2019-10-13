@@ -1,7 +1,4 @@
-import utils from '../../src/utils';
 import routes from '../../src/korin/routes';
-
-const { slugger } = utils;
 
 describe('Given routes: korin api', () => {
 	test('When requesting tracks the route details are correct', () => {
@@ -11,7 +8,6 @@ describe('Given routes: korin api', () => {
 			expect.objectContaining({
 				method: 'GET',
 				path: '/korin/tracks',
-				url: '/korin/tracks',
 			}),
 		);
 	});
@@ -19,15 +15,12 @@ describe('Given routes: korin api', () => {
 	test('When requesting artist profile the route details are correct', () => {
 		const artist = 'Sofia Reyes';
 		const track = 'R.I.P';
-		const result = routes.get_korin_profiles({ artist, track });
-		const artistParam = slugger.parse(artist);
-		const trackParam = slugger.parse(track);
+		const result = routes.get_korin_profiles();
 
 		expect(result).toEqual(
 			expect.objectContaining({
 				method: 'GET',
 				path: '/korin/{profileUrl}',
-				url: `/korin/{profileUrl}`,
 			}),
 		);
 	});
