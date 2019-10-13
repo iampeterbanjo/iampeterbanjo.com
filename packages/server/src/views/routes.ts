@@ -42,7 +42,7 @@ type KorinProfilesParams = {
 	track: string;
 };
 
-const get_korin_profiles = (options?: KorinProfilesParams) => {
+const get_korin_profiles = () => {
 	return {
 		method: 'GET',
 		path: `${korinBaseUrl}/profiles/{profileUrl}`,

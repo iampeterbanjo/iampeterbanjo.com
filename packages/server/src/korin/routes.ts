@@ -19,8 +19,8 @@ const get_korin_profiles = (
 	const artistParam = slugger.parse(artist);
 	const trackParam = slugger.parse(track);
 	const method = 'GET';
-	const url = `/korin/${artistParam}/${trackParam}`;
-	const path = '/korin/{artist}/{track}';
+	const url = `/korin/{profileUrl}`;
+	const path = '/korin/{profileUrl}';
 	return { method, path, url, client: () => clientel.api(url, { method }) };
 };
 

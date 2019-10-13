@@ -26,19 +26,19 @@ describe('Given routes: korin api', () => {
 		expect(result).toEqual(
 			expect.objectContaining({
 				method: 'GET',
-				path: '/korin/{artist}/{track}',
-				url: `/korin/${artistParam}/${trackParam}`,
+				path: '/korin/{profileUrl}',
+				url: `/korin/{profileUrl}`,
 			}),
 		);
 	});
 
-	test('When when requesting artist profile the method and path are correct', () => {
+	test('When requesting artist profile the method and path are correct', () => {
 		const result = routes.get_korin_profiles();
 
 		expect(result).toEqual(
 			expect.objectContaining({
 				method: 'GET',
-				path: '/korin/{artist}/{track}',
+				path: '/korin/{profileUrl}',
 			}),
 		);
 	});

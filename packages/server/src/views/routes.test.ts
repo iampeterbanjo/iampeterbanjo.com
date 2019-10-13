@@ -20,7 +20,7 @@ describe('Given Berserker routes', () => {
 });
 
 describe('Given blog view', () => {
-	test('When when viewing blog posts', () => {
+	test('When viewing blog posts', () => {
 		const result = routes.get_blog_posts();
 
 		expect(result).toEqual(
@@ -32,7 +32,7 @@ describe('Given blog view', () => {
 		);
 	});
 
-	test('When when viewing blog details', () => {
+	test('When viewing blog details', () => {
 		const post = 'the-problem-with-problems';
 		const result = routes.get_blog_details(post);
 
@@ -47,7 +47,7 @@ describe('Given blog view', () => {
 });
 
 describe('Given korin views', () => {
-	test('When when viewing tracks', () => {
+	test('When viewing tracks', () => {
 		const result = routes.get_korin_tracks();
 
 		expect(result).toEqual(
@@ -59,30 +59,11 @@ describe('Given korin views', () => {
 		);
 	});
 
-	test('When when viewing profiles', () => {
-		const artist = 'Ariana Grande';
-		const track = 'God is a woman';
-		const { method, path, url } = routes.get_korin_profiles({
-			artist,
-			track,
-		});
+	test('When viewing profiles', () => {
+		const { method, path, url } = routes.get_korin_profiles();
 
 		expect(method).toEqual('GET');
-		expect(path).toEqual('/projects/korin/profiles/{artist}/{track}');
+		expect(path).toEqual('/projects/korin/profiles/{profileUrl}');
 		expect(url).toEqual(expect.stringContaining('/projects/korin/profiles/'));
-		expect(url).toEqual(expect.stringContaining(slugger.parse(artist)));
-		expect(url).toEqual(expect.stringContaining(slugger.parse(track)));
-	});
-
-	test('When when artist and track are missing', () => {
-		const result = routes.get_korin_profiles();
-
-		expect(result).toEqual(
-			expect.objectContaining({
-				method: 'GET',
-				path: '/projects/korin/profiles/{artist}/{track}',
-				url: '/projects/korin/profiles//',
-			}),
-		);
 	});
 });
