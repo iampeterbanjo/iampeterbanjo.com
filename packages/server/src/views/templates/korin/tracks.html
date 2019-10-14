@@ -6,8 +6,12 @@
 <!--  -->
 {% block content %}
 <div>
-	{{ helpers.heading('Top 50 tracks', 'LastFm') }} {{ helpers.p( 'Select a track
-	to generate a personality profile based on its lyrics' ) }}
+	<!--  -->
+	{{ helpers.heading('Top 50 tracks', 'LastFm') }}
+
+	<!--  -->
+	{{ helpers.p( 'Select a track to generate a personality profile based on its
+	lyrics' ) }}
 
 	<ul class="cf pa0 list tracks">
 		{% for track in tracks %}
@@ -20,7 +24,7 @@
 				<img
 					class="db ba b--black-10"
 					alt="{{ track.title }}"
-					src="{{ track.image }}"
+					src="{{ track.image if track.image else '/images/korin/placeholder-artist.jpg' }}"
 				/>
 
 				<dl class="mt2 f6 lh-copy">
