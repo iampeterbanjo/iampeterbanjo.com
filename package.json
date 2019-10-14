@@ -42,6 +42,7 @@
 		"install-hodor": "cd ./packages/hapi-hodor; npm install",
 		"install-server": "cd ./packages/server; npm install",
 		"e2e": "cd ./packages/e2e; npm",
+		"css": "cd ./packages/css; npm",
 		"server": "cd ./packages/server; npm",
 		"format": "pretty-quick",
 		"lint": "npx pretty-quick --check",

@@ -26,16 +26,15 @@
 					alt="{{ track.title }}"
 					src="{{ track.image if track.image else '/images/korin/placeholder-artist.jpg' }}"
 				/>
-
-				<dl class="mt2 f6 lh-copy">
-					<dt class="clip">Title</dt>
-					<dd class="ml0 fw9 truncate">
-						{{ track.title }}
-					</dd>
-					<dt class="clip">Artist</dt>
-					<dd class="ml0 gray truncate">{{ track.artist }}</dd>
-				</dl>
 			</a>
+			<dl class="mt2 f6 lh-copy">
+				<dt class="clip">Title</dt>
+				<dd class="ml0 fw9 truncate">
+					{{ track.title }}
+				</dd>
+				<dt class="clip">Artist</dt>
+				<dd class="ml0 gray truncate">{{ track.artist }}</dd>
+			</dl>
 		</li>
 		{% endfor %}
 	</ul>

@@ -58,3 +58,11 @@ blockquote {
 .twitter {
 	fill: $twitter-blue;
 }
+
+.tracks li a {
+	overflow: hidden;
+}
+
+.tracks li img {
+	position: absolute;
+}
