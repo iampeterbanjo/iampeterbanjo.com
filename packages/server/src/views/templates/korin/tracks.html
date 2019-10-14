@@ -7,7 +7,7 @@
 {% block content %}
 <div>
 	<!--  -->
-	{{ helpers.heading('Top 50 tracks', 'LastFm') }}
+	{{ helpers.heading('Top 50 tracks', 'on LastFm') }}
 
 	<!--  -->
 	{{ helpers.p( 'Select a track to generate a personality profile based on its
@@ -28,12 +28,21 @@
 				/>
 			</a>
 			<dl class="mt2 f6 lh-copy">
-				<dt class="clip">Title</dt>
+				<dt class="clip title">Title</dt>
 				<dd class="ml0 fw9 truncate">
 					{{ track.title }}
 				</dd>
-				<dt class="clip">Artist</dt>
+				<dt class="clip artist">Artist</dt>
 				<dd class="ml0 gray truncate">{{ track.artist }}</dd>
+				<dt class="clip credits">Credits</dt>
+				<dd class="ml0 gray truncate">
+					<a
+						class="credits-lastfm"
+						href="{{ track.lastFmUrl }}"
+						rel="noreferrer"
+						>LastFm</a
+					>
+				</dd>
 			</dl>
 		</li>
 		{% endfor %}

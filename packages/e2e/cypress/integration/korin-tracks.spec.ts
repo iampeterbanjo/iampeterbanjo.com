@@ -27,4 +27,8 @@ describe('Given Korin tracks page', () => {
 	it('has track image', () => {
 		cy.get('.tracks li img').should('have.attr', 'src');
 	});
+
+	it('has LastFm link', () => {
+		cy.get('.tracks li a.credits-lastfm').should('have.attr', 'href');
+	});
 });
