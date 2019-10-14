@@ -5,7 +5,7 @@ beforeEach(clearServiceWorkers);
 describe('Given Korin tracks profile', () => {
 	beforeEach(() => {
 		cy.visit(`${BASE_URL}/projects/korin/tracks`);
-		cy.get('.tracks li:first-child a').click();
+		cy.get('.tracks li:first-child > a').click();
 		cy.injectAxe();
 	});
 
