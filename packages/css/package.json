@@ -5,7 +5,8 @@
 	"main": "main.css",
 	"scripts": {
 		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
-		"watch-build": "nodemon --watch sass -x 'npm run build'",
+		"postbuild": "ncp ./node_modules/@fortawesome/fontawesome-free/webfonts ./webfonts",
+		"watch-build": "nodemon --watch sass --ext scss -x 'npm run build'",
 		"dev": "npm run watch-build",
 		"test": "echo 'css - no tests'"
 	},
@@ -16,10 +17,12 @@
 	},
 	"license": "ISC",
 	"devDependencies": {
+		"@fortawesome/fontawesome-free": "^5.11.2",
 		"node-sass": "^4.11.0",
 		"nodemon": "^1.19.1"
 	},
 	"dependencies": {
+		"ncp": "^2.0.0",
 		"tachyons-sass": "^4.9.5"
 	}
 }

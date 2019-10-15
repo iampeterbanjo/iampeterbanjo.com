@@ -2,8 +2,15 @@
 
 // https://colorswatches.info/twitter-blue
 $twitter-blue: #55acee;
+$lastfm-red: #d51007;
+$spotify-green: #1db954;
+
+$fa-font-path: '/css/webfonts';
 
 @import './node_modules/tachyons-sass/tachyons.scss';
+@import './node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import './node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
+@import './node_modules/@fortawesome/fontawesome-free/scss/brands.scss';
 
 a {
 	@extend .link;
@@ -57,6 +64,14 @@ blockquote {
 
 .twitter {
 	fill: $twitter-blue;
+}
+
+.lastfm-red {
+	color: $lastfm-red;
+}
+
+.spotify-green {
+	color: $spotify-green;
 }
 
 .tracks li a {
