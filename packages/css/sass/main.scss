@@ -1,12 +1,6 @@
 @charset "utf-8";
 
-// https://colorswatches.info/twitter-blue
-$twitter-blue: #55acee;
-$lastfm-red: #d51007;
-$spotify-green: #1db954;
-
-$fa-font-path: '/css/webfonts';
-
+@import './variables.scss';
 @import './node_modules/tachyons-sass/tachyons.scss';
 @import './node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import './node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
@@ -54,6 +48,16 @@ blockquote {
 	min-height: 100vh;
 }
 
+.tracks li a {
+	overflow: hidden;
+}
+
+.tracks li img {
+	position: absolute;
+}
+
+// icons
+
 .svg-icon {
 	stroke: transparent;
 }
@@ -72,12 +76,4 @@ blockquote {
 
 .spotify-green {
 	color: $spotify-green;
-}
-
-.tracks li a {
-	overflow: hidden;
-}
-
-.tracks li img {
-	position: absolute;
 }

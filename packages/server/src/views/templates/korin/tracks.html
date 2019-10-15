@@ -37,11 +37,23 @@
 				<dt class="clip credits">Credits</dt>
 				<dd class="ml0 gray truncate">
 					<a
-						class="credits-lastfm"
+						class="credits-lastfm btn no-underline near-white bg-animate bg-near-black hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
 						href="{{ track.lastFmUrl }}"
+						title="LastFm"
 						rel="noreferrer"
-						><i class="fab fa-lastfm-square"></i>LastFm</a
 					>
+						<i class="f6 fab fa-lastfm"></i>
+						<span class="f6 ml3 pr2">LastFm</span>
+					</a>
+					<a
+						class="credits-lastfm btn no-underline near-white bg-animate bg-near-black hover-bg-gray inline-flex items-center ma2 tc br2 pa2"
+						href="{{ track.spotifyUrl }}"
+						title="Spotify"
+						rel="noreferrer"
+					>
+						<i class="f6 fab fa-spotify"></i>
+						<span class="f6 ml3 pr2">Spotify</span>
+					</a>
 				</dd>
 			</dl>
 		</li>
