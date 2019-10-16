@@ -12,8 +12,5 @@ describe('Given View helpers:', () => {
 		expect(image).toBeDefined();
 		expect(artist).toBeDefined();
 		expect(url).toBeDefined();
-
-		expect(profileUrl).toBeDefined();
-		expect(profileUrl).not.toEqual(expect.stringContaining('/v1'));
 	});
 });

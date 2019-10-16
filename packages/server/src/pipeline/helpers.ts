@@ -5,18 +5,18 @@ import jsonata from 'jsonata';
 import utils from '../utils';
 import { RawTopTrack, TopTrackModel } from '../types';
 
-export const { vars, slugger } = utils;
+export const { vars } = utils;
 export const { convertTopTracksPath } = vars;
 
 const topTrackPartialProps = {
 	title: Joi.string(),
 	artist: Joi.string(),
 	lastFmUrl: Joi.string().uri(),
-	profileUrl: Joi.string(),
 };
 
 const topTrackProps = {
 	...topTrackPartialProps,
+	profileUrl: Joi.string(),
 	spotify: { image: Joi.string().uri(), href: Joi.string().uri() },
 };
 
@@ -88,10 +88,6 @@ export const saveRawTopTracks = async server => {
 
 export const parseTopTracksPartial = topTracks => {
 	const expression = jsonata(convertTopTracksPath);
-
-	expression.registerFunction('getProfileUrl', (artist, title) => {
-		return slugger.slugify(`${artist} ${title}`).toLowerCase();
-	});
 	const tracks = expression.evaluate(topTracks);
 
 	return tracks;
