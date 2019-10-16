@@ -24,11 +24,11 @@
 				<img
 					class="db ba b--black-10"
 					alt="{{ track.artist }}"
-					src="{{ track.image if track.image else '/images/korin/placeholder-artist.jpg' }}"
+					src="{{ track.spotify.image if track.spotify.image else '/images/korin/placeholder-artist.jpg' }}"
 				/>
 			</a>
 			{{ helpers.attribution( track.artist, track.title, track.lastFmUrl,
-			track.spotifyUrl ) }}
+			track.spotify.href ) }}
 		</li>
 		{% endfor %}
 	</ul>
