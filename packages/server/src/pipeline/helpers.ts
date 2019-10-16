@@ -118,7 +118,7 @@ export const addTrackProfile = async server => {
 	);
 };
 
-export const addArtistImages = async server => {
+export const addSpotifyData = async server => {
 	const tracks = await server.app.db.TopTrack.find({});
 
 	await Promise.all(

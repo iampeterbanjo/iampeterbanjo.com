@@ -204,7 +204,7 @@ export interface Api {
 		pipeline: {
 			saveRawTopTracks: (server: Api) => Promise<RawTopTrack[]>;
 			convertRawTopTracks: (server: Api) => Promise<ConvertedTrack[]>;
-			addArtistImages: (server: Api) => Promise<void>;
+			addSpotifyData: (server: Api) => Promise<void>;
 			addTrackProfile: (server: Api) => Promise<void>;
 		};
 	};

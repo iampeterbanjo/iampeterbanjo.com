@@ -3,7 +3,7 @@ import * as helpers from './helpers';
 const methods = [
 	'saveRawTopTracks',
 	'convertRawTopTracks',
-	'addArtistImages',
+	'addSpotifyData',
 	'addTrackProfile',
 ].map((name: string) => {
 	return {

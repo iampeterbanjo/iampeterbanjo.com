@@ -42,7 +42,7 @@ describe('Given pipeline API', () => {
 	[
 		'convertRawTopTracks',
 		'saveRawTopTracks',
-		'addArtistImages',
+		'addSpotifyData',
 		'addTrackProfile',
 	].forEach(name => {
 		it(`When method ${name} is registered its a function`, () => {

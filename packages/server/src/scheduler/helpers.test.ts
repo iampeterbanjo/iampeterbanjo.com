@@ -53,18 +53,18 @@ afterAll(async () => {
 });
 
 describe('Given importChartTracks', () => {
-	test('When called it should use saveRawTopTracks, convertRawTopTracks, addArtistImages, addTrackProfile', async () => {
+	test('When called it should use saveRawTopTracks, convertRawTopTracks, addSpotifyData, addTrackProfile', async () => {
 		const helpers = new Helpers(server);
 		jest.spyOn(server.methods.pipeline, 'saveRawTopTracks');
 		jest.spyOn(server.methods.pipeline, 'convertRawTopTracks');
-		jest.spyOn(server.methods.pipeline, 'addArtistImages');
+		jest.spyOn(server.methods.pipeline, 'addSpotifyData');
 		jest.spyOn(server.methods.pipeline, 'addTrackProfile');
 
 		await helpers.importChartTracks();
 
 		expect(server.methods.pipeline.saveRawTopTracks).toHaveBeenCalled();
 		expect(server.methods.pipeline.convertRawTopTracks).toHaveBeenCalled();
-		expect(server.methods.pipeline.addArtistImages).toHaveBeenCalled();
+		expect(server.methods.pipeline.addSpotifyData).toHaveBeenCalled();
 		expect(server.methods.pipeline.addTrackProfile).toHaveBeenCalled();
 	});
 });

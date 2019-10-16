@@ -22,7 +22,7 @@ export default {
 					const converted = await server.methods.pipeline.convertRawTopTracks(
 						server,
 					);
-					await server.methods.pipeline.addArtistImages(server);
+					await server.methods.pipeline.addSpotifyData(server);
 					await server.methods.pipeline.addTrackProfile(server);
 
 					const message = `Extracted ${extracted.length} and converted ${converted.length} tracks`;

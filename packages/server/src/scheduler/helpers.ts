@@ -13,7 +13,7 @@ export default class Helpers {
 		try {
 			await this.server.methods.pipeline.saveRawTopTracks(this.server);
 			await this.server.methods.pipeline.convertRawTopTracks(this.server);
-			await this.server.methods.pipeline.addArtistImages(this.server);
+			await this.server.methods.pipeline.addSpotifyData(this.server);
 			await this.server.methods.pipeline.addTrackProfile(this.server);
 		} catch (error) {
 			console.error(error);

@@ -87,7 +87,7 @@ export const mockPipelinePlugin = {
 				}),
 			},
 			{
-				name: 'pipeline.addArtistImages',
+				name: 'pipeline.addSpotifyData',
 				method: () => ({
 					isMock: true,
 				}),

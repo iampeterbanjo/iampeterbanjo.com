@@ -107,7 +107,7 @@ describe('Given addTrackProfile', () => {
 	});
 });
 
-describe('Given addArtistImages', () => {
+describe('Given addSpotifyData', () => {
 	let server;
 
 	beforeAll(async () => {
@@ -134,8 +134,8 @@ describe('Given addArtistImages', () => {
 		jest.restoreAllMocks();
 	});
 
-	test('When addArtistImages runs tracks have image urls', async () => {
-		await server.methods.pipeline.addArtistImages(server);
+	test('When addSpotifyData runs tracks have image urls', async () => {
+		await server.methods.pipeline.addSpotifyData(server);
 
 		const track: TopTrack = await server.app.db.TopTrack.findOne({});
 
@@ -210,7 +210,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 	});
 
 	[
-		'addArtistImages',
+		'addSpotifyData',
 		'saveRawTopTracks',
 		'convertRawTopTracks',
 		'addTrackProfile',
