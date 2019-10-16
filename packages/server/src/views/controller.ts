@@ -64,13 +64,24 @@ export const handleKorinProfilesGet = server => {
 		path,
 		handler: async (request, reply) => {
 			const { profileUrl } = request.params;
-			const track = await server.app.db.TopTrack.findOne({
+			const {
+				summary,
+				artist,
+				title,
+				profile,
+				spotify,
+			} = await server.app.db.TopTrack.findOne({
 				profileUrl,
 			});
 
+			console.log(spotify);
+
 			return reply.view('korin/profiles', {
-				...track,
-				profile: JSON.stringify(track.profile),
+				summary,
+				artist,
+				title,
+				spotify,
+				profile: JSON.stringify(profile),
 				pathToTracks: routes.get_korin_tracks().url,
 			});
 		},

@@ -15,7 +15,7 @@ describe('Given Korin tracks profile', () => {
 	});
 
 	it('loads with a profile summary', () => {
-		cy.get('h2 ~ p').should($p => {
+		cy.get('.summary').should($p => {
 			expect($p[0].innerText.length).to.be.greaterThan(200);
 		});
 	});

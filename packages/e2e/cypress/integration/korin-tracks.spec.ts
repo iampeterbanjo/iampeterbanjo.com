@@ -8,11 +8,9 @@ describe('Given Korin tracks page', () => {
 		cy.injectAxe();
 	});
 
-	// disabled because of track images color-contrast violations
-	// it('has no detectable a11y violations on load', () => {
-	// 	// Test the page at initial load
-	// 	cy.checkA11y();
-	// });
+	it('has no detectable a11y violations on load', () => {
+		cy.checkA11y();
+	});
 
 	it('has 50 tracks', () => {
 		cy.get('.tracks li').then($list => {
