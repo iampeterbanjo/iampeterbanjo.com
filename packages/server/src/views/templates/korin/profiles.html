@@ -11,9 +11,26 @@
 
 <h2 class="lh-title mv3">Profile</h2>
 
-{{ helpers.p(summary | striptags(true) | escape | nl2br) }}
+<div class="cf">
+	<div class="fl w-100 w-30-ns">
+		<p class="db aspect-ratio aspect-ratio--1x1">
+			<img
+				class="db ba b--black-10"
+				alt="{{ track.artist }}"
+				src="{{ track.image if track.image else '/images/korin/placeholder-artist.jpg' }}"
+			/>
+			{{ helpers.attribution( track.artist, track.title, track.lastFmUrl,
+			track.spotifyUrl ) }}
+		</p>
+	</div>
+	<div class="fl w-100 w-70-ns">
+		<p class="pl4-ns f5 f4-ns fw4 b measure dib-m lh-copy">
+			{{ summary | striptags(true) | escape | nl2br }}
+		</p>
+	</div>
+</div>
 
-<p class="flex justify-between">
+<p class="flex justify-between mt4">
 	<a class="flex items-center go-back" rel="prev" href="{{ pathToTracks }}">
 		<i>
 			<svg
