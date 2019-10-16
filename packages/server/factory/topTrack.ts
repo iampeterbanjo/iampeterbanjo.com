@@ -4,7 +4,7 @@ export default function getTopTrack() {
 	return {
 		artist: casual.full_name,
 		title: casual.title,
-		image: casual.url,
+		spotify: { image: casual.url, href: casual.url },
 		lastFmUrl: casual.url,
 		profileUrl: casual.url,
 	};

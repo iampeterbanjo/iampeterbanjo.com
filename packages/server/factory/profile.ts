@@ -11,7 +11,7 @@ export default function make() {
 		artist,
 		title,
 		summary: casual.sentences(),
-		image: casual.url,
+		spotify: { image: casual.url, href: casual.url },
 		profileUrl: slugger.slugify(`${artist} ${title}`),
 		lastFmUrl: casual.url,
 	};

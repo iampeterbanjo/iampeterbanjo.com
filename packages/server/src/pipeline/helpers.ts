@@ -8,15 +8,19 @@ import { RawTopTrack, TopTrackModel } from '../types';
 export const { vars, slugger } = utils;
 export const { convertTopTracksPath } = vars;
 
-export const TopTrackValidator = Joi.object({
+const topTrackPartialProps = {
 	title: Joi.string(),
-	image: Joi.string().uri(),
 	artist: Joi.string(),
 	lastFmUrl: Joi.string().uri(),
 	profileUrl: Joi.string(),
-});
+};
 
-export const RawTopTrackValidator = Joi.object({
+const topTrackProps = {
+	...topTrackPartialProps,
+	spotify: { image: Joi.string().uri(), href: Joi.string().uri() },
+};
+
+const rawTopTrackProps = {
 	name: Joi.string(),
 	duration: Joi.string(),
 	playcount: Joi.string(),
@@ -24,16 +28,22 @@ export const RawTopTrackValidator = Joi.object({
 	url: Joi.string().uri(),
 	artist: Joi.object(),
 	image: Joi.array(),
-});
+};
+
+export const TopTrackPartialValidator = Joi.object(topTrackPartialProps);
+export const TopTrackValidator = Joi.object(topTrackProps);
+export const RawTopTrackValidator = Joi.object(rawTopTrackProps);
 
 export const TrackProfileValidator = Joi.object({
-	title: Joi.string(),
-	image: Joi.string().uri(),
-	artist: Joi.string(),
-	lastFmUrl: Joi.string().uri(),
-	profileUrl: Joi.string(),
+	...topTrackProps,
 	summary: Joi.string(),
 });
+
+export const checkTopTrackPartial = (topTrack: object) => {
+	return Joi.validate(topTrack, TopTrackPartialValidator, {
+		presence: 'required',
+	});
+};
 
 export const checkTopTrack = (topTrack: object) => {
 	return Joi.validate(topTrack, TopTrackValidator, { presence: 'required' });
@@ -76,7 +86,7 @@ export const saveRawTopTracks = async server => {
 	return tracks;
 };
 
-export const parseTopTracks = topTracks => {
+export const parseTopTracksPartial = topTracks => {
 	const expression = jsonata(convertTopTracksPath);
 
 	expression.registerFunction('getProfileUrl', (artist, title) => {
@@ -89,7 +99,7 @@ export const parseTopTracks = topTracks => {
 
 export const convertRawTopTracks = async server => {
 	const rawTracks = await server.app.db.RawTopTrack.find({});
-	const tracks = parseTopTracks(rawTracks);
+	const tracks = parseTopTracksPartial(rawTracks);
 
 	await server.app.db.TopTrack.deleteMany();
 	await server.app.db.TopTrack.insertMany(tracks);

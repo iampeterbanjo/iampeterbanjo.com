@@ -8,10 +8,14 @@ import rawTopTracks from '../../fixtures/rawTopTracks.json';
 const {
 	checkTopTrack,
 	checkRawTopTrack,
-	parseTopTracks,
+	checkTopTrackPartial,
+	parseTopTracksPartial,
 	parseRawTopTracks,
 } = helpers;
 
+describe('test', () => {
+	it('should pass', () => {});
+});
 describe('Given pipeline helpers', () => {
 	describe('And parseRawTopTracks', () => {
 		test('When converted to TopTrack it is valid', async () => {
@@ -23,9 +27,9 @@ describe('Given pipeline helpers', () => {
 
 	describe('And parseTopTracks', () => {
 		test('When converted to TopTrack it is valid', async () => {
-			const [result] = parseTopTracks(rawTopTracks);
+			const [result] = parseTopTracksPartial(rawTopTracks);
 
-			expect(checkTopTrack(result)).resolves.toBeTruthy();
+			expect(checkTopTrackPartial(result)).resolves.toBeTruthy();
 		});
 	});
 
@@ -34,7 +38,7 @@ describe('Given pipeline helpers', () => {
 			expect(checkTopTrack({})).rejects.toThrow();
 		});
 
-		['title', 'image', 'artist', 'lastFmUrl'].forEach(prop => {
+		['title', 'spotify', 'artist', 'lastFmUrl'].forEach(prop => {
 			it(`When missing ${prop} throws an error`, async () => {
 				const [topTrack] = factory.topTrack(1);
 				const partialTrack = R.omit([prop], topTrack);

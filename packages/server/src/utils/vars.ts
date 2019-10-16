@@ -16,8 +16,7 @@ export const convertTopTracksPath = `
 		"title": name,
 		"lastFmUrl": url,
 		"artist": artist.name,
-		"profileUrl": $getProfileUrl(artist.name, name),
-		"image": "https://test.com"
+		"profileUrl": $getProfileUrl(artist.name, name)
 	}`;
 export const GENIUS_API_ACCESS_TOKEN =
 	process.env.GENIUS_API_ACCESS_TOKEN || '';
