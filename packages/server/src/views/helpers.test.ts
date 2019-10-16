@@ -6,7 +6,7 @@ const { parseRawTopTrackJson } = helpers;
 describe('Given View helpers:', () => {
 	test('When data is valid top tracks are parsed correctly', () => {
 		const [track] = parseRawTopTrackJson(topTracksData);
-		const { title, image, artist, url, profileUrl } = track;
+		const { title, image, artist, url } = track;
 
 		expect(title).toBeDefined();
 		expect(image).toBeDefined();

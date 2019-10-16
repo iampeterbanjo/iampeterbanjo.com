@@ -16,11 +16,6 @@ export const viewBlogList = () => blogHelpers.getBlogFiles();
 
 export const parseRawTopTrackJson = (topTracks: RawTopTrackJson) => {
 	const expression = jsonata(topTracksPath);
-
-	expression.registerFunction('getProfileUrl', () => {
-		const { url } = routes.get_korin_profiles();
-		return url;
-	});
 	const tracks = expression.evaluate(topTracks);
 
 	return tracks;
