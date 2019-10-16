@@ -27,7 +27,7 @@ describe('Given korin API', () => {
 	[
 		'getProfileByArtistAndTrack',
 		'getChartTopTracks',
-		'getArtistImage',
+		'getSpotifyData',
 		'getSpotifyAccessToken',
 	].forEach(name => {
 		it(`When method ${name} is registered its a function`, () => {

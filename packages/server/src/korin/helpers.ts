@@ -168,24 +168,25 @@ export const getSpotifyAccessToken = async (): Promise<string> => {
 	return data.body.access_token;
 };
 
-export const getArtistImage = async (
+export const getSpotifyData = async (
 	artist: string,
 	accessToken: string,
-): Promise<string> => {
+): Promise<{ image: string; href: string }> => {
 	spotifyApi.setAccessToken(accessToken);
 	const result: SpotifyApiArtistSearchResponse = await spotifyApi.search(
 		artist,
 		['artist'],
 	);
 
-	const image = result.body.artists.items[0].images.filter(
+	const imageData = result.body.artists.items[0].images.filter(
 		image => image.height === 640,
 	)[0];
-	const { url = '' } = image || {};
+	const { href } = result.body.artists;
+	const { url: image = '' } = imageData || {};
 
-	if (!url) {
+	if (!image) {
 		console.warn(`image url missing for ${artist}`);
 	}
 
-	return url;
+	return { image, href };
 };

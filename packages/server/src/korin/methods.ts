@@ -5,7 +5,7 @@ import * as helpers from './helpers';
 const {
 	getProfileByArtistAndTrack,
 	getChartTopTracks,
-	getArtistImage,
+	getSpotifyData,
 	getSpotifyAccessToken,
 } = helpers;
 const { time, getCache } = utils;
@@ -33,8 +33,8 @@ export default [
 		},
 	},
 	{
-		name: 'korin.getArtistImage',
-		method: getArtistImage,
+		name: 'korin.getSpotifyData',
+		method: getSpotifyData,
 		options: {
 			cache: getCache({ expiresIn: time.oneMonth }),
 			generateKey: artist => {

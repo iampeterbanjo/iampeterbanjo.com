@@ -7,7 +7,7 @@ const TopTrackSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	image: String,
+	spotify: Object,
 	artist: {
 		type: String,
 		required: true,

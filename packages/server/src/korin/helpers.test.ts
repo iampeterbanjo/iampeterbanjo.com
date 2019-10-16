@@ -16,7 +16,7 @@ const {
 	getPersonalityProfile,
 	getSongId,
 	getSongInfo,
-	getArtistImage,
+	getSpotifyData,
 	getSpotifyAccessToken,
 } = helpers;
 
@@ -172,7 +172,7 @@ describe('Given getSpotifyAccessToken', () => {
 	});
 });
 
-describe('Given getArtistImage', () => {
+describe('Given getSpotifyData', () => {
 	beforeAll(async () => {
 		await nock('https://api.spotify.com')
 			.get('/v1/search/')
@@ -185,8 +185,12 @@ describe('Given getArtistImage', () => {
 	});
 
 	test('When called with artist name, an image is returned', async () => {
-		const image = await getArtistImage('Ariana Grande', 'NgCXRK...MzYjw');
+		const { image, href } = await getSpotifyData(
+			'Ariana Grande',
+			'NgCXRK...MzYjw',
+		);
 
 		expect(image).toBeDefined();
+		expect(href).toBeDefined();
 	});
 });

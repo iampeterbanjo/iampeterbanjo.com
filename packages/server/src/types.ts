@@ -76,7 +76,10 @@ export type RawTopTrackJson = {
 export type Track = {
 	artist: string;
 	title: string;
-	image: string;
+	spotify: {
+		image: string;
+		href: string;
+	};
 	lastFmUrl: string;
 };
 
@@ -195,7 +198,7 @@ export interface Api {
 		korin: {
 			getProfileByArtistAndTrack: () => Promise<TrackProfile>;
 			getChartTopTracks: () => Promise<RawTopTrackJson>;
-			getArtistImage: () => Promise<string>;
+			getSpotifyData: () => Promise<string>;
 			getSpotifyAccessToken: () => Promise<string>;
 		};
 		pipeline: {

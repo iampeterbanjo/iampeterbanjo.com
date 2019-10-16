@@ -69,7 +69,7 @@ describe('Given mockKorinPlugin', () => {
 		[
 			'getProfileByArtistAndTrack',
 			'getChartTopTracks',
-			'getArtistImage',
+			'getSpotifyData',
 			'getSpotifyAccessToken',
 		].forEach(method => {
 			expect(typeof server.methods.korin[method]).toEqual('function');

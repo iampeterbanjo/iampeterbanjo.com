@@ -49,7 +49,7 @@ export const mockKorinPlugin = {
 				}),
 			},
 			{
-				name: 'korin.getArtistImage',
+				name: 'korin.getSpotifyData',
 				method: () => ({
 					isMock: true,
 				}),

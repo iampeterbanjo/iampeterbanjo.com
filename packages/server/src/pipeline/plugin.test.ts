@@ -115,11 +115,11 @@ describe('Given addArtistImages', () => {
 
 		server.methods.korin = {
 			getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
-			getArtistImage: jest
-				.fn()
-				.mockResolvedValue(
+			getSpotifyData: jest.fn().mockResolvedValue({
+				image:
 					'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
-				),
+				href: 'https://artist.spotify.com',
+			}),
 		};
 
 		jest
@@ -139,8 +139,11 @@ describe('Given addArtistImages', () => {
 
 		const track: TopTrack = await server.app.db.TopTrack.findOne({});
 
-		expect(track.image).toEqual(
-			expect.stringContaining('https://i.scdn.co/image'),
+		expect(track.spotify).toEqual(
+			expect.objectContaining({
+				image: expect.stringContaining('https://i.scdn.co/image'),
+				href: 'https://artist.spotify.com',
+			}),
 		);
 	});
 });
@@ -154,7 +157,7 @@ describe('Given saveRawTopTracks, models, korin plugins', () => {
 		server.methods.korin = {
 			getChartTopTracks: jest.fn().mockResolvedValue(topTracksData),
 			getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
-			getArtistImage: jest
+			getSpotifyData: jest
 				.fn()
 				.mockResolvedValue(
 					'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
@@ -235,7 +238,7 @@ describe('Given BAD API response from lastFm', () => {
 		server.methods.korin = {
 			getChartTopTracks: jest.fn().mockResolvedValue('BAD'),
 			getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
-			getArtistImage: jest
+			getSpotifyData: jest
 				.fn()
 				.mockResolvedValue(
 					'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',
@@ -281,7 +284,7 @@ describe('Given different API response from lastFm', () => {
 		server.methods.korin = {
 			getChartTopTracks: jest.fn().mockResolvedValue(different),
 			getSpotifyAccessToken: jest.fn().mockResolvedValue('NgCXRK...MzYjw'),
-			getArtistImage: jest
+			getSpotifyData: jest
 				.fn()
 				.mockResolvedValue(
 					'https://i.scdn.co/image/b1dfbe843b0b9f54ab2e588f33e7637d2dab065a',

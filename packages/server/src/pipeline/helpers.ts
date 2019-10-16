@@ -124,12 +124,12 @@ export const addArtistImages = async server => {
 	await Promise.all(
 		tracks.map(async (track: TopTrackModel) => {
 			const accessToken = await server.methods.korin.getSpotifyAccessToken();
-			const imageUrl = await server.methods.korin.getArtistImage(
+			const spotifyData = await server.methods.korin.getSpotifyData(
 				track.artist,
 				accessToken,
 			);
 
-			track.image = imageUrl;
+			track.spotify = spotifyData;
 
 			await track.save();
 		}),
