@@ -70,6 +70,7 @@ export const handleKorinProfilesGet = server => {
 				title,
 				profile,
 				spotify,
+				lastFmUrl,
 			} = await server.app.db.TopTrack.findOne({
 				profileUrl,
 			});
@@ -81,6 +82,7 @@ export const handleKorinProfilesGet = server => {
 				artist,
 				title,
 				spotify,
+				lastFmUrl,
 				profile: JSON.stringify(profile),
 				pathToTracks: routes.get_korin_tracks().url,
 			});
