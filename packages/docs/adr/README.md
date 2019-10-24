@@ -13,3 +13,4 @@
 - [11. artist-images-from-spotify](0011-artist-images-from-spotify.md)
 - [12. parallel-database-tests-mongodb-server](0012-parallel-database-tests-mongodb-server.md)
 - [13. cypress-e2e-tests-in-typescript](0013-cypress-e2e-tests-in-typescript.md)
+- [14. server-argument-anti-pattern](0014-server-argument-anti-pattern.md)
