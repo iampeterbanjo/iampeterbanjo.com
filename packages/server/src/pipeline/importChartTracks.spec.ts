@@ -22,8 +22,8 @@ describe('Given ImportChartTracks', () => {
 			jest.spyOn(helpers, 'parseRawTopTracks');
 
 			await ImportChartTracks({
-				chartTrackModel,
-				lastFmApi,
+				model: chartTrackModel,
+				request: lastFmApi.chart.getTopTracks,
 				parser: helpers.parseRawTopTracks,
 			});
 			const result = await chartTrackModel.find({});

@@ -1,11 +1,7 @@
-export default async function ImportChartTracks({
-	chartTrackModel,
-	lastFmApi,
-	parser,
-}) {
-	const chartTopTracks = await lastFmApi.chart.getTopTracks();
+export default async function ImportChartTracks({ model, request, parser }) {
+	const chartTopTracks = await request();
 	const tracks = parser(chartTopTracks);
 
-	await chartTrackModel.deleteMany();
-	return chartTrackModel.insertMany(tracks);
+	await model.deleteMany();
+	return model.insertMany(tracks);
 }
