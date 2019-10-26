@@ -1,5 +1,5 @@
 import * as helpers from './helpers';
-import topTracksData from '../../fixtures/lastfm-topTracks.json';
+import topTracksData from '../../fixtures/lastfm-chart.getTopTracks.json';
 
 const { parseRawTopTrackJson } = helpers;
 

@@ -8,7 +8,7 @@ Date: 2019-10-24
 
 ## Context
 
-When I added the Schedule plugin to this project I started to realise the limitations of depending on passing the Hapi server as an argument. Take for example saving the `TopTracks` in the pipeline plugin:
+When I added the Schedule plugin to this project I started to realise the limitations of passing the Hapi server as an argument. Take for example saving the `TopTracks` in the pipeline plugin:
 
 ```JavaScript
 export const saveRawTopTracks = async server => {

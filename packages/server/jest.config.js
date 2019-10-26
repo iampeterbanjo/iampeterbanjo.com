@@ -1,10 +1,11 @@
 module.exports = {
-	preset: 'ts-jest',
-	testEnvironment: 'node',
 	collectCoverage: true,
-	coverageReporters: ['json-summary', 'text-summary'],
 	collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/node_modules/**'],
+	coverageReporters: ['json-summary', 'text-summary'],
 	notify: true,
 	notifyMode: 'failure-change',
+	preset: 'ts-jest',
+	testMatch: ['**/?(*.)+(spec).[jt]s?(x)'],
 	setupFilesAfterEnv: ['<rootDir>/setupFilesAfterEnv.js'],
+	testEnvironment: 'node',
 };

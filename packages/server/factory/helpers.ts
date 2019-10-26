@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
+import Bluebird from 'bluebird';
 import { MongoMemoryServer } from 'mongodb-memory-server';
+import { DbConnector } from '../src/types';
 
 let mongoServer: MongoMemoryServer;
 
@@ -8,10 +10,15 @@ export const disconnectAndStopDb = async () => {
 	await mongoServer.stop();
 };
 
-export const getDbConnection = async () => {
+export const getDbConnection: DbConnector = async () => {
 	mongoServer = new MongoMemoryServer();
 	const uri = await mongoServer.getConnectionString();
-	await mongoose.connect(uri, { useNewUrlParser: true });
+
+	// mongoose.set('debug', true);
+	await mongoose.connect(uri, {
+		useNewUrlParser: true,
+		promiseLibrary: Bluebird,
+	});
 
 	return {
 		uri,

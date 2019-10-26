@@ -1,4 +1,5 @@
 import Scheduler from './scheduler/Scheduler';
+import * as mongoose from 'mongoose';
 
 export type GeniusData = {
 	meta: {
@@ -209,3 +210,10 @@ export interface Api {
 		};
 	};
 }
+
+export interface Connection {
+	uri: string;
+	connection: mongoose.Connection;
+}
+
+export type DbConnector = () => Promise<Connection>;

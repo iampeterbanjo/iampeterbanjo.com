@@ -6,7 +6,7 @@ import * as helpers from '../../src/korin/helpers';
 
 import spotifyApiArtistSearch from '../../fixtures/spotify-api-artist-search.json';
 import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
-import topTracksData from '../../fixtures/lastfm-topTracks.json';
+import topTracksData from '../../fixtures/lastfm-chart.getTopTracks.json';
 import songData from '../../fixtures/genius-search.json';
 
 const { vars, message } = utils;
