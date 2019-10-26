@@ -1,6 +1,6 @@
 import nock from 'nock';
 
-import { GeniusData } from '../types';
+import { GeniusData } from '../../@types';
 import utils from '../../src/utils';
 import * as helpers from '../../src/korin/helpers';
 

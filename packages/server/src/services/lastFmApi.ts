@@ -1,4 +1,4 @@
-import { RawTopTrackJson } from '../types';
+import { RawTopTrackJson } from '../../@types';
 
 import utils from '../utils';
 

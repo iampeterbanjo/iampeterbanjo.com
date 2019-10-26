@@ -4,7 +4,7 @@ import Agenda from 'agenda';
 import securityPlugin from '../security';
 import * as routes from './routes';
 
-import { Api } from '../types';
+import { Api } from '../../@types';
 import {
 	getDbConnection,
 	disconnectAndStopDb,

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Bluebird from 'bluebird';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { DbConnector } from '../src/types';
+import { DbConnector } from '../@types';
 
 let mongoServer: MongoMemoryServer;
 

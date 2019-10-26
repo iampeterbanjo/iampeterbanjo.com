@@ -1,4 +1,4 @@
-import { Api } from '../types';
+import { Api } from '../../@types';
 
 export default class Helpers {
 	server: Api;

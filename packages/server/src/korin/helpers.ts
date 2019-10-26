@@ -14,7 +14,7 @@ import {
 	TrackProfile,
 	SpotifyApiGrantResponse,
 	SpotifyApiArtistSearchResponse,
-} from '../types';
+} from '../../@types';
 
 export const {
 	vars,

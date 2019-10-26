@@ -4,7 +4,7 @@ import plugin from './plugin';
 import Helpers from './helpers';
 
 import securityPlugin from '../security';
-import { Api } from '../types';
+import { Api } from '../../@types';
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
 import topTracksJson from '../../fixtures/lastfm-chart.getTopTracks.json';
 import {

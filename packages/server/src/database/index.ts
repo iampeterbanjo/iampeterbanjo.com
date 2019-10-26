@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 import { MONGODB_ADDON_URI } from '../utils/vars';
 import { ChartTrackModel, IChartTrack } from './ChartTrack';
-import { DbConnector } from '../types';
+import { DbConnector } from '../../@types';
 
 export interface IDatabase {
 	chartTrackModel: mongoose.Model<IChartTrack>;

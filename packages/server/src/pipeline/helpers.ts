@@ -3,7 +3,7 @@ import * as R from 'ramda';
 import jsonata from 'jsonata';
 
 import utils from '../utils';
-import { RawTopTrack, TopTrackModel } from '../types';
+import { RawTopTrack, TopTrackModel } from '../../@types';
 
 export const { vars } = utils;
 export const { convertTopTracksPath } = vars;

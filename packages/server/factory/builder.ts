@@ -3,7 +3,7 @@ import getTopTrack from './topTrack';
 import getProfile from './profile';
 import * as mock from './mock';
 
-import { TopTrack, Profile } from '../src/types';
+import { TopTrack, Profile } from '../@types';
 
 const generate = (
 	count: number,

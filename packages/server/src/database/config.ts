@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import Bluebird from 'bluebird';
 
-import { DbConnector } from '../types';
+import { DbConnector } from '../../@types';
 import { MONGODB_ADDON_URI, MONGODB_ADDON_DB } from '../utils/vars';
 
 export const connectionOptions = {
