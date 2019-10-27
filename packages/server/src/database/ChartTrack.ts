@@ -1,6 +1,6 @@
-import * as Mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 
-export interface IChartTrack extends Mongoose.Document {
+export interface IChartTrack extends mongoose.Document {
 	name: string;
 	duration: string;
 	playcount: string;
@@ -25,7 +25,7 @@ export interface IChartTrack extends Mongoose.Document {
 	importedDate: Date;
 }
 
-export const ChartTrackSchema = new Mongoose.Schema(
+export const ChartTrackSchema = new mongoose.Schema(
 	{
 		name: String,
 		duration: String,
@@ -58,7 +58,7 @@ export const ChartTrackSchema = new Mongoose.Schema(
 	},
 );
 
-export const ChartTrackModel = Mongoose.model<IChartTrack>(
+export const ChartTrackModel = mongoose.model<IChartTrack>(
 	'ChartTrack',
 	ChartTrackSchema,
 );
