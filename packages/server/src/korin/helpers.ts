@@ -14,6 +14,7 @@ import {
 	TrackProfile,
 	SpotifyApiGrantResponse,
 	SpotifyApiArtistSearchResponse,
+	GetSpotifyArtistDataParams,
 } from '../../@types';
 
 export const {
@@ -166,6 +167,47 @@ export const getSpotifyAccessToken = async (): Promise<string> => {
 	const data: SpotifyApiGrantResponse = await spotifyApi.clientCredentialsGrant();
 
 	return data.body.access_token;
+};
+
+export const getSpotifyApi = async () => {
+	const spotifyApi = new SpotifyWebApi({
+		clientId: SPOTIFY_CLIENT_KEY,
+		clientSecret: SPOTIFY_CLIENT_SECRET,
+	});
+
+	const accessToken = await getSpotifyAccessToken();
+	spotifyApi.setAccessToken(accessToken);
+
+	return spotifyApi;
+};
+
+export const getSpotifyArtist = async ({
+	artist,
+	spotifyApi,
+}: {
+	artist: string;
+	spotifyApi: SpotifyWebApi;
+}): Promise<SpotifyApiArtistSearchResponse> => {
+	return spotifyApi.search(artist, ['artist']);
+};
+
+export const getSpotifyArtistData = async ({
+	artist,
+	spotifyApi,
+}: GetSpotifyArtistDataParams) => {
+	const result = await getSpotifyArtist({ artist, spotifyApi });
+
+	const imageData = result.body.artists.items[0].images.filter(
+		image => image.height === 640,
+	)[0];
+	const { href } = result.body.artists;
+	const { url: image = '' } = imageData || {};
+
+	if (!image) {
+		console.warn(`image url missing for ${artist}`);
+	}
+
+	return { image, href };
 };
 
 export const getSpotifyData = async (

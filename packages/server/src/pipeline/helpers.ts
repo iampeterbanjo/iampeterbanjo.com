@@ -3,7 +3,13 @@ import * as R from 'ramda';
 import jsonata from 'jsonata';
 
 import utils from '../utils';
-import { RawTopTrack, TopTrackModel } from '../../@types';
+import {
+	RawTopTrack,
+	TopTrackModel,
+	AddTrackProfileDataParams,
+	AddTrackSpotifyDataParams,
+} from '../../@types';
+import { IChartTrack } from '../database/ChartTrack';
 
 export const { vars } = utils;
 export const { convertTopTracksPath } = vars;
@@ -93,6 +99,23 @@ export const parseTopTracksPartial = topTracks => {
 	return tracks;
 };
 
+export const addProfileAndSpotifyData = async (
+	chartTracks: IChartTrack[],
+	{ spotifyApi, profileApi },
+) => {
+	const tracks = parseTopTracksPartial(chartTracks);
+	const withProfileData = await addTrackProfileData({
+		tracks,
+		request: profileApi,
+	});
+	const withSpotifyData = await addTrackSpotifyData({
+		tracks: withProfileData,
+		request: spotifyApi,
+	});
+
+	return withSpotifyData;
+};
+
 export const convertRawTopTracks = async server => {
 	const rawTracks = await server.app.db.RawTopTrack.find({});
 	const tracks = parseTopTracksPartial(rawTracks);
@@ -120,6 +143,43 @@ export const addTrackProfile = async server => {
 			const updated = Object.assign(track, { profile, summary, lyrics });
 
 			await updated.save();
+		}),
+	);
+};
+
+export const addTrackProfileData = async ({
+	tracks,
+	request,
+}: AddTrackProfileDataParams) => {
+	return Promise.all(
+		tracks.map(async (track: RawTopTrack) => {
+			const { profile, summary, lyrics } = await request({
+				artist: track.artist.name,
+				track: track.name,
+			});
+
+			return {
+				...track,
+				profile,
+				summary,
+				lyrics,
+			};
+		}),
+	);
+};
+
+export const addTrackSpotifyData = async ({
+	tracks,
+	request,
+}: AddTrackSpotifyDataParams) => {
+	await Promise.all(
+		tracks.map(async (track: RawTopTrack) => {
+			const spotify = await request(track.artist.name);
+
+			return {
+				...track,
+				spotify,
+			};
 		}),
 	);
 };

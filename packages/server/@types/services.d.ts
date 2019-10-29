@@ -92,3 +92,8 @@ export type SpotifyApiArtistSearchResponse = {
 		};
 	};
 };
+
+export type GetSpotifyArtistDataParams = {
+	artist: string;
+	spotifyApi: (artist: string) => Promise<SpotifyApiArtistSearchResponse>;
+};

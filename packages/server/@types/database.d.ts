@@ -74,6 +74,25 @@ export type Profile = TopTrack & {
 	profileUrl: string;
 };
 
+export type RequestProfileApi = (param: {
+	artist: string;
+	track: string;
+}) => Promise<TrackProfile>;
+
+type AddTrackProfileDataParams = {
+	tracks: RawTopTrack[];
+	request: RequestProfileApi;
+};
+
+export type RequestSpotifyArtistApi = (
+	artist: string,
+) => Promise<{ image: string; href: string }>;
+
+type AddTrackSpotifyDataParams = {
+	tracks: RawTopTrack[];
+	request: RequestSpotifyArtistApi;
+};
+
 export type TopTrackModel = MongooseModel & TopTrack;
 export type ProfileModel = MongooseModel & Profile;
 
