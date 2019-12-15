@@ -4,7 +4,17 @@
 	"description": "",
 	"main": "build/index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 0"
+		"build": "tsc -p tsconfig.build.json",
+		"prebuild": "rm -rf build",
+		"start-ts": "ts-node ./src/index.ts",
+		"before-commit": "run-s format",
+		"clean": "rm -rf node_modules",
+		"format": "pretty-quick --staged",
+		"dev": "nodemon -e js,json,html,md -x 'yarn start'",
+		"start": "node ./lib/index.js",
+		"test": "echo \"Error: no test specified\" && exit 0",
+		"test-watch": "nodemon -e js,json,html,md -x 'yarn test'",
+		"watch-ts": "tsc-watch --noClear -p tsconfig.build.json"
 	},
 	"keywords": [
 		"models"
@@ -15,10 +25,16 @@
 		"name": "Peter Banjo"
 	},
 	"dependencies": {
-		"bluebird": "^3.7.2",
-		"mongoose": "^5.8.1"
+		"@types/mongoose": "^5.5.34",
+		"mongoose": "^5.8.1",
+		"typescript": "^3.7.3"
 	},
 	"devDependencies": {
-		"@types/node": "^12.12.17"
+		"@types/node": "^12.12.17",
+		"husky": "^3.1.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.19.1",
+		"pretty-quick": "^2.0.1",
+		"tsc-watch": "^4.0.0"
 	}
 }

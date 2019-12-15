@@ -1,5 +1,4 @@
-import * as mongoose from 'mongoose';
-import Bluebird from 'bluebird';
+import mongoose from 'mongoose';
 
 import { DbConnector } from './types';
 import { MONGODB_ADDON_URI, MONGODB_ADDON_DB } from './env';
@@ -7,7 +6,6 @@ import { MONGODB_ADDON_URI, MONGODB_ADDON_DB } from './env';
 export const connectionOptions = {
 	useNewUrlParser: true,
 	dbName: MONGODB_ADDON_DB,
-	promiseLibrary: Bluebird,
 };
 
 export const getDbConnection: DbConnector = async () => {
