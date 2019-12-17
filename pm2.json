@@ -1,0 +1,12 @@
+{
+	"apps": [
+		{
+			"name": "iampeterbanjo-website",
+			"script": "./packages/server/build/start.js"
+		},
+		{
+			"name": "iampeterbanjo-data",
+			"script": "./packages/data/build/start.js"
+		}
+	]
+}
