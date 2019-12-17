@@ -48,7 +48,7 @@
 		"lint": "npx pretty-quick --check",
 		"prod": "run-s install-server install-css build-css build-server",
 		"start-dev": "cd ./packages/server; npm run dev",
-		"start": "pm2 start pm2.json",
+		"start": "pm2 start pm2.json --watch",
 		"test-data": "cd ./packages/data; npm run test",
 		"test-e2e": "cd ./packages/e2e; npm run test",
 		"test-server": "cd ./packages/server; npm run test",
