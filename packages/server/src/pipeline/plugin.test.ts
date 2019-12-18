@@ -9,11 +9,11 @@ import methods from './methods';
 import { ProfileModel, TopTrack } from '../types';
 import { getDbConnection, disconnectAndStopDb } from '../../factory';
 import modelsPlugin from '../models/plugin';
-import topTracksData from '../../fixtures/lastfm-topTracks.json';
-import rawTopTracks from '../../fixtures/rawTopTracks.json';
-import topTracksWithImages from '../../fixtures/topTracks-with-images.json';
-import profile from '../../fixtures/personality-profile.json';
-import { summary } from '../../fixtures/personality-summary.json';
+import topTracksData from '../../../fixtures/lastfm-topTracks.json';
+import rawTopTracks from '../../../fixtures/rawTopTracks.json';
+import topTracksWithImages from '../../../fixtures/topTracks-with-images.json';
+import profile from '../../../fixtures/personality-profile.json';
+import { summary } from '../../../fixtures/personality-summary.json';
 
 const Server = async () => {
 	const server = Hapi.Server({ debug: { request: ['error'] } });

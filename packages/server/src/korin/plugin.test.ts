@@ -3,7 +3,7 @@ import Hapi from '@hapi/hapi';
 import plugin from '../../src/korin/plugin';
 import routes from '../../src/korin/routes';
 import factory from '../../factory';
-import topTracksData from '../../fixtures/lastfm-topTracks.json';
+import topTracksData from '../../../fixtures/lastfm-topTracks.json';
 
 const server = Hapi.Server();
 

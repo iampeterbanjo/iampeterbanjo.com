@@ -5,10 +5,10 @@ import { GeniusData } from '../types';
 import utils from '../../src/utils';
 import * as helpers from '../../src/korin/helpers';
 
-import spotifyApiArtistSearch from '../../fixtures/spotify-api-artist-search.json';
-import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
-import topTracksData from '../../fixtures/lastfm-topTracks.json';
-import songData from '../../fixtures/genius-search.json';
+import spotifyApiArtistSearch from '../../../fixtures/spotify-api-artist-search.json';
+import spotifyApiTokenGrant from '../../../fixtures/spotify-api-token-grant.json';
+import topTracksData from '../../../fixtures/lastfm-topTracks.json';
+import songData from '../../../fixtures/genius-search.json';
 
 const { message } = utils;
 const {

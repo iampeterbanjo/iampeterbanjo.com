@@ -24,8 +24,6 @@ export const {
 	clientel: { genius, lastfm, lyricist },
 } = utils;
 export const {
-	lyricsIdPath,
-	songInfoPath,
 	LASTFM_API_KEY = '',
 	WATSON_PI_API_KEY,
 	WATSON_PI_API_URL,
@@ -33,6 +31,7 @@ export const {
 	SPOTIFY_CLIENT_KEY,
 	SPOTIFY_CLIENT_SECRET,
 } = env;
+export const { lyricsIdPath, songInfoPath } = utils.vars;
 
 export const spotifyApi = new SpotifyWebApi({
 	clientId: SPOTIFY_CLIENT_KEY,

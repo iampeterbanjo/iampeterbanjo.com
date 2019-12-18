@@ -7,7 +7,7 @@ import plugin from './plugin';
 const cssPath = '../../../css';
 const jsPath = '../../../js';
 const imagePath = '../../../images';
-const rootPath = path.join(__dirname, '../../fixtures');
+const rootPath = path.join(__dirname, '../../../fixtures');
 
 let server;
 beforeEach(async () => {

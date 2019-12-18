@@ -2,7 +2,7 @@ import Helpers from './helpers';
 import jobs from './jobs';
 import utils from '../utils';
 
-const { time } = utils;
+import time from 'time';
 
 export default class Scheduler {
 	public helpers;
