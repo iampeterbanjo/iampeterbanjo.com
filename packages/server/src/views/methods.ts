@@ -1,8 +1,9 @@
 import Crypto from 'crypto';
+import time from 'time';
 import * as helpers from './helpers';
 import utils from '../utils';
 
-const { time, getCache } = utils;
+const { getCache } = utils;
 const { viewBlogPost, viewBlogList, viewTopTracks, viewTrackProfile } = helpers;
 export default [
 	{

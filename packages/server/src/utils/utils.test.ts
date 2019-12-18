@@ -1,6 +1,7 @@
 import utils from '.';
+import time from 'time';
 
-const { time, getCache } = utils;
+const { getCache } = utils;
 
 describe('Given getCache', () => {
 	test('When its called the default cache is expected', () => {

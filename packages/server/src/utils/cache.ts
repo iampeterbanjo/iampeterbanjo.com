@@ -1,4 +1,4 @@
-import * as time from './time';
+import time from 'time';
 
 type Cache = {
 	expiresIn?: number;

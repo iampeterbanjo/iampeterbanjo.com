@@ -1,8 +1,10 @@
 import Crypto from 'crypto';
-import { getBlogFiles, getBlogContents } from './helpers';
-import utils from '../utils';
+import time from 'time';
 
-const { time, getCache } = utils;
+import utils from '../utils';
+import { getBlogFiles, getBlogContents } from './helpers';
+
+const { getCache } = utils;
 
 export default [
 	{

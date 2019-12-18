@@ -5,6 +5,7 @@
 	"main": "main.css",
 	"scripts": {
 		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
+		"clean": "rm -rf node_modules",
 		"postbuild": "npm run copy-webfonts",
 		"copy-webfonts": "ncp ./node_modules/@fortawesome/fontawesome-free/webfonts ./webfonts",
 		"watch-build": "nodemon --watch sass --ext scss -x 'npm run build'",

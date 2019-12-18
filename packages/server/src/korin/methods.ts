@@ -1,6 +1,7 @@
 import Crypto from 'crypto';
-import utils from '../utils';
+import time from 'time';
 import * as helpers from './helpers';
+import utils from '../utils';
 
 const {
 	getProfileByArtistAndTrack,
@@ -8,7 +9,8 @@ const {
 	getSpotifyData,
 	getSpotifyAccessToken,
 } = helpers;
-const { time, getCache } = utils;
+const { getCache } = utils;
+
 export default [
 	{
 		name: 'korin.getProfileByArtistAndTrack',
