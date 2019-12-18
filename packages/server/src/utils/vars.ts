@@ -33,7 +33,6 @@ export const WATSON_PI_API_VERSION = process.env.WATSON_PI_API_VERSION || '';
 export const ENVIRONMENT = process.env.NODE_ENV || 'development';
 export const BASE_URL = process.env.BASE_URL || '';
 export const ROLLBAR_ACCESS_TOKEN = process.env.ROLLBAR_ACCESS_TOKEN || '';
-export const PACKAGE_VERSION = process.env.npm_package_version;
 export const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET || '';
 export const SPOTIFY_CLIENT_KEY = process.env.SPOTIFY_CLIENT_KEY || '';
 export const SESSION_SECRET_KEY = process.env.SESSION_SECRET_KEY || '';
