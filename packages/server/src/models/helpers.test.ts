@@ -1,11 +1,10 @@
 import Bluebird from 'bluebird';
+import env from 'env';
 
-import utils from '../../src/utils';
 import * as helpers from '../../src/models/helpers';
 
-const { vars } = utils;
 const { connectionOptions } = helpers;
-const { MONGODB_ADDON_DB } = vars;
+const { MONGODB_ADDON_DB } = env;
 
 describe('Given model connectionOptions', () => {
 	test('When connected dbName is correct', () => {

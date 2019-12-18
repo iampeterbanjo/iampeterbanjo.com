@@ -1,4 +1,5 @@
 import nock from 'nock';
+import env from 'env';
 
 import { GeniusData } from '../types';
 import utils from '../../src/utils';
@@ -9,7 +10,7 @@ import spotifyApiTokenGrant from '../../fixtures/spotify-api-token-grant.json';
 import topTracksData from '../../fixtures/lastfm-topTracks.json';
 import songData from '../../fixtures/genius-search.json';
 
-const { vars, message } = utils;
+const { message } = utils;
 const {
 	getChartTopTracks,
 	getSongData,
@@ -20,7 +21,7 @@ const {
 	getSpotifyAccessToken,
 } = helpers;
 
-const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = vars;
+const { GENIUS_API_URL, LASTFM_API_URL, LASTFM_API_KEY } = env;
 
 afterAll(() => {
 	nock.restore();

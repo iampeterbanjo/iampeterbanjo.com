@@ -1,12 +1,10 @@
 import plugin from './plugin';
-import utils from '../utils';
-
-const { vars } = utils;
+import env from 'env';
 
 export default {
 	plugin,
 	options: {
-		accessToken: vars.ROLLBAR_ACCESS_TOKEN,
+		accessToken: env.ROLLBAR_ACCESS_TOKEN,
 		captureUncaught: true,
 		captureUnhandledRejections: true,
 	},

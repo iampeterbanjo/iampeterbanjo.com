@@ -4,6 +4,8 @@ import PersonalityTextSummary from 'personality-text-summary';
 import SpotifyWebApi from 'spotify-web-api-node';
 import utils from '../utils';
 import Joi from '@hapi/joi';
+import env from 'env';
+
 import {
 	WatsonProfileInsights,
 	GeniusData,
@@ -17,7 +19,6 @@ import {
 } from '../types';
 
 export const {
-	vars,
 	jsonParser,
 	message,
 	clientel: { genius, lastfm, lyricist },
@@ -31,7 +32,7 @@ export const {
 	WATSON_PI_API_VERSION,
 	SPOTIFY_CLIENT_KEY,
 	SPOTIFY_CLIENT_SECRET,
-} = vars;
+} = env;
 
 export const spotifyApi = new SpotifyWebApi({
 	clientId: SPOTIFY_CLIENT_KEY,

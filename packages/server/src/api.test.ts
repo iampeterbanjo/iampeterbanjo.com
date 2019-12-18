@@ -1,11 +1,10 @@
 import * as R from 'ramda';
+import env from 'env';
+
 import Scheduler from './scheduler/Scheduler';
-
 import api from './api';
-import utils from './utils';
 
-const { vars } = utils;
-const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
+const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = env;
 
 let server;
 

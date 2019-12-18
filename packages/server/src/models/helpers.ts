@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
 import Bluebird from 'bluebird';
-import utils from '../utils';
 import { promisify } from 'util';
+import env from 'env';
 
-const { vars } = utils;
-const { MONGODB_ADDON_DB, MONGODB_ADDON_URI } = vars;
+const { MONGODB_ADDON_DB, MONGODB_ADDON_URI } = env;
 
 mongoose.connect[promisify.custom] = (error, db) => {
 	return new Promise((resolve, reject) => {

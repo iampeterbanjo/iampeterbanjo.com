@@ -1,14 +1,10 @@
 import plugin from 'hapi-pino';
-import utils from '../utils';
-
-const {
-	vars: { ENVIRONMENT },
-} = utils;
+import env from 'env';
 
 export default {
 	plugin,
 	options: {
-		prettyPrint: ENVIRONMENT !== 'production',
+		prettyPrint: env.ENVIRONMENT !== 'production',
 		// Redact Authorization headers, see https://getpino.io/#/docs/redaction
 		redact: ['req.headers.authorization'],
 	},

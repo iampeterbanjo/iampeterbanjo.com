@@ -1,8 +1,7 @@
 import catboxMongodb from 'catbox-mongodb';
-import utils from './utils';
+import env from 'env';
 
-const { vars } = utils;
-const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = vars;
+const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = env;
 
 export const manifest = {
 	host: '0.0.0.0',

@@ -1,8 +1,7 @@
 import Rollbar from 'rollbar';
 import * as helpers from './helpers';
-import utils from '../utils';
+import env from 'env';
 
-const { vars } = utils;
 const { preResponse } = helpers;
 
 export default {
@@ -15,7 +14,7 @@ export default {
 			preResponse({ request, h, rollbar }),
 		);
 		server.expose('rollbar', rollbar);
-		rollbar.log(`Rollbar: ${vars.ENVIRONMENT}`);
+		rollbar.log(`Rollbar: ${env.ENVIRONMENT}`);
 
 		return Promise.resolve();
 	},

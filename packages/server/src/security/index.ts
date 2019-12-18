@@ -1,15 +1,13 @@
 import Hodor from 'hapi-hodor';
-import utils from '../utils';
-
-const { vars } = utils;
+import env from 'env';
 
 export default {
 	plugin: Hodor,
 	options: {
-		sessionSecretKey: vars.SESSION_SECRET_KEY,
-		auth0Audience: vars.AUTH0_AUDIENCE,
-		auth0Domain: vars.AUTH0_DOMAIN,
-		auth0PublicKey: vars.AUTH0_PUBLIC_KEY,
-		auth0SecretKey: vars.AUTH0_SECRET_KEY,
+		sessionSecretKey: env.SESSION_SECRET_KEY,
+		auth0Audience: env.AUTH0_AUDIENCE,
+		auth0Domain: env.AUTH0_DOMAIN,
+		auth0PublicKey: env.AUTH0_PUBLIC_KEY,
+		auth0SecretKey: env.AUTH0_SECRET_KEY,
 	},
 };

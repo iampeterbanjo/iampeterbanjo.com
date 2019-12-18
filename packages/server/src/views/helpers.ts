@@ -1,6 +1,5 @@
 import jsonata from 'jsonata';
 
-import routes from './routes';
 import * as blogHelpers from '../blog/helpers';
 import * as korinHelpers from '../korin/helpers';
 import utils from '../utils';

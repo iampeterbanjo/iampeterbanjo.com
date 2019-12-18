@@ -1,14 +1,14 @@
 import Lyricist from 'lyricist';
 import Wreck from '@hapi/wreck';
 import time from 'time';
-import * as vars from './vars';
+import env from 'env';
 
 const {
 	baseUrl,
 	GENIUS_API_ACCESS_TOKEN,
 	GENIUS_API_URL,
 	LASTFM_API_URL,
-} = vars;
+} = env;
 
 export const wreck = Wreck.defaults({ timeout: time.oneMinute });
 export const api = wreck.defaults({ baseUrl });
