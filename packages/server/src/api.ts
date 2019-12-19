@@ -1,6 +1,5 @@
 import catboxMongodb from 'catbox-mongodb';
 import Hapi from '@hapi/hapi';
-import utils from './utils';
 
 import rollbar from './rollbar';
 import korin from './korin';
