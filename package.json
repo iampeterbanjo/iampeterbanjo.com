@@ -28,6 +28,8 @@
 		"clean": "npm-run-all clean-*; rm -rf node_modules",
 		"deploy": "bash ./deploy.sh",
 		"dev-css": "cd ./packages/css; npm run dev",
+		"dev-data": "cd ./packages/data; npm run dev",
+		"dev-models": "cd ./packages/models; npm run dev",
 		"dev-server": "cd ./packages/server; npm run dev",
 		"dev": "run-s install-*; run-p dev-*",
 		"diva": "cd ./packages/diva;",
