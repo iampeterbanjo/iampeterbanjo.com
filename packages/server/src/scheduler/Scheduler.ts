@@ -17,8 +17,8 @@ export default class Scheduler {
 	}
 
 	async init() {
-		this.setupImportChartTopTracks();
 		await this.agenda.start();
+		await this.setupImportChartTopTracks();
 	}
 
 	addRoutines = () => {
@@ -32,8 +32,11 @@ export default class Scheduler {
 		const { id, description } = this.routines.get('IMPORT_CHART_TOP_TRACKS');
 
 		this.agenda.define(id, () => this.helpers.importChartTracks());
-		this.agenda.on(`success:${id}`, console.info(`SUCCESS: ${description}`));
-		this.agenda.on(`fail:${id}`, console.error(`ERROR: ${description}`));
+
+		this.agenda.on(`success:${id}`, () =>
+			console.info(`SUCCESS: ${description}`),
+		);
+		this.agenda.on(`fail:${id}`, () => console.error(`ERROR: ${description}`));
 
 		await this.agenda.every(time.oneDay, id);
 	};
