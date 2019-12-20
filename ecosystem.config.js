@@ -10,7 +10,7 @@ module.exports = {
 				NODE_ENV: 'production',
 			},
 			watch: ['./packages/server'],
-			ignore_watch: ['node_modules'],
+			ignore_watch: ['node_modules', '.git'],
 			watch_options: {
 				followSymlinks: false,
 			},
@@ -25,7 +25,7 @@ module.exports = {
 				NODE_ENV: 'production',
 			},
 			watch: ['./packages/data'],
-			ignore_watch: ['node_modules'],
+			ignore_watch: ['node_modules', '.git'],
 			watch_options: {
 				followSymlinks: false,
 			},
