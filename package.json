@@ -57,7 +57,6 @@
 		"format": "pretty-quick",
 		"lint": "npx pretty-quick --check",
 		"prod": "run-s install-css install-models install-data install-server build-css build-data",
-		"postprod": "run-s logs",
 		"start": "pm2 start ecosystem.config.js --env production",
 		"test-data": "cd ./packages/data; npm run test",
 		"test-e2e": "cd ./packages/e2e; npm run test",
