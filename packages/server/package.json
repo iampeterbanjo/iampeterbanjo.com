@@ -21,7 +21,7 @@
 		"test-leaks": "CI=true jest --detectLeaks --logHeapUsage",
 		"test-jest": "node --trace-warnings node_modules/.bin/jest --changedFilesWithAncestor",
 		"test": "run-s test-ci test-badges",
-		"test-badges": "cat coverage/lcov.info | npx coverbadge -o ./badges/coverage.svg",
+		"test-badges": "cat coverage/lcov.info | coverbadge -o ./badges/coverage.svg",
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-copy": "nodemon --watch src --ext html --exec 'run-s copy-templates'",
 		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
