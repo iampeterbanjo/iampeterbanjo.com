@@ -18,7 +18,6 @@ COPY package*.json ./
 COPY --chown=node:node . .
 
 RUN npm install --production=true
-RUN npm run build
 
 EXPOSE 8080
 
