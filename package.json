@@ -33,7 +33,6 @@
 		"dev-models": "cd ./packages/models; npm run dev",
 		"dev-server": "cd ./packages/server; npm run dev",
 		"dev-logs": "pm2 logs",
-		"start-dev": "pm2 start ecosystem.config.js --watch",
 		"dev": "run-s install-* && run-p dev-*",
 		"predev": "npm run git-update",
 		"git-update": "git submodule update --init --recursive --merge",
@@ -59,6 +58,7 @@
 		"test-e2e": "cd ./packages/e2e; npm run test",
 		"test-server": "cd ./packages/server; npm run test",
 		"test": "NODE_ENV=test npx npm-run-all test-*",
+		"watch-start": "pm2 start ecosystem.config.js --watch",
 		"watch-server-test": "cd ./packages/server; npm run watch-test"
 	},
 	"keywords": [

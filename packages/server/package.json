@@ -25,7 +25,7 @@
 		"watch": "nodemon --delay 500ms --watch build -e js,html -x 'npm run start-debug'",
 		"watch-copy": "nodemon --watch src --ext html --exec 'run-s copy-templates'",
 		"watch-html": "nodemon --watch ./src/views -e html -x 'run-s copy-templates'",
-		"watch-ts": "tsc-watch --noClear -p tsconfig.build.json --onSuccess \"run-s copy-templates start-debug\"",
+		"watch-ts": "tsc-watch --noClear -p tsconfig.build.json --onSuccess \"run-s copy-templates\"",
 		"watch-test": "nodemon --watch src --watch fixtures --watch factory --ext js,ts,json,html --exec 'run-s test-jest'"
 	},
 	"keywords": [
