@@ -29,6 +29,7 @@
 		"clean-models": "cd ./packages/models; rm -rf node_modules build",
 		"clean-server": "cd ./packages/server; rm -rf node_modules build",
 		"clean": "npm-run-all clean-*; rm -rf node_modules",
+		"predeploy": "npm install",
 		"deploy": "bash ./deploy.sh",
 		"dev-css": "cd ./packages/css; npm run dev",
 		"dev-data": "cd ./packages/data; npm run dev",
