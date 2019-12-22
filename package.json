@@ -40,7 +40,7 @@
 		"docs-adr": "cd ./packages/docs; npx adr",
 		"dry-run": "run-s clean-* && NODE_ENV=production npm install && npm start",
 		"postinstall": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else npm run dev; fi",
-		"stop": "pm2 stop ecosystem.config.js --watch",
+		"stop": "pm2 kill",
 		"install-css": "cd ./packages/css; npm install",
 		"install-data": "cd ./packages/data; npm install",
 		"install-docs": "cd ./packages/docs; npm install",
