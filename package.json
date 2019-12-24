@@ -17,6 +17,7 @@
 	},
 	"homepage": "https://iampeterbanjo.com",
 	"scripts": {
+		"setup": "npm install --ignore-scripts && run-p install-*",
 		"build": "run-p build-*",
 		"build-css": "cd ./packages/css; npm run build",
 		"build-data": "cd ./packages/data; npm run build",
