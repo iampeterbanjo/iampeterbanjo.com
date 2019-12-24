@@ -4,3 +4,6 @@
 [submodule "packages/data"]
 	path = packages/data
 	url = git@github.com:iampeterbanjo/iampeterbanjo.com-data.git
+[submodule "packages/env"]
+	path = packages/env
+	url = git@github.com:iampeterbanjo/iampeterbanjo.com-env.git
