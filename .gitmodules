@@ -10,3 +10,6 @@
 [submodule "packages/models"]
 	path = packages/models
 	url = git@github.com:iampeterbanjo/iampeterbanjo.com-models.git
+[submodule "packages/diva"]
+	path = packages/diva
+	url = git@github.com:iampeterbanjo/iampeterbanjo.com-diva.git
