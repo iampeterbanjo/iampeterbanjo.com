@@ -1,5 +1,5 @@
 import catboxMongodb from 'catbox-mongodb';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = env;
 

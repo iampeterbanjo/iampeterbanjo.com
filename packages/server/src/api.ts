@@ -16,7 +16,7 @@ import httpsHere from './https-here';
 import hapiPino from './hapi-pino';
 import schedule from './scheduler';
 import security from './security';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 const { PORT, MONGODB_ADDON_URI, MONGODB_ADDON_DB } = env;
 

@@ -4,7 +4,7 @@ import PersonalityTextSummary from 'personality-text-summary';
 import SpotifyWebApi from 'spotify-web-api-node';
 import utils from '../utils';
 import Joi from '@hapi/joi';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 import {
 	WatsonProfileInsights,

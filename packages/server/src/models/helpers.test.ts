@@ -1,5 +1,5 @@
 import Bluebird from 'bluebird';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 import * as helpers from '../../src/models/helpers';
 

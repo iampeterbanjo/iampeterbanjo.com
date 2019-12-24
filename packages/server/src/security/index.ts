@@ -1,5 +1,5 @@
 import Hodor from 'hapi-hodor';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 export default {
 	plugin: Hodor,

@@ -1,5 +1,5 @@
 import nock from 'nock';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 import { GeniusData } from '../types';
 import utils from '../../src/utils';

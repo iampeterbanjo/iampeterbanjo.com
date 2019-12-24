@@ -1,5 +1,5 @@
 import plugin from './plugin';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 export default {
 	plugin,

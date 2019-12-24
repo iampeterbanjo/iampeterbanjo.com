@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 import Scheduler from './scheduler/Scheduler';
 import api from './api';

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Bluebird from 'bluebird';
 import { promisify } from 'util';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 const { MONGODB_ADDON_DB, MONGODB_ADDON_URI } = env;
 

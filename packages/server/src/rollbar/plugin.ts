@@ -1,6 +1,6 @@
 import Rollbar from 'rollbar';
 import * as helpers from './helpers';
-import env from 'env';
+import env from '@iampeterbanjo/env';
 
 const { preResponse } = helpers;
 
