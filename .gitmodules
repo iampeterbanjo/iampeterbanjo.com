@@ -1,3 +1,6 @@
 [submodule "packages/hapi-hodor"]
 	path = packages/hapi-hodor
 	url = git@github.com:iampeterbanjo/hapi-hodor.git
+[submodule "packages/data"]
+	path = packages/data
+	url = git@github.com:iampeterbanjo/iampeterbanjo.com-data.git
