@@ -8,7 +8,7 @@ export default {
 	dependencies: {
 		models: '1.x.x',
 		'korin-api': '1.x.x',
-		'hapi-hodor': '1.x.x',
+		'hapi-hodor': '2.x.x',
 	},
 	register: async (server, { getDbConnection, Agenda }) => {
 		const { uri } = await getDbConnection();
