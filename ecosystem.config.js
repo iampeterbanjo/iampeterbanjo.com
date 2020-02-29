@@ -15,20 +15,20 @@ module.exports = {
 				followSymlinks: false,
 			},
 		},
-		{
-			name: 'iampeterbanjo-data',
-			script: './packages/data/build/start.js',
-			env: {
-				NODE_ENV: 'development',
-			},
-			env_production: {
-				NODE_ENV: 'production',
-			},
-			watch: ['./packages/data'],
-			ignore_watch: ['node_modules', '.git', 'src'],
-			watch_options: {
-				followSymlinks: false,
-			},
-		},
+		// {
+		// 	name: 'iampeterbanjo-data',
+		// 	script: './packages/data/build/start.js',
+		// 	env: {
+		// 		NODE_ENV: 'development',
+		// 	},
+		// 	env_production: {
+		// 		NODE_ENV: 'production',
+		// 	},
+		// 	watch: ['./packages/data'],
+		// 	ignore_watch: ['node_modules', '.git', 'src'],
+		// 	watch_options: {
+		// 		followSymlinks: false,
+		// 	},
+		// },
 	],
 };
