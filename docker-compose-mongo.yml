@@ -3,10 +3,10 @@ volumes:
   mongo_data:
 services:
   mongo:
-    container_name: mongodb
+    container_name: iampeterbanjo_mongodb
     restart: unless-stopped
     image: mongo:4.0
     volumes:
       - mongo_data:/data/db
     ports:
-      - 27017:27017
+      - 37017:37017

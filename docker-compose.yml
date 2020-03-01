@@ -2,17 +2,17 @@ version: '3.1'
 volumes:
   mongo_data:
 services:
-  mongo:
-    container_name: mongodb
+  iampeterbanjo_mongo:
+    container_name: iampeterbanjo_mongodb
     restart: unless-stopped
     image: mongo:4.0
     volumes:
       - mongo_data:/data/db
     ports:
-      - 27017:27017
+      - 37017:37017
 
-  api:
-    container_name: api
+  iampeterbanjo_api:
+    container_name: iampeterbanjo_api
     environment:
       NODE_ENV: development
     build:

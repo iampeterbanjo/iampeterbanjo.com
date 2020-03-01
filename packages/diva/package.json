@@ -8,16 +8,8 @@
 		"config"
 	],
 	"license": "ISC",
-	"scripts": {
-		"before-commit": "run-s format",
-		"format": "pretty-quick --staged"
-	},
 	"author": {
 		"email": "npm@iampeterbanjo.com",
 		"name": "Peter Banjo"
-	},
-	"devDependencies": {
-		"prettier": "^1.19.1",
-		"pretty-quick": "^2.0.1"
 	}
 }
