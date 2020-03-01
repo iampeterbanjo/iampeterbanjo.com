@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"module": "commonJS",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": false,
+		"noImplicitReturns": true,
+		"downlevelIteration": true,
+		"jsx": "preserve",
+		"outDir": "./build"
+	},
+	"include": ["src"],
+	"exclude": [
+		"node_modules",
+		"build",
+		"!node_modules/@types",
+		"./factory",
+		"./fixtures",
+		"**/*.test.ts",
+		"**/*.spec.ts"
+	]
+}

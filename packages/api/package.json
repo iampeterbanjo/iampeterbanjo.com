@@ -1,0 +1,69 @@
+{
+	"name": "@iampeterbanjo/portfolio-service",
+	"version": "1.0.0",
+	"description": "iampeterbanjo portfolio api",
+	"main": "build/index.js",
+	"keywords": [
+		"iampeterbanjo",
+		"portfolio",
+		"api"
+	],
+	"author": {
+		"email": "github@iampeterbanjo.com",
+		"name": "Peter Banjo"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
+	},
+	"license": "ISC",
+	"scripts": {
+		"before-commit": "run-s format test test-badges-create test-badges-commit",
+		"prebuild": "npm run clean-build",
+		"build": "tsc --build tsconfig.json",
+		"clean-build": "rm -rf build",
+		"clean": "rm -rf node_modules .cache coverage",
+		"dev": "npm-run-all build --parallel watch-ts watch-server",
+		"format": "pretty-quick --staged",
+		"test": "run-s test-ci test-badges-create",
+		"test-badges-commit": "git add './badges/coverage.svg'",
+		"test-badges-create": "cat coverage/lcov.info | coverbadge -o ./badges/coverage.svg",
+		"start": "if test \"$NODE_ENV\" = \"production\"; then npm run serve-prod; else npm run serve-dev; fi",
+		"serve-dev": "echo \"Serving development\" && npm run dev",
+		"preserve-prod": "npm run build",
+		"serve-prod": "echo \"Serving production\" && node ./build/start.js",
+		"test-ci": "CI=true jest",
+		"watch-server": "nodemon -d 250ms --watch build -x 'node --inspect=127.0.0.1:9222 ./build/start.js | pino-colada'",
+		"watch-ts": "tsc-watch --noClear -p tsconfig.json",
+		"watch-test": "jest --watch"
+	},
+	"dependencies": {
+		"ajv": "^6.11.0",
+		"dotenv": "^8.2.0",
+		"fastify": "^2.12.0",
+		"fastify-compress": "^2.0.0",
+		"fastify-cors": "^3.0.1",
+		"fastify-healthcheck": "^2.1.0",
+		"fastify-helmet": "^3.0.2",
+		"fastify-plugin": "^1.6.0",
+		"mongodb": "^3.5.2",
+		"mongoose": "^5.8.9",
+		"nodemon": "^2.0.2",
+		"npm-run-all": "^4.1.5",
+		"ts-mongoose": "0.0.21",
+		"typescript": "^3.7.4"
+	},
+	"devDependencies": {
+		"@types/jest": "^24.9.1",
+		"@types/mongoose": "^5.5.43",
+		"casual": "^1.6.2",
+		"coverbadge": "^0.5.5",
+		"jest": "^24.9.0",
+		"mockingoose": "^2.13.2",
+		"pino-colada": "^1.5.1",
+		"prettier": "^1.19.1",
+		"pretty-quick": "^2.0.1",
+		"ts-jest": "^24.3.0",
+		"tsc-watch": "^4.1.0"
+	}
+}

@@ -1,5 +1,5 @@
 {
-	"name": "iampeterbanjo-portfolio-types",
+	"name": "@iampeterbanjo/portfolio-types",
 	"version": "1.0.0",
 	"description": "iampeterbanjo portfolio Typescript types",
 	"main": "index.d.ts",
