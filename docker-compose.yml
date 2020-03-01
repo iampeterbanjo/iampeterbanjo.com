@@ -1,0 +1,24 @@
+version: '3.1'
+volumes:
+  mongo_data:
+services:
+  mongo:
+    container_name: mongodb
+    restart: unless-stopped
+    image: mongo:4.0
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - 27017:27017
+
+  api:
+    container_name: api
+    environment:
+      NODE_ENV: development
+    build:
+      context: ../packages/api
+      dockerfile: ../../docker/Dockerfile
+    volumes:
+      - ../packages/api:/usr/src/app
+    ports:
+      - 8080:8080
