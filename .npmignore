@@ -1,0 +1,2 @@
+# adding .npmrc makes sure build/ is included in published files
+coverage/
