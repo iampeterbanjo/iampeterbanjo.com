@@ -4,13 +4,15 @@
 	"description": "CSS theme for iampeterbanjo.com",
 	"main": "main.css",
 	"scripts": {
+		"before-commit": "run-s format",
 		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
 		"clean": "rm -rf node_modules",
-		"postbuild": "npm run copy-webfonts",
 		"copy-webfonts": "ncp ./node_modules/@fortawesome/fontawesome-free/webfonts ./webfonts",
-		"watch-build": "nodemon --watch sass --ext scss -x 'npm run build'",
 		"dev": "npm run watch-build",
-		"test": "echo 'css - no tests'"
+		"format": "pretty-quick --staged",
+		"postbuild": "npm run copy-webfonts",
+		"test": "echo 'css - no tests'",
+		"watch-build": "nodemon --watch sass --ext scss -x 'npm run build'"
 	},
 	"keywords": [],
 	"author": {
@@ -20,7 +22,9 @@
 	"license": "ISC",
 	"devDependencies": {
 		"node-sass": "^4.11.0",
-		"nodemon": "^1.19.1"
+		"nodemon": "^1.19.1",
+		"prettier": "^1.19.1",
+		"pretty-quick": "^2.0.1"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.11.2",

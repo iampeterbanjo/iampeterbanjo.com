@@ -4,11 +4,15 @@
 	"main": "index.js",
 	"license": "MIT",
 	"devDependencies": {
-		"adr": "^1.1.2"
+		"adr": "^1.1.2",
+		"prettier": "^1.19.1",
+		"pretty-quick": "^2.0.1"
 	},
 	"scripts": {
-		"new": "adr new",
+		"before-commit": "run-s format",
+		"format": "pretty-quick --staged",
 		"list": "adr list",
+		"new": "adr new",
 		"update": "adr update"
 	}
 }
