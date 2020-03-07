@@ -21,8 +21,8 @@
 		"build": "run-p build-*",
 		"build-css": "cd ./packages/css; npm run build",
 		"build-data": "cd ./packages/data; npm run build",
-		"prebuild-data": "cd ./packages/models; npm run build",
-		"postbuild-css": "cd ./packages/server; npm run build",
+		"build-models": "cd ./packages/models; npm run build",
+		"build-server": "cd ./packages/server; npm run build",
 		"clean-css": "cd ./packages/css; rm -rf node_modules main.css",
 		"clean-data": "cd ./packages/data; rm -rf node_modules",
 		"clean-docs": "cd ./packages/docs; rm -rf node_modules",
@@ -57,8 +57,8 @@
 		"server": "cd ./packages/server; npm",
 		"format": "pretty-quick",
 		"lint": "npx pretty-quick --check",
-		"prod": "run-s install-css install-models install-data install-server build-css build-data",
-		"start": "pm2 start ecosystem.config.js --env production",
+		"prod": "run-s install-css install-models install-server build-css build-models build-server",
+		"start": "cd ./packages/server && npm start",
 		"test-data": "cd ./packages/data; npm run test",
 		"test-e2e": "cd ./packages/e2e; npm run test",
 		"test-server": "cd ./packages/server; npm run test",
@@ -89,7 +89,6 @@
 	"dependencies": {
 		"@iampeterbanjo/diva": "^1.0.1",
 		"hapi-pino": "^6.1.0",
-		"npm-run-all": "^4.1.5",
-		"pm2": "^4.2.1"
+		"npm-run-all": "^4.1.5"
 	}
 }
