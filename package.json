@@ -33,8 +33,6 @@
 		"dev-server": "cd ./packages/server && npm run dev",
 		"postdev": "run-s logs",
 		"dev": "run-s install-* && run-p dev-*",
-		"predev": "npm run git-update",
-		"git-update": "git submodule update --init --recursive --merge",
 		"diva": "cd ./packages/diva;",
 		"docs-adr": "cd ./packages/docs && npx adr",
 		"dry-run": "run-s clean-* && NODE_ENV=production npm install && npm start",
