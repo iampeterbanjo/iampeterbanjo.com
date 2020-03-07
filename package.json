@@ -26,7 +26,6 @@
 		"clean-css": "cd ./packages/css && rm -rf node_modules main.css",
 		"clean-data": "cd ./packages/data && rm -rf node_modules",
 		"clean-docs": "cd ./packages/docs && rm -rf node_modules",
-		"clean-e2e": "cd ./packages/e2e && rm -rf node_modules",
 		"clean-models": "cd ./packages/models && rm -rf node_modules build",
 		"clean-server": "cd ./packages/server && rm -rf node_modules build",
 		"clean": "npm-run-all clean-* && rm -rf node_modules",
