@@ -1,0 +1,74 @@
+{
+	"name": "hapi-hodor",
+	"version": "2.1.1",
+	"description": "Hapi Auth0 authentication plugin for sessions and JWT",
+	"main": "build/src/index.js",
+	"homepage": "https://github.com/iampeterbanjo/hapi-hodor",
+	"bugs": "https://github.com/iampeterbanjo/hapi-hodor/issues",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iampeterbanjo/hapi-hodor.git"
+	},
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json",
+		"prebuild": "rm -rf build",
+		"clean": "rm -rf node_modules",
+		"test-ci": "CI=true jest",
+		"test-jest": "node --trace-warnings node_modules/.bin/jest --changedFilesWithAncestor",
+		"test": "run-s test-ci test-badges",
+		"test-badges": "cat coverage/lcov.info | npx coverbadge -o ./badges/coverage.svg",
+		"format": "pretty-quick --staged",
+		"watch-ts": "tsc-watch -p tsconfig.build.json",
+		"watch-test": "npm run test-jest -- --watch",
+		"before-commit": "run-s format test test-badges commit-badges",
+		"commit-badges": "git add './badges/coverage.svg'",
+		"release": "npm version",
+		"prerelease": "run-s build",
+		"postrelease": "run-s git-publish npm-publish",
+		"git-publish": "git push origin master",
+		"npm-publish": "npm publish --registry https://registry.npmjs.org/"
+	},
+	"author": {
+		"email": "npm@iampeterbanjo.com",
+		"name": "Peter Banjo"
+	},
+	"keywords": [
+		"security",
+		"auth0",
+		"hapi"
+	],
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run before-commit"
+		}
+	},
+	"license": "ISC",
+	"devDependencies": {
+		"@hapi/hapi": "^18.4.0",
+		"@types/jest": "^24.0.18",
+		"@types/node": "^12.7.5",
+		"casual": "^1.6.2",
+		"coverbadge": "^0.5.5",
+		"husky": "^3.0.7",
+		"jest": "^24.9.0",
+		"jsonwebtoken": "^8.5.1",
+		"nodemon": "^1.18.9",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.18.2",
+		"ts-jest": "^24.0.2",
+		"tsc-watch": "^2.4.0",
+		"typescript": "^3.5.3"
+	},
+	"dependencies": {
+		"@hapi/accept": "^3.2.3",
+		"@hapi/bell": "^11.1.0",
+		"@hapi/boom": "^8.0.1",
+		"@hapi/cookie": "^10.1.2",
+		"@hapi/joi": "^16.1.4",
+		"@iampeterbanjo/diva": "^1.0.1",
+		"hapi-auth-jwt2": "8.6.0",
+		"jwks-rsa": "^1.6.0",
+		"pretty-quick": "^1.11.1",
+		"url-type": "^0.2.1"
+	}
+}
