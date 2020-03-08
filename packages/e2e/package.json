@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/e2e",
-	"version": "1.0.0",
+	"version": "3.0.0",
 	"description": "End-to-end testing for iampeterbanjo.com",
 	"private": true,
 	"scripts": {
@@ -28,6 +28,5 @@
 		"tsify": "^4.0.1",
 		"typescript": "^3.6.3",
 		"webpack": "^4.40.2"
-	},
-	"devDependencies": {}
+	}
 }

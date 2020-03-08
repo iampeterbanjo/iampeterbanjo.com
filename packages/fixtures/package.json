@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/fixtures",
-	"version": "1.0.0",
+	"version": "3.0.0",
 	"description": "Test fixtures",
 	"main": "index.js",
 	"private": true,
