@@ -1,5 +1,5 @@
 {
-	"name": "data",
+	"name": "@iampeterabanjo/data",
 	"version": "1.0.0",
 	"description": "Data processing",
 	"main": "build/index.js",

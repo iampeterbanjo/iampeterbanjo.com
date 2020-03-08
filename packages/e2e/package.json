@@ -1,7 +1,8 @@
 {
-	"name": "e2e",
+	"name": "@iampeterbanjo/e2e",
 	"version": "1.0.0",
 	"description": "End-to-end testing for iampeterbanjo.com",
+	"private": true,
 	"scripts": {
 		"test": "npx cypress run",
 		"dev": "npx cypress open",

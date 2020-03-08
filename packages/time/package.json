@@ -1,5 +1,5 @@
 {
-	"name": "time",
+	"name": "@iampeterbanjo/time",
 	"version": "1.0.0",
 	"description": "Human friendly time in milliseconds",
 	"main": "index.js",
