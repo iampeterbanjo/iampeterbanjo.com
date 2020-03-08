@@ -4,7 +4,7 @@
 	"description": "Data processing",
 	"main": "build/index.js",
 	"publishConfig": {
-		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+		"registry": "https://npm.pkg.github.com/"
 	},
 	"repository": {
 		"type": "git",

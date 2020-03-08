@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"private": true,
 	"publishConfig": {
-		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+		"registry": "https://npm.pkg.github.com/"
 	},
 	"repository": {
 		"type": "git",

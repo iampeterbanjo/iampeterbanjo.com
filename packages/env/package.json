@@ -1,10 +1,10 @@
 {
 	"name": "@iampeterbanjo/env",
-	"version": "3.0.4",
+	"version": "3.0.5",
 	"description": "Environment variables",
 	"main": "index.js",
 	"publishConfig": {
-		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+		"registry": "https://npm.pkg.github.com/"
 	},
 	"repository": {
 		"type": "git",
