@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "CSS theme for iampeterbanjo.com",
 	"main": "main.css",
+	"private": true,
 	"scripts": {
 		"build": "node-sass --omit-source-map-url ./sass/main.scss ./main.css",
 		"clean": "rm -rf node_modules",

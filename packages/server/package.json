@@ -3,9 +3,7 @@
 	"version": "1.0.0",
 	"description": "Server for personal portfolio",
 	"main": "index.js",
-	"engines": {
-		"node": "10.14.2"
-	},
+	"private": true,
 	"scripts": {
 		"build": "tsc -p tsconfig.build.json; run-p copy-*",
 		"prebuild": "rm -rf build",

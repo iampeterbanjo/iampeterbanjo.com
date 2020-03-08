@@ -2,6 +2,7 @@
 	"name": "images",
 	"version": "1.0.0",
 	"license": "MIT",
+	"private": true,
 	"scripts": {
 		"test": "echo 'images has no tests'"
 	}
