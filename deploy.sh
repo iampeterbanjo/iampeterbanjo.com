@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # deploy project, make sure badges are updated
 npx lerna publish
