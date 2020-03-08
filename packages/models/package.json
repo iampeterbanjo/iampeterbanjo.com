@@ -47,5 +47,6 @@
 		"prettier": "^1.19.1",
 		"pretty-quick": "^2.0.1",
 		"tsc-watch": "^4.0.0"
-	}
+	},
+	"gitHead": "52433171f7fc860255143fef41e938fa8409c90b"
 }

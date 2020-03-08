@@ -70,5 +70,6 @@
 		"jwks-rsa": "^1.6.0",
 		"pretty-quick": "^1.11.1",
 		"url-type": "^0.2.1"
-	}
+	},
+	"gitHead": "52433171f7fc860255143fef41e938fa8409c90b"
 }
