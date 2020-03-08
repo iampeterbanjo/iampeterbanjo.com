@@ -3,6 +3,14 @@
 	"version": "3.0.1",
 	"description": "Database models",
 	"main": "build/index.js",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/models"
+	},
 	"scripts": {
 		"build": "tsc -p tsconfig.build.json",
 		"prebuild": "rm -rf build",
@@ -17,10 +25,6 @@
 		"postrelease": "npm run npm-publish && npm run git-publish",
 		"git-publish": "git push origin master",
 		"npm-publish": "npm publish --@iampeterbanjo:registry=https://npm.pkg.github.com/"
-	},
-	"repository": "https://github.com/iampeterbanjo/iampeterbanjo.com",
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/@iampeterbanjo"
 	},
 	"keywords": [
 		"models"

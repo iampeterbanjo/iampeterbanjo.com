@@ -3,6 +3,14 @@
 	"version": "3.0.0",
 	"license": "MIT",
 	"private": true,
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/images"
+	},
 	"scripts": {
 		"test": "echo 'images has no tests'"
 	}

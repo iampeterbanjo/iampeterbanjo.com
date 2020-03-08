@@ -2,6 +2,14 @@
 	"name": "@iampeterbanjo/docs",
 	"version": "3.0.0",
 	"main": "index.js",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/docs"
+	},
 	"license": "MIT",
 	"private": true,
 	"devDependencies": {

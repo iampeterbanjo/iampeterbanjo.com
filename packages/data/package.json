@@ -3,6 +3,14 @@
 	"version": "3.0.2",
 	"description": "Data processing",
 	"main": "build/index.js",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/data"
+	},
 	"scripts": {
 		"build": "tsc -p tsconfig.build.json",
 		"prebuild": "rm -rf build",
@@ -60,5 +68,5 @@
 		"ts-node": "^8.5.4",
 		"tsc-watch": "^4.0.0"
 	},
-	"gitHead": "52433171f7fc860255143fef41e938fa8409c90b"
+	"gitHead": "9d1ac73b5a1bdfa69ed7555b3c46346dc8ed33f2"
 }

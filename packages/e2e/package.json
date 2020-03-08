@@ -2,6 +2,14 @@
 	"name": "@iampeterbanjo/e2e",
 	"version": "3.0.0",
 	"description": "End-to-end testing for iampeterbanjo.com",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/e2e"
+	},
 	"private": true,
 	"scripts": {
 		"test": "npx cypress run",

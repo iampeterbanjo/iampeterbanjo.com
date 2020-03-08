@@ -3,6 +3,14 @@
 	"version": "3.0.1",
 	"description": "Personal formatting configurations",
 	"main": "index.json",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/diva"
+	},
 	"keywords": [
 		"prettier",
 		"config"

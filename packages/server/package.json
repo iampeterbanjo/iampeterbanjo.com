@@ -4,6 +4,14 @@
 	"description": "Server for personal portfolio",
 	"main": "index.js",
 	"private": true,
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/server"
+	},
 	"scripts": {
 		"build": "tsc -p tsconfig.build.json; run-p copy-*",
 		"prebuild": "rm -rf build",

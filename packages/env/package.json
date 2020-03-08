@@ -3,6 +3,14 @@
 	"version": "3.0.1",
 	"description": "Environment variables",
 	"main": "index.js",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/env"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 0",
 		"release": "npm version",
@@ -10,16 +18,12 @@
 		"git-publish": "git push origin master",
 		"npm-publish": "npm publish --@iampeterbanjo:registry=https://npm.pkg.github.com/"
 	},
-	"repository": "https://github.com/iampeterbanjo/iampeterbanjo.com",
 	"keywords": [
 		"utils"
 	],
 	"author": {
 		"email": "npm@iampeterbanjo.com",
 		"name": "Peter Banjo"
-	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/@iampeterbanjo"
 	},
 	"license": "ISC",
 	"gitHead": "52433171f7fc860255143fef41e938fa8409c90b"

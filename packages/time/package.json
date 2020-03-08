@@ -1,8 +1,16 @@
 {
-	"name": "@iampeterbanjo/time",
+	"name": "@iampeterbanjo/time-util",
 	"version": "3.0.1",
 	"description": "Human friendly time in milliseconds",
 	"main": "index.js",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/time"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 0"
 	},

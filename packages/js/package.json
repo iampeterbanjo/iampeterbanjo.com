@@ -2,6 +2,14 @@
 	"name": "@iampeterbanjo/portfolio-js",
 	"version": "3.0.1",
 	"description": "JavaScript for iampeterbanjo.com",
+	"publishConfig": {
+		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/js"
+	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\""
 	},
