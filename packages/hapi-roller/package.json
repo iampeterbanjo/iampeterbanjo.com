@@ -30,6 +30,5 @@
 	},
 	"dependencies": {
 		"rollbar": "^2.9.0"
-	},
-	"gitHead": "9d1ac73b5a1bdfa69ed7555b3c46346dc8ed33f2"
+	}
 }

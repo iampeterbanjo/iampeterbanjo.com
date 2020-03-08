@@ -1,5 +1,5 @@
 {
-	"name": "@iampeterabanjo/data",
+	"name": "@iampeterbanjo/data",
 	"version": "3.0.3",
 	"description": "Data processing",
 	"main": "build/index.js",
@@ -67,6 +67,5 @@
 		"pretty-quick": "^2.0.1",
 		"ts-node": "^8.5.4",
 		"tsc-watch": "^4.0.0"
-	},
-	"gitHead": "9d1ac73b5a1bdfa69ed7555b3c46346dc8ed33f2"
+	}
 }
