@@ -35,7 +35,7 @@
 		"dev": "run-s install-* && run-p dev-*",
 		"diva": "cd ./packages/diva;",
 		"docs-adr": "cd ./packages/docs && npx adr",
-		"dry-run": "run-s clean-* && NODE_ENV=production npm install && npm start",
+		"dry-run": "make build && make run",
 		"postinstall": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else npm run dev; fi",
 		"install-css": "cd ./packages/css && npm install",
 		"install-docs": "cd ./packages/docs && npm install",

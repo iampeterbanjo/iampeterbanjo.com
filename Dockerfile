@@ -1,5 +1,8 @@
 FROM node:10.14.2
 
+ARG GITHUB_REGISTRY_AUTH_TOKEN
+RUN echo "GITHUB_REGISTRY_AUTH_TOKEN: $GITHUB_REGISTRY_AUTH_TOKEN"
+
 # Create app directory
 RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
 WORKDIR /usr/src/app

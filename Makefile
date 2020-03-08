@@ -1,4 +1,4 @@
-BUILD=docker build -t iampeterbanjo/hapi .
+BUILD=docker build --build-arg GITHUB_REGISTRY_AUTH_TOKEN -t iampeterbanjo/hapi .
 REBUILD=docker build --no-cache -t iampeterbanjo/hapi .
 EXEC=docker exec -it iampeterbanjo-app /bin/bash
 REMOVE=docker rm iampeterbanjo-app
