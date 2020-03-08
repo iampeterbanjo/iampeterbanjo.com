@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/time-util",
-	"version": "3.0.1",
+	"version": "3.0.3",
 	"description": "Human friendly time in milliseconds",
 	"main": "index.js",
 	"publishConfig": {

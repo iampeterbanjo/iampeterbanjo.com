@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/models",
-	"version": "3.0.1",
+	"version": "3.0.3",
 	"description": "Database models",
 	"main": "build/index.js",
 	"publishConfig": {
