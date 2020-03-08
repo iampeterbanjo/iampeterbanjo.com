@@ -1,5 +1,5 @@
 import Crypto from 'crypto';
-import time from 'time';
+import time from '@iampeterbanjo/time';
 import * as helpers from './helpers';
 import utils from '../utils';
 

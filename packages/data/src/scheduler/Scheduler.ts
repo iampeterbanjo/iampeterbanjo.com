@@ -1,4 +1,4 @@
-import time from 'time';
+import time from '@iampeterbanjo/time';
 import loadChartTopTracksProfile from '../pipe/loadChartTopTracksProfile';
 import { Reporter } from '../services';
 

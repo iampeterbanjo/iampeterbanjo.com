@@ -1,6 +1,6 @@
 import Lyricist from 'lyricist';
 import Wreck from '@hapi/wreck';
-import time from 'time';
+import time from '@iampeterbanjo/time';
 import env from '@iampeterbanjo/env';
 
 const {

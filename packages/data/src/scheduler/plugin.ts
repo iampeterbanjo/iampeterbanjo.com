@@ -1,4 +1,4 @@
-import time from 'time';
+import time from '@iampeterbanjo/time';
 
 import Scheduler from './Scheduler';
 import * as controller from './controller';

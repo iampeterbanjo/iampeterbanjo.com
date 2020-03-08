@@ -1,5 +1,5 @@
 import utils from '.';
-import time from 'time';
+import time from '@iampeterbanjo/time';
 
 const { getCache } = utils;
 

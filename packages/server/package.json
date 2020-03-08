@@ -19,7 +19,7 @@
 		"commit-badges": "git add './badges/coverage.svg'",
 		"clean": "rm -rf node_modules",
 		"copy-templates": "ncp ./src/views/templates ./build/views/templates",
-		"dev": "npm link css; run-s build watch-ts",
+		"dev": "npm link css && run-s build && run-p watch-ts watch",
 		"format": "pretty-quick --staged",
 		"start-debug": "node --inspect ./build/start.js",
 		"start": "node ./build/start.js",

@@ -1,5 +1,5 @@
 import Crypto from 'crypto';
-import time from 'time';
+import time from '@iampeterbanjo/time';
 
 import utils from '../utils';
 import { getBlogFiles, getBlogContents } from './helpers';

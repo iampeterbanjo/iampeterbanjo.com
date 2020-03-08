@@ -2,7 +2,7 @@ import Helpers from './helpers';
 import jobs from './jobs';
 import utils from '../utils';
 
-import time from 'time';
+import time from '@iampeterbanjo/time';
 
 export default class Scheduler {
 	public helpers;
