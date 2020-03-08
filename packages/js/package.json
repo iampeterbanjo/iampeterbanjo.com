@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/portfolio-js",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"description": "JavaScript for iampeterbanjo.com",
 	"publishConfig": {
 		"@iampeterbanjo:registry": "https://npm.pkg.github.com/"

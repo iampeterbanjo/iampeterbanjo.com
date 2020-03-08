@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/env",
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"description": "Environment variables",
 	"main": "index.js",
 	"publishConfig": {
