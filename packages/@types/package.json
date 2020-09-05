@@ -1,0 +1,29 @@
+{
+	"name": "@iampeterbanjo/types",
+	"version": "3.2.1",
+	"description": "Typescript types",
+	"main": "index.d.ts",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/@types"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 0",
+		"release": "npm version",
+		"postrelease": "npm run npm-publish && npm run git-publish",
+		"git-publish": "git push origin master",
+		"npm-publish": "npm publish --@iampeterbanjo:registry=https://npm.pkg.github.com/"
+	},
+	"keywords": [
+		"types"
+	],
+	"author": {
+		"email": "npm@iampeterbanjo.com",
+		"name": "Peter Banjo"
+	},
+	"license": "ISC"
+}
