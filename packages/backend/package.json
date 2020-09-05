@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/backend",
-	"version": "3.2.1",
+	"version": "3.2.2",
 	"description": "",
 	"main": "index.js",
 	"private": true,
@@ -20,7 +20,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@iampeterbanjo/types": "^3.2.1",
+		"@iampeterbanjo/types": "^3.2.2",
 		"@types/node": "^12.12.11",
 		"fastify": "^2.10.0",
 		"fastify-cors": "^2.2.0",
