@@ -4,7 +4,7 @@
 	"description": "Personal portfolio",
 	"main": "index.js",
 	"engines": {
-		"node": "10.14.2"
+		"node": "12.14.0"
 	},
 	"repository": {
 		"type": "git",
@@ -36,12 +36,11 @@
 		"docs-adr": "cd ./packages/docs && npx adr",
 		"dry-run": "make build && make run",
 		"postinstall": "if test \"$NODE_ENV\" = \"production\"; then npm run prod; else npm run dev; fi",
-		"install-css": "cd ./packages/css && npm install",
-		"install-docs": "cd ./packages/docs && npm install",
-		"install-e2e": "cd ./packages/e2e && npm install",
-		"install-hodor": "cd ./packages/hapi-hodor && npm install",
-		"install-models": "cd ./packages/models && npm install",
-		"install-server": "cd ./packages/server && npm install",
+		"install-css": "cd ./packages/css && yarn install",
+		"install-docs": "cd ./packages/docs && yarn install",
+		"install-hodor": "cd ./packages/hapi-hodor && yarn install",
+		"install-models": "cd ./packages/models && yarn install",
+		"install-server": "cd ./packages/server && yarn install",
 		"e2e": "cd ./packages/e2e && npm",
 		"css": "cd ./packages/css && npm",
 		"server": "cd ./packages/server && npm",
