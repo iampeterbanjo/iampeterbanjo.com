@@ -1,6 +1,5 @@
 import * as Fastify from 'fastify';
-import { Blog } from '../../../common/blog';
-import { Comment } from '../../../common/comment';
+import { Blog, Comment } from '@iampeterbanjo/types';
 
 export default (
 	fastify: Fastify.FastifyInstance,
