@@ -14,3 +14,4 @@
 - [12. parallel-database-tests-mongodb-server](0012-parallel-database-tests-mongodb-server.md)
 - [13. cypress-e2e-tests-in-typescript](0013-cypress-e2e-tests-in-typescript.md)
 - [14. better-data-transformations](0014-better-data-transformations.md)
+- [15. frontend-backend-architecture](0015-frontend-backend-architecture.md)
