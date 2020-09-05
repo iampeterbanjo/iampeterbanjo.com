@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/server",
-	"version": "3.2.0",
+	"version": "3.2.1",
 	"description": "Server for personal portfolio",
 	"main": "index.js",
 	"private": true,
@@ -66,7 +66,7 @@
 		"@hapi/vision": "^5.5.2",
 		"@hapi/wreck": "^15.0.1",
 		"@iampeterbanjo/diva": "^1.0.1",
-		"@iampeterbanjo/env": "^3.2.0",
+		"@iampeterbanjo/env": "^3.2.1",
 		"@iampeterbanjo/time": "^3.2.0",
 		"@types/node": "^12.7.2",
 		"acorn": "^6.1.1",
