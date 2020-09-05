@@ -1,8 +1,17 @@
 {
-	"name": "backend",
-	"version": "1.0.0",
+	"name": "@iampeterbanjo/backend",
+	"version": "3.2.1",
 	"description": "",
 	"main": "index.js",
+	"private": true,
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/backend"
+	},
 	"scripts": {
 		"dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
 		"build": "tsc --project tsconfig.json"
