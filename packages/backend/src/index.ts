@@ -1,16 +1,20 @@
 require('make-promises-safe');
-import createServer from './server';
-
-const port: number = parseInt(process.env.PORT as string, 10) || 4000;
-process.env.PORT = port.toString();
+import { PORT } from '@iampeterbanjo/env';
+import fastify from 'fastify';
+import backend from './server';
+import { getDbConnection, serverConfig } from './config';
 
 const start = async () => {
-	const fastify = await createServer();
+	const server = fastify(serverConfig);
+
 	try {
-		await fastify.listen(port, '0.0.0.0');
-		fastify.log.info(`Backend (fastify) listening on port ${port}`);
+		await server.register(backend, { getDbConnection });
+		await server.ready();
+		await server.listen(PORT, '0.0.0.0');
+
+		server.log.info(`Backend (fastify) listening on port ${PORT}`);
 	} catch (err) {
-		fastify.log.error(err);
+		server.log.error(err);
 		process.exit(1);
 	}
 };

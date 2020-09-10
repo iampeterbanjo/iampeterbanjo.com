@@ -1,7 +1,7 @@
-import { IMigration } from '@iampeterbanjo/models';
 import { IDatabase } from '@iampeterbanjo/types';
-import mongoose from 'mongoose';
+import { Model } from 'mongoose';
+import { IMigration } from './models';
 
 export interface IBackendDatabase extends IDatabase {
-	MigrationModel: mongoose.Model<IMigration>;
+	MigrationModel: Model<IMigration>;
 }

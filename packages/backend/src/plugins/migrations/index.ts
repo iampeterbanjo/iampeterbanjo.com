@@ -3,10 +3,10 @@ import path from 'path';
 import Umzug, { UmzugOptions } from 'umzug';
 import { MongoDBStorage } from './MongoDBStorage';
 
-export default fp(async function globePay(fastify, options = {}, next) {
+export default fp(async function globePay(instance, options = {}, next) {
 	const defaultOptions = {
 		storage: new MongoDBStorage({
-			model: fastify.models.Migration,
+			model: instance.models.Migration,
 		}),
 		migrations: {
 			path: path.join(__dirname, './scripts'),
@@ -15,7 +15,7 @@ export default fp(async function globePay(fastify, options = {}, next) {
 	const params: UmzugOptions = { ...defaultOptions, ...options };
 	const umzug = new Umzug(params);
 
-	fastify.decorate('migrations', umzug);
+	instance.decorate('migrations', umzug);
 
 	next();
 });

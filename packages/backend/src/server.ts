@@ -1,24 +1,27 @@
-import * as Fastify from 'fastify';
-import api from './api';
+import { Next } from '@iampeterbanjo/types';
+import { FastifyInstance } from 'fastify';
+import fp from 'fastify-plugin';
+import { IncomingMessage, Server, ServerResponse } from 'http';
+import { blogRoutes, commentsRoutes } from './services';
+import { cors, database, fastifyNext, migrations, sensible } from './plugins';
 
-export default async function createServer() {
-	const fastify = Fastify({ logger: true });
-	fastify.register(require('fastify-sensible'));
-	fastify.register(require('fastify-cors'), {});
-	fastify.register(api, { prefix: '/api' });
+export default fp(function createServer(
+	instance: FastifyInstance<Server, IncomingMessage, ServerResponse>,
+	opts: any,
+	next: Next,
+) {
+	const { getDbConnection } = opts;
 
-	if (process.env.NODE_ENV === 'production') {
-		console.log('next js inside here');
-		fastify
-			.register(require('fastify-nextjs'), {
-				dir: `${__dirname}/../../..`,
-			})
-			.after(() => {
-				let f: any = fastify;
-				f.next('/*', (app: any, req: any, reply: any) => {
-					app.render(req.raw, reply.res, '/', req.query, {});
-				});
-			});
-	}
-	return fastify;
-}
+	// fastify.register(database, { getDbConnection });
+	// fastify.register(migrations);
+	instance.register(sensible);
+	instance.register(cors);
+	instance.register(blogRoutes, { prefix: 'api' });
+	instance.register(commentsRoutes, { prefix: 'api' });
+
+	instance.register(fastifyNext, {
+		dir: `../frontend`,
+	});
+
+	next();
+});
