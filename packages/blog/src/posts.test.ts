@@ -55,21 +55,14 @@ describe('Given getBlogContents', () => {
 		},
 	);
 
-	test.each(['graphql-eats-rest', 'i-like-jsonata'])(
-		`When "%s" is NOT empty, the content is found`,
-		async post => {
-			const result = await getBlogContents(post);
-			if (!result) return;
-			const { title, content, date } = result;
-			const validDate = fecha.format(new Date(date), 'mediumDate');
+	test(`When file is found, the content is found`, async () => {
+		const [file] = await getBlogFiles(fileDir);
+		const result = await getBlogContents(file.filePath);
 
-			expect(content).toBeDefined();
-			expect(title).toBeDefined();
-			expect(date).toBeDefined();
-			expect(date).toEqual(validDate);
-			expect(content.length).toBeGreaterThan(1);
-		},
-	);
+		expect(result).toHaveProperty('content', expect.any(String));
+		expect(result).toHaveProperty('title', expect.any(String));
+		expect(result).toHaveProperty('date', expect.any(String));
+	});
 
 	test('When markdown content is parsed it returns HTML', async () => {
 		expect.assertions(1);
