@@ -3,6 +3,7 @@ import api from './api';
 
 export default async function createServer() {
 	const fastify = Fastify({ logger: true });
+	fastify.register(require('fastify-sensible'));
 	fastify.register(require('fastify-cors'), {});
 	fastify.register(api, { prefix: '/api' });
 
