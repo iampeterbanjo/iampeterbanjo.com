@@ -25,5 +25,8 @@
 		"email": "npm@iampeterbanjo.com",
 		"name": "Peter Banjo"
 	},
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"fastify": "^3.3.0"
+	}
 }
