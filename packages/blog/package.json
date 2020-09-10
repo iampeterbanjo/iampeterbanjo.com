@@ -16,7 +16,11 @@
 		"clean-build": "rm -rf build",
 		"prebuild": "npm run clean-build",
 		"build": "ts-node-dev src/index.ts",
-		"watch-build": "ts-node-dev --respawn --transpileOnly src/index.ts"
+		"test": "run-s test-ci test-badges",
+		"test-ci": "CI=true jest",
+		"test-badges": "cat coverage/lcov.info | coverbadge -o ./badges/coverage.svg",
+		"watch-build": "ts-node-dev --respawn --transpileOnly src/index.ts",
+		"watch-test": "jest --watch"
 	},
 	"keywords": [
 		"blog",
@@ -33,7 +37,10 @@
 	},
 	"devDependencies": {
 		"@types/fs-extra": "^9.0.1",
+		"@types/jest": "^26.0.13",
 		"@types/marked": "^1.1.0",
+		"jest": "^26.4.2",
+		"ts-jest": "^26.3.0",
 		"ts-node-dev": "^1.0.0-pre.44",
 		"typescript": "^3.7.2"
 	}

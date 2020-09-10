@@ -2,10 +2,11 @@ import * as fs from 'fs-extra';
 import { getBlogContents, getBlogFiles } from './posts';
 import Path from 'path';
 
-const output = async () => {
-	const fileDir = Path.join(__dirname, '../posts');
-	const buildDir = Path.join(__dirname, '../build/posts');
+export const fileDir = Path.join(__dirname, '../posts');
 
+export const buildDir = Path.join(__dirname, '../build/posts');
+
+const output = async () => {
 	await fs.mkdirp(buildDir);
 
 	const files = await getBlogFiles(fileDir);

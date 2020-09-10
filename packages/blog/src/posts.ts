@@ -2,7 +2,6 @@ import fecha from 'fecha';
 import globby from 'globby';
 import matter from 'gray-matter';
 import marked from 'marked';
-import Path from 'path';
 
 export const getFilename = (filePath: string) => {
 	const filename = [filePath].map(f => {
@@ -13,13 +12,31 @@ export const getFilename = (filePath: string) => {
 	return filename[0].replace('/', '');
 };
 
-export const getBlogFiles = async (dir: string) => {
+type FrontMatter = {
+	title: string;
+	date: string;
+	content: string;
+};
+
+type GetBlogFiles = (
+	dir: string,
+) => Promise<
+	{
+		title: string;
+		date: string;
+		content: string;
+		filePath: string;
+		filename: string;
+	}[]
+>;
+
+export const getBlogFiles: GetBlogFiles = async dir => {
 	const blogFiles = await globby(`${dir}/*.md`);
 	const urlPaths = blogFiles.map(filePath => {
-		const frontmatter = matter.read(filePath);
-		const { data = {} } = frontmatter;
+		const { data = {} as FrontMatter } = matter.read(filePath);
+		const frontmatter = data as FrontMatter;
 
-		return { ...data, filePath, filename: getFilename(filePath) };
+		return { ...frontmatter, filePath, filename: getFilename(filePath) };
 	});
 
 	return urlPaths;
@@ -36,7 +53,9 @@ export const getBlogContents = async (
 ): Promise<Content | null> => {
 	const [blogFile] = await globby(filePath);
 
-	if (!blogFile) return null;
+	if (!filePath || !blogFile) {
+		return null;
+	}
 
 	const { content, data = {} } = matter.read(blogFile);
 	const { title, date } = data;
