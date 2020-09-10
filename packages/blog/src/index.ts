@@ -34,7 +34,11 @@ const output = async () => {
 
 	const [first] = files;
 	const indexFile = `${buildDir}/index.json`;
-	const index = formatStringify({ first, last: files.slice(-1)[0] });
+	const index = formatStringify({
+		first,
+		last: files.slice(-1)[0],
+		list: files,
+	});
 	await fs.createFile(indexFile).then(f => fs.writeFile(indexFile, index));
 };
 

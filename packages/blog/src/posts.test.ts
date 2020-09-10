@@ -28,6 +28,7 @@ describe('Given getFilename', () => {
 describe('Given getBlogFiles', () => {
 	test('When its called it returns list of relative paths', async () => {
 		const results = await getBlogFiles(fileDir);
+
 		expect(results.length).toBeGreaterThan(0);
 	});
 
