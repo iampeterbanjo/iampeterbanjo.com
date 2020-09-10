@@ -1,0 +1,40 @@
+{
+	"name": "@iampeterbanjo/blog",
+	"version": "1.0.0",
+	"description": "Blog posts for iampeterbanjo.com",
+	"main": "build/index.js",
+	"private": true,
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/blog"
+	},
+	"scripts": {
+		"clean-build": "rm -rf build",
+		"prebuild": "npm run clean-build",
+		"build": "ts-node-dev src/index.ts",
+		"watch-build": "ts-node-dev --respawn --transpileOnly src/index.ts"
+	},
+	"keywords": [
+		"blog",
+		"content"
+	],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"fecha": "^4.2.0",
+		"fs-extra": "^9.0.1",
+		"globby": "^11.0.1",
+		"gray-matter": "^4.0.2",
+		"marked": "^1.1.1"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^9.0.1",
+		"@types/marked": "^1.1.0",
+		"ts-node-dev": "^1.0.0-pre.44",
+		"typescript": "^3.7.2"
+	}
+}
