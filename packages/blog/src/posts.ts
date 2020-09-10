@@ -2,6 +2,7 @@ import fecha from 'fecha';
 import globby from 'globby';
 import matter from 'gray-matter';
 import marked from 'marked';
+import lodash from 'lodash/fp';
 
 export const getFilename = (filePath: string) => {
 	const filename = [filePath].map(f => {
@@ -12,7 +13,7 @@ export const getFilename = (filePath: string) => {
 	return filename[0].replace('/', '');
 };
 
-type FrontMatter = {
+type PostData = {
 	title: string;
 	date: string;
 	content: string;
@@ -27,16 +28,37 @@ type GetBlogFiles = (
 		content: string;
 		filePath: string;
 		filename: string;
+		prev: PostData;
+		next: PostData;
 	}[]
 >;
 
+const getfrontMatter = (filePath: string) => {
+	if (!filePath) {
+		return {} as any;
+	}
+
+	const { content, data = {} as PostData } = matter.read(filePath);
+	const frontmatter = data as PostData;
+
+	return { ...frontmatter, content };
+};
+
 export const getBlogFiles: GetBlogFiles = async dir => {
 	const blogFiles = await globby(`${dir}/*.md`);
-	const urlPaths = blogFiles.map(filePath => {
-		const { data = {} as FrontMatter } = matter.read(filePath);
-		const frontmatter = data as FrontMatter;
+	const urlPaths = blogFiles.map((filePath, index) => {
+		const { content, ...frontMatter } = getfrontMatter(filePath);
+		const prev = getfrontMatter(lodash.get(index - 1, blogFiles));
+		const next = getfrontMatter(lodash.get(index + 1, blogFiles));
 
-		return { ...frontmatter, filePath, filename: getFilename(filePath) };
+		return {
+			...frontMatter,
+			content,
+			filePath,
+			filename: getFilename(filePath),
+			prev,
+			next,
+		};
 	});
 
 	return urlPaths;

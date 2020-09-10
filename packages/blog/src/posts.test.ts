@@ -1,6 +1,5 @@
-import fecha from 'fecha';
-import { fileDir, buildDir } from '.';
-import { getFilename, getBlogFiles, getBlogContents } from './posts';
+import { fileDir } from '.';
+import { getBlogContents, getBlogFiles, getFilename } from './posts';
 
 describe('Given getFilename', () => {
 	describe('And a blog post filePath', () => {
@@ -56,12 +55,16 @@ describe('Given getBlogContents', () => {
 	);
 
 	test(`When file is found, the content is found`, async () => {
-		const [file] = await getBlogFiles(fileDir);
-		const result = await getBlogContents(file.filePath);
+		const files = await getBlogFiles(fileDir);
+		const first = files[0];
+		const second = files[1];
+		const third = files[2];
 
-		expect(result).toHaveProperty('content', expect.any(String));
-		expect(result).toHaveProperty('title', expect.any(String));
-		expect(result).toHaveProperty('date', expect.any(String));
+		expect(second.content).toEqual(expect.any(String));
+		expect(second.title).toEqual(expect.any(String));
+		expect(second.date).toEqual(expect.any(Date));
+		expect(second.prev.title).toEqual(first.title);
+		expect(second.next.title).toEqual(third.title);
 	});
 
 	test('When markdown content is parsed it returns HTML', async () => {

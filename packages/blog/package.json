@@ -33,11 +33,13 @@
 		"fs-extra": "^9.0.1",
 		"globby": "^11.0.1",
 		"gray-matter": "^4.0.2",
+		"lodash": "^4.17.20",
 		"marked": "^1.1.1"
 	},
 	"devDependencies": {
 		"@types/fs-extra": "^9.0.1",
 		"@types/jest": "^26.0.13",
+		"@types/lodash": "^4.14.161",
 		"@types/marked": "^1.1.0",
 		"jest": "^26.4.2",
 		"ts-jest": "^26.3.0",
