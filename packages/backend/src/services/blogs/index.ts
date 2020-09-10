@@ -1,6 +1,6 @@
 import { Blog } from '@iampeterbanjo/types';
 import * as Fastify from 'fastify';
-
+// import {  } from "module";
 export async function blogRoutes(instance: Fastify.FastifyInstance) {
 	instance.get('/blogs', async (req, reply) => {
 		const result: Blog[] = [];

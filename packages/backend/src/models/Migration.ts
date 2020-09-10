@@ -1,6 +1,8 @@
-import { typedModel, createSchema, Convert, ExtractDoc } from 'ts-mongoose';
 import { MigrationDefinition } from '@iampeterbanjo/models';
 import { Document } from 'mongoose';
+import { Convert, createSchema, ExtractDoc, typedModel } from 'ts-mongoose';
+
+// create schema here to keep mongoose happy
 export const MigrationSchema = createSchema(MigrationDefinition, {
 	timestamps: true,
 });

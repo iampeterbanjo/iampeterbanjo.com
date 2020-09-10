@@ -12,7 +12,7 @@ const start = async () => {
 		await server.ready();
 		await server.listen(PORT, '0.0.0.0');
 
-		server.log.info(`Backend (fastify) listening on port ${PORT}`);
+		server.log.info(`Backend listening on port ${PORT}`);
 	} catch (err) {
 		server.log.error(err);
 		process.exit(1);

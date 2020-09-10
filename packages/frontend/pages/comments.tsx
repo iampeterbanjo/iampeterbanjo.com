@@ -1,7 +1,7 @@
-import React from 'react';
+import { Comment } from '@iampeterbanjo/types';
 import Head from 'next/head';
+import React from 'react';
 import Nav from '../components/nav';
-import { Comment } from '../../common/comment';
 import { apihost } from '../utils/apihost';
 
 const Comments = ({ comments }: { comments: Comment[] }) => (

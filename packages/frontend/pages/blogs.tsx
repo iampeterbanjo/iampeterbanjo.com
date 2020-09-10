@@ -1,8 +1,8 @@
-import React from 'react';
-import Head from 'next/head';
-import Nav from '../components/nav';
-import { Blog } from '../../common/blog';
+import { Blog } from '@iampeterbanjo/types';
 import fetch from 'isomorphic-unfetch';
+import Head from 'next/head';
+import React from 'react';
+import Nav from '../components/nav';
 import { apihost } from '../utils/apihost';
 
 const Blogs = ({ blogs }: { blogs: Blog[] }) => (

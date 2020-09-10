@@ -27,7 +27,6 @@
 		"dotenv": "^8.2.0",
 		"fastify": "^3.3.0",
 		"fastify-cors": "^2.2.0",
-		"fastify-nextjs": "^4.1.1",
 		"fastify-sensible": "^3.0.1",
 		"hyperid": "^2.0.5",
 		"lodash": "^4.17.20",
@@ -42,6 +41,7 @@
 	"devDependencies": {
 		"@types/lodash": "^4.14.161",
 		"@types/mongoose": "^5.7.36",
+		"@types/next": "^9.0.0",
 		"ts-node-dev": "^1.0.0-pre.44",
 		"typescript": "^3.7.2"
 	}
