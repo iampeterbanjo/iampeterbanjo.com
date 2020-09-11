@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/blog",
-	"version": "3.2.3",
+	"version": "3.2.4",
 	"description": "Blog posts for iampeterbanjo.com",
 	"main": "build/index.js",
 	"publishConfig": {
