@@ -1,8 +1,9 @@
+import { CmsPosts, Posts } from '@iampeterbanjo/types';
 import fecha from 'fecha';
 import globby from 'globby';
 import matter from 'gray-matter';
-import marked from 'marked';
 import lodash from 'lodash/fp';
+import marked from 'marked';
 
 export const getFilename = (filePath: string) => {
 	const filename = [filePath].map(f => {
@@ -13,33 +14,15 @@ export const getFilename = (filePath: string) => {
 	return filename[0].replace('/', '');
 };
 
-type PostData = {
-	title: string;
-	date: string;
-	content: string;
-};
-
-type GetBlogFiles = (
-	dir: string,
-) => Promise<
-	{
-		title: string;
-		date: string;
-		content: string;
-		filePath: string;
-		filename: string;
-		prev: PostData;
-		next: PostData;
-	}[]
->;
+type GetBlogFiles = (dir: string) => Promise<CmsPosts[]>;
 
 const getfrontMatter = (filePath: string) => {
 	if (!filePath) {
 		return {} as any;
 	}
 
-	const { content, data = {} as PostData } = matter.read(filePath);
-	const frontmatter = data as PostData;
+	const { content, data = {} as Posts } = matter.read(filePath);
+	const frontmatter = data as Posts;
 
 	return { ...frontmatter, content };
 };
