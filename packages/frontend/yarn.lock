@@ -1014,10 +1014,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@iampeterbanjo/types@^3.2.3":
-  version "3.2.3"
-  resolved "https://npm.pkg.github.com/download/@iampeterbanjo/types/3.2.3/cb70e9960f1c28c8e6de040a2e99f72fd71ff183ea3828a4903af099587b1a63#18263f331521ff1388b097b9c044468342d354df"
-  integrity sha512-ceu9aAZfqaPuj32fRKdgFUEUOvOaPM24TpwrN4BE9wPV6J/JrYSfna1WGlQmoNTru/GrhW4gflNbu8r9yaPg9A==
+"@iampeterbanjo/types@^3.2.6":
+  version "3.2.6"
+  resolved "https://npm.pkg.github.com/download/@iampeterbanjo/types/3.2.6/bca8589597b406d0b8649f2f420b48dd93b131d78a05d3c247e15af83a31768d#6fde6346d637f847f2cfd909db29731462ffaa9a"
+  integrity sha512-VlUpabEzTvjbFO82qpNjJX4l3pj1DKF7ed5ruQNHHJQFguVw4CVugXhjvff7FGURTL2IG3IWB+77kMCtYsPUAQ==
   dependencies:
     fastify "^3.3.0"
 
