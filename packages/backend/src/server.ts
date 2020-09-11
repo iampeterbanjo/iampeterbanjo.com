@@ -4,7 +4,7 @@ import fp from 'fastify-plugin';
 import NextJs from 'next';
 import { IncomingMessage, Server, ServerResponse } from 'http';
 import { blogRoutes, commentsRoutes } from './services';
-import { cors, database, fastifyNext, migrations, sensible } from './plugins';
+import { cors, database, migrations, sensible, nextSsr } from './plugins';
 
 export default fp(function createServer(
 	instance: FastifyInstance<Server, IncomingMessage, ServerResponse>,
@@ -19,21 +19,7 @@ export default fp(function createServer(
 	instance.register(cors);
 	instance.register(blogRoutes, { prefix: 'api' });
 	instance.register(commentsRoutes, { prefix: 'api' });
-
-	const frontend = NextJs({
-		dir: '../frontend',
-	}).getRequestHandler();
-
-	// instance.register(fastifyNext, {
-	// 	dir: `../frontend`,
-	// });
-	instance.get('/*', async (req, reply) => {
-		reply.statusCode = 200;
-
-		return frontend(req.raw, reply.raw).then(() => {
-			reply.sent = true;
-		});
-	});
+	instance.register(nextSsr);
 
 	next();
 });

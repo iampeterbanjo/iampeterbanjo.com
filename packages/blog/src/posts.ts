@@ -53,7 +53,7 @@ export const getBlogFiles: GetBlogFiles = async dir => {
 
 		return {
 			...frontMatter,
-			content,
+			content: marked(content),
 			filePath,
 			filename: getFilename(filePath),
 			prev,

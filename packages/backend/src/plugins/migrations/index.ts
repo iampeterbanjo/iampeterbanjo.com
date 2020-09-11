@@ -3,7 +3,7 @@ import path from 'path';
 import Umzug, { UmzugOptions } from 'umzug';
 import { MongoDBStorage } from './MongoDBStorage';
 
-export default fp(async function globePay(instance, options = {}, next) {
+export default fp(async function migrationsFp(instance, options = {}, next) {
 	const defaultOptions = {
 		storage: new MongoDBStorage({
 			model: instance.models.Migration,

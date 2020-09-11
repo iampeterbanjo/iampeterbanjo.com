@@ -3,9 +3,9 @@ import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import React from 'react';
 import Nav from '../components/nav';
-import { apihost } from '../utils/apihost';
+import { API_URL } from '../config';
 
-const Blogs = ({ blogs }: { blogs: Blog[] }) => (
+const Blogs = ({ blogs }: { blogs: any }) => (
 	<div>
 		<Head>
 			<title>Home</title>
@@ -16,14 +16,12 @@ const Blogs = ({ blogs }: { blogs: Blog[] }) => (
 
 		<div className="hero">
 			<h1 className="title">Blogs</h1>
-			<ul>
-				{blogs.map(blog => (
-					<li key={blog.title}>
-						<span>{blog.title}</span>--<span>{blog.content}</span>--
-						<span>{blog.author}</span>
-					</li>
-				))}
-			</ul>
+			{blogs.posts.map(blog => (
+				<article key={blog.title}>
+					<h1>{blog.title}</h1>
+					<div dangerouslySetInnerHTML={{ __html: blog.content }} />
+				</article>
+			))}
 		</div>
 
 		<style jsx>{`
@@ -47,8 +45,9 @@ const Blogs = ({ blogs }: { blogs: Blog[] }) => (
 );
 
 Blogs.getInitialProps = async ({ req }) => {
-	const res = await fetch(`${apihost}api/blogs`);
+	const res = await fetch(`${API_URL}/api/blogs`);
 	const json = await res.json();
+
 	return { blogs: json };
 };
 

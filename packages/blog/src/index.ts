@@ -1,11 +1,10 @@
 import * as fs from 'fs-extra';
-import { getBlogContents, getBlogFiles } from './posts';
 import Path from 'path';
-import lodash from 'lodash/fp';
+import { getBlogContents, getBlogFiles } from './posts';
 
 export const fileDir = Path.join(__dirname, '../posts');
 
-export const buildDir = Path.join(__dirname, '../build/posts');
+export const buildDir = Path.join(__dirname, '../build');
 
 export const formatStringify = (data: object | null = {}) =>
 	JSON.stringify(data, null, 1);
@@ -24,22 +23,25 @@ const output = async () => {
 
 	await Promise.all(
 		contents.map(async (c, index) => {
-			const destination = `${buildDir}/${c.filename}.json`;
+			const destination = `${buildDir}/${c.filename}.js`;
+			const fileData = `module.exports = ${formatStringify(c.data)}`;
 
 			await fs
 				.createFile(destination)
-				.then(f => fs.writeFile(destination, formatStringify(c.data)));
+				.then(f => fs.writeFile(destination, fileData));
 		}),
 	);
 
-	const [first] = files;
-	const indexFile = `${buildDir}/index.json`;
+	const [first] = contents;
+	const indexFile = `${buildDir}/index.js`;
 	const index = formatStringify({
 		first,
-		last: files.slice(-1)[0],
-		list: files,
+		last: contents.slice(-1)[0],
+		posts: contents,
 	});
-	await fs.createFile(indexFile).then(f => fs.writeFile(indexFile, index));
+	const filesData = `module.exports = ${index}`;
+
+	await fs.createFile(indexFile).then(f => fs.writeFile(indexFile, filesData));
 };
 
 (async () => {
