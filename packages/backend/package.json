@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/backend",
-	"version": "3.2.5",
+	"version": "3.2.6",
 	"description": "Backend for iampeterbanjo.com",
 	"main": "./build/index.js",
 	"private": true,
@@ -20,10 +20,10 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@iampeterbanjo/cms": "^3.2.5",
+		"@iampeterbanjo/cms": "^3.2.6",
 		"@iampeterbanjo/env": "^3.2.3",
-		"@iampeterbanjo/models": "^3.2.5",
-		"@iampeterbanjo/types": "^3.2.3",
+		"@iampeterbanjo/models": "^3.2.6",
+		"@iampeterbanjo/types": "^3.2.6",
 		"@types/node": "^12.12.11",
 		"dotenv": "^8.2.0",
 		"fastify": "^3.3.0",
