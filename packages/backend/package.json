@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/backend",
-	"version": "3.2.4",
+	"version": "3.2.5",
 	"description": "Backend for iampeterbanjo.com",
 	"main": "./build/index.js",
 	"private": true,
@@ -22,7 +22,7 @@
 	"dependencies": {
 		"@iampeterbanjo/blog": "^3.2.4",
 		"@iampeterbanjo/env": "^3.2.3",
-		"@iampeterbanjo/models": "^3.2.4",
+		"@iampeterbanjo/models": "^3.2.5",
 		"@iampeterbanjo/types": "^3.2.3",
 		"@types/node": "^12.12.11",
 		"dotenv": "^8.2.0",
