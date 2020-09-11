@@ -1,5 +1,5 @@
 {
-	"name": "@iampeterbanjo/blog",
+	"name": "@iampeterbanjo/cms",
 	"version": "3.2.4",
 	"description": "Blog posts for iampeterbanjo.com",
 	"main": "build/index.js",
@@ -13,7 +13,7 @@
 	},
 	"scripts": {
 		"clean-build": "rm -rf build",
-		"prebuild": "npm run clean-build",
+		"prepublish": "npm run clean-build && npm run build",
 		"build": "ts-node-dev src/index.ts",
 		"test": "run-s test-ci test-badges",
 		"test-ci": "CI=true jest",
