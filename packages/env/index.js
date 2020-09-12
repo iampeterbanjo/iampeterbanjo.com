@@ -1,4 +1,7 @@
-module.exports = {
+/**
+ * @type {Object.<string, string>}
+ */
+const env = {
 	GENIUS_API_ACCESS_TOKEN: process.env.GENIUS_API_ACCESS_TOKEN || '',
 	GENIUS_API_URL: process.env.GENIUS_API_URL || '',
 
@@ -28,3 +31,5 @@ module.exports = {
 	AUTH0_PUBLIC_KEY: process.env.AUTH0_PUBLIC_KEY || '',
 	AUTH0_SECRET_KEY: process.env.AUTH0_SECRET_KEY || '',
 };
+
+module.exports = env;

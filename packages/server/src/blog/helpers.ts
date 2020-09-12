@@ -35,6 +35,9 @@ type Content = {
 	date: string;
 };
 
+export const formatDate = (date: string) =>
+	fecha.format(new Date(date), 'mediumDate');
+
 export const getBlogContents = async (
 	filename: string,
 ): Promise<Content | null> => {
@@ -44,7 +47,7 @@ export const getBlogContents = async (
 
 	const { content, data = {} } = matter.read(blogFile);
 	const { title, date } = data;
-	const validDate = fecha.format(new Date(date), 'mediumDate');
+	const validDate = formatDate(date);
 
 	return { title, date: validDate, content: marked(content) };
 };

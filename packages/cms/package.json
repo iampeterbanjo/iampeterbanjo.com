@@ -1,0 +1,49 @@
+{
+	"name": "@iampeterbanjo/cms",
+	"version": "3.2.6",
+	"description": "Blog posts for iampeterbanjo.com",
+	"main": "build/index.js",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:iampeterbanjo/iampeterbanjo.com.git",
+		"directory": "packages/blog"
+	},
+	"scripts": {
+		"clean-build": "rm -rf build",
+		"prepublish": "npm run clean-build && npm run build",
+		"build": "ts-node-dev src/index.ts",
+		"test": "run-s test-ci test-badges",
+		"test-ci": "CI=true jest",
+		"test-badges": "cat coverage/lcov.info | coverbadge -o ./badges/coverage.svg",
+		"watch-build": "ts-node-dev --respawn --transpileOnly src/index.ts",
+		"watch-test": "jest --watch"
+	},
+	"keywords": [
+		"blog",
+		"content"
+	],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@iampeterbanjo/types": "^3.2.6",
+		"fecha": "^4.2.0",
+		"fs-extra": "^9.0.1",
+		"globby": "^11.0.1",
+		"gray-matter": "^4.0.2",
+		"lodash": "^4.17.20",
+		"marked": "^1.1.1"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^9.0.1",
+		"@types/jest": "^26.0.13",
+		"@types/lodash": "^4.14.161",
+		"@types/marked": "^1.1.0",
+		"jest": "^26.4.2",
+		"ts-jest": "^26.3.0",
+		"ts-node-dev": "^1.0.0-pre.44",
+		"typescript": "^3.7.2"
+	}
+}

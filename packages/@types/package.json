@@ -1,6 +1,6 @@
 {
 	"name": "@iampeterbanjo/types",
-	"version": "3.2.2",
+	"version": "3.2.6",
 	"description": "Typescript types",
 	"main": "index.d.ts",
 	"publishConfig": {
@@ -25,5 +25,8 @@
 		"email": "npm@iampeterbanjo.com",
 		"name": "Peter Banjo"
 	},
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"fastify": "^3.3.0"
+	}
 }

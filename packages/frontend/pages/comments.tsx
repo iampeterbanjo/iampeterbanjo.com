@@ -1,8 +1,8 @@
-import React from 'react';
+import { Comment } from '@iampeterbanjo/types';
 import Head from 'next/head';
+import React from 'react';
 import Nav from '../components/nav';
-import { Comment } from '../../common/comment';
-import { apihost } from '../utils/apihost';
+import { API_URL } from '../config';
 
 const Comments = ({ comments }: { comments: Comment[] }) => (
 	<div>
@@ -45,7 +45,7 @@ const Comments = ({ comments }: { comments: Comment[] }) => (
 );
 
 Comments.getInitialProps = async ({ req }) => {
-	const res = await fetch(`${apihost}api/comments`);
+	const res = await fetch(`${API_URL}/api/comments`);
 	const json = await res.json();
 	return { comments: json };
 };

@@ -1,8 +1,8 @@
 {
 	"name": "@iampeterbanjo/backend",
-	"version": "3.2.2",
-	"description": "",
-	"main": "index.js",
+	"version": "3.2.6",
+	"description": "Backend for iampeterbanjo.com",
+	"main": "./build/index.js",
 	"private": true,
 	"publishConfig": {
 		"registry": "https://npm.pkg.github.com/"
@@ -13,24 +13,36 @@
 		"directory": "packages/backend"
 	},
 	"scripts": {
-		"dev": "ts-node-dev --respawn --transpileOnly src/index.ts",
-		"build": "tsc --project tsconfig.json"
+		"dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+		"build": "tsc --project tsconfig.build.json"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@iampeterbanjo/types": "^3.2.2",
+		"@iampeterbanjo/cms": "^3.2.6",
+		"@iampeterbanjo/env": "^3.2.3",
+		"@iampeterbanjo/models": "^3.2.6",
+		"@iampeterbanjo/types": "^3.2.6",
 		"@types/node": "^12.12.11",
-		"fastify": "^2.10.0",
+		"dotenv": "^8.2.0",
+		"fastify": "^3.3.0",
 		"fastify-cors": "^2.2.0",
-		"fastify-nextjs": "^4.1.1",
+		"fastify-sensible": "^3.0.1",
+		"hyperid": "^2.0.5",
+		"lodash": "^4.17.20",
 		"make-promises-safe": "^5.1.0",
-		"next": "^9.5.3",
+		"mongoose": "^5.10.4",
+		"next": "^9.4.4",
 		"react": "^16.12.0",
-		"react-dom": "^16.12.0"
+		"react-dom": "^16.12.0",
+		"ts-mongoose": "0.0.21",
+		"umzug": "^2.3.0"
 	},
 	"devDependencies": {
+		"@types/lodash": "^4.14.161",
+		"@types/mongoose": "^5.7.36",
+		"@types/next": "^9.0.0",
 		"ts-node-dev": "^1.0.0-pre.44",
 		"typescript": "^3.7.2"
 	}

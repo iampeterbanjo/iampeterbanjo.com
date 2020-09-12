@@ -27,15 +27,15 @@ Named functions exist in modules and have the structure:
 
 ```elixir
 defmodule Module_name do
-	# note the comma before 'do'
+ # note the comma before 'do'
   def function_name (arg1), do
-		...
-	end
+  ...
+ end
 
-	@spec function_name(type()) :: return_type()
-	def function_name (arg1, arg2) when arg1 > 0 do
-		...
-	end
+ @spec function_name(type()) :: return_type()
+ def function_name (arg1, arg2) when arg1 > 0 do
+  ...
+ end
 end
 ```
 
@@ -52,10 +52,10 @@ A header function is a function with the same name as a named function and no bo
 
 ```elixir
 defmodule Module_name do
-	def function_name(arg1 \\ default_value)
-	def function_name(arg1), do
-		...
-	end
+  def function_name(arg1 \\ default_value)
+ def function_name(arg1), do
+    ...
+  end
 end
 ```
 
@@ -64,9 +64,9 @@ end
 ```elixir
 @spec multiply(number()) :: number()
 defmodule Calculator do
-	def multiply(arg1, arg2) when arg1 > 0 do
-		arg1 * arg2
-	end
+  def multiply(arg1, arg2) when arg1 > 0 do
+    arg1 * arg2
+  end
 end
 
 Calculator.multiply(0, 2) # -> (FunctionClauseError) no function clause matching in Calculator.named_multiply/2
@@ -79,18 +79,18 @@ anon_multiply.(2, 4) # -> 8
 capture_multiply.(5, 4) # -> 20
 
 defmodule Greeter do
-	def hello(name \\ "world")
-	def hello(names) when is_list(names) do
-		names
-		|> Enum.join(", ")
-		|> hello
-	end
+  def hello(name \\ "world")
+  def hello(names) when is_list(names) do
+    names
+    |> Enum.join(", ")
+    |> hello
+  end
 
-	def hello(name) when is_binary(name) do
-		phrase() <> name
-	end
+  def hello(name) when is_binary(name) do
+    phrase() <> name
+  end
 
-	def phrase, do: "Hello, "
+  def phrase, do: "Hello, "
 end
 
 Greeter.hello() # -> "Hello, world"
