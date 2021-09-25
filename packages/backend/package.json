@@ -30,7 +30,7 @@
 		"fastify-cors": "^2.2.0",
 		"fastify-sensible": "^3.0.1",
 		"hyperid": "^2.0.5",
-		"lodash": "^4.17.20",
+		"lodash": "^4.17.21",
 		"make-promises-safe": "^5.1.0",
 		"mongoose": "^5.10.4",
 		"next": "^9.4.4",
