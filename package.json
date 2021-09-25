@@ -6,6 +6,9 @@
 	"engines": {
 		"node": "16.16.0"
 	},
+	"workspaces": [
+		"packages"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/iampeterbanjo/iampeterbanjo.com.git"
